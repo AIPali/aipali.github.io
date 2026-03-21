@@ -82,10 +82,6 @@ img {
 }
 
 
-
-
-
-
 /* ==========================================================
    站点左上角域名标识 (显示在标题正上方，纯文字风格)
    ========================================================== */
@@ -151,15 +147,6 @@ img {
     font-size: 0.8rem !important;
   }
 }
-
-
-
-
-
-
-
-
-
 
 
 /* ------- 段落编号 ------- */
@@ -366,4 +353,16 @@ ul.starlight-sidebar-topics + * {
 /* 消除侧边栏在移动端或某些布局下的强制居中，确保宽度对齐 */
 .sidebar-content > ul.starlight-sidebar-topics {
   width: 100% !important;
+}
+
+
+/* 隐藏 Algolia DocSearch 搜索结果中的分类标题 (lvl0) */
+.DocSearch-Hit-source {
+  display: none !important;
+}
+
+/* 调整间距，让结果看起来更紧凑 */
+.DocSearch-Hit-Container {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
 }
