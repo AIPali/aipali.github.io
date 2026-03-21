@@ -27,5 +27,7 @@ pnpm-debug.log*
 .obsidian
 src/content/docs/.obsidian/
 
-# vscode
+# AIPali
+tools/
+docker-compose.yml
 .vscode
