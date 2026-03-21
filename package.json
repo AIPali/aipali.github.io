@@ -10,10 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "0.37.7",
-    "astro": "5.18.0", 
-    "sharp": "0.34.2",
+    "astro": "6.0.8",
+    "@astrojs/starlight": "0.38.2",
+    "@astrojs/starlight-docsearch": "^0.7.0", 
     "starlight-sidebar-topics": "0.6.2",
+    "sharp": "0.34.2",
     "unist-util-visit": "5.1.0"
   }
 }
