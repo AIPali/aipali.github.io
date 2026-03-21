@@ -34,7 +34,14 @@ if (currentDoc?.data?.tags) {
 }
 ---
 
-<Default {...Astro.props} />
+<div class="starlight-title-wrapper">
+  <Default {...Astro.props} />
+  <div style="display:none;">
+    <span data-pagefind-weight="10">{reference}</span>
+    <span data-pagefind-weight="9">{id}</span>
+  </div>
+</div>
+
 
 {currentDocTags.length > 0 && (
   <div class="tag-row" data-pagefind-ignore>
