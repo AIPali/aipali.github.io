@@ -1,40 +1,106 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: AIPali 智能化巴利三藏
+description: 基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
+  tagline: 基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: 开始阅读法宝
+      link: /sutta/dn/vagga-01-silakkhandha/dn-01-brahmajala/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+      variant: primary
+    - text: 了解智能化工程
+      link: /info/about/
+      icon: document
+      variant: secondary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+<div style={{ textAlign: 'center', margin: '3rem 0', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--sl-color-text-accent)' }}>
+  与 <span id="typewriter-text" style={{ color: 'var(--sl-color-accent)', borderRight: '2px solid var(--sl-color-accent)', paddingRight: '5px' }}>佛陀</span> 聊聊
+</div>
+
+<script dangerouslySetInnerHTML={{ __html: `
+  const names =["佛陀", "舍利弗", "大目犍连", "阿难", "大迦叶", "摩诃迦旃延", "富楼那", "阿那律", "法乐比丘尼", "优婆离"];
+  let currentIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const el = document.getElementById("typewriter-text");
+    if (!el) return;
+
+    const currentName = names[currentIndex];
+    if (isDeleting) {
+      el.innerText = currentName.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      el.innerText = currentName.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 100 : 200;
+
+    if (!isDeleting && charIndex === currentName.length) {
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      currentIndex = (currentIndex + 1) % names.length;
+      typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(type, 1000);
+  });
+`}} />
+
+{/* 精美SVG：象征佛法与AI网络结合 */}
+<div style={{ display: 'flex', justifyContent: 'center', margin: '3rem 0' }}>
+  <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style={{ stopColor: 'var(--sl-color-accent)', stopOpacity: 1 }} />
+        <stop offset="100%" style={{ stopColor: 'var(--sl-color-accent-high)', stopOpacity: 1 }} />
+      </linearGradient>
+    </defs>
+    {/* 外环 */}
+    <circle cx="100" cy="100" r="80" fill="none" stroke="url(#grad1)" strokeWidth="2" strokeDasharray="10, 10" opacity="0.6" />
+    {/* 中心几何图 */}
+    <path d="M100 40 L115 85 L160 100 L115 115 L100 160 L85 115 L40 100 L85 85 Z" fill="none" stroke="url(#grad1)" strokeWidth="3" />
+    <circle cx="100" cy="100" r="25" fill="none" stroke="url(#grad1)" strokeWidth="4"/>
+    <circle cx="100" cy="100" r="8" fill="url(#grad1)"/>
+    {/* 节点 */}
+    <circle cx="100" cy="40" r="4" fill="var(--sl-color-text)"/>
+    <circle cx="160" cy="100" r="4" fill="var(--sl-color-text)"/>
+    <circle cx="100" cy="160" r="4" fill="var(--sl-color-text)"/>
+    <circle cx="40" cy="100" r="4" fill="var(--sl-color-text)"/>
+  </svg>
+</div>
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="智能化阅读" icon="open-book">
+    依托大语言模型重新梳理经文结构，自动生成**多层级标题**、**AI导读**与**法义解析**，大幅降低古老经典的阅读门槛。
+  </Card>
+  <Card title="海量法宝收录" icon="collection">
+    涵盖完整的《巴利三藏》：从五部尼柯耶到详尽的律藏及论藏，包括《导论》、《藏论》与《弥兰王问经》。
+  </Card>
+  <Card title="全域即时检索" icon="magnifier">
+    内置现代化的毫秒级全文搜索引擎。无论是一个巴利语术语，还是记忆中的一个法喻，都能迅速定位至原文段落。
+  </Card>
+  <Card title="穿越千年的互动" icon="chat">
+    结合 RAG 检索增强技术，在阅读经文遇到困惑时，可随时向 AI 提问，系统将基于三藏文本进行上下文问答。
+  </Card>
 </CardGrid>
+
+---
+
+<div style={{ textAlign: 'center', marginTop: '4rem' }}>
+  **AIPali 智能化巴利三藏** <br/>
+  *现代化 · 智能化 · 互动化* <br/>
+  由现代人开发，服务于现代实修者。
+</div>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b79216;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1c40f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 外圈：象征法轮 -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad)" stroke-width="2" stroke-dasharray="4 2" />
+  <!-- 中心：象征智慧与AI连接 -->
+  <path d="M50 20 L58 42 L80 50 L58 58 L50 80 L42 58 L20 50 L42 42 Z" fill="url(#logo-grad)" />
+  <circle cx="50" cy="50" r="8" fill="#fff" opacity="0.5" />
+  <circle cx="50" cy="50" r="4" fill="url(#logo-grad)" />
+  <!-- 节点 -->
+  <circle cx="50" cy="20" r="3" fill="url(#logo-grad)" />
+  <circle cx="80" cy="50" r="3" fill="url(#logo-grad)" />
+  <circle cx="50" cy="80" r="3" fill="url(#logo-grad)" />
+  <circle cx="20" cy="50" r="3" fill="url(#logo-grad)" />
+</svg>
