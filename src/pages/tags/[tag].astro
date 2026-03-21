@@ -1,0 +1,42 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  const tags = new Set();
+  
+  docs.forEach(doc => {
+    if (doc.data.tags) {
+      doc.data.tags.forEach(tag => tags.add(tag));
+    }
+  });
+
+  // 为每一个中文标签生成一个专门的网页
+  return Array.from(tags).map(tag => ({
+    params: { tag: tag },
+    props: { 
+      // 筛选出包含该标签的经文
+      docs: docs.filter(doc => doc.data.tags?.includes(tag)) 
+    }
+  }));
+}
+
+const { tag } = Astro.params;
+const { docs } = Astro.props;
+---
+
+<StarlightPage frontmatter={{ title: `标签: ${tag}`, tableOfContents: false }}>
+  <p>共有 {docs.length} 篇经文包含标签 <strong>{tag}</strong>：</p>
+  
+  <ul style="margin-top: 2rem; list-style-type: none; padding: 0;">
+    {docs.map(doc => (
+      <li style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--sl-color-hairline);">
+        <a href={`/${doc.id}/`} style="font-size: 1.2rem; text-decoration: none; color: var(--sl-color-text-accent);">
+          {doc.data.title}
+        </a>
+        {doc.data.description && <p style="margin-top: 0.5rem; opacity: 0.8;">{doc.data.description}</p>}
+      </li>
+    ))}
+  </ul>
+</StarlightPage>

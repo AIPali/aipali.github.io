@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.37.7",
+    "astro": "5.18.0", 
+    "sharp": "0.34.2",
+    "starlight-sidebar-topics": "0.6.2",
+    "unist-util-visit": "5.1.0"
+  }
+}

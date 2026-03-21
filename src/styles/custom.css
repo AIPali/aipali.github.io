@@ -1,0 +1,369 @@
+/* 对齐 Obsidian 的长文阅读体验 */
+:root {
+  --sl-content-font-size: 1.125rem; /* 稍微加大字号，适合经文阅读 */
+  --sl-line-height: 1.8;
+}
+
+/* 兼容 GitHub Alerts 的圆角和间距 */
+.markdown-alert {
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  padding: 1rem;
+}
+
+/* 让图片居中且带圆角 */
+img {
+  border-radius: 8px;
+  display: block;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 隐藏 Starlight 默认的横向滚动条，让大纲插件更有 Obsidian 感 */
+.right-sidebar {
+  border-left: 1px solid var(--sl-color-hairline-light);
+}
+
+
+/* ==========================================================
+   Starlight 侧边栏：极致双语（中文主标题 + 巴利语副标题）排版
+========================================================== */
+
+/* 1. 将所有 Sidebar 的链接项和折叠组设为 Grid 布局 */
+.sidebar-pane a,
+.sidebar-pane summary {
+  display: grid !important;
+  grid-template-columns: 1fr auto; 
+  align-items: center;
+  row-gap: 0.15rem; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+/* 2. 中文主标题：去除固定颜色，使其完全继承原生的反色/高亮逻辑 */
+.sidebar-pane a > span:first-child,
+.sidebar-pane summary > span:first-child {
+  font-weight: 500;
+  /* 移除 color 属性，让 Starlight 自己接管颜色 */
+}
+
+/* 3. 巴利语副标题：默认灰色，选中时跟随变色 */
+.sidebar-pane .sl-badge {
+  grid-column: 1 / 2; 
+  grid-row: 2 / 3;    
+  
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 0.75rem !important; 
+  font-family: var(--sl-font-mono); 
+  padding: 0 !important;
+  font-weight: 400 !important;
+  width: fit-content;
+  
+  /* 默认状态：安静的暗灰色 */
+  color: var(--sl-color-gray-4) !important; 
+  transition: all 0.2s ease;
+}
+
+/* 🌟 核心修复：当菜单项被选中 (Active) 或鼠标悬浮 (Hover) 时 */
+.sidebar-pane a[aria-current="page"] .sl-badge,
+.sidebar-pane a:hover .sl-badge,
+.sidebar-pane summary:hover .sl-badge {
+  color: inherit !important; /* 强制继承父级的高亮/反色字体颜色 */
+  opacity: 0.75;             /* 通过 75% 透明度，保持副标题的视觉弱化感 */
+}
+
+/* 4. 折叠箭头：强制置于右侧 */
+.sidebar-pane summary svg,
+.sidebar-pane a svg {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+
+
+
+
+
+
+/* ==========================================================
+   站点左上角域名标识 (显示在标题正上方，纯文字风格)
+   ========================================================== */
+
+.site-title {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  /* 调整这个 gap 值可以精确控制上下间距 */
+  /* 0.3rem 大约是 4-5px，如果觉得宽了可以改为 0.2rem */
+  gap: 0.15rem !important; 
+  text-decoration: none !important;
+}
+
+/* 修正标题文字本身的行高，防止占用过多空间 */
+.site-title span {
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+.site-title::before {
+  content: "aipali.true-dhamma.com";
+  
+  /* 字体设置 */
+  font-family: var(--sl-font-mono);
+  font-size: 0.9rem !important; 
+  font-weight: 500;
+  line-height: 1 !important;
+  text-transform: lowercase;
+  
+  /* 视觉样式：去掉边框、背景、阴影 */
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  
+  /* 颜色：建议使用次级文字颜色，既清晰又不会抢了主标题的风头 */
+  /* 如果你想让它和标题一样亮，可以改为 var(--sl-color-white) */
+  color: var(--sl-color-gray-3) !important; 
+  
+  /* 确保不换行 */
+  white-space: nowrap;
+}
+
+/* 彻底重置 Logo 图片可能带来的干扰 */
+.site-title img {
+  margin: 0 !important;
+  display: block !important;
+  height: var(--sl-logo-height) !important;
+  width: auto !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* 悬停效果：稍微变亮一点 */
+.site-title:hover::before {
+  color: var(--sl-color-accent-high) !important;
+}
+
+/* 移动端适配：缩小一点点以防溢出 */
+@media (max-width: 50rem) {
+  .site-title::before {
+    font-size: 0.8rem !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------- 段落编号 ------- */
+
+/* 1. 基础容器与定位基准 */
+.sl-markdown-content {
+  position: relative;
+  padding-left: 3rem !important; /* 维持 3rem 的紧凑留白 */
+}
+
+.sl-markdown-content p,
+.sl-markdown-content li {
+  position: relative !important;
+}
+
+/* 2. 编号基础样式 */
+.p-ref {
+  position: absolute;
+  top: 0.4rem;
+  left: -3rem; 
+  text-align: left;
+  width: 3rem;
+  
+  /* 允许 HTML 中的 <br> 生效，同时设置紧凑行高 */
+  white-space: normal; 
+  line-height: 1.1; 
+  
+  font-family: var(--__sl-font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  opacity: 0.4;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 3. 多级列表精准找补 (核心修复) */
+/* 每增加一级 li，就额外向左拉回 40px (Starlight 的默认缩进) */
+
+/* 第 1 级列表项 */
+.sl-markdown-content li > .p-ref,
+.sl-markdown-content li > p .p-ref {
+  left: calc(-3rem - 40px);
+}
+
+/* 第 2 级列表项 */
+.sl-markdown-content li li > .p-ref,
+.sl-markdown-content li li > p .p-ref {
+  left: calc(-3rem - 80px);
+}
+
+/* 第 3 级列表项 */
+.sl-markdown-content li li li > .p-ref,
+.sl-markdown-content li li li > p .p-ref {
+  left: calc(-3rem - 120px);
+}
+
+/* 第 4 级列表项 */
+.sl-markdown-content li li li li > .p-ref,
+.sl-markdown-content li li li li > p .p-ref {
+  left: calc(-3rem - 160px);
+}
+
+/* 第 5 级列表项 */
+.sl-markdown-content li li li li li > .p-ref,
+.sl-markdown-content li li li li li > p .p-ref {
+  left: calc(-3rem - 200px);
+}
+
+/* 4. 视觉优化：亮/暗模式 */
+:root[data-theme='light'] .p-ref { color: #000; opacity: 0.35; }
+:root[data-theme='dark'] .p-ref { color: #fff; opacity: 0.25; }
+
+/* 5. 移动端直接隐藏 */
+@media (max-width: 50rem) {
+  .sl-markdown-content { padding-left: 0.5rem !important; }
+  .p-ref { display: none !important; }
+}
+
+/* ==========================================================
+   全局字号与边距精密调整
+   ========================================================== */
+
+:root {
+  /* --- 标题字号计算 --- */
+  --sl-text-h1: 2.125rem !important;    /* 2.5 * 0.85 (主标题) */
+  --sl-text-h2: 1.68rem !important;   /* 1.875 * 0.9 (二级标题) */
+  --sl-text-h3: 1.45rem !important;     /* 1.5 * 0.9 (三级标题) */
+  --sl-text-h4: 1.25rem !important;    /* 1.25 * 0.9 (四级标题) */
+  --sl-text-h5: 1.125rem !important;   /* 1.125 * 0.9 (五级标题) */
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   巴利三藏：顶部频道切换栏 (Topics) 极致固定版定制
+   ========================================================== */
+
+/* 1. 核心层：让侧边栏容器不再产生橡皮筋回弹，并提供高度上下文 */
+.sidebar-pane {
+  /* 阻止整个侧边栏的弹性回弹，只让内部菜单回弹 */
+  overscroll-behavior: none !important;
+}
+
+.sidebar-content {
+  padding-top: 0 !important;
+  /* 允许内容撑开高度 */
+  display: block !important;
+}
+
+/* 2. 频道容器：使用 sticky 实现固定，并确保背景不透明 */
+ul.starlight-sidebar-topics {
+  /* 核心：固定在顶部 */
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 20 !important;
+  
+  /* 视觉：确保滚动时下方的文字不会穿透显示 */
+  background-color: var(--sl-color-bg-sidebar) !important;
+  
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  gap: 0.2rem !important;
+  
+  /* 这里的 padding-top 是为了补足之前压缩的侧边栏顶部间距 */
+  padding: 0.5rem 0.2rem 0.5rem 0.2rem !important; 
+  margin: 0 !important;
+  border-bottom: 1px solid var(--sl-color-gray-5) !important;
+}
+
+ul.starlight-sidebar-topics > li {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+/* 3. 隐藏图标 */
+.starlight-sidebar-topics a svg,
+.starlight-sidebar-topics a[data-icon] {
+  display: none !important;
+}
+
+/* 4. 基础按钮样式 (精密高度) */
+.starlight-sidebar-topics a {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.25rem 0 0.35rem 0 !important; 
+  border-radius: 0.25rem !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  border: 1px solid transparent !important;
+  
+  /* 中文小字样式 */
+  font-size: 0.6rem !important; 
+  line-height: 1.1 !important; 
+  color: var(--sl-color-gray-3) !important; 
+  word-break: keep-all !important; 
+  white-space: normal !important;
+}
+
+/* 英文简称样式 */
+.starlight-sidebar-topics a::first-line {
+  font-size: 0.85rem !important; 
+  font-weight: 700 !important;
+  color: var(--sl-color-gray-2) !important;
+  line-height: 1.3 !important;
+}
+
+/* 5. 交互态 */
+.starlight-sidebar-topics a:hover {
+  background-color: var(--sl-color-gray-6) !important;
+}
+.starlight-sidebar-topics a.starlight-sidebar-topics-current {
+  background-color: var(--sl-color-accent-low) !important;
+  border-color: var(--sl-color-accent) !important;
+}
+.starlight-sidebar-topics a.starlight-sidebar-topics-current::first-line {
+  color: var(--sl-color-accent-high) !important;
+}
+.starlight-sidebar-topics a.starlight-sidebar-topics-current {
+  color: var(--sl-color-accent-high) !important;
+  font-weight: 500 !important;
+}
+
+/* 6. 核心层：处理下方菜单的滚动与橡皮筋效果 */
+/* 选中 Topics 列表后的所有内容（即原侧边栏菜单） */
+ul.starlight-sidebar-topics + * {
+  /* 顶部留出与 Tab 栏的间距 */
+  margin-top: 0.5rem !important;
+  
+  /* 允许这部分区域独立产生橡皮筋回弹 */
+  overscroll-behavior-y: auto !important;
+  
+  /* 确保菜单底部不会被遮挡 */
+  padding-bottom: 5rem !important;
+}
+
+/* 消除侧边栏在移动端或某些布局下的强制居中，确保宽度对齐 */
+.sidebar-content > ul.starlight-sidebar-topics {
+  width: 100% !important;
+}

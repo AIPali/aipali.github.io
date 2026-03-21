@@ -1,0 +1,62 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import { getTagsData } from '../utils/getTags'; // 引入工具函数
+
+const baseUrl = import.meta.env.BASE_URL;
+
+// 1. 调用封装好的函数（内部会自动处理缓存）
+const { tagCounts, allDocs } = await getTagsData();
+
+// 2. 物理 URL 反查当前文档 (优化后的逻辑)
+let currentDocTags: string[] = [];
+const currentPath = Astro.url.pathname;
+
+// 剥离 BaseUrl 并标准化路径
+let logicPath = currentPath;
+if (baseUrl !== '/' && currentPath.startsWith(baseUrl)) {
+  logicPath = currentPath.replace(baseUrl, '');
+}
+logicPath = logicPath.toLowerCase().replace(/\/+/g, '/').replace(/\/$/, '');
+
+const currentDoc = allDocs.find(doc => {
+  const docSlug = (doc.slug || '').toLowerCase().replace(/\/$/, '');
+  const docId = doc.id.toLowerCase().replace(/\.mdx?$/, '');
+  return (docSlug && logicPath.endsWith(docSlug)) || (docId && logicPath.endsWith(docId));
+});
+
+if (currentDoc?.data?.tags) {
+  const rawTags = currentDoc.data.tags;
+  currentDocTags = Array.isArray(rawTags) ? rawTags : [rawTags];
+  
+  // 根据全局频次排序
+  currentDocTags.sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0));
+}
+---
+
+<Default {...Astro.props} />
+
+{currentDocTags.length > 0 && (
+  <div class="tag-row" data-pagefind-ignore>
+    {currentDocTags.map((tag) => (
+      <a 
+        href={`${baseUrl}tags/${tag}/`} 
+        class="tag-item"
+        data-pagefind-filter="tag" 
+      >
+        <span class="tag-name">{tag}</span>
+        <span class="tag-count">{tagCounts[tag] || 0}</span>
+      </a>
+    ))}
+  </div>
+)}
+
+<style>
+  /* 保持你原来的 CSS 不变 */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; margin-bottom: -0.8rem; }
+  .tag-item { display: inline-flex; align-items: center; font-size: 0.7rem; text-decoration: none; background-color: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); border-radius: 4px; color: var(--sl-color-text-accent); transition: all 0.2s ease; overflow: hidden; }
+  .tag-item:hover { border-color: var(--sl-color-accent); background-color: var(--sl-color-accent-low); transform: translateY(-1px); }
+  .tag-name { padding: 0.1rem 0.4rem; }
+  .tag-count { padding: 0.1rem 0.3rem; background-color: var(--sl-color-gray-6); color: var(--sl-color-gray-3); border-left: 1px solid var(--sl-color-gray-5); font-variant-numeric: tabular-nums; }
+  .tag-item:hover .tag-count { background-color: var(--sl-color-accent); color: white; border-left-color: var(--sl-color-accent); }
+</style>
