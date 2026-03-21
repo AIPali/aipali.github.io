@@ -46,7 +46,7 @@ export default defineConfig({
   integrations:[
     starlight({
       title: 'AIPali 智能化巴利三藏',
-      // customCss:['./src/styles/custom.css'], 
+      customCss:['./src/styles/custom.css'], 
       defaultLocale: 'zh-cn', 
       locales: {
         root: {
