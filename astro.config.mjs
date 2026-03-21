@@ -56,8 +56,8 @@ export default defineConfig({
         },
       },
       components: {
-        // 【关键】覆盖默认的PageTitle组件
         PageTitle: './src/components/PageTitle.astro',
+        Head: './src/components/CustomHead.astro',
       },
       plugins:[
         starlightDocSearch({
