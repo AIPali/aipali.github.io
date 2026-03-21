@@ -63,7 +63,8 @@ export default defineConfig({
         starlightDocSearch({
           appId: 'TCMTON4EX8',
           apiKey: '46fc7739c943245ddd44dac342e40493',
-          indexName: 'AIPali'
+          indexName: 'AIPali',
+          askAi: 'Hco3oWWPg1VN' // TODO: Replace with your Algolia Assistant ID
         }),
         // 👇 Topic 插件：接受两个参数，第二个参数用来配置豁免名单
         starlightSidebarTopics([
