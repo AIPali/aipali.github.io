@@ -5,14 +5,15 @@ import { getTagsData } from '../utils/getTags'; // 引入工具函数
 
 const baseUrl = import.meta.env.BASE_URL;
 
-// 1. 调用封装好的函数（内部会自动处理缓存）
+// 1. 获取全局文档和标签数据（用于后续匹配和展示）
 const { tagCounts, allDocs } = await getTagsData();
 
-// 2. 物理 URL 反查当前文档 (优化后的逻辑)
-let currentDocTags: string[] = [];
-const currentPath = Astro.url.pathname;
+// 2. 尝试从 Props 中直接获取 entry (Starlight 默认行为)
+// 使用可选链 ?. 避免在非 Markdown 页面崩溃
+const { entry } = Astro.props;
 
-// 剥离 BaseUrl 并标准化路径
+// 3. 物理 URL 反查当前文档 (用于 entry 丢失时的兜底逻辑)
+const currentPath = Astro.url.pathname;
 let logicPath = currentPath;
 if (baseUrl !== '/' && currentPath.startsWith(baseUrl)) {
   logicPath = currentPath.replace(baseUrl, '');
@@ -25,24 +26,62 @@ const currentDoc = allDocs.find(doc => {
   return (docSlug && logicPath.endsWith(docSlug)) || (docId && logicPath.endsWith(docId));
 });
 
-if (currentDoc?.data?.tags) {
-  const rawTags = currentDoc.data.tags;
+/**
+ * 4. 核心修复：安全提取 Front Matter 数据
+ * 优先级：Props中的entry > URL匹配到的文档 > 空对象
+ */
+const effectiveData = entry?.data || currentDoc?.data || {};
+
+// 安全解构，并设置默认值防止 undefined
+const { 
+  title = Astro.props.title || "", 
+  description = "", 
+  reference = "", 
+  id = "", 
+  collection = "", 
+  vagga = "" 
+} = effectiveData;
+
+// 处理当前页面的标签
+let currentDocTags: string[] = [];
+if (effectiveData.tags) {
+  const rawTags = effectiveData.tags;
   currentDocTags = Array.isArray(rawTags) ? rawTags : [rawTags];
-  
-  // 根据全局频次排序
   currentDocTags.sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0));
 }
 ---
 
 <div class="starlight-title-wrapper">
+  <!-- 
+    5. Pagefind 深度优化区：
+    这里的目的是给 Pagefind 提供明确的权重信号，但在视觉上是隐藏的。
+  -->
+  { (reference || title) && (
+    <div style="display:none;" data-pagefind-ignore>
+      <!-- 给参考编号最高权重 (10) -->
+      <h1 data-pagefind-weight="10" data-pagefind-meta="title">{title}</h1>
+      <span data-pagefind-weight="10" data-pagefind-meta="ref">{reference}</span>
+      
+      <!-- 增加不带空格的编码变体 (如搜 MN10 也能中)，权重同样设为 10 -->
+      {reference && <span data-pagefind-weight="10">{reference.replace(/\s+/g, '')}</span>}
+      
+      <!-- ID 权重设为 9 -->
+      {id && <span data-pagefind-weight="9">{id}</span>}
+      
+      <!-- 描述信息作为元数据，方便搜索结果展示 -->
+      {description && <p data-pagefind-meta="description">{description}</p>}
+      
+      <!-- 自动分类：让 Pagefind 能够支持按“部类”过滤 -->
+      {collection && <span data-pagefind-filter="部类">{collection}</span>}
+      {vagga && <span data-pagefind-filter="品名称">{vagga}</span>}
+    </div>
+  )}
+
+  <!-- 调用 Starlight 原生标题组件渲染视觉上的标题 -->
   <Default {...Astro.props} />
-  <div style="display:none;">
-    <span data-pagefind-weight="10">{reference}</span>
-    <span data-pagefind-weight="9">{id}</span>
-  </div>
 </div>
 
-
+<!-- 6. 标签展示 -->
 {currentDocTags.length > 0 && (
   <div class="tag-row" data-pagefind-ignore>
     {currentDocTags.map((tag) => (
@@ -59,7 +98,6 @@ if (currentDoc?.data?.tags) {
 )}
 
 <style>
-  /* 保持你原来的 CSS 不变 */
   .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; margin-bottom: -0.8rem; }
   .tag-item { display: inline-flex; align-items: center; font-size: 0.7rem; text-decoration: none; background-color: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); border-radius: 4px; color: var(--sl-color-text-accent); transition: all 0.2s ease; overflow: hidden; }
   .tag-item:hover { border-color: var(--sl-color-accent); background-color: var(--sl-color-accent-low); transform: translateY(-1px); }
