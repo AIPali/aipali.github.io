@@ -1,3 +1,7 @@
+---
+title: "Algolia Verification"
+---
+
 <!DOCTYPE html>
             <html>
                 <head>
