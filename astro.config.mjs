@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
+import starlightDocSearch from '@astrojs/starlight-docsearch';
 
 // 引入你的自定义插件和处理函数
 import { remarkObsidianCallouts, remarkParagraphRef } from './src/plugins/remark-tipitaka.mjs';
@@ -59,6 +60,11 @@ export default defineConfig({
         PageTitle: './src/components/PageTitle.astro',
       },
       plugins:[
+        starlightDocSearch({
+          appId: 'TCMTON4EX8',
+          apiKey: '46fc7739c943245ddd44dac342e40493',
+          indexName: 'AIPali'
+        }),
         // 👇 Topic 插件：接受两个参数，第二个参数用来配置豁免名单
         starlightSidebarTopics([
           { label: 'DN 长部', link: '/sutta/dn/', items: formatSidebarWithPali(sidebarDN) },
