@@ -56,7 +56,7 @@ export default defineConfig({
         },
       },
       components: {
-        // 【关键】覆盖默认的 PageTitle 组件
+        // 【关键】覆盖默认的PageTitle组件
         PageTitle: './src/components/PageTitle.astro',
       },
       plugins:[
