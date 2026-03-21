@@ -6,7 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Dutiyapaṇṇāsaka"
 reference: "AN 5.91-100"
 curator: "True-Dhamma.com"
-tags:[五圆足, 无碍解, 入出息念, 阿罗汉, 狮子吼, 提婆达多, 清净]
+tags: [五圆足, 无碍解, 入出息念, 阿罗汉, 狮子吼, 提婆达多, 清净]
 ---
 
 > [!abstract] AI 导读
