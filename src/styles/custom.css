@@ -357,12 +357,11 @@ ul.starlight-sidebar-topics + * {
 
 
 /* 隐藏 Algolia DocSearch 搜索结果中的分类标题 (lvl0) */
-.DocSearch-Hit-source {
-  display: none !important;
-}
-
+// .DocSearch-Hit-source {
+//   display: none !important;
+// }
 /* 调整间距，让结果看起来更紧凑 */
-.DocSearch-Hit-Container {
-  padding-top: 4px !important;
-  padding-bottom: 4px !important;
-}
+// .DocSearch-Hit-Container {
+//  padding-top: 4px !important;
+//  padding-bottom: 4px !important;
+// }
