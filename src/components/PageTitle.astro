@@ -1,13 +1,18 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
-import { getTagsData } from '../utils/getTags'; 
+import { getTagsData } from '../utils/getTags'; // 引入工具函数
 
 const baseUrl = import.meta.env.BASE_URL;
-const { tagCounts, allDocs } = await getTagsData();
-const { entry } = Astro.props;
 
+// 1. 调用封装好的函数（内部会自动处理缓存）
+const { tagCounts, allDocs } = await getTagsData();
+
+// 2. 物理 URL 反查当前文档 (优化后的逻辑)
+let currentDocTags: string[] =[];
 const currentPath = Astro.url.pathname;
+
+// 剥离 BaseUrl 并标准化路径
 let logicPath = currentPath;
 if (baseUrl !== '/' && currentPath.startsWith(baseUrl)) {
   logicPath = currentPath.replace(baseUrl, '');
@@ -20,40 +25,22 @@ const currentDoc = allDocs.find(doc => {
   return (docSlug && logicPath.endsWith(docSlug)) || (docId && logicPath.endsWith(docId));
 });
 
-const effectiveData = entry?.data || currentDoc?.data || {};
-
-const { 
-  title = Astro.props.title || "", 
-  description = "", 
-  reference = "", 
-  id = "", 
-  collection = "", 
-  vagga = "" 
-} = effectiveData;
-
-let currentDocTags: string[] =[];
-if (effectiveData.tags) {
-  const rawTags = effectiveData.tags;
+if (currentDoc?.data?.tags) {
+  const rawTags = currentDoc.data.tags;
   currentDocTags = Array.isArray(rawTags) ? rawTags : [rawTags];
+  
+  // 根据全局频次排序
   currentDocTags.sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0));
 }
+
+// 提取其他重要的 Frontmatter
+const fmDescription = currentDoc?.data?.description || '';
+const fmReference = currentDoc?.data?.reference || '';
+const fmCollection = currentDoc?.data?.collection || '';
 ---
 
-<div class="starlight-title-wrapper">
-  <div class="pagefind-weight-boost" data-pagefind-body>
-    <h1 data-pagefind-weight="10" data-pagefind-meta="title">{title}</h1>
-    <span data-pagefind-weight="10" data-pagefind-meta="ref">{reference}</span>
-    {reference && <span data-pagefind-weight="10">{reference.replace(/\s+/g, '')}</span>}
-    {id && <span data-pagefind-weight="9">{id}</span>}
-    {description && <p data-pagefind-weight="5" data-pagefind-meta="description">{description}</p>}
-    {collection && <span data-pagefind-filter="部类">{collection}</span>}
-    {vagga && <span data-pagefind-filter="品名称">{vagga}</span>}
-  </div>
+<Default {...Astro.props} />
 
-  <Default {...Astro.props} />
-</div>
-
-<!-- 标签区域保留 ignore，避免标签干扰正文搜索权重 -->
 {currentDocTags.length > 0 && (
   <div class="tag-row" data-pagefind-ignore>
     {currentDocTags.map((tag) => (
@@ -69,21 +56,17 @@ if (effectiveData.tags) {
   </div>
 )}
 
-<style>
-  /* 魔法隐藏术：对普通用户不可见，但对 Pagefind 100% 可见 */
-  .pagefind-weight-boost {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+<!-- 注入隐藏的 Metadata 供 DocSearch 和 Pagefind 抓取 -->
+<div 
+  id="docsearch-metadata" 
+  style="display: none;"
+  data-description={fmDescription}
+  data-reference={fmReference}
+  data-collection={fmCollection}
+  data-pagefind-meta={`description:${fmDescription}, reference:${fmReference}, collection:${fmCollection}`}
+></div>
 
-  /* 下面是你原有的标签样式 */
+<style>
   .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; margin-bottom: -0.8rem; }
   .tag-item { display: inline-flex; align-items: center; font-size: 0.7rem; text-decoration: none; background-color: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); border-radius: 4px; color: var(--sl-color-text-accent); transition: all 0.2s ease; overflow: hidden; }
   .tag-item:hover { border-color: var(--sl-color-accent); background-color: var(--sl-color-accent-low); transform: translateY(-1px); }
