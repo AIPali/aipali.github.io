@@ -1,5 +1,5 @@
 ---
-id: "AN-05-71-80"
+id: "AN-5-71-80"
 title: "AN 5.71-80 战士品 (Yodhājīvavagga)"
 description: "本品收录了关于心解脱与慧解脱的基础、法住者的定义、以战士作喻的修行次第，以及对于未来佛教衰退与修行障碍的深刻警示。"
 collection: "Aṅguttara Nikāya"

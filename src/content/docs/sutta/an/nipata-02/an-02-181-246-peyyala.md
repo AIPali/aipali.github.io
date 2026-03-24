@@ -1,6 +1,6 @@
 ---
 id: "AN-2-181-246"
-title: "AN 2.181-246 中略篇 (Peyyāla)"
+title: "AN 2.181-246 中略篇"
 description: "增支部二集最后一篇，涵盖忿品、不善品、律广说品与染广说品，揭示烦恼的对治、戒律的制定目的以及止观的终极修行。"
 collection: "Aṅguttara Nikāya"
 vagga: "Dukanipāta"

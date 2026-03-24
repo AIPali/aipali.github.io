@@ -1,5 +1,5 @@
 ---
-id: "AN-05-91-100"
+id: "AN-5-91-100"
 title: "AN 5.91-100 迦俱罗品 (Kakudhavagga)"
 description: "本品收录十部经文，涵盖五圆足、安稳住、无碍解、修习入出息念的条件，以及佛陀关于师尊清净与狮子吼的教导。"
 collection: "Aṅguttara Nikāya"

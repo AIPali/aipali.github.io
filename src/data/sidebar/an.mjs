@@ -159,8 +159,7 @@ export const sidebarAN =[
       { label: 'AN 8.61-70 地震品 (Bhūmicālavagga)', link: '/sutta/an/nipata-08/an-08-061-070-bhumicala/' },
       { label: 'AN 8.71-80 双品 (Yamakavagga)', link: '/sutta/an/nipata-08/an-08-071-080-yamaka/' },
       { label: 'AN 8.81-90 念品 (Sativagga)', link: '/sutta/an/nipata-08/an-08-081-090-sati/' },
-      { label: 'AN 8.91-116 沙门法品 (Sāmaññavagga)', link: '/sutta/an/nipata-08/an-08-091-116-samanna/' },
-      { label: 'AN 8.117-626 贪广说集 (Rāgapeyyāla)', link: '/sutta/an/nipata-08/an-08-117-626-ragapeyyala/' },
+      { label: 'AN 8.91-626 沙门法与贪广说集 (Sāmaññādipeyyāla)', link: '/sutta/an/nipata-08/an-08-091-626-samannadipeyyala/' },
     ]
   },
   {
