@@ -1,6 +1,6 @@
 ---
 id: "AN-9-93-432"
-title: "AN 9.93-432 贪中略品 (Rāgapeyyāla)"
+title: "AN 9.93-432 贪广说品 (Rāgapeyyāla)"
 description: "本品为增支部九集的总结性略品，列举了为彻底证知、遍知与断除贪、瞋、痴等各种烦恼，应当修习的九种想与九次第定法门。"
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"

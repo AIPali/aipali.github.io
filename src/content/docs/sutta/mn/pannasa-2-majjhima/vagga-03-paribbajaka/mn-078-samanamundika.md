@@ -6,7 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 78, 260-268"
 curator: "True-Dhamma.com"
-tags: ["善与不善", "戒行", "思惟", "四正断", "无学十法", "沙门", "外道", "工匠五支", "四圣谛"]
+tags: ["善与不善", "戒行", "思惟", "四正勤", "无学十法", "沙门", "外道", "工匠五支", "四圣谛"]
 ---
 
 > [!abstract] AI 导读
