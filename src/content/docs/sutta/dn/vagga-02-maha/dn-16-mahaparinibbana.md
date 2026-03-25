@@ -5,7 +5,7 @@ description: "记录佛陀从王舍城出发，直至在拘尸那罗般涅槃的
 collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 16, 131-240"
-curator: "True-Dhamma.com"
+curator: "5 True-Dhamma.com"
 tags: [涅槃, 四圣谛, 八正道, 四念住, 舍利, 佛陀最后遗言, 自灯明, 僧团不退法, 四大教示, 佛陀传记]
 ---
 
