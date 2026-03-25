@@ -1,9 +1,9 @@
 ---
-id: "DN-05"
+id: "DN-5"
 title: "DN 5 究罗檀头经 (Kūṭadantasutta)"
 description: "佛陀通过讲述摩诃毗祭塔王的故事，向婆罗门究罗檀头开示了不杀生的清净祭祀，以及通向解脱的无上内明之祭。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 5, 323-358"
 curator: "True-Dhamma.com"
 tags: [祭祀, 护生, 布施, 戒律, 四圣果, 缘起]

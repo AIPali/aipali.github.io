@@ -3,7 +3,7 @@ id: "AN-7-54-64"
 title: "AN 7.54-64 无记品 (Abyākatavagga)"
 description: "本品涵盖了关于‘无记’问题的见解、不还果的七种成就路径、克服睡眠的实用教导、布施的现世利益以及对嗔恚危害的深刻揭示。"
 collection: "Aṅguttara Nikāya"
-vagga: "Abyākatavagga"
+vagga: "Sattakanipātapāḷi"
 reference: "AN 7.54-64"
 curator: "2 True-Dhamma.com"
 tags: [无记, 不还果, 睡眠, 布施, 慈心, 嗔恚, 正见]

@@ -3,7 +3,7 @@ id: "SN-51-21-32"
 title: "SN 51.21-32 铁丸品 (Ayoguḷavagga)"
 description: "本品讲述了四神足的修习方法、带来的诸多果报（包含神通与四圣果），以及佛陀与弟子们成就神通的原理与过程。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.21-32, 833-844"
 curator: "True-Dhamma.com"
 tags: [四神足, 神通, 三摩地, 意生身, 漏尽, 四圣果, 阿罗汉]

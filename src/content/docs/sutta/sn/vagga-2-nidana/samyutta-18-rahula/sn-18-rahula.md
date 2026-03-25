@@ -3,7 +3,7 @@ id: "SN-18"
 title: "SN 18 罗睺罗相应 (Rāhulasaṃyutta)"
 description: "世尊对罗睺罗尊者的系列教导，通过对十八界及五蕴的无常、苦、无我观察，断除我执、我所执与慢随眠。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 18, 188-201"
 curator: "True-Dhamma.com"
 tags: [罗睺罗, 无常, 苦, 无我, 随眠, 我执, 五蕴, 六处]

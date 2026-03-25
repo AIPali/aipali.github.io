@@ -3,8 +3,8 @@ id: "SN-45-11-20"
 title: "SN 45.11-20 住品 (Vihāravagga)"
 description: "本品记载了佛陀独处的深刻禅思，阐述了缘起感受、有学者的定义，以及梵行与八正道的关系。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
-reference: "SN 45. 11-20"
+vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
+reference: "SN 45.11-20, 11-20"
 curator: "True-Dhamma.com"
 tags: [八正道, 缘起, 禅修, 有学, 梵行, 涅槃]
 ---

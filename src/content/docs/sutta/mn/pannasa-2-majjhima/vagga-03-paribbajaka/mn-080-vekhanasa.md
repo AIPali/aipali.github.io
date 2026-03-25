@@ -3,7 +3,7 @@ id: "MN-80"
 title: "MN 80 鞞摩那修经 (Vekhanasasutta)"
 description: "本经记录了佛陀与游方者鞞摩那修的对话。从一个关于“最上色光”的模糊主张开始，佛陀通过譬喻揭示其空洞，并将话题引向感官欲乐的实质，最终阐明了真正的解脱在于从无明之缚中解脱。"
 collection: "Majjhima Nikāya"
-vagga: "Paribbājakavagga"
+vagga: "Paribbājakavagga"
 reference: "MN 80, 278-281"
 curator: "True-Dhamma.com"
 tags: ["色光", "感官欲乐", "譬喻", "解脱", "无明", "外道", "鞞摩那修", "欲乐"]

@@ -3,7 +3,7 @@ id: "SN-14-11-22"
 title: "SN 14.11-22 第二品 (Dutiyavagga)"
 description: "关于七界、三寻的因缘，以及众生如何因相似的界与习性而互相吸引的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.11-22, 95-106"
 curator: "True-Dhamma.com"
 tags: [界, 缘起, 习气, 共业, 意志, 寻思, 禅定]

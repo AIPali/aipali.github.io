@@ -1,9 +1,9 @@
 ---
-id: "Dhp-1-2"
-title: "Dhp 1-32 双品 & 不放逸品 (Yamakavagga & Appamādavagga)"
+id: "Dhp-1-32"
+title: "Dhp 1-32 双品-不放逸品 (Yamaka-Appamādavagga)"
 description: "法句经第一双品阐述心为万法之源，强调意业和因果报应；第二不放逸品则强调精进修行是通往涅槃的关键，放逸则如走向死亡。"
-collection: "Dhammapada"
-vagga: "Yamakavagga, Appamādavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Dhammapadapāḷi"
 reference: "Dhp 1-2, 1-32"
 curator: "True-Dhamma.com"
 tags: ["法句经", "双品", "不放逸品", "心", "业", "因果", "精进", "放逸", "正念", "涅槃"]

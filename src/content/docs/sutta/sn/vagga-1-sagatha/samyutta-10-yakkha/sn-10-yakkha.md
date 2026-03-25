@@ -3,7 +3,7 @@ id: "SN-10"
 title: "SN 10 夜叉相应 (Yakkhasaṃyutta)"
 description: "夜叉相应包含12部经，主要记录了佛陀与各类夜叉的对话与教导，探讨了生命起源、烦恼生起、以及修行的核心法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 10, 235-246"
 curator: "True-Dhamma.com"
 tags: [夜叉, 缘起, 烦恼, 给孤独长者, 四圣谛, 八正道, 涅槃, 信心]

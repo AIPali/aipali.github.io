@@ -3,7 +3,7 @@ id: "DN-29"
 title: "DN 29 清净经 (Pāsādikasutta)"
 description: "佛陀以尼乾子命终后其教团分裂为契机，阐述了圆满正法与导师的特质，如何应对法义争论，以及修行的真正利益，最终导向四念住的实践以超越一切邪见。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 29, 164-197"
 curator: "True-Dhamma.com"
 tags: [正法, 导师, 教团, 邪见, 四圣谛, 四念住, 尼乾子, 法义辨析, 修行次第]

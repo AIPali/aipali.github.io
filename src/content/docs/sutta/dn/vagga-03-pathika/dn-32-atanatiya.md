@@ -3,7 +3,7 @@ id: "DN-32"
 title: "DN 32 阿吒曩胝经 (Āṭānāṭiyasutta)"
 description: "四大天王为了保护在偏僻处修行的佛陀弟子，向世尊献上《阿吒曩胝守护经》，以抵御不信佛法的夜叉等非人鬼神的侵扰。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 32, 275-295"
 curator: "True-Dhamma.com"
 tags: [四大天王, 守护经, 夜叉, 非人, 毗沙门, 修行安全, 护法善神, 僧团]

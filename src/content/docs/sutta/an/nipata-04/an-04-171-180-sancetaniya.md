@@ -3,7 +3,7 @@ id: "AN-4-171-180"
 title: "AN 4.171-180 故思品 (Sañcetaniyavagga)"
 description: "本品探讨了身语意三业与苦乐的缘起、四无碍解、戏论的熄灭、四界无我、四种禅定省察以及著名的四大教法等核心法义。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.171-180"
 curator: "True-Dhamma.com"
 tags: [业与果, 四无碍解, 戏论, 四界无我, 四大教法, 涅槃, 缘起]

@@ -3,7 +3,7 @@ id: "AN-5-91-100"
 title: "AN 5.91-100 迦俱罗品 (Kakudhavagga)"
 description: "本品收录十部经文，涵盖五圆足、安稳住、无碍解、修习入出息念的条件，以及佛陀关于师尊清净与狮子吼的教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.91-100"
 curator: "True-Dhamma.com"
 tags: [五圆足, 无碍解, 入出息念, 阿罗汉, 狮子吼, 提婆达多, 清净]

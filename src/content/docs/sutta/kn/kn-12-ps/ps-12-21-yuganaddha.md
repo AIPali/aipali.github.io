@@ -2,8 +2,8 @@
 id: "Ps-12-21"
 title: "Ps 12-21 俱存品 (Yuganaddhavagga)"
 description: "本品详述止观双运、四圣谛的同一通达、七觉支的修习、慈心解脱、离欲、无碍解、法轮、出世间法、六十八种力以及深广的空性法则。"
-collection: "Paṭisambhidāmaggapāḷi"
-vagga: "Yuganaddhavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 12-21, 1-48"
 curator: "3 True-Dhamma.com"
 tags: [无碍解道, 止观双运, 七觉支, 慈心解脱, 空性, 出世间]

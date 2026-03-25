@@ -3,7 +3,7 @@ id: "SN-1-41-50"
 title: "SN 1.41-50 燃烧品 (Ādittavagga)"
 description: "本品收录了天神与世尊关于布施、戒行、生命无常、八正道譬喻以及过去世修行者重逢等主题的深刻对答。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.41-50, 41-50"
 curator: "True-Dhamma.com"
 tags: [天神, 布施, 功德, 戒行, 八正道, 缘起, 涅槃]

@@ -3,7 +3,7 @@ id: "MN-39"
 title: "MN 39 马邑大经 (Mahāassapurasutta)"
 description: "佛陀在马邑对众比丘开示，详细阐述了什么才是真正的沙门。经文通过一系列循序渐进的修行步骤，从基础的惭愧心、身语意行清净，到守护根门、正念正知，最终进入四禅八定，证得三明，达成漏尽解脱，定义了阿罗汉的真正内涵。"
 collection: "Majjhima Nikāya"
-vagga: "Mahāyamakavagga"
+vagga: "Mahāyamakavagga"
 reference: "MN 39, 415-434"
 curator: "True-Dhamma.com"
 tags: [沙门, 梵行, 修行次第, 五盖, 四禅, 三明, 漏尽智, 阿罗汉, 惭愧, 解脱]

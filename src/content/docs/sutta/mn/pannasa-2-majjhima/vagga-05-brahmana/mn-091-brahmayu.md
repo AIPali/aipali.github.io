@@ -3,7 +3,7 @@ id: "MN-91"
 title: "MN 91 梵摩经 (Brahmāyusutta)"
 description: "百二十岁的著名婆罗门梵摩，派遣弟子优多罗前去验证佛陀是否具足三十二大人相。在得到详尽肯定的回报后，梵摩亲自拜见佛陀，最终亲证法眼，并被佛陀印证为不还果圣者。"
 collection: "Majjhima Nikāya"
-vagga: "Brāhmaṇavagga"
+vagga: "Brāhmaṇavagga"
 reference: "MN 91, 383-395"
 curator: "True-Dhamma.com"
 tags: ["三十二相", "婆罗门", "梵摩", "优多罗", "神通", "法眼", "不还果", "渐次说法", "威仪"]

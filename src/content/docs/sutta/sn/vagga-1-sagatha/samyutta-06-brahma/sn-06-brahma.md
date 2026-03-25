@@ -3,7 +3,7 @@ id: "SN-6"
 title: "SN 6 梵天相应 (Brahmasaṃyutta)"
 description: "记录了佛陀与诸梵天之间的互动，包括大梵天王劝请佛陀转法轮、世尊教化带有邪见的梵天，以及世尊般涅槃时梵天的赞颂。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 6, 172-186"
 curator: "True-Dhamma.com"
 tags: [梵天, 劝请说法, 缘起, 诸天, 涅槃, 提婆达多, 神通]

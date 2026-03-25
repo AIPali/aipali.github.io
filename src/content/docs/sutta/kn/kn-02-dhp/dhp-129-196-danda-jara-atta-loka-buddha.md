@@ -1,9 +1,9 @@
 ---
-id: "Dhp-10-14"
+id: "Dhp-129-196"
 title: "Dhp 129-196 刀杖品-老品-自己品-世品-佛陀品 (Daṇḍa-Jarā-Atta-Loka-Buddhavagga)"
 description: "《法句经》的五个核心品，从业力与非暴力，到老、病、死的必然性，强调自力解脱、看透世间虚幻，并最终阐明佛陀的无上智慧与功德。"
-collection: "Dhammapada"
-vagga: "Daṇḍavagga, Jarāvagga, Attavagga, Lokavagga, Buddhavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Dhammapadapāḷi"
 reference: "Dhp 10-14, 129-196"
 curator: "True-Dhamma.com"
 tags: [业力, 无常, 死亡, 自净其意, 佛陀, 解脱, 智慧, 法句经, 慈悲, 皈依]

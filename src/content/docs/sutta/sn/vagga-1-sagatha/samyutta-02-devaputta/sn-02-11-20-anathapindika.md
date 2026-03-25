@@ -3,7 +3,7 @@ id: "SN-2-11-20"
 title: "SN 2.11-20 给孤独品 (Anāthapiṇḍikavagga)"
 description: "本品记载了月自在、毗纽、觉陀及给孤独等十位天子在夜里拜访佛陀，以偈颂探讨法义、生死与清净之道的经典。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devaputtasaṃyutta"
 reference: "SN 2.11-20, 92-101"
 curator: "True-Dhamma.com"
 tags: [天子相应, 禅定, 身见, 给孤独, 舍利弗, 业果]

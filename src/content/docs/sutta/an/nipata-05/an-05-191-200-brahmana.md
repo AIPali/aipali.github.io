@@ -3,7 +3,7 @@ id: "AN-5-191-200"
 title: "AN 5.191-200 婆罗门品 (Brāhmaṇavagga)"
 description: "本品包含十部经文，探讨了真正的婆罗门品质、梵行的目的、佛陀出世的罕见，以及出离五种核心烦恼的修持。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.191-200"
 curator: "2 True-Dhamma.com"
 tags: [婆罗门, 梵行, 五大梦, 佛陀出世, 出离, 五福, 戒律, 五盖]

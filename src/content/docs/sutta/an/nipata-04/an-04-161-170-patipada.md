@@ -3,7 +3,7 @@ id: "AN-4-161-170"
 title: "AN 4.161-170 行道品 (Paṭipadāvagga)"
 description: "本品详述了四种灭苦的行道、对待境界的堪忍修法，以及舍利弗、大目犍连两位尊者的实修路径，最后由阿难尊者总结了止观双运的四种证果模式。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.161-170"
 curator: "True-Dhamma.com"
 tags: [行道, 五根, 止观, 双运, 舍利弗, 大目犍连, 堪忍, 有行般涅槃]

@@ -3,7 +3,7 @@ id: "MN-10"
 title: "MN 10 大念住经 (Mahāsatipaṭṭhānasutta)"
 description: "佛陀关于四念住（身、受、心、法）的根本教导，阐述了通往净化、超越愁悲、证得涅槃的唯一直接道路。"
 collection: "Majjhima Nikāya"
-vagga: "Mūlapariyāyavagga"
+vagga: "Mūlapariyāyavagga"
 reference: "MN 10, 105-138"
 curator: "True-Dhamma.com"
 tags: [四念住, 正念, 毗婆舍那, 身随观, 受随观, 心随观, 法随观, 安那般那, 解脱, 四圣谛]

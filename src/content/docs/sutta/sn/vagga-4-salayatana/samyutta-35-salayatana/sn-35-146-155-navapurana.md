@@ -3,8 +3,8 @@ id: "SN-35-146-155"
 title: "SN 35.146-155 新旧品 (Navapurāṇavagga)"
 description: "世尊解说新旧之业、有益涅槃之道、有无同住恶法之别，以及如何修习梵行以了知六处的实相。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 146-155"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.146-155, 146-155"
 curator: "True-Dhamma.com"
 tags: [六处, 业, 新旧业, 涅槃, 梵行, 无常, 苦, 无我]
 ---

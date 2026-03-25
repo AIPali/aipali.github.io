@@ -3,8 +3,8 @@ id: "SN-22-93-102"
 title: "SN 22.93-102 华品 (Pupphavagga)"
 description: "本品通过河流、花朵、聚沫、粪抟等生动譬喻，深刻揭示了五蕴无常、无我本质，指导修行者断除执取。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.93-102"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.93-102, 93-102"
 curator: "True-Dhamma.com"
 tags: [五蕴, 无常, 譬喻, 执取, 漏尽, 三摩地]
 ---

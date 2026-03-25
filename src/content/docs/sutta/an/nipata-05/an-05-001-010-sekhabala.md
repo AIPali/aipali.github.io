@@ -3,7 +3,7 @@ id: "AN-5-1-10"
 title: "AN 5.1-10 学力品 (Sekhabalavagga)"
 description: "本品包含十部短经，核心围绕“有学五力”（信、惭、愧、精进、慧），阐述其定义、对治法，以及佛陀对初学者的慈悲护念。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.1-10"
 curator: "True-Dhamma.com"
 tags: [有学, 五力, 信, 惭愧, 精进, 智慧, 梵行, 戒律, 禅修]

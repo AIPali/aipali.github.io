@@ -1,9 +1,9 @@
 ---
-id: "AN-04-21-30"
+id: "AN-4-21-30"
 title: "AN 4.21-30 乌鲁韦拉品 (Uruvelavagga)"
 description: "本品包含十部经，探讨了佛陀初成道时的思惟、长老的真正标准、如来的特质、修习梵行的目的、四圣种以及四法迹等核心教义。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.21-30"
 curator: "True-Dhamma.com"
 tags: [正等觉, 梵行, 如来, 四圣种, 四法迹, 上座, 漏尽]

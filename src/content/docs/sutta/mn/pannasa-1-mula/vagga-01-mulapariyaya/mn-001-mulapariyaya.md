@@ -1,9 +1,9 @@
 ---
-id: "MN-01"
+id: "MN-1"
 title: "MN 1 根本法门经 (Mūlapariyāyasutta)"
 description: "本经是《中部》的第一经，深入剖析了凡夫、有学圣者、阿罗汉与佛陀这四种层次的个体，其认知世界的根本差异，揭示了“我慢”如何通过思量而产生，以及如何通过正知而根除它。"
 collection: "Majjhima Nikāya"
-vagga: "Mūlapariyāyavagga"
+vagga: "Mūlapariyāyavagga"
 reference: "MN 1, 1-13"
 curator: "True-Dhamma.com"
 tags: [根本法门, 认知, 我慢, 凡夫, 有学, 阿罗汉, 如来, 四大, 涅槃, 思量]

@@ -1,9 +1,9 @@
 ---
-id: "AN-04-101-110"
+id: "AN-4-101-110"
 title: "AN 4.101-110 云品 (Valāhakavagga)"
 description: "本品透过十种生动的自然与生活譬喻，将修行者分为四类，深刻剖析了外在表象与内在修证之间的反差。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.101-110"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 九分教, 譬喻, 闻思修, 表里如一, 戒行, 智慧]

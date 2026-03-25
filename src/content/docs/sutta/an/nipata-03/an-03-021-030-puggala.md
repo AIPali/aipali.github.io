@@ -1,9 +1,9 @@
 ---
-id: "AN-03-21-30"
+id: "AN-3-21-30"
 title: "AN 3.21-30 人品 (Puggalavagga)"
 description: "本品包含十部经文，佛陀与弟子们探讨了世间不同类型的人，涉及禅修根基、结交善友、语言习惯以及智慧的深浅。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.21-30"
 curator: "True-Dhamma.com"
 tags: [三种人, 信解, 善友, 业与果报, 智慧]

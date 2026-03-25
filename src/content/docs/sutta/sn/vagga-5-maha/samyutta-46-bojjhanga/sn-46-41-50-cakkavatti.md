@@ -3,7 +3,7 @@ id: "SN-46-41-50"
 title: "SN 46.41-50 转轮品 (Cakkavattivagga)"
 description: "本品包含十部短经，佛陀通过转轮王、魔军、贫富、日出等譬喻，阐述了修习七觉支的利益与先决条件。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.41-50, 222-231"
 curator: "True-Dhamma.com"
 tags: [七觉支, 善友, 如理作意, 慢, 转轮王, 魔罗]

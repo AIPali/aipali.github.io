@@ -3,7 +3,7 @@ id: "MN-12"
 title: "MN 12 狮子吼大经 (Mahāsīhanādasutta)"
 description: "本经记录了佛陀对离车族善星诽谤的回应。佛陀并未动怒，而是系统地阐述了作为觉者的独特品质，包括如来十力、四无所畏，并回顾了自己证悟前所经历的极端苦行，以此宣告其教法的无上与真实性，发出如狮子吼般不可动摇的宣言。"
 collection: "Majjhima Nikāya"
-vagga: "Sīhanādavagga"
+vagga: "Sīhanādavagga"
 reference: "MN 12, 146-162"
 curator: "True-Dhamma.com"
 tags: ["狮子吼", "如来十力", "四无所畏", "善星", "苦行", "佛陀", "神通", "诽谤", "正法", "修行"]

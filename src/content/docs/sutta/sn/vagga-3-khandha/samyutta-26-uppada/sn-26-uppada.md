@@ -3,8 +3,8 @@ id: "SN-26"
 title: "SN 26 生相应 (Uppādasaṃyutta)"
 description: "本相应通过十篇简短的经文，反复教导五蕴、十二处、十八界等一切有为法的生起即是苦的生起，其灭尽即是苦的灭尽。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 26.1-10, 312-321"
+vagga: "Khandhavaggasaṃyuttapāḷi"
+reference: "SN 26, 312-321"
 curator: "True-Dhamma.com"
 tags: [生相应, 苦的生灭, 六处, 五蕴, 十八界, 缘起]
 ---

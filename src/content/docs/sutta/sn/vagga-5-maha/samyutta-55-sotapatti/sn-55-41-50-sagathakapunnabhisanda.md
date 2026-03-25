@@ -3,7 +3,7 @@ id: "SN-55-41-50"
 title: "SN 55.41-50 有偈福德润泽品 (Sagāthakapuññābhisandavagga)"
 description: "本品系统阐述了带来无量福德与安乐的四种润泽、入流者的四种特质，以及导向入流果的四入流支。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.41-50, 1037-1046"
 curator: "True-Dhamma.com"
 tags: [入流果, 不坏之净信, 三宝, 戒行, 四入流支, 如理作意]

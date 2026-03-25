@@ -2,8 +2,8 @@
 id: "Miln-2"
 title: "Miln 2 提问 (Milindapañha)"
 description: "弥兰王向尊者龙军提出了一系列关于法义的深刻问题，涵盖了无我、轮回、业力、时间、佛陀的存在与涅槃等核心佛法概念。"
-collection: "Milindapañhapāḷi"
-vagga: "Milindapañha"
+collection: "Khuddaka Nikāya"
+vagga: "Milindapañhapāḷi"
 reference: "Miln 3-9, 86"
 curator: "True-Dhamma.com"
 tags: [弥兰王, 龙军, 无我, 业力, 轮回, 涅槃, 菩提分]

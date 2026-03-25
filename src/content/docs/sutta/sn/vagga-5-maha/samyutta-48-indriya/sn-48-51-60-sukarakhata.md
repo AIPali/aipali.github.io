@@ -3,7 +3,7 @@ id: "SN-48-51-60"
 title: "SN 48.51-60 猪所掘品 (Sūkarakhatavagga)"
 description: "探讨慧根在五根与道品中的核心地位，以及信、精进、念、定、慧五根如何导向不死与无上安稳。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.51-60, 521-530"
 curator: "True-Dhamma.com"
 tags: [五根, 慧根, 有学, 无学, 道品, 涅槃]

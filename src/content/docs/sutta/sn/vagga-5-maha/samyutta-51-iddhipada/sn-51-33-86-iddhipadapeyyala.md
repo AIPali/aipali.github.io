@@ -3,7 +3,7 @@ id: "SN-51-33-86"
 title: "SN 51.33-86 神足广说集 (Iddhipādapeyyāla)"
 description: "包含恒河品、不放逸品、力所作品、寻求品与暴流品，通过各类譬喻与名相，广说修习四神足的殊胜利益与目标。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.33-86, 845-898"
 curator: "True-Dhamma.com"
 tags: [四神足, 三摩地, 涅槃, 广说, 结使, 上分结]

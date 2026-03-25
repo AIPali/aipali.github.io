@@ -3,7 +3,7 @@ id: "SN-46-11-20"
 title: "SN 46.11-20 病品 (Gilānavagga)"
 description: "本品开示了七觉支的前相、修习方式、其能治愈重病的殊胜力量，以及导向涅槃、到达彼岸的终极目标。"
 collection: "Saṃyuttanikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.11-20, 192-201"
 curator: "True-Dhamma.com"
 tags: [七觉支, 善友, 如理作意, 治病, 涅槃, 到彼岸]

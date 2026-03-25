@@ -1,9 +1,9 @@
 ---
-id: "AN-03-31-40"
+id: "AN-3-31-40"
 title: "AN 3.31-40 天使品 (Devadūtavagga)"
 description: "本品收录了关于父母恩德、灭除我慢的禅定、业果法则、死神的信使、四天王巡视、佛陀的舍骄慢以及修行的三种主导原则等十部经文。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.31-40"
 curator: "True-Dhamma.com"
 tags: [天使, 业报, 父母恩重, 骄慢, 缘起, 禅修, 四天王, 阎罗王]

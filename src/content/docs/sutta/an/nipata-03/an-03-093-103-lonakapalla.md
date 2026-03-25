@@ -3,7 +3,7 @@ id: "AN-3-93-103"
 title: "AN 3.93-103 壶盐品 (Loṇakapallavagga)"
 description: "本品包含十一经，核心探讨比丘的修行次第、僧团和合、业力与异熟果的微细差别，以及通过禅修净化心灵的过程。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.93-103"
 curator: "True-Dhamma.com"
 tags: [增上学, 和合僧, 业与异熟, 盐喻, 炼金喻, 禅修次第, 缘起, 戒定慧]

@@ -3,7 +3,7 @@ id: "SN-50"
 title: "SN 50 力相应 (Balasaṃyutta)"
 description: "本相应主要开示‘五力’（信、精进、念、定、慧）的修习。指出修习五力能引导修行者趣向涅槃，并彻底断除上分结等一切烦恼。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 50, 705-812"
 curator: "True-Dhamma.com"
 tags: [五力, 三十七道品, 依远离, 调伏贪瞋痴, 涅槃, 上分结]

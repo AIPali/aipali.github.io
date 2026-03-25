@@ -3,8 +3,8 @@ id: "SN-22-113-125"
 title: "SN 22.113-125 说法品 (Dhammakathikavagga)"
 description: "本品收录十三部经，探讨无明与明、说法者的定义、五蕴的束缚与解脱，以及如何拔除我慢。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.113-125"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.113-125, 113-125"
 curator: "True-Dhamma.com"
 tags: [无明, 五蕴, 说法者, 解脱, 我慢, 如理作意]
 ---

@@ -3,7 +3,7 @@ id: "AN-3-114-123"
 title: "AN 3.114-123 恶趣品 (Āpāyikavagga)"
 description: "本品探讨了导致堕入恶趣的行为、世间难得的三种出现、凡夫与圣弟子在无色界定中的命运差异，以及身语意三业的缺损与圆满。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.114-123"
 curator: "True-Dhamma.com"
 tags: [恶趣, 凡夫, 无色界定, 漏尽, 戒行, 正见, 五盖]

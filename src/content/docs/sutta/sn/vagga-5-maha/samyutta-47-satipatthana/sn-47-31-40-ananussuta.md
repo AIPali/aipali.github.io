@@ -3,7 +3,7 @@ id: "SN-47-31-40"
 title: "SN 47.31-40 未闻品 (Ananussutavagga)"
 description: "本品收录十部经文，佛陀教导四念住是过去未曾听闻的法，修习四念住能导向离贪、证悟与涅槃。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.31-40, 397-406"
 curator: "True-Dhamma.com"
 tags: [四念住, 现法, 不死, 开悟, 八正道, 离贪, 正念, 正知]

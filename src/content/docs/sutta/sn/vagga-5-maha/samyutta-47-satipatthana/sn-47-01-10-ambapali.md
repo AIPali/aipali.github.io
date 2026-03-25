@@ -1,9 +1,9 @@
 ---
-id: "SN-47-01-10"
+id: "SN-47-1-10"
 title: "SN 47.1-10 庵婆波利品 (Ambapālivagga)"
 description: "本品包含十部经文，通过生动的譬喻，深入浅出地阐述了四念住的修法与意义，并留下了佛陀“以自为洲”的千古教诲。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.1-10, 367-376"
 curator: "True-Dhamma.com"
 tags: [四念住, 庵婆波利园, 譬喻, 正念正知, 善聚, 以自为洲]

@@ -3,8 +3,8 @@ id: "SN-25"
 title: "SN 25 入相应 (Okkantasaṃyutta)"
 description: "本相应收录了十部经典，阐述对六内外处、六识、六触、受、想、思、爱、界和五蕴的无常本质生起信解与慧见的果报（随信行、随法行与入流果）。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 25.1-10, 302-311"
+vagga: "Khandhavaggasaṃyuttapāḷi"
+reference: "SN 25, 302-311"
 curator: "True-Dhamma.com"
 tags: [无常, 随信行, 随法行, 入流果, 须陀洹, 蕴, 处, 界, 缘起]
 ---

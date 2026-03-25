@@ -1,9 +1,9 @@
 ---
-id: "Dhp-6-9"
+id: "Dhp-76-128"
 title: "Dhp 76-128 贤品-阿罗汉品-千品-恶品 (Paṇḍita-Arahanta-Sahassa-Pāpavagga)"
 description: "《法句经》第六至九品，深入探讨了智者、阿罗汉、恶行与善行的特质与果报，揭示了修行的核心：克己、离欲与正见。"
-collection: "Dhammapada"
-vagga: "Paṇḍitavagga, Arahantavagga, Sahassavagga, Pāpavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Dhammapadapāḷi"
 reference: "Dhp 6-9, 76-128"
 curator: "True-Dhamma.com"
 tags: ["法句经", "智慧", "阿罗汉", "业报", "善行", "恶行", "修行", "解脱", "贤品", "千品", "恶品"]

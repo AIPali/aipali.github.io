@@ -3,7 +3,7 @@ id: "AN-7-21-31"
 title: "AN 7.21-31 跋耆品 (Vajjisattakavagga)"
 description: "增支部七集跋耆品，详细阐述了导致国家、僧团及优婆塞不衰退的七种法则（七不衰法），以及七种导致衰减的法则。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Sattakanipātapāḷi"
 reference: "AN 7.21-31"
 curator: "2 True-Dhamma.com"
 tags: [七不衰法, 僧团管理, 优婆塞, 跋耆, 阿阇世王, 七觉支]

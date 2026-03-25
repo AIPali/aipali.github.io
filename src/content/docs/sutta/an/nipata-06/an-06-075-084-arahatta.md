@@ -3,7 +3,7 @@ id: "AN-06-75-84"
 title: "AN 6.75-84 阿罗汉果品 (Arahattavagga)"
 description: "关于成就阿罗汉果的障碍与条件，以及导致现生苦乐、堕落恶趣或往生善趣的六种法。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Chakkanipātapāḷi"
 reference: "AN 6.75-84"
 curator: "2 True-Dhamma.com"
 tags: [阿罗汉, 寻思, 慢心, 过人法, 漏尽, 善趣, 恶趣, 戒律]

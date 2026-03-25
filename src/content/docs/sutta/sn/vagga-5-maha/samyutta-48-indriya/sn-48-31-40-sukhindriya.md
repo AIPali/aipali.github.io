@@ -3,7 +3,7 @@ id: "SN-48-31-40"
 title: "SN 48.31-40 乐根品 (Sukhindriyavagga)"
 description: "本品系统阐述了五根（乐、苦、喜、忧、舍）的定义、圣者对其的如实了知，以及五根在四禅八定中的逐步灭尽次第。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.31-40, 501-510"
 curator: "True-Dhamma.com"
 tags: [五根, 感受, 缘起, 四圣谛, 四禅, 想受灭定, 圣者]

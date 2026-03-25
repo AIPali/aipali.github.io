@@ -1,9 +1,9 @@
 ---
-id: "DN-03"
+id: "DN-3"
 title: "DN 3 阿摩昼经 (Ambaṭṭhasutta)"
 description: "佛陀通过追溯历史与探讨四圣果，破除婆罗门的种姓傲慢，揭示真正的无上智慧与德行。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 3, 254-299"
 curator: "True-Dhamma.com"
 tags: [种姓制度, 智慧与德行, 释迦族, 傲慢, 三十二大人相, 四圣果]

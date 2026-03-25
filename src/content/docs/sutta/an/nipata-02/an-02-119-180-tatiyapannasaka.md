@@ -3,7 +3,7 @@ id: "AN-2-119-180"
 title: "AN 2.119-180 五十经篇之三 (Tatiyapaṇṇāsaka)"
 description: "本篇包含了希望品、希求品、施品、覆护品和入定品，阐述了世俗贪爱与正法修习的区别、四众弟子的修行楷模，以及止观法门的核心要素。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dukanipāta"
+vagga: "Dukanipātapāḷi"
 reference: "AN 2.119-180"
 curator: "True-Dhamma.com"
 tags: [增支部, 二集, 法施, 止观, 正念正知, 缘起, 善巧]

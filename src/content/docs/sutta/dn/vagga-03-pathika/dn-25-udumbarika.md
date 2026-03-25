@@ -3,7 +3,7 @@ id: "DN-25"
 title: "DN 25 优昙婆罗师子吼经 (Udumbarikasutta)"
 description: "佛陀与外道苦行者尼俱陀的深度对话，剖析了苦行的真正意义、潜在的染污，并以树木的譬喻，揭示了从外在修行通往核心解脱的次第。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 25, 49-79"
 curator: "True-Dhamma.com"
 tags: [苦行, 外道, 尼俱陀, 修行次第, 五盖, 狮子吼, 清净, 染污, 邪见]

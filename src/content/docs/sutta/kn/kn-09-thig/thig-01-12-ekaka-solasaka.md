@@ -2,8 +2,8 @@
 id: "Thig-1-12"
 title: "Thig 1-12 长老尼偈 (一至十二偈集)"
 description: "《长老尼偈》中一偈集至十二偈集的合集，收录了早期佛教中证悟的长老尼们所留下的偈颂，展现了她们的修行历程、证悟体验与深刻智慧。"
-collection: "Therīgāthā"
-vagga: ""
+collection: "Khuddaka Nikāya"
+vagga: "Therīgāthā"
 reference: "Thig 1-12, 1-251"
 curator: "True-Dhamma.com"
 tags: [长老尼偈, 证悟, 解脱, 女性修行, 早期佛教, 阿罗汉, 智慧, 禅修, 心灵自由, 诗歌]

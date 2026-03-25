@@ -1,9 +1,9 @@
 ---
-id: "AN-04-254-263"
+id: "AN-4-254-263"
 title: "AN 4.254-263 通慧品 (Abhiññāvagga)"
 description: "增支部四集通慧品，涵盖了通慧四法、四圣求、四摄事、四种渴爱、家族财富的长续之道等十部经文。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.254-263"
 curator: "True-Dhamma.com"
 tags: [通慧, 止观, 圣求, 四摄事, 渴爱, 缘起, 业力]

@@ -3,8 +3,8 @@ id: "SN-35-43-52"
 title: "SN 35.43-52 无常品 (Sabbaaniccavagga)"
 description: "佛陀开示六处及其衍生的识、触、受，皆具备无常、苦、无我等特性，引导修行者生起厌离并证得解脱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 43-52"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.43-52, 43-52"
 curator: "True-Dhamma.com"
 tags: [六处, 无常, 苦, 无我, 厌离, 解脱, 四圣果, 缘起]
 ---

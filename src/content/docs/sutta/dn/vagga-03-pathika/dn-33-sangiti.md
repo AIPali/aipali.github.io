@@ -3,7 +3,7 @@ id: "DN-33"
 title: "DN 33 合诵经 (Saṅgītisutta)"
 description: "佛陀在世时，由舍利弗尊者主持、佛陀亲自认可的一次重要教法结集。为防止教团分裂，系统性地将佛法按数字（一法至十法）分类合诵。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 33, 296-349"
 curator: "True-Dhamma.com"
 tags: ["合诵", "法数", "舍利弗", "尼乾子", "教团合和", "法义纲要", "结集", "一法", "二法", "十法"]

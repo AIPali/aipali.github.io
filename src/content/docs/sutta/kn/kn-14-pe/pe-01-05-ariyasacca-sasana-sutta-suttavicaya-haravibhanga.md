@@ -2,8 +2,8 @@
 id: "Pe-1-5"
 title: "Pe 1-5 圣谛-教理-经说-简择-分类 (Ariyasacca-Sāsana-Sutta-Suttavicaya-Hāravibhaṅga)"
 description: "《三藏知津》第一至第五地，系统阐述四圣谛的展现、教理的安立、经文的抉择与十六种理趣的分类应用。"
-collection: "Peṭakopadesapāḷi"
-vagga: "Ariyasaccappakāsanapaṭhamabhūmi, Sāsanapaṭṭhānadutiyabhūmi, Suttādhiṭṭhānatatiyabhūmi, Suttavicayacatutthabhūmi, Hāravibhaṅgapañcamabhūmi"
+collection: "Khuddaka Nikāya"
+vagga: "Peṭakopadesapāḷi"
 reference: "Pe 1-5, 1-59"
 curator: "True-Dhamma.com"
 tags: [三藏知津, 圣谛地, 教理地, 经说地, 简择地, 分类地, 十六理趣, 释经学]

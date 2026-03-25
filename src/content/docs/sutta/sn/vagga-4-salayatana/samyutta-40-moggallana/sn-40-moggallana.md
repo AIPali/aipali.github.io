@@ -3,7 +3,7 @@ id: "SN-40"
 title: "SN 40 目犍连相应 (Moggallānasaṃyutta)"
 description: "记录了尊者大目犍连在证得阿罗汉果之前，修习九次第定的经历，以及他向天帝释宣说皈依三宝与四不坏信的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 40, 332-342"
 curator: "True-Dhamma.com"
 tags: [九次第定, 禅那, 三摩地, 目犍连, 神通, 帝释天]

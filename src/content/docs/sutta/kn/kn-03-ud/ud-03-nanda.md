@@ -1,9 +1,9 @@
 ---
-id: "Ud-03"
+id: "Ud-3"
 title: "Ud 3 难陀品 (Nandavagga)"
 description: "自说经第三品，讲述了尊者难陀对治欲贪的经过、佛陀对僧团喧闹的教导、尊者毕陵伽婆蹉的习气，以及世尊对世间实相与涅槃的深邃洞察。"
-collection: "Udāna"
-vagga: ""
+collection: "Khuddaka Nikāya"
+vagga: "Udānapāḷi"
 reference: "Ud 3.1-10"
 curator: "True-Dhamma.com"
 tags: [自说经, 难陀, 业果, 圣默然, 缘起, 涅槃]

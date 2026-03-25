@@ -3,8 +3,8 @@ id: "SN-22-33-42"
 title: "SN 22.33-42 非你所有品 (Natumhākavagga)"
 description: "本品收录了关于五蕴非我、不应执着，以及观察五蕴生灭、无常、苦、无我的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.33-42"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.33-42, 33-42"
 curator: "True-Dhamma.com"
 tags: [五蕴, 无我, 缘起, 随法, 厌离]
 ---

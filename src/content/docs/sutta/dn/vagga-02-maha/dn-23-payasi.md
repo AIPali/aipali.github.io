@@ -3,7 +3,7 @@ id: "DN-23"
 title: "DN 23 弊宿经 (Pāyāsisutta)"
 description: "本经记录了尊者鸠摩罗迦叶与持断灭论（虚无主义）的弊宿王子之间一场精彩绝伦的辩论。尊者运用一系列精妙的譬喻，逐一驳斥了弊宿关于“无来世、无业报”的观点，最终使其信服并皈依。经文结尾还通过弊宿与其管家布施果报的对比，深刻揭示了布施时恭敬心的重要性。"
 collection: "Dīgha Nikāya"
-vagga: "Mahāvaggapāḷi"
+vagga: "Mahāvaggapāḷi"
 reference: "DN 23, 406-441"
 curator: "True-Dhamma.com"
 tags: ["邪见", "断灭论", "业报", "来世", "轮回", "布施", "譬喻", "鸠摩罗迦叶", "弊宿", "辩论"]

@@ -2,8 +2,8 @@
 id: "Mnd-6-10"
 title: "Mnd 6-10 衰老经至死前经之义释 (Jarā-Tissametteyya-Pasūra-Māgaṇḍiya-Purābheda)"
 description: "《小部·大义释》第六至第十经的详细注释，涵盖衰老、离欲、破除恶见与论诤，以及达到死前寂静的修行之道。"
-collection: "Mahāniddesapāḷi"
-vagga: ""
+collection: "Khuddaka Nikāya"
+vagga: "Mahāniddesapāḷi"
 reference: "Mnd 6-10"
 curator: "2 True-Dhamma.com"
 tags: [大义释, 衰老, 提舍弥勒, 波修罗, 摩根提耶, 死前经, 寂静]

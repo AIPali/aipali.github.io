@@ -3,7 +3,7 @@ id: "AN-3-157-163"
 title: "AN 3.157-163 裸形品 (Acelakavagga)"
 description: "佛陀开示了三种修行道路：沉溺道、剧苦道与中道，并以三十七道品详细定义了中道的内涵。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.157-163"
 curator: "True-Dhamma.com"
 tags: [三种道, 中道, 苦行, 四念住, 四正断, 三十七道品]

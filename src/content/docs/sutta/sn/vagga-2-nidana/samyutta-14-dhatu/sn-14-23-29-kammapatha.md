@@ -3,7 +3,7 @@ id: "SN-14-23-29"
 title: "SN 14.23-29 善行品 (Kammapathavagga)"
 description: "本品包含七部短经，佛陀开示了众生如何由于“界”（内在特质与行为模式）的同类相聚法则而相互吸引并聚集在一起。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.23-29, 107-113"
 curator: "True-Dhamma.com"
 tags: [界, 业道, 五戒, 十善业, 八正道, 缘起]

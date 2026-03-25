@@ -3,8 +3,8 @@ id: "SN-12-11-20"
 title: "SN 12.11-20 食品 (Āhāravagga)"
 description: "本品包含十部经文，深入探讨了四食、十二缘起、法界常住性以及超越有无二边的中道正见。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.11-20"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.11-20, 11-20"
 curator: "True-Dhamma.com"
 tags: [四食, 缘起, 缘生法, 中道, 破群那, 迦旃延, 苦乐]
 ---

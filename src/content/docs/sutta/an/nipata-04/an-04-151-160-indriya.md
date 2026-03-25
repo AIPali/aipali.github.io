@@ -3,7 +3,7 @@ id: "AN-4-151-160"
 title: "AN 4.151-160 根品 (Indriyavagga)"
 description: "本品包含十部短经，探讨了四根、多组四力、劫的阶段、身心疾病与出家病，以及正法久住与隐没的原因。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.151-160"
 curator: "True-Dhamma.com"
 tags: [四根, 四力, 劫, 漏尽者, 身心疾病, 依欲断欲, 梵行, 正法久住]

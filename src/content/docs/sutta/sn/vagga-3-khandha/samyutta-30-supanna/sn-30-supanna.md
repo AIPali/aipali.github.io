@@ -3,7 +3,7 @@ id: "SN-30"
 title: "SN 30 金翅鸟相应 (Supaṇṇasaṃyutta)"
 description: "本相应讲述了金翅鸟（Garuda）的四种出生方式，以及众生因造作善恶两业、发愿并布施而投生为金翅鸟的业力因缘。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 30, 392-437"
 curator: "True-Dhamma.com"
 tags: [金翅鸟, 业力, 轮回, 四生, 布施, 相应部]

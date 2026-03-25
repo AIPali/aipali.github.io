@@ -3,8 +3,8 @@ id: "SN-45-21-30"
 title: "SN 45.21-30 邪性品 (Micchattavagga)"
 description: "本品包含十部短经，佛陀对比了八正道与八邪道、善人与不善人的区别，并开示了修习八正道作为心的支撑、以及断除五欲的重要作用。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
-reference: "SN 45. 21-30"
+vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
+reference: "SN 45.21-30, 21-30"
 curator: "True-Dhamma.com"
 tags: [八正道, 八邪道, 善人, 正定, 三受, 五欲]
 ---

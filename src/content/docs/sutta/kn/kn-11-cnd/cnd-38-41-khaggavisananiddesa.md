@@ -3,7 +3,7 @@ id: "Cnd-38-41"
 title: "Cnd 38-41 犀角经义释 (Khaggavisāṇasuttaniddesa)"
 description: "本经义释详细注解了《犀角经》，教导修行者如何像犀牛角一样独自游方，远离贪爱与执著，超越世间种种羁绊与怖畏。"
 collection: "Khuddaka Nikāya"
-vagga: "Cūḷaniddesapāḷi"
+vagga: "Cūḷaniddesapāḷi"
 reference: "Cnd 38-41, 121-161"
 curator: "3 True-Dhamma.com"
 tags: [犀角经, 辟支佛, 独自游方, 贪爱, 隐密危难, 随烦恼, 义释]

@@ -2,7 +2,8 @@
 id: "Thag-17-21"
 title: "Thag 17-21 三十至大偈集 (Tiṃsa-Mahānipāta)"
 description: "《长老偈》的最后部分，汇集了佛陀座下最著名弟子们的长篇证悟偈颂，包括舍利弗的智慧、大迦叶的头陀行、阿难的侍奉与忆念、大目犍连的神通以及婆耆沙的诗意赞颂。"
-collection: "Theragāthāpāḷi"
+collection: "Khuddaka Nikāya"
+vagga: "Theragāthāpāḷi"
 reference: "Thag 17-21, 949-1288"
 curator: "True-Dhamma.com"
 tags: [长老偈, 舍利弗, 大迦叶, 目犍连, 阿难, 婆耆沙, 证悟, 神通, 头陀行, 法义衰微, 涅槃]

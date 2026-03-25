@@ -1,9 +1,9 @@
 ---
-id: "DN-09"
+id: "DN-9"
 title: "DN 9 布吒婆楼经 (Poṭṭhapādasutta)"
 description: "本经探讨了“想”（感知）的本质，佛陀通过禅定的次第，阐述了想的生起与最终灭尽，并驳斥了关于自我、世界等的形而上学戏论，指明了修行的真正目的。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 9, 406-443"
 curator: "True-Dhamma.com"
 tags: ["想", "感知", "禅定", "禅那", "灭尽定", "无记", "戏论", "自我", "我执", "四圣谛"]

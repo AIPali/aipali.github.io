@@ -2,8 +2,8 @@
 id: "Miln-03"
 title: "Miln 3 难问 (Meṇḍakapañha)"
 description: "弥兰王向尊者龙军提出了一系列看似矛盾的“两难问题”，探讨了佛陀全知、业力果报、护咒威力等深奥法义。"
-collection: "Milindapañhapāḷi"
-vagga: "Meṇḍakapañha"
+collection: "Khuddaka Nikāya"
+vagga: "Milindapañhapāḷi"
 reference: "Miln 10-15, 51"
 curator: "True-Dhamma.com"
 tags: [弥兰王, 龙军, 难问, 两难, 佛陀全知, 业力, 护身咒]

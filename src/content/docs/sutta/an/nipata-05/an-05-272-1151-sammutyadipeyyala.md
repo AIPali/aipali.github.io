@@ -3,7 +3,7 @@ id: "AN-5-272-1151"
 title: "AN 5.272-1151 世俗与学处等广说集 (Sammutyādipeyyāla)"
 description: "增支部五集最后部分，涵盖了对僧团执事比丘的资格规范、五戒的果报，以及断除各类烦恼杂染的修习法门。"
 collection: "Aṅguttara Nikāya"
-vagga: "Chaṭṭhapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.272-1151"
 curator: "2 True-Dhamma.com"
 tags: [执事, 僧团管理, 五戒, 禅修, 烦恼, 广说]

@@ -3,7 +3,7 @@ id: "SN-49"
 title: "SN 49 正断相应 (Sammappadhānasaṃyutta)"
 description: "本相应系统地汇集了关于四正断（四正勤）的教导，通过恒河、大地等丰富的譬喻，阐明修习四正断如何导向终极的涅槃。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 49, 651-704"
 curator: "True-Dhamma.com"
 tags: [正断相应, 四正断, 涅槃, 戒律, 三十七道品]

@@ -3,7 +3,7 @@ id: "AN-9-21-31"
 title: "AN 9.21-31 有情居品 (Sattāvāsavagga)"
 description: "本品探讨了不同生命层次的殊胜之处、以骏马譬喻不同层次的修行者、渴爱如何引发一系列痛苦、九种有情居的分类、解脱者的心境，以及如何平息怨恨与次第证入禅定。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.21-31"
 curator: "2 True-Dhamma.com"
 tags: [九有情居, 渴爱, 禅定, 阿罗汉, 入流, 四圣谛, 解脱, 怨恨]

@@ -3,7 +3,7 @@ id: "SN-23"
 title: "SN 23 罗陀相应 (Rādhasaṃyutta)"
 description: "本相应记录了世尊对罗陀尊者的教导，核心围绕五蕴的本质，开示了魔罗、众生、入流果与阿罗汉的真实意涵，并教导如何断除对五蕴的贪欲。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 23, 160-205"
 curator: "True-Dhamma.com"
 tags: [五蕴, 罗陀, 魔罗, 众生, 遍知, 贪欲, 阿罗汉]

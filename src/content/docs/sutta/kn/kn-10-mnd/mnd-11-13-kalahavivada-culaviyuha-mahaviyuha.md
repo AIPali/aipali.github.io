@@ -2,8 +2,8 @@
 id: "Mnd-11-13"
 title: "Mnd 11-13 争论经至大集积经之义释 (Kalahavivāda-Cūḷaviyūha-Mahāviyūha)"
 description: "《小部·大义释》第十一至第十三经的详细注释，深入剖析世间争论的根源，揭示执着于主观见解的过患，并赞叹舍弃一切见执的阿罗汉境界。"
-collection: "Mahāniddesapāḷi"
-vagga: ""
+collection: "Khuddaka Nikāya"
+vagga: "Mahāniddesapāḷi"
 reference: "Mnd 11-13"
 curator: "3 True-Dhamma.com"
 tags: [大义释, 争论, 恶见, 执着, 缘起, 涅槃, 阿罗汉]

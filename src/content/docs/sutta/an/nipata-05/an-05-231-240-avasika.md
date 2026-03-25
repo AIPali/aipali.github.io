@@ -3,7 +3,7 @@ id: "AN-5-231-240"
 title: "AN 5.231-240 旧住品 (Āvāsikavagga)"
 description: "本品详述了常住比丘（寺院的旧住者）应具备的优良品质，以及应当避免的五种过患（如悭吝、盲目评判等）。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.231-240"
 curator: "2 True-Dhamma.com"
 tags: [常住比丘, 僧团生活, 戒定慧, 悭吝, 悲愍信众]

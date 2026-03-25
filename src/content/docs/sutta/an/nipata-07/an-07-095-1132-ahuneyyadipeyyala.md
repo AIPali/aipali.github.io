@@ -1,9 +1,9 @@
 ---
-id: "AN-07-95-1132"
+id: "AN-7-95-1132"
 title: "AN 7.95-1132 应请与贪广说品 (Āhuneyyavagga-Rāgapeyyāla)"
 description: "本经详述了七种值得世间供养的圣者，并系统列举了通过观照五蕴、六处等法来断除贪、瞋、痴等烦恼的修行路径。"
 collection: "Aṅguttara Nikāya"
-vagga: "Āhuneyyavagga"
+vagga: "Sattakanipātapāḷi"
 reference: "AN 7.95-1132"
 curator: "2 True-Dhamma.com"
 tags: [七等人, 不还果, 观照, 贪欲, 烦恼, 禅修, 五蕴]

@@ -3,8 +3,8 @@ id: "SN-12-1-10"
 title: "SN 12.1-10 佛陀品 (Buddhavagga)"
 description: "本品详述了十二缘起的法则，分别解释了各个环节的定义，并回顾了过去七佛与乔达摩佛在未觉悟前如何通过顺逆观察缘起而证得正觉。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.1-10"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.1-10, 1-10"
 curator: "True-Dhamma.com"
 tags: [缘起, 十二因缘, 无明, 过去七佛, 菩萨, 觉悟, 法说, 分别]
 ---

@@ -3,7 +3,7 @@ id: "这篇内容有错！AN-8-91-116"
 title: "AN 8.91-116 优婆夷等二十六经"
 description: "本经文高度浓缩列举了二十六位杰出的女性在家信徒（优婆夷），她们因具足八法而生于善趣。"
 collection: "Aṅguttara Nikāya"
-vagga: "Sāmaññavagga"
+vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.91-116"
 curator: "2 True-Dhamma.com"
 tags: [优婆夷, 在家众, 女性信徒, 生天, 善友]

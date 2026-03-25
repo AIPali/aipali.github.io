@@ -3,7 +3,7 @@ id: "SN-56-31-40"
 title: "SN 56.31-40 申恕林品 (Sīsapāvanavagga)"
 description: "本品包含十部经文，佛陀通过申恕林树叶、燃烧的头巾、百枪刺身等生动譬喻，强调了知四圣谛的紧迫性与核心地位。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.31-40, 1101-1110"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 譬喻, 勤加修习, 缘起, 止观, 涅槃]

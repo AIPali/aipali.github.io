@@ -3,7 +3,7 @@ id: "AN-9-73-82"
 title: "AN 9.73-82 正断品 (Sammappadhānavagga)"
 description: "本品集中阐述了四正断作为核心修行法门，如何用于对治五种学处羸弱（违犯五戒）以及五种束缚内心的烦恼，强调了精进努力在断恶修善中的关键作用。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.73-82"
 curator: "2 True-Dhamma.com"
 tags: [四正断, 五戒, 心缚, 精进, 断恶修善, 修行障碍, 善法欲]

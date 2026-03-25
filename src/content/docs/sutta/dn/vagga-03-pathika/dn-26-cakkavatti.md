@@ -1,22 +1,12 @@
 ---
-id: DN-26
-title: DN 26 转轮圣王狮子吼经 (Cakkavattisutta)
-description: 佛陀以转轮圣王的故事为譬喻，揭示了社会伦理的崩溃源于忽视贫困，导致人寿递减；并预言了善法复苏、弥勒佛出世的未来，最终教导比丘应以法为洲，修习戒、定、慧以获得真正的力量与财富。
-collection: Dīgha Nikāya
-vagga: Pāthikavagga
-reference: DN 26, 80-110
-curator: True-Dhamma.com
-tags:
-  - 转轮圣王
-  - 社会伦理
-  - 人寿增减
-  - 弥勒佛
-  - 四念住
-  - 自洲自依
-  - 十善业道
-  - 十不善业道
-  - 治国正道
-  - 因果报应
+id: "DN-26"
+title: "DN 26 转轮圣王狮子吼经 (Cakkavattisutta)"
+description: "佛陀以转轮圣王的故事为譬喻，揭示了社会伦理的崩溃源于忽视贫困，导致人寿递减；并预言了善法复苏、弥勒佛出世的未来，最终教导比丘应以法为洲，修习戒、定、慧以获得真正的力量与财富。"
+collection: "Dīgha Nikāya"
+vagga: "Pāthikavaggapāḷi"
+reference: "DN 26, 80-110"
+curator: "True-Dhamma.com"
+tags: [转轮圣王, 社会伦理, 人寿增减, 弥勒佛, 四念住, 自洲自依, 十善业道, 十不善业道, 因果报应]
 ---
 
 > [!abstract] AI 导读

@@ -2,8 +2,8 @@
 id: "Iti-4"
 title: "Iti 4 四集 (Catukkanipāta)"
 description: "涵盖《如是语》第四集的13篇短经，系统阐述了四法，包括法施的殊胜、四种易得资具、四圣谛、孝敬父母以及如来对世间的觉悟。"
-collection: "Itivuttaka"
-vagga: "Catukkanipāta"
+collection: "Khuddaka Nikāya"
+vagga: "Itivuttakapāḷi"
 reference: "Iti 4.1-13, 100-112"
 curator: "True-Dhamma.com"
 tags: [如是语, 四法, 四圣谛, 四种资具, 父母恩德, 四威仪, 如来]

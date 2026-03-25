@@ -3,7 +3,7 @@ id: "SN-14-1-10"
 title: "SN 14.1-10 种种品 (Nānattavagga)"
 description: "本品包含十部短经，详细解说界如何引发触、受、想、思惟等一系列心理过程，揭示了根境识互动的因果法则及其不可逆性。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.1-10, 85-94"
 curator: "True-Dhamma.com"
 tags: [十八界, 缘起, 触, 受, 想, 认知过程]

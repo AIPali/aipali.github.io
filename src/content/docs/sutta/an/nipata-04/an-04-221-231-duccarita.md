@@ -1,9 +1,9 @@
 ---
-id: "AN-04-221-231"
+id: "AN-4-221-231"
 title: "AN 4.221-231 恶行品 (Duccaritavagga)"
 description: "本品以对比的方式，阐述了导致自身受损的恶行（如妄语、邪见、不知恩等）与能够保护自身的妙行（如真实语、正见、知恩等），并列举了四类诗人。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.221-231"
 curator: "True-Dhamma.com"
 tags: [妙行, 恶行, 八正道, 业果, 语恶行, 知恩报恩, 诗人]

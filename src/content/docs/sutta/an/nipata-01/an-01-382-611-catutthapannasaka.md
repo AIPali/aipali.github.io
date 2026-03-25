@@ -3,7 +3,7 @@ id: "AN-1-382-611"
 title: "AN 1.382-611 五十经篇之四 (Catutthapaṇṇāsaka)"
 description: "本篇强调了哪怕仅在一弹指间修习善法的巨大功德，并极度赞叹了修习身至念能统摄一切善法、通达不死（涅槃）的深远利益。"
 collection: "Aṅguttara Nikāya"
-vagga: "Ekakanipāta"
+vagga: "Ekakanipātapāḷi"
 reference: "AN 1.382-611"
 curator: "True-Dhamma.com"
 tags: [静虑, 三十七道品, 身至念, 不死, 涅槃, 一集]

@@ -3,7 +3,7 @@ id: "AN-5-21-30"
 title: "AN 5.21-30 五支品 (Pañcaṅgikavagga)"
 description: "本品系统阐述比丘在修习戒、定、慧中必须具备的基础，剖析了五盖之害、五解脱处、五正定以及远离世俗名利的究竟旨趣。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.21-30"
 curator: "True-Dhamma.com"
 tags: [五盖, 五正定, 五解脱处, 六神通, 远离名利]

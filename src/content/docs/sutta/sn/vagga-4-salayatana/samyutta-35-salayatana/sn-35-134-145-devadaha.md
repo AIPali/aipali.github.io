@@ -3,8 +3,8 @@ id: "SN-35-134-145"
 title: "SN 35.134-145 天臂品 (Devadahavagga)"
 description: "本品收录了关于对六触处不放逸的修习、感官世界的地狱与天界景象，以及六处的无常、苦、无我本质等多部经文。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 134-145"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.134-145, 134-145"
 curator: "True-Dhamma.com"
 tags: [六处, 不放逸, 无常, 苦, 无我, 执取, 缘起]
 ---

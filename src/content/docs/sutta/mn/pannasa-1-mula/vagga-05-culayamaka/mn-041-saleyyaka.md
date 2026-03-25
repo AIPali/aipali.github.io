@@ -3,7 +3,7 @@ id: "MN-41"
 title: "MN 41 萨罗村婆罗门经 (Sāleyyakasutta)"
 description: "佛陀向萨罗村的婆罗门解释业力法则，阐明众生因不同的行为（善业与恶业）而投生于善趣或恶趣的根本原因。"
 collection: "Majjhima Nikāya"
-vagga: "Cūḷayamakavagga"
+vagga: "Cūḷayamakavagga"
 reference: "MN 41, 439-443"
 curator: "True-Dhamma.com"
 tags: ["业力", "十善业", "十不善业", "轮回", "善恶", "果报", "正见", "天界", "地狱"]

@@ -1,9 +1,9 @@
 ---
-id: "MN-09"
+id: "MN-9"
 title: "MN 9 正见经 (Sammādiṭṭhisutta)"
 description: "尊者舍利弗以智慧第一著称，在本经中他系统地阐述了什么是“正见”。他通过十六种方法，包括善与不善、四圣谛以及十二缘起的各个环节，层层深入地揭示了正见的内涵，即透彻理解苦的生起与灭尽的因果法则。"
 collection: "Majjhima Nikāya"
-vagga: "Mūlapariyāyavagga"
+vagga: "Mūlapariyāyavagga"
 reference: "MN 9, 89-104"
 curator: "True-Dhamma.com"
 tags: [正见, 舍利弗, 十二缘起, 四圣谛, 善与不善, 八正道, 烦恼, 漏, 智慧]

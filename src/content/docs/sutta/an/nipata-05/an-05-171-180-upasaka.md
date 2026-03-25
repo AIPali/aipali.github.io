@@ -3,7 +3,7 @@ id: "AN-5-171-180"
 title: "AN 5.171-180 优婆塞品 (Upāsakavagga)"
 description: "本品聚焦于在家居士（优婆塞）的修行，涵盖了五戒、正命、远离的喜悦、入流果的特征，以及追求无上解脱的次第精进。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.171-180"
 curator: "2 True-Dhamma.com"
 tags: [五戒, 在家居士, 正命, 预流果, 四不坏信, 禅悦, 精进]

@@ -3,7 +3,7 @@ id: "SN-56-21-30"
 title: "SN 56.21-30 拘利村品 (Koṭigāmavagga)"
 description: "本品收录了关于四圣谛的十部短经，深入阐述了如实知见四圣谛对于断除轮回、成就漏尽阿罗汉果的绝对必要性。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.21-30, 1091-1100"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 轮回, 漏尽, 现观, 阿罗汉, 正等觉者]

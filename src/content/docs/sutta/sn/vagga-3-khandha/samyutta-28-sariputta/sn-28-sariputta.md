@@ -3,7 +3,7 @@ id: "SN-28"
 title: "SN 28 舍利弗相应 (Sāriputtasaṃyutta)"
 description: "记录了尊者舍利弗在出入九次第定时无我慢的观察，以及关于正命乞食的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 28, 332-341"
 curator: "True-Dhamma.com"
 tags: [舍利弗, 九次第定, 禅那, 灭尽定, 正命, 邪命, 无我, 慢随眠]

@@ -3,7 +3,7 @@ id: "SN-8"
 title: "SN 8 婆耆沙相应 (Vaṅgīsasaṃyutta)"
 description: "本相应收录了以即兴创作偈颂闻名的婆耆沙尊者，在修行过程中的内心挣扎、对治烦恼的经验，以及他对佛陀和诸大弟子的由衷赞叹。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 8, 209-220"
 curator: "True-Dhamma.com"
 tags: [婆耆沙, 偈颂, 赞叹, 对治贪欲, 舍利弗, 目犍连, 阿难]

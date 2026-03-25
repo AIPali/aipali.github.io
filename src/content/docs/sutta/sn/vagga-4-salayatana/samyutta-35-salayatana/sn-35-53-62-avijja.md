@@ -3,8 +3,8 @@ id: "SN-35-53-62"
 title: "SN 35.53-62 无明品 (Avijjāvagga)"
 description: "关于如何通过内观六处的无常、无我来彻底舍断无明、结缚、诸漏、随眠与取著的系列开示。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 53-62"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.53-62, 53-62"
 curator: "True-Dhamma.com"
 tags: [无明, 六处, 无常, 无我, 结缚, 漏烦恼, 随眠, 缘起]
 ---

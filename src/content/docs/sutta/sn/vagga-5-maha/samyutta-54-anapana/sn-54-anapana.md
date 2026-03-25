@@ -3,7 +3,7 @@ id: "SN-54"
 title: "SN 54 入出息相应 (Ānāpānasaṃyutta)"
 description: "本相应系统性地教导了入出息念（安般念）的十六个步骤，并阐明其如何圆满四念住、七觉支与明解脱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 54, 977-996"
 curator: "True-Dhamma.com"
 tags: [入出息念, 安般念, 四念住, 七觉支, 禅定, 三摩地, 止观, 觉悟]

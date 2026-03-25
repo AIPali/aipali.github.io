@@ -3,7 +3,7 @@ id: "SN-29"
 title: "SN 29 龙相应 (Nāgasaṃyutta)"
 description: "本相应探讨了龙的四种出生方式，以及众生因何种身语意业、愿力和布施善行而转生为不同种类之龙的法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 29, 342-391"
 curator: "True-Dhamma.com"
 tags: [龙, 四生, 业力, 布施, 布萨]

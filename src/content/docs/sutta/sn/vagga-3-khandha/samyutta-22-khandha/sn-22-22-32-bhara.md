@@ -3,8 +3,8 @@ id: "SN-22-22-32"
 title: "SN 22.22-32 重担品 (Bhāravagga)"
 description: "佛陀通过重担的譬喻，阐述了五取蕴、渴爱与解脱的关系，并深入探讨了对五蕴的遍知、味、过患与出离。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.22-32"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.22-32, 22-32"
 curator: "True-Dhamma.com"
 tags: [五取蕴, 渴爱, 重担, 遍知, 四圣谛, 解脱, 涅槃]
 ---

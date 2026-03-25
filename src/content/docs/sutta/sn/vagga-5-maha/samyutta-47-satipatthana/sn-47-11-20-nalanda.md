@@ -3,7 +3,7 @@ id: "SN-47-11-20"
 title: "SN 47.11-20 那烂陀品 (Nālandavagga)"
 description: "本品围绕四念住的修习，探讨了何为大丈夫、如来正等觉的伟大、面对圣者涅槃的心态，以及自护与护他的辩证法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.11-20, 377-386"
 curator: "True-Dhamma.com"
 tags: [四念住, 舍利弗, 涅槃, 自护护他, 狮子吼, 身至念]

@@ -3,7 +3,7 @@ id: "DN-14"
 title: "DN 14 大本经 (Mahāpadānasutta)"
 description: "本经详述了过去七佛的生平事迹，尤其以毗婆尸佛为例，揭示了所有佛陀证悟成道所遵循的普遍法则（法界常规），包括菩萨入胎、诞生、四预兆、出家、证悟缘起法及初转法轮等关键历程。"
 collection: "Dīgha Nikāya"
-vagga: "Mahāvaggapāḷi"
+vagga: "Mahāvaggapāḷi"
 reference: "DN 14, 1-94"
 curator: "True-Dhamma.com"
 tags: ["过去七佛", "毗婆尸佛", "菩萨", "缘起", "梵天劝请", "三十二相", "四预兆", "佛陀传记", "法界常规", "轮回"]

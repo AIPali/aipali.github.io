@@ -3,7 +3,7 @@ id: "MN-107"
 title: "MN 107 算数目犍连经 (Gaṇakamoggallānasutta)"
 description: "本经中，佛陀对婆罗门算数目犍连阐述了佛法中的次第修学，并以通往王舍城的道路为喻，说明了导师的角色与个人修行的重要性。"
 collection: "Majjhima Nikāya"
-vagga: "Uparipaṇṇāsapāḷi, Devadahavagga"
+vagga: "Devadahavagga"
 reference: "MN 107, 74-78"
 curator: "True-Dhamma.com"
 tags: [次第修学, 逐步训练, 戒律, 根律仪, 譬喻, 导师, 涅槃, 八正道, 修行次第]

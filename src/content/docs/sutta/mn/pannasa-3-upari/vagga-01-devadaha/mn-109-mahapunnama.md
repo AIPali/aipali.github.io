@@ -3,7 +3,7 @@ id: "MN-109"
 title: "MN 109 满月大经 (Mahāpuṇṇamasutta)"
 description: "在满月之夜，佛陀通过与一位比丘的问答，深入剖析了五取蕴的本质、根源、以及与执取的关系，并阐明了如何通过智慧观察五蕴的无常、苦、无我，从而断除身见，最终实现解脱。"
 collection: "Majjhima Nikāya"
-vagga: "Uparipaṇṇāsapāḷi, Devadahavagga"
+vagga: "Devadahavagga"
 reference: "MN 109, 85-90"
 curator: "True-Dhamma.com"
 tags: ["五取蕴", "无我", "身见", "执取", "贪欲", "缘起", "解脱", "满月", "智慧"]

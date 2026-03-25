@@ -3,8 +3,8 @@ id: "SN-45-1-10"
 title: "SN 45.1-10 无明品 (Avijjāvagga)"
 description: "本品收录了道相应的十部经文，系统阐述了八正道作为对治无明、导向涅槃的无上梵行与修行纲领。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
-reference: "SN 45. 1-10"
+vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
+reference: "SN 45.1-10, 1-10"
 curator: "True-Dhamma.com"
 tags: [八正道, 善友, 梵行, 无明, 涅槃, 四圣谛, 缘起]
 ---

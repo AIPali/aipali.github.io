@@ -3,8 +3,8 @@ id: "SN-35-13-22"
 title: "SN 35.13-22 双品 (Yamakavagga)"
 description: "阐释了佛陀在觉悟前对内外六处的乐味、过患与出离的深刻洞察，以及随喜感官即是随喜苦的法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 13-22"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.13-22, 13-22"
 curator: "True-Dhamma.com"
 tags: [六处, 乐味, 过患, 出离, 苦的生灭]
 ---

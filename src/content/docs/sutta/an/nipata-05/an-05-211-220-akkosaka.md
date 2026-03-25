@@ -3,7 +3,7 @@ id: "AN-5-211-220"
 title: "AN 5.211-220 骂詈品 (Akkosakavagga)"
 description: "本品包含十部经，详细论述了辱骂圣者、好争论、破戒、多言、不忍辱、行为不端、围炉烤火以及摩偷罗国的各种过失与对应功德。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.211-220"
 curator: "2 True-Dhamma.com"
 tags: [过失, 功德, 戒律, 威仪, 忍辱, 语业, 僧团和合]

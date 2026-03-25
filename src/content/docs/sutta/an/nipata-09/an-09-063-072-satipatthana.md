@@ -3,7 +3,7 @@ id: "AN-9-63-72"
 title: "AN 9.63-72 念住品 (Satipaṭṭhānavagga)"
 description: "本品系统阐述了四念住作为根本修行法门，如何对治从基础的五戒缺失，到深层的五盖、五结、心荒芜等一系列共十种修行障碍。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.63-72"
 curator: "2 True-Dhamma.com"
 tags: [四念住, 五盖, 五取蕴, 五下分结, 五上分结, 心荒芜, 心缚, 毗婆舍那, 修行障碍]

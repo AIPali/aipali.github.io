@@ -3,8 +3,8 @@ id: "SN-22-83-92"
 title: "SN 22.83-92 长老品 (Theravagga)"
 description: "本品收录了包括阿难、低舍、焰摩迦等诸大长老的十部经文，深入探讨了对五蕴的执取、无常与无我，以及如何断除我慢与邪见。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.83-92"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.83-92, 83-92"
 curator: "True-Dhamma.com"
 tags: [五蕴, 无常, 无我, 缘起, 中道, 阿罗汉, 禅修]
 ---

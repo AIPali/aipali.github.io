@@ -1,10 +1,10 @@
 ---
-id: "SN-22-01-11"
+id: "SN-22-1-11"
 title: "SN 22.1-11 那拘罗父品 (Nakulapituvagga)"
 description: "本品聚焦于五蕴的本质，探讨了如何做到身病心不病、调伏对五蕴的贪欲、如实观照五蕴的集灭，以及三世五蕴的无常、苦、无我。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.1-11"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.1-11, 1-11"
 curator: "True-Dhamma.com"
 tags: [五蕴, 身病心不病, 贪欲, 三摩地, 无常, 苦, 无我]
 ---

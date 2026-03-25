@@ -3,7 +3,7 @@ id: "AN-4-264-273"
 title: "AN 4.264-273 业道品 (Kammapathavagga)"
 description: "本品系统列举了十不善业道与十善业道，强调自作、教他作、随喜赞同与赞叹皆会产生相应的决定性果报。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.264-273"
 curator: "True-Dhamma.com"
 tags: [十善业, 十恶业, 业力, 随喜, 共业]

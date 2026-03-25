@@ -3,7 +3,7 @@ id: "AN-4-274-783"
 title: "AN 4.274-783 贪广说集 (Rāgapeyyāla)"
 description: "佛陀教导为了知、断除贪欲以及瞋恚、愚痴等种种烦恼，应当修习四念住、四正断、四神足等法。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.274-783"
 curator: "True-Dhamma.com"
 tags: [四念住, 四正断, 四神足, 三十七道品, 烦恼, 贪欲, 瞋恚]

@@ -3,7 +3,7 @@ id: "AN-9-1-10"
 title: "AN 9.1-10 等觉品 (Sambodhivagga)"
 description: "本品阐述了趋向正等觉的九个关键法门，包括五个修行基础、四种进阶修习，以及阿罗汉不可能违犯的九种行为，并列举了世间九种神圣的福田。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.1-10"
 curator: "2 True-Dhamma.com"
 tags: [九集, 等觉, 善友, 心解脱, 阿罗汉, 四圣果, 依止, 福田]

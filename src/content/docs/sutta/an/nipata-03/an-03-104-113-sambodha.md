@@ -3,7 +3,7 @@ id: "AN-3-104-113"
 title: "AN 3.104-113 等觉品 (Sambodhavagga)"
 description: "本品收录了关于佛陀成道前对世间滋味、过患与出离的深思，以及对沙门与婆罗门的界定、守护业处等教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.104-113"
 curator: "True-Dhamma.com"
 tags: [等觉, 滋味, 过患, 出离, 沙门婆罗门, 戒律, 缘起, 业集]

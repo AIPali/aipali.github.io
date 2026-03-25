@@ -3,7 +3,7 @@ id: "SN-24"
 title: "SN 24 见相应 (Diṭṭhisaṃyutta)"
 description: "本相应系统探讨了当时印度社会盛行的各种外道邪见（如常见、断见、无作见等）的生起缘由，指出执取五蕴为“我”是各种邪见的根源，并阐明圣弟子如何断除这些疑惑。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 24, 206-301"
 curator: "True-Dhamma.com"
 tags: [邪见, 五蕴, 入流果, 断见, 常见, 缘起]

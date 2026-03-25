@@ -2,8 +2,8 @@
 id: "Ud-1"
 title: "Ud 1 菩提品 (Bodhivagga)"
 description: "自说经第一品，主要记述世尊初成正觉后对缘起法的观察，以及对真正婆罗门内涵的重新定义与婆醯的顿悟。"
-collection: "Udāna"
-vagga: "Bodhivagga"
+collection: "Khuddaka Nikāya"
+vagga: "Udānapāḷi"
 reference: "Ud 1.1-10"
 curator: "True-Dhamma.com"
 tags: [自说经, 菩提, 缘起, 婆罗门, 婆醯, 顿悟]

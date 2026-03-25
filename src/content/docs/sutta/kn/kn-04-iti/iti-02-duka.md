@@ -2,8 +2,8 @@
 id: "Iti-2"
 title: "Iti 2 二集 (Dukanipāta)"
 description: "涵盖《如是语》第二集的22篇短经，系统阐述了成对出现的善恶法对众生现世与来世的深远影响，并定义了无为法与两种涅槃界。"
-collection: "Itivuttaka"
-vagga: "Dukanipāta"
+collection: "Khuddaka Nikāya"
+vagga: "Itivuttakapāḷi"
 reference: "Iti 2.1-22, 28-49"
 curator: "True-Dhamma.com"
 tags: [如是语, 守护根门, 惭愧, 有余依涅槃, 无余依涅槃, 常见断见, 无为法]

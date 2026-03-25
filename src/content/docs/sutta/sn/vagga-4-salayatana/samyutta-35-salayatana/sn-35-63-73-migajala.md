@@ -3,8 +3,8 @@ id: "SN-35-63-73"
 title: "SN 35.63-73 鹿网品 (Migajālavagga)"
 description: "本品开示了单独住的内涵、六处即魔罗与世间、断除我见的解脱境界，以及如何如实知见六触处。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 63-73"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.63-73, 63-73"
 curator: "True-Dhamma.com"
 tags: [六处, 鹿网, 单独住者, 魔罗, 现见之法, 我见, 缘起, 厌离, 无常, 解脱]
 ---

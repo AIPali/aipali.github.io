@@ -3,8 +3,8 @@ id: "SN-12-51-60"
 title: "SN 12.51-60 苦品 (Dukkhavagga)"
 description: "本品包含十部经文，深入探讨苦的生起与灭尽，尤其是对十二缘起的思量，以及对执取和烦恼的断除。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.51-60"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.51-60, 51-60"
 curator: "True-Dhamma.com"
 tags: [缘起, 十二因缘, 执取, 苦蕴, 灭苦, 无明]
 ---

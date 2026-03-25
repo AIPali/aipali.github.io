@@ -3,8 +3,8 @@ id: "SN-35-104-113"
 title: "SN 35.104-113 安稳者品 (Yogakkhemivagga)"
 description: "佛陀关于眼等六处与色等外境的教导，阐明如何通过不执取、了知缘起与断除渴爱，达到彻底的解脱与安稳。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 104-113"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.104-113, 104-113"
 curator: "True-Dhamma.com"
 tags: [六处, 缘起, 执取, 苦, 无常, 离欲, 解脱]
 ---

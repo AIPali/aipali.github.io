@@ -1,9 +1,9 @@
 ---
-id: "AN-04-71-80"
+id: "AN-4-71-80"
 title: "AN 4.71-80 无戏论品 (Apaṇṇakavagga)"
 description: "增支部四集无戏论品，涵盖发勤精进、善士标准、四不可思议、清净布施以及业果法则等十部经文，指引修行者断除烦恼。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.71-80"
 curator: "True-Dhamma.com"
 tags: [无戏论, 漏尽, 善士, 四不可思议, 清净施, 业果, 惭愧]

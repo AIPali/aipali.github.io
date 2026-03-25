@@ -3,7 +3,7 @@ id: "DN-16"
 title: "DN 16 大般涅槃经 (Mahāparinibbānasutta)"
 description: "记录佛陀从王舍城出发，直至在拘尸那罗般涅槃的最后三个月旅程。本经详细阐述了僧团不退法、法镜、自灯明等重要教导，并记载了佛陀的最后遗言、入灭过程及舍利分配的始末。"
 collection: "Dīgha Nikāya"
-vagga: "Mahāvaggapāḷi"
+vagga: "Mahāvaggapāḷi"
 reference: "DN 16, 131-240"
 curator: "True-Dhamma.com"
 tags: [涅槃, 四圣谛, 八正道, 四念住, 舍利, 佛陀最后遗言, 自灯明, 僧团不退法, 四大教示, 佛陀传记]

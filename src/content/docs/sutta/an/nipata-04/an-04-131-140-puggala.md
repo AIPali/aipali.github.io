@@ -1,9 +1,9 @@
 ---
-id: "AN-04-131-140"
+id: "AN-4-131-140"
 title: "AN 4.131-140 补特伽罗品 (Puggalavagga)"
 description: "探讨世间四种不同类型的人，涵盖结缚的断除、辩才、闻法根器、精勤果报、罪业、戒定慧的修习以及说法的善巧等。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.131-140"
 curator: "True-Dhamma.com"
 tags: [结缚, 辩才, 根器, 戒定慧, 身心出离, 说法师]

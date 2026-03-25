@@ -3,7 +3,7 @@ id: "SN-47-51-104"
 title: "SN 47.51-104 念住广说集 (Satipaṭṭhānapeyyāla)"
 description: "本集包含恒河广说品等五个品，通过诸多譬喻与法义类比，以简略的形式重申修习四念住的目的与导向——趣向涅槃、断除结缚。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.51-104, 417-470"
 curator: "True-Dhamma.com"
 tags: [四念住, 涅槃, 广说, 五上分结, 菩提分法, 譬喻]

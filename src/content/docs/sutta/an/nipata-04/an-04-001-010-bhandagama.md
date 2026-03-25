@@ -1,9 +1,9 @@
 ---
-id: "AN-04-01-10"
+id: "AN-4-1-10"
 title: "AN 4.1-10 班达村落品 (Bhaṇḍagāmavagga)"
 description: "本品收录增支部四集第一至第十经，核心教导围绕戒定慧解脱四法，以及四轭、四爱起处等，揭示生死轮回的根本原因及解脱之道。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.1-10"
 curator: "True-Dhamma.com"
 tags: [戒定慧, 解脱, 四轭, 四无畏, 轮回, 漏尽, 四爱]

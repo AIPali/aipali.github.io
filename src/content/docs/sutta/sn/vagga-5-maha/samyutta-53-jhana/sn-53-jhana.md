@@ -3,7 +3,7 @@ id: "SN-53"
 title: "SN 53 禅那相应 (Jhānasaṃyutta)"
 description: "关于四种禅那（初禅至四禅）的修习，及其如何引导修行者趣向涅槃、断除结缚的深度教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 53, 923-976"
 curator: "True-Dhamma.com"
 tags: [禅那, 禅定, 四禅, 涅槃, 恒河广说, 三摩地, 上分结]

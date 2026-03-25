@@ -2,8 +2,8 @@
 id: "Iti-3"
 title: "Iti 3 三集 (Tikanipāta)"
 description: "涵盖《如是语》第三集的50篇短经，系统阐述了三不善根、三界、三受、三明等以“三”为分类的核心法义，并运用了极为生动震撼的譬喻。"
-collection: "Itivuttaka"
-vagga: "Tikanipāta"
+collection: "Khuddaka Nikāya"
+vagga: "Itivuttakapāḷi"
 reference: "Iti 3.1-50, 50-99"
 curator: "True-Dhamma.com"
 tags: [如是语, 三不善根, 三受, 两种涅槃, 五前相, 尸林炬火之喻, 抓衣角之喻, 三明]

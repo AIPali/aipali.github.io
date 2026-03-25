@@ -3,7 +3,7 @@ id: "AN-9-83-92"
 title: "AN 9.83-92 神足品 (Iddhipādavagga)"
 description: "本品阐述了如何修习四神足，以断除学戒的弱点、五盖、五取蕴、五种感官欲望以及五种心之束缚等修行障碍。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.83-92"
 curator: "2 True-Dhamma.com"
 tags: [四神足, 五戒, 五盖, 五心缚, 欲定, 勤定, 心定, 观定, 修行障碍]

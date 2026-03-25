@@ -3,7 +3,7 @@ id: "AN-3-52-61"
 title: "AN 3.52-61 婆罗门品 (Brāhmaṇavagga)"
 description: "本品收录了佛陀与多位婆罗门的对话，涵盖了现法涅槃、超越传统的佛教三明、布施的真正果报以及佛教的三种示导（神变）等核心教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.52-61"
 curator: "True-Dhamma.com"
 tags: [现法涅槃, 三明, 示导, 布施, 神通, 宿住随念智, 缘起]

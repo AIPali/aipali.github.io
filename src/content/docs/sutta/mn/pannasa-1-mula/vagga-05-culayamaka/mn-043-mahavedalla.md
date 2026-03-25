@@ -3,7 +3,7 @@ id: "MN-43"
 title: "MN 43 广解大经 (Mahāvedallasutta)"
 description: "智慧第一的舍利弗尊者与善于分析法义的大拘稀罗尊者之间的一场深度问答，详细辨析了智慧、识、受、想等核心概念，并阐明了各种禅定与心解脱的境界。"
 collection: "Majjhima Nikāya"
-vagga: "Cūḷayamakavagga"
+vagga: "Cūḷayamakavagga"
 reference: "MN 43, 449-459"
 curator: "True-Dhamma.com"
 tags: [智慧, 识, 感受, 想, 五蕴, 心解脱, 四禅, 舍利弗, 大拘稀罗, 法义问答]

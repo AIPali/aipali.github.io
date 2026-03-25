@@ -3,7 +3,7 @@ id: "Ps-22-31"
 title: "Ps 22-31 慧品 (Paññāvagga)"
 description: "本品详尽剖析了智慧（慧）、神通、现观、远离、所行、示导、齐首、念住、毗婆舍那及论母等高阶实修法义。"
 collection: "Khuddaka Nikāya"
-vagga: "Paññāvagga"
+vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 22-31, 1-42"
 curator: "3 True-Dhamma.com"
 tags: [大慧, 神通, 现观, 四念住, 毗婆舍那, 十六慧]

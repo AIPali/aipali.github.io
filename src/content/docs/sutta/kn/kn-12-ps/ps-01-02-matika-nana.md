@@ -2,8 +2,8 @@
 id: "Ps-1-2"
 title: "Ps 1-2 论母与智论 (Mātikā & Ñāṇakathā)"
 description: "无碍解道之首，列举并详细解析了七十三种智，涵盖从世俗闻思慧到佛陀一切智智的完整智慧体系。"
-collection: "Paṭisambhidāmaggapāḷi"
-vagga: "Mahāvagga"
+collection: "Khuddaka Nikāya"
+vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 1-2, 1-121"
 curator: "3 True-Dhamma.com"
 tags: [无碍解道, 七十三智, 智慧, 闻思修, 缘起, 佛智, 一切智智]

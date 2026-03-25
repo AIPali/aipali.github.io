@@ -3,7 +3,7 @@ id: "MN-90"
 title: "MN 90 康纳卡塔拉经 (Kaṇṇakatthalasutta)"
 description: "波斯匿王与佛陀的深度对话，探讨了关于“一切知智”、四姓平等的真实义、五种精勤修行的要素，以及天人与梵天的境界差异。"
 collection: "Majjhima Nikāya"
-vagga: "Rājavagga"
+vagga: "Rājavagga"
 reference: "MN 90, 375-382"
 curator: "True-Dhamma.com"
 tags: [四姓平等, 五精勤分, 解脱, 波斯匿王, 一切知, 天人, 梵天, 阿难, 譬喻]

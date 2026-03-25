@@ -1,9 +1,9 @@
 ---
-id: "Dhp-3-5"
-title: "Dhp 33-75 心品、华品与愚品 (Citta, Puppha & Bālavagga)"
+id: "Dhp-33-75"
+title: "Dhp 33-75 心品-华品-愚品 (Citta-Puppha-Bālavagga)"
 description: "《法句经》第三、四、五品，分别探讨心的调伏、善业如花香的价值，以及愚痴与智慧的对比，揭示了心念、行为与果报之间的深刻关系。"
-collection: "Dhammapada"
-vagga: "Cittavagga, Pupphavagga, Bālavaggavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Dhammapadapāḷi"
 reference: "Dhp 3-5, 33-75"
 curator: "True-Dhamma.com"
 tags: [法句经, 心, 业, 智慧, 愚痴, 譬喻, 比丘, 修行]

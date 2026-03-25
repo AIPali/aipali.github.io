@@ -3,7 +3,7 @@ id: "SN-41"
 title: "SN 41 质多相应 (Cittasaṃyutta)"
 description: "包含了以质多居士为核心的十部经文，探讨了结缚、界、见解、神通及修行法要等深刻法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 41, 343-352"
 curator: "True-Dhamma.com"
 tags: [质多居士, 结缚, 身见, 神通, 想受灭定, 心解脱, 四圣果]

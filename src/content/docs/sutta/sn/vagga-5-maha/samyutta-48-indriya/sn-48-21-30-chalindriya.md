@@ -3,7 +3,7 @@ id: "SN-48-21-30"
 title: "SN 48.21-30 六根品 (Chaḷindriyavagga)"
 description: "佛陀开示了五根、三根的不同类别，基于五根利钝的十二种修行果位，以及对六根如实了知集、灭、味、患、离的觉悟标准。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.21-30, 491-500"
 curator: "True-Dhamma.com"
 tags: [五根, 六根, 沙门果, 四向四果, 缘起, 诸漏已尽]

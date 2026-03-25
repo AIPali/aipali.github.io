@@ -3,7 +3,7 @@ id: "MN-81"
 title: "MN 81 陶师经 (Ghaṭikārasutta)"
 description: "佛陀讲述他在迦叶佛时代的前世故事。当时他名为觉提波罗，其挚友陶师伽提喀罗是一位具足净信、堪称典范的在家圣弟子。"
 collection: "Majjhima Nikāya"
-vagga: "Rājavagga"
+vagga: "Rājavagga"
 reference: "MN 81, 282-292"
 curator: "True-Dhamma.com"
 tags: ["前世故事", "迦叶佛", "伽提喀罗", "觉提波罗", "在家弟子", "不还果", "净信", "典范"]

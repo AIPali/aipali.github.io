@@ -1,5 +1,5 @@
 ---
-id: "MN-084"
+id: "MN-84"
 title: "MN 84 摩偷罗经 (Madhurasutta)"
 description: "尊者大迦旃延与摩偷罗王阿槃提子的对话，通过财富、业报、法律和出家四个层面，论证了佛法中四种姓平等的思想，破除了婆罗门的优越论。"
 collection: "Majjhima Nikāya"

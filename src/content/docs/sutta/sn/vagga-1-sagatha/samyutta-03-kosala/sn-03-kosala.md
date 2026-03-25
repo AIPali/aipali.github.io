@@ -3,7 +3,7 @@ id: "SN-3"
 title: "SN 3 拘萨罗相应 (Kosalasaṃyutta)"
 description: "本相应记载了佛陀与拘萨罗国波斯匿王之间的对话，涵盖了治国、交友、业果、生死等重要法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 3, 112-136"
 curator: "True-Dhamma.com"
 tags: [波斯匿王, 拘萨罗国, 业果, 善友, 无常, 政治, 财富]

@@ -3,7 +3,7 @@ id: "SN-55-51-61"
 title: "SN 55.51-61 有慧品 (Sappaññavagga)"
 description: "本品收录了十一篇经文，开示了成就入流果的四不坏净条件、如何以此教导重病患者、证果的修行次第与四种资生智慧之法。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.51-61, 1047-1057"
 curator: "True-Dhamma.com"
 tags: [入流果, 四不坏净, 临终教诲, 四入流支, 智慧, 法随法行]

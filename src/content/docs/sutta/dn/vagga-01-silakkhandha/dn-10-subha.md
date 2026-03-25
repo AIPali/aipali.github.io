@@ -3,7 +3,7 @@ id: "DN-10"
 title: "DN 10 须婆经 (Subhasutta)"
 description: "佛陀般涅槃后不久，阿难尊者向婆罗门青年须婆阐述佛陀教法的核心——圣戒蕴、圣定蕴、圣慧蕴。本经完整地展示了从持戒到漏尽解脱的完整修行道次第。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 10, 444-480"
 curator: "True-Dhamma.com"
 tags: ["戒定慧", "三学", "戒蕴", "定蕴", "慧蕴", "阿难", "须婆", "神通", "漏尽智", "道次第"]

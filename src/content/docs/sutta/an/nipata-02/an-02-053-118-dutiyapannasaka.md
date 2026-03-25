@@ -3,7 +3,7 @@ id: "AN-2-53-118"
 title: "AN 2.53-118 五十经篇之二 (Dutiyapaṇṇāsaka)"
 description: "增支部二集第二篇，包含人品、乐品、有品、法品与愚者品，对比了各种人物、快乐、因缘以及智愚的区别。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dukanipāta"
+vagga: "Dukanipātapāḷi"
 reference: "AN 2.53-118"
 curator: "True-Dhamma.com"
 tags: [增支部, 二集, 智者与愚者, 快乐的分类, 业果, 烦恼, 缘起]

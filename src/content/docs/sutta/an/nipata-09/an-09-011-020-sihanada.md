@@ -1,9 +1,9 @@
 ---
-id: "AN-09-11-20"
+id: "AN-9-11-20"
 title: "AN 9.11-20 狮子吼品 (Sīhanādavagga)"
 description: "本品以尊者舍利弗面对诬告时，以九种譬喻阐明其心不动摇的“狮子吼”开篇，进而探讨了圣者解脱的层次、修行的真正目的、九种有利解脱的禅修想念，以及布施供养的九种次第功德。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.11-20"
 curator: "2 True-Dhamma.com"
 tags: [狮子吼, 舍利弗, 九想, 四双八辈, 布施, 功德, 业报, 四圣谛, 身念住]

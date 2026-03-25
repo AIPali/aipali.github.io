@@ -3,7 +3,7 @@ id: "AN-6-96-106"
 title: "AN 6.96-106 胜利品 (Ānisaṃsavagga)"
 description: "本品收录十一篇短经，主要阐述世间难得的六种出现、证得入流果的六种利益，以及关于观无常、苦、无我、涅槃的重要修行指导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Chakkanipātapāḷi"
 reference: "AN 6.96-106"
 curator: "2 True-Dhamma.com"
 tags: [入流果, 三法印, 无常, 苦, 无我, 涅槃, 三有, 三爱]

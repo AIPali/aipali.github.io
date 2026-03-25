@@ -3,7 +3,7 @@ id: "SN-55-11-20"
 title: "SN 55.11-20 王园品 (Rājakārāmavagga)"
 description: "本品集结了十部经，核心主旨在于阐释成就入流果的四种条件（四入流支），即对佛、法、僧的四不坏信以及受持圣者所喜爱的戒律。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.11-20, 1007-1016"
 curator: "True-Dhamma.com"
 tags: [入流支, 证净, 四不坏信, 入流果, 初果, 戒律, 禅修]

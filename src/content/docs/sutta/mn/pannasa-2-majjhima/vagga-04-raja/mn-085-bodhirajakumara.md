@@ -1,9 +1,9 @@
 ---
-id: "MN-085"
+id: "MN-85"
 title: "MN 85 菩提王子经 (Bodhirājakumārasutta)"
 description: "佛陀向菩提王子详细讲述了自己从出家求道、修习苦行，到最终觉悟并决定说法的完整历程，并阐明了弟子成功修行的五个关键要素。"
 collection: "Majjhima Nikāya"
-vagga: "Rājavagga"
+vagga: "Rājavagga"
 reference: "MN 85, 324-346"
 curator: "True-Dhamma.com"
 tags: ["菩提王子", "苦行", "中道", "觉悟", "阿罗逻伽罗摩", "郁陀迦罗摩子", "五比丘", "五精勤支", "梵天劝请", "三皈依"]

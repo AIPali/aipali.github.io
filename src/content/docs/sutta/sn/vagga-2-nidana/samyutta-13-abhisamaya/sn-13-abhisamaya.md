@@ -3,7 +3,7 @@ id: "SN-13"
 title: "SN 13 现观相应 (Abhisamayasaṃyutta)"
 description: "本相应透过一系列生动的空间与数量譬喻，阐明见道者（入流果）已灭尽的苦如同大地、大海，而残存的苦极其微小，以此勉励修习法之现观。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 13, 74-84"
 curator: "True-Dhamma.com"
 tags: [现观, 入流果, 苦尽, 譬喻, 见道, 法眼]

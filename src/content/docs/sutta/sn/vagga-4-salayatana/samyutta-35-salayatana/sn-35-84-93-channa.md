@@ -3,8 +3,8 @@ id: "SN-35-84-93"
 title: "SN 35.84-93 阐陀品 (Channavagga)"
 description: "本品收录了十部经，探讨了世间坏败、空性、简要法门，以及阐陀比丘生病时面对极度痛苦的抉择与世尊关于不受后有的解说。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 84-93"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.84-93, 84-93"
 curator: "True-Dhamma.com"
 tags: [六处, 阐陀, 空世间, 缘起, 计度, 无常, 苦, 无我]
 ---

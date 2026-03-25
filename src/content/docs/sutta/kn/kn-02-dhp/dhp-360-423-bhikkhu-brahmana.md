@@ -1,9 +1,9 @@
 ---
-id: "Dhp-25-26"
+id: "Dhp-360-423"
 title: "Dhp 360-423 比丘品-婆罗门品 (Bhikkhu-Brāhmaṇavagga)"
 description: "本部分收录了《法句经》的最后两品，分别定义了什么是真正的“比丘”与“婆罗门”。佛陀强调，真正的修行者身份并非由外在形式决定，而是取决于内心的调伏、烦恼的断除与智慧的圆满。"
-collection: "Dhammapada"
-vagga: "Bhikkhuvagga, Brāhmaṇavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Dhammapadapāḷi"
 reference: "Dhp 25-26, 360-423"
 curator: "True-Dhamma.com"
 tags: [比丘, 婆罗门, 阿罗汉, 调伏五根, 解脱, 涅槃, 贪嗔痴, 修行, 烦恼, 智慧]

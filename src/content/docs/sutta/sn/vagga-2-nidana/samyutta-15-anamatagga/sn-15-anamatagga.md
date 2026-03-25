@@ -3,7 +3,7 @@ id: "SN-15"
 title: "SN 15 无始相应 (Anamataggasaṃyutta)"
 description: "佛陀通过薪草、大地、泪水、乳汁及宏大的劫时间尺度，揭示轮回无始的真相，引导众生对诸行厌离。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 15, 124-143"
 curator: "True-Dhamma.com"
 tags: [轮回, 无始, 无明, 渴爱, 劫, 厌离, 解脱]

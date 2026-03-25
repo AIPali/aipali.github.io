@@ -3,7 +3,7 @@ id: "AN-1-51-97"
 title: "AN 1.51-97 五十经篇之二 (Dutiyapaṇṇāsaka)"
 description: "增支部一集第二五十经篇，包含弹指品、发精进等品、善友等品及放逸等品，开示了心性本净、慈心修习以及善恶法生起的根本因缘。"
 collection: "Aṅguttara Nikāya"
-vagga: "Ekakanipāta"
+vagga: "Ekakanipātapāḷi"
 reference: "AN 1.51-97"
 curator: "True-Dhamma.com"
 tags: [心性本净, 慈心, 善法, 不善法, 善友, 智慧, 放逸, 增支部]

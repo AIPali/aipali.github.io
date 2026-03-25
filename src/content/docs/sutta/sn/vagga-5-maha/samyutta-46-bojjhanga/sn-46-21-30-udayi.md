@@ -3,7 +3,7 @@ id: "SN-46-21-30"
 title: "SN 46.21-30 优陀夷品 (Udāyivagga)"
 description: "本品系统阐述了七觉支的定义、修习原理及其核心作用，包括导向觉悟、断除渴爱、破除贪瞋痴蕴以及阿罗汉果的证得。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.21-30, 202-211"
 curator: "True-Dhamma.com"
 tags: [七觉支, 五盖, 渴爱, 如理作意, 五取蕴, 四圣谛, 阿罗汉]

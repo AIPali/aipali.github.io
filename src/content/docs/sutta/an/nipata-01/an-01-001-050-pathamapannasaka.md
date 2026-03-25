@@ -3,7 +3,7 @@ id: "AN-1-1-50"
 title: "AN 1.1-50 初五十经篇 (Paṭhamapaṇṇāsaka)"
 description: "增支部一集前五十经。佛陀开示了男女互相执取的系缚、断除五盖的根本方法、心之调伏与守护，以及心性的光洁与杂染。"
 collection: "Aṅguttara Nikāya"
-vagga: "Ekakanipāta"
+vagga: "Ekakanipātapāḷi"
 reference: "AN 1.1-50"
 curator: "True-Dhamma.com"
 tags: [增支部, 一集, 五盖, 调心, 如理作意, 光洁之心]

@@ -1,9 +1,9 @@
 ---
-id: "Ud-08"
+id: "Ud-8"
 title: "Ud 8 波吒离村人品 (Pāṭaligāmiyavagga)"
 description: "自说经第八品，收录了佛陀对涅槃深义的四次核心开示、淳陀的最后供养、波吒离村的预言，以及陀骠摩罗子般涅槃等十部经文。"
 collection: "Khuddaka Nikāya"
-vagga: "Udāna"
+vagga: "Udānapāḷi"
 reference: "Ud 8.1-8.10"
 curator: "True-Dhamma.com"
 tags: [自说经, 涅槃, 淳陀, 供养, 波吒离村, 陀骠摩罗子]

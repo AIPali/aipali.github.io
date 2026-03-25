@@ -3,7 +3,7 @@ id: "MN-105"
 title: "MN 105 善星经 (Sunakkhattasutta)"
 description: "本经通过善星的提问，佛陀揭示了修行者中存在真实证悟与增上慢的区别，并用一系列譬喻阐明从执著五欲到证入涅槃的修行次第。核心以“毒箭之喻”详述了正确与错误修行的致命差异。"
 collection: "Majjhima Nikāya"
-vagga: "Uparipaṇṇāsapāḷi, Devadahavagga"
+vagga: "Devadahavagga"
 reference: "MN 105, 55-65"
 curator: "True-Dhamma.com"
 tags: [增上慢, 五欲, 不动定, 无所有处, 非想非非想处, 涅槃, 渴爱, 毒箭譬喻, 善星]

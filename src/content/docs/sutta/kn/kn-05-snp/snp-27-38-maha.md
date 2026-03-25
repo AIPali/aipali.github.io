@@ -2,8 +2,8 @@
 id: "Snp-3"
 title: "Snp 3 大品 (Mahāvagga)"
 description: "《经集》第三品，包含十二部经典，涵盖了出家缘起、战胜魔罗、破除种姓偏见以及深奥的二随观等核心教导。"
-collection: "Suttanipāta"
-vagga: "Mahāvagga"
+collection: "Khuddaka Nikāya"
+vagga: "Suttanipāta"
 reference: "Snp 27-38, 407-771"
 curator: "2 True-Dhamma.com"
 tags: [经集, 大品, 出家, 缘起, 种姓, 二随观, 护卫经]

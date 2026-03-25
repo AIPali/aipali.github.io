@@ -3,7 +3,7 @@ id: "SN-46-57-66"
 title: "SN 46.57-66 入出息品 (Ānāpānavagga)"
 description: "本品包含十部短经，佛陀教导无论修习不净观、四无量心还是入出息念，只要结合七觉支并回向解脱，皆能获得六种殊胜果报。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.57-66, 238-247"
 curator: "True-Dhamma.com"
 tags: [七觉支, 骨想, 慈悲喜舍, 入出息念, 不还果, 阿罗汉果]

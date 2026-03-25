@@ -3,7 +3,7 @@ id: "AN-5-251-271"
 title: "AN 5.251-271 近圆品 (Upasampadāvagga)"
 description: "本品讲述了比丘为人授戒、做依止师的条件，并详细探讨了障碍证悟禅那与四圣果的五种悭与不知恩、不报恩之法。"
 collection: "Aṅguttara Nikāya"
-vagga: "Chaṭṭhapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.251-271"
 curator: "2 True-Dhamma.com"
 tags: [具足戒, 依止师, 无学, 五蕴, 五悭, 禅那, 四圣果, 报恩]

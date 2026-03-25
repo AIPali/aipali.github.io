@@ -1,5 +1,5 @@
 ---
-id: "MN-03"
+id: "MN-3"
 title: "MN 3 法嗣经 (Dhammadāyādasutta)"
 description: "佛陀教导比丘们应成为法的继承人，而非物质的继承人。通过一个譬喻，强调了少欲知足的重要性。尊者舍利弗进一步阐释了随学远离的两种结果，并指明了断除烦恼的中道——八正道。"
 collection: "Majjhima Nikāya"

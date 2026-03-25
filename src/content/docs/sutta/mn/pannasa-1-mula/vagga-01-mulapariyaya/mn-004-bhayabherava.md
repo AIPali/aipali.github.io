@@ -1,5 +1,5 @@
 ---
-id: "MN-04"
+id: "MN-4"
 title: "MN 4 怖骇经 (Bhayabheravasutta)"
 description: "佛陀向婆罗门生漏讲述了他成佛前，如何在偏僻的林野中通过净化身语意、克服十六种内心杂染，并最终征服怖骇、证得三明的修行历程。"
 collection: "Majjhima Nikāya"

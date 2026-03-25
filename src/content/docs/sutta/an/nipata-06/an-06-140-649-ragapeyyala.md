@@ -3,7 +3,7 @@ id: "AN-6-140-649"
 title: "AN 6.140-649 贪广说品"
 description: "《增支部六集》的结尾篇章。佛陀总结了为了了知并断除贪、瞋、痴及各种杂染，应当修习的三组核心“六法”。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Chakkanipātapāḷi"
 reference: "AN 6.140-649"
 curator: "2 True-Dhamma.com"
 tags: [贪, 杂染, 随念, 无常想, 六集结尾]

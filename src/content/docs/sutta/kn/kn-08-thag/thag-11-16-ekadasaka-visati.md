@@ -2,7 +2,8 @@
 id: "Thag-11-16"
 title: "Thag 11-16 十一至二十偈集 (Ekādasaka-Vīsatinipāta)"
 description: "《长老偈》中篇幅较长的偈颂集，收录了憍陈如、阿那律、央掘摩罗等著名长老的证悟之歌。内容涵盖了从王族到贱民的修行之路，展现了他们面对生死、名利、恶业时的深刻智慧与解脱喜悦。"
-collection: "Theragāthāpāḷi"
+collection: "Khuddaka Nikāya"
+vagga: "Theragāthāpāḷi"
 reference: "Thag 11-16, 597-948"
 curator: "True-Dhamma.com"
 tags: [长老偈, 证悟, 阿罗汉, 央掘摩罗, 阿那律, 憍陈如, 无常, 业力, 解脱]

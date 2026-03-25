@@ -1,9 +1,9 @@
 ---
-id: "Snp-04"
+id: "Snp-4"
 title: "Snp 4 八颂经品 (Aṭṭhakavagga)"
 description: "《经集》第四品，包含了佛教极早期关于解脱见解与平息争论的深刻教导，揭示了不执著任何世间观点的核心法义。"
-collection: "Suttanipāta"
-vagga: "Aṭṭhakavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Suttanipāta"
 reference: "Snp 39-54, 772-981"
 curator: "2 True-Dhamma.com"
 tags: [经集, 八颂经品, 不执著, 止诤, 见解, 游行, 涅槃]

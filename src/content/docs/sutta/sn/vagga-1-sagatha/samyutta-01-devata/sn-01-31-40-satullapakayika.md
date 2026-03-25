@@ -3,7 +3,7 @@ id: "SN-1-31-40"
 title: "SN 1.31-40 百群天子品 (Satullapakāyikavagga)"
 description: "本品记载了沙睹罗巴天众、净居天天人以及云天天子的女儿们夜访佛陀，探讨亲近善士、布施功德、断除贪欲、应对身苦等深刻法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.31-40, 31-40"
 curator: "True-Dhamma.com"
 tags: [天神相应, 善友, 布施, 悭贪, 爱欲, 忍辱, 三摩地, 烦恼]

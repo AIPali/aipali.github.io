@@ -1,5 +1,5 @@
 ---
-id: "MN-07"
+id: "MN-7"
 title: "MN 7 布喻经 (Vatthasutta)"
 description: "本经以染布为譬喻，深刻阐明了净化内心、远离十六种杂染的重要性。佛陀教导，只有清净的心才能导向善趣与解脱，并指出真正的净化并非外在的仪式，而是内在的修行。"
 collection: "Majjhima Nikāya"

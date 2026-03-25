@@ -1,9 +1,9 @@
 ---
-id: "AN-03-164-184"
+id: "AN-3-164-184"
 title: "AN 3.164-184 业道与贪广说集 (Kammapathādipeyyāla)"
 description: "阐述十不善业道与十善业道各自导向地狱与天界的因果，以及为断除贪瞋痴等烦恼而应修习的三种三摩地。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.164-184"
 curator: "True-Dhamma.com"
 tags: [业道, 十善业, 十不善业, 三摩地, 空, 无相, 无愿, 烦恼]

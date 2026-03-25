@@ -3,7 +3,7 @@ id: "SN-37"
 title: "SN 37 女人相应 (Mātugāmasaṃyutta)"
 description: "世尊与尊者阿那律针对女性的特质、命运、修行以及因果报应的开示汇编，揭示了真正保护生命的并非世俗力量，而是戒德与智慧。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 37, 280-313"
 curator: "True-Dhamma.com"
 tags: [女人, 业果, 五力, 戒德, 婚姻, 善趣, 恶趣, 增长]

@@ -3,8 +3,8 @@ id: "SN-12-31-40"
 title: "SN 12.31-40 伽罗刹利品 (Kaḷārakhattiyavagga)"
 description: "本品包含十部经文，深入探讨缘起法、四食、四十四智事、七十七智事、无明及意志（思）对轮回的推动作用。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.31-40"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.31-40, 31-40"
 curator: "True-Dhamma.com"
 tags: [缘起, 智事, 四食, 无明, 思, 十二因缘, 涅槃]
 ---

@@ -2,7 +2,8 @@
 id: "Thag-1"
 title: "Thag 1 一偈集 (Ekakanipāta)"
 description: "《长老偈》第一集，收录了120位阿罗汉长老证悟时所诵出的单一偈颂。这些偈颂言简意赅，生动地展现了他们断除烦恼、体证实修、安住于涅槃寂静的深刻心境与智慧。"
-collection: "Theragāthāpāḷi"
+collection: "Khuddaka Nikāya"
+vagga: "Theragāthāpāḷi"
 reference: "Thag 1, 1-120"
 curator: "True-Dhamma.com"
 tags: [长老偈, 证悟, 阿罗汉, 禅修, 独处, 解脱, 心性, 涅槃, 早期佛教]

@@ -3,8 +3,8 @@ id: "SN-35-228-237"
 title: "SN 35.228-237 海品 (Samuddavagga)"
 description: "阐释六处犹如深海、魔饵、枯树等譬喻，教导比丘不为外境所系缚，断除欲贪，证悟涅槃。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 228-237"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.228-237, 228-237"
 curator: "True-Dhamma.com"
 tags: [六处, 欲贪, 譬喻, 苦灭, 解脱, 系缚, 缘起]
 ---

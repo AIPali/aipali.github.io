@@ -3,8 +3,8 @@ id: "SN-35-19"
 title: "SN 35.238-248 毒蛇品 (Āsīvisavagga)"
 description: "包含了著名的毒蛇喻、木块喻、琵琶喻等核心教导，通过丰富的譬喻阐述六处、五蕴与修行的解脱路径。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 238-248"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.238-248, 238-248"
 curator: "True-Dhamma.com"
 tags: [六处, 五蕴, 譬喻, 止观, 涅槃, 守护根门]
 ---

@@ -3,7 +3,7 @@ id: "AN-6-43-54"
 title: "AN 6.43-54 昙弥品 (Dhammikavagga)"
 description: "增支部六集昙弥品，探讨从佛陀对'大象'的重新定义，到业报、负债之喻、防护根门以及处理僧团冲突等多方面教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Chakkanipātapāḷi"
 reference: "AN 6.43-54"
 curator: "2 True-Dhamma.com"
 tags: [增支部, 六集, 昙弥品, 业报, 负债, 禅修, 防护根门, 僧团]

@@ -1,9 +1,9 @@
 ---
-id: "SN-1-1-11-20"
+id: "SN-1-11-20"
 title: "SN 1.11-20 欢喜园品 (Nandanavagga)"
 description: "本品记载了天神与世尊关于世俗安乐与出世间寂静、外在所依与内在解脱的十段对话，包含著名的三弥提比丘抗拒天神诱惑的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.11-20, 11-20"
 curator: "True-Dhamma.com"
 tags: [欢喜园, 五蕴, 执取, 法随念, 三弥提, 阿罗汉]

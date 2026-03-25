@@ -2,7 +2,8 @@
 id: "Thag-2-5"
 title: "Thag 2-5 二至五偈集 (Duka-Pañcakanipāta)"
 description: "《长老偈》的二偈集、三偈集、四偈集与五偈集，汇集了多位阿罗汉长老在证悟后所诵出的诗偈。内容涵盖了对无常的深刻洞见、对治烦恼的决心、林居禅修的喜悦，以及证得涅槃后的寂静与解脱，生动展现了圣者们丰富多彩的修行历程与智慧结晶。"
-collection: "Theragāthāpāḷi"
+collection: "Khuddaka Nikāya"
+vagga: "Theragāthāpāḷi"
 reference: "Thag 2-5, 121-374"
 curator: "True-Dhamma.com"
 tags: [长老偈, 证悟, 阿罗汉, 无常, 禅修, 止观, 解脱, 涅槃, 心性调伏]

@@ -1,9 +1,9 @@
 ---
-id: "Dhp-21-24"
+id: "Dhp-290-359"
 title: "Dhp 290-359 杂品-地狱品-象品-爱欲品 (Pakiṇṇaka-Niraya-Nāga-Taṇhāvagga)"
 description: "法句经第21至24品，探讨了行为的复杂性、恶业的苦果、自我调御的重要性以及爱欲的束缚与解脱之道。"
-collection: "Dhammapada"
-vagga: "Pakiṇṇakavagga, Nirayavagga, Nāgavagga, Taṇhāvagga"
+collection: "Khuddaka Nikāya"
+vagga: "Dhammapadapāḷi"
 reference: "Dhp 21-24, 290-359"
 curator: "True-Dhamma.com"
 tags: [爱欲, 业报, 地狱, 自我调御, 解脱, 正念, 善友, 轮回, 杂品, 象品]

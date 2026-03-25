@@ -3,7 +3,7 @@ id: "SN-1-71-81"
 title: "SN 1.71-81 断品 (Chetvāvagga)"
 description: "本品记载了天人与佛陀之间关于断除烦恼、世间真相、智慧、信仰等主题的偈颂问答。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.71-81, 71-81"
 curator: "True-Dhamma.com"
 tags: [天人, 偈颂, 烦恼, 智慧, 信仰, 布施, 渴爱, 梵行]

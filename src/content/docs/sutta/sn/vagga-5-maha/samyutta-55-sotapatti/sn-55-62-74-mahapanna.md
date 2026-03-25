@@ -3,7 +3,7 @@ id: "SN-55-62-74"
 title: "SN 55.62-74 大慧品 (Mahāpaññavagga)"
 description: "佛陀教导亲近善人、听闻正法、如理作意、法随法行这四种法，能分别培育并证得十三种殊胜的智慧。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.62-74, 1058-1070"
 curator: "True-Dhamma.com"
 tags: [入流, 智慧, 四法, 听闻正法, 如理作意, 善人]

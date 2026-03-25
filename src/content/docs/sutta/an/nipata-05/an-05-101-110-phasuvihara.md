@@ -3,7 +3,7 @@ id: "AN-5-101-110"
 title: "AN 5.101-110 安稳住品 (Phāsuvihāravagga)"
 description: "本品包含十部经文，主要论述比丘如何获得无畏、安稳住的条件，以及区分恶比丘与具足戒定慧的真沙门。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.101-110"
 curator: "True-Dhamma.com"
 tags: [安稳住, 比丘, 戒律, 四静虑, 漏尽, 无畏, 恶比丘]

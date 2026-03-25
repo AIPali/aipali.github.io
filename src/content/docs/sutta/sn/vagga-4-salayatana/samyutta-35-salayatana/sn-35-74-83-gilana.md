@@ -3,8 +3,8 @@ id: "SN-35-74-83"
 title: "SN 35.74-83 病品 (Gilānavagga)"
 description: "本品包含十部经文，主要探讨了对待病患比丘的教导，以及通过观察六处无常、苦、无我来断除无明和渴爱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 74-83"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.74-83, 74-83"
 curator: "True-Dhamma.com"
 tags: [六处, 无常, 苦, 无我, 疾病, 无明, 涅槃]
 ---

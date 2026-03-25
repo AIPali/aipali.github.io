@@ -3,7 +3,7 @@ id: "SN-32"
 title: "SN 32 云相应 (Valāhakasaṃyutta)"
 description: "本相应探讨了云天的分类、众生因何种业力与愿力转生于云天，以及大自然各种天气变化与天人心愿之间的关联。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 32, 550-606"
 curator: "True-Dhamma.com"
 tags: [云相应, 天人, 业力, 布施, 愿力, 宇宙观, 缘起]

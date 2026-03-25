@@ -3,7 +3,7 @@ id: "DN-31"
 title: "DN 31 教授尸迦罗越经 (Siṅgālasutta)"
 description: "佛陀为在家居士尸迦罗越开示的一部重要经典，将传统的六方礼拜仪式，转化为涵盖个人品行、财富管理、人际关系与社会责任的完整道德准则，被誉为“在家律”。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 31, 242-274"
 curator: "True-Dhamma.com"
 tags: [在家律, 六方礼, 尸迦罗越, 人际关系, 善友恶友, 财富管理, 家庭伦理, 社会责任, 在家修行]

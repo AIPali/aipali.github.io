@@ -3,7 +3,7 @@ id: "SN-42"
 title: "SN 42 聚落主相应 (Gāmaṇisaṃyutta)"
 description: "包含了佛陀对各行各业的聚落主（村长或领袖）所作的开示，探讨了善恶业果、外道邪见、中道修行以及四无量心等重要议题。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 42, 353-365"
 curator: "True-Dhamma.com"
 tags: [聚落主, 业果, 四无量心, 邪见, 八正道, 戒律]

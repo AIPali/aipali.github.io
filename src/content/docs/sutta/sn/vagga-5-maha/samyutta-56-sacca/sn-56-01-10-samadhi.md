@@ -3,7 +3,7 @@ id: "SN-56-1-10"
 title: "SN 56.1-10 定品 (Samādhivagga)"
 description: "本品包含十部短经，佛陀教导比丘们通过修习三摩地与独处，以及避免无益的寻思与言谈，来如实了知四圣谛。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.1-10, 1071-1080"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 三摩地, 独处, 正语, 八正道, 缘起, 止观]

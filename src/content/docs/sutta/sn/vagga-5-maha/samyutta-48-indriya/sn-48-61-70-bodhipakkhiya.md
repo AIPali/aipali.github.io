@@ -3,7 +3,7 @@ id: "SN-48-61-70"
 title: "SN 48.61-70 觉分品 (Bodhipakkhiyavagga)"
 description: "阐述修习五根能断除结缚、拔除随眠、灭尽诸漏，并以四种神树为喻说明慧根在觉分法中最胜。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.61-70, 531-540"
 curator: "True-Dhamma.com"
 tags: [五根, 觉分, 结缚, 随眠, 漏尽, 慧根, 不还果]

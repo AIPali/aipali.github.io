@@ -3,7 +3,7 @@ id: "MN-125"
 title: "MN 125 调御地经 (Dantabhūmisutta)"
 description: "奢耶闍那王子质疑住在欲乐中能否证得心一境性。佛陀以调御野象为核心譬喻，详细阐述了出离的必要性，以及从持戒到四念住，再到四禅八定与最终解脱的系统修行次第。"
 collection: "Majjhima Nikāya"
-vagga: "Uparipaṇṇāsapāḷi, Suññatavagga"
+vagga: "Suññatavagga"
 reference: "MN 125, 213-222"
 curator: "True-Dhamma.com"
 tags: ["调御", "譬喻", "出离", "心一境性", "奢耶闍那", "五欲", "四念住", "禅定", "解脱次第"]

@@ -3,7 +3,7 @@ id: "AN-4-181-190"
 title: "AN 4.181-190 婆罗门品 (Brāhmaṇavagga)"
 description: "增支部四集第四品，包含战士喻、保证四法、见闻觉知、无畏死亡、婆罗门真谛等十部经文的深度教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.181-190"
 curator: "True-Dhamma.com"
 tags: [增支部, 四集, 婆罗门品, 战士喻, 四圣谛, 无常, 见闻觉知, 布萨]

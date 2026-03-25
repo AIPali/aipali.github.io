@@ -3,7 +3,7 @@ id: "DN-13"
 title: "DN 13 三明经 (Tevijjasutta)"
 description: "佛陀与两位婆罗门青年对话，通过譬喻揭示了三明婆罗门所宣扬的、与梵天合一的道路是基于臆想而非亲证。佛陀进而教导了通往梵天界的真正方法：修习慈、悲、喜、舍四无量心。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 13, 518-559"
 curator: "True-Dhamma.com"
 tags: [三明婆罗门, 梵天, 四无量心, 慈悲喜舍, 正道, 邪见, 譬喻, 婆悉吒, 跋罗陀皤阇]

@@ -3,7 +3,7 @@ id: "MN-72"
 title: "MN 72 婆蹉火喻经 (Aggivacchasutta)"
 description: "本经中，佛陀通过著名的“火的譬喻”，向游方者婆蹉解释了为何他不对“如来死后是否存在”等形而上学问题作出解答，并阐明了涅槃是超越存在与非存在概念的终极实相。"
 collection: "Majjhima Nikāya"
-vagga: "Paribbājakavagga"
+vagga: "Paribbājakavagga"
 reference: "MN 72, 187-192"
 curator: "True-Dhamma.com"
 tags: ["无记问", "邪见", "五蕴", "涅槃", "如来", "火喻", "婆蹉", "形而上学"]

@@ -3,7 +3,7 @@ id: "AN-3-11-20"
 title: "AN 3.11-20 车匠品 (Rathakāravagga)"
 description: "增支部三集车匠品，包含关于比丘的行为规范、法之尊贵、车匠的譬喻、以及经商与修行次第的教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.11-20"
 curator: "True-Dhamma.com"
 tags: [增支部, 三集, 车匠品, 转轮王, 三摩地, 戒定慧, 譬喻, 四圣谛]

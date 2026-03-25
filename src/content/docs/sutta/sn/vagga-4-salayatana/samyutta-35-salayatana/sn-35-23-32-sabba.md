@@ -3,8 +3,8 @@ id: "SN-35-1-3"
 title: "SN 35.23-32 一切品 (Sabbavagga)"
 description: "本品以著名的《一切经》为开端，深刻剖析了六处作为“一切”体验的边界，并探讨了如何正确认识、厌患、离欲并最终熄灭由六处引发的执取。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 23-32"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.23-32, 23-32"
 curator: "True-Dhamma.com"
 tags: [六处, 一切, 厌患, 离欲, 缘起, 涅槃, 燃烧, 计度]
 ---

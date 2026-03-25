@@ -3,7 +3,7 @@ id: "SN-46-51-56"
 title: "SN 46.51-56 觉支总摄品 (Sākacchavagga)"
 description: "本品探讨了五盖与七觉支的食与不食（生起的条件）、修习觉支的适当时机、四无量心与七觉支的结合，以及水钵的比喻。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.51-56, 232-237"
 curator: "True-Dhamma.com"
 tags: [五盖, 七觉支, 食与不食, 如理作意, 四无量心, 禅修]

@@ -1,9 +1,9 @@
 ---
-id: "DN-08"
+id: "DN-8"
 title: "DN 8 大狮子吼经 (Mahāsīhanādasutta)"
 description: "佛陀向裸体外道迦叶澄清关于苦行的误解，并开示何为真正的沙门与婆罗门，以及戒定慧的圆满。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 8, 381-405"
 curator: "True-Dhamma.com"
 tags: [苦行, 戒定慧, 四圣果, 狮子吼, 沙门, 外道]

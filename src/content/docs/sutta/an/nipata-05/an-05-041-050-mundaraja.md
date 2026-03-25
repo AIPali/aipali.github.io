@@ -3,7 +3,7 @@ id: "AN-5-41-50"
 title: "AN 5.41-50 文荼王品 (Muṇḍarājavagga)"
 description: "本品开示了财富的正确用途、可意五法、五种福德之流、五种圣财，以及凡夫与圣者面对生老病死等不可避免之事的区别。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.41-50"
 curator: "True-Dhamma.com"
 tags: [财富, 布施, 五法, 圣财, 老病死, 悲伤, 毒箭]

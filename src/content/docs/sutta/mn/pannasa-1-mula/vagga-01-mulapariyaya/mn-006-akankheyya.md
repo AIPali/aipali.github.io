@@ -1,5 +1,5 @@
 ---
-id: "MN-06"
+id: "MN-6"
 title: "MN 6 愿经 (Ākaṅkheyyasutta)"
 description: "佛陀教导比丘，若想实现从世间善愿到出世间圣果的任何一种愿望，其根本都在于持戒清净、内心寂静、不轻视禅那、具足观智，并乐于独处。"
 collection: "Majjhima Nikāya"

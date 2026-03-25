@@ -3,7 +3,7 @@ id: "SN-51-11-20"
 title: "SN 51.11-20 讲堂震动品 (Pāsādakampanavagga)"
 description: "本品详细教导了四神足的修习原理、具体指标以及由此产生的殊胜神通与漏尽解脱的果报。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.11-20, 823-832"
 curator: "True-Dhamma.com"
 tags: [四神足, 禅定, 神通, 三摩地, 漏尽, 四正断, 四圣果, 缘起]

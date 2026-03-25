@@ -3,7 +3,7 @@ id: "MN-131"
 title: "MN 131 贤善一夜经 (Bhaddekarattasutta)"
 description: "佛陀教导不应沉湎过去、不应幻想未来，而应以智慧观照当下的法，安住于每一个当下，这是过上“贤善一夜”的修行核心。"
 collection: "Majjhima Nikāya"
-vagga: "Vibhaṅgavagga"
+vagga: "Vibhaṅgavagga"
 reference: "MN 131, 272-275"
 curator: "True-Dhamma.com"
 tags: [贤善一夜, 活在当下, 五蕴, 时间, 正念, 毗婆舍那, 无我, 禅修]

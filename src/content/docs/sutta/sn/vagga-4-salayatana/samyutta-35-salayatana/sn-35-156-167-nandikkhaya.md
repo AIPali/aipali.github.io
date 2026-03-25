@@ -3,8 +3,8 @@ id: "SN-35-156-167"
 title: "SN 35.156-167 爱尽品 (Nandikkhayavagga)"
 description: "本品收录十二部经，教导比丘如何透过如理作意与修习三摩地，如实观察内外六处、识、触、受的无常、苦、无我，从而灭尽贪爱与邪见，证得解脱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 156-167"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.156-167, 156-167"
 curator: "True-Dhamma.com"
 tags: [六处, 无常, 苦, 无我, 三摩地, 贪爱, 邪见, 解脱]
 ---

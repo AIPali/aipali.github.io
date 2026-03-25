@@ -3,8 +3,8 @@ id: "SN-35-124-133"
 title: "SN 35.124-133 居士品 (Gahapativagga)"
 description: "阐释了六处与执取的关系、守护根门的重要性，以及如何通过不执取六尘而证得般涅槃。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 124-133"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.124-133, 124-133"
 curator: "True-Dhamma.com"
 tags: [六处, 守护根门, 执取, 般涅槃, 婆罗门]
 ---

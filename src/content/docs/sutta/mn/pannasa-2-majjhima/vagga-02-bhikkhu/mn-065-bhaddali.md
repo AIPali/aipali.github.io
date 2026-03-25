@@ -1,5 +1,5 @@
 ---
-id: "MN-065"
+id: "MN-65"
 title: "MN 65 跋陀利经 (Bhaddālisutta)"
 description: "佛陀教导不遵守学处的跋陀利比丘，阐明持戒的重要性，分析僧团惩治犯戒者的原则，并以驯马为喻，说明通往解脱的完整修行次第。"
 collection: "Majjhima Nikāya"

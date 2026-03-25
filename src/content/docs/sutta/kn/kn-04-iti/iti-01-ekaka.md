@@ -2,8 +2,8 @@
 id: "Iti-1"
 title: "Iti 1 一集 (Ekakanipāta)"
 description: "涵盖《如是语》第一集的27篇短经，系统阐述了贪、瞋、痴等一法的断除，以及如理作意、善友、修习慈心等单一善法的深远利益。"
-collection: "Itivuttaka"
-vagga: "Ekakanipāta"
+collection: "Khuddaka Nikāya"
+vagga: "Itivuttakapāḷi"
 reference: "Iti 1.1-27, 1-27"
 curator: "True-Dhamma.com"
 tags: [如是语, 贪瞋痴, 阿那含, 如理作意, 善友, 和合僧, 慈心, 布施]

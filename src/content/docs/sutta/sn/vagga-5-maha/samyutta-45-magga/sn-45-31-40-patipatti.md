@@ -3,8 +3,8 @@ id: "SN-45-31-40"
 title: "SN 45.31-40 行品 (Paṭipattivagga)"
 description: "本品包含十部短经，佛陀开示了正行与邪行，并重新定义了沙门法、婆罗门法与梵行及其最终目的。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
-reference: "SN 45. 31-40"
+vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
+reference: "SN 45.31-40, 31-40"
 curator: "True-Dhamma.com"
 tags: [八正道, 四圣果, 涅槃, 沙门, 婆罗门, 梵行]
 ---

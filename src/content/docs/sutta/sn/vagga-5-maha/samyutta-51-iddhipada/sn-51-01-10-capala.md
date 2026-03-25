@@ -3,7 +3,7 @@ id: "SN-51-1-10"
 title: "SN 51.1-10 遮婆罗品 (Cāpālavagga)"
 description: "本品收录十篇短经，详细开示了修习四神足对于趣向涅槃、证果的决定性作用，并记载了佛陀在遮婆罗塔宣告将取灭度的一段重要历史。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.1-10, 813-822"
 curator: "True-Dhamma.com"
 tags: [四神足, 涅槃, 阿罗汉, 漏尽, 遮婆罗塔, 魔王波旬, 般涅槃, 菩提分法]

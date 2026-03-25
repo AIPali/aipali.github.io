@@ -3,7 +3,7 @@ id: "SN-52"
 title: "SN 52 阿那律相应 (Anuruddhasaṃyutta)"
 description: "本相应收录了尊者阿那律关于四念住修习的开示，详述他如何通过四念住证得深广神通与殊胜智慧。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 52, 899-922"
 curator: "True-Dhamma.com"
 tags: [阿那律, 四念住, 神通, 天眼, 有学, 无学, 十力]

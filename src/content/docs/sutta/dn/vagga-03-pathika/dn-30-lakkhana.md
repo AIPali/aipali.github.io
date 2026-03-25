@@ -3,7 +3,7 @@ id: "DN-30"
 title: "DN 30 三十二相经 (Lakkhaṇasutta)"
 description: "本经详细阐述了佛陀作为“大人”（Mahāpurisa）所具备的三十二种殊胜身体相好，并逐一揭示了每一相好背后，是源于何种在过去生中所累积的特定善业。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 30, 198-241"
 curator: "True-Dhamma.com"
 tags: ["三十二相", "大人相", "业果", "福报", "转轮王", "佛陀", "善业", "过去生", "佛陀的特征"]

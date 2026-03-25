@@ -3,7 +3,7 @@ id: "DN-11"
 title: "DN 11 坚固经 (Kevaṭṭasutta)"
 description: "佛陀回应居士坚固请求展示神通的对话。经中，佛陀阐述了三种示导，并强调唯有“教诫示导”才是最高超的，最终通过一个比丘遍寻天界的故事，揭示了名色与四界在“无相之识”中灭尽的甚深法义。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 11, 481-500"
 curator: "True-Dhamma.com"
 tags: [神通, 示导, 教诫, 四界, 名色, 识, 涅槃, 那烂陀]

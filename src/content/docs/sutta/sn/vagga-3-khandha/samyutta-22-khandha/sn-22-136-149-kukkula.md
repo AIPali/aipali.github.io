@@ -3,8 +3,8 @@ id: "SN-22-136-149"
 title: "SN 22.136-149 热灰品 (Kukkuḷavagga)"
 description: "本品包含十四部短经，佛陀以“热灰（热灰）”喻五蕴，系统教导对五蕴无常、苦、无我之特性的如实观照，以断除欲求与贪染，实现解脱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.136-149"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.136-149, 136-149"
 curator: "True-Dhamma.com"
 tags: [五蕴, 热灰, 无常, 苦, 无我, 厌患, 遍知, 解脱]
 ---

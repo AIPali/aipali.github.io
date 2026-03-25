@@ -3,7 +3,7 @@ id: "SN-36"
 title: "SN 36 受相应 (Vedanāsaṃyutta)"
 description: "本相应系统地阐述了三受的本质、过患及出离，揭示了受与随眠、触的关联，以及修习四念住和禅那在断除受之执着中的作用。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 36, 249-279"
 curator: "True-Dhamma.com"
 tags: [受, 三受, 苦受, 乐受, 禅那, 触, 随眠, 四念住]

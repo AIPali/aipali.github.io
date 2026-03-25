@@ -3,7 +3,7 @@ id: "AN-1-98-381"
 title: "AN 1.98-381 五十经篇之三 (Tatiyapaṇṇāsaka)"
 description: "增支部一集第三个五十经篇，涵盖放逸与不放逸的果报、正法与非法的区分、佛陀第一弟子的头衔，以及邪见与正见的深远影响。"
 collection: "Aṅguttara Nikāya"
-vagga: "Ekakanipāta"
+vagga: "Ekakanipātapāḷi"
 reference: "AN 1.98-381"
 curator: "True-Dhamma.com"
 tags: [放逸, 善友, 恶友, 第一弟子, 邪见, 正见, 无有是处]

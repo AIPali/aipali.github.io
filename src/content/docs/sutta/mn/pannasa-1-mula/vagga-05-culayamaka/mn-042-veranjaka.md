@@ -3,7 +3,7 @@ id: "MN-42"
 title: "MN 42 毗兰若村婆罗门经 (Verañjakasutta)"
 description: "毗兰若村的婆罗门们向佛陀请教善恶业报的因缘。佛陀详细阐述了导致地狱和天界善趣的十不善业与十善业，并揭示了修行善法的更高目标——直至解脱涅槃。"
 collection: "Majjhima Nikāya"
-vagga: "Mūlapaṇṇāsapāḷi, Cūḷayamakavagga"
+vagga: "Cūḷayamakavagga"
 reference: "MN 42, 444-448"
 curator: "True-Dhamma.com"
 tags: ["业", "善恶", "十善业", "十不善业", "轮回", "解脱", "天界", "法行"]

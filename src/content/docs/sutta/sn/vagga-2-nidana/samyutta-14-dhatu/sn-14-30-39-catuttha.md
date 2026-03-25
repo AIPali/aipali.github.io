@@ -3,7 +3,7 @@ id: "SN-14-30-39"
 title: "SN 14.30-39 第四品 (Catutthavagga)"
 description: "本品包含十部短经，深入探讨了构成物质世界的四界（地、水、火、风）。佛陀教导，通过如实了知四界的悦乐、过患与出离，修行者能够断除贪爱，实现从苦中解脱，这正是成为真正沙门与婆罗门的标准。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.30-39, 114-123"
 curator: "True-Dhamma.com"
 tags: ["四界", "地水火风", "贪爱", "过患", "出离", "四圣谛", "解脱", "沙门", "婆罗门"]

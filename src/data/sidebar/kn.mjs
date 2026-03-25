@@ -5,13 +5,13 @@ export const sidebarKN =[
     label: 'Dhp 法句经 (Dhammapadapāḷi)',
     collapsed: true,
     items:[
-      { label: 'Dhp 1-32 双品-不放逸品 (Yamaka-Appamādavagga)', link: '/sutta/kn/kn-02-dhp/dhp-01-02-yamaka-appamada/' },
-      { label: 'Dhp 33-75 心品-华品-愚品 (Citta-Puppha-Bālavagga)', link: '/sutta/kn/kn-02-dhp/dhp-03-05-citta-puppha-bala/' },
-      { label: 'Dhp 76-128 贤品-阿罗汉品-千品-恶品 (Paṇḍita-Arahanta-Sahassa-Pāpavagga)', link: '/sutta/kn/kn-02-dhp/dhp-06-09-pandita-arahanta-sahassa-papa/' },
-      { label: 'Dhp 129-196 刀杖品-老品-自己品-世品-佛陀品 (Daṇḍa-Jarā-Atta-Loka-Buddhavagga)', link: '/sutta/kn/kn-02-dhp/dhp-10-14-danda-jara-atta-loka-buddha/' },
-      { label: 'Dhp 197-289 安乐品-爱好品-忿怒品-垢秽品-法住品-道品 (Sukha-Piya-Kodha-Mala-Dhammaṭṭha-Maggavagga)', link: '/sutta/kn/kn-02-dhp/dhp-15-20-sukha-piya-kodha-mala-dhammattha-magga/' },
-      { label: 'Dhp 290-359 杂品-地狱品-象品-爱欲品 (Pakiṇṇaka-Niraya-Nāga-Taṇhāvagga)', link: '/sutta/kn/kn-02-dhp/dhp-21-24-pakinnaka-niraya-naga-tanha/' },
-      { label: 'Dhp 360-423 比丘品-婆罗门品 (Bhikkhu-Brāhmaṇavagga)', link: '/sutta/kn/kn-02-dhp/dhp-25-26-bhikkhu-brahmana/' },
+      { label: 'Dhp 1-32 双品-不放逸品 (Yamaka-Appamādavagga)', link: '/sutta/kn/kn-02-dhp/dhp-001-032-yamaka-appamada/' },
+      { label: 'Dhp 33-75 心品-华品-愚品 (Citta-Puppha-Bālavagga)', link: '/sutta/kn/kn-02-dhp/dhp-033-075-citta-puppha-bala/' },
+      { label: 'Dhp 76-128 贤品-阿罗汉品-千品-恶品 (Paṇḍita-Arahanta-Sahassa-Pāpavagga)', link: '/sutta/kn/kn-02-dhp/dhp-076-128-pandita-arahanta-sahassa-papa/' },
+      { label: 'Dhp 129-196 刀杖品-老品-自己品-世品-佛陀品 (Daṇḍa-Jarā-Atta-Loka-Buddhavagga)', link: '/sutta/kn/kn-02-dhp/dhp-129-196-danda-jara-atta-loka-buddha/' },
+      { label: 'Dhp 197-289 安乐品-爱好品-忿怒品-垢秽品-法住品-道品 (Sukha-Piya-Kodha-Mala-Dhammaṭṭha-Maggavagga)', link: '/sutta/kn/kn-02-dhp/dhp-197-289-sukha-piya-kodha-mala-dhammattha-magga/' },
+      { label: 'Dhp 290-359 杂品-地狱品-象品-爱欲品 (Pakiṇṇaka-Niraya-Nāga-Taṇhāvagga)', link: '/sutta/kn/kn-02-dhp/dhp-290-359-pakinnaka-niraya-naga-tanha/' },
+      { label: 'Dhp 360-423 比丘品-婆罗门品 (Bhikkhu-Brāhmaṇavagga)', link: '/sutta/kn/kn-02-dhp/dhp-360-423-bhikkhu-brahmana/' },
     ]
   },
   {

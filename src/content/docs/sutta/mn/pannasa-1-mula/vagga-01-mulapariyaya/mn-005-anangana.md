@@ -1,5 +1,5 @@
 ---
-id: "MN-05"
+id: "MN-5"
 title: "MN 5 无秽经 (Anaṅgaṇasutta)"
 description: "尊者舍利弗阐述了四种人：有烦恼而不知、有烦恼而知、无烦恼而不知、无烦恼而知，并强调了自我觉察在修行中的关键作用。"
 collection: "Majjhima Nikāya"

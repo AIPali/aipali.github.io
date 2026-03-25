@@ -3,7 +3,7 @@ id: "SN-39"
 title: "SN 39 沙门达卡相应 (Sāmaṇḍakasaṃyutta)"
 description: "游行者沙门达卡向尊者舍利弗请教关于涅槃、阿罗汉果、八正道等核心法义，并探讨在法与律中何事最为艰难。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 39, 330-331"
 curator: "True-Dhamma.com"
 tags: [涅槃, 八正道, 舍利弗, 阿罗汉果, 有身, 漏烦恼, 出家]

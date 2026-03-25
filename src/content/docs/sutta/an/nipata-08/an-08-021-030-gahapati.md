@@ -3,7 +3,7 @@ id: "AN-8-21-30"
 title: "AN 8.21-30 居士品 (Gahapativagga)"
 description: "本品详述了郁伽、呵哆等杰出居士的希有功德，定义了优婆塞的自利利他标准，并教导了八无暇、八力以及阿那律尊者的八大人觉。"
 collection: "Aṅguttaranikāya"
-vagga: "Gahapativagga"
+vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.21-30"
 curator: "2 True-Dhamma.com"
 tags: [居士修行, 希有法, 四摄事, 八大人觉, 优婆塞, 八力, 八无暇]

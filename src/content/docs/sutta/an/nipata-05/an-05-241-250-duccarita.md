@@ -3,7 +3,7 @@ id: "AN-5-241-250"
 title: "AN 5.241-250 恶行品 (Duccaritavagga)"
 description: "本品讲述了身、语、意恶行与妙行的不同结果，并以坟场作喻说明不清净者的过患，最后指出了过度崇敬、迷信某个个人的五种危害。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.241-250"
 curator: "2 True-Dhamma.com"
 tags: [恶行, 妙行, 业果, 坟场喻, 依法不依人, 信仰]

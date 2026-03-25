@@ -3,7 +3,7 @@ id: "SN-56-51-60"
 title: "SN 56.51-60 现观品 (Abhisamayavagga)"
 description: "通过爪上尘土、湖池等一系列生动的譬喻，说明已证得入流果的圣者所断除的苦无量无边，鼓励人们精勤修习四圣谛。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.51-60, 1121-1130"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 现观, 入流果, 须陀洹, 轮回, 灭苦, 苦蕴, 修习]

@@ -3,7 +3,7 @@ id: "SN-1-21-30"
 title: "SN 1.21-30 剑品 (Sattivagga)"
 description: "本品通过天神与佛陀的对话，探讨了修行迫切性、业力反噬、解开烦恼结缚、调伏心念以及胜义谛与世俗谛的表达等深刻法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.21-30, 21-30"
 curator: "True-Dhamma.com"
 tags: [诸天, 修行迫切性, 业果, 烦恼结缚, 世俗谛, 胜义谛, 阿罗汉]

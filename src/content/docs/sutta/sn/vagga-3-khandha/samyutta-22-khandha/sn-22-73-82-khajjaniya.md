@@ -3,8 +3,8 @@ id: "SN-22-73-82"
 title: "SN 22.73-82 所食品 (Khajjanīyavagga)"
 description: "蕴相应所食品，包含对五取蕴的味、过患、出离、因缘及无我教导的十部经典。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.73-82"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.73-82, 73-82"
 curator: "True-Dhamma.com"
 tags: [五蕴, 执取, 无我, 缘起, 满月经, 乞食, 身份见]
 ---

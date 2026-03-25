@@ -2,8 +2,8 @@
 id: "Thig-13-16"
 title: "Thig 13-16 二十偈集至大偈集 (Vīsati-Mahānipāta)"
 description: "《长老尼偈》的最后部分，收录了庵婆波利、苏巴、伊悉达西、善慧等长老尼的感人偈颂。内容深刻探讨了色身无常、轮回之苦、业力法则以及为求解脱而展现的无畏决心。"
-collection: "Therīgāthā"
-vagga: ""
+collection: "Khuddaka Nikāya"
+vagga: "Therīgāthā"
 reference: "Thig 13-16, 252-524"
 curator: "True-Dhamma.com"
 tags: [长老尼偈, 庵婆波利, 苏巴, 伊悉达西, 善慧, 色身无常, 业力, 轮回, 出离心, 证悟]

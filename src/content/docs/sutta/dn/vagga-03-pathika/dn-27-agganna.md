@@ -3,7 +3,7 @@ id: "DN-27"
 title: "DN 27 起世因本经 (Aggaññasutta)"
 description: "佛陀通过讲述世界与社会的演化过程，破除了婆罗门教的种姓制度谬论，阐明了人的价值取决于行为而非出身，并确立了“法”的至高无上地位。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavaggapāḷi"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 27, 111-140"
 curator: "True-Dhamma.com"
 tags: [种姓制度, 世界起源, 社会演化, 婆罗门, 法, 平等, 众生, 佛陀]

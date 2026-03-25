@@ -3,7 +3,7 @@ id: "MN-102"
 title: "MN 102 五三经 (Pañcattayasutta)"
 description: "本经系统地剖析和驳斥了关于自我与世界在过去和未来的各种错误见解（邪见），并指出真正的解脱之道在于如实了知六触处的集、灭、味、患、出离，最终实现无执取的解脱。"
 collection: "Majjhima Nikāya"
-vagga: "Uparipaṇṇāsapāḷi, Devadahavagga"
+vagga: "Devadahavagga"
 reference: "MN 102, 21-33"
 curator: "True-Dhamma.com"
 tags: [邪见, 我见, 常见, 断见, 五蕴, 六触处, 涅槃, 出离, 形而上学, 哲学]

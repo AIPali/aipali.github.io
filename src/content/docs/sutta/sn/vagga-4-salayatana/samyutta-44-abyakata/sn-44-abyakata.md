@@ -3,7 +3,7 @@ id: "SN-44"
 title: "SN 44 无记说相应 (Abyākatasaṃyutta)"
 description: "本相应收录了关于“无记”的教导，深入探讨如来死后是否存在等形而上学问题，揭示佛陀超越戏论的究竟智慧。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 44, 410-420"
 curator: "True-Dhamma.com"
 tags: [无记, 十四无记, 戏论, 缘起, 五蕴, 涅槃, 如来]

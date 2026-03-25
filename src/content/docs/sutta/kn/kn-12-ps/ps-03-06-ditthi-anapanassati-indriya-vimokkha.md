@@ -2,8 +2,8 @@
 id: "Ps-3-6"
 title: "Ps 3-6 见论-入出息论-根论-解脱论 (Diṭṭhi-Ānāpānassati-Indriya-Vimokkha)"
 description: "详述邪见的种类与断除、入出息念十六胜行的实修智见、五根的修习，以及导向究竟解脱的三解脱门。"
-collection: "Paṭisambhidāmaggapāḷi"
-vagga: "Mahāvagga"
+collection: "Khuddaka Nikāya"
+vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 3-6, 122-230"
 curator: "3 True-Dhamma.com"
 tags: [无碍解道, 见, 邪见, 入出息念, 十六胜行, 五根, 三解脱门]

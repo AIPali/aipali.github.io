@@ -3,7 +3,7 @@ id: "SN-20"
 title: "SN 20 譬喻相应 (Opammasaṃyutta)"
 description: "佛陀通过生动的譬喻，揭示了无明、不放逸、慈心、正法衰落以及律仪生活的重要性。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 20, 223-234"
 curator: "True-Dhamma.com"
 tags: [譬喻, 慈心, 不放逸, 正法守护, 律仪, 相应部]

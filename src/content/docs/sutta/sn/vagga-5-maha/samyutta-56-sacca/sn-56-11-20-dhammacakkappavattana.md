@@ -3,7 +3,7 @@ id: "SN-56-11-20"
 title: "SN 56.11-20 转法轮品 (Dhammacakkappavattanavagga)"
 description: "包含了著名的初转法轮经，并对四圣谛的三转十二行相、受持、无明与明、以及四圣谛无量真实性等进行了系列核心开示。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.11-20, 1081-1090"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 转法轮, 中道, 八正道, 缘起, 智慧, 三转十二行相]

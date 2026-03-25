@@ -2,8 +2,8 @@
 id: "Miln-20-28"
 title: "Miln 20-28 譬喻篇 (Opammakathāpañha)"
 description: "弥兰王询问证悟阿罗汉果需要具备哪些品质，尊者龙军以超过一百种来自大自然的譬喻，生动地开示了修行者应当学习的德行。"
-collection: "Milindapañhapāḷi"
-vagga: "Opammakathāpañha"
+collection: "Khuddaka Nikāya"
+vagga: "Milindapañhapāḷi"
 reference: "Miln 20-28, 67"
 curator: "True-Dhamma.com"
 tags: [譬喻, 阿罗汉, 修行, 德行, 弥兰王, 龙军, 品质, 观察]

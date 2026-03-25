@@ -3,7 +3,7 @@ id: "SN-48-71-180"
 title: "SN 48.71-180 根广说集 (Indriyapeyyāla)"
 description: "以恒河、暴流等众多譬喻，广说修习五根的殊胜功德，阐明其依止远离、调伏贪欲、趣向涅槃的终极目的。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.71-180, 541-650"
 curator: "True-Dhamma.com"
 tags: [五根, 涅槃, 依止远离, 四念住, 结缚, 随眠]

@@ -3,8 +3,8 @@ id: "SN-22-43-52"
 title: "SN 22.43-52 自洲品 (Attadīpavagga)"
 description: "阐述以自己和法为洲岛，如实观察五蕴的无常、苦、无我，断除喜与贪而得解脱的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.43-52"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.43-52, 43-52"
 curator: "True-Dhamma.com"
 tags: [五蕴, 无常, 无我, 如理作意, 解脱, 自洲, 法洲, 有身]
 ---

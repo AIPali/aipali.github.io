@@ -3,7 +3,7 @@ id: "SN-55-21-30"
 title: "SN 55.21-30 百手品 (Saraṇānivagga)"
 description: "本品收录十部经文，探讨入流果的条件（四入流支）、对三宝的净信、戒德的持守，以及如何通过法义克服面对死亡的恐惧。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.21-30, 1017-1026"
 curator: "True-Dhamma.com"
 tags: [入流支, 入流果, 四不坏净, 摩诃男, 给孤独, 缘起]

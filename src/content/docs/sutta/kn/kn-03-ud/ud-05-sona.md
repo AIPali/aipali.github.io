@@ -1,9 +1,9 @@
 ---
-id: "Ud-05"
+id: "Ud-5"
 title: "Ud 5 苏那长老品 (Soṇavagga)"
 description: "自说经第五品，包含了帕塞那迪王关于爱己的感悟、善觉的证果、大海与佛法的八种奇妙比喻，以及苏那长老的出家等十部开示。"
 collection: "Khuddaka Nikāya"
-vagga: "Udāna"
+vagga: "Udānapāḷi"
 reference: "Ud 5.1-5.10"
 curator: "True-Dhamma.com"
 tags: [自说经, 爱己, 次第说法, 大海八喻, 波罗提木叉, 提婆达多]

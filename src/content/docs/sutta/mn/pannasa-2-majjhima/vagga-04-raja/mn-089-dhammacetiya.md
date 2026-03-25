@@ -1,5 +1,5 @@
 ---
-id: "MN-089"
+id: "MN-89"
 title: "MN 89 法庄严经 (Dhammacetiyasutta)"
 description: "拘萨罗国的波斯匿王拜访佛陀，并阐述了他基于亲身观察而对佛、法、僧三宝生起坚定信心的十大理由，佛陀对此表示赞叹。"
 collection: "Majjhima Nikāya"

@@ -2,8 +2,8 @@
 id: "Miln-1"
 title: "Miln 1 外篇 (Bāhirakathā)"
 description: "本篇交代了弥兰王与尊者龙军的宿世因缘、降生经历，以及他们为了佛法大辩论所作的种种准备与成长历程。"
-collection: "Milindapañhapāḷi"
-vagga: "Bāhirakathā"
+collection: "Khuddaka Nikāya"
+vagga: "Milindapañhapāḷi"
 reference: "Miln 1-2, 23"
 curator: "True-Dhamma.com"
 tags: [弥兰王, 龙军, 宿世因缘, 辩论, 佛法传承, 阿毗达摩]

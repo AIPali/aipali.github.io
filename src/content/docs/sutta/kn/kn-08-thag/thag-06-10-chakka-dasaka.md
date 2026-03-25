@@ -2,7 +2,8 @@
 id: "Thag-6-10"
 title: "Thag 6-10 六至十偈集 (Chakka-Dasakanipāta)"
 description: "《长老偈》的六偈集至十偈集，汇集了多位阿罗汉长老在证悟后所诵出的诗偈，展现了他们断除烦恼、调伏心性与清净修行的深刻体悟。"
-collection: "Theragāthāpāḷi"
+collection: "Khuddaka Nikāya"
+vagga: "Theragāthāpāḷi"
 reference: "Thag 6-10, 375-596"
 curator: "True-Dhamma.com"
 tags: [长老偈, 证悟, 阿罗汉, 禅修, 止观, 解脱, 涅槃, 心性调伏]

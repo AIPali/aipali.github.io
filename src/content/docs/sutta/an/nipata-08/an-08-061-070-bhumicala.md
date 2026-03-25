@@ -3,7 +3,7 @@ id: "AN-8-61-70"
 title: "AN 8.61-70 地震品 (Bhūmicālavagga)"
 description: "本品涵盖八种欲求、比丘的能力、略说法要、天眼智见的八个阶段、八胜处、八解脱、八种众以及八种地震的因缘等教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.61-70"
 curator: "2 True-Dhamma.com"
 tags: [八集, 欲求, 四神足, 慈悲喜舍, 四念住, 八胜处, 八解脱, 地震]

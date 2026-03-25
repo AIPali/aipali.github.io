@@ -3,7 +3,7 @@ id: "AN-3-124-133"
 title: "AN 3.124-133 拘尸那揭罗品 (Kusināravagga)"
 description: "包含了十部经文，涵盖比丘受用饮食的态度、僧团和睦、导师的差异以及断除愤怒的譬喻等教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.124-133"
 curator: "True-Dhamma.com"
 tags: [增支部, 拘尸那揭罗品, 饮食, 和睦, 导师, 愤怒, 阿那律, 舍利弗]

@@ -3,7 +3,7 @@ id: "SN-46-67-76"
 title: "SN 46.67-76 灭品 (Nirodhavagga)"
 description: "阐述修习不净想、死想、无常想、灭想等十种想与七觉支结合，能证得现世开悟或不还果，并带来极大果报与功德。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.67-76, 248-257"
 curator: "True-Dhamma.com"
 tags: [觉支相应, 十想, 不净想, 灭想, 七觉支, 大果报, 二果]

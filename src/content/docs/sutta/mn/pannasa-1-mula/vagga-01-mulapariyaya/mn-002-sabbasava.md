@@ -1,9 +1,9 @@
 ---
-id: "MN-02"
+id: "MN-2"
 title: "MN 2 一切漏经 (Sabbāsavasutta)"
 description: "佛陀教导了七种系统性的方法来断除一切烦恼（漏），包括通过正见、防护根门、受用、忍耐、回避、去除和修习七觉支。"
 collection: "Majjhima Nikāya"
-vagga: "Mūlapariyāyavagga"
+vagga: "Mūlapariyāyavagga"
 reference: "MN 2, 14-28"
 curator: "True-Dhamma.com"
 tags: [漏, 烦恼, 四圣谛, 如理作意, 七觉支, 六根, 四依, 忍耐, 修行方法, 解脱]

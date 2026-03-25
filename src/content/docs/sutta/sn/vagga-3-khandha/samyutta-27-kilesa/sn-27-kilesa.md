@@ -3,7 +3,7 @@ id: "SN-27"
 title: "SN 27 烦恼相应 (Kilesasaṃyutta)"
 description: "本相应系统地揭示了心在面对六内处、外境、识、触、受等身心现象时产生的欲贪即是“随烦恼”，并开示断除欲贪能令心趣向出离。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 27, 322-331"
 curator: "True-Dhamma.com"
 tags: [烦恼相应, 随烦恼, 欲贪, 出离, 六处, 五蕴, 胜智]

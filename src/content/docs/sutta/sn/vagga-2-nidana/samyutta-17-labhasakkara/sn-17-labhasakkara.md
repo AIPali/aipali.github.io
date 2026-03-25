@@ -3,7 +3,7 @@ id: "SN-17"
 title: "SN 17 利得与供养相应 (Lābhasakkārasaṃyutta)"
 description: "本相应集中阐述了利得、供养与名声（即世俗的名闻利养）对修行者的巨大危害，佛陀用一系列生动的譬喻，警告比丘们这些是证得涅槃的严重障碍。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 17, 157-187"
 curator: "True-Dhamma.com"
 tags: [名闻利养, 障碍, 譬喻, 提婆达多, 修行, 贪欲, 舍离]

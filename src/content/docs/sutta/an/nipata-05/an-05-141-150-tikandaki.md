@@ -3,7 +3,7 @@ id: "AN-5-141-150"
 title: "AN 5.141-150 底甘陀品 (Tikaṇḍakīvagga)"
 description: "本品收录了关于五种修道障碍、布施的正确心态、如何修习圣者神变、以及避免退失解脱状态等十部经典。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.141-150"
 curator: "2 True-Dhamma.com"
 tags: [五集, 增支部, 底甘陀品, 布施, 解脱, 戒律, 禅定, 漏烦恼]

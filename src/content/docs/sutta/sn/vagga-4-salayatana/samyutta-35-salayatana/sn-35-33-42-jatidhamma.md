@@ -3,8 +3,8 @@ id: "SN-35-33-42"
 title: "SN 35.33-42 生法品 (Jātidhammavagga)"
 description: "本品包含十部短经，佛陀教导“一切”皆具有生、老、病、死等十种必然法则，以此引导弟子生起厌离并证得解脱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 33-42"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.33-42, 33-42"
 curator: "True-Dhamma.com"
 tags: [六处, 生灭, 老病死, 厌离, 解脱, 无常]
 ---

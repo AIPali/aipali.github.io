@@ -3,7 +3,7 @@ id: "MN-124"
 title: "MN 124 薄拘罗经 (Bākulasutta)"
 description: "本经记录了薄拘罗尊者与他过去的友人、裸行者迦叶的对话。薄拘罗尊者以第一人称，详述了自己出家八十年来，在思想与行为上无与伦比的清净，从未生起任何不善念，也从未有过丝毫世俗的牵挂，展现了阿罗汉的崇高境界。"
 collection: "Majjhima Nikāya"
-vagga: "Uparipaṇṇāsapāḷi, Suññatavagga"
+vagga: "Suññatavagga"
 reference: "MN 124, 209-212"
 curator: "True-Dhamma.com"
 tags: ["薄拘罗", "阿罗汉", "梵行", "稀有法", "持戒", "清净", "涅槃", "出家"]

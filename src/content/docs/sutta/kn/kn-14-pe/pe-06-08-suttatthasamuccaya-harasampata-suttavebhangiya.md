@@ -3,7 +3,7 @@ id: "Pe-6-8"
 title: "Pe 6-8 经义-适用-经分 (Suttatthasamuccaya-Hārasampāta-Suttavebhaṅgiya)"
 description: "《三藏知津》第六至第八地，详细阐释经义集、理趣适用及契经分别，系统解构佛法核心名相与修行次第。"
 collection: "Khuddaka Nikāya"
-vagga: "Peṭakopadesapāḷi"
+vagga: "Peṭakopadesapāḷi"
 reference: "Pe 6-8, 60-120"
 curator: "True-Dhamma.com"
 tags: [三藏知津, 经义地, 适用地, 经分地, 五蕴, 缘起, 止观双运, 禅那]

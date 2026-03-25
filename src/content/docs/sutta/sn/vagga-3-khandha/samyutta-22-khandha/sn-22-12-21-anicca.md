@@ -3,8 +3,8 @@ id: "SN-22-12-21"
 title: "SN 22.12-21 无常品 (Aniccavagga)"
 description: "本品包含十部经，佛陀系统性地教导了五蕴的无常、苦、无我本质，以及其生起因缘的无常性。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.12-21"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.12-21, 12-21"
 curator: "True-Dhamma.com"
 tags: [五蕴, 无常, 苦, 无我, 缘起, 三法印]
 ---

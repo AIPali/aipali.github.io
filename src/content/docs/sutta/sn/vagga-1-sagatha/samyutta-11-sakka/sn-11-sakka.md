@@ -3,7 +3,7 @@ id: "SN-11"
 title: "SN 11 帝释相应 (Sakkasaṃyutta)"
 description: "本相应收录了以天帝释为核心的系列经文，通过天与阿修罗之战的隐喻，探讨了忍辱、善语、无嗔与礼敬三宝等修行主题。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 11, 247-271"
 curator: "True-Dhamma.com"
 tags: [天帝释, 阿修罗, 忍辱, 随念, 礼敬, 善语]

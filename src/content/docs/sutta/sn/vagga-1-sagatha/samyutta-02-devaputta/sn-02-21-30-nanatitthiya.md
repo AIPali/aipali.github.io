@@ -3,7 +3,7 @@ id: "SN-2-21-30"
 title: "SN 2.21-30 种种外道品 (Nānātitthiyavagga)"
 description: "本品收录了湿婆、差摩、世理、陶师等十位天子与佛陀的对话，探讨了结交善友、布施、四圣果、内心世界与外道邪见的区别等深刻法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devaputtasaṃyutta"
 reference: "SN 2.21-30, 102-111"
 curator: "True-Dhamma.com"
 tags: [善友, 布施, 梵行, 世界尽头, 舍利弗, 外道, 缘起]

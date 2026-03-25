@@ -1,9 +1,9 @@
 ---
-id: "AN-07-11-20"
+id: "AN-7-11-20"
 title: "AN 7.11-20 随眠品 (Anusayavagga)"
 description: "本品深入探讨了潜伏在内心的七种烦恼（随眠）、修行者的分类、以及通过观察无常、苦、无我来达到解脱的次第。"
 collection: "Aṅguttara Nikāya"
-vagga: "Anusayavagga"
+vagga: "Sattakanipātapāḷi"
 reference: "AN 7.11-20"
 curator: "2 True-Dhamma.com"
 tags: [随眠, 烦恼, 水喻, 七圣人, 无常, 涅槃, 梵行]

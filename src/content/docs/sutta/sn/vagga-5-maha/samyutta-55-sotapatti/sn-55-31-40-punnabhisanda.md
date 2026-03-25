@@ -3,7 +3,7 @@ id: "SN-55-31-40"
 title: "SN 55.31-40 福德润泽品 (Puññābhisandavagga)"
 description: "阐述四入流支作为福德润泽、天神之道，以及居士的各项成就标准与精进禅修的重要性。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.31-40, 1027-1036"
 curator: "True-Dhamma.com"
 tags: [入流支, 证净, 福德, 天道, 摩诃男, 精进, 三摩地]

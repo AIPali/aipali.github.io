@@ -3,7 +3,7 @@ id: "AN-5-221-230"
 title: "AN 5.221-230 长游行品 (Dīghacārikavagga)"
 description: "探讨比丘在游行、居住、饮食以及与在家众交往等方面的过患与功德，并指出了贪爱与执着的危害。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.221-230"
 curator: "2 True-Dhamma.com"
 tags: [长游行, 戒律, 在家众交往, 财富过患, 悭吝]

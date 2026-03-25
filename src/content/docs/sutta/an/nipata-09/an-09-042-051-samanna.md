@@ -3,7 +3,7 @@ id: "AN-9-42-51"
 title: "AN 9.42-51 沙门法品 (Sāmaññavagga)"
 description: "本品通过尊者阿难与尊者优陀夷的对话，深入探讨了从感官欲乐的“拥挤”状态，通过九个次第禅定，逐步达到涅槃“宽广空间”的解脱之道。同时，本品还详细定义了身证者、慧解脱者与俱解脱者这三类圣者的区别，并阐释了涅槃的不同层面。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Navakanipātapāḷi"
 reference: "AN 9.42-51"
 curator: "2 True-Dhamma.com"
 tags: [禅那, 无色界定, 九次第定, 拥挤, 空间, 涅槃, 身证, 慧解脱, 俱解脱, 阿难]

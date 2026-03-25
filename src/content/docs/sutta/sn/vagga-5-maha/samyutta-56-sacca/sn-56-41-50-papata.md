@@ -3,7 +3,7 @@ id: "SN-56-41-50"
 title: "SN 56.41-50 深险品 (Papātavagga)"
 description: "本品通过多种生动譬喻，阐述了四圣谛的重要性。指出未见四圣谛者将陷入轮回深渊与无明黑暗，而已见四圣谛的入流者，其剩余的苦已微乎其微。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.41-50, 1111-1120"
 curator: "True-Dhamma.com"
 tags: [四圣谛, 轮回, 譬喻, 盲龟浮木, 入流果, 修习, 苦灭]

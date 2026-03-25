@@ -3,7 +3,7 @@ id: "SN-5"
 title: "SN 5 比丘尼相应 (Bhikkhunīsaṃyutta)"
 description: "本相应记录了十位比丘尼在独处禅修时，如何运用智慧与三摩地，识破并击退魔王波旬扰乱的经过。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 5, 162-171"
 curator: "True-Dhamma.com"
 tags: [比丘尼, 魔王波旬, 智慧, 禅修, 缘起, 无我, 五蕴]

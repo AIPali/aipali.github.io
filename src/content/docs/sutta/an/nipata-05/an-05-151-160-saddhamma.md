@@ -3,7 +3,7 @@ id: "AN-5-151-160"
 title: "AN 5.151-160 正法品 (Saddhammavagga)"
 description: "本品探讨了听闻正法的态度、正法久住与忘失的因缘、对不同根基者说法的难易，以及说法的正确原则。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.151-160"
 curator: "2 True-Dhamma.com"
 tags: [正法, 听法, 忘失正法, 正法久住, 说法, 增支部]

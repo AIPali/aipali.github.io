@@ -3,7 +3,7 @@ id: "AN-8-41-50"
 title: "AN 8.41-50 布萨品 (Uposathavagga)"
 description: "本品讲述了在家居士如何通过受持八支布萨（八关斋戒）获得殊胜的世间与出世间果报，以及女性生天与获得今生后世胜福的条件。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.41-50"
 curator: "True-Dhamma.com"
 tags: [布萨, 八关斋戒, 功德, 天界, 在家修行, 优婆夷, 夫妻道, 戒德]

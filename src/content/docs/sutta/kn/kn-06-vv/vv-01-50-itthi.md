@@ -3,7 +3,7 @@ id: "Vv-1-50"
 title: "Vv 1-50 女天宫 (Itthivimāna)"
 description: "记载了女性在人间行各种微小善行，死后往生天界获得壮丽天宫与广大量福报的五十个生动故事。"
 collection: "Khuddaka Nikāya"
-vagga: "Itthivimāna"
+vagga: "Vimānavatthupāḷi"
 reference: "Vv 1-50, 1-856"
 curator: "True-Dhamma.com"
 tags: [天宫, 业果, 布施, 福德, 女神, 戒律, 随喜]

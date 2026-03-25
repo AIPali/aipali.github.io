@@ -3,7 +3,7 @@ id: "AN-4-41-50"
 title: "AN 4.41-50 赤马品 (Rohitassavagga)"
 description: "本品收录增支部四集第四十一至五十经，探讨了四种修定功德、四种回答方式、对待正法与利养的态度、世界的边界、四种颠倒想及修行者的障蔽等法义。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.41-50"
 curator: "True-Dhamma.com"
 tags: [修定, 赤马天子, 四颠倒想, 名闻利养, 正法, 缘起]

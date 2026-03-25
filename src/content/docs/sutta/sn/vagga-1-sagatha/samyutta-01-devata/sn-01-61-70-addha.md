@@ -3,7 +3,7 @@ id: "SN-1-61-70"
 title: "SN 1.61-70 胜品 (Addhavagga)"
 description: "天神与佛陀关于是什么支配、系缚和逼迫世间，以及如何断除系缚、证得解脱的系列精要问答。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.61-70, 61-70"
 curator: "True-Dhamma.com"
 tags: [世间, 缘起, 心, 渴爱, 涅槃, 六处]

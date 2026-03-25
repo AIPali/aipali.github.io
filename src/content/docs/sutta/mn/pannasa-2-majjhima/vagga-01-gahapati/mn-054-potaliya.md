@@ -1,5 +1,5 @@
 ---
-id: "MN-054"
+id: "MN-54"
 title: "MN 54 哺多利经 (Potaliyasutta)"
 description: "居士哺多利认为舍弃财产就是断绝俗务，佛陀通过八项圣者的行为准则和七个关于感官欲望危险的譬喻，阐明了真正的断绝俗务是内心的净化与解脱。"
 collection: "Majjhima Nikāya"

@@ -3,7 +3,7 @@ id: "SN-47-41-50"
 title: "SN 47.41-50 不死品 (Amatavagga)"
 description: "本品包含十部短经，深入阐述了四念住作为通向不死、断除漏烦恼、超越苦忧的唯一道路，并强调了戒律作为修习前提的重要性。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.41-50, 407-416"
 curator: "True-Dhamma.com"
 tags: [四念住, 不死, 一乘道, 缘起, 波罗提木叉, 漏烦恼]

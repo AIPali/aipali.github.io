@@ -1,9 +1,9 @@
 ---
-id: "AN-03-134-146"
+id: "AN-3-134-146"
 title: "AN 3.134-146 战士品 (Yodhājīvavagga)"
 description: "本品包含十三部经文，以战士、集会、良马等譬喻，开示了修行者的特质、四圣谛与三法印的核心法义，以及迈向究竟解脱的修学次第。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.134-146"
 curator: "True-Dhamma.com"
 tags: [战士品, 三法印, 五蕴, 四圣谛, 神通示导, 业力, 缘起]

@@ -3,7 +3,7 @@ id: "MN-71"
 title: "MN 71 婆蹉三明经 (Tevijjavacchasutta)"
 description: "游方者婆蹉向佛陀求证关于“佛是一切知者”的传言。佛陀澄清了这一误解，指出他所证得的是导向解脱的三种究竟智慧（三明），而非世俗意义上的无所不知。"
 collection: "Majjhima Nikāya"
-vagga: "Paribbājakavagga"
+vagga: "Paribbājakavagga"
 reference: "MN 71, 185-186"
 curator: "True-Dhamma.com"
 tags: ["三明", "一切知", "宿命通", "天眼通", "漏尽通", "外道", "在家", "升天", "婆蹉"]

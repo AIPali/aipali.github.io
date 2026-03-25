@@ -3,8 +3,8 @@ id: "SN-45-41-181"
 title: "SN 45.41-181 道广说集 (Maggapeyyāla)"
 description: "道相应中涉及异学、太阳、一法、恒河、不放逸、力、寻求与暴流等各种譬喻的广说经文系列。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
-reference: "SN 45. 41-181"
+vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
+reference: "SN 45.41-181, 41-181"
 curator: "True-Dhamma.com"
 tags: [八正道, 广说, 涅槃, 譬喻, 漏, 随眠, 结缚, 四念住]
 ---

@@ -3,7 +3,7 @@ id: "MN-31"
 title: "MN 31 牛角林小经 (Cūḷagosiṅgasutta)"
 description: "本经描绘了三位尊者阿那律、难提、金毗罗在牛角林中和合共住、精进修行的典范，最终证得阿罗汉果，并受到天人赞叹。"
 collection: "Majjhima Nikāya"
-vagga: "Mahāyamakavagga"
+vagga: "Mahāyamakavagga"
 reference: "MN 31, 325-331"
 curator: "True-Dhamma.com"
 tags: ["僧团和合", "六和敬", "阿那律", "禅那", "解脱", "慈心", "精进修行", "天人赞叹"]

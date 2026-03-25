@@ -1,5 +1,5 @@
 ---
-id: "MN-08"
+id: "MN-8"
 title: "MN 8 削减经 (Sallekhasutta)"
 description: "本经阐明了“削减烦恼”的真正含义，指出它并非指获得禅定，而是指系统地对治四十四种不善法，是导向涅槃的直接道路。"
 collection: "Majjhima Nikāya"

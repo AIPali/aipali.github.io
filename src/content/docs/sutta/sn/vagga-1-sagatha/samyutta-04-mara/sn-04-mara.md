@@ -3,7 +3,7 @@ id: "SN-4"
 title: "SN 4 魔罗相应 (Mārasaṃyutta)"
 description: "本相应收录了佛陀及弟子们面对魔王波旬的种种诱惑、恐吓与扰乱，并以智慧将其彻底击退的生动事迹。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 4, 137-161"
 curator: "True-Dhamma.com"
 tags: [魔王波旬, 禅修, 诱惑, 恐惧, 智慧, 无执]

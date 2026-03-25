@@ -3,7 +3,7 @@ id: "SN-38"
 title: "SN 38 阎浮车相应 (Jambukhādakasaṃyutta)"
 description: "阎浮车普行沙门与舍利弗尊者之间关于涅槃、阿罗汉、法语者、漏烦恼、无明等核心教理的问答录。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 38, 314-329"
 curator: "True-Dhamma.com"
 tags: [阎浮车, 舍利弗, 涅槃, 阿罗汉, 八正道, 四圣谛, 五取蕴]

@@ -3,7 +3,7 @@ id: "AN-5-51-60"
 title: "AN 5.51-60 盖品 (Nīvaraṇavagga)"
 description: "本品收录了增支部五集中的十部经，围绕五盖的过患、五种精勤支、五种修行的时机、在家众繁荣之道以及日常省思等主题展开教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.51-60"
 curator: "True-Dhamma.com"
 tags: [五盖, 精勤, 梵行, 障碍, 戒律, 五处省思]

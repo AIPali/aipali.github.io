@@ -3,7 +3,7 @@ id: "DN-24"
 title: "DN 24 波梨经 (Pāthikasutta)"
 description: "本经记录了比丘善宿因不满佛陀未示现神通、未解说世界起源而退出僧团的事件。佛陀通过三个实例反驳其指控，并阐明了关于世界起源的正见，揭示了修行的真正目的在于解脱，而非满足于神通与玄想。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavaggapāḷi"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 24, 1-48"
 curator: "True-Dhamma.com"
 tags: [善宿, 神通, 世界起源, 邪见, 外道, 狮子吼, 梵天, 波梨子, 佛陀的教导]

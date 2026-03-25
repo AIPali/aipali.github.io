@@ -1,9 +1,9 @@
 ---
-id: "AN-04-051-060"
+id: "AN-4-51-60"
 title: "AN 4.51-60 福生品 (Puññābhisandavagga)"
 description: "本品收录增支部四集第五十一至六十经，主要探讨能够生起无量福报的四种供养、四种不坏信，以及夫妻同修共住的四种模式和布施食物的深层意义。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.51-60"
 curator: "True-Dhamma.com"
 tags: [福报, 供养, 不坏信, 夫妻同修, 戒行, 缘起]

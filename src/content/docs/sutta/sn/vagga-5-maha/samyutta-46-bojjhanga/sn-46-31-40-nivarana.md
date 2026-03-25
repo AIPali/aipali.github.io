@@ -3,7 +3,7 @@ id: "SN-46-31-40"
 title: "SN 46.31-40 盖品 (Nīvaraṇavagga)"
 description: "探讨五盖作为心的杂染与阻碍，以及七觉支作为破除无明、导向涅槃的修习方法。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.31-40, 212-221"
 curator: "True-Dhamma.com"
 tags: [七觉支, 五盖, 如理作意, 不放逸, 随烦恼, 涅槃]

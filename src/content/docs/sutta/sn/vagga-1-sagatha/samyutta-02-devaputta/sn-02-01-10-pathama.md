@@ -3,7 +3,7 @@ id: "SN-2-1-10"
 title: "SN 2.1-10 第一品 (Paṭhamavagga)"
 description: "天子相应第一品，收录了诸天子在黎明时分拜访佛陀，探讨修行、斩断烦恼、精进与皈依等主题的十篇经文。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi, Devaputtasaṃyutta"
 reference: "SN 2.1-10, 82-91"
 curator: "True-Dhamma.com"
 tags: [天子, 禅定, 烦恼, 皈依, 精进, 漏尽]

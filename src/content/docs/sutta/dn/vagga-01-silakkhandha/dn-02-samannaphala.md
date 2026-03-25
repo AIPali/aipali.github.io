@@ -1,9 +1,9 @@
 ---
-id: "DN-02"
+id: "DN-2"
 title: "DN 2 沙门果经 (Sāmaññaphalasutta)"
 description: "阿阇世王向佛陀请教出家修行的现世果报，佛陀详细开示了从持戒、禅定到证得漏尽智（四圣果）的完整修行次第。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 2, 150-253"
 curator: "True-Dhamma.com"
 tags: [沙门果, 现世果报, 六师外道, 戒定慧, 三摩地, 漏尽智]

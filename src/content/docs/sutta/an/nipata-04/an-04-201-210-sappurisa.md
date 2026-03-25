@@ -1,9 +1,9 @@
 ---
-id: "AN-04-201-210"
+id: "AN-4-201-210"
 title: "AN 4.201-210 善士品 (Sappurisavagga)"
 description: "佛陀通过五戒、十善业、八正道等标准，教导如何区分善士与不善士，并鼓励弟子不仅自修善法，还要劝导他人。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.201-210"
 curator: "True-Dhamma.com"
 tags: [十善业, 十不善业, 善士, 不善士, 戒律, 业, 八正道, 十圣道]

@@ -3,7 +3,7 @@ id: "SN-34"
 title: "SN 34 禅定相应 (Jhānasaṃyutta)"
 description: "阐述禅修者在三摩地、入定、住定、出定等十一种禅定技巧上的组合与善巧差异。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 34, 662-716"
 curator: "True-Dhamma.com"
 tags: [禅定, 三摩地, 入定, 住定, 善巧, 四类修定者]

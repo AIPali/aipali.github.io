@@ -2,8 +2,8 @@
 id: "Snp-2"
 title: "Snp 2 小品 (Cūḷavagga)"
 description: "《经集》第二品，涵盖了《三宝经》、《吉祥经》、《如法经》等初期佛教极为重要的教典，指导僧俗二众的清净行持。"
-collection: "Suttanipāta"
-vagga: "Cūḷavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Suttanipāta"
 reference: "Snp 13-26, 224-406"
 curator: "2 True-Dhamma.com"
 tags: [三宝, 吉祥, 戒律, 护卫经, 梵行, 在家修行, 经集]

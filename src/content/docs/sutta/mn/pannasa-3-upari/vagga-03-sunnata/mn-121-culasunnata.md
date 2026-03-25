@@ -3,7 +3,7 @@ id: "MN-121"
 title: "MN 121 空性小经 (Cūḷasuññatasutta)"
 description: "佛陀向阿难尊者详细阐述了“空住”的修行次第。此法门通过逐层舍弃粗显的想，从林想、地想，到四无色界定，再到无相心定，最终证得烦恼漏尽的无上、清净之空。"
 collection: "Majjhima Nikāya"
-vagga: "Suññatavagga"
+vagga: "Suññatavagga"
 reference: "MN 121, 176-184"
 curator: "True-Dhamma.com"
 tags: ["空性", "禅修", "四无色定", "无相心三昧", "阿难", "解脱", "漏尽", "次第修行", "奢摩他", "毗婆舍那"]

@@ -1,9 +1,9 @@
 ---
-id: "AN-04-61-70"
+id: "AN-4-61-70"
 title: "AN 4.61-70 适切业品 (Pattakammavagga)"
 description: "本品探讨了在家众的财富观、世俗安乐的来源、对父母与三宝的供养，以及统治者的道德如何深刻影响社会与自然界。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.61-70"
 curator: "True-Dhamma.com"
 tags: [财富, 在家修行, 孝道, 慈心, 业果, 社会道德, 四正断, 护卫诵]

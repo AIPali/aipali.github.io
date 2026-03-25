@@ -3,7 +3,7 @@ id: "SN-55-1-10"
 title: "SN 55.1-10 竹门村品 (Veḷudvāravagga)"
 description: "关于入流果（须陀洹）的判定标准、四入流支、法镜以及在家居士如何修行的系列经文。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.1-10, 997-1006"
 curator: "True-Dhamma.com"
 tags: [入流果, 须陀洹, 四入流支, 戒定慧, 法镜, 居士修行, 缘起]

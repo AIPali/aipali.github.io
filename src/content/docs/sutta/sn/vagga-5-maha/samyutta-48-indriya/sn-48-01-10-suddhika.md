@@ -1,9 +1,9 @@
 ---
-id: "SN-48-01-10"
+id: "SN-48-1-10"
 title: "SN 48.1-10 清净品 (Suddhikavagga)"
 description: "本品详细解说了信、精进、念、定、慧五根的定义、观察方法，以及修习五根与证得入流果、阿罗汉果的深刻关联。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.1-10, 471-480"
 curator: "True-Dhamma.com"
 tags: [五根, 三十七道品, 入流果, 阿罗汉, 四圣谛, 缘起]

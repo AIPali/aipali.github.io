@@ -3,7 +3,7 @@ id: "SN-31"
 title: "SN 31 乾达婆相应 (Gandhabbakāyasaṃyutta)"
 description: "关于乾达婆天（香神）的种类，以及众生因何种善行、发愿与布施而往生该天界的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 31, 438-549"
 curator: "True-Dhamma.com"
 tags: [乾达婆, 天界, 业果, 布施, 发愿, 善行, 十种布施]

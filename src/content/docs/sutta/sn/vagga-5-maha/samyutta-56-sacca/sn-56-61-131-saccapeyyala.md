@@ -3,7 +3,7 @@ id: "SN-56-61-131"
 title: "SN 56.61-131 谛广说集 (Saccapeyyāla)"
 description: "本集通过指甲上的微尘与大地之土的生动譬喻，广泛开示了众生能生善趣、得人身、持守戒律的概率极其微小，警示比丘当勤修四圣谛。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.61-131, 1131-1201"
 curator: "True-Dhamma.com"
 tags:  [四圣谛, 盲龟浮木, 戒律, 五趣, 广说, 人身难得]

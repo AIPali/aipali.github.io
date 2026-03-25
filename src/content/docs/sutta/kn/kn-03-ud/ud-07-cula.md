@@ -1,9 +1,9 @@
 ---
-id: "Ud-07"
+id: "Ud-7"
 title: "Ud 7 小品 (Cūḷavagga)"
 description: "自说经第七品，收录了佛陀对拉昆达卡·跋提尊者、阿若·憍陈如尊者等人的证果感叹，以及关于爱欲执著、水井神变等十部短经。"
 collection: "Khuddaka Nikāya"
-vagga: "Udāna"
+vagga: "Udānapāḷi"
 reference: "Ud 7.1-7.10"
 curator: "True-Dhamma.com"
 tags: [自说经, 拉昆达卡·跋提, 爱欲, 解脱, 大迦旃延, 优填王]

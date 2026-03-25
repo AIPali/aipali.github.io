@@ -1,9 +1,9 @@
 ---
-id: "Ud-06"
+id: "Ud-6"
 title: "Ud 6 生盲品 (Jaccandhavagga)"
 description: "自说经第六品，包含了佛陀舍弃寿行、国王辨别阿罗汉的条件、著名的盲人摸象譬喻，以及对各种外道邪见的破斥等十部开示。"
 collection: "Khuddaka Nikāya"
-vagga: "Udāna"
+vagga: "Udānapāḷi"
 reference: "Ud 6.1-6.10"
 curator: "True-Dhamma.com"
 tags: [自说经, 盲人摸象, 舍寿, 邪见, 阿罗汉, 般涅槃]

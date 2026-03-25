@@ -3,7 +3,7 @@ id: "SN-48-11-20"
 title: "SN 48.11-20 钝根品 (Mudutaravagga)"
 description: "本品详细阐述了信、精进、念、定、慧五根的定义，并揭示了五根的利钝程度如何决定修行者不同的觉悟果位。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.11-20, 481-490"
 curator: "True-Dhamma.com"
 tags: [五根, 圣者位阶, 四向四果, 漏尽, 阿罗汉, 不还者, 菩提分法]

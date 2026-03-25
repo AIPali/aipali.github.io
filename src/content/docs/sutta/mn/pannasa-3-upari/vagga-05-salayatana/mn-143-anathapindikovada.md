@@ -3,7 +3,7 @@ id: "MN-143"
 title: "MN 143 教给孤独经 (Anāthapiṇḍikovādasutta)"
 description: "本经记录了智慧第一的舍利弗尊者，在佛陀的大护法给孤独长者临终前，给予他关于“不执取”的深刻教导，最终使其安详离世并重生为天人。"
 collection: "Majjhima Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavagga"
 reference: "MN 143, 383-388"
 curator: "True-Dhamma.com"
 tags: [给孤独, 舍利弗, 临终教诲, 六处, 不执取, 智慧, 天人, 祇树给孤独园, 缘起, 五蕴]

@@ -3,7 +3,7 @@ id: "DN-12"
 title: "DN 12 罗希伽经 (Lohiccasutta)"
 description: "佛陀破除婆罗门罗希伽‘证法后不应教人’的自私邪见，并阐述了三种应受指责与一种不应受指责的导师之区别。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 12, 501-517"
 curator: "True-Dhamma.com"
 tags: [邪见, 导师, 法布施, 贪婪, 四圣果, 罗希伽, 责任]

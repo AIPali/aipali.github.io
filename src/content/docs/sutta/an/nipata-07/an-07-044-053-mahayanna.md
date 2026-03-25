@@ -3,7 +3,7 @@ id: "AN-7-44-53"
 title: "AN 7.44-53 大供牺品 (Mahāyaññavagga)"
 description: "本品收录《增支部》七集中的十部经典，探讨了七识住、七定资粮、内外诸火的区别、七想修习、远离婬欲偶合、布施的果报以及难陀母的七种稀有未曾有法。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Sattakanipātapāḷi"
 reference: "AN 7.44-53"
 curator: "2 True-Dhamma.com"
 tags: [七识住, 定资粮, 供火, 祭祀, 七想, 梵行, 婬欲偶合, 布施, 难陀母, 稀有未曾有法]

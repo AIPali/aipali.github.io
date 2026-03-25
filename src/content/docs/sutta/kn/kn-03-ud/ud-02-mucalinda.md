@@ -1,9 +1,9 @@
 ---
-id: "Ud-02"
+id: "Ud-2"
 title: "Ud 2 目真邻陀品 (Mucalindavagga)"
 description: "自说经第二品，记载世尊受龙王保护、关于真正的快乐、因果业报以及超越世俗羁绊等十部开示。"
-collection: "Udāna"
-vagga: "Mucalindavagga"
+collection: "Khuddaka Nikāya"
+vagga: "Udānapāḷi"
 reference: "Ud 2.1-2.10"
 curator: "True-Dhamma.com"
 tags: [自说经, 目真邻陀, 快乐, 业报, 圣默然, 须婆婆沙]

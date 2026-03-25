@@ -3,8 +3,8 @@ id: "SN-16"
 title: "SN 16 迦叶相应 (Kassapasaṃyutta)"
 description: "本相应记录了世尊与大迦叶尊者之间的对话，涵盖了少欲知足、头陀行、教诫比丘、神通境界及像法时代正法衰退等重要主题。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 16.1-13, 144-156"
+vagga: "Nidānavaggasaṃyuttapāḷi"
+reference: "SN 16, 144-156"
 curator: "True-Dhamma.com"
 tags: [大迦叶, 头陀行, 少欲知足, 像法, 神通, 僧团管理, 缘起]
 ---

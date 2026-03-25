@@ -1,9 +1,9 @@
 ---
-id: "DN-07"
+id: "DN-7"
 title: "DN 7 阇利经 (Jāliyasutta)"
 description: "本经探讨了“生命与身体是一还是异”的形而上学问题，佛陀通过教导戒定慧的修道次第，引导提问者超越这种无益的二元对立思辨。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 7, 378-380"
 curator: "True-Dhamma.com"
 tags: [命与身, 十四无记, 禅那, 四沙门果, 缘起, 超越戏论]

@@ -3,8 +3,8 @@ id: "SN-12-21-30"
 title: "SN 12.21-30 十力品 (Dasabalavagga)"
 description: "本品围绕佛陀的十力、十二缘起的详尽开示、漏尽的渐次缘起结构，以及对各种外道邪见的破斥展开。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.21-30"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.21-30, 21-30"
 curator: "True-Dhamma.com"
 tags: [十二缘起, 十力, 漏烦恼, 异学者, 苦的成因, 甘露门]
 ---

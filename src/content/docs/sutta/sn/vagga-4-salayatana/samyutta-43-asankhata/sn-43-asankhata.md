@@ -3,7 +3,7 @@ id: "SN-43"
 title: "SN 43 无为相应 (Asaṅkhatasaṃyutta)"
 description: "佛陀关于无为法（涅槃）及其通达之道的系列教导，详述了三十三种道品及三十种涅槃的同义词。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 43, 366-409"
 curator: "True-Dhamma.com"
 tags: [无为, 涅槃, 止观, 三摩地, 念住, 菩提分, 八正道, 缘起]

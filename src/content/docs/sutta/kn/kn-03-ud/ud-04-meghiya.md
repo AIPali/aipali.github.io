@@ -1,9 +1,9 @@
 ---
-id: "Ud-04"
+id: "Ud-4"
 title: "Ud 4 弥醯品 (Meghiyavagga)"
 description: "自说经第四品，收录了对弥醯尊者的重要禅修教导、大象与佛陀的独处之乐、外道杀孙陀利女毁谤僧团等十部开示。"
 collection: "Khuddaka Nikāya"
-vagga: "Udāna"
+vagga: "Udānapāḷi"
 reference: "Ud 4.1-4.10"
 curator: "True-Dhamma.com"
 tags: [自说经, 弥醯, 善友, 禅修, 孙陀利女, 舍利弗, 独处]

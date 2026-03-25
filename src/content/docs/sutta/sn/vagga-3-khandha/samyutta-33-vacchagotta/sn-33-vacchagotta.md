@@ -3,7 +3,7 @@ id: "SN-33"
 title: "SN 33 婆磋相应 (Vacchagottasaṃyutta)"
 description: "佛陀向游方僧婆磋开示，世间关于宇宙、生命与死后的十种形而上学邪见，皆源于对五蕴的无知与不了悟。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
+vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 33, 607-661"
 curator: "True-Dhamma.com"
 tags: [婆磋, 五蕴, 邪见, 无明, 缘起, 十无记]

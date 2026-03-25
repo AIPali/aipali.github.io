@@ -3,7 +3,7 @@ id: "SN-7"
 title: "SN 7 婆罗门相应 (Brāhmaṇasaṃyutta)"
 description: "本相应记录了佛陀与各类婆罗门的对话，展现了佛陀如何以智慧和慈悲化解婆罗门的傲慢、非难与邪见，引导他们走向正法。"
 collection: "Saṃyutta Nikāya"
-vagga: "Sagāthāvagga"
+vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 7, 187-208"
 curator: "True-Dhamma.com"
 tags: [婆罗门, 供养, 嗔恚, 阿罗汉, 优婆塞, 皈依]

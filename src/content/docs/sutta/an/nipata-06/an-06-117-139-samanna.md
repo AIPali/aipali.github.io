@@ -3,7 +3,7 @@ id: "AN-6-117-139"
 title: "AN 6.117-139 沙门法品 (Sāmaññavagga)"
 description: "本品开示了妨碍修习四念住的六种不良习惯，以及在家居士通过具足六法（四不坏信、圣智与圣解脱）亲证涅槃的教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Chakkanipātapāḷi"
 reference: "AN 6.117-139"
 curator: "2 True-Dhamma.com"
 tags: [四念住, 观身, 观法, 居士, 证净, 涅槃]

@@ -3,8 +3,8 @@ id: "SN-35-114-123"
 title: "SN 35.114-123 世间欲类品 (Lokakāmaguṇavagga)"
 description: "包含了十部经文，探讨了五欲、六处、魔的系缚、世间的尽头、如何守护诸根，以及佛陀对罗睺罗和阿难的重要教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 114-123"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.114-123, 114-123"
 curator: "True-Dhamma.com"
 tags: [六处, 结缚, 执取, 守护诸根, 罗睺罗, 阿难, 缘起]
 ---

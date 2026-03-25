@@ -3,8 +3,8 @@ id: "SN-21"
 title: "SN 21 比丘相应 (Bhikkhusaṃyutta)"
 description: "本相应收录了十二部与比丘相关的经文，探讨了诸大圣弟子的禅定境界、独住的真谛、勤加精进的标准以及佛陀对他们的教导与赞叹。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 21.1-12, 235-246"
+vagga: "Nidānavaggasaṃyuttapāḷi"
+reference: "SN 21, 235-246"
 curator: "True-Dhamma.com"
 tags: [比丘, 圣默然, 禅定, 阿罗汉果, 独住]
 ---

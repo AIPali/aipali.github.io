@@ -3,8 +3,8 @@ id: "SN-35-1-12"
 title: "SN 35.1-12 无常品 (Aniccavagga)"
 description: "佛陀在此系统教导了内六处与外六处在过去、现在、未来三世中皆是无常、苦、无我的深刻法义。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavagga"
-reference: "SN 35. 1-12"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+reference: "SN 35.1-12, 1-12"
 curator: "True-Dhamma.com"
 tags: [六处, 无常, 苦, 无我, 厌离, 解脱]
 ---

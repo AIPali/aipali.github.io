@@ -3,7 +3,7 @@ id: "SN-46-1-10"
 title: "SN 46.1-10 山品 (Pabbatavagga)"
 description: "本品包含十部经文，围绕七觉支的修习原理、条件及果报展开，详述了五盖与七觉支的“食”、七种证果次第、以及修习的根本导向。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.1-10, 182-191"
 curator: "True-Dhamma.com"
 tags: [觉支, 七觉支, 五盖, 涅槃, 修行次第, 食, 根律仪]

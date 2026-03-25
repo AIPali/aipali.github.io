@@ -3,8 +3,8 @@ id: "SN-12-71-73"
 title: "SN 12.71-73 因缘广说集 (Nidānapeyyāla)"
 description: "本经集阐述了真正沙门与婆罗门的标准，以及为了如实知见十二支缘起而应当寻求导师、勤加修习等十二种法要。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.71-73"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.71-73, 71-73"
 curator: "True-Dhamma.com"
 tags: [缘起, 四圣谛, 沙门, 婆罗门, 勤加修习, 修行次第]
 ---

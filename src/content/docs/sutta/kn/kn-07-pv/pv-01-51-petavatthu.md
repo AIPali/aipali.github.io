@@ -2,8 +2,8 @@
 id: "Pv-1-51"
 title: "Pv 饿鬼事 (Petavatthu)"
 description: "《饿鬼事》讲述了因生前种种不善业而堕入饿鬼界的果报，以及亲属如何通过布施清净僧团来为亡者回向功德，助其脱离苦痛的因缘。"
-collection: "Petavatthu"
-vagga: "Uragavagga, Ubbarivagga, Cūḷavagga, Mahāvagga"
+collection: "Khuddaka Nikāya"
+vagga: "Petavatthupāḷi"
 reference: "Pv 1-51, 1-814"
 curator: "True-Dhamma.com"
 tags: [饿鬼事, 业果, 布施, 回向, 小部, 恶趣, 戒律]

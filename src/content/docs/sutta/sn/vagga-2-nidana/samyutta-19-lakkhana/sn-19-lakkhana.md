@@ -3,7 +3,7 @@ id: "SN-19"
 title: "SN 19 勒叉那相应 (Lakkhaṇasaṃyutta)"
 description: "本相应主要记述大目犍连尊者在灵鹫山所见的各种因恶业受报的众生，佛陀以此教导因果业报。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
+vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 19, 202-222"
 curator: "True-Dhamma.com"
 tags: [勒叉那, 目犍连, 业报, 恶业, 饿鬼, 轮回, 因果, 戒律]

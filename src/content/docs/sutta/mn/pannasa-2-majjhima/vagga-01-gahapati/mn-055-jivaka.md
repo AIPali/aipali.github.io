@@ -1,5 +1,5 @@
 ---
-id: "MN-055"
+id: "MN-55"
 title: "MN 55 耆婆迦经 (Jīvakasutta)"
 description: "佛陀向医王耆婆迦澄清关于比丘食用肉类的规定，提出了著名的“三净肉”原则，并阐明了为圣者杀生的严重恶业。"
 collection: "Majjhima Nikāya"

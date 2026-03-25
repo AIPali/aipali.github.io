@@ -3,7 +3,7 @@ id: "MN-11"
 title: "MN 11 狮子吼小经 (Cūḷasīhanādasutta)"
 description: "佛陀教导比丘们如何以四个无可辩驳的理由，自信地宣称唯有佛法中才有真正的圣者，其核心在于对四种执取的彻底了知与断除。"
 collection: "Majjhima Nikāya"
-vagga: "Sīhanādavagga"
+vagga: "Sīhanādavagga"
 reference: "MN 11, 139-145"
 curator: "True-Dhamma.com"
 tags: [四沙门果, 狮子吼, 外道, 四取, 执取, 缘起, 有见, 无有见, 渴爱, 解脱]

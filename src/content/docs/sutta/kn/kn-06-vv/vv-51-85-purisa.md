@@ -3,7 +3,7 @@ id: "Vv-51-85"
 title: "Vv 51-85 男天宫 (Purisavimāna)"
 description: "记载了男性在人间行善（如布施、供养、受持戒律、乃至对三宝的清净一念），死后往生天界获得壮丽天宫与广大福报的三十五个生动故事。"
 collection: "Khuddaka Nikāya"
-vagga: "Purisavimāna"
+vagga: "Vimānavatthupāḷi"
 reference: "Vv 51-85, 857-1289"
 curator: "True-Dhamma.com"
 tags: [天宫, 业果, 布施, 福德, 天神, 戒律, 随喜]

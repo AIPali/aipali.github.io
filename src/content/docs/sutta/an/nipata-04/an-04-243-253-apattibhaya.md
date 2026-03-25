@@ -3,7 +3,7 @@ id: "AN-4-243-253"
 title: "AN 4.243-253 毁犯怖畏品 (Āpattibhayavagga)"
 description: "本品收录了11部经文，涵盖了破僧的原因、对犯戒的怖畏、修学的核心、睡眠姿势、建塔对象、智慧增长的条件以及圣者的言说。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Catukkanipātapāḷi"
 reference: "AN 4.243-253"
 curator: "True-Dhamma.com"
 tags: [破僧, 戒律, 威仪, 梵行, 卧姿, 见闻觉知]

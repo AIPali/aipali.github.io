@@ -1,9 +1,9 @@
 ---
-id: "AN-03-147-156"
+id: "AN-3-147-156"
 title: "AN 3.147-156 吉祥品 (Maṅgalavagga)"
 description: "佛陀开示了身、语、意三业的善恶果报，阐明了真正的吉祥与良辰吉日皆来自于清净的善业与梵行。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Tikanipātapāḷi"
 reference: "AN 3.147-156"
 curator: "True-Dhamma.com"
 tags: [身语意, 善业, 恶业, 吉祥, 梵行, 业果]

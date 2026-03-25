@@ -3,7 +3,7 @@ id: "DN-34"
 title: "DN 34 十上经 (Dasuttarasutta)"
 description: "由智慧第一的尊者舍利弗宣说，将佛陀的教法以一至十的数字递增方式，系统地归纳为修行道次第的各个法门，旨在引导修行者证悟涅槃，解脱一切束缚。"
 collection: "Dīgha Nikāya"
-vagga: "Pāthikavagga"
+vagga: "Pāthikavaggapāḷi"
 reference: "DN 34, 350-360"
 curator: "True-Dhamma.com"
 tags: [十上经, 舍利弗, 法数, 修行次第, 涅槃, 止观, 解脱, 圣道]

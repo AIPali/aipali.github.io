@@ -3,8 +3,8 @@ id: "SN-22-53-62"
 title: "SN 22.53-62 黏着品 (Upayavagga)"
 description: "本品探讨了对五蕴的黏着（执取）如何导致束缚，以及不黏着如何带来解脱，包含著名的《种子经》、《七处经》与《无我相经》。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.53-62"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.53-62, 53-62"
 curator: "True-Dhamma.com"
 tags: [五蕴, 黏着, 缘起, 执取, 无我, 涅槃, 四圣谛]
 ---

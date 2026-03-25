@@ -3,7 +3,7 @@ id: "AN-5-111-120"
 title: "AN 5.111-120 阿那伽频头品 (Andhakavindavagga)"
 description: "本品讲述了比丘亲近家庭、作为随从、修习正定的规范，新比丘的五种训练，以及决定比丘尼升沉的系列法教。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.111-120"
 curator: "True-Dhamma.com"
 tags: [五法, 戒律, 正定, 比丘, 比丘尼, 随从, 根律仪, 正见]

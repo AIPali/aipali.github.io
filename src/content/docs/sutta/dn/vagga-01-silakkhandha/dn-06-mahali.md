@@ -1,9 +1,9 @@
 ---
-id: "DN-06"
+id: "DN-6"
 title: "DN 6 摩诃梨经 (Mahālisutta)"
 description: "关于天眼与天耳的显现差异、修习梵行的真正目的（四圣果），以及超越命与身二元对立的深度开示。"
 collection: "Dīgha Nikāya"
-vagga: "Sīlakkhandhavagga"
+vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 6, 359-377"
 curator: "True-Dhamma.com"
 tags: [神通, 三摩地, 四圣果, 八正道, 命与身, 缘起]

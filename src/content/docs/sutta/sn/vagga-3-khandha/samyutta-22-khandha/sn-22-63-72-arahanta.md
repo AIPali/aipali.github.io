@@ -3,8 +3,8 @@ id: "SN-22-63-72"
 title: "SN 22.63-72 阿罗汉品 (Arahantavagga)"
 description: "本品收录十部短经，讲述比丘们通过停止执取、妄想、欣求五蕴，并如实观察无常、苦、无我，从而断尽烦恼、证得阿罗汉果的教导。"
 collection: "Saṃyutta Nikāya"
-vagga: "Khandhavagga"
-reference: "SN 22.63-72"
+vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
+reference: "SN 22.63-72, 63-72"
 curator: "True-Dhamma.com"
 tags: [五蕴, 阿罗汉, 执取, 魔王波旬, 无常, 苦, 无我, 我慢]
 ---

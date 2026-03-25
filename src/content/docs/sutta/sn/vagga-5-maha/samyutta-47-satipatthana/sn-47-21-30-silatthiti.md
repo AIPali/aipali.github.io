@@ -3,7 +3,7 @@ id: "SN-47-21-30"
 title: "SN 47.21-30 戒住品 (Sīlaṭṭhitivagga)"
 description: "本品探讨了四念住与戒律、正法久住的关系，有学与无学的定义，并记录了居士在重病中修习四念住证得不还果的事迹。"
 collection: "Saṃyutta Nikāya"
-vagga: "Mahāvagga"
+vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.21-30, 387-396"
 curator: "True-Dhamma.com"
 tags: [四念住, 戒律, 正法久住, 有学, 无学, 不还果, 禅修]

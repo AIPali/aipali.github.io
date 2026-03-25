@@ -3,8 +3,8 @@ id: "SN-12-41-50"
 title: "SN 12.41-50 居士品 (Gahapativagga)"
 description: "本品讲述了在家信徒如何通过平息五种怖畏与怨仇、成就四入流支，以及洞见十二缘起，从而证得入流果。此外也探讨了关于世间生灭及外道极端的邪见。"
 collection: "Saṃyutta Nikāya"
-vagga: "Nidānavagga"
-reference: "SN 12.41-50"
+vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
+reference: "SN 12.41-50, 41-50"
 curator: "True-Dhamma.com"
 tags: [入流果, 须陀洹, 缘起, 五戒, 中道, 世间]
 ---

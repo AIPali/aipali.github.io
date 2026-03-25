@@ -2,8 +2,8 @@
 id: "Mnd-14-15"
 title: "Mnd 14-15 迅速经与执杖经之义释 (Tuvaṭaka-Attadaṇḍa)"
 description: "《小部·大义释》第十四至第十五经的详细注释。深入探讨了迅速断除我慢与执着，以及舍弃一切伤害众生的“执杖”恶业，从而达到真正的究竟寂静。"
-collection: "Mahāniddesapāḷi"
-vagga: ""
+collection: "Khuddaka Nikāya"
+vagga: "Mahāniddesapāḷi"
 reference: "Mnd 14-15"
 curator: "3 True-Dhamma.com"
 tags: [大义释, 迅速经, 执杖经, 无我, 寂静, 涅槃, 烦恼]

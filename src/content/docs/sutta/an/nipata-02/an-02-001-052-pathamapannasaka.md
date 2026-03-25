@@ -1,9 +1,9 @@
 ---
-id: "AN-02-01-52"
+id: "AN-2-1-52"
 title: "AN 2.1-52 初五十经篇 (Paṭhamapaṇṇāsaka)"
 description: "增支部二集初五十经篇，涵盖科刑罚品、诤论品、愚人品、等心品与会众品，探讨了行为果报、禅修次第、僧团和合及修行正见。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dukanipāta"
+vagga: "Dukanipātapāḷi"
 reference: "AN 2.1-52"
 curator: "True-Dhamma.com"
 tags: [增支部, 二集, 业果, 禅定, 僧团和合, 愚与智, 净居天]
