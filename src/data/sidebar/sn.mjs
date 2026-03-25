@@ -106,7 +106,7 @@ export const sidebarSN = [
       { label: 'SN 28 舍利弗相应 (Sāriputtasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-28-sariputta/sn-28-sariputta/' },
       { label: 'SN 29 龙相应 (Nāgasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-29-naga/sn-29-naga/' },
       { label: 'SN 30 金翅鸟相应 (Supaṇṇasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-30-supanna/sn-30-supanna/' },
-      { label: 'SN 31 干达婆相应 (Gandhabbakāyasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-31-gandhabbakaya/sn-31-gandhabbakaya/' },
+      { label: 'SN 31 乾达婆相应 (Gandhabbakāyasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-31-gandhabbakaya/sn-31-gandhabbakaya/' },
       { label: 'SN 32 云相应 (Valāhakasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-32-valahaka/sn-32-valahaka/' },
       { label: 'SN 33 婆磋相应 (Vacchagottasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-33-vacchagotta/sn-33-vacchagotta/' },
       { label: 'SN 34 禅定相应 (Jhānasaṃyutta)', link: '/sutta/sn/vagga-3-khandha/samyutta-34-jhana/sn-34-jhana/' },

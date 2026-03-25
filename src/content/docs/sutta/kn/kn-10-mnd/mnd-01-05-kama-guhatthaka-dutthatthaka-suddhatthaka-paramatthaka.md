@@ -1,6 +1,6 @@
 ---
 id: "Mnd-1-5"
-title: "Mnd 1-5 欲爱经至胜八偈经之义释 (Kāma-Guhaṭṭhaka-Duṭṭhaṭṭhaka-Suddhaṭṭhaka-Paramaṭṭhaka)"
+title: "Mnd 1-5 欲爱经至胜八偈经义释 (Kāma-Paramaṭṭhaka)"
 description: "《小部·大义释》前五经的详细注释，涵盖欲爱、执着、瞋恚、见取等烦恼的舍断与修行的实践教导。"
 collection: "Khuddaka Nikāya"
 vagga: "Mahāniddesapāḷi"

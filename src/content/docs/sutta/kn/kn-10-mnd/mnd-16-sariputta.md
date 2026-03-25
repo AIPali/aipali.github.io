@@ -1,6 +1,6 @@
 ---
 id: "Mnd-16"
-title: "Mnd 16 舍利弗经之义释 (Sāriputtasuttaniddesa)"
+title: "Mnd 16 舍利弗经义释 (Sāriputta)"
 description: "《小部·大义释》第十六经的详细注释。舍利弗尊者向世尊请问，世尊开示了比丘在独处、面对危险、忍受饥寒以及断除烦恼等方面的修行指南。"
 collection: "Khuddaka Nikāya"
 vagga: "Mahāniddesapāḷi"

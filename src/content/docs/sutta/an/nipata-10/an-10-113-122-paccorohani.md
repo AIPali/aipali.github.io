@@ -1,6 +1,6 @@
 ---
 id: "AN-10-113-122"
-title: "AN 10.113-122 舍法品 (Paccorohanivagga)"
+title: "AN 10.113-122 舍法品 (Paccorohaṇivagga)"
 description: "本品包含十部经文，围绕“法与非法”、“有益与无益”的核心主题展开，系统阐述了以正见为首的十正道与以邪见为首的十邪道，并以“此岸与彼岸”、“舍法仪式”等譬喻，揭示了通往烦恼止息的实践路径。"
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"

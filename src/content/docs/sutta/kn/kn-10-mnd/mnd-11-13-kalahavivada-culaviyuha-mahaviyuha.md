@@ -1,6 +1,6 @@
 ---
 id: "Mnd-11-13"
-title: "Mnd 11-13 争论经至大集积经之义释 (Kalahavivāda-Cūḷaviyūha-Mahāviyūha)"
+title: "Mnd 11-13 争论经至大集积经义释 (Kalahavivāda-Mahāviyūha)"
 description: "《小部·大义释》第十一至第十三经的详细注释，深入剖析世间争论的根源，揭示执着于主观见解的过患，并赞叹舍弃一切见执的阿罗汉境界。"
 collection: "Khuddaka Nikāya"
 vagga: "Mahāniddesapāḷi"

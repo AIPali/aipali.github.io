@@ -1,6 +1,6 @@
 ---
 id: "AN-10-91-100"
-title: "AN 10.91-100 优婆塞品 (Upālivagga)"
+title: "AN 10.91-100 优婆塞品 (Upāsakavagga)"
 description: "本品包含十部经，涵盖了对财富追求者的分类、在家人的修行、应对外道见解的智慧、比丘的素质，以及修定与独居森林的关联等丰富教义。"
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"

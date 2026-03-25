@@ -1,6 +1,6 @@
 export const sidebarKN =[
   { label: '小部导读', link: '/sutta/kn/' },
-  { label: 'Khp 小诵经 (Khuddakapāṭhapāḷi)', link: '/sutta/kn/kn-01-khp/khp-01-09-khuddakapatha/' }, 
+  { label: 'Khp 1-9 小诵经 (Khuddakapāṭhapāḷi)', link: '/sutta/kn/kn-01-khp/khp-01-09-khuddakapatha/' }, 
   {
     label: 'Dhp 法句经 (Dhammapadapāḷi)',
     collapsed: true,
@@ -81,11 +81,11 @@ export const sidebarKN =[
     label: 'Mnd 大义释 (Mahāniddesapāḷi)',
     collapsed: true,
     items:[
-      { label: 'Mnd 1-5 欲爱经-窟八偈经-瞋八偈经-净八偈经-胜八偈经 (Kāma-Guhaṭṭhaka-Duṭṭhaṭṭhaka-Suddhaṭṭhaka-Paramaṭṭhaka)', link: '/sutta/kn/kn-10-mnd/mnd-01-05-kama-guhatthaka-dutthatthaka-suddhatthaka-paramatthaka/' },
-      { label: 'Mnd 6-10 衰老经-提舍弥勒经-波修罗经-摩根提耶经-死前经 (Jarā-Tissametteyya-Pasūra-Māgaṇḍiya-Purābheda)', link: '/sutta/kn/kn-10-mnd/mnd-06-10-jara-tissametteyya-pasura-magandiya-purabheda/' },
-      { label: 'Mnd 11-13 争论经-小集积经-大集积经 (Kalahavivāda-Cūḷaviyūha-Mahāviyūha)', link: '/sutta/kn/kn-10-mnd/mnd-11-13-kalahavivada-culaviyuha-mahaviyuha/' },
-      { label: 'Mnd 14-15 迅速经-执杖经 (Tuvaṭaka-Attadaṇḍa)', link: '/sutta/kn/kn-10-mnd/mnd-14-15-tuvataka-attadanda/' },
-      { label: 'Mnd 16 舍利弗经 (Sāriputta)', link: '/sutta/kn/kn-10-mnd/mnd-16-sariputta/' },
+      { label: 'Mnd 1-5 欲爱经至胜八偈经义释 (Kāma-Paramaṭṭhaka)', link: '/sutta/kn/kn-10-mnd/mnd-01-05-kama-guhatthaka-dutthatthaka-suddhatthaka-paramatthaka/' },
+      { label: 'Mnd 6-10 衰老经至死前经义释 (Jarā-Purābheda)', link: '/sutta/kn/kn-10-mnd/mnd-06-10-jara-tissametteyya-pasura-magandiya-purabheda/' },
+      { label: 'Mnd 11-13 争论经至大集积经义释 (Kalahavivāda-Mahāviyūha)', link: '/sutta/kn/kn-10-mnd/mnd-11-13-kalahavivada-culaviyuha-mahaviyuha/' },
+      { label: 'Mnd 14-15 迅速经与执杖经义释 (Tuvaṭaka-AttaDaṇḍa)', link: '/sutta/kn/kn-10-mnd/mnd-14-15-tuvataka-attadanda/' },
+      { label: 'Mnd 16 舍利弗经义释 (Sāriputta)', link: '/sutta/kn/kn-10-mnd/mnd-16-sariputta/' },
     ]
   },
   {
@@ -131,7 +131,7 @@ export const sidebarKN =[
       { label: 'Miln 1-2 外篇 (Bāhirakathā)', link: '/sutta/kn/kn-15-miln/miln-01-02-bahira/' },
       { label: 'Miln 3-9 提问 (Milindapañha)', link: '/sutta/kn/kn-15-miln/miln-03-09-milindapanha/' },
       { label: 'Miln 10-15 难问 (Meṇḍakapañha)', link: '/sutta/kn/kn-15-miln/miln-10-15-mendakapanha/' },
-      { label: 'Miln 16-19 推论 (Anumānapañha)', link: '/sutta/kn/kn-15-miln/miln-16-19-anumanapanha/' },
+      { label: 'Miln 16-19 推论问 (Anumānapañha)', link: '/sutta/kn/kn-15-miln/miln-16-19-anumanapanha/' },
       { label: 'Miln 20-28 譬喻 (Opammakathāpañha)', link: '/sutta/kn/kn-15-miln/miln-20-28-opammakatha/' },
     ]
   }

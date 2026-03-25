@@ -1,6 +1,6 @@
 ---
 id: "Mnd-6-10"
-title: "Mnd 6-10 衰老经至死前经之义释 (Jarā-Tissametteyya-Pasūra-Māgaṇḍiya-Purābheda)"
+title: "Mnd 6-10 衰老经至死前经义释 (Jarā-Purābheda)"
 description: "《小部·大义释》第六至第十经的详细注释，涵盖衰老、离欲、破除恶见与论诤，以及达到死前寂静的修行之道。"
 collection: "Khuddaka Nikāya"
 vagga: "Mahāniddesapāḷi"

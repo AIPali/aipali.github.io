@@ -1,6 +1,6 @@
 ---
-id: "Snp-2"
-title: "Snp 2 小品 (Cūḷavagga)"
+id: "Snp-13-26"
+title: "Snp 13-26 小品 (Cūḷavagga)"
 description: "《经集》第二品，涵盖了《三宝经》、《吉祥经》、《如法经》等初期佛教极为重要的教典，指导僧俗二众的清净行持。"
 collection: "Khuddaka Nikāya"
 vagga: "Suttanipāta"

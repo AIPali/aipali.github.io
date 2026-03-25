@@ -1,7 +1,7 @@
 ---
 id: "Thig-1-12"
-title: "Thig 1-12 长老尼偈 (一至十二偈集)"
-description: "《长老尼偈》中一偈集至十二偈集的合集，收录了早期佛教中证悟的长老尼们所留下的偈颂，展现了她们的修行历程、证悟体验与深刻智慧。"
+title: "Thig 1-12 一偈集至十六偈集 (Ekaka-Soḷasakanipāta)"
+description: "《长老尼偈》中一偈集至十六偈集的合集，收录了早期佛教中证悟的长老尼们所留下的偈颂，展现了她们的修行历程、证悟体验与深刻智慧。"
 collection: "Khuddaka Nikāya"
 vagga: "Therīgāthā"
 reference: "Thig 1-12, 1-251"

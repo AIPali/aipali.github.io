@@ -1,6 +1,6 @@
 ---
-id: "Snp-5"
-title: "Snp 5 彼岸道品 (Pārāyanavagga)"
+id: "Snp-55-73"
+title: "Snp 55-73 彼岸道品 (Pārāyanavagga)"
 description: "《经集》第五品，记载了巴婆利婆罗门的十六位上首弟子向佛陀请教的十六个深奥问题，指明了通向涅槃彼岸的究竟解脱之道。"
 collection: "Khuddaka Nikāya"
 vagga: "Suttanipāta"

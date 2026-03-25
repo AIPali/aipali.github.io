@@ -5,19 +5,19 @@ export const sidebarAN =[
     label: '一集 (Ekakanipāta)',
     collapsed: true,
     items:[
-      { label: 'AN 1.1-50 初五十经篇 (Paṭhamapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-001-050-pathamapannasaka/' },
-      { label: 'AN 1.51-97 第二五十经篇 (Dutiyapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-051-097-dutiyapannasaka/' },
-      { label: 'AN 1.98-381 第三五十经篇 (Tatiyapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-098-381-tatiyapannasaka/' },
-      { label: 'AN 1.382-611 第四五十经篇 (Catutthapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-382-611-catutthapannasaka/' },
+      { label: 'AN 1.1-50 五十经篇之一 (Paṭhamapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-001-050-pathamapannasaka/' },
+      { label: 'AN 1.51-97 五十经篇之二 (Dutiyapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-051-097-dutiyapannasaka/' },
+      { label: 'AN 1.98-381 五十经篇之三 (Tatiyapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-098-381-tatiyapannasaka/' },
+      { label: 'AN 1.382-611 五十经篇之四 (Catutthapaṇṇāsaka)', link: '/sutta/an/nipata-01/an-01-382-611-catutthapannasaka/' },
     ]
   },
   {
     label: '二集 (Dukanipāta)',
     collapsed: true,
     items:[
-      { label: 'AN 2.1-52 初五十经篇 (Paṭhamapaṇṇāsaka)', link: '/sutta/an/nipata-02/an-02-001-052-pathamapannasaka/' },
-      { label: 'AN 2.53-118 第二五十经篇 (Dutiyapaṇṇāsaka)', link: '/sutta/an/nipata-02/an-02-053-118-dutiyapannasaka/' },
-      { label: 'AN 2.119-180 第三五十经篇 (Tatiyapaṇṇāsaka)', link: '/sutta/an/nipata-02/an-02-119-180-tatiyapannasaka/' },
+      { label: 'AN 2.1-52 五十经篇之一 (Paṭhamapaṇṇāsaka)', link: '/sutta/an/nipata-02/an-02-001-052-pathamapannasaka/' },
+      { label: 'AN 2.53-118 五十经篇之二 (Dutiyapaṇṇāsaka)', link: '/sutta/an/nipata-02/an-02-053-118-dutiyapannasaka/' },
+      { label: 'AN 2.119-180 五十经篇之三 (Tatiyapaṇṇāsaka)', link: '/sutta/an/nipata-02/an-02-119-180-tatiyapannasaka/' },
       { label: 'AN 2.181-246 广说集 (Peyyāla)', link: '/sutta/an/nipata-02/an-02-181-246-peyyala/' },
     ]
   },
@@ -172,7 +172,7 @@ export const sidebarAN =[
       { label: 'AN 9.32-41 大品 (Mahāvagga)', link: '/sutta/an/nipata-09/an-09-032-041-maha/' },
       { label: 'AN 9.42-51 沙门法品 (Sāmaññavagga)', link: '/sutta/an/nipata-09/an-09-042-051-samanna/' },
       { label: 'AN 9.52-62 安稳品 (Khemavagga)', link: '/sutta/an/nipata-09/an-09-052-062-khema/' },
-      { label: 'AN 9.63-72 念处品 (Satipaṭṭhānavagga)', link: '/sutta/an/nipata-09/an-09-063-072-satipatthana/' },
+      { label: 'AN 9.63-72 念住品 (Satipaṭṭhānavagga)', link: '/sutta/an/nipata-09/an-09-063-072-satipatthana/' },
       { label: 'AN 9.73-82 正勤品 (Sammappadhānavagga)', link: '/sutta/an/nipata-09/an-09-073-082-sammappadhana/' },
       { label: 'AN 9.83-92 神足品 (Iddhipādavagga)', link: '/sutta/an/nipata-09/an-09-083-092-iddhipada/' },
       { label: 'AN 9.93-432 贪广说集 (Rāgapeyyāla)', link: '/sutta/an/nipata-09/an-09-093-432-ragapeyyala/' },
@@ -183,7 +183,7 @@ export const sidebarAN =[
     collapsed: true,
     items:[
       { label: 'AN 10.1-10 功德品 (Ānisaṃsavagga)', link: '/sutta/an/nipata-10/an-10-001-010-anisamsa/' },
-      { label: 'AN 10.11-20 依止品 (Nāthavagga)', link: '/sutta/an/nipata-10/an-10-011-020-natha/' },
+      { label: 'AN 10.11-20 救护品 (Nāthavagga)', link: '/sutta/an/nipata-10/an-10-011-020-natha/' },
       { label: 'AN 10.21-30 大品 (Mahāvagga)', link: '/sutta/an/nipata-10/an-10-021-030-maha/' },
       { label: 'AN 10.31-40 优波离品 (Upālivagga)', link: '/sutta/an/nipata-10/an-10-031-040-upali/' },
       { label: 'AN 10.41-50 骂詈品 (Akkosavagga)', link: '/sutta/an/nipata-10/an-10-041-050-akkosa/' },

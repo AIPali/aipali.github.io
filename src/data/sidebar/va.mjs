@@ -70,7 +70,7 @@ export const sidebarVA =[
     collapsed: true, // 次核心大类，默认折叠
     items:[
       { label: 'NV 1 弃罪篇 (Pārājikakaṇḍa)', link: '/vinaya/nv/kanda-01-parajika/' },
-      { label: 'NV 2 僧残篇 (Saṃghādisesakaṇḍa)', link: '/vinaya/nv/kanda-02-sanghadisesa/' },
+      { label: 'NV 2 僧残篇 (Saṅghādisesakaṇḍa)', link: '/vinaya/nv/kanda-02-sanghadisesa/' },
       { label: 'NV 3 舍堕篇 (Nissaggiyakaṇḍa)', link: '/vinaya/nv/kanda-03-nissaggiya/' },
       {
         label: 'NV 4 单堕篇 (Pācittiyakaṇḍa)',
@@ -82,14 +82,14 @@ export const sidebarVA =[
           { label: 'NV 4.4 共卧品 (Tuvaṭṭavagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-04-tuvatta/' },
           { label: 'NV 4.5 画室品 (Cittāgāravagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-05-cittagara/' },
           { label: 'NV 4.6 僧园品 (Ārāmavagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-06-arama/' },
-          { label: 'NV 4.7 孕妇品 (Gabbhinivagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-07-gabbhini/' },
+          { label: 'NV 4.7 孕妇品 (Gabbhinīvagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-07-gabbhini/' },
           { label: 'NV 4.8 童女品 (Kumāribhūtavagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-08-kumaribhuta/' },
           { label: 'NV 4.9 伞履品 (Chattupāhanavagga)', link: '/vinaya/nv/kanda-04-pacittiya/nv-04-09-chattupahana/' },
         ]
       },
       { label: 'NV 5 悔过篇 (Pāṭidesanīyakaṇḍa)', link: '/vinaya/nv/kanda-05-patidesaniya/' },
       { label: 'NV 6 众学篇 (Sekhiyakaṇḍa)', link: '/vinaya/nv/kanda-06-sekhiya/' },
-      { label: 'NV 7 灭诤篇 (Adhikaraṇasamatha)', link: '/vinaya/nv/kanda-07-adhikaranasamatha/' },
+      { label: 'NV 7 灭诤篇 (Adhikaraṇasamathā)', link: '/vinaya/nv/kanda-07-adhikaranasamatha/' },
     ]
   },
   {

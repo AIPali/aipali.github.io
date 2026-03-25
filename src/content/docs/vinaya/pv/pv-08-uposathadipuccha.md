@@ -62,9 +62,9 @@ tags: ["僧务决议", "羯磨", "布萨", "自恣", "僧团运作", "律藏", "
 25. 认可舍弃钱财者 (Rūpiyachaḍḍakasammuti)
 26. 认可领受雨衣者 (Sāṭiyaggāhāpakasammuti)
 27. 认可领受钵者 (Pattaggāhāpakasammuti)
-28. 认可持杖 (Daṇḍasammuti)
+28. 认可持杖 (Daṇḍasammuti)
 29. 认可提绳（用于携带物品）(Sikkāsammuti)
-30. 认可持杖与提绳 (Daṇḍasikkāsammuti)
+30. 认可持杖与提绳 (Daṇḍasikkāsammuti)
 
 ## 2 解答：各项僧团程序的构成 (Ādimajjhantavissajjanā)
 
