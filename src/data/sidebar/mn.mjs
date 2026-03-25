@@ -229,7 +229,7 @@ export const sidebarMN =[
           { label: 'MN 132 阿难贤善一夜经 (Ānandabhaddekarattasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-132-anandabhaddekaratta/' },
           { label: 'MN 133 大迦旃延贤善一夜经 (Mahākaccānabhaddekarattasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-133-mahakaccanabhaddekaratta/' },
           { label: 'MN 134 罗摩沙康纪亚贤善一夜经 (Lomasakaṅgiyabhaddekarattasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-134-lomasakangiyabhaddekaratta/' },
-          { label: 'MN 135 小业分别经 (Cūḷakammavibhaṅgsasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-135-culakammavibhanga/' },
+          { label: 'MN 135 小业分别经 (Cūḷakammavibhaṅgasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-135-culakammavibhanga/' },
           { label: 'MN 136 大业分别经 (Mahākammavibhaṅgasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-136-mahakammavibhanga/' },
           { label: 'MN 137 六处分别经 (Saḷāyatanavibhaṅgasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-137-salayatanavibhanga/' },
           { label: 'MN 138 总说分别经 (Uddesavibhaṅgasutta)', link: '/sutta/mn/pannasa-3-upari/vagga-04-vibhanga/mn-138-uddesavibhanga/' },

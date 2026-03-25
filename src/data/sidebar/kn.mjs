@@ -132,7 +132,7 @@ export const sidebarKN =[
       { label: 'Miln 2 提问 (Milindapañha)', link: '/sutta/kn/kn-15-miln/miln-02-milindapanha/' },
       { label: 'Miln 3 难问 (Meṇḍakapañha)', link: '/sutta/kn/kn-15-miln/miln-03-mendakapanha/' },
       { label: 'Miln 4 推论问 (Anumānapañha)', link: '/sutta/kn/kn-15-miln/miln-04-anumanapanha/' },
-      { label: 'Miln 5 譬喻 (Opammakathāpañha)', link: '/sutta/kn/kn-15-miln/miln-05-opammakatha/' },
+      { label: 'Miln 5 譬喻篇 (Opammakathāpañha)', link: '/sutta/kn/kn-15-miln/miln-05-opammakatha/' },
     ]
   }
 ];
