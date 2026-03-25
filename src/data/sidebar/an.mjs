@@ -41,7 +41,7 @@ export const sidebarAN =[
       { label: 'AN 3.134-146 战士品 (Yodhājīvavagga)', link: '/sutta/an/nipata-03/an-03-134-146-yodhajiva/' },
       { label: 'AN 3.147-156 吉祥品 (Maṅgalavagga)', link: '/sutta/an/nipata-03/an-03-147-156-mangala/' },
       { label: 'AN 3.157-163 裸形品 (Acelakavagga)', link: '/sutta/an/nipata-03/an-03-157-163-acelaka/' },
-      { label: 'AN 3.164-184 业道与贪等广说集 (Kammapathādipeyyāla)', link: '/sutta/an/nipata-03/an-03-164-184-kammapathadipeyyala/' },
+      { label: 'AN 3.164-184 业道与贪广说集 (Kammapathādipeyyāla)', link: '/sutta/an/nipata-03/an-03-164-184-kammapathadipeyyala/' },
     ]
   },
   {
@@ -187,7 +187,7 @@ export const sidebarAN =[
       { label: 'AN 10.21-30 大品 (Mahāvagga)', link: '/sutta/an/nipata-10/an-10-021-030-maha/' },
       { label: 'AN 10.31-40 优波离品 (Upālivagga)', link: '/sutta/an/nipata-10/an-10-031-040-upali/' },
       { label: 'AN 10.41-50 骂詈品 (Akkosavagga)', link: '/sutta/an/nipata-10/an-10-041-050-akkosa/' },
-      { label: 'AN 10.51-60 自心品 (Sacittavagga)', link: '/sutta/an/nipata-10/an-10-051-060-sacitta/' },
+      { label: 'AN 10.51-60 己心品 (Sacittavagga)', link: '/sutta/an/nipata-10/an-10-051-060-sacitta/' },
       { label: 'AN 10.61-70 双品 (Yamakavagga)', link: '/sutta/an/nipata-10/an-10-061-070-yamaka/' },
       { label: 'AN 10.71-80 愿品 (Ākaṅkhavagga)', link: '/sutta/an/nipata-10/an-10-071-080-akankha/' },
       { label: 'AN 10.81-90 长老品 (Theravagga)', link: '/sutta/an/nipata-10/an-10-081-090-thera/' },
@@ -201,8 +201,8 @@ export const sidebarAN =[
       { label: 'AN 10.167-177 生闻品 (Jāṇussoṇivagga)', link: '/sutta/an/nipata-10/an-10-167-177-janussoni/' },
       { label: 'AN 10.178-188 善品 (Sādhuvagga)', link: '/sutta/an/nipata-10/an-10-178-188-sadhu/' },
       { label: 'AN 10.189-198 圣道品 (Ariyamaggavagga)', link: '/sutta/an/nipata-10/an-10-189-198-ariyamagga/' },
-      { label: 'AN 10.199-210 再论人品 (Aparapuggalavagga)', link: '/sutta/an/nipata-10/an-10-199-210-aparapuggala/' },
-      { label: 'AN 10.211-220 业生身品 (Karajakāyavagga)', link: '/sutta/an/nipata-10/an-10-211-220-karajakaya/' },
+      { label: 'AN 10.199-210 续人品 (Aparapuggalavagga)', link: '/sutta/an/nipata-10/an-10-199-210-aparapuggala/' },
+      { label: 'AN 10.211-220 业所生身品 (Karajakāyavagga)', link: '/sutta/an/nipata-10/an-10-211-220-karajakaya/' },
       { label: 'AN 10.221-236 沙门法品 (Sāmaññavagga)', link: '/sutta/an/nipata-10/an-10-221-236-samanna/' },
       { label: 'AN 10.237-746 贪广说集 (Rāgapeyyāla)', link: '/sutta/an/nipata-10/an-10-237-746-ragapeyyala/' },
     ]
@@ -212,7 +212,7 @@ export const sidebarAN =[
     collapsed: true,
     items:[
       { label: 'AN 11.1-10 依止品 (Nissayavagga)', link: '/sutta/an/nipata-11/an-11-001-010-nissaya/' },
-      { label: 'AN 11.11-21 随念品 (Anussativagga)', link: '/sutta/an/nipata-11/an-11-011-021-anussati/' },
+      { label: 'AN 11.11-21 忆念品 (Anussativagga)', link: '/sutta/an/nipata-11/an-11-011-021-anussati/' },
       { label: 'AN 11.22-671 沙门法与贪广说集 (Sāmaññādipeyyāla)', link: '/sutta/an/nipata-11/an-11-022-671-samannadipeyyala/' },
     ]
   }

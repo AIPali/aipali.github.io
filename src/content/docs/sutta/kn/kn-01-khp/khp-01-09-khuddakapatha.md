@@ -1,6 +1,6 @@
 ---
 id: "Khp-1-9"
-title: "Khp 1-9 小诵经 (Khuddakapāṭha)"
+title: "Khp 1-9 小诵经 (Khuddakapāṭhapāḷi)"
 description: "《小部》的第一部经典，包含新出家者与在家信徒常诵的九部基础经文，涵盖皈依、戒律、慈悲与吉祥等核心教导。"
 collection: "Khuddaka Nikāya"
 vagga: "Khuddakapāṭhapāḷi"

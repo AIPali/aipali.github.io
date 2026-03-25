@@ -5,13 +5,13 @@ export const sidebarKN =[
     label: 'Dhp 法句经 (Dhammapadapāḷi)',
     collapsed: true,
     items:[
-      { label: 'Dhp 1-32 双品-不放逸品 (Yamaka-Appamādavagga)', link: '/sutta/kn/kn-02-dhp/dhp-001-032-yamaka-appamada/' },
-      { label: 'Dhp 33-75 心品-华品-愚品 (Citta-Puppha-Bālavagga)', link: '/sutta/kn/kn-02-dhp/dhp-033-075-citta-puppha-bala/' },
-      { label: 'Dhp 76-128 贤品-阿罗汉品-千品-恶品 (Paṇḍita-Arahanta-Sahassa-Pāpavagga)', link: '/sutta/kn/kn-02-dhp/dhp-076-128-pandita-arahanta-sahassa-papa/' },
-      { label: 'Dhp 129-196 刀杖品-老品-自己品-世品-佛陀品 (Daṇḍa-Jarā-Atta-Loka-Buddhavagga)', link: '/sutta/kn/kn-02-dhp/dhp-129-196-danda-jara-atta-loka-buddha/' },
-      { label: 'Dhp 197-289 安乐品-爱好品-忿怒品-垢秽品-法住品-道品 (Sukha-Piya-Kodha-Mala-Dhammaṭṭha-Maggavagga)', link: '/sutta/kn/kn-02-dhp/dhp-197-289-sukha-piya-kodha-mala-dhammattha-magga/' },
-      { label: 'Dhp 290-359 杂品-地狱品-象品-爱欲品 (Pakiṇṇaka-Niraya-Nāga-Taṇhāvagga)', link: '/sutta/kn/kn-02-dhp/dhp-290-359-pakinnaka-niraya-naga-tanha/' },
-      { label: 'Dhp 360-423 比丘品-婆罗门品 (Bhikkhu-Brāhmaṇavagga)', link: '/sutta/kn/kn-02-dhp/dhp-360-423-bhikkhu-brahmana/' },
+      { label: 'Dhp 1-32 双品至不放逸品 (Yamaka-Appamādavagga)', link: '/sutta/kn/kn-02-dhp/dhp-001-032-yamaka-appamada/' },
+      { label: 'Dhp 33-75 心品至愚品 (Citta-Bālavagga)', link: '/sutta/kn/kn-02-dhp/dhp-033-075-citta-puppha-bala/' },
+      { label: 'Dhp 76-128 贤品至恶品 (Paṇḍita-Pāpavagga)', link: '/sutta/kn/kn-02-dhp/dhp-076-128-pandita-arahanta-sahassa-papa/' },
+      { label: 'Dhp 129-196 刀杖品至佛陀品 (Daṇḍa-Buddhavagga)', link: '/sutta/kn/kn-02-dhp/dhp-129-196-danda-jara-atta-loka-buddha/' },
+      { label: 'Dhp 197-289 安乐品至道品 (Sukha-Maggavagga)', link: '/sutta/kn/kn-02-dhp/dhp-197-289-sukha-piya-kodha-mala-dhammattha-magga/' },
+      { label: 'Dhp 290-359 杂品至爱欲品 (Pakiṇṇaka-Taṇhāvagga)', link: '/sutta/kn/kn-02-dhp/dhp-290-359-pakinnaka-niraya-naga-tanha/' },
+      { label: 'Dhp 360-423 比丘品与婆罗门品 (Bhikkhu-Brāhmaṇavagga)', link: '/sutta/kn/kn-02-dhp/dhp-360-423-bhikkhu-brahmana/' },
     ]
   },
   {
@@ -101,9 +101,9 @@ export const sidebarKN =[
     label: 'Ps 无碍解道 (Paṭisambhidāmaggapāḷi)',
     collapsed: true,
     items:[
-      { label: 'Ps 1-2 论母-智论 (Mātikā-Ñāṇa)', link: '/sutta/kn/kn-12-ps/ps-01-02-matika-nana/' },
-      { label: 'Ps 3-6 见论-入出息论-根论-解脱论 (Diṭṭhi-Ānāpānassati-Indriya-Vimokkha)', link: '/sutta/kn/kn-12-ps/ps-03-06-ditthi-anapanassati-indriya-vimokkha/' },
-      { label: 'Ps 7-11 趣论-业论-颠倒论-道论-醍醐味论 (Gati-Kamma-Vipallāsa-Magga-Maṇḍapeyya)', link: '/sutta/kn/kn-12-ps/ps-07-11-gati-kamma-vipallasa-magga-mandapeyya/' },
+      { label: 'Ps 1-2 论母与智论 (Mātikā-Ñāṇa)', link: '/sutta/kn/kn-12-ps/ps-01-02-matika-nana/' },
+      { label: 'Ps 3-6 见论至解脱论 (Diṭṭhi-Vimokkha)', link: '/sutta/kn/kn-12-ps/ps-03-06-ditthi-anapanassati-indriya-vimokkha/' },
+      { label: 'Ps 7-11 趣论至醍醐味论 (Gati-Maṇḍapeyya)', link: '/sutta/kn/kn-12-ps/ps-07-11-gati-kamma-vipallasa-magga-mandapeyya/' },
       { label: 'Ps 12-21 俱存品 (Yuganaddhavagga)', link: '/sutta/kn/kn-12-ps/ps-12-21-yuganaddha/' },
       { label: 'Ps 22-31 慧品 (Paññāvagga)', link: '/sutta/kn/kn-12-ps/ps-22-31-panna/' },
     ]
@@ -112,16 +112,16 @@ export const sidebarKN =[
     label: 'Ne 导论 (Nettipāḷi)',
     collapsed: true,
     items:[
-      { label: 'Ne 1-4 合诵-概说-义释-总结 (Saṅgaha-Uddesa-Niddesa-Paṭiniddesa)', link: '/sutta/kn/kn-13-ne/ne-01-04-sangaha-uddesa-niddesa-patiniddesa/' },
-      { label: 'Ne 5-6 引导方法-教学方法 (Nayasamuṭṭhāna-Sāsanapaṭṭhāna)', link: '/sutta/kn/kn-13-ne/ne-05-06-nayasamutthana-sasanapatthana/' },
+      { label: 'Ne 1-4 合诵至总结 (Saṅgaha-Paṭiniddesa)', link: '/sutta/kn/kn-13-ne/ne-01-04-sangaha-uddesa-niddesa-patiniddesa/' },
+      { label: 'Ne 5-6 引导方法与教学方法 (Nayasamuṭṭhāna-Sāsanapaṭṭhāna)', link: '/sutta/kn/kn-13-ne/ne-05-06-nayasamutthana-sasanapatthana/' },
     ]
   },
   {
     label: 'Pe 三藏知津 (Peṭakopadesapāḷi)',
     collapsed: true,
     items:[
-      { label: 'Pe 1-5 圣谛-教理-经说-简择-分类 (Ariyasacca-Sāsana-Sutta-Suttavicaya-Hāravibhaṅga)', link: '/sutta/kn/kn-14-pe/pe-01-05-ariyasacca-sasana-sutta-suttavicaya-haravibhanga/' },
-      { label: 'Pe 6-8 经义-适用-经分 (Suttatthasamuccaya-Hārasampāta-Suttavebhaṅgiya)', link: '/sutta/kn/kn-14-pe/pe-06-08-suttatthasamuccaya-harasampata-suttavebhangiya/' },
+      { label: 'Pe 1-5 圣谛至分类 (Ariyasacca-Hāravibhaṅga)', link: '/sutta/kn/kn-14-pe/pe-01-05-ariyasacca-sasana-sutta-suttavicaya-haravibhanga/' },
+      { label: 'Pe 6-8 经义至经分 (Suttatthasamuccaya-Suttavebhaṅgiya)', link: '/sutta/kn/kn-14-pe/pe-06-08-suttatthasamuccaya-harasampata-suttavebhangiya/' },
     ]
   },
   {

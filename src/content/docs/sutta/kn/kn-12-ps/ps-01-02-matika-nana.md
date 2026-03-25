@@ -1,6 +1,6 @@
 ---
 id: "Ps-1-2"
-title: "Ps 1-2 论母与智论 (Mātikā & Ñāṇakathā)"
+title: "Ps 1-2 论母与智论 (Mātikā-Ñāṇa)"
 description: "无碍解道之首，列举并详细解析了七十三种智，涵盖从世俗闻思慧到佛陀一切智智的完整智慧体系。"
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"

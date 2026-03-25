@@ -1,6 +1,6 @@
 ---
 id: "Ps-3-6"
-title: "Ps 3-6 见论-入出息论-根论-解脱论 (Diṭṭhi-Ānāpānassati-Indriya-Vimokkha)"
+title: "Ps 3-6 见论至解脱论 (Diṭṭhi-Vimokkha)"
 description: "详述邪见的种类与断除、入出息念十六胜行的实修智见、五根的修习，以及导向究竟解脱的三解脱门。"
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"

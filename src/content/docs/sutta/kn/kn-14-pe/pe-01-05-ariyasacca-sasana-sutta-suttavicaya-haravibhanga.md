@@ -1,6 +1,6 @@
 ---
 id: "Pe-1-5"
-title: "Pe 1-5 圣谛-教理-经说-简择-分类 (Ariyasacca-Sāsana-Sutta-Suttavicaya-Hāravibhaṅga)"
+title: "Pe 1-5 圣谛至分类 (Ariyasacca-Hāravibhaṅga)"
 description: "《三藏知津》第一至第五地，系统阐述四圣谛的展现、教理的安立、经文的抉择与十六种理趣的分类应用。"
 collection: "Khuddaka Nikāya"
 vagga: "Peṭakopadesapāḷi"

@@ -1,6 +1,6 @@
 ---
 id: "Ps-7-11"
-title: "Ps 7-11 趣论-业论-颠倒论-道论-醍醐味论 (Gati-Kamma-Vipallāsa-Magga-Maṇḍapeyya)"
+title: "Ps 7-11 趣论至醍醐味论 (Gati-Maṇḍapeyya)"
 description: "解析生命受生的因缘、业与异熟的时态法则、四颠倒的断除次第、八正道的清净作用，以及体验法义精华的醍醐味论。"
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"

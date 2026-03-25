@@ -1,6 +1,6 @@
 ---
 id: "Ne-1-4"
-title: "Ne 1-4 导论：合诵、概说、义释与总结"
+title: "Ne 1-4 合诵至总结 (Saṅgaha-Paṭiniddesa)"
 description: "本经文为《导论》的前四品，详细列举并解说了用于分析与解释佛法的十六种理趣（Hāra）、五种引理（Naya）及十八种根本句（Mūlapada）。"
 collection: "Khuddaka Nikāya"
 vagga: "Nettipāḷi"

@@ -135,7 +135,7 @@ export const sidebarSN = [
           { label: 'SN 35.134-145 天臂品 (Devadahavagga)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-134-145-devadaha/' },
           { label: 'SN 35.146-155 新旧品 (Navapurāṇavagga)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-146-155-navapurana/' },
           { label: 'SN 35.156-167 爱尽品 (Nandikkhayavagga)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-156-167-nandikkhaya/' },
-          { label: 'SN 35.168-227 六十略广说集 (Saṭṭhipeyyāla)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-168-227-satthipeyyala/' },
+          { label: 'SN 35.168-227 六十略广说集 (Saṭṭhipeyyālavagga)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-168-227-satthipeyyala/' },
           { label: 'SN 35.228-237 海品 (Samuddavagga)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-228-237-samudda/' },
           { label: 'SN 35.238-248 毒蛇品 (Āsīvisavagga)', link: '/sutta/sn/vagga-4-salayatana/samyutta-35-salayatana/sn-35-238-248-asivisa/' },
         ]

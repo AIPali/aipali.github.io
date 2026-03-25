@@ -1,6 +1,6 @@
 ---
 id: "Pe-6-8"
-title: "Pe 6-8 经义-适用-经分 (Suttatthasamuccaya-Hārasampāta-Suttavebhaṅgiya)"
+title: "Pe 6-8 经义至经分 (Suttatthasamuccaya-Suttavebhaṅgiya)"
 description: "《三藏知津》第六至第八地，详细阐释经义集、理趣适用及契经分别，系统解构佛法核心名相与修行次第。"
 collection: "Khuddaka Nikāya"
 vagga: "Peṭakopadesapāḷi"

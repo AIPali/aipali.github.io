@@ -1,6 +1,6 @@
 ---
 id: "Pv-1-51"
-title: "Pv 饿鬼事 (Petavatthu)"
+title: "Pv 饿鬼事 (Petavatthupāḷi)"
 description: "《饿鬼事》讲述了因生前种种不善业而堕入饿鬼界的果报，以及亲属如何通过布施清净僧团来为亡者回向功德，助其脱离苦痛的因缘。"
 collection: "Khuddaka Nikāya"
 vagga: "Petavatthupāḷi"

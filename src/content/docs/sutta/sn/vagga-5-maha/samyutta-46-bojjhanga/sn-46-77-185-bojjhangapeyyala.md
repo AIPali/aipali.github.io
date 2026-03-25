@@ -1,6 +1,6 @@
 ---
 id: "SN-46-77-185"
-title: "SN 46.77-185 觉支广说集"
+title: "SN 46.77-185 觉支广说集 (Bojjhaṅgapeyyāla)"
 description: "本集包含觉支相应的多个品，通过恒河、不放逸、力、寻求、暴流等譬喻与法相，广说修习七觉支的功德与目标。"
 collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"

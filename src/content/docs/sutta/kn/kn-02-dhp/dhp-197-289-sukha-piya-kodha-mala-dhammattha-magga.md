@@ -1,6 +1,6 @@
 ---
 id: "Dhp-197-289"
-title: "Dhp 197-289 安乐品-爱好品-忿怒品-垢秽品-法住品-道品 (Sukha-Piya-Kodha-Mala-Dhammaṭṭha-Maggavagga)"
+title: "Dhp 197-289 安乐品至道品 (Sukha-Maggavagga)"
 description: "法句经第15至20品，探讨了从无憎无怨的安乐，到爱欲执著的苦果，再到调伏忿怒、去除内心垢秽，最终安住于正法、走向解脱之道的完整修行次第。"
 collection: "Khuddaka Nikāya"
 vagga: "Dhammapadapāḷi"
