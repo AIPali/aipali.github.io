@@ -199,8 +199,8 @@ export const sidebarAN =[
       { label: 'AN 10.145-154 圣道品 (Ariyamaggavagga)', link: '/sutta/an/nipata-10/an-10-145-154-ariyamagga/' },
       { label: 'AN 10.155-166 人品 (Puggalavagga)', link: '/sutta/an/nipata-10/an-10-155-166-puggala/' },
       { label: 'AN 10.167-177 生闻品 (Jāṇussoṇivagga)', link: '/sutta/an/nipata-10/an-10-167-177-janussoni/' },
-      { label: 'AN 10.178-188 善品(二) (Sādhuvagga)', link: '/sutta/an/nipata-10/an-10-178-188-sadhu-2/' },
-      { label: 'AN 10.189-198 圣道品(二) (Ariyamaggavagga)', link: '/sutta/an/nipata-10/an-10-189-198-ariyamagga-2/' },
+      { label: 'AN 10.178-188 善品 (Sādhuvagga)', link: '/sutta/an/nipata-10/an-10-178-188-sadhu/' },
+      { label: 'AN 10.189-198 圣道品 (Ariyamaggavagga)', link: '/sutta/an/nipata-10/an-10-189-198-ariyamagga/' },
       { label: 'AN 10.199-210 再论人品 (Aparapuggalavagga)', link: '/sutta/an/nipata-10/an-10-199-210-aparapuggala/' },
       { label: 'AN 10.211-220 业生身品 (Karajakāyavagga)', link: '/sutta/an/nipata-10/an-10-211-220-karajakaya/' },
       { label: 'AN 10.221-236 沙门法品 (Sāmaññavagga)', link: '/sutta/an/nipata-10/an-10-221-236-samanna/' },
@@ -213,8 +213,7 @@ export const sidebarAN =[
     items:[
       { label: 'AN 11.1-10 依止品 (Nissayavagga)', link: '/sutta/an/nipata-11/an-11-001-010-nissaya/' },
       { label: 'AN 11.11-21 随念品 (Anussativagga)', link: '/sutta/an/nipata-11/an-11-011-021-anussati/' },
-      { label: 'AN 11.22-501 沙门法品 (Sāmaññavagga)', link: '/sutta/an/nipata-11/an-11-022-501-samanna/' },
-      { label: 'AN 11.502-671 贪广说集 (Rāgapeyyāla)', link: '/sutta/an/nipata-11/an-11-502-671-ragapeyyala/' },
+      { label: 'AN 11.22-671 沙门法与贪广说集 (Sāmaññādipeyyāla)', link: '/sutta/an/nipata-11/an-11-022-671-samannadipeyyala/' },
     ]
   }
 ];
