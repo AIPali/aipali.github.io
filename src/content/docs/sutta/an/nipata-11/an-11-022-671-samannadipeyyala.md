@@ -3,7 +3,7 @@ id: "AN-11-22-671"
 title: "AN 11.22-671 沙门法与贪广说集 (Sāmaññādipeyyāla)"
 description: "本集包含沙门法品与贪广说品，通过牧牛喻详述了修行者应具备的十一法，以及为了知、断除贪瞋痴等烦恼而应修习的十一种定力境界。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Ekādasaka"
 reference: "AN 11.22-671"
 curator: "2 True-Dhamma.com"
 tags: [十一法, 牧牛喻, 观无常, 四禅, 四无量心, 无色定, 断除烦恼, 广说品]

@@ -3,7 +3,7 @@ id: "AN-10-237-746"
 title: "AN 10.237-746 贪广说集 (Rāgapeyyāla)"
 description: "本品通过极度简略的重复模式，列举了为了知、遍知、断除贪瞋痴等一切烦恼，所应修习的十想与十无学法。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.237-746"
 curator: "2 True-Dhamma.com"
 tags: [贪爱, 十想, 不净想, 十正道, 中略, 断尽烦恼]

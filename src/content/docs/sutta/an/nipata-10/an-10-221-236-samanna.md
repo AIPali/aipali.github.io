@@ -3,7 +3,7 @@ id: "AN-10-221-236"
 title: "AN 10.221-236 沙门法品 (Sāmaññavagga)"
 description: "本品详述了十不善业与十善业，并按层次递进展开为二十法、三十法、四十法，深刻揭示了业力的成熟、衍生与最终果报。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.221-236"
 curator: "2 True-Dhamma.com"
 tags: [十善业, 十不善业, 业果, 轮回, 天界, 地狱, 智与愚]

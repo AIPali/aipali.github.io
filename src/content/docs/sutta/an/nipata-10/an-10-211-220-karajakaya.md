@@ -3,7 +3,7 @@ id: "AN-10-211-220"
 title: "AN 10.211-220 业所生身品 (Karajakāyavagga)"
 description: "本品详细阐述了十不善业与十善业的果报，以及如何通过修习四无量心超越业报、导向解脱的法门。"
 collection: "Aṅguttara Nikāya"
-vagga: "Pañcamapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.211-220"
 curator: "2 True-Dhamma.com"
 tags: [十不善业, 十善业, 业果报, 故思业, 慈心解脱, 四无量心, 不还果]

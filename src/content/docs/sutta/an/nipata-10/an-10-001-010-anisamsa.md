@@ -3,7 +3,7 @@ id: "AN-10-1-10"
 title: "AN 10.1-10 功德品 (Ānisaṃsavagga)"
 description: "本品阐述了从持守善戒开始，如何通过一系列自然的因果链，最终导向解脱与涅槃的完整路径。详细描绘了戒、定、慧三学环环相扣、层层递进的关系。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.1-10"
 curator: "2 True-Dhamma.com"
 tags: [解脱, 戒定慧, 缘起, 功德, 舍利弗, 阿难, 不悔, 涅槃]

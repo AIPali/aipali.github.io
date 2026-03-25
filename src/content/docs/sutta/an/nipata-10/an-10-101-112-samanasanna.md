@@ -3,7 +3,7 @@ id: "AN-10-101-112"
 title: "AN 10.101-112 沙门想品 (Samaṇasaññāvagga)"
 description: "阐述出家者的三种核心认知、七觉支与三明的关联，以及十正道如何作为绝对有效的修行良药彻底根除杂染。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.101-112"
 curator: "2 True-Dhamma.com"
 tags: [沙门想, 七觉支, 三明, 十正道, 十无学法, 邪见, 正见, 阿罗汉]

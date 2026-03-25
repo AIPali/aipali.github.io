@@ -3,7 +3,7 @@ id: "AN-10-51-60"
 title: "AN 10.51-60 己心品 (Sacittavagga)"
 description: "增支部十集己心品，核心教导是“善知己心”。本品通过镜子譬喻，指导修行者如何内省，觉察并断除贪、瞋、痴等十种不善法。同时，阐述了奢摩他与毗婆舍那的平衡、十种导向解脱的禅修所缘（十想），并以耆利摩难经为例，开示了如何通过修习十想来疗愈身心。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.51-60"
 curator: "2 True-Dhamma.com"
 tags: [己心, 内省, 十想, 无常, 无我, 不净, 耆利摩难, 安那般那念, 奢摩他, 毗婆舍那]

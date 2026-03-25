@@ -3,7 +3,7 @@ id: "AN-10-167-177"
 title: "AN 10.167-177 生闻品 (Jāṇussoṇivagga)"
 description: "阐述十善业道与十不善业道，重新定义真正的清净与舍法，并解析布施亡者的果报机制。"
 collection: "Aṅguttaranikāya"
-vagga: "Jāṇussoṇivagga"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.167-177"
 curator: "2 True-Dhamma.com"
 tags: [十善业道, 十不善业道, 舍法, 彼岸, 布施亡者, 淳陀, 业的因缘]

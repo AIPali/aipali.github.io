@@ -3,7 +3,7 @@ id: "AN-11-1-10"
 title: "AN 11.1-10 依止品 (Nissayavagga)"
 description: "本品包含十一支缘起（从持戒到解脱的自然法则）、禅修的错误与正确作意、以及达到最终安稳的教导。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Ekādasaka"
 reference: "AN 11.1-10"
 curator: "2 True-Dhamma.com"
 tags: [依止品, 戒定慧, 缘起, 禅修, 涅槃, 神变]

@@ -3,7 +3,7 @@ id: "AN-11-11-21"
 title: "AN 11.11-21 忆念品 (Anussativagga)"
 description: "本品收录了十一经，主要开示了六念法门、十一法退失与增益的准则、慈心解脱的十一种功德，以及通向无漏解脱的甚深三摩地境界。"
 collection: "Aṅguttara Nikāya"
-vagga: "Paṭhamapaṇṇāsaka"
+vagga: "Ekādasaka"
 reference: "AN 11.11-21"
 curator: "2 True-Dhamma.com"
 tags: [六念, 摩诃男, 慈心解脱, 三摩地, 十一法, 牧牛者]

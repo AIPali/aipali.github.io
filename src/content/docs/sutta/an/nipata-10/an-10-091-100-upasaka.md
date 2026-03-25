@@ -3,7 +3,7 @@ id: "AN-10-91-100"
 title: "AN 10.91-100 优婆塞品 (Upālivagga)"
 description: "本品包含十部经，涵盖了对财富追求者的分类、在家人的修行、应对外道见解的智慧、比丘的素质，以及修定与独居森林的关联等丰富教义。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.91-100"
 curator: "2 True-Dhamma.com"
 tags: [财富, 十无记, 缘起, 入流果, 禅那, 优波离]

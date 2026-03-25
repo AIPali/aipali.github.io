@@ -3,7 +3,7 @@ id: "AN-10-71-80"
 title: "AN 10.71-80 愿品 (Ākaṅkhavagga)"
 description: "增支部十集愿品，涵盖了比丘圆满戒律的诸愿、修行中必须跨越的十种“刺”、世俗与出世间法的增缘，以及佛陀对不同修行者证量的深层剖析。"
 collection: "Aṅguttara Nikāya"
-vagga: "Dutiyapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.71-80"
 curator: "2 True-Dhamma.com"
 tags: [波罗提木叉, 禅定, 缘起, 烦恼, 嫌恨, 戒律, 闻法]

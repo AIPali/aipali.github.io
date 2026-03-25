@@ -3,7 +3,7 @@ id: "AN-10-145-154"
 title: "AN 10.145-154 圣道品 (Ariyavagga)"
 description: "本品通过十对相对的概念，如圣道与非圣道、白道与黑道等，反复强调了以正见为首、正解脱为终的十支圣道，并将其与邪见为首的十支邪道进行对比，清晰地指明了通往解脱的唯一路径。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.145-154"
 curator: "2 True-Dhamma.com"
 tags: ["圣道", "十支圣道", "十邪道", "正见", "正解脱", "邪见", "法义对比", "增支部"]

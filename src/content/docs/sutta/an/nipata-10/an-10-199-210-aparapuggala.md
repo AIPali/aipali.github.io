@@ -3,7 +3,7 @@ id: "AN-10-199-210"
 title: "AN 10.199-210 续人品 (Aparapuggalavagga)"
 description: "本品围绕十不善业与十善业展开，教导在生活中应远离与依止的十种行为，以及其带来的相应果报与智慧增减。"
 collection: "Aṅguttara Nikāya"
-vagga: "Catutthapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.199-210"
 curator: "3 True-Dhamma.com"
 tags: [增支部, 十集, 十善业, 十不善业, 善友, 业果, 修行次第]

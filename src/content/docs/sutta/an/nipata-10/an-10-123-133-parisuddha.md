@@ -3,7 +3,7 @@ id: "AN-10-123-133"
 title: "AN 10.123-133 清净品 (Parisuddhavagga)"
 description: "本品包含一系列简短的经文，强调十种清净之法（八正道加正智与正解脱）的独特性、利益及其在导向涅槃中的作用，并与十种邪性形成对比。"
 collection: "Aṅguttara Nikāya"
-vagga: "Tatiyapaṇṇāsaka"
+vagga: "Dasakanipātapāḷi"
 reference: "AN 10.123-133"
 curator: "2 True-Dhamma.com"
 tags: ["十正性", "十邪性", "八正道", "正智", "正解脱", "清净", "善逝之律", "增支部"]
