@@ -1,6 +1,6 @@
 ---
 id: "AN-8-91-626"
-title: "AN 8.91-626 沙门法与贪广说集 (Sāmaññādipeyyāla)"
+title: "AN 8.91-626 沙门法与贪广说集 (Sāmaññādipeyyāla)"
 description: "包含了沙门法品末尾的优婆夷名录，以及庞大的《贪广说品》。世尊开示如何通过修习八正道、八胜处与八解脱来彻底了知、断除各种烦恼。"
 collection: "Aṅguttara Nikāya"
 vagga: "Rāgapeyyāla"

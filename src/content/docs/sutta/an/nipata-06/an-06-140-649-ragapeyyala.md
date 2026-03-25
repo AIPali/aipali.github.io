@@ -1,6 +1,6 @@
 ---
 id: "AN-6-140-649"
-title: "AN 6.140-649 贪广说集"
+title: "AN 6.140-649 贪广说集 (Rāgapeyyāla)"
 description: "《增支部六集》的结尾篇章。佛陀总结了为了了知并断除贪、瞋、痴及各种杂染，应当修习的三组核心“六法”。"
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"

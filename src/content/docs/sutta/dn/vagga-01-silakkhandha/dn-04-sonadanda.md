@@ -1,6 +1,6 @@
 ---
 id: "DN-4"
-title: "DN 4 种德经 (SoṇaDaṇḍasutta)"
+title: "DN 4 种德经 (Soṇadaṇḍasutta)"
 description: "本经记录了佛陀与种德婆罗门的对话，破除了对血统与吠陀的迷信，确立了戒行与智慧才是衡量一个人是否真正高贵的最终标准。"
 collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"

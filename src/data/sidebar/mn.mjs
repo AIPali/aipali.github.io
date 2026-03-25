@@ -61,7 +61,7 @@ export const sidebarMN =[
           { label: 'MN 34 牧牛者小经 (Cūḷagopālakasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-034-culagopalaka/' },
           { label: 'MN 35 萨遮迦小经 (Cūḷasaccakasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-035-culasaccaka/' },
           { label: 'MN 36 萨遮迦大经 (Mahāsaccakasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-036-mahasaccaka/' },
-          { label: 'MN 37 爱尽小经 (Cūḷtaṇhāsaṅkhayasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-037-culatanhasankhaya/' },
+          { label: 'MN 37 爱尽小经 (Cūḷataṇhāsaṅkhayasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-037-culatanhasankhaya/' },
           { label: 'MN 38 爱尽大经 (Mahātaṇhāsaṅkhayasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-038-mahatanhasankhaya/' },
           { label: 'MN 39 马邑大经 (Mahāassapurasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-039-mahaassapura/' },
           { label: 'MN 40 马邑小经 (Cūḷaassapurasutta)', link: '/sutta/mn/pannasa-1-mula/vagga-04-mahayamaka/mn-040-culaassapura/' },

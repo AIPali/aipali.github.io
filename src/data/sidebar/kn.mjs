@@ -128,11 +128,11 @@ export const sidebarKN =[
     label: 'Miln 弥兰王问经 (Milindapañhapāḷi)',
     collapsed: true,
     items:[
-      { label: 'Miln 1-2 外篇 (Bāhirakathā)', link: '/sutta/kn/kn-15-miln/miln-01-02-bahira/' },
-      { label: 'Miln 3-9 提问 (Milindapañha)', link: '/sutta/kn/kn-15-miln/miln-03-09-milindapanha/' },
-      { label: 'Miln 10-15 难问 (Meṇḍakapañha)', link: '/sutta/kn/kn-15-miln/miln-10-15-mendakapanha/' },
-      { label: 'Miln 16-19 推论问 (Anumānapañha)', link: '/sutta/kn/kn-15-miln/miln-16-19-anumanapanha/' },
-      { label: 'Miln 20-28 譬喻 (Opammakathāpañha)', link: '/sutta/kn/kn-15-miln/miln-20-28-opammakatha/' },
+      { label: 'Miln 1 外篇 (Bāhirakathā)', link: '/sutta/kn/kn-15-miln/miln-01-bahira/' },
+      { label: 'Miln 2 提问 (Milindapañha)', link: '/sutta/kn/kn-15-miln/miln-02-milindapanha/' },
+      { label: 'Miln 3 难问 (Meṇḍakapañha)', link: '/sutta/kn/kn-15-miln/miln-03-mendakapanha/' },
+      { label: 'Miln 4 推论问 (Anumānapañha)', link: '/sutta/kn/kn-15-miln/miln-04-anumanapanha/' },
+      { label: 'Miln 5 譬喻 (Opammakathāpañha)', link: '/sutta/kn/kn-15-miln/miln-05-opammakatha/' },
     ]
   }
 ];

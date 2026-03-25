@@ -143,7 +143,7 @@ export const sidebarAN =[
       { label: 'AN 7.65-74 大品 (Mahāvagga)', link: '/sutta/an/nipata-07/an-07-065-074-maha/' },
       { label: 'AN 7.75-84 律品 (Vinayavagga)', link: '/sutta/an/nipata-07/an-07-075-084-vinaya/' },
       { label: 'AN 7.85-94 沙门法品 (Samaṇavagga)', link: '/sutta/an/nipata-07/an-07-085-094-samana/' },
-      { label: 'AN 7.95-1132 应请与贪等广说集 (Āhuneyyādipeyyāla)', link: '/sutta/an/nipata-07/an-07-095-1132-ahuneyyadipeyyala/' },
+      { label: 'AN 7.95-1132 应请与贪广说集 (Āhuneyyādipeyyāla)', link: '/sutta/an/nipata-07/an-07-095-1132-ahuneyyadipeyyala/' },
     ]
   },
   {

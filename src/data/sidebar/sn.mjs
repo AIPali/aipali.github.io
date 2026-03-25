@@ -47,7 +47,7 @@ export const sidebarSN = [
           { label: 'SN 12.1-10 佛陀品 (Buddhavagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-01-10-buddha/' },
           { label: 'SN 12.11-20 食品 (Āhāravagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-11-20-ahara/' },
           { label: 'SN 12.21-30 十力品 (Dasabalavagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-21-30-dasabala/' },
-          { label: 'SN 12.31-40 加罗刹利品 (Kaḷārakhattiyavagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-31-40-kalarakhattiya/' },
+          { label: 'SN 12.31-40 伽罗刹利品 (Kaḷārakhattiyavagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-31-40-kalarakhattiya/' },
           { label: 'SN 12.41-50 居士品 (Gahapativagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-41-50-gahapati/' },
           { label: 'SN 12.51-60 苦品 (Dukkhavagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-51-60-dukkha/' },
           { label: 'SN 12.61-70 大品 (Mahāvagga)', link: '/sutta/sn/vagga-2-nidana/samyutta-12-nidana/sn-12-61-70-maha/' },

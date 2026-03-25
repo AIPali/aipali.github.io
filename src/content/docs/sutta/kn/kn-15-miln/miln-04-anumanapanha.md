@@ -1,10 +1,10 @@
 ---
-id: "Miln-04"
+id: "Miln-4"
 title: "Miln 4 推论问 (Anumānapañha)"
 description: "弥兰王向尊者龙军提出关于佛陀出世、在家与出家修行、业果法则以及通过比量推知佛陀存在的一系列深层法义问答。"
 collection: "Khuddaka Nikāya"
 vagga: "Milindapañhapāḷi"
-reference: "Miln 16-19, 33"
+reference: "Miln 4"
 curator: "True-Dhamma.com"
 tags: [弥兰王, 龙军, 比量, 佛陀, 头陀行, 菩萨, 业果, 涅槃]
 ---
