@@ -366,40 +366,36 @@ ul.starlight-sidebar-topics + * {
 //  padding-bottom: 4px !important;
 // }
 
+
 /* ==========================================================
-   📱 移动端 Topics 频道栏专属修复 (单行并排 + 内部竖排 + 全宽贴边)
+   📱 移动端 Topics 频道栏专属修复 (单行并排 + 内部竖排 + 全宽完美贴边)
    ========================================================== */
 @media (max-width: 50rem) {
-  /* 1. 强制铺满全宽并贴边 */
-  ul.starlight-sidebar-topics {
+  /* 🌟 核心修复 1：加上 .sidebar-content 提升权重，确保能覆盖全局样式 */
+  .sidebar-content > ul.starlight-sidebar-topics {
     flex-wrap: nowrap !important;
     gap: 0.15rem !important; 
     
+    /* 消除原本自己设置的左右内边距 */
     padding-left: 0 !important;
     padding-right: 0 !important;
     
-    /* 用负 margin 让这个容器向左右两边强行延伸，达到和上方菜单绝对齐平的效果 */
-    margin-left: calc(var(--sl-sidebar-pad-x, 1rem) * -1) !important;
-    margin-right: calc(var(--sl-sidebar-pad-x, 1rem) * -1) !important;
+    /* 利用负 margin 抵消父级 Sidebar 在手机端默认的 8px (0.5rem) 内边距 */
+    margin-left: calc(var(--sl-sidebar-pad-x, 0.5rem) * -1) !important;
+    margin-right: calc(var(--sl-sidebar-pad-x, 0.5rem) * -1) !important;
+    
+    /* 🌟 核心修复 2：强行打破 100% 限制，改为 auto，让负边距真正在两边同时拉伸！ */
     width: auto !important; 
   }
   
-  ul.starlight-sidebar-topics > li {
+  .sidebar-content > ul.starlight-sidebar-topics > li {
     flex: 1 1 0 !important;
     margin: 0 !important;
   }
 
-  /* 给首尾两个按钮增加一点点外边距，保持触控的“呼吸感” */
-  ul.starlight-sidebar-topics > li:first-child {
-    margin-left: 0.25rem !important;
-  }
-  ul.starlight-sidebar-topics > li:last-child {
-    margin-right: 0.25rem !important;
-  }
-
-  /* 2. 核心魔法：只让文字内部换行，维持"上英下中"的完美叠放 */
-  .starlight-sidebar-topics a {
-    /* 用 calc 把文字的可用宽度卡在 2.2rem，迫使中英文从空格处断开变成上下结构 */
+  /* 核心魔法：只让文字内部换行，维持"上英下中"的完美叠放 */
+  .sidebar-content > ul.starlight-sidebar-topics a {
+    /* 用 calc 把文字的可用宽度死死卡在约 2.2rem，迫使中英文从空格处断开变成上下结构 */
     padding-left: calc((100% - 2.2rem) / 2) !important;
     padding-right: calc((100% - 2.2rem) / 2) !important;
   }
