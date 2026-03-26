@@ -366,8 +366,7 @@ ul.starlight-sidebar-topics + * {
 //  padding-bottom: 4px !important;
 // }
 
-/* 当 DocSearch 激活时，尝试覆盖默认的滚动锁定行为，防止移动端计算崩溃 */
-:global(body.DocSearch--active) {
-  overflow-y: auto !important; /* 允许滚动，或者尝试 fixed 但固定位置 */
-  overscroll-behavior-y: none;
+
+html:has(body.DocSearch--active) {
+  scroll-behavior: auto !important;
 }

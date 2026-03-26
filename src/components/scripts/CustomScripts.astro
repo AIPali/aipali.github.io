@@ -3,5 +3,11 @@
 ---
 <!-- CustomScripts -->
 <script is:inline>
-
+            document.addEventListener('DOMContentLoaded', () => {
+              // Safari Fix: 避免 Algolia 搜索引起焦点渲染卡死或滚动异常
+              const fix = document.createElement('div');
+              fix.style.cssText = 'position: fixed; opacity: 0; pointer-events: none; bottom: 0;';
+              fix.innerHTML = '<input type="text" tabindex="-1" />';
+              document.body.appendChild(fix);
+            });
 </script>
