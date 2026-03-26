@@ -1,16 +1,80 @@
 ---
 // src/components/scripts/FastGPT.astro
 ---
-<!-- FastGPT 聊天框 -->
 <script
   is:inline
-  type="text/javascript"
-  src="https://ai.true-dhamma.com/js/iframe.js"
-  id="chatbot-iframe" 
-  data-bot-src="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy" 
+  id="chatbot-iframe"
+  data-bot-src="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy"
   data-default-open="false"
   data-drag="false"
   data-open-icon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iY3Vyc29yOnBvaW50ZXI7IG92ZXJmbG93OnZpc2libGU7Ij4KPHN0eWxlPi5sdXgtcGF0aCB7IGZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lY2FwOiByb3VuZDsgc3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgfSAubHV4LWZpbGwgeyBmaWxsOiAjZDRhZjM3OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IH0gLmx1eC1nbG93IHsgdHJhbnNmb3JtLW9yaWdpbjogNDBweCA0MHB4OyBhbmltYXRpb246IGx1eFB1bHNlIDNzIGluZmluaXRlIGFsdGVybmF0ZSBlYXNlLWluLW91dDsgfSBzdmc6aG92ZXIgLmx1eC1nbG93IHsgdHJhbnNmb3JtOiBzY2FsZSgxLjA4KTsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDRweCA2cHggcmdiYSgwLDAsMCwwLjQpKSBkcm9wLXNoYWRvdygwIDAgMTBweCByZ2JhKDIxMiwxNzUsNTUsMC44KSk7IH0gQGtleWZyYW1lcyBsdXhQdWxzZSB7IDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgMXB4IHJnYmEoMjEyLDE3NSw1NSwwLjIpKTsgdHJhbnNmb3JtOiBzY2FsZSgxKTsgfSAxMDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgNXB4IHJnYmEoMjEyLDE3NSw1NSwwLjYpKTsgdHJhbnNmb3JtOiBzY2FsZSgxLjAyKTsgfSB9PC9zdHlsZT4KICA8ZyBjbGFzcz0ibHV4LWdsb3ciPgogICAgPHBhdGggY2xhc3M9Imx1eC1wYXRoIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik00MCAxNkMyNi43IDE2IDE2IDI2LjcgMTYgNDBjMCAxMy4zIDEwLjcgMjQgMjQgMjQgNC4yIDAgOC4xLTEgMTEuNS0yLjhMNjIgNjRsLTIuOC0xMC41QzYyLjIgNDkuNiA2NCA0NSA2NCA0MGMwLTEzLjMtMTAuNy0yNC0yNC0yNHoiLz4KICAgIDwhLS0gWOi9tOS7jiA0MCDlh4/lsI/oh7MgMzkgKOW+ruW+ruWBj+W3pjFweO+8jOino+WGs+inhuiniemHjeW/g+WBj+WPs+eahOmXrumimCkgLS0+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOSwgNDApIHNjYWxlKDEuMjUpIj4KICAgICAgPHBhdGggY2xhc3M9Imx1eC1wYXRoIiBzdHJva2Utd2lkdGg9IjIuNSIgZD0iTS05IDYgTC0zIC02IEwzIDYgTTkgLTYgTDkgLTIuNSBNOSAyLjUgTDkgNiIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+"
   data-close-icon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iY3Vyc29yOnBvaW50ZXI7IG92ZXJmbG93OnZpc2libGU7Ij4KPHN0eWxlPi5sdXgtcGF0aCB7IGZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lY2FwOiByb3VuZDsgc3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgfSAubHV4LWZpbGwgeyBmaWxsOiAjZDRhZjM3OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IH0gLmx1eC1nbG93IHsgdHJhbnNmb3JtLW9yaWdpbjogNDBweCA0MHB4OyBhbmltYXRpb246IGx1eFB1bHNlIDNzIGluZmluaXRlIGFsdGVybmF0ZSBlYXNlLWluLW91dDsgfSBzdmc6aG92ZXIgLmx1eC1nbG93IHsgdHJhbnNmb3JtOiBzY2FsZSgxLjA4KTsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDRweCA2cHggcmdiYSgwLDAsMCwwLjQpKSBkcm9wLXNoYWRvdygwIDAgMTBweCByZ2JhKDIxMiwxNzUsNTUsMC44KSk7IH0gQGtleWZyYW1lcyBsdXhQdWxzZSB7IDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgMXB4IHJnYmEoMjEyLDE3NSw1NSwwLjIpKTsgdHJhbnNmb3JtOiBzY2FsZSgxKTsgfSAxMDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgNXB4IHJnYmEoMjEyLDE3NSw1NSwwLjYpKTsgdHJhbnNmb3JtOiBzY2FsZSgxLjAyKTsgfSB9PC9zdHlsZT4KICA8ZyBjbGFzcz0ibHV4LWdsb3ciPgogICAgPGNpcmNsZSBjbGFzcz0ibHV4LXBhdGgiIGN4PSI0MCIgY3k9IjQwIiByPSIyNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8cGF0aCBjbGFzcz0ibHV4LXBhdGgiIGQ9Ik0zMCAzMEw1MCA1ME01MCAzMEwzMCA1MCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPC9nPgo8L3N2Zz4="
-  defer
-></script>
+>
+/** 
+ * 合并原本 iframe.js 的逻辑
+ */
+function embedChatbot() {
+  const chatBtnId = 'fastgpt-chatbot-button';
+  const chatWindowId = 'fastgpt-chatbot-window';
+  const script = document.getElementById('chatbot-iframe');
+  
+  const botSrc = script?.getAttribute('data-bot-src');
+  const defaultOpen = script?.getAttribute('data-default-open') === 'true';
+  const canDrag = script?.getAttribute('data-drag') === 'true';
+  const MessageIcon = script?.getAttribute('data-open-icon');
+  const CloseIcon = script?.getAttribute('data-close-icon');
+
+  if (!botSrc || document.getElementById(chatBtnId)) return;
+
+  // 创建按钮
+  const ChatBtn = document.createElement('div');
+  ChatBtn.id = chatBtnId;
+  ChatBtn.style.cssText = 'position: fixed; bottom: 30px; right: 60px; width: 40px; height: 40px; cursor: pointer; z-index: 2147483647; transition: 0.3s;';
+
+  const ChatBtnDiv = document.createElement('img');
+  ChatBtnDiv.src = defaultOpen ? CloseIcon : MessageIcon;
+  ChatBtnDiv.setAttribute('width', '100%');
+  ChatBtnDiv.setAttribute('height', '100%');
+  ChatBtnDiv.draggable = false;
+
+  // 创建 Iframe
+  const iframe = document.createElement('iframe');
+  iframe.allow = 'microphone *; *';
+  iframe.referrerPolicy = 'no-referrer';
+  iframe.id = chatWindowId;
+  iframe.src = botSrc;
+  iframe.style.cssText = 'border: none; position: fixed; flex-direction: column; justify-content: space-between; box-shadow: rgba(150, 150, 150, 0.2) 0px 10px 30px 0px, rgba(150, 150, 150, 0.2) 0px 0px 0px 1px; width: 375px; height: 667px; max-width: 90vw; max-height: 85vh; border-radius: 0.75rem; display: flex; z-index: 2147483647; overflow: hidden; left: unset; background-color: #F3F4F6; transition: visibility 0.2s, opacity 0.2s;';
+  iframe.style.visibility = defaultOpen ? 'unset' : 'hidden';
+  iframe.style.opacity = defaultOpen ? '1' : '0';
+
+  document.body.appendChild(iframe);
+
+  // 这里的 update 逻辑保持原样...
+  const updateChatWindowPosition = () => {
+    const btn = ChatBtn.getBoundingClientRect();
+    iframe.style.right = (window.innerWidth - btn.right) + 'px';
+    iframe.style.bottom = (window.innerHeight - btn.top + 10) + 'px';
+  };
+
+  ChatBtn.onclick = () => {
+    const isHidden = iframe.style.visibility === 'hidden';
+    iframe.style.visibility = isHidden ? 'unset' : 'hidden';
+    iframe.style.opacity = isHidden ? '1' : '0';
+    ChatBtnDiv.src = isHidden ? CloseIcon : MessageIcon;
+  };
+
+  ChatBtn.appendChild(ChatBtnDiv);
+  document.body.appendChild(ChatBtn);
+  
+  // 初始化位置
+  window.addEventListener('resize', updateChatWindowPosition);
+  updateChatWindowPosition();
+}
+
+// 确保在加载时运行
+if (document.readyState === 'complete') {
+  embedChatbot();
+} else {
+  window.addEventListener('load', embedChatbot);
+}
+</script>
