@@ -367,6 +367,22 @@ ul.starlight-sidebar-topics + * {
 // }
 
 
-html:has(body.DocSearch--active) {
+
+
+/* src/styles/custom.css */
+
+/* 暴力禁用所有平滑滚动，防止 iOS Safari 在计算滚动偏移时崩溃 */
+html, body {
   scroll-behavior: auto !important;
+  /* 修复 iOS 在 Modal 弹出时可能产生的位移 Bug */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 针对 Algolia 弹出后的 body 锁定状态进行增强 */
+body.DocSearch--active {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
