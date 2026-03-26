@@ -1,0 +1,127 @@
+---
+// src/components/scripts/FastGPT.astro
+---
+<script
+  is:inline
+  id="chatbot-iframe"
+  data-bot-src="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy"
+  data-default-open="false"
+  data-drag="false"
+  data-open-icon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iY3Vyc29yOnBvaW50ZXI7IG92ZXJmbG93OnZpc2libGU7Ij4KPHN0eWxlPi5sdXgtcGF0aCB7IGZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lY2FwOiByb3VuZDsgc3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgfSAubHV4LWZpbGwgeyBmaWxsOiAjZDRhZjM3OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IH0gLmx1eC1nbG93IHsgdHJhbnNmb3JtLW9yaWdpbjogNDBweCA0MHB4OyBhbmltYXRpb246IGx1eFB1bHNlIDNzIGluZmluaXRlIGFsdGVybmF0ZSBlYXNlLWluLW91dDsgfSBzdmc6aG92ZXIgLmx1eC1nbG93IHsgdHJhbnNmb3JtOiBzY2FsZSgxLjA4KTsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDRweCA2cHggcmdiYSgwLDAsMCwwLjQpKSBkcm9wLXNoYWRvdygwIDAgMTBweCByZ2JhKDIxMiwxNzUsNTUsMC44KSk7IH0gQGtleWZyYW1lcyBsdXhQdWxzZSB7IDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgMXB4IHJnYmEoMjEyLDE3NSw1NSwwLjIpKTsgdHJhbnNmb3JtOiBzY2FsZSgxKTsgfSAxMDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgNXB4IHJnYmEoMjEyLDE3NSw1NSwwLjYpKTsgdHJhbnNmb3JtOiBzY2FsZSgxLjAyKTsgfSB9PC9zdHlsZT4KICA8ZyBjbGFzcz0ibHV4LWdsb3ciPgogICAgPHBhdGggY2xhc3M9Imx1eC1wYXRoIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik00MCAxNkMyNi43IDE2IDE2IDI2LjcgMTYgNDBjMCAxMy4zIDEwLjcgMjQgMjQgMjQgNC4yIDAgOC4xLTEgMTEuNS0yLjhMNjIgNjRsLTIuOC0xMC41QzYyLjIgNDkuNiA2NCA0NSA2NCA0MGMwLTEzLjMtMTAuNy0yNC0yNC0yNHoiLz4KICAgIDwhLS0gWOi9tOS7jiA0MCDlh4/lsI/oh7MgMzkgKOW+ruW+ruWBj+W3pjFweO+8jOino+WGs+inhuiniemHjeW/g+WBj+WPs+eahOmXrumimCkgLS0+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOSwgNDApIHNjYWxlKDEuMjUpIj4KICAgICAgPHBhdGggY2xhc3M9Imx1eC1wYXRoIiBzdHJva2Utd2lkdGg9IjIuNSIgZD0iTS05IDYgTC0zIC02IEwzIDYgTTkgLTYgTDkgLTIuNSBNOSAyLjUgTDkgNiIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+"
+  data-close-icon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iY3Vyc29yOnBvaW50ZXI7IG92ZXJmbG93OnZpc2libGU7Ij4KPHN0eWxlPi5sdXgtcGF0aCB7IGZpbGw6IHRyYW5zcGFyZW50OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lY2FwOiByb3VuZDsgc3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgfSAubHV4LWZpbGwgeyBmaWxsOiAjZDRhZjM3OyBzdHJva2U6ICNkNGFmMzc7IHN0cm9rZS1saW5lam9pbjogcm91bmQ7IH0gLmx1eC1nbG93IHsgdHJhbnNmb3JtLW9yaWdpbjogNDBweCA0MHB4OyBhbmltYXRpb246IGx1eFB1bHNlIDNzIGluZmluaXRlIGFsdGVybmF0ZSBlYXNlLWluLW91dDsgfSBzdmc6aG92ZXIgLmx1eC1nbG93IHsgdHJhbnNmb3JtOiBzY2FsZSgxLjA4KTsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDRweCA2cHggcmdiYSgwLDAsMCwwLjQpKSBkcm9wLXNoYWRvdygwIDAgMTBweCByZ2JhKDIxMiwxNzUsNTUsMC44KSk7IH0gQGtleWZyYW1lcyBsdXhQdWxzZSB7IDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgMXB4IHJnYmEoMjEyLDE3NSw1NSwwLjIpKTsgdHJhbnNmb3JtOiBzY2FsZSgxKTsgfSAxMDAlIHsgZmlsdGVyOiBkcm9wLXNoYWRvdygwIDJweCAzcHggcmdiYSgwLDAsMCwwLjMpKSBkcm9wLXNoYWRvdygwIDAgNXB4IHJnYmEoMjEyLDE3NSw1NSwwLjYpKTsgdHJhbnNmb3JtOiBzY2FsZSgxLjAyKTsgfSB9PC9zdHlsZT4KICA8ZyBjbGFzcz0ibHV4LWdsb3ciPgogICAgPGNpcmNsZSBjbGFzcz0ibHV4LXBhdGgiIGN4PSI0MCIgY3k9IjQwIiByPSIyNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8cGF0aCBjbGFzcz0ibHV4LXBhdGgiIGQ9Ik0zMCAzMEw1MCA1ME01MCAzMEwzMCA1MCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPC9nPgo8L3N2Zz4="
+>
+function embedChatbot() {
+  const chatBtnId = 'fastgpt-chatbot-button';
+  const chatWindowId = 'fastgpt-chatbot-window';
+  const script = document.getElementById('chatbot-iframe');
+  
+  const botSrc = script?.getAttribute('data-bot-src');
+  const defaultOpen = script?.getAttribute('data-default-open') === 'true';
+  const MessageIcon = script?.getAttribute('data-open-icon');
+  const CloseIcon = script?.getAttribute('data-close-icon');
+
+  document.body.style.overflow = '';
+
+  if (!botSrc || document.getElementById(chatBtnId)) return;
+
+  // 1. 创建触发按钮
+  const ChatBtn = document.createElement('div');
+  ChatBtn.id = chatBtnId;
+  // 【修改点 1：解决垂直对齐问题】
+  // 添加了 align-self: center; margin-top: auto; margin-bottom: auto; 确保在搜索栏行内完美垂直居中
+  ChatBtn.style.cssText = 'width: 28px; height: 28px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin-left: 0.75rem; flex-shrink: 0; align-self: center; margin-top: auto; margin-bottom: auto;';
+
+  const ChatBtnDiv = document.createElement('img');
+  ChatBtnDiv.src = defaultOpen ? CloseIcon : MessageIcon;
+  ChatBtnDiv.style.cssText = 'width: 100%; height: 100%; object-fit: contain;';
+  ChatBtnDiv.draggable = false;
+  ChatBtn.appendChild(ChatBtnDiv);
+
+  let isPlacedInHeader = false;
+
+  // 2. 寻找 sl-doc-search 标签
+  const docSearchElement = document.querySelector('sl-doc-search');
+  if (docSearchElement) {
+    docSearchElement.insertAdjacentElement('afterend', ChatBtn);
+    isPlacedInHeader = true;
+  } else {
+    ChatBtn.style.position = 'fixed';
+    ChatBtn.style.bottom = '30px';
+    ChatBtn.style.right = '30px'; 
+    ChatBtn.style.zIndex = '2147483647';
+    document.body.appendChild(ChatBtn);
+  }
+
+  // 3. 创建对话框 Iframe
+  const iframe = document.createElement('iframe');
+  iframe.allow = 'microphone *; *';
+  iframe.referrerPolicy = 'no-referrer';
+  iframe.id = chatWindowId;
+  iframe.src = botSrc;
+  iframe.style.cssText = 'border: none; position: fixed; flex-direction: column; justify-content: space-between; box-shadow: rgba(150, 150, 150, 0.2) 0px 10px 30px 0px, rgba(150, 150, 150, 0.2) 0px 0px 0px 1px; width: 375px; height: 667px; max-width: 90vw; border-radius: 0.75rem; display: flex; z-index: 2147483647; overflow: hidden; background-color: #F3F4F6; transition: visibility 0.2s, opacity 0.2s;';
+  iframe.style.visibility = defaultOpen ? 'unset' : 'hidden';
+  iframe.style.opacity = defaultOpen ? '1' : '0';
+  document.body.appendChild(iframe);
+
+  // 4. 计算 Iframe 的弹出位置
+  const updateChatWindowPosition = () => {
+    const btnRect = ChatBtn.getBoundingClientRect();
+
+    if (isPlacedInHeader) {
+      // 【修改点 2：解决弹窗太靠左遮挡内容的问题】
+      // 这里多减去了 60px，意味着弹窗会相对按钮往右偏移 60px
+      // 使用 Math.max(16, ...) 是为了设置一堵"空气墙"，保证弹窗无论怎么往右偏，都会离屏幕最右侧至少保留 16px 的边距，不会溢出屏幕
+      const rightOffset = window.innerWidth - btnRect.right - 60; 
+      iframe.style.right = Math.max(16, rightOffset) + 'px';
+      
+      // 向下弹出
+      iframe.style.bottom = 'unset'; 
+      iframe.style.top = (btnRect.bottom + 12) + 'px'; 
+      iframe.style.maxHeight = `calc(100vh - ${btnRect.bottom + 24}px)`; 
+    } else {
+      // 右下角兜底逻辑
+      iframe.style.right = (window.innerWidth - btnRect.right) + 'px';
+      iframe.style.top = 'unset';
+      iframe.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
+      iframe.style.maxHeight = `calc(100vh - ${window.innerHeight - btnRect.top + 24}px)`;
+    }
+  };
+
+  ChatBtn.onclick = () => {
+    const isOpening = iframe.style.visibility === 'hidden'; // 判断当前是否准备打开
+
+    // 切换显隐状态
+    iframe.style.visibility = isOpening ? 'unset' : 'hidden';
+    iframe.style.opacity = isOpening ? '1' : '0';
+    ChatBtnDiv.src = isOpening ? CloseIcon : MessageIcon;
+
+    if (isOpening) {
+      // --- 【锁定滚动】 ---
+      document.body.style.overflow = 'hidden';
+      // 如果是 iOS，有时需要额外处理
+      document.body.style.touchAction = 'none'; 
+      
+      updateChatWindowPosition(); 
+    } else {
+      // --- 【恢复滚动】 ---
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+  };
+
+  window.addEventListener('resize', () => {
+    if (iframe.style.visibility !== 'hidden') {
+      updateChatWindowPosition();
+    }
+  });
+  updateChatWindowPosition();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', embedChatbot);
+} else {
+  embedChatbot();
+}
+
+document.addEventListener('astro:page-load', embedChatbot);
+</script>

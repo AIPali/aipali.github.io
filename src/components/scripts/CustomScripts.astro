@@ -4,6 +4,8 @@
 <!-- CustomScripts -->
 <script is:inline>
 
+            // 修复 docsearch 在 iOS 下的兼容性问题 - 搜索时滚动到顶部
+
             function setupSafariDocSearchFix() {
               // 1. 仅针对 iOS 平台拦截 (涵盖 iOS Safari, Chrome, Edge 等所有基于 WebKit 的浏览器)
               const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -60,7 +62,5 @@
             } else {
               setupSafariDocSearchFix();
             }
-
-
 
 </script>
