@@ -20,6 +20,8 @@ function embedChatbot() {
   const MessageIcon = script?.getAttribute('data-open-icon');
   const CloseIcon = script?.getAttribute('data-close-icon');
 
+  document.body.style.overflow = '';
+
   if (!botSrc || document.getElementById(chatBtnId)) return;
 
   // 1. 创建触发按钮
@@ -27,7 +29,7 @@ function embedChatbot() {
   ChatBtn.id = chatBtnId;
   // 【修改点 1：解决垂直对齐问题】
   // 添加了 align-self: center; margin-top: auto; margin-bottom: auto; 确保在搜索栏行内完美垂直居中
-  ChatBtn.style.cssText = 'width: 38px; height: 38px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin-left: 0.75rem; flex-shrink: 0; align-self: center; margin-top: auto; margin-bottom: auto;';
+  ChatBtn.style.cssText = 'width: 28px; height: 28px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin-left: 0.75rem; flex-shrink: 0; align-self: center; margin-top: auto; margin-bottom: auto;';
 
   const ChatBtnDiv = document.createElement('img');
   ChatBtnDiv.src = defaultOpen ? CloseIcon : MessageIcon;
@@ -69,7 +71,7 @@ function embedChatbot() {
       // 【修改点 2：解决弹窗太靠左遮挡内容的问题】
       // 这里多减去了 60px，意味着弹窗会相对按钮往右偏移 60px
       // 使用 Math.max(16, ...) 是为了设置一堵"空气墙"，保证弹窗无论怎么往右偏，都会离屏幕最右侧至少保留 16px 的边距，不会溢出屏幕
-      const rightOffset = window.innerWidth - btnRect.right - 180; 
+      const rightOffset = window.innerWidth - btnRect.right - 60; 
       iframe.style.right = Math.max(16, rightOffset) + 'px';
       
       // 向下弹出
@@ -86,12 +88,24 @@ function embedChatbot() {
   };
 
   ChatBtn.onclick = () => {
-    const isHidden = iframe.style.visibility === 'hidden';
-    iframe.style.visibility = isHidden ? 'unset' : 'hidden';
-    iframe.style.opacity = isHidden ? '1' : '0';
-    ChatBtnDiv.src = isHidden ? CloseIcon : MessageIcon;
-    if (isHidden) {
+    const isOpening = iframe.style.visibility === 'hidden'; // 判断当前是否准备打开
+
+    // 切换显隐状态
+    iframe.style.visibility = isOpening ? 'unset' : 'hidden';
+    iframe.style.opacity = isOpening ? '1' : '0';
+    ChatBtnDiv.src = isOpening ? CloseIcon : MessageIcon;
+
+    if (isOpening) {
+      // --- 【锁定滚动】 ---
+      document.body.style.overflow = 'hidden';
+      // 如果是 iOS，有时需要额外处理
+      document.body.style.touchAction = 'none'; 
+      
       updateChatWindowPosition(); 
+    } else {
+      // --- 【恢复滚动】 ---
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     }
   };
 
