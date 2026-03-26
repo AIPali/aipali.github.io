@@ -21,8 +21,7 @@ function embedChatbot() {
   if (!botSrc || document.getElementById(chatBtnId)) return;
 
   // ==========================================
-  // 定义动态 SVG 图标 (流光线条 + 深浅色自适应 + 纯图形AI)
-  // 【修复】：移除了 var(--bg) 避免与外部网站的 CSS 变量发生冲突，强制使用绝对 Hex 颜色。
+  // 定义动态 SVG 图标 (增加对各大框架强行切换明暗主题的 !important 支持)
   // ==========================================
   const svgOpen = `
     <svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
@@ -35,29 +34,30 @@ function embedChatbot() {
         .fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .fastgpt-icon:hover { transform: scale(1.05); }
         
-        /* 默认浅色模式参数：纯白背景，深灰前景色 */
+        /* 默认浅色模式 */
         .fastgpt-bg { fill: #ffffff; stroke: url(#g-blue); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
         .fastgpt-fg { stroke: #111111; fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
         
         @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
         
-        /* 系统级别深色模式感知：深灰背景，纯白前景色 */
+        /* 1. 系统级别深色模式感知 */
         @media (prefers-color-scheme: dark) {
           .fastgpt-bg { fill: #2b2b3b; }
           .fastgpt-fg { stroke: #ffffff; }
         }
-        /* 兼容网页强制 Dark Mode (基于html的.dark类名) */
-        html.dark .fastgpt-bg { fill: #2b2b3b; }
-        html.dark .fastgpt-fg { stroke: #ffffff; }
+        
+        /* 2. 网页强制深色接管 (支持 Tailwind / Astro Starlight 等) */
+        html.dark .fastgpt-bg, html[data-theme='dark'] .fastgpt-bg { fill: #2b2b3b !important; }
+        html.dark .fastgpt-fg, html[data-theme='dark'] .fastgpt-fg { stroke: #ffffff !important; }
+
+        /* 3. 网页强制浅色接管 (极度关键：强行覆盖系统的深色设定) */
+        html.light .fastgpt-bg, html[data-theme='light'] .fastgpt-bg { fill: #ffffff !important; }
+        html.light .fastgpt-fg, html[data-theme='light'] .fastgpt-fg { stroke: #111111 !important; }
       </style>
       <g class="fastgpt-icon">
-        <!-- 对话气泡背景 -->
         <path class="fastgpt-bg" d="M40 16C26.7 16 16 26.7 16 40c0 13.3 10.7 24 24 24 4.2 0 8.1-1 11.5-2.8L62 64l-2.8-10.5C62.2 49.6 64 45 64 40c0-13.3-10.7-24-24-24z"/>
-        <!-- AI 纯图形，精确计算：总宽度20px，中心对齐X坐标39（相较中心40偏左1px） -->
         <g class="fastgpt-fg">
-          <!-- A 字母 -->
           <path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" />
-          <!-- I 字母 -->
           <path d="M49 30 L49 50" />
         </g>
       </g>
@@ -75,19 +75,21 @@ function embedChatbot() {
         .fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .fastgpt-icon:hover { transform: scale(1.05); }
         
-        /* 默认浅色模式参数 */
         .fastgpt-bg-close { fill: #ffffff; stroke: url(#g-blue-close); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
         .fastgpt-fg-close { stroke: #111111; fill: none; stroke-width: 4.5; stroke-linecap: round; }
         
         @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
         
-        /* 深色模式感知 */
         @media (prefers-color-scheme: dark) {
           .fastgpt-bg-close { fill: #2b2b3b; }
           .fastgpt-fg-close { stroke: #ffffff; }
         }
-        html.dark .fastgpt-bg-close { fill: #2b2b3b; }
-        html.dark .fastgpt-fg-close { stroke: #ffffff; }
+        
+        html.dark .fastgpt-bg-close, html[data-theme='dark'] .fastgpt-bg-close { fill: #2b2b3b !important; }
+        html.dark .fastgpt-fg-close, html[data-theme='dark'] .fastgpt-fg-close { stroke: #ffffff !important; }
+
+        html.light .fastgpt-bg-close, html[data-theme='light'] .fastgpt-bg-close { fill: #ffffff !important; }
+        html.light .fastgpt-fg-close, html[data-theme='light'] .fastgpt-fg-close { stroke: #111111 !important; }
       </style>
       <g class="fastgpt-icon">
         <circle class="fastgpt-bg-close" cx="40" cy="40" r="24" />
