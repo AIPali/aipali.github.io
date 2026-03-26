@@ -366,36 +366,26 @@ ul.starlight-sidebar-topics + * {
 //  padding-bottom: 4px !important;
 // }
 
-
 /* ==========================================================
-   📱 移动端 Topics 频道切换栏专属修复
-   解决：长短文本横竖不一、拉伸留白、以及位置不够的问题
+   📱 移动端 Topics 频道栏修复 (单行全并排 + 内部强制竖排)
    ========================================================== */
 @media (max-width: 50rem) {
+  /* 1. 强制所有频道按钮挤在同一行，绝对不换行 */
   ul.starlight-sidebar-topics {
-    /* 1. 允许换行布局。频道少时排一行，如果频道多于 4 个会自动折成两行，不至于挤压变形 */
-    flex-wrap: wrap !important;
-    gap: 0.3rem !important;
-    padding-bottom: 0.5rem !important; 
+    flex-wrap: nowrap !important;
+    gap: 0.15rem !important; /* 手机端稍微收紧一点间距，给按钮多腾点空间 */
   }
   
   ul.starlight-sidebar-topics > li {
-    /* 2. 设定合理的均分比例（22% 意味着一行最多 4 个）。
-       核心在于它会自动等比拉伸填满整个手机屏幕宽度，消除难看的空隙 */
-    flex: 1 1 22% !important;
+    flex: 1 1 0 !important;
     margin: 0 !important;
   }
 
+  /* 2. 核心魔法：只让文字内部换行，维持"上英下中"的完美叠放 */
   .starlight-sidebar-topics a {
-    /* 🌟 3. 终极排版魔法：利用 calc() 动态锁定文本可用宽度 🌟
-       原理：无论外部按钮拉伸得多宽，我们用左右 padding 将“内部文本区域”死死卡在约 2.2rem（极窄）。
-       结果：这强制了英文缩写和中文之间只要有空格，就【必定换行】！
-       优势：完美稳定重现 PC 端上下结构，而且由于用的是内边距，所以整个按钮的点击热区和悬浮高亮色依然能填满屏幕，不会有空档。*/
+    /* 无论手机屏幕怎么拉伸这6个按钮，用 calc 把文字的可用宽度死死卡在 2.2rem（约35px）*/
+    /* 这样英文缩写和中文之间的空格就必然会被挤断，强制变成和 PC 一模一样的上下结构 */
     padding-left: calc((100% - 2.2rem) / 2) !important;
     padding-right: calc((100% - 2.2rem) / 2) !important;
-    
-    /* 稍微加厚一点上下边距，让变成上下两行的按钮在手机端触控手感更好，不显得太扁 */
-    padding-top: 0.45rem !important;
-    padding-bottom: 0.55rem !important;
   }
 }
