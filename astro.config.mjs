@@ -76,15 +76,17 @@ export default defineConfig({
         }),
         // 👇 Topic 插件：接受两个参数，第二个参数用来配置豁免名单
         starlightSidebarTopics([
-          { label: 'DN 长部', link: '/sutta/dn/', items: formatSidebarWithPali(sidebarDN) },
-          { label: 'MN 中部', link: '/sutta/mn/', items: formatSidebarWithPali(sidebarMN) },
-          { label: 'SN 相应部', link: '/sutta/sn/', items: formatSidebarWithPali(sidebarSN) },
-          { label: 'AN 增支部', link: '/sutta/an/', items: formatSidebarWithPali(sidebarAN) },
-          { label: 'KN 小部', link: '/sutta/kn/', items: formatSidebarWithPali(sidebarKN) },
-          { label: 'VA 律藏', link: '/vinaya/', items: formatSidebarWithPali(sidebarVA) }
+          { label: 'DN 长部', id: 'dn', link: '/sutta/dn/', items: formatSidebarWithPali(sidebarDN) },
+          { label: 'MN 中部', id: 'mn', link: '/sutta/mn/', items: formatSidebarWithPali(sidebarMN) },
+          { label: 'SN 相应部', id: 'sn', link: '/sutta/sn/', items: formatSidebarWithPali(sidebarSN) },
+          { label: 'AN 增支部', id: 'an', link: '/sutta/an/', items: formatSidebarWithPali(sidebarAN) },
+          { label: 'KN 小部', id: 'kn', link: '/sutta/kn/', items: formatSidebarWithPali(sidebarKN) },
+          { label: 'VA 律藏', id: 'va', link: '/vinaya/', items: formatSidebarWithPali(sidebarVA) }
         ], {
-          // 【核心修复】将标签插件自动生成的路由排除在 Topic 校验之外
-          exclude: ['/tags', '/tags/**/*', '/info', '/info/**/*', '/guides/**/*', '/reference/**/*']
+          topics: {
+            'dn': ['/tags', '/tags/**/*'] 
+          },
+          exclude: ['/info', '/info/**/*', '/guides/**/*', '/reference/**/*']
         })
       ]
     }),

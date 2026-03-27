@@ -7,17 +7,26 @@ export async function getStaticPaths() {
   const tags = new Set();
   
   docs.forEach(doc => {
+    // 增加类型安全保护：确保 tag 存在且如果是数组的话正确遍历
     if (doc.data.tags) {
-      doc.data.tags.forEach(tag => tags.add(tag));
+      if (Array.isArray(doc.data.tags)) {
+        doc.data.tags.forEach(tag => tags.add(tag));
+      } else if (typeof doc.data.tags === 'string') {
+        tags.add(doc.data.tags);
+      }
     }
   });
 
-  // 为每一个中文标签生成一个专门的网页
+  // 为每一个标签生成一个专门的网页
   return Array.from(tags).map(tag => ({
-    params: { tag: tag },
+    params: { tag: String(tag) },
     props: { 
-      // 筛选出包含该标签的经文
-      docs: docs.filter(doc => doc.data.tags?.includes(tag)) 
+      // 筛选出包含该标签的经文，兼容 tags 为字符串或数组的情况
+      docs: docs.filter(doc => {
+        const docTags = doc.data.tags;
+        if (!docTags) return false;
+        return Array.isArray(docTags) ? docTags.includes(tag) : docTags === tag;
+      }) 
     }
   }));
 }
@@ -26,7 +35,12 @@ const { tag } = Astro.params;
 const { docs } = Astro.props;
 ---
 
-<StarlightPage frontmatter={{ title: `标签: ${tag}`, tableOfContents: false }}>
+<!-- 这里的 frontmatter 配置非常关键 -->
+<StarlightPage frontmatter={{ 
+  title: `标签: ${tag}`, 
+  tableOfContents: false,
+  editUrl: false
+}}>
   <p>共有 {docs.length} 篇经文包含标签 <strong>{tag}</strong>：</p>
   
   <ul style="margin-top: 2rem; list-style-type: none; padding: 0;">

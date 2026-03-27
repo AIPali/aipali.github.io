@@ -2,7 +2,6 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { getCollection } from 'astro:content';
 
-// 抓取你所有的 626 篇经文
 const docs = await getCollection('docs');
 const tagsCount = {};
 
@@ -19,7 +18,7 @@ docs.forEach(doc => {
 const sortedTags = Object.entries(tagsCount).sort((a, b) => b[1] - a[1]);
 ---
 
-<StarlightPage frontmatter={{ title: '巴利三藏 - 标签云', tableOfContents: false, template: 'splash' }}>
+<StarlightPage frontmatter={{ title: 'AIPali 智能化巴利三藏 - 标签云', tableOfContents: false, template: 'splash' }}>
   <p>共发现 <strong>{sortedTags.length}</strong> 个独立标签：</p>
   
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;">
