@@ -5,6 +5,8 @@ template: splash
 ---
 
 import { Card, Aside, Steps, Icon } from '@astrojs/starlight/components';
+import heroLight from '../../../assets/aipali-hero-visual-light.webp';
+import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
 
 {/* --- 自定义 Hero 模块开始 --- */}
 <section className="custom-hero-section">
@@ -23,8 +25,8 @@ import { Card, Aside, Steps, Icon } from '@astrojs/starlight/components';
     </div>
 
     <div className="hero-image">
-      <img src="/src/assets/aipali-hero-visual-light.webp" alt="AIPali Light" className="img-light" />
-      <img src="/src/assets/aipali-hero-visual-dark.webp" alt="AIPali Dark" className="img-dark" />
+      <img src={heroLight.src} alt="AIPali Light" className="img-light" />
+      <img src={heroDark.src} alt="AIPali Dark" className="img-dark" />
     </div>
   </div>
 </section>
