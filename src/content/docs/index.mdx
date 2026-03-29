@@ -2,105 +2,197 @@
 title: AIPali 智能化巴利三藏
 description: 基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
 template: splash
-hero:
-  tagline: 基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
-  actions:
-    - text: 开始阅读法宝
-      link: /sutta/dn/vagga-01-silakkhandha/dn-01-brahmajala/
-      icon: right-arrow
-      variant: primary
-    - text: 了解智能化工程
-      link: /info/about/
-      icon: document
-      variant: secondary
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-<div style={{ textAlign: 'center', margin: '3rem 0', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--sl-color-text-accent)' }}>
-  与 <span id="typewriter-text" style={{ color: 'var(--sl-color-accent)', borderRight: '2px solid var(--sl-color-accent)', paddingRight: '5px' }}>佛陀</span> 聊聊
+{/* --- 自定义 Hero 模块开始 --- */}
+<section className="custom-hero-section">
+  <div className="hero-container">
+    {/* 左侧文字区 */}
+    <div className="hero-text">
+      <h1 className="hero-title">巴利三藏智能化工程</h1>
+      <p className="hero-tagline">
+        基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
+      </p>
+      <div className="hero-actions">
+        <a href="/sutta/dn/vagga-01-silakkhandha/dn-01-brahmajala/" className="btn btn-primary">阅读法宝 →</a>
+        <a href="/info/how-to-use/" className="btn btn-secondary">如何使用</a>
+        <a href="/info/about-aipali/" className="btn btn-minimal">关于本工程</a>
+      </div>
+    </div>
+
+    {/* 右侧图片区：WebP 格式，亮暗自动切换 */}
+    <div className="hero-image">
+      <img src="/src/assets/aipali-hero-visual-light.webp" alt="AIPali Light" className="img-light" />
+      <img src="/src/assets/aipali-hero-visual-dark.webp" alt="AIPali Dark" className="img-dark" />
+    </div>
+  </div>
+</section>
+{/* --- 自定义 Hero 模块结束 --- */}
+
+<div className="page-container">
+  <div className="divider-glow"></div>
+
+  <div className="features-wrapper">
+    <CardGrid>
+      <Card title="完整法宝收录" icon="document">
+        以 <b className="highlight-text">VRI/CSCD</b> 巴利语原文为底稿，完整程度媲美元亨寺版《汉译南传大藏经》。涵盖完整的<b className="highlight-text">五部尼柯耶</b>（含小部 15 部经）与<b className="highlight-text">《律藏》</b>（含大小品及附随）。
+      </Card>
+
+      <Card title="结构化内容梳理" icon="list-format">
+        依托大语言模型重新梳理经文的层次，自动生成<b className="highlight-text">多层级标题</b>、<b className="highlight-text">AI导读</b>与<b className="highlight-text">法义解析</b>，在恢复经文本有的工整结构的同时，大幅降低现代修行者阅读理解门槛。
+      </Card>
+
+      <Card title="现代化阅读体验" icon="laptop">
+        应用<b className="highlight-text">现代互联网技术</b>，提供 PC、手机、平板上的优质阅读体验。内置<b className="highlight-text">毫秒级全文搜索引擎</b>，可根据经文编号、法义术语直达目原文段落。
+      </Card>
+
+      <Card title="互动化巴利三藏" icon="rocket">
+        以 <b className="highlight-text">AI 检索增强技术</b> 赋能传统经典，构建“可聊天”的巴利三藏。无论是搜寻法义、深入探讨甚至实修实证，AI 助手都能提供详尽支持，并附带<b className="highlight-text">经文出处</b>。
+      </Card>
+    </CardGrid>
+  </div>
+
+  <footer className="aipali-custom-footer">
+    <div className="footer-content">
+      <p className="footer-slogan">
+        <strong className="brand">AIPali 智能化巴利三藏</strong>
+        <span className="divider"> | </span> 
+        <span className="keyword">结构化</span> <span className="dot"> · </span> 
+        <span className="keyword">现代化</span> <span className="dot"> · </span> 
+        <span className="keyword">互动化</span>
+      </p>
+      <p className="footer-sub">由现代人开发，服务于现代佛法修行者</p>
+      <p className="footer-copyright">
+        &copy; 2026, <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 True-Dhamma.com</a>
+      </p>
+    </div>
+  </footer>
 </div>
 
-<script dangerouslySetInnerHTML={{ __html: `
-  const names =["佛陀", "舍利弗", "大目犍连", "阿难", "大迦叶", "摩诃迦旃延", "富楼那", "阿那律", "法乐比丘尼", "优婆离"];
-  let currentIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+<style>
+  {`
+    /* =========================================
+       0. 基础设置与隐藏默认标题
+       ========================================= */
+    .sl-markdown-content > h1:first-child, #_top { display: none !important; }
+    .sl-markdown-content { padding-top: 0 !important; }
 
-  function type() {
-    const el = document.getElementById("typewriter-text");
-    if (!el) return;
-
-    const currentName = names[currentIndex];
-    if (isDeleting) {
-      el.innerText = currentName.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      el.innerText = currentName.substring(0, charIndex + 1);
-      charIndex++;
+    /* =========================================
+       1. 自定义 Hero 整体布局
+       ========================================= */
+    .custom-hero-section {
+      width: 100%; display: flex; justify-content: center;
+      padding-top: 0; margin-top: -3.5rem; margin-bottom: 0rem;
+    }
+    .hero-container {
+      max-width: 1200px; width: 100%; display: grid;
+      grid-template-columns: 1fr auto; align-items: center;
+      gap: 3rem; padding: 0 1.5rem; margin-inline: auto;
     }
 
-    let typeSpeed = isDeleting ? 100 : 200;
-
-    if (!isDeleting && charIndex === currentName.length) {
-      typeSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      currentIndex = (currentIndex + 1) % names.length;
-      typeSpeed = 500;
+    /* =========================================
+       2. 文字与按钮样式
+       ========================================= */
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800;
+      line-height: 1.1; margin: 0; white-space: nowrap; 
+      background: linear-gradient(120deg, var(--sl-color-white) 30%, var(--sl-color-text-accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px var(--sl-color-accent-low);
+    }
+    .hero-tagline {
+      margin-top: 1.5rem; font-size: 1.25rem;
+      color: var(--sl-color-gray-2); line-height: 1.6; max-width: 50ch;
+    }
+    .hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    
+    .btn {
+      padding: 0.8rem 1.6rem; border-radius: 99rem; font-weight: 600;
+      text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem;
     }
 
-    setTimeout(type, typeSpeed);
-  }
+    /* --- [阅读法宝按钮：已移除 transform 动效] --- */
+    html[data-theme='light'] .btn-primary {
+      background-color: var(--sl-color-accent);
+      color: #ffffff !important;
+    }
+    html[data-theme='light'] .btn-primary:hover {
+      background-color: var(--sl-color-accent-high);
+      color: #ffffff !important;
+    }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(type, 1000);
-  });
-`}} />
+    html[data-theme='dark'] .btn-primary {
+      background-color: var(--sl-color-accent);
+      color: #ffffff !important;
+    }
+    html[data-theme='dark'] .btn-primary:hover {
+      background-color: var(--sl-color-accent-high);
+      color: var(--sl-color-gray-6) !important;
+    }
 
-{/* 精美SVG：象征佛法与AI网络结合 */}
-<div style={{ display: 'flex', justifyContent: 'center', margin: '3rem 0' }}>
-  <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{ stopColor: 'var(--sl-color-accent)', stopOpacity: 1 }} />
-        <stop offset="100%" style={{ stopColor: 'var(--sl-color-accent-high)', stopOpacity: 1 }} />
-      </linearGradient>
-    </defs>
-    {/* 外环 */}
-    <circle cx="100" cy="100" r="80" fill="none" stroke="url(#grad1)" strokeWidth="2" strokeDasharray="10, 10" opacity="0.6" />
-    {/* 中心几何图 */}
-    <path d="M100 40 L115 85 L160 100 L115 115 L100 160 L85 115 L40 100 L85 85 Z" fill="none" stroke="url(#grad1)" strokeWidth="3" />
-    <circle cx="100" cy="100" r="25" fill="none" stroke="url(#grad1)" strokeWidth="4"/>
-    <circle cx="100" cy="100" r="8" fill="url(#grad1)"/>
-    {/* 节点 */}
-    <circle cx="100" cy="40" r="4" fill="var(--sl-color-text)"/>
-    <circle cx="160" cy="100" r="4" fill="var(--sl-color-text)"/>
-    <circle cx="100" cy="160" r="4" fill="var(--sl-color-text)"/>
-    <circle cx="40" cy="100" r="4" fill="var(--sl-color-text)"/>
-  </svg>
-</div>
+    /* --- [辅助按钮样式：已移除 transform 动效] --- */
+    .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
+    .btn-secondary:hover { background: var(--sl-color-accent-low); }
+    
+    .btn-minimal { color: var(--sl-color-gray-2) !important; }
+    .btn-minimal:hover { color: var(--sl-color-white) !important; text-decoration: underline; }
 
-<CardGrid stagger>
-  <Card title="智能化阅读" icon="open-book">
-    依托大语言模型重新梳理经文结构，自动生成**多层级标题**、**AI导读**与**法义解析**，大幅降低古老经典的阅读门槛。
-  </Card>
-  <Card title="海量法宝收录" icon="collection">
-    涵盖完整的《巴利三藏》：从五部尼柯耶到详尽的律藏及论藏，包括《导论》、《藏论》与《弥兰王问经》。
-  </Card>
-  <Card title="全域即时检索" icon="magnifier">
-    内置现代化的毫秒级全文搜索引擎。无论是一个巴利语术语，还是记忆中的一个法喻，都能迅速定位至原文段落。
-  </Card>
-  <Card title="穿越千年的互动" icon="chat">
-    结合 RAG 检索增强技术，在阅读经文遇到困惑时，可随时向 AI 提问，系统将基于三藏文本进行上下文问答。
-  </Card>
-</CardGrid>
+    /* =========================================
+       3. 图片区样式
+       ========================================= */
+    .hero-image { display: flex; justify-content: center; align-items: center; }
+    .hero-image img {
+      max-width: 320px; height: auto;
+      transform: translate(0, -30px); 
+      box-shadow: none !important; border: none !important; outline: none !important;
+      filter: none !important; background: transparent !important;
+    }
+    html[data-theme='light'] .img-dark { display: none; }
+    html[data-theme='dark'] .img-light { display: none; }
 
----
+    /* =========================================
+       4. 手机端响应式调整
+       ========================================= */
+    @media (max-width: 50rem) {
+      .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .hero-image img { max-width: 300px; margin: 0 auto; }
+      .hero-title { white-space: normal !important; font-size: clamp(2rem, 8vw, 2.5rem); }
+      .hero-tagline { margin-inline: auto; }
+      .hero-actions { justify-content: center !important; margin-top: 1.5rem; }
+    }
 
-<div style={{ textAlign: 'center', marginTop: '4rem' }}>
-  **AIPali 智能化巴利三藏** <br/>
-  *现代化 · 智能化 · 互动化* <br/>
-  由现代人开发，服务于现代实修者。
-</div>
+    /* =========================================
+       5. 特性卡片、背景与页脚
+       ========================================= */
+    .page-container { position: relative; overflow-x: clip; }
+    .page-container::before {
+      content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+      width: 1200px; height: 500px; background-image: radial-gradient(circle, var(--sl-color-accent-low) 0%, transparent 70%);
+      opacity: 0.25; filter: blur(120px); z-index: -1;
+    }
+    .divider-glow {
+      height: 1px; width: 80%; max-width: 600px; margin: 0 auto 3rem auto;
+      background: linear-gradient(90deg, transparent, var(--sl-color-accent), transparent); opacity: 0.3;
+    }
+    .features-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    .sl-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0)) !important;
+      border: 1px solid var(--sl-color-hairline) !important; backdrop-filter: blur(10px);
+    }
+    .highlight-text {
+      color: var(--sl-color-text-accent); background-color: var(--sl-color-accent-low);
+      padding: 0.1em 0.4em; border-radius: 4px; font-weight: 600;
+    }
+    .aipali-custom-footer {
+      margin-top: 6rem; padding: 3rem 1rem; border-top: 1px solid var(--sl-color-hairline);
+      text-align: center; color: var(--sl-color-gray-3);
+    }
+    .footer-content { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+    .footer-content p { margin: 0 !important; line-height: 1.5; }
+    .brand { color: var(--sl-color-text-accent); font-weight: 600; }
+    .footer-copyright a { color: var(--sl-color-text-accent); text-decoration: none; }
+  `}
+</style>

@@ -1,0 +1,386 @@
+---
+title: 如何使用 AIPali
+description: 掌握现代化阅读、检索与 AI 互动功能，高效修学巴利三藏。
+template: splash
+---
+
+import { Card, Aside, Steps, Icon } from '@astrojs/starlight/components';
+
+{/* --- 自定义 Hero 模块开始 --- */}
+<section className="custom-hero-section">
+  <div className="hero-container">
+    <div className="hero-text">
+      <h1 className="hero-title">如何使用 AIPali</h1>
+      <p className="hero-tagline">
+        跨越多端的沉浸式阅读、毫秒级的精准检索，以及附带原文出处的 AI 深度问答，助您在法海中自在游弋。
+      </p>
+      <div className="hero-actions">
+        <a href="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy" target="_blank" rel="noopener noreferrer" className="btn btn-primary">聊聊巴利三藏 →</a>
+        <a href="/sutta/dn/vagga-01-silakkhandha/dn-01-brahmajala/" className="btn btn-secondary">阅读法宝</a>
+        <a href="/info/about-aipali/" className="btn btn-minimal">关于本工程</a>
+      </div>
+    </div>
+
+    <div className="hero-image">
+      <img src="/src/assets/aipali-hero-visual-light.webp" alt="AIPali Light" className="img-light" />
+      <img src="/src/assets/aipali-hero-visual-dark.webp" alt="AIPali Dark" className="img-dark" />
+    </div>
+  </div>
+</section>
+{/* --- 自定义 Hero 模块结束 --- */}
+
+<div className="page-container">
+  <div className="divider-glow"></div>
+
+  <div className="content-wrapper">
+    
+    {/* --- 页面级复用组件：信息提示横幅 (Info Banner) --- */}
+    <div className="aipali-info-banner">
+      <div className="aipali-info-icon">
+        <Icon name="information" size="2rem" />
+      </div>
+      <div className="aipali-info-text">
+        <p>
+          在您正式开始使用 AIPali 提供的现代化经文阅读与互动服务之前，请抽出几分钟时间仔细阅读本页面。在南传上座部佛教的修学中，<b>“择法觉支”</b>（对法的探究、辨析与抉择）是极为重要的一环。清醒、合理、如法地选择并使用现代 AI 工具，同样是您修行路上“择法觉支”的生动实践。
+        </p>
+      </div>
+    </div>
+
+    {/* --- 主要功能板块 --- */}
+    <h2 className="aipali-section-title">主要功能</h2>
+    {/* --- 页面级复用组件：单列卡片列表 (Card List) --- */}
+    <div className="aipali-card-list">
+      <Card title="阅读" icon="laptop">
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
+          <li><b>多端自适应：</b> 在 <b className="highlight-text">PC</b>、<b className="highlight-text">手机</b>、<b className="highlight-text">平板</b>上皆可顺畅阅读；</li>
+          <li><b>笔记与标注：</b> 点击页面右侧的窄边，可对您感兴趣的内容添加<b className="highlight-text">高亮</b>及<b className="highlight-text">笔记</b>并在云端同步（服务由 Hypothesis 提供）；</li>
+          <li><b>沉浸式听书：</b> 点击页面右下角的“播放”按钮，可对当前页面内容进行朗读，实现<b className="highlight-text">听书效果</b>（服务由 Azure 提供）。</li>
+        </ul>
+      </Card>
+      
+      <Card title="搜索" icon="magnifier">
+        PC 用户点击页面上方的搜索框，手机用户点击屏幕右上角的放大镜按钮，均可激活搜索框。<br/>
+        在搜索框中输入<b className="highlight-text">经文编号</b>（如 DN 1）、<b className="highlight-text">标题</b>或<b className="highlight-text">经文片段</b>，均可毫秒级快速找到并直达相应的经文内容（底层检索引擎由 Algolia 提供）。
+      </Card>
+
+      <Card title="AI 问答" icon="rocket">
+        点击 PC 或手机右上方<b className="highlight-text">转动的亮蓝色 AI 图标</b>，可以进入 AI 聊天窗口。所有聊天回答均引用自本站翻译后的巴利三藏。您可以通过以下三种方式查看<b className="highlight-text">原始经文出处</b>：
+        <ol style={{ paddingLeft: '1.5rem', margin: '0.5rem 0 0 0', lineHeight: 1.8 }}>
+          <li>聊天内容中的<b className="highlight-text">文献角标</b>（通常出现在行尾），鼠标悬停后可显示原文摘要；</li>
+          <li>聊天对话的末尾的<b className="highlight-text">引用列表</b>，点击可查看完整引用；</li>
+          <li>在引用查看窗口上方的标题栏中，点击标题右侧小图标即可<b className="highlight-text">跳转到原始经文网页</b>。</li>
+        </ol>
+      </Card>
+    </div>
+
+    {/* --- 设计初衷与能力局限 --- */}
+    <h2 className="aipali-section-title">设计初衷与能力局限</h2>
+    
+    <Aside type="caution" title="特别说明：非学术级译文">
+      **AIPali 提供的并非学术级标准的译文，我们无法保证本站内容经得起严格的文献学考验。** 我们的核心目标是将古老的经文以<b className="highlight-text">“结构化、现代化、互动化”</b>的方式呈现，从而大幅<b className="highlight-text">降低阅读门槛</b>。我们优先保障的是“易读、易懂”，而非学术考据上的“100% 严谨”。受限于开发者的修学水平与当前 AI 技术的局限，**请勿将本站内容作为唯一的学术引证依据**。
+    </Aside>
+
+    {/* --- 页面级复用组件：玻璃态磨砂质感卡片网格 (Glass Grid) --- */}
+    <div className="aipali-glass-grid">
+      <div className="aipali-glass-card">
+        <h3>区分：哪些不是原文？</h3>
+        <p className="aipali-glass-desc">为了降低现代人阅读门槛，我们在原文本周围增加了大量辅助内容。请务必明辨，以下元素属于<b>非经文原文</b>：</p>
+         <Steps>
+          1.  **尼科耶导读**：对整部尼科耶进行概述和导览；
+          2.  **多层级标题**：为了梳理经文层次而人为添加；
+          3.  **结构化重组**：将原文拆分为自然段或项目列表；
+          4.  **导读与标签**：带有“AI 导读”、“法义解析”、“譬喻解析”、“标签”、“Tags”等字样的提示框。
+         </Steps>
+      </div>
+
+      <div className="aipali-glass-card">
+        <h3>警惕：AI 会犯错！</h3>
+         <p className="aipali-glass-desc">AI 大模型本身就是一种概率运算，这一基础决定了它不可能是一位永不犯错的导师，请谨记：</p>
+         <Steps>
+          1.  **警惕幻觉**：受限于大模型缺陷，AI 会以**不确定的概率**产生幻觉（即“一本正经说胡话”）；
+          2.  **关注出处**：请将 AI 视为“智能索引”，更多重视回答内容的**引用出处**而非回答本身；
+          3.  **阅读原经**：请顺着引用角标阅读经文原本，秉持质疑精神，如实分辨法义。
+         </Steps>
+      </div>
+    </div>
+
+    {/* --- 核心建议 --- */}
+    <h2 className="aipali-section-title">进阶溯源</h2>
+
+    <Aside type="caution" title="特别提醒：AIPali 不是巴利语原文的替代品">
+      对于泛读或建立框架，AIPali 非常高效；但一旦您进入了<b className="highlight-text">真正的实修实证阶段</b>，对于诸如《转法轮经》、《大念住经》、《无我相经》、《大缘经》等涉及三法印、四念住、四圣谛、十二因缘等<b className="highlight-text">核心法义</b>的经文，您必须<b className="highlight-text">逐字逐句</b>地对照巴利语原文或高度严谨的学术级直译版本。您当然也可以使用 AI 辅助逐字释巴利语经文，但请<b className="highlight-text">切勿盲从单一 AI</b>，务必使用多个不同的大模型，使用<b className="highlight-text">反向引导</b>的方式，激发 AI 之间相互<b className="highlight-text">质疑</b>、<b className="highlight-text">挑战</b>及<b className="highlight-text">交叉验证</b>，才有可能如实还原原意。
+    </Aside>
+
+    {/* --- 页面级复用组件：带图标的无边框紧凑段落 (Icon Section) --- */}
+    <div className="aipali-icon-section">
+      <div className="aipali-icon-box">
+        <Icon name="magnifier" size="3.5rem" />
+      </div>
+      <div className="aipali-icon-content">
+        <h3 className="aipali-icon-title">如何查找巴利语经文原文？</h3>
+        <p>
+          即便在经过高度现代化重写之后，AIPali 依然完整保留了学术溯源的可能性。我们在下述三个层面，保持了与<b className="highlight-text">缅甸第六次结集（VRI/CSCD）</b>巴利语原文的一一对应：
+         <Steps>
+          1.  **经文编号**：与 VRI 匹配度 99%
+          2.  **巴利语品名/经名**：与 VRI 匹配度 99%
+          3.  **经文段落编号**：与 VRI 匹配度 90%
+        </Steps>
+          您可以基于内容区左侧的<b className="highlight-text">经文段落编号</b>（用方括号包裹的小字，例如`[123]`），使用 <a href="https://tipitaka.org/romn/" target="_blank" rel="noopener noreferrer">VRI 罗马化巴利文献库</a> 找到对应的巴利语原文。
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  {/* --- 相同的页脚 --- */}
+  <footer className="aipali-custom-footer">
+    <div className="footer-content">
+      <p className="footer-slogan">
+        <strong className="brand">AIPali 智能化巴利三藏</strong>
+        <span className="divider"> | </span> 
+        <span className="keyword">结构化</span> <span className="dot"> · </span> 
+        <span className="keyword">现代化</span> <span className="dot"> · </span> 
+        <span className="keyword">互动化</span>
+      </p>
+      <p className="footer-sub">由现代人开发，服务于现代佛法修行者</p>
+      <p className="footer-copyright">
+        &copy; 2026, <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 True-Dhamma.com</a>
+      </p>
+    </div>
+  </footer>
+</div>
+
+<style>
+  {`
+    /* =========================================
+       0. 基础设置与隐藏默认标题
+       ========================================= */
+    .sl-markdown-content > h1:first-child, #_top { display: none !important; }
+    .sl-markdown-content { padding-top: 0 !important; }
+
+    /* =========================================
+       1. 自定义 Hero 整体布局
+       ========================================= */
+    .custom-hero-section {
+      width: 100%; display: flex; justify-content: center;
+      padding-top: 0; margin-top: -3.5rem; margin-bottom: 0rem;
+    }
+    .hero-container {
+      max-width: 1200px; width: 100%; display: grid;
+      grid-template-columns: 1fr auto; align-items: center;
+      gap: 3rem; padding: 0 1.5rem; margin-inline: auto;
+    }
+
+    /* =========================================
+       2. 文字与按钮样式
+       ========================================= */
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800;
+      line-height: 1.1; margin: 0; white-space: nowrap; 
+      background: linear-gradient(120deg, var(--sl-color-white) 30%, var(--sl-color-text-accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px var(--sl-color-accent-low);
+    }
+    .hero-tagline {
+      margin-top: 1.5rem; font-size: 1.25rem;
+      color: var(--sl-color-gray-2); line-height: 1.6; max-width: 50ch;
+    }
+    .hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    
+    .btn {
+      padding: 0.8rem 1.6rem; border-radius: 99rem; font-weight: 600;
+      text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem;
+    }
+
+    html[data-theme='light'] .btn-primary {
+      background-color: var(--sl-color-accent);
+      color: #ffffff !important;
+    }
+    html[data-theme='light'] .btn-primary:hover {
+      background-color: var(--sl-color-accent-high);
+      color: #ffffff !important;
+    }
+
+    html[data-theme='dark'] .btn-primary {
+      background-color: var(--sl-color-accent);
+      color: #ffffff !important;
+    }
+    html[data-theme='dark'] .btn-primary:hover {
+      background-color: var(--sl-color-accent-high);
+      color: var(--sl-color-gray-6) !important;
+    }
+
+    .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
+    .btn-secondary:hover { background: var(--sl-color-accent-low); }
+    
+    .btn-minimal { color: var(--sl-color-gray-2) !important; }
+    .btn-minimal:hover { color: var(--sl-color-white) !important; text-decoration: underline; }
+
+    /* =========================================
+       3. 图片区样式
+       ========================================= */
+    .hero-image { display: flex; justify-content: flex-end; align-items: center; }
+    .hero-image img {
+      max-width: 320px; height: auto;
+      transform: translate(0, -30px); 
+      box-shadow: none !important; border: none !important; outline: none !important;
+      filter: none !important; background: transparent !important;
+    }
+    html[data-theme='light'] .img-dark { display: none; }
+    html[data-theme='dark'] .img-light { display: none; }
+
+    /* =========================================
+       4. 页面级基础布局组件
+       ========================================= */
+    .page-container { position: relative; overflow-x: clip; }
+    .page-container::before {
+      content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+      width: 1200px; height: 500px; background-image: radial-gradient(circle, var(--sl-color-accent-low) 0%, transparent 70%);
+      opacity: 0.25; filter: blur(120px); z-index: -1;
+    }
+    .divider-glow {
+      height: 1px; width: 80%; max-width: 600px; margin: 0 auto 3rem auto;
+      background: linear-gradient(90deg, transparent, var(--sl-color-accent), transparent); opacity: 0.3;
+    }
+    .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .aipali-section-title {
+      font-size: 2.2rem; 
+      margin: 6rem 0 2.5rem 0; 
+      text-align: center;
+      border: none !important; color: var(--sl-color-white); font-weight: 700;
+    }
+
+    /* 全局高亮文字样式 */
+    .highlight-text {
+      color: var(--sl-color-text-accent); background-color: var(--sl-color-accent-low);
+      padding: 0.1em 0.4em; border-radius: 4px; font-weight: 600;
+    }
+
+    /* =========================================
+       5. 页面级复用组件：信息提示横幅 (Info Banner)
+       ========================================= */
+    .aipali-info-banner {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+      margin: 0 auto 4rem auto;
+      padding: 2.5rem;
+      background-color: var(--sl-color-bg) !important; 
+      border: 1px solid var(--sl-color-hairline) !important;
+      border-radius: 0 !important;
+      box-shadow: 
+        0 12px 30px -10px rgba(0, 0, 0, 0.08), 
+        0 4px 10px -5px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    html[data-theme='dark'] .aipali-info-banner {
+      background-color: rgba(255, 255, 255, 0.02) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5), 
+        0 0 1px rgba(255, 255, 255, 0.1);
+    }
+    .aipali-info-icon { color: var(--sl-color-accent); flex-shrink: 0; display: flex; align-items: center; }
+    .aipali-info-text p { margin: 0 !important; font-size: 1.1rem; line-height: 1.8; color: var(--sl-color-gray-2); }
+    .aipali-info-text b { color: var(--sl-color-text-accent); font-weight: 600; }
+
+    /* =========================================
+       6. 页面级复用组件：单列卡片列表 (Card List)
+       ========================================= */
+    .aipali-card-list { display: grid; grid-template-columns: 1fr; gap: 1.8rem; margin-bottom: 3rem; }
+    .aipali-card-list .sl-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0)) !important;
+      border: 1px solid var(--sl-color-hairline) !important; backdrop-filter: blur(10px);
+      padding: 2rem !important;
+    }
+    .aipali-card-list .sl-card b { color: var(--sl-color-text-accent); font-weight: 600; }
+
+    /* =========================================
+       7. 页面级复用组件：玻璃态磨砂卡片网格 (Glass Grid)
+       ========================================= */
+    .aipali-glass-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      align-items: stretch;
+    }
+    @media (min-width: 50rem) {
+      .aipali-glass-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .aipali-glass-card {
+      margin: 0 !important; 
+      height: 100%; 
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--sl-color-accent);
+      background: linear-gradient(135deg, rgba(var(--sl-color-accent-low-rgb, 100,100,250), 0.1), transparent);
+      backdrop-filter: blur(10px);
+    }
+    .aipali-glass-card h3 { 
+      margin-top: 0 !important; font-size: 1.5rem; 
+      color: var(--sl-color-text-accent); margin-bottom: 1.2rem; 
+    }
+    .aipali-glass-desc { line-height: 1.8; color: var(--sl-color-gray-2); margin-bottom: 1.2rem; }
+
+    /* =========================================
+       8. 页面级复用组件：无边框紧凑段落 (Icon Section)
+       ========================================= */
+    .aipali-icon-section {
+      margin: 2rem 0 3rem 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      display: flex; 
+      gap: 2rem; 
+      align-items: center;
+      position: relative; 
+      box-sizing: border-box;
+    }
+    
+    .aipali-icon-box {
+      background: var(--sl-color-accent-low); color: var(--sl-color-text-accent);
+      padding: 1.5rem; border-radius: 50%; display: flex; align-items: center; 
+      justify-content: center; flex-shrink: 0;
+    }
+    .aipali-icon-title {
+      font-size: 1.2rem !important; color: var(--sl-color-white); font-weight: 700;
+      margin-top: 0 !important; margin-bottom: 1rem; border: none !important;
+    }
+    .aipali-icon-content p { font-size: 1.15rem; line-height: 1.8; color: var(--sl-color-gray-2); margin: 0; }
+    .aipali-icon-content a {
+      color: var(--sl-color-text-accent); text-decoration: none; font-weight: 600;
+      border-bottom: 1px dashed var(--sl-color-accent); transition: all 0.2s ease;
+    }
+    .aipali-icon-content a:hover { color: var(--sl-color-white); border-bottom-style: solid; }
+
+    /* =========================================
+       9. 页脚样式与手机响应式
+       ========================================= */
+    .aipali-custom-footer {
+      margin-top: 6rem; padding: 4rem 1rem; border-top: 1px solid var(--sl-color-hairline);
+      text-align: center; color: var(--sl-color-gray-3);
+    }
+    .footer-content { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    .footer-content p { margin: 0 !important; line-height: 1.6; }
+    .brand { color: var(--sl-color-text-accent); font-weight: 600; }
+    .footer-copyright a { color: var(--sl-color-text-accent); text-decoration: none; }
+
+    @media (max-width: 50rem) {
+      .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .hero-image img { max-width: 300px; margin: 0 auto; transform: none; }
+      .hero-title { white-space: normal !important; font-size: clamp(2rem, 8vw, 2.5rem); }
+      .hero-tagline { margin-inline: auto; }
+      .hero-actions { justify-content: center !important; margin-top: 1.5rem; }
+
+      .aipali-info-banner { padding: 1.8rem 1.5rem; flex-direction: column; text-align: center; gap: 1rem; border-left: none; border-top: 4px solid var(--sl-color-accent); border-radius: 0; }
+      .aipali-glass-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .aipali-icon-section { flex-direction: column; text-align: center; align-items: center; }
+    }
+  `}
+</style>
