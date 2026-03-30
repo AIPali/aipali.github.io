@@ -1,5 +1,5 @@
 export const sidebarMN =[
-  { label: '中部导读', link: '/sutta/mn/' },
+  { label: 'MN 中部导读', link: '/sutta/mn/' },
   {
     label: '根本分五十经篇 (Mūlapaṇṇāsapāḷi)',
     items:[

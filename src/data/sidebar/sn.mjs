@@ -1,5 +1,5 @@
 export const sidebarSN = [
-  { label: '相应部导读', link: '/sutta/sn/' },
+  { label: 'SN 相应部导读', link: '/sutta/sn/' },
   {
     label: '有偈篇 (Sagāthāvagga)',
     items: [

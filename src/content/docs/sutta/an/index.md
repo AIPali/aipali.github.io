@@ -1,6 +1,6 @@
 ---
 id: "AN-Guide"
-title: "增支部导读 (Aṅguttara Nikāya)"
+title: "AN 增支部导读"
 description: "《增支部》是南传上座部巴利三藏中按数字递增排列的经典汇编，以数字分类法搭建了极其清晰的佛法实修架构与知识百科。"
 collection: "Aṅguttara Nikāya"
 vagga: ""

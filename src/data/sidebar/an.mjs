@@ -1,6 +1,6 @@
 // src/data/sidebar/an.mjs
 export const sidebarAN =[
-  { label: '增支部导读', link: '/sutta/an/' },
+  { label: 'AN 增支部导读', link: '/sutta/an/' },
   {
     label: '一集 (Ekakanipāta)',
     collapsed: true,

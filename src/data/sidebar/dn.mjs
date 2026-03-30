@@ -1,5 +1,6 @@
 export const sidebarDN =[
-  { label: '经藏与长部导读', link: '/sutta/' }, 
+  { label: '经藏导读', link: '/sutta/' }, 
+  { label: 'DN 长部导读', link: '/sutta/dn/' }, 
   {
     label: '戒蕴品 (Sīlakkhandhavaggapāḷi)',
     items:[

@@ -1,6 +1,6 @@
 ---
 id: "SN-Guide"
-title: "SN 相应部导读"
+title: "相应部导读 (Saṃyutta Nikāya)"
 description: "《相应部》是南传上座部巴利三藏中按主题分类的经典汇编，极具哲理深度，深刻揭示了缘起、五蕴、六处等佛教核心法义，是通向解脱的终极指南。"
 collection: "Saṃyutta Nikāya"
 vagga: ""

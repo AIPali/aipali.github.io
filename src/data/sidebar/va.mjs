@@ -1,6 +1,6 @@
 // 重新生成的律藏 (Vinaya Piṭaka) 侧边栏数据 (独享视图优化版 + 补零修正)
 export const sidebarVA =[
-  { label: '律藏导读', link: '/vinaya/' },
+  { label: 'VA 律藏导读', link: '/vinaya/' },
   {
     label: '比丘分别 (Bhikkhuvibhaṅga)',
     collapsed: false, // 核心内容，默认展开

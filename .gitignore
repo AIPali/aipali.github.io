@@ -1,6 +1,3 @@
-# suttas
-src/content/txt/
-
 # build output
 dist/
 # generated types
