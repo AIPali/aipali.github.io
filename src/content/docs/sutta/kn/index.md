@@ -128,7 +128,7 @@ tags: [小部, 尼柯耶, 法句经, 经集, 弥兰王问经, 早期佛教文学
 
 ### 4.1 长老偈：跨越阶级的觉醒雄风 (Theragāthā)
 
-[Thag 1 一偈集 (Ekakanipāta)](/sutta/kn/kn-08-thag/thag-01-ekaka/) 一直延伸到[Thag 17-21 三十至大偈集 (Tiṃsa-Mahānipāta)](/sutta/kn/kn-08-thag/thag-17-21-timsa-maha/)，收录了 264 位阿罗汉长老的 1200 多首诗偈。
+从 [Thag 1 一偈集 (Ekakanipāta)](/sutta/kn/kn-08-thag/thag-01-ekaka/) 一直延伸到 [Thag 17-21 三十至大偈集 (Tiṃsa-Mahānipāta)](/sutta/kn/kn-08-thag/thag-17-21-timsa-maha/)，收录了 264 位阿罗汉长老的 1200 多首诗偈。
 
 在这些诗偈中，我们看到了早期僧团惊人的包容性与强大的改造力：
 *   **大迦叶的林野之乐**：在 [Thag 18.1 大迦叶长老偈 (Mahākassapattheragāthā)](/sutta/kn/kn-08-thag/thag-17-21-timsa-maha/#thag-181-大迦叶长老偈-mahākassapattheragāthā) 中，这位头陀第一的长老，以极高的文学造诣赞美了深山阿兰若的美景：“犹如蓝色的云朵，犹如清澈的湖水，栖息着苍鹭与孔雀，这些岩石令我欢喜。”展现了圣者与自然融为一体的高洁情怀。
