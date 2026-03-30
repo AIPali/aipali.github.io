@@ -86,7 +86,7 @@ export default defineConfig({
           topics: {
             'dn': ['/tags', '/tags/**/*'] 
           },
-          exclude: ['/info', '/info/**/*', '/guides/**/*', '/reference/**/*']
+          exclude: ['/info', '/info/**/*']
         })
       ]
     }),

@@ -1,5 +1,5 @@
 export const sidebarDN =[
-  { label: '经藏导读', link: '/sutta/' }, 
+  { label: '巴利三藏导读', link: '/tipitaka/' }, 
   { label: 'DN 长部导读', link: '/sutta/dn/' }, 
   {
     label: '戒蕴品 (Sīlakkhandhavaggapāḷi)',
