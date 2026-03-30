@@ -1,49 +1,66 @@
-# Starlight Starter Kit: Basics
+# 巴利三藏智能化工程 (AIPali Project)
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+> **缘起：不被时代埋没的觉悟之音**
+>
+> 佛陀的智慧超越了时空的局限。本工程旨在通过现代化手段，将古老的巴利三藏进行梳理、重构与数字化转化，使其以更具亲和力的方式走进现代人的生活。
 
-```
-npm create astro@latest -- --template starlight
-```
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🌟 项目愿景
 
-## 🚀 Project Structure
+两千五百多年前，佛陀留下了逻辑严密、次第分明的教导。但在现代社会，信息获取方式已发生剧变。“巴利三藏智能化工程”致力于让这些古老经典不再因语言习惯和媒介形式的变迁而被忽略。我们坚信，只需稍加现代化转化，觉悟之音便能跨越时空，振聋发聩。
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+---
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
+## 📚 内容涵盖范围
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+### 1. 底层溯源与标准
+*   **文本依据**：以缅甸第六次结集 (VRI/CSCD) 巴利语罗马字幕版为核心。
+*   **一致性**：经文编号、内容及段落编号与 VRI 保持高度一致。
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+### 2. 经藏 (Sutta Piṭaka)
 
-Static assets, like favicons, can be placed in the `public/` directory.
+| 部类 | 完成度 | 说明 |
+| :--- | :--- | :--- |
+| **前四部 (DN, MN, SN, AN)** | 100% | 架构脉络与原典一致；对 SN/AN 的碎片化经文进行了整合优化。 |
+| **小部 (KN)** | 核心 15 部 | 侧重“核心教理”。包含《弥兰王问经》等，跳过了《本生经》等传说类经文。 |
 
-## 🧞 Commands
+> **注**：针对 SN、AN 的整合可能导致与 VRI 存在 2% 以内的编号细微差异，这是为了提升现代阅读体验而做的必要剪裁。
 
-All commands are run from the root of the project, from a terminal:
+### 3. 律藏 (Vinaya Piṭaka) 
+*   **完成度**：**100% 完整收录**。
+*   **内容**：包含《比丘分别》、《比丘尼分别》、《大品》、《小品》及常被忽略的《附随》(Parivāra) 全部 21 篇。
+*   **导向**：坚持“以戒为师”，确保律制传承的完整性。
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
+## 🛠 资源来源与致谢
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+本工程的构建离不开以下机构与学者的无私奉献（排名不分先后）：
+
+*   **VRI (Vipassana Research Institute)**：提供标准罗马文本及段落编号。
+*   **元亨寺《汉译南传大藏经》**：吴老择老师等主译，最全面的中文译稿。
+*   **菩提僧团**：提供基于元亨寺版的深度优化及校勘数字化资源。
+*   **萧式球老师**：提供优美流畅的现代汉语白话译文。
+*   **庄春江工作站**：提供极具价值的词汇对照与学术翻译成果。
+*   **SuttaCentral**：提供多语种平行经文及现代英文译本参考。
+
+---
+
+## 🙏 结缘与回向
+
+愿正法久住，愿一切众生早证菩提。  
+愿解脱的清凉遍布世间。
+
+**Sādhu！ Sādhu！ Sādhu！**
+
+---
+
+**开发/整理**：智宁居士 zhining # true-dhamma.com
+
+---
+
+### 如何贡献？
+如果您发现文本错误或有更好的改进建议，欢迎提交 **Pull Request** 或发起 **Issue**。
+
+---
