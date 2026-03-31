@@ -2,10 +2,11 @@
 // src/components/CustomHead.astro
 import type { Props } from '@astrojs/starlight/props';
 import DefaultHead from '@astrojs/starlight/components/Head.astro';
-import type { Props } from '@astrojs/starlight/props';
 import GlobalScripts from './scripts/GlobalScripts.astro';
 ---
 
+<!-- 继承 Starlight 默认头部 -->
 <DefaultHead {...Astro.props} />
 
+<!-- 注入所有自定义全局脚本（包含 PWA） -->
 <GlobalScripts />

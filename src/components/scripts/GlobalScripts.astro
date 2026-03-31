@@ -5,14 +5,57 @@ import FastGPT from './FastGPT.astro';
 import PaliLookup from './PaliLookup.astro';
 import Analytics from './Analytics.astro';
 // import GoogleAnalytics from './GoogleAnalytics.astro'; 
+
+// ================= PWA 配置逻辑 =================
+// 动态获取 Base 路径，兼容根域名 (/) 或 GitHub Pages 子目录 (/tipitaka)
+const baseUrl = import.meta.env.BASE_URL || '/';
+const manifestUrl = `${baseUrl}manifest.webmanifest`.replace(/\/\/+/g, '/');
+const swUrl = `${baseUrl}sw.js`.replace(/\/\/+/g, '/');
+const iconUrl = `${baseUrl}assets/logo_192x192.png`.replace(/\/\/+/g, '/');
 ---
 
-<!-- 添加 iOS 特有的 PWA 桌面图标声明 -->
-<link rel="apple-touch-icon" href="/assets/logo_192x192.png" />
-<!-- iOS 状态栏样式控制（可选） -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- ================= PWA 核心注入 ================= -->
+<!-- 1. 声明 Web Manifest（触发浏览器自动提示"安装"的关键） -->
+<link rel="manifest" href={manifestUrl} />
+<meta name="theme-color" content="#17181c" />
 
-<!-- 统一汇聚所有全局脚本 -->
+<!-- 2. Apple iOS 专属 PWA 适配 -->
+<link rel="apple-touch-icon" href={iconUrl} />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="AIPali" />
+
+<!-- 3. 注册 Service Worker（实现离线访问全站经文的核心） -->
+<script define:vars={{ swUrl }}>
+  // 仅在支持 Service Worker 的现代浏览器中执行
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // 注册 PWA 核心脚本
+      navigator.serviceWorker.register(swUrl)
+        .then((registration) => {
+          console.log('[AIPali PWA] 注册成功，作用域:', registration.scope);
+          
+          // 监听 PWA 版本更新（当 GitHub Actions 重新打包发布后触发）
+          registration.onupdatefound = () => {
+            const installingWorker = registration.installing;
+            if (installingWorker == null) return;
+            installingWorker.onstatechange = () => {
+              if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                console.log('[AIPali PWA] 🔄 发现新版本经文，正在后台静默更新缓存...');
+              }
+            };
+          };
+        })
+        .catch((error) => {
+          console.error('[AIPali PWA] ❌ 注册失败:', error);
+        });
+    });
+  }
+</script>
+
+
+<!-- ================= 其他全局脚本 ================= -->
+<!-- 统一汇聚所有全局业务逻辑 -->
 
 <CustomScripts />
 

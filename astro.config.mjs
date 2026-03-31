@@ -112,7 +112,7 @@ export default defineConfig({
       manifest: {
         name: 'AIPali 智能化巴利三藏',
         short_name: 'AIPali',
-        description: '智能化巴利三藏工程，支持全站离线阅读',
+        description: '巴利三藏智能化工程，支持全站离线阅读',
         theme_color: '#17181c', // Dark mode：Starlight 默认深色背景
         background_color: '#17181c', // Dark mode：PWA 启动屏背景色
         display: 'standalone', // 隐藏浏览器 UI，像独立 App 一样运行
