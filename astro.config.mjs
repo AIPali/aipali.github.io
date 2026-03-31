@@ -90,23 +90,28 @@ export default defineConfig({
         })
       ]
     }),
-    // PWA 配置
     AstroPWA({
       registerType: 'autoUpdate',
-      injectRegister: false, // 彻底关闭自动注入，避免 Cloudflare 环境下被吞
+      injectRegister: false,
       workbox: {
         globDirectory: 'dist',
-        globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'], // 坚决不预缓存 HTML
+        globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
         globIgnores: ['**/node_modules/**/*', '**/tags/**/*', 'sw.js', 'workbox-*.js'],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
-        navigateFallback: null, // 🚨 救命关键参数：明确告诉它我们是多页应用，绝不能用首页 HTML 替换其他链接！
+        navigateFallback: null,
         
         runtimeCaching: [
           {
-            urlPattern: ({ request, url }) => request.destination === 'document' || url.pathname.endsWith('/'),
+            // 🚨 更加健壮的 HTML 匹配逻辑：匹配所有导航请求
+            urlPattern: ({ request }) => request.mode === 'navigate',
             handler: 'NetworkFirst',
             options: {
               cacheName: 'aipali-html-cache',
+              // 🚨 核心修复：增加匹配选项，解决 Cloudflare 的兼容性问题
+              matchOptions: {
+                ignoreVary: true,   // 忽略 Vary 头部（解决 CF 动态头导致的匹配失败）
+                ignoreSearch: true, // 忽略 URL 参数（如 ?v=1 等）
+              },
               expiration: {
                 maxEntries: 2000,
                 maxAgeSeconds: 30 * 24 * 60 * 60,
@@ -125,7 +130,7 @@ export default defineConfig({
       manifest: {
         name: 'AIPali 智能化巴利三藏',
         short_name: 'AIPali',
-        description: '巴利三藏智能化工程，支持全站离线阅读',
+        description: '智能化巴利三藏工程，支持全站离线阅读',
         theme_color: '#17181c',
         background_color: '#17181c',
         display: 'standalone',

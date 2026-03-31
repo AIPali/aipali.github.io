@@ -225,7 +225,7 @@
   }
 
   async function fetchPaliData(fileName, paraNum) {
-    openDrawer(`<div class="pali-message">loading pali mūla...</div>`);
+    openDrawer(`<div class="pali-message">loading pāḷi mūla...</div>`);
     try {
       // 注意：API 不再需要 t 参数，因此这里移除了
       const targetUrl = `${API_URL}?f=${encodeURIComponent(fileName)}&p=${encodeURIComponent(paraNum)}`;
