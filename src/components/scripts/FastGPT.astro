@@ -40,7 +40,7 @@
       padding: 0.125rem 0.75rem 0.125rem 0.25rem;
       /* 采用 Starlight 的边框颜色变量 */
       border: 1px solid var(--sl-color-gray-5, #c2c6cd);
-      border-radius: 999px; /* 圆角药丸形，与常规主题切换按钮保持一致 */
+      border-radius: 999px; /* 圆角药丸形 */
     }
     
     .fastgpt-chat-btn:hover {
@@ -202,18 +202,27 @@ function embedChatbot() {
   iframe.style.opacity = defaultOpen ? '1' : '0';
   document.body.appendChild(iframe);
 
-  // 4. 计算 Iframe 的弹出位置
+  // 4. 计算 Iframe 的弹出位置（核心定位优化）
   const updateChatWindowPosition = () => {
     const btnRect = ChatBtn.getBoundingClientRect();
+    const isWideScreen = window.innerWidth >= 768; // 判断是否为 PC 端/宽屏
 
     if (isPlacedInHeader) {
-      const rightOffset = window.innerWidth - btnRect.right - 60; 
-      iframe.style.right = Math.max(16, rightOffset) + 'px';
-      iframe.style.bottom = 'unset'; 
       iframe.style.top = (btnRect.bottom + 12) + 'px'; 
+      iframe.style.bottom = 'unset'; 
       iframe.style.maxHeight = `calc(100vh - ${btnRect.bottom + 24}px)`; 
+      
+      if (isWideScreen) {
+        // 【关键修改点】PC端宽屏时：抛弃原本跟随按钮坐标的设定
+        // 直接强制将其吸附在浏览器视窗的最右侧，最大程度让出左方正文阅读区
+        iframe.style.right = '24px';
+      } else {
+        // 移动端/小屏：保持原状，留出少许安全边距即可
+        iframe.style.right = '16px';
+      }
     } else {
-      iframe.style.right = (window.innerWidth - btnRect.right) + 'px';
+      // 降级方案（按钮悬浮在右下角时）
+      iframe.style.right = isWideScreen ? '24px' : '16px';
       iframe.style.top = 'unset';
       iframe.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
       iframe.style.maxHeight = `calc(100vh - ${window.innerHeight - btnRect.top + 24}px)`;
@@ -228,18 +237,12 @@ function embedChatbot() {
     ChatIconContainer.innerHTML = isOpening ? svgClose : svgOpen; 
 
     if (isOpening) {
-      // ===== 核心优化：智能处理滚动条 =====
-      // 如果屏幕宽度小于 768px（通常为移动端），则锁定背景滑动防误触
-      // 移动端的滚动条往往是悬浮的，不占用物理像素，因此不会引起跳变
       if (window.innerWidth < 768) {
         document.body.style.overflow = 'hidden';
         document.body.style.touchAction = 'none'; 
       }
-      // PC端 (>=768px) 保持默认，保留原生滚动条，支持一边阅读网页正文一边进行AI对话！
-      
       updateChatWindowPosition(); 
     } else {
-      // 关闭时统一恢复原本的滚动状态
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
     }
