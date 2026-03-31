@@ -123,17 +123,17 @@ export default defineConfig({
         display: 'standalone', // 隐藏浏览器 UI，像独立 App 一样运行
         icons: [
           {
-            src: '/assets/logo_192x192.png', // 你准备好的图标
+            src: '/assets/logo_dark_192x192.png', // 你准备好的图标
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/assets/logo_512x512.png', // 你准备好的图标
+            src: '/assets/logo_dark_512x512.png', // 你准备好的图标
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: '/assets/logo_512x512.png',
+            src: '/assets/logo_dark_512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable' // 支持安卓自动适应图标形状
