@@ -100,7 +100,12 @@ export default defineConfig({
         globPatterns: ['**/*.{html,js,css,ico,png,svg,webp,woff,woff2}'],
         // 增加单文件缓存上限到 5MB（巴利三藏某些合并经文可能比较大，突破默认的 2MB 限制）
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
+        globIgnores: [
+          '**/node_modules/**/*', 
+          'sw.js', 
+          'workbox-*.js',
+          '**/tags/**/*' 
+        ],
         // Algolia 搜索强依赖网络，我们配置它走网络优先，避免报错
         runtimeCaching: [
           {

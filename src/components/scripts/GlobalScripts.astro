@@ -21,9 +21,10 @@ const iconUrl = `${baseUrl}assets/logo_192x192.png`.replace(/\/\/+/g, '/');
 
 <!-- 2. Apple iOS 专属 PWA 适配 -->
 <link rel="apple-touch-icon" href={iconUrl} />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="AIPali" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="AIPali" />
 
 <!-- 3. 注册 Service Worker（实现离线访问全站经文的核心） -->
 <script define:vars={{ swUrl }}>
