@@ -102,16 +102,11 @@ export default defineConfig({
         
         runtimeCaching: [
           {
-            // 🚨 更加健壮的 HTML 匹配逻辑：匹配所有导航请求
             urlPattern: ({ request }) => request.mode === 'navigate',
-            handler: 'NetworkFirst',
+            // 🚨 终极改变：从 NetworkFirst 改为 CacheFirst
+            handler: 'CacheFirst',
             options: {
               cacheName: 'aipali-html-cache',
-              // 🚨 核心修复：增加匹配选项，解决 Cloudflare 的兼容性问题
-              matchOptions: {
-                ignoreVary: true,   // 忽略 Vary 头部（解决 CF 动态头导致的匹配失败）
-                ignoreSearch: true, // 忽略 URL 参数（如 ?v=1 等）
-              },
               expiration: {
                 maxEntries: 2000,
                 maxAgeSeconds: 30 * 24 * 60 * 60,
@@ -130,14 +125,14 @@ export default defineConfig({
       manifest: {
         name: 'AIPali 智能化巴利三藏',
         short_name: 'AIPali',
-        description: '智能化巴利三藏工程，支持全站离线阅读',
+        description: '巴利三藏智能化工程，支持全站离线阅读',
         theme_color: '#17181c',
         background_color: '#17181c',
         display: 'standalone',
         icons: [
-          { src: '/assets/logo_192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/assets/logo_512x512.png', sizes: '512x512', type: 'image/png' },
-          { src: '/assets/logo_512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+          { src: '/assets/logo_dark_192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/assets/logo_dark_512x512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/assets/logo_dark_512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
         ]
       }
     })
