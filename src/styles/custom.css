@@ -315,10 +315,6 @@ ul.starlight-sidebar-topics + * {
 .sl-markdown-content blockquote li > .p-ref,
 .sl-markdown-content blockquote li > p .p-ref { left: calc(-3rem - 1.2rem - 40px); }
 
-/* --- 视觉与响应式适配 --- */
-:root[data-theme='light'] .p-ref { color: #000; opacity: 0.35; }
-:root[data-theme='dark'] .p-ref { color: #fff; opacity: 0.25; }
-
 /* 移动端屏幕下隐藏段落编号并缩减正文边距 */
 @media (max-width: 50rem) {
   .sl-markdown-content { padding-left: 0.5rem !important; }

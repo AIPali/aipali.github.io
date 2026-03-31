@@ -1,31 +1,24 @@
 import { visit } from 'unist-util-visit';
-
 /**
  * 插件 1：解析行尾的 [P:123] 或 [P:100-101] 标签
  */
 export function remarkParagraphRef() {
   return (tree) => {
     visit(tree, 'text', (node) => {
-      // 匹配行尾的 [P:1-2] 或 [P:1000-1100]
       const regex = /\[P:([\d-]+)\]$/;
       const match = node.value.match(regex);
       
       if (match) {
-        const pNum = match[1]; // 提取方括号内的内容
+        const pNum = match[1]; // 可能是 "82" 也可能是 "580-583"
         let displayHtml = '';
         
-        /**
-         * 智能换行逻辑：
-         * 1. 必须包含连字符 '-'
-         * 2. 且内容长度超过 4 个字符（例如 "9-10" 是 4 个字符，不换行；"11-12" 是 5 个字符，换行）
-         */
+        // 核心修改：不再使用 startNum 截断，直接将完整的 pNum 放入 data 属性
         if (pNum.includes('-') && pNum.length > 4) {
           const parts = pNum.split('-');
-          // 渲染为两行，横杠放在第二行开头
-          displayHtml = `<span class="p-ref">[${parts[0]}<br>-${parts[1]}]</span>`;
+          // data-pali-para 现在存储的是 "580-583"
+          displayHtml = `<span class="p-ref" data-pali-para="${pNum}">[${parts[0]}<br>-${parts[1]}]</span>`;
         } else {
-          // 纯数字或短范围（如 1-2, 9-10）保持单行显示
-          displayHtml = `<span class="p-ref">[${pNum}]</span>`;
+          displayHtml = `<span class="p-ref" data-pali-para="${pNum}">[${pNum}]</span>`;
         }
 
         node.type = 'html';

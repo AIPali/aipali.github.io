@@ -1,0 +1,278 @@
+---
+// src/components/scripts/PaliLookup.astro
+---
+
+<style is:inline>
+  /* ==========================================================
+     1. 左侧抽屉组件基础框架 (Mono 风格)
+  ========================================================== */
+  #pali-drawer {
+    position: fixed;
+    top: var(--sl-nav-height, 3.5rem);
+    left: 0;
+    bottom: 0;
+    width: var(--sl-sidebar-width, 18.75rem);
+    background-color: var(--sl-color-bg-sidebar, var(--sl-color-bg));
+    border-right: 1px solid var(--sl-color-hairline);
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--sl-font-mono, monospace) !important;
+  }
+  #pali-drawer.is-open { transform: translateX(0); }
+
+  /* ==========================================================
+     2. 抽屉头部与 Tab 栏 (高度一致、左对齐 1.5rem)
+  ========================================================== */
+  .pali-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.8rem 0 1.5rem;
+    min-height: 2.8rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+  }
+  .pali-drawer-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--sl-color-white);
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .pali-drawer-close { background: none; border: none; color: var(--sl-color-gray-3); font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 0.2rem; }
+  .pali-drawer-tabs {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    background-color: var(--sl-color-bg-sidebar);
+    min-height: 2.8rem;
+  }
+  .pali-tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    font-family: var(--sl-font-mono, monospace);
+    font-weight: 400;
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: all 0.2s;
+  }
+  .pali-tab-btn.active { color: var(--sl-color-text-accent); border-bottom-color: var(--sl-color-text-accent); }
+
+  /* ==========================================================
+     3. 经文内容区
+  ========================================================== */
+  .pali-drawer-content { flex: 1; overflow-y: auto; padding: 1.25rem 1.5rem; color: var(--sl-color-text); }
+  .pali-modal-content h2.pali-chapter,
+  .pali-modal-content h3.pali-subhead,
+  .pali-modal-content p.pali-text,
+  .pali-modal-content p.pali-gatha,
+  .pali-modal-content .pali-para-num { font-family: var(--sl-font-mono, monospace) !important; text-transform: none; }
+  .pali-modal-content h2.pali-chapter { font-size: 0.95rem; color: var(--sl-color-text-accent); margin-top: 0.5rem; }
+  .pali-modal-content h3.pali-subhead { font-size: 0.85rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .pali-modal-content p.pali-text { font-size: 0.8rem; line-height: 1.6; margin-bottom: 0.8rem; }
+  .pali-modal-content p.pali-gatha { font-size: 0.8rem; line-height: 1.5; margin-bottom: 0.2rem; padding-left: 1rem; }
+  .pali-modal-content .pali-para-num { color: var(--sl-color-text-accent); margin-right: 0.4rem; font-weight: 600; }
+  .pali-modal-content strong { color: var(--sl-color-text-accent); }
+
+  /* ==========================================================
+     4. 底部按钮区
+  ========================================================== */
+  .pali-drawer-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--sl-color-hairline); display: flex; gap: 0.8rem; }
+  .pali-btn { flex: 1; padding: 0.5rem 0; border-radius: 0.25rem; font-family: var(--sl-font-mono, monospace); font-size: 0.75rem; font-weight: 500; text-transform: lowercase; cursor: pointer; text-align: center; transition: all 0.2s; }
+  .pali-btn-secondary { background: transparent; border: 1px solid var(--sl-color-gray-4); color: var(--sl-color-white); }
+  .pali-btn-primary { background: var(--sl-color-text-accent); border: 1px solid var(--sl-color-text-accent); color: var(--sl-color-bg); }
+  .pali-message { text-align: left; padding: 2rem 0; color: var(--sl-color-gray-3); font-size: 0.8rem; }
+  .pali-error { color: var(--sl-color-text-accent); font-size: 0.8rem; line-height: 1.5; }
+
+  /* ==========================================================
+     5. 段落编号激活交互
+  ========================================================== */
+  .p-ref.is-lookup-active { pointer-events: auto !important; cursor: pointer; }
+  .p-ref.is-lookup-active:hover { color: inherit; opacity: inherit; text-decoration: none; }
+</style>
+
+<script is:inline>
+(function() {
+  const API_URL = 'https://aipali.true-dhamma.com/api/lookup';
+  const ENABLED_COLLECTIONS = ['dn', 'mn', 'sn', 'an', 'kn', 'va'];
+  const EXCLUDED_KEYWORDS = ['kn-15-miln'];
+  const MOBILE_MEDIA_QUERY = '(max-width: 50rem)';
+
+  // --- 模块级变量 ---
+  let currentParaHtml = "";
+  let currentChapHtml = "";
+  let pageTitle = ""; // 用于存储当前页面的 H1 标题
+
+  function parsePageInfo() {
+    const path = window.location.pathname;
+    const cleanUrl = path.replace(/\/index\.html?$/, '').replace(/\/$/, '');
+    const pathParts = cleanUrl.split('/');
+    const fileName = pathParts[pathParts.length - 1];
+    let collection = '';
+    if (path.includes('/sutta/')) {
+      const suttaMatch = path.match(/\/sutta\/([a-z]+)\//);
+      if (suttaMatch) collection = suttaMatch[1];
+    } else if (path.includes('/vinaya/')) {
+      collection = 'va';
+    }
+    const h1 = document.querySelector('h1');
+    const title = h1 ? h1.innerText.trim() : fileName;
+    return { path, fileName, collection, title };
+  }
+
+  function initPaliLinks() {
+    if (window.matchMedia(MOBILE_MEDIA_QUERY).matches) return;
+    const pageInfo = parsePageInfo();
+    
+    // 核心修改 1: 将 H1 标题存储到模块级变量中
+    pageTitle = pageInfo.title;
+
+    if (!ENABLED_COLLECTIONS.includes(pageInfo.collection)) return;
+    for (const keyword of EXCLUDED_KEYWORDS) {
+      if (pageInfo.path.includes(keyword)) {
+        console.log(`[PaliLookup] Skipped: URL contains excluded keyword '${keyword}'.`);
+        return;
+      }
+    }
+
+    const pRefs = document.querySelectorAll('.p-ref[data-pali-para]');
+    if (pRefs.length === 0) return;
+
+    pRefs.forEach(ref => {
+      ref.classList.add('is-lookup-active');
+      ref.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const paraNum = ref.getAttribute('data-pali-para');
+        await fetchPaliData(pageInfo.fileName, paraNum);
+      });
+    });
+
+    initDrawerDOM();
+  }
+
+  // ... (initDrawerDOM, openDrawer, closeDrawer, switchTab 等函数保持不变) ...
+  let drawerEl, contentEl, tabsEl, footerEl, tabParaBtn, tabChapBtn;
+  function initDrawerDOM() {
+    const drawerHTML = `
+      <aside id="pali-drawer">
+        <header class="pali-drawer-header">
+          <h2 class="pali-drawer-title">pāḷi mūla | vri</h2>
+          <button id="pali-drawer-close" class="pali-drawer-close">&times;</button>
+        </header>
+        <div id="pali-drawer-tabs" class="pali-drawer-tabs" style="display: none;">
+          <button id="pali-tab-para" class="pali-tab-btn active">para</button>
+          <button id="pali-tab-chap" class="pali-tab-btn">chapter</button>
+        </div>
+        <div id="pali-drawer-content" class="pali-drawer-content pali-modal-content"></div>
+        <footer id="pali-drawer-footer" class="pali-drawer-footer" style="display: none;">
+          <button id="pali-btn-copy" class="pali-btn pali-btn-secondary">copy text</button>
+          <button id="pali-btn-ai" class="pali-btn pali-btn-primary">ai prompt</button>
+        </footer>
+      </aside>
+    `;
+    document.body.insertAdjacentHTML('beforeend', drawerHTML);
+    drawerEl = document.getElementById('pali-drawer');
+    contentEl = document.getElementById('pali-drawer-content');
+    tabsEl = document.getElementById('pali-drawer-tabs');
+    footerEl = document.getElementById('pali-drawer-footer');
+    tabParaBtn = document.getElementById('pali-tab-para');
+    tabChapBtn = document.getElementById('pali-tab-chap');
+    document.getElementById('pali-drawer-close').addEventListener('click', closeDrawer);
+    tabParaBtn.addEventListener('click', () => switchTab(true));
+    tabChapBtn.addEventListener('click', () => switchTab(false));
+    document.getElementById('pali-btn-copy').addEventListener('click', () => handleButtonAction('pali-btn-copy', 'copy text'));
+    document.getElementById('pali-btn-ai').addEventListener('click', () => handleButtonAction('pali-btn-ai', 'ai prompt'));
+  }
+  function openDrawer(loadingHtml) {
+    tabsEl.style.display = 'none';
+    footerEl.style.display = 'none';
+    contentEl.innerHTML = loadingHtml;
+    if (!drawerEl.classList.contains('is-open')) {
+      drawerEl.classList.add('is-open');
+    }
+  }
+  function closeDrawer() {
+    drawerEl.classList.remove('is-open');
+    setTimeout(() => {
+      if (!drawerEl.classList.contains('is-open')) {
+        contentEl.innerHTML = '';
+        currentParaHtml = '';
+        currentChapHtml = '';
+      }
+    }, 300);
+  }
+  function switchTab(isPara) {
+    if (isPara) {
+      tabParaBtn.classList.add('active');
+      tabChapBtn.classList.remove('active');
+      contentEl.innerHTML = currentParaHtml;
+    } else {
+      tabChapBtn.classList.add('active');
+      tabParaBtn.classList.remove('active');
+      contentEl.innerHTML = currentChapHtml;
+    }
+  }
+
+  async function fetchPaliData(fileName, paraNum) {
+    openDrawer(`<div class="pali-message">loading pali mūla...</div>`);
+    try {
+      // 注意：API 不再需要 t 参数，因此这里移除了
+      const targetUrl = `${API_URL}?f=${encodeURIComponent(fileName)}&p=${encodeURIComponent(paraNum)}`;
+      const response = await fetch(targetUrl);
+      const data = await response.json();
+      if (data.error) {
+        contentEl.innerHTML = `<div class="pali-error"><strong>error [${paraNum}]</strong><br><br>${data.error}</div>`;
+        return;
+      }
+      currentParaHtml = data.paraHtml;
+      currentChapHtml = data.chapHtml;
+      tabParaBtn.innerText = `para [${paraNum}]`;
+      tabsEl.style.display = 'flex';
+      footerEl.style.display = 'flex';
+      switchTab(true);
+    } catch (error) {
+      console.error("[PaliLookup] API Error:", error);
+      contentEl.innerHTML = `<div class="pali-error"><strong>network error</strong><br><br>request failed, please try again later.</div>`;
+    }
+  }
+
+  function handleButtonAction(btnId, originalText) {
+    const btn = document.getElementById(btnId);
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = tabParaBtn.classList.contains('active') ? currentParaHtml : currentChapHtml;
+    const plainText = tempDiv.innerText.trim();
+    
+    let textToCopy = plainText;
+    if (btnId === 'pali-btn-ai') {
+      let promptType = "逐段解释";
+      if (plainText.length < 50) promptType = "逐词对照解释";
+      else if (plainText.length < 200) promptType = "逐句解释";
+
+      // 核心修改 2: 使用新的 Prompt 模板，并嵌入 pageTitle
+      textToCopy = `你是一位南传上座部佛法（Theravada）和巴利三藏（Pali Tipitaka）专家。以下巴利语经文来自 ${pageTitle}，请对其进行${promptType}。输出语言要求为中文和巴利语对照。\n\n\`\`\`pali\n${plainText}\n\`\`\``;
+    }
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      btn.innerText = "copied";
+      setTimeout(() => btn.innerText = originalText, 2000);
+    }).catch(err => console.error("[PaliLookup] Copy Error:", err));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPaliLinks);
+  } else {
+    initPaliLinks();
+  }
+})();
+</script>

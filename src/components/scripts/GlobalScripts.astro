@@ -2,15 +2,23 @@
 // src/components/scripts/GlobalScripts.astro
 import CustomScripts from './CustomScripts.astro';
 import FastGPT from './FastGPT.astro';
+import PaliLookup from './PaliLookup.astro';
 import Analytics from './Analytics.astro';
 // import GoogleAnalytics from './GoogleAnalytics.astro'; 
 ---
+
+<!-- 添加 iOS 特有的 PWA 桌面图标声明 -->
+<link rel="apple-touch-icon" href="/assets/logo_192x192.png" />
+<!-- iOS 状态栏样式控制（可选） -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 <!-- 统一汇聚所有全局脚本 -->
 
 <CustomScripts />
 
 <FastGPT />
+
+<PaliLookup />
 
 <Analytics />
 
