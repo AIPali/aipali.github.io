@@ -8,7 +8,7 @@ import AstroPWA from '@vite-pwa/astro';
 import { remarkObsidianCallouts, remarkParagraphRef } from './src/plugins/remark-tipitaka.mjs';
 import { formatSidebarWithPali } from './src/utils/sidebar.mjs';
 
-// 引入刚刚抽离的海量侧边栏数据
+// 引入海量侧边栏数据
 import { sidebarDN } from './src/data/sidebar/dn.mjs';
 import { sidebarMN } from './src/data/sidebar/mn.mjs';
 import { sidebarSN } from './src/data/sidebar/sn.mjs';
@@ -90,41 +90,36 @@ export default defineConfig({
         })
       ]
     }),
-    // PWA 必须放在 starlight 之后
+    // PWA 配置
     AstroPWA({
       registerType: 'autoUpdate',
-      injectRegister: 'inline', // 改为 inline，让插件自动把最高权限的注册脚本打入 HTML，不依赖外部文件
+      injectRegister: 'inline', // 让 Vite 自动把安全的注册代码注入到 HTML head 中，防止死循环
       workbox: {
-        // 【关键修复】移除 globDirectory，让 Astro 自动解析输出目录
-        globPatterns: ['**/*.{html,js,css,ico,png,svg,webp,woff,woff2}'],
-        // 过滤掉所有 /tags/ 页面，避免垃圾文件撑爆缓存
-        globIgnores: ['**/tags/**/*', '**/node_modules/**/*', 'sw.js', 'workbox-*.js'],
-        // 提升文件大小限制到 15MB，确保大经文不被拦截
-        maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
-        // 【双保险：运行时缓存】
+        globDirectory: 'dist',
+        // 🚨 核心修改：预缓存只管 JS/CSS 和图片，不要 HTML！确保瞬间安装成功！
+        globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
+        globIgnores: ['**/node_modules/**/*', '**/tags/**/*', 'sw.js', 'workbox-*.js'],
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        
+        // 👇 核心修改：运行时缓存，接管所有的 HTML 请求
         runtimeCaching: [
           {
-            // 策略1：用户点开过的所有 HTML 网页，优先使用网络最新版，断网时使用缓存版
-            urlPattern: ({ request }) => request.mode === 'navigate' || request.destination === 'document',
-            handler: 'NetworkFirst',
+            // 只要是请求网页（document）或者是末尾带斜杠的目录，就进入这个缓存
+            urlPattern: ({ request, url }) => request.destination === 'document' || url.pathname.endsWith('/'),
+            handler: 'NetworkFirst', // 优先走网络拿最新，没网时走缓存
             options: {
               cacheName: 'aipali-html-cache',
-              expiration: { maxEntries: 2000, maxAgeSeconds: 30 * 24 * 60 * 60 }, // 存 30 天
-              cacheableResponse: { statuses: [0, 200] },
+              expiration: {
+                maxEntries: 2000, // 足够存下全部经文
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 缓存保留 30 天
+              },
+              cacheableResponse: {
+                statuses: [0, 200], // 只缓存成功访问的页面
+              },
             },
           },
           {
-            // 策略2：所有静态资源（CSS/JS/图片/字体），优先使用缓存，后台静默更新
-            urlPattern: ({ request }) => ['style', 'script', 'worker', 'image', 'font'].includes(request.destination),
-            handler: 'StaleWhileRevalidate',
-            options: {
-              cacheName: 'aipali-assets-cache',
-              expiration: { maxEntries: 1000, maxAgeSeconds: 30 * 24 * 60 * 60 },
-              cacheableResponse: { statuses: [0, 200] },
-            },
-          },
-          {
-            // 策略3：Algolia 搜索必须走网络
+            // Algolia 搜索强依赖网络，不缓存
             urlPattern: /^https:\/\/[a-zA-Z0-9-]+\.algolia\.net\/.*/i,
             handler: 'NetworkOnly',
           }
@@ -138,9 +133,9 @@ export default defineConfig({
         background_color: '#17181c',
         display: 'standalone',
         icons: [
-          { src: '/assets/logo_dark_192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/assets/logo_dark_512x512.png', sizes: '512x512', type: 'image/png' },
-          { src: '/assets/logo_dark_512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+          { src: '/assets/logo_192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/assets/logo_512x512.png', sizes: '512x512', type: 'image/png' },
+          { src: '/assets/logo_512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
         ]
       }
     })

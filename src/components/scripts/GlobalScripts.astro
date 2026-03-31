@@ -11,11 +11,11 @@ const manifestUrl = `${baseUrl}manifest.webmanifest`.replace(/\/\/+/g, '/');
 const iconUrl = `${baseUrl}assets/logo_dark_192x192.png`.replace(/\/\/+/g, '/');
 ---
 
-<!-- ================= PWA 核心元数据 ================= -->
+<!-- ================= PWA 核心声明 ================= -->
 <link rel="manifest" href={manifestUrl} />
 <meta name="theme-color" content="#17181c" />
 
-<!-- Apple iOS 专属 PWA 适配 (已修复废弃警告) -->
+<!-- Apple iOS 专属 PWA 适配 -->
 <link rel="apple-touch-icon" href={iconUrl} />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
