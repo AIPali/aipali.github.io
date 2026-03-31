@@ -93,33 +93,30 @@ export default defineConfig({
     // PWA 配置
     AstroPWA({
       registerType: 'autoUpdate',
-      injectRegister: 'inline', // 让 Vite 自动把安全的注册代码注入到 HTML head 中，防止死循环
+      injectRegister: false, // 彻底关闭自动注入，避免 Cloudflare 环境下被吞
       workbox: {
         globDirectory: 'dist',
-        // 🚨 核心修改：预缓存只管 JS/CSS 和图片，不要 HTML！确保瞬间安装成功！
-        globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
+        globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'], // 坚决不预缓存 HTML
         globIgnores: ['**/node_modules/**/*', '**/tags/**/*', 'sw.js', 'workbox-*.js'],
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        navigateFallback: null, // 🚨 救命关键参数：明确告诉它我们是多页应用，绝不能用首页 HTML 替换其他链接！
         
-        // 👇 核心修改：运行时缓存，接管所有的 HTML 请求
         runtimeCaching: [
           {
-            // 只要是请求网页（document）或者是末尾带斜杠的目录，就进入这个缓存
             urlPattern: ({ request, url }) => request.destination === 'document' || url.pathname.endsWith('/'),
-            handler: 'NetworkFirst', // 优先走网络拿最新，没网时走缓存
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'aipali-html-cache',
               expiration: {
-                maxEntries: 2000, // 足够存下全部经文
-                maxAgeSeconds: 30 * 24 * 60 * 60, // 缓存保留 30 天
+                maxEntries: 2000,
+                maxAgeSeconds: 30 * 24 * 60 * 60,
               },
               cacheableResponse: {
-                statuses: [0, 200], // 只缓存成功访问的页面
+                statuses: [0, 200],
               },
             },
           },
           {
-            // Algolia 搜索强依赖网络，不缓存
             urlPattern: /^https:\/\/[a-zA-Z0-9-]+\.algolia\.net\/.*/i,
             handler: 'NetworkOnly',
           }
@@ -128,7 +125,7 @@ export default defineConfig({
       manifest: {
         name: 'AIPali 智能化巴利三藏',
         short_name: 'AIPali',
-        description: '智能化巴利三藏工程，支持全站离线阅读',
+        description: '巴利三藏智能化工程，支持全站离线阅读',
         theme_color: '#17181c',
         background_color: '#17181c',
         display: 'standalone',
