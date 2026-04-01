@@ -1,63 +1,41 @@
 ---
-// src/components/scripts/GlobalScripts.astro
 import CustomScripts from './CustomScripts.astro';
 import FastGPT from './FastGPT.astro';
 import PaliLookup from './PaliLookup.astro';
 import Analytics from './Analytics.astro';
 
+// 判断是否部署在 GitHub 上
+const siteUrl = Astro.site?.href || '';
+const isGithub = siteUrl.includes('github.io');
+
 const baseUrl = import.meta.env.BASE_URL || '/';
 const manifestUrl = `${baseUrl}manifest.webmanifest`.replace(/\/\/+/g, '/');
 const swUrl = `${baseUrl}sw.js`.replace(/\/\/+/g, '/');
-const iconUrl = `${baseUrl}assets/logo_dark_192x192.png`.replace(/\/\/+/g, '/');
+const iconUrl = `${baseUrl}assets/logo_192x192.png`.replace(/\/\/+/g, '/');
 ---
 
-<!-- Web Manifest & iOS PWA 适配 -->
-<link rel="manifest" href={manifestUrl} />
-<meta name="theme-color" content="#17181c" />
-<link rel="apple-touch-icon" href={iconUrl} />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="AIPali" />
+{isGithub && (
+  <>
+    <link rel="manifest" href={manifestUrl} />
+    <meta name="theme-color" content="#17181c" />
+    <link rel="apple-touch-icon" href={iconUrl} />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AIPali" />
 
-<!-- 稳健的 PWA 手动注册与存储持久化 -->
-<script define:vars={{ swUrl }}>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async () => {
-      try {
-        // 1. 请求 iOS/Android 将我们的缓存标记为“永久保存”，防止被系统偷偷删掉
-        if (navigator.storage && navigator.storage.persist) {
-          const isPersisted = await navigator.storage.persist();
-          console.log(`[AIPali PWA] 存储持久化状态: ${isPersisted ? '✅ 成功保鲜' : '⚠️ 可能被系统清理'}`);
-        }
-
-        // 2. 注册 SW
-        const registration = await navigator.serviceWorker.register(swUrl);
-        console.log('[AIPali PWA] 注册成功，作用域:', registration.scope);
-
-        // 3. 暴露一个全局对象，方便你以后在 UI 里写 JS 按钮，查询缓存容量或触发全站拉取
-        window.AIPaliPWA = {
-          getRegistration: () => registration,
-          checkCacheSize: async () => {
-            if (navigator.storage && navigator.storage.estimate) {
-              const estimate = await navigator.storage.estimate();
-              return {
-                usageMB: (estimate.usage / (1024 * 1024)).toFixed(2),
-                quotaMB: (estimate.quota / (1024 * 1024)).toFixed(2)
-              };
-            }
-            return null;
-          }
-        };
-
-      } catch (error) {
-        console.error('[AIPali PWA] ❌ 注册失败:', error);
+    <script define:vars={{ swUrl }}>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register(swUrl)
+            .then(reg => console.log('[AIPali PWA] SW 已挂载'))
+            .catch(err => console.error('[AIPali PWA] 挂载失败:', err));
+        });
       }
-    });
-  }
-</script>
+    </script>
+  </>
+)}
 
-<!-- 其他业务脚本 -->
 <CustomScripts />
 <FastGPT />
 <PaliLookup />
