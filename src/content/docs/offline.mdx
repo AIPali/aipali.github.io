@@ -1,6 +1,6 @@
 ---
 title: AIPali 智能化巴利三藏
-description: 基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
+description: 本地数据控制中心，管理离线法宝数据。
 template: splash
 ---
 
@@ -9,26 +9,24 @@ import heroLight from '../../assets/aipali-hero-visual-light.webp';
 import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
 {/* ====================================================== */}
-{/* 0. 路由守卫：非 GitHub/Localhost 强制跳转 */}
+{/* 0. 路由守卫：非 Github/Local 强制跳转 */}
 {/* ====================================================== */}
 <script is:inline>{`
   (function() {
     const hostname = window.location.hostname;
-    // 仅允许在 github.io 或本地局域网环境访问
     const isAllowed = hostname.includes('github.io') || 
                       hostname === 'localhost' || 
                       hostname === '127.0.0.1' || 
                       hostname.startsWith('192.168.');
     
     if (!isAllowed) {
-      // 如果不是合法域名，强制跳转到 GitHub Pages 对应的 offline 页面
       window.location.replace('https://aipali.github.io/offline/');
     }
   })();
 `}</script>
 
 {/* ====================================================== */}
-{/* 1. 原有首页：自定义 Hero 模块开始 */}
+{/* 1. 原有首页 Hero */}
 {/* ====================================================== */}
 <section className="custom-hero-section">
   <div className="hero-container">
@@ -38,8 +36,8 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
       </p>
       <div className="hero-actions">
-        <a href="/tipitaka/" className="btn btn-primary">阅读法宝 →</a>
-        <a href="/info/how-to-use/" className="btn btn-secondary">如何使用</a>
+        <a href="/tipitaka/" className="btn btn-primary">阅读法宝</a>
+        <a href="/info/how-to-use/" className="btn btn-secondary">使用指南</a>
         <a href="/info/about-aipali/" className="btn btn-minimal">关于本工程</a>
       </div>
     </div>
@@ -52,22 +50,22 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </section>
 
 {/* ====================================================== */}
-{/* 2. 新增模块：离线数据监控与管理中心 */}
+{/* 2. 离线控制中心 (庄重严谨版) */}
 {/* ====================================================== */}
 <div className="page-container">
   <div className="divider-glow"></div>
 
   <section className="offline-dashboard">
     <div className="dashboard-header">
-      <h2>🔌 离线数据中心</h2>
+      <h2>本地法宝数据中心</h2>
       <p>
-        您可以将经文数据完整下载至设备本地。下载后，应用将<strong>优先读取本地缓存</strong>，以纯单机模式运行，确保极致流畅与专注，并大幅节省流量。
+        将三藏数据完整同步至设备本地。同步完成后，应用将<strong>完全阻断外部网络请求</strong>，以纯单机模式运行，确保阅藏过程的绝对流畅与专注。
       </p>
     </div>
 
     <div className="dashboard-grid">
       <div className="dash-card">
-        <h3>已缓存经文</h3>
+        <h3>已缓存条目</h3>
         <div className="dash-value"><span id="cache-count">--</span> <span className="dash-unit">篇</span></div>
       </div>
       <div className="dash-card">
@@ -77,20 +75,20 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     </div>
 
     <div className="control-panel">
-      <button id="btn-update" className="btn-dash btn-dash-primary" onclick="window.startSync(false)">
-        ⬇️ 智能增量更新
+      <button id="btn-update" className="btn-action btn-primary-action" onclick="window.startSync(false)">
+        增量同步数据
       </button>
-      <button id="btn-rebuild" className="btn-dash btn-dash-secondary" onclick="window.startSync(true)">
-        🔄 强制全量重建
+      <button id="btn-rebuild" className="btn-action btn-secondary-action" onclick="window.startSync(true)">
+        全量重新构建
       </button>
-      <button id="btn-clear" className="btn-dash btn-dash-danger" onclick="window.clearAllCache()">
-        🗑️ 清空所有数据
+      <button id="btn-clear" className="btn-action btn-danger-action" onclick="window.clearAllCache()">
+        清除本地数据
       </button>
     </div>
 
     <div id="progress-container" className="progress-container hidden">
       <div className="progress-info">
-        <span id="progress-text">准备连接同步服务器...</span>
+        <span id="progress-text">等待指令...</span>
         <span id="progress-percent">0%</span>
       </div>
       <div className="progress-bar-bg">
@@ -100,21 +98,16 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
     <div className="terminal-window">
       <div className="terminal-header">
-        <div className="window-controls">
-          <span className="dot dot-red"></span>
-          <span className="dot dot-yellow"></span>
-          <span className="dot dot-green"></span>
-        </div>
-        <span className="terminal-title">AIPali Sync Protocol v2.0</span>
+        <span className="terminal-title">AIPali Data Protocol</span>
       </div>
-      <pre id="log-window">系统初始化完成，等待指令输入...</pre>
+      <pre id="log-window">系统初始化完成，存储引擎已就绪。</pre>
     </div>
   </section>
 
   <div className="divider-glow" style={{ marginTop: '4rem' }}></div>
 
   {/* ====================================================== */}
-  {/* 3. 原有首页：特性卡片模块开始 */}
+  {/* 3. 特性卡片与页脚 */}
   {/* ====================================================== */}
   <div className="features-wrapper">
     <CardGrid>
@@ -151,20 +144,19 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </div>
 
 {/* ====================================================== */}
-{/* 4. 离线控制台核心业务逻辑 (JS) - 已去除模板变量插值 */}
+{/* 4. 离线控制台 JS 引擎 */}
 {/* ====================================================== */}
 <script is:inline>{`
-  const CACHE_NAME = 'aipali-html-cache';
+  const CACHE_NAME = 'aipali-offline-cache';
   let isSyncing = false;
 
   const UI = {
     log: function(msg) {
       const el = document.getElementById('log-window');
       const time = new Date().toLocaleTimeString('en-GB');
-      // 使用正则分割换行符以规避转义问题
       const lines = el.innerText.split(/[\\r\\n]+/);
-      if (lines.length > 50) lines.shift();
-      const newline = String.fromCharCode(10); // 安全的换行符
+      if (lines.length > 60) lines.shift();
+      const newline = String.fromCharCode(10);
       el.innerText = lines.join(newline) + newline + '[' + time + '] ' + msg;
       el.scrollTop = el.scrollHeight;
     },
@@ -211,7 +203,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         }
       } else {
         UI.updateCount('N/A');
-        UI.log('❌ 当前浏览器不支持 Cache API。');
+        UI.log('终端警告: 当前浏览器环境不支持 Cache API。');
       }
 
       if (navigator.storage && navigator.storage.estimate) {
@@ -222,21 +214,21 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         UI.updateStorage('--');
       }
     } catch (e) {
-      UI.log('⚠️ 状态获取异常: ' + e.message);
+      UI.log('状态读取异常: ' + e.message);
     }
   }
 
   window.clearAllCache = async function() {
     if (isSyncing) return;
-    if (!confirm('警告：此操作将清空设备上所有已下载的经文数据。\\n断网时您将无法阅读未缓存的内容。\\n\\n确定要继续吗？')) return;
+    if (!confirm('警告：此操作将清空本地所有法宝数据。\\n断开网络时将无法继续阅读。\\n\\n确定执行清除吗？')) return;
     
-    UI.log('开始销毁本地数据区块...');
+    UI.log('正在执行本地区块清除协议...');
     try {
       await caches.delete(CACHE_NAME);
-      UI.log('✅ 所有离线数据已成功清空。');
+      UI.log('数据已完全抹除。');
       refreshStatus();
     } catch (e) {
-      UI.log('❌ 清理失败: ' + e.message);
+      UI.log('清除操作失败: ' + e.message);
     }
   };
 
@@ -247,16 +239,16 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     UI.showProgress(true);
     
     UI.log('');
-    UI.log(isRebuild ? '>>> 启动全量重建协议 (Rebuild)' : '>>> 启动智能增量协议 (Update)');
+    UI.log(isRebuild ? '=== 启动全量重建协议 ===' : '=== 启动增量同步协议 ===');
 
     try {
       if (!navigator.onLine) {
-        throw new Error('设备处于离线状态，无法连接到云端服务器。');
+        throw new Error('终端处于脱机状态，无法连接至同步服务器。');
       }
 
-      UI.log('正在解析云端结构目录 (sitemap-0.xml)...');
+      UI.log('读取服务端拓扑结构 (sitemap-0.xml)...');
       const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
-      if (!sitemapRes.ok) throw new Error('Sitemap 响应异常 (HTTP ' + sitemapRes.status + ')');
+      if (!sitemapRes.ok) throw new Error('通信受阻 (HTTP ' + sitemapRes.status + ')');
       
       const sitemapText = await sitemapRes.text();
       const parser = new DOMParser();
@@ -264,22 +256,16 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       
       const urls = Array.from(xml.querySelectorAll("loc"))
         .map(function(node) {
-          try {
-            return new URL(node.textContent).pathname;
-          } catch(e) {
-            return node.textContent;
-          }
+          try { return new URL(node.textContent).pathname; } 
+          catch(e) { return node.textContent; }
         })
         .filter(function(url) {
-          return !url.includes('/tags/') && 
-                 !url.includes('/info/') && 
-                 !url.includes('/offline/') && 
-                 url !== '/' && 
-                 url.length > 2;
+          // 仅过滤掉毫无意义的 tags 和 info，让 offline 和 index 本身也被合法缓存！
+          return !url.includes('/tags/');
         });
 
-      if (urls.length === 0) throw new Error('未发现有效的经文下载节点。');
-      UI.log('成功锁定 ' + urls.length + ' 个核心经文节点。');
+      if (urls.length === 0) throw new Error('未获取到合法数据节点。');
+      UI.log('校验通过，共有 ' + urls.length + ' 个合法同步节点。');
 
       const cache = await caches.open(CACHE_NAME);
       let existingKeys = [];
@@ -287,9 +273,9 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       if (!isRebuild) {
         const reqs = await cache.keys();
         existingKeys = reqs.map(function(req) { return new URL(req.url).pathname; });
-        UI.log('本地已发现 ' + existingKeys.length + ' 个缓存区块，开始校验差异...');
+        UI.log('本地探明 ' + existingKeys.length + ' 个数据区块，开始差异比对...');
       } else {
-        UI.log('正在格式化旧的缓存区块...');
+        UI.log('执行强制格式化，覆写底层数据...');
         const reqs = await cache.keys();
         for (const req of reqs) {
           await cache.delete(req);
@@ -312,38 +298,38 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
             skipped++;
           } else {
             try {
-              UI.setProgress(currentIndex, urls.length, '正在获取: .../' + displayUrl);
+              UI.setProgress(currentIndex, urls.length, '同步中: .../' + displayUrl);
               const res = await fetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
                 await cache.put(url, res);
                 downloaded++;
               } else {
-                UI.log('⚠️ 节点失效 [' + res.status + ']: ' + url);
+                UI.log('节点响应失效 [' + res.status + ']: ' + url);
                 errors++;
               }
             } catch (err) {
-              UI.log('⚠️ 网络阻断: ' + url);
+              UI.log('传输阻断: ' + url);
               errors++;
             }
           }
           
           if (currentIndex % 10 === 0 || currentIndex >= urls.length - MAX_CONCURRENT) {
-            UI.setProgress(currentIndex, urls.length, '进度: ' + currentIndex + '/' + urls.length);
+            UI.setProgress(currentIndex, urls.length, '总进度: ' + currentIndex + ' / ' + urls.length);
             refreshStatus();
           }
         }
       };
 
-      UI.log('启动并发下载矩阵 (Threads: 5)...');
+      UI.log('开启多路复用传输 (Thread Pool: 5)...');
       const workers = Array(Math.min(MAX_CONCURRENT, urls.length)).fill(null).map(function() { return downloadWorker(); });
       await Promise.all(workers);
 
-      UI.setProgress(urls.length, urls.length, '数据同步已完成');
-      UI.log('✅ 任务结束 | 新增/更新: ' + downloaded + ' 篇 | 跳过: ' + skipped + ' 篇 | 失败: ' + errors + ' 篇');
+      UI.setProgress(urls.length, urls.length, '同步通道已关闭');
+      UI.log('操作完成 | 新建/更新: ' + downloaded + ' | 跳过: ' + skipped + ' | 异常: ' + errors);
 
     } catch (e) {
-      UI.log('❌ 严重错误，协议中止: ' + e.message);
+      UI.log('同步强制中止: ' + e.message);
     } finally {
       isSyncing = false;
       UI.disableButtons(false);
@@ -354,24 +340,19 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
   document.addEventListener('DOMContentLoaded', function() {
     refreshStatus();
-    window.addEventListener('online', function() { UI.log('📶 检测到网络连接已恢复。'); });
-    window.addEventListener('offline', function() { UI.log('📴 检测到网络连接已断开，进入离线守护模式。'); });
+    window.addEventListener('online', function() { UI.log('网络连接已重构，同步功能可用。'); });
+    window.addEventListener('offline', function() { UI.log('网络中断，系统已平滑切换至本地数据池。'); });
   });
 `}</script>
 
 {/* ====================================================== */}
-{/* 5. 样式表 (已用安全模板语法包裹) */}
+{/* 5. 样式表 (与首页保持同宽，极简庄重) */}
 {/* ====================================================== */}
 <style>{`
-  /* -----------------------------------------
-     A. 基础设置与隐藏默认标题
-     ----------------------------------------- */
   .sl-markdown-content > h1:first-child, #_top { display: none !important; }
   .sl-markdown-content { padding-top: 0 !important; }
 
-  /* -----------------------------------------
-     B. 自定义 Hero 整体布局
-     ----------------------------------------- */
+  /* Hero 布局 */
   .custom-hero-section {
     width: 100%; display: flex; justify-content: center;
     padding-top: 0; margin-top: -3.5rem; margin-bottom: 0rem;
@@ -381,7 +362,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     grid-template-columns: 1fr auto; align-items: center;
     gap: 3rem; padding: 0 1.5rem; margin-inline: auto;
   }
-
   .hero-title {
     font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800;
     line-height: 1.1; margin: 0; white-space: nowrap; 
@@ -399,12 +379,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     padding: 0.8rem 1.6rem; border-radius: 99rem; font-weight: 600;
     text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem;
   }
-
   html[data-theme='light'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: var(--sl-color-gray-6) !important; }
-
   .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
   .btn-secondary:hover { background: var(--sl-color-accent-low); }
   .btn-minimal { color: var(--sl-color-gray-2) !important; }
@@ -419,13 +397,11 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   html[data-theme='light'] .img-dark { display: none; }
   html[data-theme='dark'] .img-light { display: none; }
 
-  /* -----------------------------------------
-     C. 离线控制台专属样式
-     ----------------------------------------- */
+  /* 离线控制中心：宽度拉通到 1200px 保持和谐 */
   .offline-dashboard {
-    max-width: 850px; margin: 2rem auto 0 auto; padding: 2.5rem 2rem;
-    background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline);
-    border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-width: 1200px; margin: 3rem auto 0 auto; padding: 2.5rem 2rem;
+    background: rgba(20, 20, 25, 0.6); border: 1px solid var(--sl-color-hairline);
+    border-radius: 12px; backdrop-filter: blur(10px);
   }
   .dashboard-header { text-align: center; margin-bottom: 2.5rem; }
   .dashboard-header h2 { margin: 0 0 1rem 0; font-size: 2rem; color: var(--sl-color-white); }
@@ -433,66 +409,63 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .dashboard-header strong { color: var(--sl-color-text-accent); }
 
   .dashboard-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;
   }
   .dash-card {
     background: var(--sl-color-black); border: 1px solid var(--sl-color-gray-5);
-    border-radius: 12px; padding: 1.5rem; text-align: center;
-    transition: border-color 0.3s ease;
+    border-radius: 8px; padding: 1.5rem; text-align: center;
   }
-  .dash-card:hover { border-color: var(--sl-color-accent); }
   .dash-card h3 { margin: 0; font-size: 1rem; color: var(--sl-color-gray-3); font-weight: normal; }
   .dash-value { font-size: 2.5rem; font-weight: 700; color: var(--sl-color-text-accent); margin-top: 0.5rem; line-height: 1; }
   .dash-unit { font-size: 1rem; font-weight: normal; color: var(--sl-color-gray-4); }
 
+  /* 操作按钮组：等宽、规整 */
   .control-panel {
     display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;
   }
-  .btn-dash { 
-    padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; 
-    border: none; font-size: 0.95rem; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem;
+  .btn-action { 
+    flex: 1; min-width: 200px; max-width: 250px;
+    padding: 0.8rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; 
+    border: none; font-size: 1rem; transition: all 0.2s ease; text-align: center;
   }
-  .btn-dash:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
-  .btn-dash:not(:disabled):active { transform: scale(0.97); }
+  .btn-action:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+  .btn-action:not(:disabled):active { transform: scale(0.98); }
   
-  .btn-dash-primary { background: var(--sl-color-accent); color: white; }
-  .btn-dash-primary:hover:not(:disabled) { background: var(--sl-color-accent-high); box-shadow: 0 0 15px var(--sl-color-accent-low); }
+  .btn-primary-action { background: var(--sl-color-accent); color: white; }
+  .btn-primary-action:hover:not(:disabled) { background: var(--sl-color-accent-high); }
   
-  .btn-dash-secondary { background: transparent; color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-4); }
-  .btn-dash-secondary:hover:not(:disabled) { background: var(--sl-color-gray-6); border-color: var(--sl-color-gray-2); }
+  .btn-secondary-action { background: transparent; color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-4); }
+  .btn-secondary-action:hover:not(:disabled) { background: var(--sl-color-gray-6); border-color: var(--sl-color-gray-2); }
   
-  .btn-dash-danger { background: transparent; color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.3); }
-  .btn-dash-danger:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
+  .btn-danger-action { background: transparent; color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.4); }
+  .btn-danger-action:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
 
+  /* 进度条 */
   .progress-container { margin-bottom: 2.5rem; opacity: 0; transition: opacity 0.3s ease; }
   .progress-container.visible { opacity: 1; }
   .progress-container.hidden { display: none; }
   .progress-info { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.8rem; color: var(--sl-color-gray-2); font-family: monospace; }
-  .progress-bar-bg { width: 100%; height: 6px; background: var(--sl-color-gray-6); border-radius: 99px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--sl-color-accent), #a9dc76); transition: width 0.3s ease; }
+  .progress-bar-bg { width: 100%; height: 4px; background: var(--sl-color-gray-6); border-radius: 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-accent); transition: width 0.3s ease; }
 
+  /* 极简终端日志 */
   .terminal-window {
-    background: #0d0d0d; border-radius: 8px; overflow: hidden; border: 1px solid var(--sl-color-gray-5);
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    background: #0d0d0d; border-radius: 6px; overflow: hidden; border: 1px solid var(--sl-color-gray-5);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
   .terminal-header {
-    background: #1a1a1a; padding: 10px 15px; display: flex; align-items: center; border-bottom: 1px solid #333;
+    background: #1a1a1a; padding: 8px 15px; border-bottom: 1px solid #333; text-align: left;
   }
-  .window-controls { display: flex; gap: 8px; }
-  .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
-  .terminal-title { margin-left: 15px; color: #888; font-size: 0.85rem; letter-spacing: 0.5px; }
+  .terminal-title { color: #666; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
   #log-window {
     margin: 0; padding: 1.2rem; height: 250px; overflow-y: auto; color: #a9dc76; font-size: 0.85rem; line-height: 1.6;
     white-space: pre-wrap; word-wrap: break-word;
   }
-  #log-window::-webkit-scrollbar { width: 8px; }
+  #log-window::-webkit-scrollbar { width: 6px; }
   #log-window::-webkit-scrollbar-track { background: #0d0d0d; }
-  #log-window::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+  #log-window::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 
-  /* -----------------------------------------
-     D. 手机端响应式调整
-     ----------------------------------------- */
+  /* 响应式调整 */
   @media (max-width: 50rem) {
     .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
@@ -501,16 +474,14 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     .hero-tagline { margin-inline: auto; }
     .hero-actions { justify-content: center !important; margin-top: 1.5rem; }
     
-    .offline-dashboard { padding: 1.5rem 1rem; border-radius: 12px; border: none; border-top: 1px solid var(--sl-color-hairline); border-bottom: 1px solid var(--sl-color-hairline); }
+    .offline-dashboard { padding: 1.5rem 1rem; border-radius: 0; border-left: none; border-right: none; margin-top: 1.5rem; }
     .dashboard-header h2 { font-size: 1.5rem; }
     .dashboard-grid { grid-template-columns: 1fr; gap: 1rem; }
     .control-panel { flex-direction: column; }
-    .btn-dash { justify-content: center; width: 100%; }
+    .btn-action { width: 100%; max-width: none; }
   }
 
-  /* -----------------------------------------
-     E. 特性卡片、背景与页脚
-     ----------------------------------------- */
+  /* 特性卡片与背景 */
   .page-container { position: relative; overflow-x: clip; }
   .page-container::before {
     content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
@@ -521,9 +492,9 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     height: 1px; width: 80%; max-width: 600px; margin: 0 auto 3rem auto;
     background: linear-gradient(90deg, transparent, var(--sl-color-accent), transparent); opacity: 0.3;
   }
-  .features-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+  .features-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
   .sl-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0)) !important;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) !important;
     border: 1px solid var(--sl-color-hairline) !important; backdrop-filter: blur(10px);
   }
   .highlight-text {

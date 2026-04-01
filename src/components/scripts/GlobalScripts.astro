@@ -7,7 +7,7 @@ import Analytics from './Analytics.astro';
 const baseUrl = import.meta.env.BASE_URL || '/';
 const manifestUrl = `${baseUrl}manifest.webmanifest`.replace(/\/\/+/g, '/');
 const swUrl = `${baseUrl}sw.js`.replace(/\/\/+/g, '/');
-const iconUrl = `${baseUrl}assets/logo_dark_192x192.png`.replace(/\/\/+/g, '/');
+const iconUrl = `${baseUrl}assets/logo_192x192.png`.replace(/\/\/+/g, '/');
 const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 ---
 
@@ -20,23 +20,33 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 <meta name="apple-mobile-web-app-title" content="AIPali" />
 
 <script define:vars={{ swUrl, baseUrl, offlineUrl }}>
-  // 【重点 7】：如果是作为 PWA (添加到桌面) 运行，且点击了 Logo 回到了首页，强制跳转到 Offline 控制台
+  // PWA Standalone 模式下的路由接管
   if (window.matchMedia('(display-mode: standalone)').matches) {
-    if (window.location.pathname === baseUrl) {
+    
+    // 1. 如果因为某些原因回到了纯根目录，平滑替换到 offline
+    const path = window.location.pathname;
+    if (path === baseUrl || path === baseUrl + 'index.html') {
       window.location.replace(offlineUrl);
     }
+    
+    // 2. 拦截左上角 Starlight Logo 的点击事件，改写为指向 Offline 控制台，杜绝死循环
+    document.addEventListener('DOMContentLoaded', () => {
+      const siteTitleAnchor = document.querySelector('.site-title a');
+      if (siteTitleAnchor) {
+        siteTitleAnchor.setAttribute('href', offlineUrl);
+      }
+    });
   }
 
+  // 注册 Service Worker
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
-      // 【重点 4】：向 iOS/Android 系统申请永久存储权限，防止被系统静默清理！
       if (navigator.storage && navigator.storage.persist) {
         const isPersisted = await navigator.storage.persist();
-        console.log(`[AIPali PWA] 持久化存储状态: ${isPersisted ? '已锁定 (防清除)' : '未锁定'}`);
+        console.log(`[AIPali PWA] 数据持久化状态: ${isPersisted ? '已锁定 (防清除)' : '未锁定'}`);
       }
-
-      navigator.serviceWorker.register(swUrl).then((registration) => {
-        console.log('[AIPali PWA] 注册成功，作用域:', registration.scope);
+      navigator.serviceWorker.register(swUrl).then((reg) => {
+        console.log('[AIPali PWA] 引擎启动，作用域:', reg.scope);
       });
     });
   }

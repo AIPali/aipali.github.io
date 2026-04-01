@@ -1,16 +1,14 @@
 import AstroPWA from '@vite-pwa/astro';
 
 export function getPwaConfig(deployEnv, baseUrl) {
-  // ==========================================
-  // Cloudflare 模式：轻量级，避免重定向冲突
-  // ==========================================
+  // Cloudflare 模式 (保持轻量，不进行侵入式 PWA 代理)
   if (deployEnv !== 'github') {
     return AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: false,
       workbox: {
         globDirectory: 'dist',
-        globPatterns: ['**/*.{js,css,ico,png,svg,woff,woff2}'], // 预缓存 CSS/JS，确保样式不丢
+        globPatterns: ['**/*.{js,css,ico,png,svg,woff,woff2}'],
         globIgnores: ['**/node_modules/**/*', '**/tags/**/*'],
         navigateFallback: null,
       },
@@ -25,36 +23,40 @@ export function getPwaConfig(deployEnv, baseUrl) {
     });
   }
 
-  // ==========================================
-  // GitHub 模式：重型纯离线 App (满足需求 1,2,3,6,7)
-  // ==========================================
+  // GitHub 模式：重型极致离线版
   return AstroPWA({
     registerType: 'autoUpdate',
     injectRegister: false,
     workbox: {
       globDirectory: 'dist',
-      // 【重点 3】：强制预缓存所有 CSS 和 JS，解决离线没有样式的问题！
+      // 预缓存只负责壳子资源，绝不预缓存 HTML
       globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
       globIgnores: ['**/node_modules/**/*', '**/tags/**/*', 'sw.js', 'workbox-*.js'],
       maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
       navigateFallback: null,
       runtimeCaching: [
         {
-          // 捕获所有页面请求
-          urlPattern: ({ request, url }) => request.destination === 'document' || url.pathname.endsWith('/'),
-          // 【重点 6】：CacheFirst！只要缓存里有，绝对不走网络，彻底切断重定向干扰！
+          // 🚨 终极锁定：无论是 HTML、CSS、JS 还是字体图片，统统实行 CacheFirst！
+          urlPattern: ({ request, url }) => 
+            request.destination === 'document' || 
+            request.destination === 'style' ||
+            request.destination === 'script' ||
+            request.destination === 'image' ||
+            request.destination === 'font' ||
+            url.pathname.endsWith('/'),
           handler: 'CacheFirst', 
           options: {
-            cacheName: 'aipali-html-cache',
+            cacheName: 'aipali-offline-cache',
             expiration: {
               maxEntries: 3000,
-              maxAgeSeconds: 365 * 24 * 60 * 60, // 【重点 4】告诉 Workbox 缓存保留 1 年
+              maxAgeSeconds: 365 * 24 * 60 * 60, // 锁定 1 年
             },
             cacheableResponse: { statuses: [0, 200] },
             matchOptions: { ignoreVary: true, ignoreSearch: true },
           },
         },
         {
+          // Algolia 搜索强制走网络
           urlPattern: /^https:\/\/[a-zA-Z0-9-]+\.algolia\.net\/.*/i,
           handler: 'NetworkOnly',
         }
@@ -67,12 +69,11 @@ export function getPwaConfig(deployEnv, baseUrl) {
       theme_color: '#17181c',
       background_color: '#17181c',
       display: 'standalone',
-      // 【重点 7】：安装到桌面后，默认启动页强制设置为 /offline/ ！
-      start_url: `${baseUrl}offline/`, 
+      start_url: `${baseUrl}offline/`, // 桌面打开默认进入 offline 控制台
       icons: [
-        { src: `${baseUrl}assets/logo_dark_192x192.png`, sizes: '192x192', type: 'image/png' },
-        { src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png' },
-        { src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+        { src: `${baseUrl}assets/logo_192x192.png`, sizes: '192x192', type: 'image/png' },
+        { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png' },
+        { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
       ]
     }
   });
