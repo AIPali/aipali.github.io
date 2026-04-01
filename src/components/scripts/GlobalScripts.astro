@@ -4,37 +4,43 @@ import FastGPT from './FastGPT.astro';
 import PaliLookup from './PaliLookup.astro';
 import Analytics from './Analytics.astro';
 
-// 判断是否部署在 GitHub 上
-const siteUrl = Astro.site?.href || '';
-const isGithub = siteUrl.includes('github.io');
-
 const baseUrl = import.meta.env.BASE_URL || '/';
 const manifestUrl = `${baseUrl}manifest.webmanifest`.replace(/\/\/+/g, '/');
 const swUrl = `${baseUrl}sw.js`.replace(/\/\/+/g, '/');
-const iconUrl = `${baseUrl}assets/logo_192x192.png`.replace(/\/\/+/g, '/');
+const iconUrl = `${baseUrl}assets/logo_dark_192x192.png`.replace(/\/\/+/g, '/');
+const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 ---
 
-{isGithub && (
-  <>
-    <link rel="manifest" href={manifestUrl} />
-    <meta name="theme-color" content="#17181c" />
-    <link rel="apple-touch-icon" href={iconUrl} />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="AIPali" />
+<link rel="manifest" href={manifestUrl} />
+<meta name="theme-color" content="#17181c" />
+<link rel="apple-touch-icon" href={iconUrl} />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="AIPali" />
 
-    <script define:vars={{ swUrl }}>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register(swUrl)
-            .then(reg => console.log('[AIPali PWA] SW 已挂载'))
-            .catch(err => console.error('[AIPali PWA] 挂载失败:', err));
-        });
+<script define:vars={{ swUrl, baseUrl, offlineUrl }}>
+  // 【重点 7】：如果是作为 PWA (添加到桌面) 运行，且点击了 Logo 回到了首页，强制跳转到 Offline 控制台
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (window.location.pathname === baseUrl) {
+      window.location.replace(offlineUrl);
+    }
+  }
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+      // 【重点 4】：向 iOS/Android 系统申请永久存储权限，防止被系统静默清理！
+      if (navigator.storage && navigator.storage.persist) {
+        const isPersisted = await navigator.storage.persist();
+        console.log(`[AIPali PWA] 持久化存储状态: ${isPersisted ? '已锁定 (防清除)' : '未锁定'}`);
       }
-    </script>
-  </>
-)}
+
+      navigator.serviceWorker.register(swUrl).then((registration) => {
+        console.log('[AIPali PWA] 注册成功，作用域:', registration.scope);
+      });
+    });
+  }
+</script>
 
 <CustomScripts />
 <FastGPT />

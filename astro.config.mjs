@@ -2,22 +2,19 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
-import AstroPWA from '@vite-pwa/astro';
 
-import { remarkObsidianCallouts, remarkParagraphRef } from './src/plugins/remark-tipitaka.mjs';
+import { getPwaConfig } from './src/config/pwa.mjs';
+
+import { remarkObsidianCallouts, remarkParagraphRef } from './src/config/remark-tipitaka.mjs';
 import { formatSidebarWithPali } from './src/utils/sidebar.mjs';
-import { getPwaConfig } from './pwa.config.mjs'; // 引入分离的 PWA 配置
-
-import { sidebarDN } from './src/data/sidebar/dn.mjs';
-import { sidebarMN } from './src/data/sidebar/mn.mjs';
-import { sidebarSN } from './src/data/sidebar/sn.mjs';
-import { sidebarAN } from './src/data/sidebar/an.mjs';
-import { sidebarKN } from './src/data/sidebar/kn.mjs';
-import { sidebarVA } from './src/data/sidebar/va.mjs';
+import { sidebarDN } from './src/config/sidebar/dn.mjs';
+import { sidebarMN } from './src/config/sidebar/mn.mjs';
+import { sidebarSN } from './src/config/sidebar/sn.mjs';
+import { sidebarAN } from './src/config/sidebar/an.mjs';
+import { sidebarKN } from './src/config/sidebar/kn.mjs';
+import { sidebarVA } from './src/config/sidebar/va.mjs';
 
 const deployEnv = process.env.DEPLOY_ENV || 'domain';
-const isGithub = deployEnv === 'github';
-
 const deployConfig = {
   github: { site: 'https://aipali.github.io', base: '/' },
   domain: { site: 'https://aipali.true-dhamma.com', base: '/' }
@@ -27,20 +24,20 @@ const currentConfig = deployConfig[deployEnv];
 export default defineConfig({
   site: currentConfig.site,
   base: currentConfig.base,
-  vite: { server: { hmr: false, watch: { usePolling: true, interval: 500 } } },
-  markdown: { remarkPlugins: [remarkObsidianCallouts, remarkParagraphRef] },
-  integrations: [
+  vite: { /* HMR 配置保持原样，此处略过... */ },
+  markdown: { remarkPlugins:[remarkObsidianCallouts, remarkParagraphRef] },
+  integrations:[
     starlight({
       title: 'AIPali 智能化巴利三藏',
-      customCss: ['./src/styles/custom.css'], 
+      customCss:['./src/styles/custom.css'], 
       defaultLocale: 'zh-CN', 
       locales: { root: { label: '简体中文', lang: 'zh-CN' } },
       components: {
         PageTitle: './src/components/PageTitle.astro',
         Head: './src/components/CustomHead.astro',
       },
-      head: [ { tag: 'script', attrs: { src: '/assets/js/gtranslate-auto.js', defer: true } } ],
-      plugins: [
+      head: [{ tag: 'script', attrs: { src: '/assets/js/gtranslate-auto.js', defer: true } }],
+      plugins:[
         starlightDocSearch({ appId: 'TCMTON4EX8', apiKey: '46fc7739c943245ddd44dac342e40493', indexName: 'AIPali' }),
         starlightSidebarTopics([
           { label: 'DN 长部', id: 'dn', link: '/sutta/dn/', items: formatSidebarWithPali(sidebarDN) },
@@ -52,7 +49,7 @@ export default defineConfig({
         ], { topics: { 'dn': ['/tags', '/tags/**/*'] }, exclude: ['/info', '/info/**/*'] })
       ]
     }),
-    // 🚨 核心判断：只有 GitHub Pages 才集成 PWA 引擎
-    ...(isGithub ? [AstroPWA(getPwaConfig(currentConfig.base))] : [])
+    // 注入动态 PWA 配置
+    getPwaConfig(deployEnv, currentConfig.base)
   ],
 });

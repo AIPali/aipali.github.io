@@ -1,0 +1,554 @@
+---
+title: AIPali 智能化巴利三藏
+description: 基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
+template: splash
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import heroLight from '../../assets/aipali-hero-visual-light.webp';
+import heroDark from '../../assets/aipali-hero-visual-dark.webp';
+
+{/* ====================================================== */}
+{/* 1. 原有首页：自定义 Hero 模块开始 */}
+{/* ====================================================== */}
+<section className="custom-hero-section">
+  <div className="hero-container">
+    {/* 左侧文字区 */}
+    <div className="hero-text">
+      <h1 className="hero-title">巴利三藏智能化工程</h1>
+      <p className="hero-tagline">
+        基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
+      </p>
+      <div className="hero-actions">
+        <a href="/tipitaka/" className="btn btn-primary">阅读法宝 →</a>
+        <a href="/info/how-to-use/" className="btn btn-secondary">如何使用</a>
+        <a href="/info/about-aipali/" className="btn btn-minimal">关于本工程</a>
+      </div>
+    </div>
+
+    {/* 右侧图片区：WebP 格式，亮暗自动切换 */}
+    <div className="hero-image">
+      <img src={heroLight.src} alt="AIPali Light" className="img-light" />
+      <img src={heroDark.src} alt="AIPali Dark" className="img-dark" />
+    </div>
+  </div>
+</section>
+
+{/* ====================================================== */}
+{/* 2. 新增模块：离线数据监控与管理中心 (融入在 Hero 下方) */}
+{/* ====================================================== */}
+<div className="page-container">
+  <div className="divider-glow"></div>
+
+  <section className="offline-dashboard">
+    <div className="dashboard-header">
+      <h2>🔌 离线数据中心</h2>
+      <p>
+        您可以将经文数据完整下载至设备本地。下载后，应用将<strong>优先读取本地缓存</strong>，以纯单机模式运行，确保极致流畅与专注，并大幅节省流量。
+      </p>
+    </div>
+
+    {/* 数据监控面板 */}
+    <div className="dashboard-grid">
+      <div className="dash-card">
+        <h3>已缓存经文</h3>
+        <div className="dash-value"><span id="cache-count">--</span> <span className="dash-unit">篇</span></div>
+      </div>
+      <div className="dash-card">
+        <h3>本地存储占用</h3>
+        <div className="dash-value"><span id="storage-usage">--</span> <span className="dash-unit">MB</span></div>
+      </div>
+    </div>
+
+    {/* 控制按钮组 */}
+    <div className="control-panel">
+      <button id="btn-update" className="btn-dash btn-dash-primary" onclick="window.startSync(false)">
+        ⬇️ 智能增量更新
+      </button>
+      <button id="btn-rebuild" className="btn-dash btn-dash-secondary" onclick="window.startSync(true)">
+        🔄 强制全量重建
+      </button>
+      <button id="btn-clear" className="btn-dash btn-dash-danger" onclick="window.clearAllCache()">
+        🗑️ 清空所有数据
+      </button>
+    </div>
+
+    {/* 进度条面板 (默认隐藏) */}
+    <div id="progress-container" className="progress-container hidden">
+      <div className="progress-info">
+        <span id="progress-text">准备连接同步服务器...</span>
+        <span id="progress-percent">0%</span>
+      </div>
+      <div className="progress-bar-bg">
+        <div id="progress-bar-fill" className="progress-bar-fill"></div>
+      </div>
+    </div>
+
+    {/* 终端日志输出窗口 */}
+    <div className="terminal-window">
+      <div className="terminal-header">
+        <div className="window-controls">
+          <span className="dot dot-red"></span>
+          <span className="dot dot-yellow"></span>
+          <span className="dot dot-green"></span>
+        </div>
+        <span className="terminal-title">AIPali Sync Protocol v2.0</span>
+      </div>
+      <pre id="log-window">系统初始化完成，等待指令输入...</pre>
+    </div>
+  </section>
+
+  <div className="divider-glow" style="margin-top: 4rem;"></div>
+
+  {/* ====================================================== */}
+  {/* 3. 原有首页：特性卡片模块开始 */}
+  {/* ====================================================== */}
+  <div className="features-wrapper">
+    <CardGrid>
+      <Card title="完整法宝收录" icon="document">
+        以 <b className="highlight-text">VRI/CSCD</b> 巴利语原文为底稿，涵盖完整的<b className="highlight-text">五部经藏</b>（含小部 15 经）与<b className="highlight-text">律藏</b>（含大小品及附随）；内置<b className="highlight-text">段落级巴利原文对照</b>，助力深度法义探究。
+      </Card>
+
+      <Card title="结构化内容梳理" icon="list-format">
+        依托大语言模型重新梳理经文的层次，自动生成<b className="highlight-text">多层级标题</b>、<b className="highlight-text">AI导读</b>与<b className="highlight-text">法义解析</b>，在恢复经文本有的工整结构的同时，大幅降低现代修行者阅读理解门槛。
+      </Card>
+
+      <Card title="现代化阅读体验" icon="laptop">
+        应用<b className="highlight-text">现代互联网技术</b>，提供 PC、手机、平板上的优质阅读体验，并支持<b className="highlight-text">离线浏览</b>；内置<b className="highlight-text">毫秒级全文搜索引擎</b>，可根据经文编号、法义术语直达原文段落。
+      </Card>
+
+      <Card title="互动化巴利三藏" icon="rocket">
+        以 <b className="highlight-text">AI 检索增强技术</b> 赋能传统经典，构建“可聊天”的巴利三藏。无论是搜寻法义、深入探讨甚至实修实证，AI 助手都能提供详尽支持，并附带<b className="highlight-text">经文出处</b>。
+      </Card>
+    </CardGrid>
+  </div>
+
+  <footer className="aipali-custom-footer">
+    <div className="footer-content">
+      <p className="footer-slogan">
+        <strong className="brand">AIPali 智能化巴利三藏</strong>
+        <span className="divider"> | </span> 
+        <span className="keyword">结构化</span> <span className="dot"> · </span> 
+        <span className="keyword">现代化</span> <span className="dot"> · </span> 
+        <span className="keyword">互动化</span>
+      </p>
+      <p className="footer-sub">由现代人开发，服务于现代佛法修行者</p>
+      <p className="footer-copyright">
+        &copy; 2026, <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 True-Dhamma.com</a>
+      </p>
+    </div>
+  </footer>
+</div>
+
+{/* ====================================================== */}
+{/* 4. 离线控制台核心业务逻辑 (JS) */}
+{/* ====================================================== */}
+<script is:inline>
+  const CACHE_NAME = 'aipali-html-cache';
+  let isSyncing = false;
+
+  const UI = {
+    log: (msg) => {
+      const el = document.getElementById('log-window');
+      const time = new Date().toLocaleTimeString('en-GB');
+      // 自动追加日志，保留最新的 50 行防止内存溢出
+      const lines = el.innerText.split('\n');
+      if (lines.length > 50) lines.shift();
+      el.innerText = lines.join('\n') + `\n[${time}] ${msg}`;
+      el.scrollTop = el.scrollHeight; // 滚动到底部
+    },
+    updateCount: (count) => document.getElementById('cache-count').innerText = count,
+    updateStorage: (usage) => document.getElementById('storage-usage').innerText = usage,
+    showProgress: (show) => {
+      const el = document.getElementById('progress-container');
+      if (show) {
+        el.classList.remove('hidden');
+        // 强制重绘，触发动画
+        void el.offsetWidth;
+        el.classList.add('visible');
+      } else {
+        el.classList.remove('visible');
+        setTimeout(() => el.classList.add('hidden'), 300); // 等待淡出动画结束
+      }
+    },
+    setProgress: (current, total, text) => {
+      const percent = total > 0 ? Math.round((current / total) * 100) : 0;
+      document.getElementById('progress-bar-fill').style.width = `${percent}%`;
+      document.getElementById('progress-percent').innerText = `${percent}%`;
+      document.getElementById('progress-text').innerText = text;
+    },
+    disableButtons: (disabled) => {
+      document.getElementById('btn-update').disabled = disabled;
+      document.getElementById('btn-rebuild').disabled = disabled;
+      document.getElementById('btn-clear').disabled = disabled;
+    }
+  };
+
+  // 初始化：获取缓存详情
+  async function refreshStatus() {
+    try {
+      // 1. 统计经文数量
+      if ('caches' in window) {
+        const hasCache = await caches.has(CACHE_NAME);
+        if (hasCache) {
+          const cache = await caches.open(CACHE_NAME);
+          const keys = await cache.keys();
+          UI.updateCount(keys.length);
+        } else {
+          UI.updateCount(0);
+        }
+      } else {
+        UI.updateCount('N/A');
+        UI.log('❌ 当前浏览器不支持 Cache API。');
+      }
+
+      // 2. 统计硬盘空间
+      if (navigator.storage && navigator.storage.estimate) {
+        const estimate = await navigator.storage.estimate();
+        const usedMB = (estimate.usage / (1024 * 1024)).toFixed(2);
+        UI.updateStorage(usedMB);
+      } else {
+        UI.updateStorage('--');
+      }
+    } catch (e) {
+      UI.log('⚠️ 状态获取异常: ' + e.message);
+    }
+  }
+
+  // 清理缓存
+  window.clearAllCache = async () => {
+    if (isSyncing) return;
+    if (!confirm('警告：此操作将清空设备上所有已下载的经文数据。\n断网时您将无法阅读未缓存的内容。\n\n确定要继续吗？')) return;
+    
+    UI.log('开始销毁本地数据区块...');
+    try {
+      await caches.delete(CACHE_NAME);
+      UI.log('✅ 所有离线数据已成功清空。');
+      refreshStatus();
+    } catch (e) {
+      UI.log('❌ 清理失败: ' + e.message);
+    }
+  };
+
+  // 核心：智能/全量下载逻辑
+  window.startSync = async (isRebuild) => {
+    if (isSyncing) return;
+    isSyncing = true;
+    UI.disableButtons(true);
+    UI.showProgress(true);
+    
+    UI.log('');
+    UI.log(isRebuild ? '>>> 启动全量重建协议 (Rebuild)' : '>>> 启动智能增量协议 (Update)');
+
+    try {
+      // 1. 检查网络
+      if (!navigator.onLine) {
+        throw new Error('设备处于离线状态，无法连接到云端服务器。');
+      }
+
+      // 2. 获取站点地图 (Sitemap)
+      UI.log('正在解析云端结构目录 (sitemap-0.xml)...');
+      const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
+      if (!sitemapRes.ok) throw new Error(`Sitemap 响应异常 (HTTP ${sitemapRes.status})`);
+      
+      const sitemapText = await sitemapRes.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(sitemapText, "text/xml");
+      
+      // 提取链接，严苛过滤：排除 tags、info，仅保留真实的经文和必需页面
+      const urls = Array.from(xml.querySelectorAll("loc"))
+        .map(node => {
+          try {
+            return new URL(node.textContent).pathname; // 仅截取路径部分，避免跨域冲突
+          } catch(e) {
+            return node.textContent;
+          }
+        })
+        .filter(url => 
+          !url.includes('/tags/') && 
+          !url.includes('/info/') && 
+          !url.includes('/offline/') && 
+          url !== '/' && // 排除首页
+          url.length > 2
+        );
+
+      if (urls.length === 0) throw new Error('未发现有效的经文下载节点。');
+      UI.log(`成功锁定 ${urls.length} 个核心经文节点。`);
+
+      const cache = await caches.open(CACHE_NAME);
+      let existingKeys = [];
+      
+      if (!isRebuild) {
+        // 增量模式：比对现有缓存
+        const reqs = await cache.keys();
+        // 将 Request 对象的 URL 转换为 pathname 用于精准比对
+        existingKeys = reqs.map(req => new URL(req.url).pathname);
+        UI.log(`本地已发现 ${existingKeys.length} 个缓存区块，开始校验差异...`);
+      } else {
+        // 全量重建：销毁旧区块
+        UI.log('正在格式化旧的缓存区块...');
+        const reqs = await cache.keys();
+        for (const req of reqs) {
+          await cache.delete(req);
+        }
+      }
+
+      // 3. 开始多线程并发下载引擎 (控制并发数为 5，防止压死浏览器/服务器)
+      let downloaded = 0;
+      let skipped = 0;
+      let errors = 0;
+      let currentIndex = 0;
+      const MAX_CONCURRENT = 5;
+
+      // 并发下载工头函数
+      const downloadWorker = async () => {
+        while (currentIndex < urls.length) {
+          const index = currentIndex++;
+          const url = urls[index];
+          
+          // 为了 UI 显示美观，只截取路径最后一段
+          const displayUrl = url.split('/').filter(Boolean).slice(-2).join('/'); 
+
+          if (!isRebuild && existingKeys.includes(url)) {
+            skipped++;
+          } else {
+            try {
+              UI.setProgress(currentIndex, urls.length, `正在获取: .../${displayUrl}`);
+              
+              // 强制刷新网络请求，保证拿到云端最新校对版本
+              const res = await fetch(url, { cache: 'no-cache' });
+              
+              if (res.ok) {
+                await cache.put(url, res);
+                downloaded++;
+              } else {
+                UI.log(`⚠️ 节点失效 [${res.status}]: ${url}`);
+                errors++;
+              }
+            } catch (err) {
+              UI.log(`⚠️ 网络阻断: ${url}`);
+              errors++;
+            }
+          }
+          
+          // UI 节流渲染：每 10 次或者快结束时更新一次界面，防止主线程卡顿
+          if (currentIndex % 10 === 0 || currentIndex >= urls.length - MAX_CONCURRENT) {
+            UI.setProgress(currentIndex, urls.length, `进度: ${currentIndex}/${urls.length}`);
+            refreshStatus();
+          }
+        }
+      };
+
+      UI.log('启动并发下载矩阵 (Threads: 5)...');
+      // 启动 5 个并发工人
+      const workers = Array(Math.min(MAX_CONCURRENT, urls.length)).fill(null).map(() => downloadWorker());
+      await Promise.all(workers);
+
+      UI.setProgress(urls.length, urls.length, '数据同步已完成');
+      UI.log(`✅ 任务结束 | 新增/更新: ${downloaded} 篇 | 跳过: ${skipped} 篇 | 失败: ${errors} 篇`);
+
+    } catch (e) {
+      UI.log('❌ 严重错误，协议中止: ' + e.message);
+    } finally {
+      isSyncing = false;
+      UI.disableButtons(false);
+      setTimeout(() => UI.showProgress(false), 3000);
+      refreshStatus();
+    }
+  };
+
+  // 页面加载完成执行
+  document.addEventListener('DOMContentLoaded', () => {
+    refreshStatus();
+    // 监听网络状态变化
+    window.addEventListener('online',  () => UI.log('📶 检测到网络连接已恢复。'));
+    window.addEventListener('offline', () => UI.log('📴 检测到网络连接已断开，进入离线守护模式。'));
+  });
+</script>
+
+{/* ====================================================== */}
+{/* 5. 样式表 (包含原首页 + 离线控制台) */}
+{/* ====================================================== */}
+<style>
+  {`
+    /* -----------------------------------------
+       A. 基础设置与隐藏默认标题
+       ----------------------------------------- */
+    .sl-markdown-content > h1:first-child, #_top { display: none !important; }
+    .sl-markdown-content { padding-top: 0 !important; }
+
+    /* -----------------------------------------
+       B. 自定义 Hero 整体布局
+       ----------------------------------------- */
+    .custom-hero-section {
+      width: 100%; display: flex; justify-content: center;
+      padding-top: 0; margin-top: -3.5rem; margin-bottom: 0rem;
+    }
+    .hero-container {
+      max-width: 1200px; width: 100%; display: grid;
+      grid-template-columns: 1fr auto; align-items: center;
+      gap: 3rem; padding: 0 1.5rem; margin-inline: auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800;
+      line-height: 1.1; margin: 0; white-space: nowrap; 
+      background: linear-gradient(120deg, var(--sl-color-white) 30%, var(--sl-color-text-accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px var(--sl-color-accent-low);
+    }
+    .hero-tagline {
+      margin-top: 1.5rem; font-size: 1.25rem;
+      color: var(--sl-color-gray-2); line-height: 1.6; max-width: 50ch;
+    }
+    .hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    
+    .btn {
+      padding: 0.8rem 1.6rem; border-radius: 99rem; font-weight: 600;
+      text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem;
+    }
+
+    html[data-theme='light'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
+    html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
+    html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
+    html[data-theme='dark'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: var(--sl-color-gray-6) !important; }
+
+    .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
+    .btn-secondary:hover { background: var(--sl-color-accent-low); }
+    .btn-minimal { color: var(--sl-color-gray-2) !important; }
+    .btn-minimal:hover { color: var(--sl-color-white) !important; text-decoration: underline; }
+
+    .hero-image { display: flex; justify-content: center; align-items: center; }
+    .hero-image img {
+      max-width: 320px; height: auto; transform: translate(0, -30px); 
+      box-shadow: none !important; border: none !important; outline: none !important;
+      filter: none !important; background: transparent !important;
+    }
+    html[data-theme='light'] .img-dark { display: none; }
+    html[data-theme='dark'] .img-light { display: none; }
+
+    /* -----------------------------------------
+       C. 离线控制台专属样式
+       ----------------------------------------- */
+    .offline-dashboard {
+      max-width: 850px; margin: 2rem auto 0 auto; padding: 2.5rem 2rem;
+      background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline);
+      border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .dashboard-header { text-align: center; margin-bottom: 2.5rem; }
+    .dashboard-header h2 { margin: 0 0 1rem 0; font-size: 2rem; color: var(--sl-color-white); }
+    .dashboard-header p { color: var(--sl-color-gray-3); line-height: 1.6; margin: 0; font-size: 1.05rem; }
+    .dashboard-header strong { color: var(--sl-color-text-accent); }
+
+    /* 数据仪表盘 */
+    .dashboard-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;
+    }
+    .dash-card {
+      background: var(--sl-color-black); border: 1px solid var(--sl-color-gray-5);
+      border-radius: 12px; padding: 1.5rem; text-align: center;
+      transition: border-color 0.3s ease;
+    }
+    .dash-card:hover { border-color: var(--sl-color-accent); }
+    .dash-card h3 { margin: 0; font-size: 1rem; color: var(--sl-color-gray-3); font-weight: normal; }
+    .dash-value { font-size: 2.5rem; font-weight: 700; color: var(--sl-color-text-accent); margin-top: 0.5rem; line-height: 1; }
+    .dash-unit { font-size: 1rem; font-weight: normal; color: var(--sl-color-gray-4); }
+
+    /* 控制按钮组 */
+    .control-panel {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .btn-dash { 
+      padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; 
+      border: none; font-size: 0.95rem; transition: all 0.2s ease; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-dash:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+    .btn-dash:not(:disabled):active { transform: scale(0.97); }
+    
+    .btn-dash-primary { background: var(--sl-color-accent); color: white; }
+    .btn-dash-primary:hover:not(:disabled) { background: var(--sl-color-accent-high); box-shadow: 0 0 15px var(--sl-color-accent-low); }
+    
+    .btn-dash-secondary { background: transparent; color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-4); }
+    .btn-dash-secondary:hover:not(:disabled) { background: var(--sl-color-gray-6); border-color: var(--sl-color-gray-2); }
+    
+    .btn-dash-danger { background: transparent; color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.3); }
+    .btn-dash-danger:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
+
+    /* 进度条 */
+    .progress-container { margin-bottom: 2.5rem; opacity: 0; transition: opacity 0.3s ease; }
+    .progress-container.visible { opacity: 1; }
+    .progress-container.hidden { display: none; }
+    .progress-info { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.8rem; color: var(--sl-color-gray-2); font-family: monospace; }
+    .progress-bar-bg { width: 100%; height: 6px; background: var(--sl-color-gray-6); border-radius: 99px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--sl-color-accent), #a9dc76); transition: width 0.3s ease; }
+
+    /* 终端日志 */
+    .terminal-window {
+      background: #0d0d0d; border-radius: 8px; overflow: hidden; border: 1px solid var(--sl-color-gray-5);
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .terminal-header {
+      background: #1a1a1a; padding: 10px 15px; display: flex; align-items: center; border-bottom: 1px solid #333;
+    }
+    .window-controls { display: flex; gap: 8px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
+    .terminal-title { margin-left: 15px; color: #888; font-size: 0.85rem; letter-spacing: 0.5px; }
+    #log-window {
+      margin: 0; padding: 1.2rem; height: 250px; overflow-y: auto; color: #a9dc76; font-size: 0.85rem; line-height: 1.6;
+      white-space: pre-wrap; word-wrap: break-word;
+    }
+    #log-window::-webkit-scrollbar { width: 8px; }
+    #log-window::-webkit-scrollbar-track { background: #0d0d0d; }
+    #log-window::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+
+    /* -----------------------------------------
+       D. 手机端响应式调整
+       ----------------------------------------- */
+    @media (max-width: 50rem) {
+      .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .hero-image img { max-width: 300px; margin: 0 auto; }
+      .hero-title { white-space: normal !important; font-size: clamp(2rem, 8vw, 2.5rem); }
+      .hero-tagline { margin-inline: auto; }
+      .hero-actions { justify-content: center !important; margin-top: 1.5rem; }
+      
+      .offline-dashboard { padding: 1.5rem 1rem; border-radius: 12px; border: none; border-top: 1px solid var(--sl-color-hairline); border-bottom: 1px solid var(--sl-color-hairline); }
+      .dashboard-header h2 { font-size: 1.5rem; }
+      .dashboard-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .control-panel { flex-direction: column; }
+      .btn-dash { justify-content: center; width: 100%; }
+    }
+
+    /* -----------------------------------------
+       E. 特性卡片、背景与页脚
+       ----------------------------------------- */
+    .page-container { position: relative; overflow-x: clip; }
+    .page-container::before {
+      content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+      width: 1200px; height: 500px; background-image: radial-gradient(circle, var(--sl-color-accent-low) 0%, transparent 70%);
+      opacity: 0.25; filter: blur(120px); z-index: -1; pointer-events: none;
+    }
+    .divider-glow {
+      height: 1px; width: 80%; max-width: 600px; margin: 0 auto 3rem auto;
+      background: linear-gradient(90deg, transparent, var(--sl-color-accent), transparent); opacity: 0.3;
+    }
+    .features-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+    .sl-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0)) !important;
+      border: 1px solid var(--sl-color-hairline) !important; backdrop-filter: blur(10px);
+    }
+    .highlight-text {
+      color: var(--sl-color-text-accent); background-color: var(--sl-color-accent-low);
+      padding: 0.1em 0.4em; border-radius: 4px; font-weight: 600;
+    }
+    .aipali-custom-footer {
+      margin-top: 6rem; padding: 3rem 1rem; border-top: 1px solid var(--sl-color-hairline);
+      text-align: center; color: var(--sl-color-gray-3);
+    }
+    .footer-content { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+    .footer-content p { margin: 0 !important; line-height: 1.5; }
+    .brand { color: var(--sl-color-text-accent); font-weight: 600; }
+    .footer-copyright a { color: var(--sl-color-text-accent); text-decoration: none; }
+  `}
+</style>
