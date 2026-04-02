@@ -86,7 +86,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       </button>
     </div>
 
-    {/* 优化后的进度条布局 */}
+    {/* 进度条布局 */}
     <div id="progress-container" className="progress-container hidden">
       <div id="progress-text" className="progress-filename">等待执行指令...</div>
       <div className="progress-bar-row">
@@ -151,7 +151,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </div>
 
 {/* ====================================================== */}
-{/* 4. 离线控制台 JS 引擎 (逻辑加强版) */}
+{/* 4. 离线控制台 JS 引擎 */}
 {/* ====================================================== */}
 <script is:inline>{`
   const CACHE_NAME = 'aipali-offline-cache';
@@ -201,7 +201,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     try {
       if ('caches' in window) {
         const cacheNames = await caches.keys();
-        const pathSet = new Set(); // 使用 Set 严格去重
+        const pathSet = new Set(); 
         
         for (let name of cacheNames) {
           const cache = await caches.open(name);
@@ -211,7 +211,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
             try {
               const url = new URL(req.url);
               const path = url.pathname;
-              // 严格筛选：结尾是 / 或 .html，且排除 astro 生成的资产文件
               if ((path.endsWith('/') || path.endsWith('.html')) && 
                   !path.includes('/_astro/') && 
                   !path.includes('/assets/')) {
@@ -252,13 +251,11 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     UI.log('正在执行全盘数据抹除协议...');
     UI.disableButtons(true);
     try {
-      // 1. 删除所有 Cache Storage (包括各类资源)
       const cacheNames = await caches.keys();
       for (const name of cacheNames) {
         await caches.delete(name);
       }
       
-      // 2. 清理 Workbox 底层的 IndexedDB 缓存过期机制数据
       if (window.indexedDB && indexedDB.databases) {
         try {
           const dbs = await indexedDB.databases();
@@ -268,7 +265,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         } catch(err) {}
       }
       
-      // 3. 卸载所有的 Service Worker 保证环境完全纯洁
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
         for (const reg of registrations) {
@@ -283,7 +279,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       UI.log('清除操作执行受阻: ' + e.message);
     } finally {
       UI.disableButtons(false);
-      // 清除后不再重试读取，直接强行设定为 --，避免滞后的读数迷惑用户
       UI.updateCount('--');
       UI.updateStorage('--');
     }
@@ -363,9 +358,11 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           const index = currentIndex++;
           const url = urls[index];
           
-          // 格式化输出文件路径：.../前一层/当前层/
-          const segments = url.split('/').filter(Boolean);
-          const displayUrl = segments.length > 1 ? '.../' + segments.slice(-2).join('/') + '/' : url;
+          // 【调整截断逻辑】如果路径过长，则截取头部和尾部，中间用 ... 替代
+          let displayUrl = url;
+          if (url.length > 36) {
+            displayUrl = url.substring(0, 16) + '...' + url.substring(url.length - 16);
+          }
 
           if (!isRebuild && existingKeys.includes(url)) {
             skipped++;
@@ -388,7 +385,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
             }
           }
           
-          // 仅在关键节点或即将结束时刷新全局进度文字（避免闪烁）
           if (currentIndex % 10 === 0 || currentIndex >= urls.length - MAX_CONCURRENT) {
             UI.setProgress(currentIndex, urls.length); 
           }
@@ -509,25 +505,32 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .btn-danger-action { background: var(--sl-color-bg); color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.4); }
   .btn-danger-action:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
 
-  /* 进度条优化布局：第一行文字，第二行进度与百分比 */
+  /* ================= 进度条修饰 ================= */
   .progress-container { margin-bottom: 2rem; opacity: 0; transition: opacity 0.3s ease; }
   .progress-container.visible { opacity: 1; }
   .progress-container.hidden { display: none; }
+  
   .progress-filename {
     font-size: 0.85rem; color: var(--sl-color-gray-2); margin-bottom: 0.6rem; 
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
+  
+  /* 去除之前可能导致偏移的固定高度 */
   .progress-bar-row {
-    display: flex; align-items: center; gap: 1rem; height: 1.5rem;
+    display: flex; align-items: center; gap: 1rem; 
   }
   .progress-bar-bg { 
     flex: 1; height: 6px; background: var(--sl-color-gray-5); border-radius: 3px; overflow: hidden; 
   }
   .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-accent); transition: width 0.3s ease; }
+  
+  /* 调整百分比文字的对齐，使用 translateY 和 line-height 矫正等宽字体的基线问题 */
   .progress-percent-text {
-    font-weight: bold; color: var(--sl-color-text-accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.95rem; min-width: 2.5rem; text-align: right;
+    font-weight: bold; color: var(--sl-color-text-accent); 
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.95rem; min-width: 3.2rem; text-align: right;
+    line-height: 1; transform: translateY(-1px); margin: 0;
   }
 
   /* 带有 Mac 视窗修饰的终端日志 */
