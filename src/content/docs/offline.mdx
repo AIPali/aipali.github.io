@@ -4,7 +4,6 @@ description: 本地数据控制中心，管理离线法宝数据。
 template: splash
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
 import heroLight from '../../assets/aipali-hero-visual-light.webp';
 import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
@@ -18,7 +17,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
                       hostname === 'localhost' || 
                       hostname === '127.0.0.1' || 
                       hostname.startsWith('192.168.');
-    
     if (!isAllowed) {
       window.location.replace('https://aipali.github.io/offline/');
     }
@@ -37,7 +35,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       </p>
       <div className="hero-actions">
         <a href="/tipitaka/" className="btn btn-primary">阅读法宝 →</a>
-        <a href="/info/how-to-use/" className="btn btn-secondary">如何使用</a>
+        <a href="/info/how-to-use/" className="btn btn-secondary">使用指南</a>
         <a href="/info/about-aipali/" className="btn btn-minimal">关于本工程</a>
       </div>
     </div>
@@ -50,58 +48,56 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </section>
 
 {/* ====================================================== */}
-{/* 2. 离线控制中心 (高级玻璃态 UI) */}
+{/* 2. 离线控制中心 (紧凑化 + 极客风终端) */}
 {/* ====================================================== */}
 <div className="page-container">
   <div className="divider-glow"></div>
 
-  <div className="content-wrapper">
-    <h2 className="aipali-section-title" style={{ marginTop: '2rem' }}>本地法宝数据中心</h2>
-    <p style={{ textAlign: 'center', color: 'var(--sl-color-gray-2)', marginBottom: '3rem', fontSize: '1.1rem' }}>
-      将三藏数据完整同步至设备本地。同步完成后，应用将<strong>永久断开对应网络请求</strong>，以纯单机模式运行，确保阅藏过程的绝对流畅与专注。
-    </p>
+  <section className="offline-dashboard">
+    <div className="dashboard-header">
+      <h2>🔌 离线数据中心</h2>
+      <p>
+        将数据完整同步至设备本地后，应用将<strong>完全阻断外部网络请求</strong>，以纯单机模式运行，确保极速响应与专注。
+      </p>
+    </div>
 
-    {/* 数据仪表盘 - 采用 About.mdx 的玻璃态风格 */}
-    <div className="aipali-glass-grid" style={{ marginTop: '0', marginBottom: '2.5rem' }}>
-      <div className="aipali-glass-card" style={{ padding: '2rem', textAlign: 'center', alignItems: 'center' }}>
-        <h3 style={{ margin: '0', fontSize: '1.1rem', color: 'var(--sl-color-gray-3)' }}>已缓存经文页数</h3>
-        <div className="dash-value">
-          <span id="cache-count">--</span> <span className="dash-unit" style={{ fontSize: '1rem', fontWeight: 'normal' }}>篇</span>
-        </div>
+    {/* 紧凑型数据仪表盘 */}
+    <div className="dashboard-grid">
+      <div className="dash-card">
+        <h3>已缓存核心经文</h3>
+        <div className="dash-value"><span id="cache-count">--</span> <span className="dash-unit">篇</span></div>
       </div>
-      <div className="aipali-glass-card" style={{ padding: '2rem', textAlign: 'center', alignItems: 'center' }}>
-        <h3 style={{ margin: '0', fontSize: '1.1rem', color: 'var(--sl-color-gray-3)' }}>本地存储占用</h3>
-        <div className="dash-value">
-          <span id="storage-usage">--</span> <span className="dash-unit" style={{ fontSize: '1rem', fontWeight: 'normal' }}>MB</span>
-        </div>
+      <div className="dash-card">
+        <h3>本地存储占用</h3>
+        <div className="dash-value"><span id="storage-usage">--</span> <span className="dash-unit">MB</span></div>
       </div>
     </div>
 
-    {/* 操作面板 */}
+    {/* 控制按钮组（脱离 Starlight 样式污染） */}
     <div className="control-panel">
-      <button id="btn-update" className="btn-action btn-primary-action" onclick="window.startSync(false)">
-        增量同步数据
+      <button id="btn-update" className="aipali-btn btn-update" onclick="window.startSync(false)">
+        ⬇️ 智能增量更新
       </button>
-      <button id="btn-rebuild" className="btn-action btn-secondary-action" onclick="window.startSync(true)">
-        全量重新构建
+      <button id="btn-rebuild" className="aipali-btn btn-rebuild" onclick="window.startSync(true)">
+        🔄 强制全量重建
       </button>
-      <button id="btn-clear" className="btn-action btn-danger-action" onclick="window.clearAllCache()">
-        清除本地数据
+      <button id="btn-clear" className="aipali-btn btn-clear" onclick="window.clearAllCache()">
+        🗑️ 清空所有数据
       </button>
     </div>
 
-    {/* 进度条 */}
-    <div id="progress-container" className="progress-container hidden">
+    {/* 进度条 (高度固定，避免跳动) */}
+    <div id="progress-container" className="progress-wrapper hidden">
       <div className="progress-info">
-        <span id="progress-text">等待指令...</span>
-        <span id="progress-percent">0%</span>
+        <span id="progress-text" className="progress-text">等待指令...</span>
+        <span id="progress-percent" className="progress-percent">0%</span>
       </div>
       <div className="progress-bar-bg">
         <div id="progress-bar-fill" className="progress-bar-fill"></div>
       </div>
     </div>
 
-    {/* 现代化终端日志窗口 */}
+    {/* 极客风终端日志 (高度固定，纯黑客风格) */}
     <div className="terminal-window">
       <div className="terminal-header">
         <div className="window-controls">
@@ -109,35 +105,11 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           <span className="dot dot-yellow"></span>
           <span className="dot dot-green"></span>
         </div>
-        <span className="terminal-title">AIPali Sync Protocol</span>
+        <span className="terminal-title">AIPali Sync Protocol v2.0</span>
       </div>
-      <div id="log-window" className="terminal-body">
-        <div className="log-line">系统初始化完成，存储引擎已就绪。</div>
-      </div>
+      <pre id="log-window">系统初始化完成，等待指令输入...</pre>
     </div>
-  </div>
-
-  <div className="divider-glow" style={{ marginTop: '5rem' }}></div>
-
-  {/* ====================================================== */}
-  {/* 3. 特性卡片与页脚 */}
-  {/* ====================================================== */}
-  <div className="content-wrapper">
-    <CardGrid>
-      <Card title="完整法宝收录" icon="document">
-        以 <b className="highlight-text">VRI/CSCD</b> 巴利语原文为底稿，涵盖完整的<b className="highlight-text">五部经藏</b>（含小部 15 经）与<b className="highlight-text">律藏</b>（含大小品及附随）；内置<b className="highlight-text">段落级巴利原文对照</b>，助力深度法义探究。
-      </Card>
-      <Card title="结构化内容梳理" icon="list-format">
-        依托大语言模型重新梳理经文的层次，自动生成<b className="highlight-text">多层级标题</b>、<b className="highlight-text">AI导读</b>与<b className="highlight-text">法义解析</b>，在恢复经文本有的工整结构的同时，大幅降低现代修行者阅读理解门槛。
-      </Card>
-      <Card title="现代化阅读体验" icon="laptop">
-        应用<b className="highlight-text">现代互联网技术</b>，提供 PC、手机、平板上的优质阅读体验，并支持<b className="highlight-text">离线浏览</b>；内置<b className="highlight-text">毫秒级全文搜索引擎</b>，可根据经文编号、法义术语直达原文段落。
-      </Card>
-      <Card title="互动化巴利三藏" icon="rocket">
-        以 <b className="highlight-text">AI 检索增强技术</b> 赋能传统经典，构建“可聊天”的巴利三藏。无论是搜寻法义、深入探讨甚至实修实证，AI 助手都能提供详尽支持，并附带<b className="highlight-text">经文出处</b>。
-      </Card>
-    </CardGrid>
-  </div>
+  </section>
 
   <footer className="aipali-custom-footer">
     <div className="footer-content">
@@ -148,7 +120,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         <span className="keyword">现代化</span> <span className="dot"> · </span> 
         <span className="keyword">互动化</span>
       </p>
-      <p className="footer-sub">由现代人开发，服务于现代佛法修行者</p>
       <p className="footer-copyright">
         &copy; 2026, <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 True-Dhamma.com</a>
       </p>
@@ -157,7 +128,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </div>
 
 {/* ====================================================== */}
-{/* 4. 离线控制台 JS 引擎 (修复数据获取延迟与安全提示) */}
+{/* 4. 离线控制台核心业务逻辑 (JS) */}
 {/* ====================================================== */}
 <script is:inline>{`
   const CACHE_NAME = 'aipali-offline-cache';
@@ -167,17 +138,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     log: function(msg) {
       const el = document.getElementById('log-window');
       const time = new Date().toLocaleTimeString('en-GB');
-      
-      const div = document.createElement('div');
-      div.className = 'log-line';
-      div.textContent = '[' + time + '] ' + msg;
-      
-      el.appendChild(div);
-      
-      // 保持最多 60 行，避免内存溢出
-      while (el.children.length > 60) {
-        el.removeChild(el.firstChild);
-      }
+      const lines = el.innerText.split(/[\\r\\n]+/);
+      if (lines.length > 50) lines.shift();
+      const newline = String.fromCharCode(10);
+      el.innerText = lines.join(newline) + newline + '[' + time + '] ' + msg;
       el.scrollTop = el.scrollHeight;
     },
     updateCount: function(count) {
@@ -210,7 +174,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     }
   };
 
-  // 刷新状态：增加延时重试以确保读取到最新 Size
+  // 严格统计与刷新
   async function refreshStatus() {
     try {
       if ('caches' in window) {
@@ -218,15 +182,18 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         if (hasCache) {
           const cache = await caches.open(CACHE_NAME);
           const keys = await cache.keys();
-          // 仅统计经文 HTML 页面，过滤掉被缓存的 css/js/png 等资源文件，防止数字虚高
-          const htmlPages = keys.filter(req => req.url.endsWith('/') || req.url.endsWith('.html'));
-          UI.updateCount(htmlPages.length);
+          // 只统计真正的 HTML 页面，过滤掉随之缓存的 CSS/JS/IMG，解决数字膨胀假象
+          const htmlCount = keys.filter(function(req) {
+            const url = new URL(req.url);
+            return url.pathname.endsWith('/') || url.pathname.endsWith('.html');
+          }).length;
+          UI.updateCount(htmlCount);
         } else {
           UI.updateCount(0);
         }
       } else {
         UI.updateCount('N/A');
-        UI.log('终端警告: 当前浏览器环境不支持 Cache API。');
+        UI.log('❌ 浏览器不支持缓存引擎。');
       }
 
       if (navigator.storage && navigator.storage.estimate) {
@@ -237,28 +204,29 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         UI.updateStorage('--');
       }
     } catch (e) {
-      UI.log('状态读取异常: ' + e.message);
+      UI.log('状态获取异常: ' + e.message);
     }
   }
 
-  // 触发刷新并设定一个 1 秒后的二次刷新 (因为浏览器测算硬盘空间有延迟)
+  // 强制轮询刷新：iOS 测算容量有延迟，执行任务后连续刷新 3 次确保 UI 更新
   function triggerRefresh() {
     refreshStatus();
     setTimeout(refreshStatus, 1500);
+    setTimeout(refreshStatus, 3000);
   }
 
   window.clearAllCache = async function() {
     if (isSyncing) return;
-    const msg = '【彻底清除确认】\\n\\n此操作将抹除设备上所有已下载的法宝数据，您的应用将恢复至初始状态，断网时将无法阅读。\\n\\n确定执行清除吗？';
+    const msg = '【彻底清除确认】\\n\\n此操作将完全抹除设备上所有已下载的经文数据。\\n等同于应用“重置”。断网时您将无法阅读。\\n\\n确定要继续吗？';
     if (!confirm(msg)) return;
     
-    UI.log('正在执行本地区块清除协议...');
+    UI.log('开始销毁本地底层数据区块...');
     try {
       await caches.delete(CACHE_NAME);
-      UI.log('数据已完全抹除，缓存已重置。');
+      UI.log('✅ 核心数据已清空。应用已恢复至纯净初始状态。');
       triggerRefresh();
     } catch (e) {
-      UI.log('清除操作失败: ' + e.message);
+      UI.log('❌ 清理失败: ' + e.message);
     }
   };
 
@@ -266,8 +234,8 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     if (isSyncing) return;
     
     let msg = isRebuild 
-      ? '【全量重建确认】\\n\\n此操作将首先清空所有旧的缓存（包括旧版本的样式文件），然后重新下载全部最新经文。耗时较长。\\n\\n若发现样式异常或体积过大，推荐使用此功能。确定开始吗？'
-      : '【增量同步确认】\\n\\n此操作仅下载您设备上缺失的经文，耗时较短。\\n\\n确定开始吗？';
+      ? '【全量重建确认】\\n\\n此操作将首先清空所有旧缓存（包含旧版样式及废弃经文），然后重新下载全站数据。\\n\\n若发现页面错乱或体积异常膨胀，请使用此功能。确定开始吗？'
+      : '【智能增量确认】\\n\\n此操作仅下载新增或被修改过的经文，极度节省流量。\\n\\n确定开始吗？';
       
     if (!confirm(msg)) return;
 
@@ -276,16 +244,16 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     UI.showProgress(true);
     
     UI.log('');
-    UI.log(isRebuild ? '=== 启动全量重建协议 ===' : '=== 启动增量同步协议 ===');
+    UI.log(isRebuild ? '>>> 启动全量重建协议 (Rebuild)' : '>>> 启动智能增量协议 (Update)');
 
     try {
       if (!navigator.onLine) {
-        throw new Error('网络连接异常，请检查您的设备是否已接入互联网。');
+        throw new Error('设备处于离线状态，无法连接到云端。');
       }
 
-      UI.log('读取服务端结构目录...');
+      UI.log('正在解析云端结构目录 (sitemap-0.xml)...');
       const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
-      if (!sitemapRes.ok) throw new Error('服务器无响应 (HTTP ' + sitemapRes.status + ')');
+      if (!sitemapRes.ok) throw new Error('Sitemap 响应异常 (HTTP ' + sitemapRes.status + ')');
       
       const sitemapText = await sitemapRes.text();
       const parser = new DOMParser();
@@ -297,12 +265,12 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           catch(e) { return node.textContent; }
         })
         .filter(function(url) {
-          // 仅过滤掉 /tags/ 和 /info/，保留 / (Index) 和 /offline/ 确保核心路由被缓存
+          // 仅过滤掉 /tags/ 和 /info/，保留根目录 / 和 /offline/
           return !url.includes('/tags/');
         });
 
-      if (urls.length === 0) throw new Error('未获取到合法数据节点。');
-      UI.log('校验通过，需保障 ' + urls.length + ' 个核心节点。');
+      if (urls.length === 0) throw new Error('未发现有效的经文下载节点。');
+      UI.log('成功锁定 ' + urls.length + ' 个核心数据节点。');
 
       const cache = await caches.open(CACHE_NAME);
       let existingKeys = [];
@@ -310,12 +278,22 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       if (!isRebuild) {
         const reqs = await cache.keys();
         existingKeys = reqs.map(function(req) { return new URL(req.url).pathname; });
-        UI.log('已提取本地特征码，开始差异比对...');
+        UI.log('比对本地 ' + existingKeys.length + ' 个数据块...');
+        
+        // 垃圾回收：如果开启增量，找出本地有但线上 sitemap 已经没有的冗余页面，删掉！防止膨胀。
+        let gcCount = 0;
+        for (const req of reqs) {
+          const reqPath = new URL(req.url).pathname;
+          if (reqPath.endsWith('/') && !urls.includes(reqPath)) {
+            await cache.delete(req);
+            gcCount++;
+          }
+        }
+        if (gcCount > 0) UI.log('清理了 ' + gcCount + ' 个已废弃的旧版本区块。');
       } else {
-        UI.log('正在格式化旧缓存，释放存储空间...');
+        UI.log('正在强制格式化旧的缓存区块...');
         await caches.delete(CACHE_NAME);
-        // 需重新打开一个干净的缓存池
-        await caches.open(CACHE_NAME);
+        await caches.open(CACHE_NAME); // 重新打开干净的缓存池
       }
 
       let downloaded = 0;
@@ -334,60 +312,60 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
             skipped++;
           } else {
             try {
-              UI.setProgress(currentIndex, urls.length, '同步中: ' + displayUrl);
+              UI.setProgress(currentIndex, urls.length, '正在获取: ' + displayUrl);
               const res = await fetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
-                // 必须重新获取 cache 实例，防止异步上下文丢失
-                const currentCache = await caches.open(CACHE_NAME);
-                await currentCache.put(url, res);
+                // 防止并发写入报错，重新获取 cache 实例
+                const curCache = await caches.open(CACHE_NAME);
+                await curCache.put(url, res);
                 downloaded++;
               } else {
-                UI.log('节点响应失效 [' + res.status + ']: ' + displayUrl);
+                UI.log('⚠️ 节点失效 [' + res.status + ']: ' + displayUrl);
                 errors++;
               }
             } catch (err) {
-              UI.log('网络传输阻断: ' + displayUrl);
+              UI.log('⚠️ 网络阻断: ' + displayUrl);
               errors++;
             }
           }
           
           if (currentIndex % 10 === 0 || currentIndex >= urls.length - MAX_CONCURRENT) {
-            UI.setProgress(currentIndex, urls.length, '总进度: ' + currentIndex + ' / ' + urls.length);
+            UI.setProgress(currentIndex, urls.length, '同步中... (' + currentIndex + '/' + urls.length + ')');
           }
         }
       };
 
-      UI.log('开启并发传输通道 (Thread Pool: 5)...');
+      UI.log('启动并发下载矩阵 (Threads: 5)...');
       const workers = Array(Math.min(MAX_CONCURRENT, urls.length)).fill(null).map(function() { return downloadWorker(); });
       await Promise.all(workers);
 
       UI.setProgress(urls.length, urls.length, '数据同步已完成');
-      UI.log('操作完成 | 新建更新: ' + downloaded + ' | 跳过: ' + skipped + ' | 异常: ' + errors);
+      UI.log('✅ 任务结束 | 新增/更新: ' + downloaded + ' 篇 | 跳过: ' + skipped + ' 篇 | 失败: ' + errors + ' 篇');
 
     } catch (e) {
       if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError')) {
-        UI.log('同步中止: 网络无法连接，请检查设备网络状态。');
+        UI.log('❌ 同步中止: 设备网络无法连接。');
       } else {
-        UI.log('同步中止: ' + e.message);
+        UI.log('❌ 严重错误，协议中止: ' + e.message);
       }
     } finally {
       isSyncing = false;
       UI.disableButtons(false);
-      triggerRefresh();
       setTimeout(function() { UI.showProgress(false); }, 3000);
+      triggerRefresh();
     }
   };
 
   document.addEventListener('DOMContentLoaded', function() {
     refreshStatus();
-    window.addEventListener('online', function() { UI.log('网络连接已重构，同步功能可用。'); });
-    window.addEventListener('offline', function() { UI.log('网络中断，系统已平滑切换至本地数据池。'); });
+    window.addEventListener('online', function() { UI.log('📶 检测到网络连接已恢复。'); });
+    window.addEventListener('offline', function() { UI.log('📴 检测到网络连接已断开，进入离线守护模式。'); });
   });
 `}</script>
 
 {/* ====================================================== */}
-{/* 5. 样式表 (全量适配日间/夜间模式) */}
+{/* 5. 样式表 (极客风、防跳动、重构按钮) */}
 {/* ====================================================== */}
 <style>{`
   .sl-markdown-content > h1:first-child, #_top { display: none !important; }
@@ -404,17 +382,11 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     height: 1px; width: 80%; max-width: 600px; margin: 0 auto;
     background: linear-gradient(90deg, transparent, var(--sl-color-accent), transparent); opacity: 0.3;
   }
-  .content-wrapper { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-  
-  .aipali-section-title {
-    font-size: 2.2rem; margin: 0 0 2.5rem 0; text-align: center;
-    border: none !important; color: var(--sl-color-white); font-weight: 700;
-  }
 
   /* Hero 布局 */
   .custom-hero-section {
     width: 100%; display: flex; justify-content: center;
-    padding-top: 0; margin-top: -3.5rem; margin-bottom: 3rem;
+    padding-top: 0; margin-top: -3.5rem; margin-bottom: 2rem;
   }
   .hero-container {
     max-width: 1200px; width: 100%; display: grid;
@@ -431,7 +403,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .hero-actions { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
   
   .btn { padding: 0.8rem 1.6rem; border-radius: 99rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; font-size: 1rem; }
-  
   html[data-theme='light'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
@@ -447,100 +418,118 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   html[data-theme='light'] .img-dark { display: none; }
   html[data-theme='dark'] .img-light { display: none; }
 
-  /* 离线控制中心 (同源 About.mdx 的玻璃态风格) */
+  /* ================= 离线控制中心 ================= */
   .offline-dashboard {
-    width: 100%; margin: 0; padding: 0;
+    max-width: 800px; margin: 3rem auto 0 auto; padding: 0 1.5rem;
   }
-  .aipali-glass-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
-  }
-  .aipali-glass-card {
-    margin: 0 !important; height: 100%; display: flex; flex-direction: column; justify-content: center;
-    border-radius: 1rem; border: 1px solid var(--sl-color-accent);
-    background: linear-gradient(135deg, rgba(var(--sl-color-accent-low-rgb, 100,100,250), 0.1), transparent);
-    backdrop-filter: blur(10px); transition: border-color 0.3s ease;
-  }
-  .dash-value { font-size: 2.8rem; font-weight: 700; color: var(--sl-color-text-accent); line-height: 1.2; }
+  .dashboard-header { text-align: center; margin-bottom: 2rem; }
+  .dashboard-header h2 { margin: 0 0 1rem 0; font-size: 2rem; color: var(--sl-color-white); }
+  .dashboard-header p { color: var(--sl-color-gray-3); line-height: 1.6; margin: 0; font-size: 1rem; }
+  .dashboard-header strong { color: var(--sl-color-text-accent); }
 
-  /* 操作按钮组 (规整统一) */
+  /* 紧凑数据表盘 */
+  .dashboard-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;
+  }
+  .dash-card {
+    background: rgba(20, 20, 25, 0.4); border: 1px solid var(--sl-color-hairline);
+    border-radius: 8px; padding: 1.5rem 1rem; text-align: center; backdrop-filter: blur(10px);
+  }
+  .dash-card h3 { margin: 0; font-size: 0.95rem; color: var(--sl-color-gray-3); font-weight: normal; }
+  .dash-value { font-size: 2.2rem; font-weight: 700; color: var(--sl-color-text-accent); margin-top: 0.5rem; line-height: 1; }
+  .dash-unit { font-size: 0.9rem; font-weight: normal; color: var(--sl-color-gray-4); }
+
+  /* 独立干净的控制按钮 */
   .control-panel {
-    display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;
+    display: flex; gap: 1rem; justify-content: space-between; flex-wrap: nowrap; margin-bottom: 2rem;
+    width: 100%;
   }
-  .btn-action { 
-    flex: 1; min-width: 220px; max-width: 280px; padding: 1rem 1.2rem; border-radius: 0.8rem; 
-    font-weight: 600; cursor: pointer; font-size: 1.05rem; transition: all 0.2s ease; text-align: center;
+  .aipali-btn { 
+    flex: 1; margin: 0; padding: 0.8rem 0; border-radius: 6px; font-weight: 600; cursor: pointer; 
+    font-size: 0.95rem; transition: all 0.2s ease; text-align: center; line-height: 1.2;
+    box-sizing: border-box; height: 48px; /* 强制高度统一，无视外部框架 padding 污染 */
+    display: flex; justify-content: center; align-items: center;
   }
-  .btn-action:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
-  .btn-action:not(:disabled):active { transform: scale(0.98); }
+  .aipali-btn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); }
+  .aipali-btn:not(:disabled):active { transform: scale(0.97); }
   
-  .btn-primary-action { background: var(--sl-color-text-accent); color: var(--sl-color-black); border: none; }
-  .btn-primary-action:hover:not(:disabled) { background: var(--sl-color-accent-high); box-shadow: 0 0 20px var(--sl-color-accent-low); }
+  .btn-update { background: var(--sl-color-text-accent); color: var(--sl-color-black); border: none; }
+  .btn-update:hover:not(:disabled) { background: var(--sl-color-accent-high); }
   
-  .btn-secondary-action { background: var(--sl-color-bg); color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-4); }
-  .btn-secondary-action:hover:not(:disabled) { background: var(--sl-color-gray-6); border-color: var(--sl-color-gray-2); }
+  .btn-rebuild { background: transparent; color: var(--sl-color-white); border: 1px solid var(--sl-color-gray-4); }
+  .btn-rebuild:hover:not(:disabled) { background: var(--sl-color-gray-6); border-color: var(--sl-color-gray-2); }
   
-  .btn-danger-action { background: var(--sl-color-bg); color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.4); }
-  .btn-danger-action:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
+  .btn-clear { background: transparent; color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.4); }
+  .btn-clear:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
 
-  /* 进度条 */
-  .progress-container { margin-bottom: 2.5rem; opacity: 0; transition: opacity 0.3s ease; }
-  .progress-container.visible { opacity: 1; }
-  .progress-container.hidden { display: none; }
-  .progress-info { display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.8rem; color: var(--sl-color-gray-2); font-family: monospace; }
-  .progress-bar-bg { width: 100%; height: 6px; background: var(--sl-color-gray-5); border-radius: 3px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-text-accent); transition: width 0.3s ease; }
+  /* 进度条 (高度定死，单行省略，绝不导致屏幕跳动) */
+  .progress-wrapper {
+    margin-bottom: 2rem; height: 35px; opacity: 0; transition: opacity 0.3s ease;
+  }
+  .progress-wrapper.visible { opacity: 1; }
+  .progress-wrapper.hidden { display: none; }
+  
+  .progress-info { 
+    display: flex; justify-content: space-between; font-size: 0.85rem; 
+    margin-bottom: 0.5rem; color: var(--sl-color-gray-2); font-family: monospace; 
+  }
+  .progress-text {
+    /* 核心修复：文字过长强制单行省略 */
+    flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 1rem;
+  }
+  .progress-percent { flex-shrink: 0; font-weight: bold; color: var(--sl-color-text-accent); }
+  .progress-bar-bg { width: 100%; height: 4px; background: var(--sl-color-gray-6); border-radius: 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-text-accent); transition: width 0.1s linear; }
 
-  /* 终端日志 (解决跳动与适配 Light Theme) */
+  /* 极客风终端日志 (固定黑色系) */
   .terminal-window {
-    background: var(--sl-color-bg-nav); border-radius: 0.8rem; overflow: hidden; border: 1px solid var(--sl-color-hairline);
+    background: #0d0d0d !important; /* 强制纯黑，白天模式也不改 */
+    border-radius: 8px; overflow: hidden; border: 1px solid #333;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 2rem;
   }
   .terminal-header {
-    background: var(--sl-color-gray-6); padding: 12px 16px; border-bottom: 1px solid var(--sl-color-hairline); 
+    background: #1a1a1a !important; padding: 10px 15px; border-bottom: 1px solid #333; 
     display: flex; align-items: center;
   }
   .window-controls { display: flex; gap: 8px; }
   .dot { width: 12px; height: 12px; border-radius: 50%; }
   .dot-red { background: #ff5f56; } .dot-yellow { background: #ffbd2e; } .dot-green { background: #27c93f; }
-  .terminal-title { margin-left: 15px; color: var(--sl-color-gray-3); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; }
+  .terminal-title { margin-left: 15px; color: #888; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
   
-  .terminal-body {
-    margin: 0; padding: 1.2rem; height: 280px; overflow-y: auto; color: var(--sl-color-text-accent); font-size: 0.85rem; line-height: 1.6;
+  #log-window {
+    margin: 0; padding: 1rem 1.2rem; height: 220px; overflow-y: auto; color: #a9dc76 !important; 
+    font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word;
   }
-  .terminal-body::-webkit-scrollbar { width: 6px; }
-  .terminal-body::-webkit-scrollbar-track { background: transparent; }
-  .terminal-body::-webkit-scrollbar-thumb { background: var(--sl-color-gray-5); border-radius: 3px; }
-  
-  .log-line {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
+  #log-window::-webkit-scrollbar { width: 6px; }
+  #log-window::-webkit-scrollbar-track { background: #0d0d0d; }
+  #log-window::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 
-  /* 特性卡片复写 */
-  .sl-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) !important;
-    border: 1px solid var(--sl-color-hairline) !important; backdrop-filter: blur(10px);
-  }
-  .highlight-text {
-    color: var(--sl-color-text-accent); background-color: var(--sl-color-accent-low);
-    padding: 0.1em 0.4em; border-radius: 4px; font-weight: 600;
-  }
-
-  /* 响应式调整 */
+  /* 响应式适配 (手机上一屏紧凑排列) */
   @media (max-width: 50rem) {
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
-    .hero-image img { max-width: 300px; margin: 0 auto; transform: none; }
-    .hero-title { white-space: normal !important; font-size: clamp(2rem, 8vw, 2.5rem); }
-    .hero-tagline { margin-inline: auto; }
+    .hero-image img { max-width: 250px; margin: 0 auto; transform: none; }
+    .hero-title { white-space: normal !important; font-size: clamp(1.8rem, 7vw, 2.5rem); }
+    .hero-tagline { margin-inline: auto; font-size: 1rem; }
     .hero-actions { justify-content: center !important; margin-top: 1.5rem; }
-    .aipali-glass-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .control-panel { flex-direction: column; }
-    .btn-action { width: 100%; max-width: none; }
+    
+    .offline-dashboard { padding: 1rem; border-radius: 0; border: none; margin-top: 1rem; }
+    .dashboard-header h2 { font-size: 1.5rem; }
+    .dashboard-header p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+    
+    .dashboard-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .dash-card { padding: 1rem 0.5rem; }
+    .dash-value { font-size: 1.8rem; }
+    
+    .control-panel { flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .aipali-btn { width: 100%; max-width: none; }
+    
+    #log-window { height: 180px; } /* 缩小终端高度以适应手机小屏 */
   }
 
   /* 页脚 */
   .aipali-custom-footer {
-    margin-top: 6rem; padding: 4rem 1rem; border-top: 1px solid var(--sl-color-hairline);
+    margin-top: 4rem; padding: 3rem 1rem; border-top: 1px solid var(--sl-color-hairline);
     text-align: center; color: var(--sl-color-gray-3);
   }
   .footer-content { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
