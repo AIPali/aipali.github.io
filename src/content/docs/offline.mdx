@@ -50,7 +50,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </section>
 
 {/* ====================================================== */}
-{/* 2. 离线控制中心 (无背景框，自适应深浅色，防抖动) */}
+{/* 2. 离线控制中心 */}
 {/* ====================================================== */}
 <div className="page-container">
   <div className="divider-glow"></div>
@@ -86,9 +86,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       </button>
     </div>
 
+    {/* 重构的进度条区域 */}
     <div id="progress-container" className="progress-container hidden">
       <div id="progress-text" className="progress-text">等待执行指令...</div>
-      <div className="progress-row-2">
+      <div className="progress-row">
         <div className="progress-bar-bg">
           <div id="progress-bar-fill" className="progress-bar-fill"></div>
         </div>
@@ -98,10 +99,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
     <div className="terminal-window">
       <div className="terminal-header">
-        <div className="mac-controls">
-          <span className="mac-dot mac-red"></span>
-          <span className="mac-dot mac-yellow"></span>
-          <span className="mac-dot mac-green"></span>
+        <div className="mac-btns">
+          <span className="mac-btn close"></span>
+          <span class="mac-btn min"></span>
+          <span class="mac-btn max"></span>
         </div>
         <span className="terminal-title">AIPali Data Protocol</span>
       </div>
@@ -204,23 +205,17 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           const cache = await caches.open(name);
           const keys = await cache.keys();
           
-          // 极度严格过滤，仅统计纯粹的页面
+          // 【严格过滤】只统计真实的 HTML 页面，剥离一切附加资源
           const htmlKeys = keys.filter(function(req) {
             try {
               const url = new URL(req.url);
               const path = url.pathname;
-              
-              // 1. 过滤常见的静态资源与API后缀
-              if (/\\.(js|css|png|jpg|jpeg|svg|webp|woff|woff2|json|xml|ico|webmanifest|txt)$/i.test(path)) {
-                return false;
-              }
-              // 2. 过滤系统内部目录及 Workbox 生成文件
-              if (path.includes('/_astro/') || path.includes('/assets/') || path.includes('workbox')) {
-                return false;
-              }
-              
-              // 剩下的基本就是以 / 结尾或没有明确资源后缀的 HTML 页面了
-              return true;
+              // 排除系统资源目录
+              if (path.includes('/_astro/') || path.includes('/assets/')) return false;
+              // 排除所有的常见静态资源后缀
+              if (path.match(/\\.(js|css|png|jpe?g|gif|svg|webp|ico|woff2?|json|xml|txt|webmanifest)$/i)) return false;
+              // 判定为页面的条件：以 / 结尾，以 .html 结尾，或者是完全没有后缀的干净路由
+              return path.endsWith('/') || path.endsWith('.html') || !path.includes('.');
             } catch(e) { return false; }
           });
           totalCount += htmlKeys.length;
@@ -252,46 +247,40 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
   window.confirmAndClear = async function() {
     if (isSyncing) return;
-    const msg = "【清除本地数据】\\n此操作将如同重新安装应用一般，彻底销毁本地所有的法宝节点与旧版资源文件。清除后，在无网络连接的状态下将无法继续阅读。\\n\\n确认执行清除协议？";
+    const msg = "【清除本地数据】\\n此操作将彻底销毁本地所有的法宝节点、CSS、JS及附加图片资源。清除后，在无网络连接的状态下将无法继续阅读。\\n\\n确认执行全盘抹除？";
     if (!confirm(msg)) return;
     
     UI.log('正在执行全盘数据抹除协议...');
     UI.disableButtons(true);
-    
     try {
-      // 1. 暴力清除所有 Cache
+      // 1. 强力抹除所有 Cache 存储空间
       const cacheNames = await caches.keys();
       for (const name of cacheNames) {
         await caches.delete(name);
       }
       
-      // 2. 顺手清除可能存在的 Workbox IndexedDB
-      if (window.indexedDB && indexedDB.databases) {
-        const dbs = await indexedDB.databases();
-        for (const db of dbs) {
-          if (db.name.startsWith('workbox')) {
-            indexedDB.deleteDatabase(db.name);
-          }
-        }
-      }
-      
-      // 3. 注销所有 Service Worker (根除控制，彻底重置环境)
+      // 2. 注销并卸载所有的 Service Worker 以解除占用锁
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
-        for (let reg of registrations) {
+        for (const reg of registrations) {
           await reg.unregister();
         }
       }
 
-      UI.log('本地数据已彻底抹除，环境已重置。');
+      UI.log('清理指令下发成功。准备释放底层存储引擎...');
       UI.updateCount('--');
       UI.updateStorage('--');
-      UI.log('系统将在 1.5 秒后自动刷新页面以重算存储配额...');
       
-      // 【终极方案】通过重载当前页面，强迫浏览器底层内核重新核算 navigator.storage 的大小，解决数据挂起不同步的问题
-      setTimeout(function() {
-        window.location.reload(true);
-      }, 1500);
+      // 3. 强制重载页面，让浏览器彻底释放存储配额并让容量显示 100% 同步
+      let countdown = 3;
+      const timer = setInterval(() => {
+        UI.log('存储节点脱机... 系统将于 ' + countdown + ' 秒后自动重载页面同步配额。');
+        countdown--;
+        if (countdown < 0) {
+          clearInterval(timer);
+          window.location.reload(true);
+        }
+      }, 1000);
 
     } catch (e) {
       UI.log('清除操作执行受阻: ' + e.message);
@@ -373,10 +362,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           const index = currentIndex++;
           const url = urls[index];
           
-          // 对 URL 进行截断，保证显示为 `.../后面部分`
+          // 对前置路径进行省略处理（长度超过 45 则截取末尾 42 个字符）
           let displayUrl = url;
-          if (url.length > 40) {
-            displayUrl = '...' + url.slice(-37);
+          if (displayUrl.length > 45) {
+            displayUrl = '...' + displayUrl.slice(-42);
           }
 
           if (!isRebuild && existingKeys.includes(url)) {
@@ -401,7 +390,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           }
           
           if (currentIndex % 10 === 0 || currentIndex >= urls.length - MAX_CONCURRENT) {
-            UI.setProgress(currentIndex, urls.length, '拉取进度: ' + currentIndex + ' / ' + urls.length);
+            UI.setProgress(currentIndex, urls.length, '总进度: ' + currentIndex + ' / ' + urls.length);
           }
         }
       };
@@ -431,10 +420,9 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 `}</script>
 
 {/* ====================================================== */}
-{/* 5. 样式表 (全面支持主题变量、超紧凑布局、防抖动) */}
+{/* 5. 样式表 */}
 {/* ====================================================== */}
 <style>{`
-  /* 基础清理 */
   .sl-markdown-content > h1:first-child, #_top { display: none !important; }
   .sl-markdown-content { padding-top: 0 !important; }
 
@@ -483,7 +471,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   html[data-theme='light'] .img-dark { display: none; }
   html[data-theme='dark'] .img-light { display: none; }
 
-  /* 离线控制中心 - 无背景，宽度对齐 */
+  /* 离线控制中心 */
   .offline-dashboard {
     max-width: 1200px; margin: 3rem auto 0 auto; padding: 0 1.5rem;
   }
@@ -503,7 +491,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .dash-card h3 { margin: 0; font-size: 1rem; color: var(--sl-color-gray-3); font-weight: 500; }
   .dash-value { font-size: 2rem; font-weight: 700; color: var(--sl-color-text-accent); margin-top: 0.5rem; line-height: 1; }
 
-  /* 操作按钮组：100%均分宽度 */
+  /* 操作按钮组 */
   .control-panel {
     display: flex; gap: 1rem; width: 100%; margin-bottom: 2rem; 
   }
@@ -525,7 +513,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .btn-danger-action { background: var(--sl-color-bg); color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.4); }
   .btn-danger-action:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
 
-  /* 进度条全新布局 - 两行结构，数值居中 */
+  /* 重新设计的进度条排版 */
   .progress-container { margin-bottom: 2rem; opacity: 0; transition: opacity 0.3s ease; }
   .progress-container.visible { opacity: 1; }
   .progress-container.hidden { display: none; }
@@ -535,49 +523,46 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-
-  .progress-row-2 {
-    display: flex; align-items: center; gap: 1rem;
+  .progress-row {
+    display: flex; align-items: center; gap: 1rem; height: 1.5rem;
   }
   .progress-bar-bg { 
-    flex: 1; height: 6px; background: var(--sl-color-gray-5); 
-    border-radius: 3px; overflow: hidden; 
+    flex: 1; height: 8px; background: var(--sl-color-gray-5); border-radius: 4px; overflow: hidden; 
   }
-  .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-accent); transition: width 0.3s ease; }
-  
+  .progress-bar-fill { 
+    height: 100%; width: 0%; background: var(--sl-color-accent); transition: width 0.3s ease; 
+  }
   .progress-percent { 
-    flex-shrink: 0; font-size: 0.95rem; font-weight: bold; width: 3rem; text-align: right; 
-    color: var(--sl-color-text); font-family: ui-monospace, Consolas, monospace;
+    flex-shrink: 0; font-weight: bold; font-family: ui-monospace, SFMono-Regular, monospace; color: var(--sl-color-text-accent); 
   }
 
-  /* 极简终端日志 - 增加 Mac 控制点 */
+  /* 极简终端日志 - Mac 风格栏 */
   .terminal-window {
     background: #0d0d0d; border-radius: 8px; overflow: hidden; border: 1px solid var(--sl-color-hairline);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
   .terminal-header {
-    background: #1a1a1a; padding: 10px 14px; border-bottom: 1px solid #333; 
-    display: flex; align-items: center; gap: 12px; position: relative;
+    background: #1e1e1e; padding: 10px 14px; border-bottom: 1px solid #333; 
+    display: flex; align-items: center; position: relative;
   }
-  .mac-controls { display: flex; gap: 6px; }
-  .mac-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-  .mac-red { background-color: #ff5f56; }
-  .mac-yellow { background-color: #ffbd2e; }
-  .mac-green { background-color: #27c93f; }
+  .mac-btns { display: flex; gap: 7px; }
+  .mac-btn { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .mac-btn.close { background: #ff5f56; }
+  .mac-btn.min { background: #ffbd2e; }
+  .mac-btn.max { background: #27c93f; }
   
   .terminal-title { 
-    color: #888; font-size: 0.75rem; letter-spacing: 1px; font-weight: 600;
-    position: absolute; left: 50%; transform: translateX(-50%); /* 绝对居中 */
+    color: #888; font-size: 0.75rem; letter-spacing: 1px; flex: 1; text-align: center; 
+    text-transform: uppercase; margin-right: 50px; /* 偏移抵消掉左边按钮区的宽度，实现真居中 */
   }
-  
   #log-window {
-    margin: 0; padding: 1rem; height: 200px; overflow-y: auto; color: #a9dc76; font-size: 0.85rem; line-height: 1.6;
+    margin: 0; padding: 1.2rem; height: 200px; overflow-y: auto; color: #a9dc76; font-size: 0.85rem; line-height: 1.6;
     white-space: pre-wrap; word-wrap: break-word;
   }
   #log-window::-webkit-scrollbar { width: 6px; }
   #log-window::-webkit-scrollbar-track { background: #0d0d0d; }
-  #log-window::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  #log-window::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
 
   /* 移动端极限紧凑适配 */
   @media (max-width: 50rem) {
@@ -588,15 +573,13 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     .hero-tagline { margin-inline: auto; font-size: 1.1rem; }
     .hero-actions { justify-content: center !important; margin-top: 1rem; }
     
-    .offline-dashboard { 
-      padding: 0 1.5rem; margin-top: 1rem; 
-    }
+    .offline-dashboard { padding: 0 1.5rem; margin-top: 1rem; }
     .dashboard-header { margin-bottom: 1.5rem; }
     .dashboard-header h2 { font-size: 1.4rem; }
     
     .dashboard-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1.5rem; }
     .dash-card { padding: 0.8rem 0.5rem; }
-    .dash-value { font-size: 1.45rem; } 
+    .dash-value { font-size: 1.45rem; }
     
     .control-panel { flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
     .btn-action { padding: 0.75rem 0.5rem; font-size: 0.95rem; }
