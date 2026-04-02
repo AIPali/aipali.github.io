@@ -24,7 +24,19 @@ const currentConfig = deployConfig[deployEnv];
 export default defineConfig({
   site: currentConfig.site,
   base: currentConfig.base,
-  vite: { /* HMR 配置保持原样，此处略过... */ },
+  vite: {
+    server: {
+      hmr: false,
+      watch: {
+        usePolling: true,
+        interval: 500, 
+        awaitWriteFinish: {
+          stabilityThreshold: 1000,
+          pollInterval: 500
+        }
+      }
+    }
+  },
   markdown: { remarkPlugins:[remarkObsidianCallouts, remarkParagraphRef] },
   integrations:[
     starlight({

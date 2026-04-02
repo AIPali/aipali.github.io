@@ -63,17 +63,17 @@ export function getPwaConfig(deployEnv, baseUrl) {
       ]
     },
     manifest: {
-      name: 'AIPali 离线三藏',
+      name: 'AIPali 智能化巴利三藏 - 离线版',
       short_name: 'AIPali',
-      description: '智能化巴利三藏工程，支持全站离线阅读',
+      description: '巴利三藏智能化工程，支持全站离线阅读',
       theme_color: '#17181c',
       background_color: '#17181c',
       display: 'standalone',
       start_url: `${baseUrl}offline/`, // 桌面打开默认进入 offline 控制台
       icons: [
-        { src: `${baseUrl}assets/logo_192x192.png`, sizes: '192x192', type: 'image/png' },
-        { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png' },
-        { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+        { src: `${baseUrl}assets/logo_dark_192x192.png`, sizes: '192x192', type: 'image/png' },
+        { src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png' },
+        { src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
       ]
     }
   });
