@@ -101,8 +101,8 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       <div className="terminal-header">
         <div className="mac-btns">
           <span className="mac-btn close"></span>
-          <span class="mac-btn min"></span>
-          <span class="mac-btn max"></span>
+          <span className="mac-btn min"></span>
+          <span className="mac-btn max"></span>
         </div>
         <span className="terminal-title">AIPali Data Protocol</span>
       </div>
@@ -150,7 +150,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </div>
 
 {/* ====================================================== */}
-{/* 4. 离线控制台 JS 引擎 (逻辑加强版) */}
+{/* 4. 离线控制台 JS 引擎 (强力缓存清扫版) */}
 {/* ====================================================== */}
 <script is:inline>{`
   const CACHE_NAME = 'aipali-offline-cache';
@@ -205,16 +205,12 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           const cache = await caches.open(name);
           const keys = await cache.keys();
           
-          // 【严格过滤】只统计真实的 HTML 页面，剥离一切附加资源
           const htmlKeys = keys.filter(function(req) {
             try {
               const url = new URL(req.url);
               const path = url.pathname;
-              // 排除系统资源目录
               if (path.includes('/_astro/') || path.includes('/assets/')) return false;
-              // 排除所有的常见静态资源后缀
               if (path.match(/\\.(js|css|png|jpe?g|gif|svg|webp|ico|woff2?|json|xml|txt|webmanifest)$/i)) return false;
-              // 判定为页面的条件：以 / 结尾，以 .html 结尾，或者是完全没有后缀的干净路由
               return path.endsWith('/') || path.endsWith('.html') || !path.includes('.');
             } catch(e) { return false; }
           });
@@ -238,7 +234,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     }
   }
 
-  // 延迟多次刷新状态
   function refreshStatusWithRetry() {
     refreshStatus();
     setTimeout(refreshStatus, 1000);
@@ -253,13 +248,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     UI.log('正在执行全盘数据抹除协议...');
     UI.disableButtons(true);
     try {
-      // 1. 强力抹除所有 Cache 存储空间
-      const cacheNames = await caches.keys();
-      for (const name of cacheNames) {
-        await caches.delete(name);
-      }
-      
-      // 2. 注销并卸载所有的 Service Worker 以解除占用锁
+      // 1. 先注销并卸载所有的 Service Worker (解除对缓存引擎的占用)
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
         for (const reg of registrations) {
@@ -267,20 +256,37 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         }
       }
 
-      UI.log('清理指令下发成功。准备释放底层存储引擎...');
+      // 2. 强力抹除所有的 Cache 空间
+      const cacheNames = await caches.keys();
+      for (const name of cacheNames) {
+        await caches.delete(name);
+      }
+      
+      // 3. 彻底清空 IndexedDB (根除 Workbox 版本历史残留，防止容量叠加Bug)
+      if (window.indexedDB) {
+        if (indexedDB.databases) {
+          try {
+            const dbs = await indexedDB.databases();
+            for (const db of dbs) {
+              indexedDB.deleteDatabase(db.name);
+            }
+          } catch(e) {}
+        } else {
+          // 对不支持 indexedDB.databases 的老版本浏览器做兜底删除
+          indexedDB.deleteDatabase('workbox-expiration');
+          indexedDB.deleteDatabase('workbox-precaching');
+        }
+      }
+
+      UI.log('清理指令下发成功。底层存储引擎及工作线程已释放。');
       UI.updateCount('--');
       UI.updateStorage('--');
+      UI.log('将在 3 秒后重载页面以同步系统配额...');
       
-      // 3. 强制重载页面，让浏览器彻底释放存储配额并让容量显示 100% 同步
-      let countdown = 3;
-      const timer = setInterval(() => {
-        UI.log('存储节点脱机... 系统将于 ' + countdown + ' 秒后自动重载页面同步配额。');
-        countdown--;
-        if (countdown < 0) {
-          clearInterval(timer);
-          window.location.reload(true);
-        }
-      }, 1000);
+      // 3 秒后直接刷新页面，不再输出多余倒计时
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
 
     } catch (e) {
       UI.log('清除操作执行受阻: ' + e.message);
@@ -362,7 +368,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           const index = currentIndex++;
           const url = urls[index];
           
-          // 对前置路径进行省略处理（长度超过 45 则截取末尾 42 个字符）
           let displayUrl = url;
           if (displayUrl.length > 45) {
             displayUrl = '...' + displayUrl.slice(-42);
@@ -554,7 +559,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   
   .terminal-title { 
     color: #888; font-size: 0.75rem; letter-spacing: 1px; flex: 1; text-align: center; 
-    text-transform: uppercase; margin-right: 50px; /* 偏移抵消掉左边按钮区的宽度，实现真居中 */
+    text-transform: uppercase; margin-right: 50px;
   }
   #log-window {
     margin: 0; padding: 1.2rem; height: 200px; overflow-y: auto; color: #a9dc76; font-size: 0.85rem; line-height: 1.6;
