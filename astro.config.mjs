@@ -1,9 +1,8 @@
 import { defineConfig } from 'astro/config';
+import { getPwaConfig } from './src/config/pwa.mjs';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
-
-import { getPwaConfig } from './src/config/pwa.mjs';
 
 import { remarkObsidianCallouts, remarkParagraphRef } from './src/config/remark-tipitaka.mjs';
 import { formatSidebarWithPali } from './src/utils/sidebar.mjs';

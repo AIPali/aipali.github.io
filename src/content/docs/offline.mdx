@@ -31,9 +31,9 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 <section className="custom-hero-section">
   <div className="hero-container">
     <div className="hero-text">
-      <h1 className="hero-title">巴利三藏智能化工程</h1>
+      <h1 className="hero-title">离线版巴利三藏</h1>
       <p className="hero-tagline">
-        基于现代人工智能技术，重塑法宝的阅读、检索与互动体验。
+        无需网络连接，即可在手机、平板和 PC 上离线浏览全部经文
       </p>
       <div className="hero-actions">
         <a href="/tipitaka/" className="btn btn-primary">阅读法宝</a>
@@ -59,7 +59,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     <div className="dashboard-header">
       <h2>本地法宝数据中心</h2>
       <p>
-        将三藏数据完整同步至设备本地。同步完成后，应用将<strong>阻断一切外部网络请求</strong>，进入全离线模式，确保阅藏过程的极速与专注。
+        在开启离线阅读之前，您需要花几分钟将 AIPali 数据同步至本地存储。同步完成后，您即可在飞机、轮船、火车或任何无网环境下，顺畅阅读所有巴利三藏。
       </p>
     </div>
 
@@ -222,7 +222,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         UI.updateCount(pathSet.size);
       } else {
         UI.updateCount('N/A');
-        UI.log('系统警告: 当前运行环境不支持 Cache API。');
+        UI.log('系统警告: 当前运行环境不支持 Cache API，无法使用离线版巴利三藏。');
       }
 
       if (navigator.storage && navigator.storage.estimate) {
@@ -245,10 +245,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
   window.confirmAndClear = async function() {
     if (isSyncing) return;
-    const msg = "【清除本地数据】\\n此操作将彻底销毁本地所有的法宝节点、应用缓存以及服务组件。清除后，在无网络连接的状态下将无法继续阅读。\\n\\n确认执行最高级别的数据抹除协议？";
+    const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能。\\n\\n确认执行本地数据清除？";
     if (!confirm(msg)) return;
     
-    UI.log('正在执行全盘数据抹除协议...');
+    UI.log('正在执行本地数据清除命令...');
     UI.disableButtons(true);
     try {
       const cacheNames = await caches.keys();
@@ -272,8 +272,8 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         }
       }
 
-      UI.log('本地所有法宝数据及关联缓存已彻底抹除！');
-      UI.log('【⚠️ 核心提示】由于浏览器底层存储状态的限制，当前界面的统计数值不会立刻刷新，且部分系统缓存需彻底关闭后释放。请务必 [彻底划掉/退出当前应用] 并重新进入，以查看准确的归零容量。');
+      UI.log('本地所有法宝数据及关联缓存已彻底清除！');
+      UI.log('⚠️ 请注意：由于浏览器底层存储状态的限制，部分系统缓存需彻底关闭后才能释放。您需要 [彻底划掉/退出当前应用] 并重新进入，才能查看归零后的准确容量。');
       
     } catch (e) {
       UI.log('清除操作执行受阻: ' + e.message);
@@ -287,13 +287,13 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   window.confirmAndStartSync = async function(isRebuild) {
     if (isSyncing) return;
     if (!navigator.onLine) {
-      alert("【网络未连接】\\n终端当前处于离线状态，无法连接至云端服务器进行数据比对。请恢复网络连接后再试。");
+      alert("网络未连接\\n\\n设备当前处于离线状态，无法连接至云端服务器进行数据比对。请在网络连接恢复后再试。");
       return;
     }
 
     const msg = isRebuild
-      ? "【全量重新构建】\\n系统将格式化现有数据，并从云端完整拉取所有法宝节点。此过程耗时较长，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
-      : "【增量同步数据】\\n系统将比对本地与云端目录拓扑，仅下载新增或变动的法宝节点。\\n\\n确认执行增量同步？";
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有法宝节点。此过程耗将时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
+      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的法宝节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
     await performSync(isRebuild);
@@ -305,14 +305,14 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     UI.showProgress(true);
     
     UI.log('');
-    UI.log(isRebuild ? '=== 启动全量重建协议 ===' : '=== 启动增量同步协议 ===');
+    UI.log(isRebuild ? '=== 启动全量重建 ===' : '=== 启动增量同步 ===');
 
     try {
       if (!navigator.onLine) {
-        throw new Error('终端网络意外断开，协议执行终止。');
+        throw new Error('终端网络意外断开，命令执行终止。');
       }
 
-      UI.log('读取云端拓扑结构 (sitemap-0.xml)...');
+      UI.log('读取云端拓扑结构...');
       const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
       if (!sitemapRes.ok) throw new Error('云端通信受阻 (HTTP ' + sitemapRes.status + ')');
       
@@ -329,8 +329,8 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
           return !url.includes('/tags/');
         });
 
-      if (urls.length === 0) throw new Error('未获取到合法的法宝数据节点。');
-      UI.log('校验通过，共有 ' + urls.length + ' 个合法同步节点。');
+      if (urls.length === 0) throw new Error('未获取到有效的数据节点。');
+      UI.log('校验通过，共有 ' + urls.length + ' 个有效的同步节点。');
 
       const cache = await caches.open(CACHE_NAME);
       let existingKeys =[];
@@ -396,7 +396,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       await Promise.all(workers);
 
       UI.setProgress(urls.length, urls.length, '数据同步通道已关闭');
-      UI.log('协议执行完毕 | 新增/更新: ' + downloaded + ' | 跳过: ' + skipped + ' | 异常: ' + errors);
+      UI.log('命令执行完毕 | 新增/更新: ' + downloaded + ' | 跳过: ' + skipped + ' | 异常: ' + errors);
 
     } catch (e) {
       UI.log('错误: ' + e.message);
