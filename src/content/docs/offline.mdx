@@ -50,7 +50,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 </section>
 
 {/* ====================================================== */}
-{/* 2. 离线控制中心 (无边框，与下方等宽对齐) */}
+{/* 2. 离线控制中心 (无背景框，自适应深浅色，防抖动) */}
 {/* ====================================================== */}
 <div className="page-container">
   <div className="divider-glow"></div>
@@ -194,21 +194,21 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     try {
       if ('caches' in window) {
         const cacheNames = await caches.keys();
-        let pageCount = 0;
+        let totalCount = 0;
         for (let name of cacheNames) {
           const cache = await caches.open(name);
           const keys = await cache.keys();
           
-          // 仅统计 HTML 页面，剔除 js, css, 图片等静态资源
-          for (let req of keys) {
-            const url = new URL(req.url);
-            const isAsset = /\\.(css|js|png|jpg|jpeg|svg|webp|woff|woff2|json|xml|ico|webmanifest)$/i.test(url.pathname);
-            if (!isAsset) {
-              pageCount++;
-            }
-          }
+          // 只过滤出真实的 HTML 页面（目录型或直接 .html 结尾的页面）
+          const htmlKeys = keys.filter(function(req) {
+            try {
+              const url = new URL(req.url);
+              return url.pathname.endsWith('/') || url.pathname.endsWith('.html');
+            } catch(e) { return false; }
+          });
+          totalCount += htmlKeys.length;
         }
-        UI.updateCount(pageCount);
+        UI.updateCount(totalCount);
       } else {
         UI.updateCount('N/A');
         UI.log('系统警告: 当前运行环境不支持 Cache API。');
@@ -226,13 +226,13 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     }
   }
 
-  // 延长轮询时间，解决部分浏览器清空后 Storage API 计算滞后的 bug
+  // 延迟多次刷新状态（解决浏览器存储统计更新严重的滞后问题）
   function refreshStatusWithRetry() {
     refreshStatus();
-    setTimeout(refreshStatus, 600);
-    setTimeout(refreshStatus, 1500);
-    setTimeout(refreshStatus, 3000);
-    setTimeout(refreshStatus, 6000);
+    setTimeout(refreshStatus, 1000);
+    setTimeout(refreshStatus, 2500);
+    setTimeout(refreshStatus, 5000);
+    setTimeout(refreshStatus, 10000); // 增加到 10 秒保证配额系统刷新
   }
 
   window.confirmAndClear = async function() {
@@ -248,15 +248,14 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         await caches.delete(name);
       }
       UI.log('本地数据已彻底抹除，环境已重置。');
-      
-      // 乐观 UI 更新：强制界面立即归零，掩盖底层 API 极度缓慢的计算延迟
-      UI.updateCount(0);
-      UI.updateStorage('0.00');
-
     } catch (e) {
       UI.log('清除操作执行受阻: ' + e.message);
     } finally {
       UI.disableButtons(false);
+      // 视觉上立即清空，等待浏览器底层的Quota重算
+      UI.updateCount('--');
+      UI.updateStorage('--');
+      UI.log('正在重新计算存储配额，请稍候...');
       refreshStatusWithRetry();
     }
   };
@@ -322,8 +321,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
         for (const name of cacheNames) {
           await caches.delete(name);
         }
-        UI.updateCount(0);
-        UI.updateStorage('0.00');
       }
 
       let downloaded = 0;
@@ -350,7 +347,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
                 await currentCache.put(url, res);
                 downloaded++;
               } else {
-                UI.log('节点响应失效[' + res.status + ']: ' + url);
+                UI.log('节点响应失效 [' + res.status + ']: ' + url);
                 errors++;
               }
             } catch (err) {
@@ -390,7 +387,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 `}</script>
 
 {/* ====================================================== */}
-{/* 5. 样式表 (全面支持主题变量、防抖动、对齐统一) */}
+{/* 5. 样式表 (全面支持主题变量、超紧凑布局、防抖动) */}
 {/* ====================================================== */}
 <style>{`
   /* 基础清理 */
@@ -442,7 +439,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   html[data-theme='light'] .img-dark { display: none; }
   html[data-theme='dark'] .img-light { display: none; }
 
-  /* 离线控制中心 - 无边框设计，与 features-wrapper 等宽 */
+  /* 离线控制中心 - 去掉了边框和背景，宽度与下方卡片区域对齐 */
   .offline-dashboard {
     max-width: 1200px; margin: 3rem auto 0 auto; padding: 0 1.5rem;
   }
@@ -456,8 +453,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   }
   .dash-card {
     background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    border: 1px solid var(--sl-color-hairline);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); border: 1px solid var(--sl-color-hairline);
     border-radius: 8px; padding: 1.25rem; text-align: center; margin-top: 0 !important;
   }
   .dash-card h3 { margin: 0; font-size: 1rem; color: var(--sl-color-gray-3); font-weight: 500; }
@@ -478,12 +474,9 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .btn-primary-action { background: var(--sl-color-accent); color: white; border: none; }
   .btn-primary-action:hover:not(:disabled) { background: var(--sl-color-accent-high); }
   
-  /* 修复暗色模式下"增量同步数据"鼠标悬停字看不清的问题 */
-  html[data-theme='dark'] .btn-primary-action:hover:not(:disabled) {
-    background: var(--sl-color-accent-high);
-    color: var(--sl-color-gray-6) !important;
-  }
-
+  /* 暗黑模式下，增量同步按钮 hover 时文字变深，避免被浅色背景淹没 */
+  html[data-theme='dark'] .btn-primary-action:hover:not(:disabled) { color: var(--sl-color-gray-6) !important; }
+  
   .btn-secondary-action { background: var(--sl-color-bg); color: var(--sl-color-text); border: 1px solid var(--sl-color-gray-4); }
   .btn-secondary-action:hover:not(:disabled) { background: var(--sl-color-gray-6); border-color: var(--sl-color-gray-2); }
   
@@ -507,9 +500,6 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     overflow: hidden; text-overflow: ellipsis; word-break: break-all;
   }
   #progress-percent { flex-shrink: 0; font-weight: bold; }
-
-  .progress-bar-bg { width: 100%; height: 6px; background: var(--sl-color-gray-5); border-radius: 3px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-accent); transition: width 0.3s ease; }
 
   /* 极简终端日志 - 维持黑客感 */
   .terminal-window {
@@ -537,13 +527,16 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     .hero-tagline { margin-inline: auto; font-size: 1.1rem; }
     .hero-actions { justify-content: center !important; margin-top: 1rem; }
     
-    .offline-dashboard { padding: 0 1rem; margin-top: 1rem; }
+    .offline-dashboard { 
+      padding: 0 1.5rem; /* 保持与下方容器对齐 */
+      margin-top: 1rem; 
+    }
     .dashboard-header { margin-bottom: 1.5rem; }
     .dashboard-header h2 { font-size: 1.4rem; }
     
     .dashboard-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1.5rem; }
     .dash-card { padding: 0.8rem 0.5rem; }
-    .dash-value { font-size: 1.44rem; }
+    .dash-value { font-size: 1.45rem; } /* 等比例缩小 20% 防超宽 */
     
     .control-panel { flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
     .btn-action { padding: 0.75rem 0.5rem; font-size: 0.95rem; }
