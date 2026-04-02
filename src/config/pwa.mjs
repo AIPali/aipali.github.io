@@ -18,7 +18,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
         display: 'standalone',
         theme_color: '#17181c',
         background_color: '#17181c',
-        icons: [{ src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png' }]
+        icons: [{ src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png' }]
       }
     });
   }
