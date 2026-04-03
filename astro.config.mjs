@@ -47,7 +47,10 @@ export default defineConfig({
         PageTitle: './src/components/PageTitle.astro',
         Head: './src/components/CustomHead.astro',
       },
-      head: [{ tag: 'script', attrs: { src: '/assets/js/gtranslate-auto.js', defer: true } }],
+      head: [
+        { tag: 'script', attrs: { src: '/assets/gtranslate-auto.js', defer: true, }, },
+        { tag: 'script', attrs: { src: '/assets/tts-reader.js', defer: true, }, },
+      ],
       plugins:[
         starlightDocSearch({ appId: 'TCMTON4EX8', apiKey: '46fc7739c943245ddd44dac342e40493', indexName: 'AIPali' }),
         starlightSidebarTopics([
