@@ -3,8 +3,8 @@ id: "BV-2-2"
 title: "BV 2.2 僧残二：染心碰触 (Kāyasaṃsaggasikkhāpada)"
 description: "本学处是佛陀制定的第二条僧残戒，旨在防止比丘因贪欲而与女性发生身体接触，以保护梵行的清净。"
 collection: "Bhikkhuvibhaṅga"
-vagga: "Saṃghādisesakaṇḍa"
-reference: "BV 2, 269-282"
+vagga: "Saṃghādisesakaṇḍa"
+reference: "BV 2.2, 269-282"
 curator: "3 True-Dhamma.com"
 tags: [僧残, 身体接触, 优陀夷, 戒律, 比丘戒, 不净行, 僧团清净, 梵行]
 ---

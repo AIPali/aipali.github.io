@@ -1,6 +1,6 @@
 ---
 id: "BV-2-6"
-title: "BV 2.6 僧残六：自造精舍 (Kuṭikārasikkhāpada)"
+title: "BV 2.6 僧残六：自造小屋 (Kuṭikārasikkhāpada)"
 description: "关于比丘为自己乞求建造房舍时，在尺寸、选址和僧团批准方面的具体规定，旨在防止过度乞求对在家众造成困扰。"
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"

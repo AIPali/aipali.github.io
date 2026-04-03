@@ -3,7 +3,7 @@ id: "BV-2-7"
 title: "BV 2.7 僧残七：自造精舍 (Vihārakārasikkhāpada)"
 description: "本学处规定，比丘为自己建造有施主的大型精舍时，必须请求僧团委派代表勘察并正式指定地点，以确保该地无生命危害且有合理通道，旨在保护生命、尊重社区并维护僧团和合。"
 collection: "Bhikkhuvibhaṅga"
-vagga: "Bhikkhuvibhaṅga"
+vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.7, 365-379"
 curator: "3 True-Dhamma.com"
 tags: [僧残, 建造精舍, 僧团羯磨, 选址, 护生, 建筑规定, 阐陀]

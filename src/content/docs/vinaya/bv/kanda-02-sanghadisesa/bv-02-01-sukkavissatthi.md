@@ -3,7 +3,7 @@ id: "BV-2-1"
 title: "BV 2.1 僧残一：故泄不净 (Sukkavissaṭṭhisikkhāpada)"
 description: "本学处是比丘戒律中十三条僧残罪的第一条，规定了比丘故意泄出精液的行为构成僧残罪。经文通过尊者施越的案例，详细阐述了制戒缘起、梦遗的豁免情况，并对不同动机和情境下的行为进行了详细的罪与非罪界定。"
 collection: "Bhikkhuvibhaṅga"
-vagga: "Saṃghādisesakaṇḍa"
+vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.1, 234-268"
 curator: "3 True-Dhamma.com"
 tags: [僧残, 故意泄精, 梵行, 戒律, 律藏, 施越, 优陀夷, 梦遗]
