@@ -11,11 +11,8 @@ const TTS_CONFIG = {
   ARTICLE_SELECTOR: '.sl-markdown-content', 
   EXCLUDE_PATHS: ['/', '/offline'], 
   EXCLUDE_DIRS: ['/tags/', '/info/'], 
-  
-  // 要从朗读文本中排除的元素选择器
-  // 可以是类名、ID等。留空字符串 '' 则不过滤任何元素。
-  // 例如：'.p-ref, .footnote, #ads-container'
   EXCLUDE_SELECTORS: '.p-ref', 
+  SCROLL_OFFSET: 220, 
 };
 
 // ==========================================
@@ -118,7 +115,7 @@ function highlightElement(element) {
   if (element) {
     element.classList.add('tts-highlight');
     currentlyHighlightedElement = element;
-    const y = element.getBoundingClientRect().top + window.scrollY - 100;
+    const y = element.getBoundingClientRect().top + window.scrollY - TTS_CONFIG.SCROLL_OFFSET;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 }
@@ -149,37 +146,52 @@ function findStartingIndex() {
       observer.disconnect();
       const foundIndex = firstVisibleElement ? elements.findIndex(el => el === firstVisibleElement) : -1;
       resolve(foundIndex > -1 ? foundIndex : 0);
-    }, { threshold: 0.01, rootMargin: "-100px 0px 0px 0px" });
+    }, { threshold: 0.01, rootMargin: `-${TTS_CONFIG.SCROLL_OFFSET}px 0px 0px 0px` });
     elements.forEach(el => observer.observe(el));
   });
 }
 
 async function fetchAndCacheAudio(index, signal) {
   const item = textQueue[index];
-  if (!item || item.blobUrl || item.isFetching) return true;
-  item.isFetching = true;
-  let success = false;
-  for (let i = 0; i < TTS_CONFIG.MAX_RETRIES; i++) {
-    if (!isReading || signal.aborted) { item.isFetching = false; return false; }
-    try {
-      const response = await fetch(TTS_CONFIG.WORKER_URL, { 
-        method: 'POST', 
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify({ text: item.text }), 
-        signal: signal 
-      });
-      if (!response.ok) throw new Error(`Status ${response.status}`);
-      const audioBlob = await response.blob();
-      item.blobUrl = URL.createObjectURL(audioBlob);
-      success = true;
-      break;
-    } catch (error) {
-      if (error.name === 'AbortError') break;
-      if (i < TTS_CONFIG.MAX_RETRIES - 1) { await new Promise(res => setTimeout(res, TTS_CONFIG.RETRY_DELAY)); }
-    }
+  if (!item) return false;
+  if (item.blobUrl) return true;
+
+  // 【修复】如果已经在请求中了，直接等待现有的 Promise，防止并发产生空结果导致播放 /null
+  if (item.fetchPromise) {
+    return await item.fetchPromise;
   }
-  item.isFetching = false;
-  return success;
+
+  // 将请求过程封装为 Promise 并保存
+  item.fetchPromise = (async () => {
+    let success = false;
+    for (let i = 0; i < TTS_CONFIG.MAX_RETRIES; i++) {
+      if (!isReading || signal.aborted) return false;
+      try {
+        const response = await fetch(TTS_CONFIG.WORKER_URL, { 
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json' }, 
+          body: JSON.stringify({ text: item.text }), 
+          signal: signal 
+        });
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+        const audioBlob = await response.blob();
+        item.blobUrl = URL.createObjectURL(audioBlob);
+        success = true;
+        break;
+      } catch (error) {
+        if (error.name === 'AbortError') break;
+        if (i < TTS_CONFIG.MAX_RETRIES - 1) { 
+          await new Promise(res => setTimeout(res, TTS_CONFIG.RETRY_DELAY)); 
+        }
+      }
+    }
+    return success;
+  })();
+
+  const result = await item.fetchPromise;
+  // 如果所有重试都失败了，清空 Promise 允许以后重新尝试
+  if (!result) item.fetchPromise = null;
+  return result;
 }
 
 // BUG 修复：将此函数改为 async，并使用 for...of 循环来确保预取请求是串行（一个接一个）发送的
@@ -227,7 +239,11 @@ function stopReading(shouldUpdateUI = false) {
   isReading = false;
   if (fetchController) { fetchController.abort(); fetchController = null; }
   if (audioPlayer) { audioPlayer.pause(); audioPlayer.src = ''; }
-  textQueue.forEach(item => { if (item.blobUrl) URL.revokeObjectURL(item.blobUrl); item.blobUrl = null; item.isFetching = false; });
+  textQueue.forEach(item => { 
+    if (item.blobUrl) URL.revokeObjectURL(item.blobUrl); 
+    item.blobUrl = null; 
+    item.fetchPromise = null; // 替换了原来的 item.isFetching = false
+  });
   clearHighlight();
   if (shouldUpdateUI) updateUI();
 }
@@ -277,9 +293,9 @@ function initTTS() {
       // 如果配置为空，则不过滤，直接提取文本
       text = el.innerText.trim();
     }
-    
+ 
     if (text) { 
-      textQueue.push({ text: text, element: el, blobUrl: null, isFetching: false }); 
+      textQueue.push({ text: text, element: el, blobUrl: null, fetchPromise: null }); 
     }
   });
 
