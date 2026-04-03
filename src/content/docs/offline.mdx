@@ -37,7 +37,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       </p>
       <div className="hero-actions">
         <a href="/tipitaka/" className="btn btn-primary">阅读法宝</a>
-        <a href="/info/how-to-use/" className="btn btn-secondary">使用指南</a>
+        <a href="/info/how-to-use/" className="btn btn-secondary">如何使用</a>
         <a href="/info/about-aipali/" className="btn btn-minimal">关于本工程</a>
       </div>
     </div>
@@ -59,7 +59,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     <div className="dashboard-header">
       <h2>本地法宝数据中心</h2>
       <p>
-        在开启离线阅读之前，您需要花几分钟将 AIPali 数据同步至本地存储。同步完成后，您即可在飞机、轮船、火车或任何无网环境下，顺畅阅读所有巴利三藏。
+        您需要花费一两分钟时间，提前在有网环境下将 AIPali 数据同步至本地存储。<br />此后，即可在飞机、轮船、户外或任何无网环境下，顺畅地阅读所有巴利三藏。
       </p>
     </div>
 
@@ -113,25 +113,31 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
   <div className="divider-glow" style={{ marginTop: '3rem' }}></div>
 
-  {/* ====================================================== */}
-  {/* 3. 特性卡片与页脚 */}
-  {/* ====================================================== */}
-  <div className="features-wrapper">
-    <CardGrid>
-      <Card title="完整法宝收录" icon="document">
-        以 <b className="highlight-text">VRI/CSCD</b> 巴利语原文为底稿，涵盖完整的<b className="highlight-text">五部经藏</b>（含小部 15 经）与<b className="highlight-text">律藏</b>（含大小品及附随）；内置<b className="highlight-text">段落级巴利原文对照</b>，助力深度法义探究。
+
+    {/* --- 内容源头板块：单列卡片列表 (Card List) --- */}
+    <div className="features-wrapper">
+      <h2 className="aipali-section-title">AIPali 离线版使用说明</h2>
+      <Card title="背景介绍" icon="information">
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
+          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
+          <li><b>离线版地址：</b>出于服务一致性的考量，在多个镜像站点中，目前只有 aipali.github.io 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)）访问和使用离线功能。</li>
+          <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将 Offline 页面添加到桌面</b>，以此安装成为一个网页 App 并获得必要的高级缓存权限——这一步是离线浏览稳定性的关键保障。</li>
+        </ul>
       </Card>
-      <Card title="结构化内容梳理" icon="list-format">
-        依托大语言模型重新梳理经文的层次，自动生成<b className="highlight-text">多层级标题</b>、<b className="highlight-text">AI导读</b>与<b className="highlight-text">法义解析</b>，在恢复经文本有的工整结构的同时，大幅降低现代修行者阅读理解门槛。
+      
+      <Card title="iOS 用户" icon="apple">
+        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
-      <Card title="现代化阅读体验" icon="laptop">
-        应用<b className="highlight-text">现代互联网技术</b>，提供 PC、手机、平板上的优质阅读体验，并支持<b className="highlight-text">离线浏览</b>；内置<b className="highlight-text">毫秒级全文搜索引擎</b>，可根据经文编号、法义术语直达原文段落。
+
+      <Card title="Android 用户" icon="phone">
+        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
-      <Card title="互动化巴利三藏" icon="rocket">
-        以 <b className="highlight-text">AI 检索增强技术</b> 赋能传统经典，构建“可聊天”的巴利三藏。无论是搜寻法义、深入探讨甚至实修实证，AI 助手都能提供详尽支持，并附带<b className="highlight-text">经文出处</b>。
+      
+      <Card title="局限性" icon="warning">
+        请您了解，离线版巴利三藏并非全功能版本。在纯离线环境下，AIPali 的<b className="highlight-text">搜索</b>、<b className="highlight-text">AI 问经</b>、<b className="highlight-text">标签</b>、<b className="highlight-text">巴利语对照</b>、<b className="highlight-text">沉浸式听书</b>等功能不可用——这些功能均需要在联网环境下使用。
       </Card>
-    </CardGrid>
-  </div>
+
+    </div>
 
   <footer className="aipali-custom-footer">
     <div className="footer-content">
@@ -598,6 +604,12 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   .highlight-text {
     color: var(--sl-color-text-accent); background-color: var(--sl-color-accent-low);
     padding: 0.1em 0.4em; border-radius: 4px; font-weight: 600;
+  }
+  .aipali-section-title {
+    font-size: 2.2rem; 
+    margin: 6rem 0 2.5rem 0; 
+    text-align: center;
+    border: none !important; color: var(--sl-color-white); font-weight: 700;
   }
   .aipali-custom-footer {
     margin-top: 6rem; padding: 3rem 1rem; border-top: 1px solid var(--sl-color-hairline);
