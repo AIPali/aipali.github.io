@@ -1,11 +1,11 @@
 ---
-id: "BV-01-02"
+id: "BV-1-2"
 title: "BV 1.2 弃罪二：偷盗 (Dutiyapārājikasikkhāpada)"
 description: "记述制定第二弃罪（不与取）的缘起。通过陀然闍比丘案例，明确界定了偷盗行为的构成要件、价值标准及多项实际判例。"
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.2, 84-161"
-curator: "True-Dhamma.com"
+curator: "3 True-Dhamma.com"
 tags: [弃罪, 波罗夷, 不与取, 偷盗, 戒律, 陀然闍, 律藏, 根本戒]
 ---
 

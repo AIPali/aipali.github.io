@@ -1,11 +1,11 @@
 ---
-id: "BV-01-01"
+id: "BV-1-1"
 title: "BV 1.1 弃罪一：不净行 (Paṭhamapārājikasikkhāpada)"
 description: "详细记述制定第一弃罪（不净行）的缘起。以须提那比丘为案例，明确规定任何比丘进行性行为即丧失比丘资格，不可共住。"
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.1, 24-83"
-curator: "True-Dhamma.com"
+curator: "3 True-Dhamma.com"
 tags: [弃罪, 波罗夷, 不净行, 须提那, 戒律制定, 僧团清净, 出家, 毗奈耶]
 ---
 

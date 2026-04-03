@@ -1,11 +1,11 @@
 ---
-id: "BV-01-03"
+id: "BV-1-3"
 title: "BV 1.3 弃罪三：杀人 (Tatiyapārājika)"
 description: "因比丘修不净观厌世自杀，佛陀制定了禁止故意或教唆杀人的第三弃罪。本篇详解杀生的形式、意图界定并附大量判例。"
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.3, 162-192"
-curator: "True-Dhamma.com"
+curator: "3 True-Dhamma.com"
 tags: [弃罪, 波罗夷, 杀生, 不净观, 安般念, 戒律, 自杀, 教唆杀人, 堕胎, 安乐死]
 ---
 

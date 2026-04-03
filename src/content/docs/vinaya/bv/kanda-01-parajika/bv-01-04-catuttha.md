@@ -1,11 +1,11 @@
 ---
-id: "BV-01-04"
+id: "BV-1-4"
 title: "BV 1.4 弃罪四：妄称证得上人法 (Catutthapārājikasikkhāpada)"
 description: "佛陀制定第四条弃罪的缘起与解释，即比丘不得谎称自己证得禅那、道果等过人法，否则构成不可共住的重罪。"
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.4, 193-233"
-curator: "True-Dhamma.com"
+curator: "3 True-Dhamma.com"
 tags: ["弃罪", "波罗夷", "过人法", "大妄语", "戒律", "增上慢", "五种大贼"]
 ---
 
