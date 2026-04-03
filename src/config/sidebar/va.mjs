@@ -10,10 +10,10 @@ export const sidebarVA =[
         collapsed: false, // 最严重的四根本戒，条目少，默认展开
         items:[
           { label: 'BV 1.0 韦兰若品 (Verañjakaṇḍa)', link: '/vinaya/bv/kanda-01-parajika/bv-01-00-veranjaka/' },
-          { label: 'BV 1.1 弃罪一：淫 (Paṭhamapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-01-pathama/' },
-          { label: 'BV 1.2 弃罪二：盗 (Dutiyapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-02-dutiya/' },
-          { label: 'BV 1.3 弃罪三：杀 (Tatiyapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-03-tatiya/' },
-          { label: 'BV 1.4 弃罪四：妄语 (Catutthapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-04-catuttha/' },
+          { label: 'BV 1.1 弃罪一：不净行 (Paṭhamapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-01-pathama/' },
+          { label: 'BV 1.2 弃罪二：偷盗 (Dutiyapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-02-dutiya/' },
+          { label: 'BV 1.3 弃罪三：杀人 (Tatiyapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-03-tatiya/' },
+          { label: 'BV 1.4 弃罪四：妄称证得上人法 (Catutthapārājika)', link: '/vinaya/bv/kanda-01-parajika/bv-01-04-catuttha/' },
         ]
       },
       {
