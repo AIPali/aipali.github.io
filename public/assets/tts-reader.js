@@ -9,8 +9,13 @@ const TTS_CONFIG = {
   MAX_RETRIES: 3,
   RETRY_DELAY: 1000,
   ARTICLE_SELECTOR: '.sl-markdown-content', 
-  EXCLUDE_PATHS: ['/', '/search', '/404'], 
-  EXCLUDE_DIRS: ['/api/'], 
+  EXCLUDE_PATHS: ['/', '/offline'], 
+  EXCLUDE_DIRS: ['/tags/', '/info/'], 
+  
+  // 要从朗读文本中排除的元素选择器
+  // 可以是类名、ID等。留空字符串 '' 则不过滤任何元素。
+  // 例如：'.p-ref, .footnote, #ads-container'
+  EXCLUDE_SELECTORS: '.p-ref', 
 };
 
 // ==========================================
@@ -36,43 +41,27 @@ function shouldEnableTTS() {
 }
 
 function injectTTSUI() {
-  // 如果已经注入过，则不再重复注入
   if (document.getElementById('tts-fab-container')) return;
 
-  // 注入 CSS (包含 Starlight 完美的深浅色模式适配)
   const style = document.createElement('style');
   style.id = 'tts-style';
   style.textContent = `
     .tts-fab-container { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: flex; flex-direction: column; align-items: center; gap: 16px; }
     
-    /* 浅色模式 (默认) */
     .tts-button { display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; border: 1px solid #eaeaea; background-color: #ffffff; border-radius: 50%; cursor: pointer; padding: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.3s ease, border-color 0.2s ease; }
     .tts-button:hover { background-color: #f2f2f2; transform: translateY(-2px); }
     .tts-button:active { transform: scale(0.95); }
     .tts-icon { fill: #333; width: 24px; height: 24px; transition: fill 0.2s ease; }
     .tts-highlight { background-color: #fef8e0; border-radius: 4px; transition: background-color 0.3s ease, color 0.3s ease; }
 
-/* 深色模式适配 (针对 Starlight 深色背景优化：提升边框亮度与悬停反馈) */
-    html[data-theme='dark'] .tts-button { 
-      background-color: #23262f; 
-      border: 1.5px solid #4a4d55; /* 提升边框初始亮度，使其从黑背景脱出 */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5); 
-    }
-    html[data-theme='dark'] .tts-button:hover { 
-      background-color: #353945; /* 悬停时背景明显提亮 */
-      border-color: #7e8492;     /* 悬停时边框高亮，增强视觉反馈 */
-    }
-    html[data-theme='dark'] .tts-icon { 
-      fill: #ffffff;             /* 图标改为纯白，提升清晰度 */
-    }
-    html[data-theme='dark'] .tts-highlight { 
-      background-color: #4a3e10; 
-      color: #ffffff; 
-    }
+    /* 深色模式适配 (针对 Starlight 深色背景优化) */
+    html[data-theme='dark'] .tts-button { background-color: #23262f; border: 1.5px solid #4a4d55; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+    html[data-theme='dark'] .tts-button:hover { background-color: #353945; border-color: #7e8492; }
+    html[data-theme='dark'] .tts-icon { fill: #ffffff; }
+    html[data-theme='dark'] .tts-highlight { background-color: #4a3e10; color: #ffffff; }
   `;
   document.head.appendChild(style);
 
-  // 注入 HTML
   const div = document.createElement('div');
   div.id = 'tts-fab-container';
   div.className = 'tts-fab-container';
@@ -89,14 +78,12 @@ function injectTTSUI() {
   `;
   document.body.appendChild(div);
 
-  // 绑定 DOM 引用
   container = document.getElementById('tts-fab-container');
   controlBtn = document.getElementById('tts-control-btn');
   playIcon = document.getElementById('tts-play-icon');
   stopIcon = document.getElementById('tts-stop-icon');
   scrollTopBtn = document.getElementById('tts-scroll-top-btn');
 
-  // 绑定持久化事件 (只绑定一次)
   controlBtn.addEventListener('click', () => isReading ? stopReading(true) : startReading());
   if (TTS_CONFIG.SHOW_SCROLL_TO_TOP_BUTTON && scrollTopBtn) {
     scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -195,10 +182,16 @@ async function fetchAndCacheAudio(index, signal) {
   return success;
 }
 
-function managePrefetchWindow() {
+// BUG 修复：将此函数改为 async，并使用 for...of 循环来确保预取请求是串行（一个接一个）发送的
+async function managePrefetchWindow() {
   const start = currentIndex + 1;
   const end = Math.min(currentIndex + TTS_CONFIG.PREFETCH_WINDOW_SIZE + 1, textQueue.length);
-  for (let i = start; i < end; i++) { fetchAndCacheAudio(i, fetchController.signal); }
+  for (let i = start; i < end; i++) {
+    // 如果在预取过程中用户停止了阅读，则立即中断
+    if (!isReading) break;
+    // 使用 await 等待当前 fetch 完成，再开始下一个
+    await fetchAndCacheAudio(i, fetchController.signal);
+  }
 }
 
 async function playCurrentAndPrefetchNext() {
@@ -214,6 +207,9 @@ async function playCurrentAndPrefetchNext() {
   
   audioPlayer.src = currentItem.blobUrl;
   audioPlayer.play().catch(err => { console.error("Play failed:", err); if (isReading) stopReading(true); });
+  
+  // 预取函数现在是异步的，但我们不需要在这里 await 它
+  // 让它在后台安静地、串行地填充缓存即可
   managePrefetchWindow();
 }
 
@@ -236,7 +232,6 @@ function stopReading(shouldUpdateUI = false) {
   if (shouldUpdateUI) updateUI();
 }
 
-// 播放器事件
 audioPlayer.onended = () => { if (isReading) { currentIndex++; playCurrentAndPrefetchNext(); } };
 audioPlayer.onerror = () => { if (isReading) stopReading(true); };
 
@@ -248,13 +243,11 @@ function initTTS() {
   textQueue =[];
   currentIndex = 0;
 
-  // 不满足条件时隐藏可能的遗留 UI
   if (!shouldEnableTTS() || !document.querySelector(TTS_CONFIG.ARTICLE_SELECTOR)) {
     if (container) container.style.display = 'none';
     return;
   }
-
-  // 注入 UI 并绑定变量 (只会执行一次 DOM 创建)
+  
   injectTTSUI();
 
   const article = document.querySelector(TTS_CONFIG.ARTICLE_SELECTOR);
@@ -262,7 +255,6 @@ function initTTS() {
   const allPotentialElements = Array.from(article.querySelectorAll(selector));
   const elementSet = new Set(allPotentialElements);
 
-  // 过滤出顶级元素
   const topLevelElements = allPotentialElements.filter(el => {
     if (el.closest('.expressive-code') || el.closest('.sl-steps')) return false;
     let parent = el.parentElement;
@@ -274,20 +266,23 @@ function initTTS() {
   });
 
   topLevelElements.forEach(el => {
-    const clone = el.cloneNode(true);
-    
-    // 找到所有不需要朗读的元素（如 .p-ref 段落编号），并将其移除
-    // 如果未来还有别的标签不想被读出来，可以用逗号分隔，例如：'.p-ref, .footnote'
-    const ignoreElements = clone.querySelectorAll('.p-ref');
-    ignoreElements.forEach(node => node.remove());
-    const text = (clone.textContent || '').replace(/\s+/g, ' ').trim();
+    let text;
+    // 使用配置项进行过滤
+    if (TTS_CONFIG.EXCLUDE_SELECTORS) {
+      const clone = el.cloneNode(true);
+      const ignoreElements = clone.querySelectorAll(TTS_CONFIG.EXCLUDE_SELECTORS);
+      ignoreElements.forEach(node => node.remove());
+      text = (clone.textContent || '').replace(/\s+/g, ' ').trim();
+    } else {
+      // 如果配置为空，则不过滤，直接提取文本
+      text = el.innerText.trim();
+    }
     
     if (text) { 
       textQueue.push({ text: text, element: el, blobUrl: null, isFetching: false }); 
     }
   });
 
-  // 队列有内容则展示 FAB
   if (textQueue.length > 0) {
     container.style.display = 'flex';
     handleScroll();
@@ -298,15 +293,12 @@ function initTTS() {
   }
 }
 
-// 兼容不同的 Astro 和浏览器状态
 document.addEventListener('astro:page-load', initTTS);
 document.addEventListener('astro:before-swap', () => stopReading(false));
 window.addEventListener('beforeunload', () => stopReading(false));
 
-// 确保在不启用 View Transitions 的普通页面刷新时必定执行
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initTTS);
 } else {
-  // 如果脚本执行时 DOM 已经就绪，直接执行
   initTTS();
 }
