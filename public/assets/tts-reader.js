@@ -274,8 +274,17 @@ function initTTS() {
   });
 
   topLevelElements.forEach(el => {
-    const text = el.innerText.trim();
-    if (text) { textQueue.push({ text: text, element: el, blobUrl: null, isFetching: false }); }
+    const clone = el.cloneNode(true);
+    
+    // 找到所有不需要朗读的元素（如 .p-ref 段落编号），并将其移除
+    // 如果未来还有别的标签不想被读出来，可以用逗号分隔，例如：'.p-ref, .footnote'
+    const ignoreElements = clone.querySelectorAll('.p-ref');
+    ignoreElements.forEach(node => node.remove());
+    const text = (clone.textContent || '').replace(/\s+/g, ' ').trim();
+    
+    if (text) { 
+      textQueue.push({ text: text, element: el, blobUrl: null, isFetching: false }); 
+    }
   });
 
   // 队列有内容则展示 FAB
