@@ -3,7 +3,7 @@ id: "CV-10"
 title: "CV 10 比丘尼篇 (Bhikkhunikkhandhaka)"
 description: "详细记述佛教比丘尼僧团的缘起，从摩诃波阇波提请求出家，到佛陀制定“八敬法”，以及针对女性在修行、戒律、僧团生活等方面的具体规定。"
 collection: "Vinaya Piṭaka"
-division: "Cūḷavagga"
+vagga: "Cūḷavaggapāḷi"
 reference: "CV 10, 402-436"
 curator: "3 True-Dhamma.com"
 tags: [比丘尼, 八敬法, 摩诃波阇波提, 乔达弥, 阿难, 女性出家, 具足戒, 僧务决议, 戒律]

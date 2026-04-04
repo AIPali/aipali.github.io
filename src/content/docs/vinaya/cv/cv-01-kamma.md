@@ -3,7 +3,7 @@ id: "CV-1"
 title: "CV 1 羯磨篇 (Kammakkhandhaka)"
 description: "本篇详细阐述了僧团为维护纪律而制定的七种正式程序（羯磨），包括呵责、依止、驱出、下意和三种举罪，并规定了其执行、撤销的详细规则与条件。"
 collection: "Vinaya Piṭaka"
-subcollection: "Cūḷavaggapāḷi"
+vagga: "Cūḷavaggapāḷi"
 reference: "CV 1, 1-74"
 curator: "3 True-Dhamma.com"
 tags: [僧团纪律, 羯磨, 呵责, 驱出, 依止, 悔过, 恶见]

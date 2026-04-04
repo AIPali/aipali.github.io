@@ -120,7 +120,7 @@ export const sidebarVA =[
       { label: 'CV 6 卧坐具篇 (Senāsanakkhandhaka)', link: '/vinaya/cv/cv-06-senasana/' },
       { label: 'CV 7 破僧篇 (Saṅghabhedakakkhandhaka)', link: '/vinaya/cv/cv-07-sanghabheda/' },
       { label: 'CV 8 仪法篇 (Vattakkhandhaka)', link: '/vinaya/cv/cv-08-vatta/' },
-      { label: 'CV 9 止诵戒篇 (Pātimokkhaṭṭhapanakkhandhaka)', link: '/vinaya/cv/cv-09-patimokkhatthapana/' },
+      { label: 'CV 9 遮说戒篇 (Pātimokkhaṭṭhapanakkhandhaka)', link: '/vinaya/cv/cv-09-patimokkhatthapana/' },
       { label: 'CV 10 比丘尼篇 (Bhikkhunikkhandhaka)', link: '/vinaya/cv/cv-10-bhikkhuni/' },
       { label: 'CV 11 五百结集篇 (Pañcasatikakkhandhaka)', link: '/vinaya/cv/cv-11-pancasatika/' },
       { label: 'CV 12 七百结集篇 (Sattasatikakkhandhaka)', link: '/vinaya/cv/cv-12-sattasatika/' },

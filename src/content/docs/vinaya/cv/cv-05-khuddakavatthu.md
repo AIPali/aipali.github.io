@@ -2,8 +2,8 @@
 id: "CV-05"
 title: "CV 5 小事篇 (Khuddakavatthukkhandhaka)"
 description: "本篇汇集了佛陀针对比丘日常生活中各种“小事”所制定的戒律，涵盖沐浴、仪容、衣着、用具、饮食、医疗、神通、僧团纪律及与在家众的互动等多个方面，详细展示了戒律的缘起与实践细节。"
-collection: "Vinayapiṭaka"
-book: "Cūḷavagga"
+collection: "Vinaya Piṭaka"
+vagga: "Cūḷavaggapāḷi"
 reference: "CV 5, 243-293"
 curator: "4 True-Dhamma.com"
 tags: [戒律, 生活规范, 僧团纪律, 沐浴, 仪容, 钵, 神通, 覆钵, 耆婆]

@@ -2,7 +2,8 @@
 id: "CV-6"
 title: "CV 6 卧坐具篇 (Senāsanakkhandhaka)"
 description: "本篇详细记述了佛陀如何逐步制定关于比丘住所、卧具、坐具等生活设施的规定。从最初允许建造精舍到床、椅、门、窗、墙壁的细节，以及僧团财物的管理和分配原则。"
-collection: "Cūḷavagga"
+collection: "Vinaya Piṭaka"
+vagga: "Cūḷavaggapāḷi"
 reference: "CV 6, 294-329"
 curator: "3 True-Dhamma.com"
 tags: [卧坐具, 精舍, 僧团财产, 给孤独, 祇树给孤独园, 戒律, 僧团生活, 营事, 羯磨, 长幼次序]
