@@ -6,7 +6,7 @@ collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 9, 334"
 curator: "3 True-Dhamma.com"
-tags: ["制戒", "学处", "僧团", "学处", "十大利益", "正法久住", "律藏"]
+tags: [制戒, 学处, 僧团, 学处, 十大利益, 正法久住, 律藏]
 ---
 
 > [!abstract] AI 导读

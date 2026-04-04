@@ -6,7 +6,7 @@ collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 4, 271-291"
 curator: "3 True-Dhamma.com"
-tags: ["律藏", "附随", "戒律", "罪", "等起", "僧团", "论诤", "波罗夷", "僧残", "毗奈耶"]
+tags: [律藏, 附随, 戒律, 罪, 等起, 僧团, 论诤, 波罗夷, 僧残]
 ---
 
 > [!abstract] AI 导读

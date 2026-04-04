@@ -1,5 +1,5 @@
 ---
-id: "PV3"
+id: "PV-3"
 title: "PV 3 等起摄颂 (Samuṭṭhānasīsasaṅkhepa)"
 description: "本章是《附随》的核心分析之一，系统地将《律藏》中的所有学处，根据其造作的根源（身、语、意三门）进行归类，总结为十三种“等起”模式，是深入理解犯戒成因的纲要。"
 collection: "Vinaya Piṭaka"

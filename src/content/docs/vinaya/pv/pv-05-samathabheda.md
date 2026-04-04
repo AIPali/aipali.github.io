@@ -1,6 +1,6 @@
 ---
 id: "PV-5"
-title: "PV 5 灭诤解说 (Samathabheda)"
+title: "PV 5 灭诤分别 (Samathabheda)"
 description: "本篇是巴利律藏《附随》的核心内容之一，系统性地阐述了平息僧团四种诤事（论诤、非难、犯戒、僧务）的七种方法（灭法），是理解佛教僧团内部纪律与和谐运作机制的关键文献。"
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"

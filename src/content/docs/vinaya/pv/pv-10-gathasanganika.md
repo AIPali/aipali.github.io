@@ -6,7 +6,7 @@ collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 10, 335-339"
 curator: "3 True-Dhamma.com"
-tags: ["戒律", "学处", "毗舍离", "王舍城", "舍卫城", "罪业分类", "比丘戒", "比丘尼戒", "偈颂", "律藏纲要"]
+tags: [戒律, 学处, 毗舍离, 王舍城, 舍卫城, 罪业分类, 比丘戒, 比丘尼戒]
 ---
 
 > [!abstract] AI 导读
