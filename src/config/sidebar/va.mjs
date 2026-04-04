@@ -31,8 +31,8 @@ export const sidebarVA =[
           { label: 'BV 2.9 僧残九：借口诽谤 (Dutiyaduṭṭhadosa)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-09-dutiyadutthadosa/' },
           { label: 'BV 2.10 僧残十：分裂僧团 (Saṃghabheda)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-10-sanghabheda/' },
           { label: 'BV 2.11 僧残十一：同党破僧 (Bhedānuvattaka)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-11-bhedanuvattaka/' },
-          { label: 'BV 2.12 僧残十二：难以劝告 (Dubbaca)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-12-dubbaca/' },
-          { label: 'BV 2.13 僧残十三：贿赂居士 (Kuladūsaka)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-13-kuladusaka/' },
+          { label: 'BV 2.12 僧残十二：难以劝谏 (Dubbaca)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-12-dubbaca/' },
+          { label: 'BV 2.13 僧残十三：恶行污家 (Kuladūsaka)', link: '/vinaya/bv/kanda-02-sanghadisesa/bv-02-13-kuladusaka/' },
         ]
       },
       { label: 'BV 3 不定篇 (Aniyatakaṇḍa)', link: '/vinaya/bv/kanda-03-aniyata/' },

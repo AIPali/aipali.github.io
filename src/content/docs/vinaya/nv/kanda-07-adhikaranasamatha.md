@@ -3,7 +3,7 @@ id: "NV-7"
 title: "NV 7 灭诤篇 (Adhikaraṇasamathā)"
 description: "本篇阐述了平息比丘尼僧团内部纷争的七种方法，是《比丘尼波罗提木叉》戒本的总结部分，旨在确保僧团的和合与清净。"
 collection: "Bhikkhunivibhaṅga"
-vagga: "Sekhiyakaṇḍa"
+vagga: "Adhikaraṇasamathā"
 reference: "NV 7, 1242"
 curator: "True-Dhamma.com"
 tags: ["灭诤法", "僧团", "纷争", "和合", "波罗提木叉", "戒律", "比丘尼"]
