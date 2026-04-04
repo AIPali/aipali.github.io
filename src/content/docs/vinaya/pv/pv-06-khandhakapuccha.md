@@ -1,10 +1,10 @@
 ---
-id: "PV-06"
-title: "PV 6 問犍度章 (Khandhakapucchāvāra)"
+id: "PV-6"
+title: "PV 6 问犍度章 (Khandhakapucchāvāra)"
 description: "以问答形式，纲要性地总结了律藏各篇（犍度）中涉及罪行的核心要点，涵盖受具足戒、布萨、安居等二十二个主题。"
-collection: "Parivārapāḷi"
-vagga: ""
-reference: "PV 6"
+collection: "Vinaya Piṭaka"
+vagga: "Parivārapāḷi"
+reference: "PV 6, 320"
 curator: "True-Dhamma.com"
 tags: ["犍度", "律藏", "罪行", "受具足戒", "布萨", "雨安居", "自恣", "问答"]
 ---
