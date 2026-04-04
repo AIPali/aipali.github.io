@@ -3,10 +3,10 @@ id: "PV-12"
 title: "PV 12 别偈集 (Aparagāthāsaṅgaṇika)"
 description: "本集以偈颂问答的形式，详细阐述了僧团中进行呵责（质询）的原则、方法，以及如何区分有耻与无耻者、如法与不如法的呵责者、智慧与愚痴的呵责者。"
 collection: "Vinaya Piṭaka"
-vagga: ""
+vagga: "Parivārapāḷi"
 reference: "PV 12, 359"
-curator: "True-Dhamma.com"
-tags: [呵责, 僧团纪律, 质询, 毗奈耶, 律藏, 有耻, 无耻, 如法, 别偈集]
+curator: "3 True-Dhamma.com"
+tags: [呵责, 僧团纪律, 质询, 毗奈耶, 律藏, 有耻, 无耻, 如法]
 ---
 
 > [!abstract] AI 导读

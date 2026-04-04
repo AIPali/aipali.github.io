@@ -1,11 +1,11 @@
 ---
-id: "PV-04"
+id: "PV-4"
 title: "PV 4 复习 (Antarapeyyāla)"
 description: "本品系统性地复习和纲要性地总结了《律藏》中的核心概念，包括各种罪、罪聚、罪的起因、失坏、论诤及其平息方法，是理解比丘戒律框架的关键。"
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 4, 271-291"
-curator: "True-Dhamma.com"
+curator: "3 True-Dhamma.com"
 tags: ["律藏", "附随", "戒律", "罪", "等起", "僧团", "论诤", "波罗夷", "僧残", "毗奈耶"]
 ---
 

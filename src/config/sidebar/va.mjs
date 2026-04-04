@@ -142,7 +142,7 @@ export const sidebarVA =[
       { label: 'PV 10 偈集 (Gāthāsaṅgaṇika)', link: '/vinaya/pv/pv-10-gathasanganika/' },
       { label: 'PV 11 诤事分别 (Adhikaraṇabheda)', link: '/vinaya/pv/pv-11-adhikaranabheda/' },
       { label: 'PV 12 别偈集 (Aparagāthāsaṅgaṇika)', link: '/vinaya/pv/pv-12-aparagathasanganika/' },
-      { label: 'PV 13 举罪篇 (Codanākaṇḍa)', link: '/vinaya/pv/pv-13-codana/' },
+      { label: 'PV 13 责问篇 (Codanākaṇḍa)', link: '/vinaya/pv/pv-13-codana/' },
       { label: 'PV 14 诤论小篇 (Cūḷasaṅgāma)', link: '/vinaya/pv/pv-14-culasangama/' },
       { label: 'PV 15 诤论大篇 (Mahāsaṅgāma)', link: '/vinaya/pv/pv-15-mahasangama/' },
       { label: 'PV 16 功德衣分别 (Kathinabheda)', link: '/vinaya/pv/pv-16-kathinabheda/' },
