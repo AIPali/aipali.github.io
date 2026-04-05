@@ -102,10 +102,10 @@ export const sidebarVA =[
       { label: 'MV 4 自恣篇 (Pavāraṇākkhandhaka)', link: '/vinaya/mv/mv-04-pavarana/' },
       { label: 'MV 5 皮革篇 (Cammakkhandhaka)', link: '/vinaya/mv/mv-05-camma/' },
       { label: 'MV 6 药篇 (Bhesajjakkhandhaka)', link: '/vinaya/mv/mv-06-bhesajja/' },
-      { label: 'MV 7 迦絺那衣篇 (Kathinakkhandhaka)', link: '/vinaya/mv/mv-07-kathina/' },
+      { label: 'MV 7 功德衣篇 (Kathinakkhandhaka)', link: '/vinaya/mv/mv-07-kathina/' },
       { label: 'MV 8 衣篇 (Cīvarakkhandhaka)', link: '/vinaya/mv/mv-08-civara/' },
       { label: 'MV 9 瞻波篇 (Campeyyakkhandhaka)', link: '/vinaya/mv/mv-09-campeyya/' },
-      { label: 'MV 10 拘睒弥篇 (Kosambakakkhandhaka)', link: '/vinaya/mv/mv-10-kosambaka/' },
+      { label: 'MV 10 憍赏弥篇 (Kosambakakkhandhaka)', link: '/vinaya/mv/mv-10-kosambaka/' },
     ]
   },
   {
