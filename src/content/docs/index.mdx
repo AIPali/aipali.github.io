@@ -56,6 +56,55 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     </CardGrid>
   </div>
 
+  {/* --- 批量经文快速直达区 (仅在底部新增) --- */}
+  <div className="divider-glow" style={{ marginTop: '5rem' }}></div>
+  <div className="quick-nav-wrapper">
+    <div className="aipali-quick-nav">
+      <div className="nav-group">
+        <span className="group-label">四部尼柯耶</span>
+        <div className="nav-links">
+          <a href="/sutta/dn/">DN</a>
+          <a href="/sutta/mn/">MN</a>
+          <a href="/sutta/sn/">SN</a>
+          <a href="/sutta/an/">AN</a>
+        </div>
+      </div>
+      <div className="nav-divider"></div>
+      <div className="nav-group">
+        <span className="group-label">律藏</span>
+        <div className="nav-links">
+          <a href="/vinaya/bv/kanda-01-parajika/bv-01-00-veranjaka/">BV</a>
+          <a href="/vinaya/nv/kanda-01-parajika/">NV</a>
+          <a href="/vinaya/mv/mv-01-mahakhandhaka/">MV</a>
+          <a href="/vinaya/cv/cv-01-kamma/">CV</a>
+          <a href="/vinaya/pv/pv-01-bhikkhuvibhanga/">PV</a>
+          <a href="/vinaya/dv/dv-01-bhikkhupatimokkha/">DV</a>
+        </div>
+      </div>
+      <div className="nav-divider"></div>
+      <div className="nav-group">
+        <span className="group-label">小部与其它</span>
+        <div className="nav-links">
+          <a href="/sutta/kn/kn-01-khp/khp-01-09-khuddakapatha/">Khp</a>
+          <a href="/sutta/kn/kn-02-dhp/dhp-001-032-yamaka-appamada/">Dhp</a>
+          <a href="/sutta/kn/kn-03-ud/ud-01-bodhi/">Ud</a>
+          <a href="/sutta/kn/kn-04-iti/iti-01-ekaka/">Iti</a>
+          <a href="/sutta/kn/kn-05-snp/snp-01-12-uraga/">Snp</a>
+          <a href="/sutta/kn/kn-06-vv/vv-01-50-itthi/">Vv</a>
+          <a href="/sutta/kn/kn-07-pv/pv-01-51-petavatthu/">Pv</a>
+          <a href="/sutta/kn/kn-08-thag/thag-01-ekaka/">Thag</a>
+          <a href="/sutta/kn/kn-09-thig/thig-01-12-ekaka-solasaka/">Thig</a>
+          <a href="/sutta/kn/kn-10-mnd/mnd-01-05-kama-guhatthaka-dutthatthaka-suddhatthaka-paramatthaka/">Mnd</a>
+          <a href="/sutta/kn/kn-11-cnd/cnd-01-19-parayanagatha/">Cnd</a>
+          <a href="/sutta/kn/kn-12-ps/ps-01-02-matika-nana/">Ps</a>
+          <a href="/sutta/kn/kn-13-ne/ne-01-04-sangaha-uddesa-niddesa-patiniddesa/">Ne</a>
+          <a href="/sutta/kn/kn-14-pe/pe-01-05-ariyasacca-sasana-sutta-suttavicaya-haravibhanga/">Pe</a>
+          <a href="/sutta/kn/kn-15-miln/miln-01-bahira/">Miln</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer className="aipali-custom-footer">
     <div className="footer-content">
       <p className="footer-slogan">
@@ -115,7 +164,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem;
     }
 
-    /* --- [阅读法宝按钮：已移除 transform 动效] --- */
+    /* --- [阅读法宝按钮] --- */
     html[data-theme='light'] .btn-primary {
       background-color: var(--sl-color-accent);
       color: #ffffff !important;
@@ -134,7 +183,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
       color: var(--sl-color-gray-6) !important;
     }
 
-    /* --- [辅助按钮样式：已移除 transform 动效] --- */
+    /* --- [辅助按钮样式] --- */
     .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
     .btn-secondary:hover { background: var(--sl-color-accent-low); }
     
@@ -167,7 +216,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     }
 
     /* =========================================
-       5. 特性卡片、背景与页脚
+       5. 特性卡片、背景与页脚 (恢复原始定义)
        ========================================= */
     .page-container { position: relative; overflow-x: clip; }
     .page-container::before {
@@ -196,5 +245,37 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     .footer-content p { margin: 0 !important; line-height: 1.5; }
     .brand { color: var(--sl-color-text-accent); font-weight: 600; }
     .footer-copyright a { color: var(--sl-color-text-accent); text-decoration: none; }
+
+    /* =========================================
+       6. 快捷导航专用样式 (仅在此新增，不污染上方)
+       ========================================= */
+    .quick-nav-wrapper { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 1rem; box-sizing: border-box; }
+    .aipali-quick-nav {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      row-gap: 1.35rem; column-gap: 1.35rem; padding: 2rem;
+      background-color: var(--sl-color-bg) !important;
+      border: 1px solid var(--sl-color-hairline) !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); border-radius: 0;
+    }
+    html[data-theme='dark'] .aipali-quick-nav { background-color: rgba(255, 255, 255, 0.02) !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+    
+    .nav-group { display: flex; align-items: center; gap: 1.2rem; margin: 0 !important; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; margin: 0 !important; }
+    .group-label { font-size: 0.75rem; text-transform: uppercase; color: var(--sl-color-gray-4); font-weight: 700; white-space: nowrap; line-height: 1; margin: 0; }
+    
+    .aipali-quick-nav a {
+      text-decoration: none; font-weight: 700; font-family: var(--__sl-font-mono); 
+      color: var(--sl-color-text-accent); font-size: var(--sl-text-base); 
+      line-height: 1; transition: color 0.2s;
+    }
+    .aipali-quick-nav a:hover { color: var(--sl-color-white); }
+
+    .nav-divider { width: 1px; height: 1.1rem; background-color: var(--sl-color-hairline); margin: 0 !important; transform: translateY(-1px); flex-shrink: 0; }
+
+    @media (max-width: 50rem) {
+      .aipali-quick-nav { padding: 1.5rem; gap: 1.5rem; justify-content: flex-start; }
+      .nav-divider { display: none; }
+      .nav-group { width: 100%; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    }
   `}
 </style>

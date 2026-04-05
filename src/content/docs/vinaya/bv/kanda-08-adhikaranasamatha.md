@@ -1,6 +1,6 @@
 ---
 id: "BV-8"
-title: "BV 8 灭诤篇 (Adhikaraṇasamatha)"
+title: "BV 8 灭诤篇 (Adhikaraṇasamathā)"
 description: "总结七种平息僧团纷争的方法（七灭诤法），并作为比丘波罗提木叉诵戒的结尾部分，重申所有已诵戒条的纲要。"
 collection: "Bhikkhuvibhaṅga"
 vagga: "Adhikaraṇasamatha"

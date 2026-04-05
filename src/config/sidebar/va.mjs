@@ -62,7 +62,7 @@ export const sidebarVA =[
       },
       { label: 'BV 6 悔过篇 (Pāṭidesanīyakaṇḍa)', link: '/vinaya/bv/kanda-06-patidesaniya/' },
       { label: 'BV 7 众学篇 (Sekhiyakaṇḍa)', link: '/vinaya/bv/kanda-07-sekhiya/' },
-      { label: 'BV 8 灭诤篇 (Adhikaraṇasamatha)', link: '/vinaya/bv/kanda-08-adhikaranasamatha/' },
+      { label: 'BV 8 灭诤篇 (Adhikaraṇasamathā)', link: '/vinaya/bv/kanda-08-adhikaranasamatha/' },
     ]
   },
   {
