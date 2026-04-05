@@ -82,7 +82,7 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
     <h2 className="aipali-section-title">本工程涵盖的内容范围</h2>
     <div className="aipali-card-list">
       <Card title="底层溯源：缅甸第六次结集 (VRI/CSCD)" icon="document">
-        本工程以缅甸第六次结集版的巴利语罗马字幕版为底层文本依据，<b>经文编号</b>、<b>经文内容</b>、<b>段落编号</b>与 VRI 保持高度一致性。
+        本工程以缅甸第六次结集版的巴利语罗马字母版为底层文本依据，<b>经文编号</b>、<b>经文内容</b>、<b>段落编号</b>与 VRI 保持高度一致性。
       </Card>
       
       <Card title="经藏前四部：100% 收录 (DN, MN, SN, AN)" icon="list-format">
@@ -105,12 +105,13 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
         <Icon name="setting" size="3.5rem" />
       </div>
       <div className="aipali-icon-content">
-        <p>
-          AIPali 提供的经文，并非单一来源的搬运，而是由多种不同的大语言模型组建的 <b>“智能翻译团队”</b> 共同完成：在 <b>人类的监督部署</b> 下，人类和 AI 分别负责标准制定、翻译、评分、除错、校对、统一化整合等高效的流水线工作。
-        </p>
-        <p>
-          在这个“智能翻译团队”中，既有来自东方的 <b>Qwen、GLM、DeepSeek</b>，也有来自西方的 <b>Gemini、GPT、Mistral</b>。这种源头各异的“团队配置”，使 AIPali 能够通过叠加了 <b>多模型交叉检验</b> 和 <b>多译本权重融合</b> 的全新翻译方式，构建出流畅的现代中文普通话译本。
-        </p>
+      <ul>
+        <li><b>多模型协作：</b>AIPali 的翻译工作由多种大语言模型组建的 <b>“智能化翻译团队”</b> 协同完成，其中既有来自东方的 Qwen、GLM，也有来自西方的 Gemini、GPT、Mistral。</li>
+        <li><b>多译本验证：</b>以 <b>古今中外多种经典译本</b> 为参考基准，通过模型间的交叉评估机制对译文进行语义验证。</li>
+        <li><b>人机协作：</b>基于高度工程化的 <b>任务支架</b>（Harness），在 <b>人类的主导</b> 之下，人类和 AI 分别负责 <b>不同层级</b> 的状态管理、标准制定、术语维护、格式化、翻译、评分、除错、校对及整合任务。</li>
+        <li><b>凝聚共识：</b>以服务于现代修行者为导向，通过 <b>多模型交叉检验</b> 和 <b>多译本语义融合</b> 持续积累最佳实践和术语共识。</li>
+        <li><b>持续优化：</b>人类和 AI 基于持续积累的最佳实践和术语共识，对已翻译文本进行 <b>评估与迭代</b>，持续优化翻译结果。</li>
+      </ul>
       </div>
     </div>
 
@@ -119,7 +120,7 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
     <Aside type="tip" title="CC BY-NC-SA 4.0 协议共享">
       <p><b>“佛陀的教导本身就是开源的，解脱的道迹应当允许任何人自由、无障碍地获取。”</b></p>
       基于这一理念，本站的所有内容、数据、代码、架构均遵循 <b><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a></b>（署名-非商业性使用-相同方式共享 4.0 国际）协议进行许可。您可以在<b>注明作者、注明出处、非商业性使用</b>的前提下，免费分发、转载和使用本站的所有成果。<br/><br/>
-      我们已将构建 AIPali 所需的全部工程代码、数据源文件托管至 <a href="https://github.com/aipali/aipali.github.io" target="_blank" rel="noopener noreferrer"><b>GitHub</b></a>，任何人都可以 Folk AIPali 分支、继承并发展下去。法灯不灭，薪火相传。
+      我们已将构建 AIPali 所需的全部工程代码、数据源文件托管至 <a href="https://github.com/aipali/aipali.github.io" target="_blank" rel="noopener noreferrer"><b>GitHub</b></a>，任何人都可以 Fork AIPali 分支，将其继承并发展下去。法灯不灭，薪火相传。
     </Aside>
 
     {/* --- 致谢 --- */}

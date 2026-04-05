@@ -260,7 +260,7 @@
       else if (plainText.length < 200) promptType = "逐句解释";
 
       // 核心修改 2: 使用新的 Prompt 模板，并嵌入 pageTitle
-      textToCopy = `你是一位南传上座部佛法（Theravada）和巴利三藏（Pali Tipitaka）专家。以下巴利语经文来自 ${pageTitle}，请对其进行${promptType}。输出语言要求为中文和巴利语对照。\n\n\`\`\`pali\n${plainText}\n\`\`\``;
+      textToCopy = `你的角色：精通南传上座部佛法（Theravada）和巴利三藏（Pali Tipitaka）的专家。\n内容出处：巴利语经文来自“${pageTitle}”\n你的任务：${promptType}\n输出格式：中文和巴利语对照\n\n\`\`\`pali\n${plainText}\n\`\`\``;
     }
 
     navigator.clipboard.writeText(textToCopy).then(() => {
