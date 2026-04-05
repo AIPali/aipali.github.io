@@ -1,6 +1,6 @@
 export const sidebarKN =[
   { label: 'KN 小部导读', link: '/sutta/kn/' },
-  { label: 'Khp 1-9 小诵经 (Khuddakapāṭhapāḷi)', link: '/sutta/kn/kn-01-khp/khp-01-09-khuddakapatha/' }, 
+  { label: 'Khp 小诵经 (Khuddakapāṭhapāḷi)', link: '/sutta/kn/kn-01-khp/khp-01-09-khuddakapatha/' }, 
   {
     label: 'Dhp 法句经 (Dhammapadapāḷi)',
     collapsed: true,

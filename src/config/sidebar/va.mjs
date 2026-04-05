@@ -2,7 +2,7 @@
 export const sidebarVA =[
   { label: 'VA 律藏导读', link: '/vinaya/' },
   {
-    label: '比丘分别 (Bhikkhuvibhaṅga)',
+    label: 'BV 比丘分别 (Bhikkhuvibhaṅga)',
     collapsed: false, // 核心内容，默认展开
     items:[
       {
@@ -66,7 +66,7 @@ export const sidebarVA =[
     ]
   },
   {
-    label: '比丘尼分别 (Bhikkhunivibhaṅga)',
+    label: 'NV 比丘尼分别 (Bhikkhunivibhaṅga)',
     collapsed: true, // 次核心大类，默认折叠
     items:[
       { label: 'NV 1 弃罪篇 (Pārājikakaṇḍa)', link: '/vinaya/nv/kanda-01-parajika/' },
@@ -93,7 +93,7 @@ export const sidebarVA =[
     ]
   },
   {
-    label: '大品 (Mahāvaggapāḷi)',
+    label: 'MV 大品 (Mahāvaggapāḷi)',
     collapsed: true, // 篇目较多，非最高频，默认折叠
     items:[
       { label: 'MV 1 大篇 (Mahākhandhaka)', link: '/vinaya/mv/mv-01-mahakhandhaka/' },
@@ -109,7 +109,7 @@ export const sidebarVA =[
     ]
   },
   {
-    label: '小品 (Cūḷavaggapāḷi)',
+    label: 'CV 小品 (Cūḷavaggapāḷi)',
     collapsed: true, // 篇目较多，非最高频，默认折叠
     items:[
       { label: 'CV 1 羯磨篇 (Kammakkhandhaka)', link: '/vinaya/cv/cv-01-kamma/' },
@@ -127,7 +127,7 @@ export const sidebarVA =[
     ]
   },
   {
-    label: '附随 (Parivārapāḷi)',
+    label: 'PV 附随 (Parivārapāḷi)',
     collapsed: true, // 律藏附录，极长(21项)，强制默认折叠
     items:[
       { label: 'PV 1 比丘分别 (Bhikkhuvibhaṅga)', link: '/vinaya/pv/pv-01-bhikkhuvibhanga/' },
@@ -154,7 +154,7 @@ export const sidebarVA =[
     ]
   },
   {
-    label: '波罗提木叉 (Dvemātikāpāḷi)',
+    label: 'DV 波罗提木叉 (Dvemātikāpāḷi)',
     collapsed: false, // 极端高频诵读区域，仅两项，默认展开
     items:[
       { label: 'DV 1 比丘波罗提木叉 (Bhikkhupātimokkha)', link: '/vinaya/dv/dv-01-bhikkhupatimokkha/' },
