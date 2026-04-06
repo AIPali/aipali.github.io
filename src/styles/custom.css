@@ -243,8 +243,29 @@ ul.starlight-sidebar-topics + * {
 }
 
 /* ==========================================================
-   5. 段落编号 (.p-ref) 定位与排版修复
+   5. 正文内容区样式 (Blockquote & .p-ref)
 ========================================================== */
+/* --- Blockquote 现代工业风样式 (方案一) --- */
+.sl-markdown-content blockquote {
+    /* 移除 Starlight 默认左边框 */
+    border-inline-start: none;
+    /* 增加上下边框：上粗下细，增加现代设计感 */
+    border-top: 3px solid var(--sl-color-gray-2);
+    border-bottom: 1px solid var(--sl-color-gray-5);
+    /* 极简背景，与 Starlight 默认背景拉开微弱差距 */
+    background-color: var(--sl-color-gray-6);
+    padding: 2rem 1.5rem;
+    margin: 2.5rem 0;
+    /* 提升高级感 */
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+}
+
+.sl-markdown-content blockquote p {
+    color: var(--sl-color-white);
+}
+
+/* --- 段落编号 (.p-ref) 定位与排版修复 --- */
 /* 内容区基础留白与相对定位 */
 .sl-markdown-content {
   position: relative;
@@ -276,7 +297,7 @@ ul.starlight-sidebar-topics + * {
   pointer-events: none;
 }
 
-/* --- 多级列表缩进找补 (按 Starlight 默认 40px 层级递进) --- */
+/* 多级列表缩进找补 */
 .sl-markdown-content li > .p-ref,
 .sl-markdown-content li > p .p-ref { left: calc(-3rem - 40px); }
 
@@ -286,40 +307,35 @@ ul.starlight-sidebar-topics + * {
 .sl-markdown-content li li li > .p-ref,
 .sl-markdown-content li li li > p .p-ref { left: calc(-3rem - 120px); }
 
-.sl-markdown-content li li li li > .p-ref,
-.sl-markdown-content li li li li > p .p-ref { left: calc(-3rem - 160px); }
+/* ... 可继续添加更多列表层级 */
 
-.sl-markdown-content li li li li li > .p-ref,
-.sl-markdown-content li li li li li > p .p-ref { left: calc(-3rem - 200px); }
-
-/* --- 引用块与提示框缩进找补 (避开左侧竖线边框) --- */
-/* blockquote 及 alert 左侧内边距约 1rem */
+/* 引用块与提示框缩进找补 */
+/* 【已修正】Blockquote 左内边距为 1.5rem，因此补偿值修正为 -1.5rem */
 .sl-markdown-content blockquote > .p-ref,
-.sl-markdown-content blockquote > p .p-ref { left: calc(-3rem - 1rem); }
+.sl-markdown-content blockquote > p .p-ref { left: calc(-3rem - 1.5rem); }
 
+/* 【已修正】嵌套 Blockquote 的情况 */
 .sl-markdown-content blockquote blockquote > .p-ref,
-.sl-markdown-content blockquote blockquote > p .p-ref { left: calc(-3rem - 2.4rem); }
-
-.sl-markdown-content blockquote blockquote blockquote > .p-ref,
-.sl-markdown-content blockquote blockquote blockquote > p .p-ref { left: calc(-3rem - 3.6rem); }
+.sl-markdown-content blockquote blockquote > p .p-ref { left: calc(-3rem - 1.5rem - 1.5rem); }
 
 .sl-markdown-content .markdown-alert > .p-ref,
 .sl-markdown-content .markdown-alert > p .p-ref { left: calc(-3rem - 1rem); }
 
-/* --- 交叉嵌套场景缩进找补 --- */
-/* 列表内嵌套引用块 */
+/* 交叉嵌套场景缩进找补 */
+/* 【已修正】列表内嵌套引用块 */
 .sl-markdown-content li blockquote > .p-ref,
-.sl-markdown-content li blockquote > p .p-ref { left: calc(-3rem - 40px - 1.2rem); }
+.sl-markdown-content li blockquote > p .p-ref { left: calc(-3rem - 40px - 1.5rem); }
 
-/* 引用块内嵌套列表 */
+/* 【已修正】引用块内嵌套列表 */
 .sl-markdown-content blockquote li > .p-ref,
-.sl-markdown-content blockquote li > p .p-ref { left: calc(-3rem - 1.2rem - 40px); }
+.sl-markdown-content blockquote li > p .p-ref { left: calc(-3rem - 1.5rem - 40px); }
 
 /* 移动端屏幕下隐藏段落编号并缩减正文边距 */
 @media (max-width: 50rem) {
   .sl-markdown-content { padding-left: 0.5rem !important; }
   .p-ref { display: none !important; }
 }
+
 
 /* ==========================================================
    6. 其它插件/工具调整 (示例：Algolia DocSearch)
