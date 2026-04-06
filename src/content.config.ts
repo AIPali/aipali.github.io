@@ -3,22 +3,25 @@ import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 import { docSearchI18nSchema } from '@astrojs/starlight-docsearch/schema';
 
+// ... 其他 import 保持不变
+
 export const collections = {
   docs: defineCollection({
     loader: docsLoader(),
     schema: docsSchema({
-      // 核心：告诉 Astro 5 保留你的这些自定义字段，千万别删！
       extend: z.object({
         tags: z.array(z.string()).optional(),
         
-        // 顺手把你 frontmatter 里的其他业务字段也保护起来
+        // 保护这些字段不被 Astro 过滤
         id: z.string().optional(),
         collection: z.string().optional(),
         vagga: z.string().optional(),
         reference: z.string().optional(),
         curator: z.string().optional(),
+        version: z.union([z.string(), z.number()]).optional(), 
       })
     }),
+
     i18n: defineCollection({
       type: 'data',
       schema: i18nSchema({

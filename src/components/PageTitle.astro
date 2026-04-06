@@ -1,18 +1,17 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
-import { getTagsData } from '../utils/getTags'; // 引入工具函数
+import { getTagsData } from '../utils/getTags'; // 引入你的工具函数
 
 const baseUrl = import.meta.env.BASE_URL;
 
-// 1. 调用封装好的函数（内部会自动处理缓存）
+// 1. 获取 Tag 缓存数据
 const { tagCounts, allDocs } = await getTagsData();
 
-// 2. 物理 URL 反查当前文档 (优化后的逻辑)
+// 2. 物理 URL 反查当前文档
 let currentDocTags: string[] =[];
 const currentPath = Astro.url.pathname;
 
-// 剥离 BaseUrl 并标准化路径
 let logicPath = currentPath;
 if (baseUrl !== '/' && currentPath.startsWith(baseUrl)) {
   logicPath = currentPath.replace(baseUrl, '');
@@ -28,27 +27,58 @@ const currentDoc = allDocs.find(doc => {
 if (currentDoc?.data?.tags) {
   const rawTags = currentDoc.data.tags;
   currentDocTags = Array.isArray(rawTags) ? rawTags : [rawTags];
-  
-  // 根据全局频次排序
   currentDocTags.sort((a, b) => (tagCounts[b] || 0) - (tagCounts[a] || 0));
 }
 
-// 提取其他重要的 Frontmatter
+// 3. 提取所有的 Frontmatter 数据
 const fmDescription = currentDoc?.data?.description || '';
-const fmReference = currentDoc?.data?.reference || '';
 const fmCollection = currentDoc?.data?.collection || '';
+const fmVagga = currentDoc?.data?.vagga || '';
+const fmReference = currentDoc?.data?.reference || '';
+const fmVersion = currentDoc?.data?.version || '';
+
+// 判断是否需要显示元数据图标（只要有其中一项就显示）
+const hasMetadata = fmCollection || fmVagga || fmReference || fmVersion;
 ---
 
-<Default {...Astro.props} />
+<!-- 1. 标题与图标区域 -->
+<div class="title-wrapper">
+  <!-- 给标题右侧预留出图标的空间，防止标题太长与图标重叠 -->
+  <div class="title-content">
+    <Default {...Astro.props} />
+  </div>
 
+  <!-- 独立定位的 Widget -->
+  {hasMetadata && (
+    <metadata-widget class="meta-widget">
+      <!-- 触发按钮：一个低调的 Info/文档 图标 -->
+      <button class="meta-toggle-btn" aria-label="查看文档元数据" title="文档元数据">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 16a2 2 0 1 1-2 2a2 2 0 0 1 2-2m0-6a2 2 0 1 1-2 2a2 2 0 0 1 2-2m0-6a2 2 0 1 1-2 2a2 2 0 0 1 2-2" />
+        </svg>
+      </button>
+
+      <!-- 弹出内容区 (对 Algolia 爬虫可见) -->
+      <div class="meta-popover" hidden>
+        <div class="meta-popover-inner">
+          <div class="meta-header">Meta Data</div>
+          <ul class="meta-list">
+            {fmCollection && <li><span class="meta-label">Collection:</span> <span class="meta-value">{fmCollection}</span></li>}
+            {fmVagga && <li><span class="meta-label">Vagga:</span> <span class="meta-value">{fmVagga}</span></li>}
+            {fmReference && <li><span class="meta-label">Reference:</span> <span class="meta-value">{fmReference}</span></li>}
+            {fmVersion && <li><span class="meta-label">Version:</span> <span class="meta-value">{fmVersion}</span></li>}
+          </ul>
+        </div>
+      </div>
+    </metadata-widget>
+  )}
+</div>
+
+<!-- 2. Tag 区域 (原样保留，布局独立) -->
 {currentDocTags.length > 0 && (
   <div class="tag-row" data-pagefind-ignore>
     {currentDocTags.map((tag) => (
-      <a 
-        href={`${baseUrl}tags/${tag}/`} 
-        class="tag-item"
-        data-pagefind-filter="tag" 
-      >
+      <a href={`${baseUrl}tags/${tag}/`} class="tag-item" data-pagefind-filter="tag">
         <span class="tag-name">{tag}</span>
         <span class="tag-count">{tagCounts[tag] || 0}</span>
       </a>
@@ -56,17 +86,127 @@ const fmCollection = currentDoc?.data?.collection || '';
   </div>
 )}
 
-<!-- 注入隐藏的 Metadata 供 DocSearch 和 Pagefind 抓取 -->
+<!-- 3. 隐藏注入：为 DocSearch(补充) 和 Pagefind 提供深度支持 -->
 <div 
   id="docsearch-metadata" 
   style="display: none;"
   data-description={fmDescription}
-  data-reference={fmReference}
   data-collection={fmCollection}
-  data-pagefind-meta={`description:${fmDescription}, reference:${fmReference}, collection:${fmCollection}`}
+  data-vagga={fmVagga}
+  data-reference={fmReference}
+  data-version={fmVersion}
+  data-pagefind-meta={`description:${fmDescription}, collection:${fmCollection}, vagga:${fmVagga}, reference:${fmReference}, version:${fmVersion}`}
 ></div>
 
+<!-- 样式 -->
 <style>
+  /* 标题包裹层：建立相对定位上下文 */
+  .title-wrapper {
+    position: relative;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* 给 H1 留出安全边距，防止长标题覆盖图标 */
+  .title-content {
+    padding-right: 0.5rem; 
+  }
+
+  /* Widget 绝对定位到标题首行右侧 */
+  .meta-widget {
+    position: absolute;
+    top: 0.85rem; /* 根据你字体的 line-height 微调，使其完美对齐标题第一行中心 */
+    right: -0.5rem;
+    z-index: 5; /* 确保悬浮在内容之上 */
+  }
+
+  /* 按钮样式：干净、融入背景 */
+/* 按钮样式：极致精简，无背景无边框 */
+  .meta-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* 去掉背景 */
+    border: none;             /* 去掉边框 */
+    padding: 0;
+    width: 1.2rem;            /* 缩小尺寸 */
+    height: 1.2rem;           /* 缩小尺寸 */
+    color: var(--sl-color-gray-4); /* 使用较淡的灰色 */
+    cursor: pointer;
+    transition: color 0.2s ease;
+    opacity: 0.7;             /* 默认半透明，更不醒目 */
+  }
+
+  .meta-toggle-btn:hover, 
+  .meta-toggle-btn:active {
+    color: var(--sl-color-accent); /* 只有鼠标悬停时才变色 */
+    opacity: 1;                    /* 悬停时完全显示 */
+    background: transparent;       /* 确保悬停也没有背景 */
+  }
+
+  /* 弹出面板样式 */
+  .meta-popover {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 240px;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    /* 动画过渡 */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  /* 隐藏状态 */
+  .meta-popover[hidden] {
+    display: block !important; /* 覆盖默认的 display:none 以支持动画，并确保爬虫能读取 */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+  }
+
+  .meta-popover-inner {
+    padding: 1rem;
+  }
+
+  .meta-header {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-2);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--sl-color-gray-6);
+    padding-bottom: 0.3rem;
+  }
+
+  .meta-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .meta-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .meta-label {
+    color: var(--sl-color-gray-3);
+  }
+
+  .meta-value {
+    color: var(--sl-color-text);
+    font-family: var(--sl-font-mono);
+    text-align: right;
+  }
+
+  /* Tag 样式保持不变 */
   .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; margin-bottom: -0.8rem; }
   .tag-item { display: inline-flex; align-items: center; font-size: 0.7rem; text-decoration: none; background-color: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); border-radius: 4px; color: var(--sl-color-text-accent); transition: all 0.2s ease; overflow: hidden; }
   .tag-item:hover { border-color: var(--sl-color-accent); background-color: var(--sl-color-accent-low); transform: translateY(-1px); }
@@ -74,3 +214,50 @@ const fmCollection = currentDoc?.data?.collection || '';
   .tag-count { padding: 0.1rem 0.3rem; background-color: var(--sl-color-gray-6); color: var(--sl-color-gray-3); border-left: 1px solid var(--sl-color-gray-5); font-variant-numeric: tabular-nums; }
   .tag-item:hover .tag-count { background-color: var(--sl-color-accent); color: white; border-left-color: var(--sl-color-accent); }
 </style>
+
+<!-- 客户端交互逻辑：封装为 Web Component -->
+<script>
+  class MetadataWidget extends HTMLElement {
+    constructor() {
+      super();
+      const btn = this.querySelector('.meta-toggle-btn');
+      const popover = this.querySelector('.meta-popover');
+
+      if (!btn || !popover) return;
+
+      // 切换显示状态
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // 阻止事件冒泡到 document
+        const isHidden = popover.hasAttribute('hidden');
+        if (isHidden) {
+          popover.removeAttribute('hidden');
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          popover.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // 点击外部区域关闭
+      document.addEventListener('click', (e) => {
+        if (!this.contains(e.target as Node)) {
+          popover.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // 按 Esc 键关闭
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !popover.hasAttribute('hidden')) {
+          popover.setAttribute('hidden', '');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  }
+
+  // 注册组件 (Astro View Transitions 兼容写法)
+  if (!customElements.get('metadata-widget')) {
+    customElements.define('metadata-widget', MetadataWidget);
+  }
+</script>
