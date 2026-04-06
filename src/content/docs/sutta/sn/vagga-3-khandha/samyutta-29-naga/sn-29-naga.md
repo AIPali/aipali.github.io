@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 29, 342-391"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [龙, 四生, 业力, 布施, 布萨]
 ---
 

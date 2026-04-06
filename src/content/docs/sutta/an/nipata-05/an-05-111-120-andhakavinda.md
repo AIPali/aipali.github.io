@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.111-120"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五法, 戒律, 正定, 比丘, 比丘尼, 随从, 根律仪, 正见]
 ---
 

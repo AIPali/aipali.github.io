@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Milindapañhapāḷi"
 reference: "Miln 5"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [譬喻, 阿罗汉, 修行, 德行, 弥兰王, 龙军, 品质, 观察]
 ---
 

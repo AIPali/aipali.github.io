@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 39, 415-434"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [沙门, 梵行, 修行次第, 五盖, 四禅, 三明, 漏尽智, 阿罗汉, 惭愧, 解脱]
 ---
 

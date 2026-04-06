@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Itivuttakapāḷi"
 reference: "Iti 4.1-13, 100-112"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [如是语, 四法, 四圣谛, 四种资具, 父母恩德, 四威仪, 如来]
 ---
 

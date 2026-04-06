@@ -5,7 +5,8 @@ description: "本品详尽剖析了智慧（慧）、神通、现观、远离、
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 22-31, 1-42"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [大慧, 神通, 现观, 四念住, 毗婆舍那, 十六慧]
 ---
 

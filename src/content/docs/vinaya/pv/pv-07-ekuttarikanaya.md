@@ -5,7 +5,8 @@ description: "《附随》第七章，采用从一到十一的数字递增方式
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 7, 321-331"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 增一法, 戒律, 僧务决议, 过患, 学处, 羯磨]
 ---
 

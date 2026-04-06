@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 14, 175-180"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["欲乐", "苦蕴", "烦恼", "尼干子", "邪见", "禅悦", "出离", "摩诃那摩", "贪瞋痴"]
 ---
 

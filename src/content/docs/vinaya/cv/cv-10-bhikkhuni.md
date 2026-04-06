@@ -5,7 +5,8 @@ description: "详细记述佛教比丘尼僧团的缘起，从摩诃波阇波提
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 10, 402-436"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [比丘尼, 八敬法, 摩诃波阇波提, 乔达弥, 阿难, 女性出家, 具足戒, 僧务决议, 戒律]
 ---
 

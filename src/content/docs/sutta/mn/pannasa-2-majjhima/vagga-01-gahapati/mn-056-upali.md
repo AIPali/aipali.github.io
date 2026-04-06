@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 56, i 371-387"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业, 意业, 身业, 口业, 优波离, 尼乾子, 辩论, 皈依, 耆那教, 意图]
 ---
 

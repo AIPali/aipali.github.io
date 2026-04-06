@@ -5,7 +5,8 @@ description: "佛陀教导在憍赏弥争吵不休的比丘们“六和敬”的
 collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 48, 491-500"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [六和敬, 僧团和合, 争论, 慈心, 正见, 入流果, 圣弟子, 憍赏弥]
 ---
 

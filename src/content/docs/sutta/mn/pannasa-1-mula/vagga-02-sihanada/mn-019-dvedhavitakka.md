@@ -5,7 +5,8 @@ description: "佛陀回顾自己作为菩萨时，如何通过将念头分为善
 collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 19, 206-215"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [双想, 正思维, 八正道, 禅那, 三明, 菩萨修行, 譬喻, 宿命明, 天眼明, 漏尽明]
 ---
 

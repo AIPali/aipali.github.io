@@ -5,7 +5,8 @@ description: "佛陀以牧牛者需具备的十一项技能为譬喻，教导比
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 33, 346-349"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [譬喻, 牧牛者, 十一法, 五蕴, 根律仪, 八正道, 四念住]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.23-32, 23-32"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 一切, 厌患, 离欲, 缘起, 涅槃, 燃烧, 计度]
 ---
 

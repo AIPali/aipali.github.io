@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.51-60, 1121-1130"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四圣谛, 现观, 入流果, 须陀洹, 轮回, 灭苦, 苦蕴, 修习]
 ---
 

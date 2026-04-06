@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 117, 136-143"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["八正道", "正定", "正见", "世间", "出世间", "大四十法门", "十正道", "十邪道"]
 ---
 

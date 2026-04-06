@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 27, 111-140"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [种姓制度, 世界起源, 社会演化, 婆罗门, 法, 平等, 众生, 佛陀]
 ---
 

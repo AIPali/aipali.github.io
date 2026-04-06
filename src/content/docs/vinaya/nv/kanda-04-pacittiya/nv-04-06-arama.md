@@ -5,7 +5,8 @@ description: "本品包含比丘尼单堕戒第五十一至六十条，主要规
 collection: "Bhikkhunīvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "NV 4.6, 1021-1066"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [比丘尼戒, 单堕, 教诫, 安居, 自恣, 僧团关系, 律藏]
 ---
 

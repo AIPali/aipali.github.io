@@ -5,7 +5,8 @@ description: "本篇是佛陀与持律第一的优波离尊者之间关于戒律
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 17, 417-469"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [优波离, 戒律, 僧团, 羯磨, 布萨, 自恣, 依止, 分裂僧团, 比丘尼]
 ---
 

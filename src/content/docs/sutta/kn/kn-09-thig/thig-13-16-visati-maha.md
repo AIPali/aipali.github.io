@@ -5,7 +5,8 @@ description: "《长老尼偈》的最后部分，收录了庵婆波利、苏巴
 collection: "Khuddaka Nikāya"
 vagga: "Therīgāthā"
 reference: "Thig 13-16, 252-524"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [长老尼偈, 庵婆波利, 苏巴, 伊悉达西, 善慧, 色身无常, 业力, 轮回, 出离心, 证悟]
 ---
 

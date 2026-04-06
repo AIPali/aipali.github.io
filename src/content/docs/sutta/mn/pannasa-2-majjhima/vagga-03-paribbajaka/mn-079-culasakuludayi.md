@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 79, 269-277"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [善生优陀夷, 外道, 最上色光, 极乐世界, 四禅, 三明, 漏尽, 梵行, 尼乾陀·若提子]
 ---
 

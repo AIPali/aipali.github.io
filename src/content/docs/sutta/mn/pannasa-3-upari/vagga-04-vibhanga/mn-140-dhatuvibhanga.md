@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 140, 342-370"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六界, 四住处, 弗区沙提, 舍, 涅槃, 无我, 观禅, 毗婆舍那, 元素分析]
 ---
 

@@ -5,7 +5,8 @@ description: "《经集》第五品，记载了巴婆利婆罗门的十六位上
 collection: "Khuddaka Nikāya"
 vagga: "Suttanipāta"
 reference: "Snp 55-73, 982-1155"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [经集, 彼岸道品, 涅槃, 提问, 十六声闻, 缘起, 智慧]
 ---
 

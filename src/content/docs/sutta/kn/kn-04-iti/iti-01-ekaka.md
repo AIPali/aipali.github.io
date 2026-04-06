@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Itivuttakapāḷi"
 reference: "Iti 1.1-27, 1-27"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [如是语, 贪瞋痴, 阿那含, 如理作意, 善友, 和合僧, 慈心, 布施]
 ---
 

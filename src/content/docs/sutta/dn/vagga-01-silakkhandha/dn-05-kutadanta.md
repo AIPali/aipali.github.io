@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 5, 323-358"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [祭祀, 护生, 布施, 戒律, 四圣果, 缘起]
 ---
 

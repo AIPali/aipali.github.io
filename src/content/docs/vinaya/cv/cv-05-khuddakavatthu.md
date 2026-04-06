@@ -5,7 +5,8 @@ description: "本篇汇集了佛陀针对比丘日常生活中各种“小事”
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 5, 243-293"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [戒律, 生活规范, 僧团纪律, 沐浴, 仪容, 钵, 神通, 覆钵, 耆婆]
 ---
 

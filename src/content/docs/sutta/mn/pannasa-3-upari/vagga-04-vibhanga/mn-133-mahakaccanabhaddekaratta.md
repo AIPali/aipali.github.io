@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 133, 279-285"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [贤善一夜, 大迦旃延, 活在当下, 六根, 正念, 时间, 执着, 三弥提]
 ---
 

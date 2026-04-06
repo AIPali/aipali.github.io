@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 34, 662-716"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [禅定, 三摩地, 入定, 住定, 善巧, 四类修定者]
 ---
 

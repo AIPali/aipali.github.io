@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 8, 381-405"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [苦行, 戒定慧, 四圣果, 狮子吼, 沙门, 外道]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.61-70, 531-540"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 觉分, 结缚, 随眠, 漏尽, 慧根, 不还果]
 ---
 

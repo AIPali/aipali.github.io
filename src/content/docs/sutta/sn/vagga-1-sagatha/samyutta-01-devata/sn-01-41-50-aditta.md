@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.41-50, 41-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天神, 布施, 功德, 戒行, 八正道, 缘起, 涅槃]
 ---
 

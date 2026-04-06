@@ -5,7 +5,8 @@ description: "本品收录了十一经，主要开示了六念法门、十一法
 collection: "Aṅguttara Nikāya"
 vagga: "Ekādasaka"
 reference: "AN 11.11-21"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [六念, 摩诃男, 慈心解脱, 三摩地, 十一法, 牧牛者]
 ---
 

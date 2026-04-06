@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 18, 188-201"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [罗睺罗, 无常, 苦, 无我, 随眠, 我执, 五蕴, 六处]
 ---
 

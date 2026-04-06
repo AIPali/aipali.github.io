@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 83, 308-316"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [本生故事, 传承, 出家, 八正道, 四梵住, 无常, 业果, 尼弥王]
 ---
 

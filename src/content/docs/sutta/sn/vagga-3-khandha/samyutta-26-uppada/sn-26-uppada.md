@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 26, 312-321"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [生相应, 苦的生灭, 六处, 五蕴, 十八界, 缘起]
 ---
 

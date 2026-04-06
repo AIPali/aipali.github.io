@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 38, 314-329"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [阎浮车, 舍利弗, 涅槃, 阿罗汉, 八正道, 四圣谛, 五取蕴]
 ---
 

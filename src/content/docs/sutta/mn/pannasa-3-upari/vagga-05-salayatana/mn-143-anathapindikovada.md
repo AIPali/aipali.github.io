@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 143, 383-388"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [给孤独, 舍利弗, 临终教诲, 六处, 不执取, 智慧, 天人, 祇树给孤独园, 缘起, 五蕴]
 ---
 

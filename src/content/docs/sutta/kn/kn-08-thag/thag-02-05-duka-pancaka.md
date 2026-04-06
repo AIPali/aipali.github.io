@@ -5,7 +5,8 @@ description: "《长老偈》的二偈集、三偈集、四偈集与五偈集，
 collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 2-5, 121-374"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [长老偈, 证悟, 阿罗汉, 无常, 禅修, 止观, 解脱, 涅槃, 心性调伏]
 ---
 

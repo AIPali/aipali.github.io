@@ -5,7 +5,8 @@ description: "增支部十集愿品，涵盖了比丘圆满戒律的诸愿、修
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.71-80"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [波罗提木叉, 禅定, 缘起, 烦恼, 嫌恨, 戒律, 闻法]
 ---
 

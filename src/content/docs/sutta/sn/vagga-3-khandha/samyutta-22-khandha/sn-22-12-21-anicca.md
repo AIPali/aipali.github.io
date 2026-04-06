@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.12-21, 12-21"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 无常, 苦, 无我, 缘起, 三法印]
 ---
 

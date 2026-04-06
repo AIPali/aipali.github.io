@@ -5,7 +5,8 @@ description: "《三藏知津》第一至第五地，系统阐述四圣谛的展
 collection: "Khuddaka Nikāya"
 vagga: "Peṭakopadesapāḷi"
 reference: "Pe 1-5, 1-59"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [三藏知津, 圣谛地, 教理地, 经说地, 简择地, 分类地, 十六理趣, 释经学]
 ---
 

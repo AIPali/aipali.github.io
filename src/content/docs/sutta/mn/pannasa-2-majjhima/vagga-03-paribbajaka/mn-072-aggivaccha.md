@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 72, 187-192"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["无记问", "邪见", "五蕴", "涅槃", "如来", "火喻", "婆蹉", "形而上学"]
 ---
 

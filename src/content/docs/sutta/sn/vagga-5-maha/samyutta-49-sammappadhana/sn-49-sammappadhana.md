@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 49, 651-704"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [正勤相应, 四正勤, 涅槃, 戒律, 三十七道品]
 ---
 

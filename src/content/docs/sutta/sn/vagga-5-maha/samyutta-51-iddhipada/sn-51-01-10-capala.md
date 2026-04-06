@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.1-10, 813-822"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四神足, 涅槃, 阿罗汉, 漏尽, 遮波罗塔, 魔王波旬, 般涅槃, 菩提分法]
 ---
 

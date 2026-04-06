@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 21, 235-246"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [比丘, 圣默然, 禅定, 阿罗汉果, 独住]
 ---
 

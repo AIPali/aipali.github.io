@@ -5,7 +5,8 @@ description: "本品阐述了从持守善戒开始，如何通过一系列自然
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.1-10"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [解脱, 戒定慧, 缘起, 功德, 舍利弗, 阿难, 不悔, 涅槃]
 ---
 

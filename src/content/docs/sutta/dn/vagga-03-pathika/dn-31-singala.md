@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 31, 242-274"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [在家律, 六方礼, 尸迦罗越, 人际关系, 善友恶友, 财富管理, 家庭伦理, 社会责任, 在家修行]
 ---
 

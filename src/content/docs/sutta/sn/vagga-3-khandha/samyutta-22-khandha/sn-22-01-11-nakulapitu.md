@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.1-11, 1-11"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 身病心不病, 贪欲, 三摩地, 无常, 苦, 无我]
 ---
 

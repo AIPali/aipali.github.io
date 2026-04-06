@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Ekakanipātapāḷi"
 reference: "AN 1.51-97"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [心性本净, 慈心, 善法, 不善法, 善友, 智慧, 放逸, 增支部]
 ---
 

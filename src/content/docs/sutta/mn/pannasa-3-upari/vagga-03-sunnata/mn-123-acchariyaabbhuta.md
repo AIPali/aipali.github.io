@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 123, 197-208"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [菩萨, 阿难, 佛陀诞生, 稀有法, 兜率天, 摩耶夫人, 正念正知]
 ---
 

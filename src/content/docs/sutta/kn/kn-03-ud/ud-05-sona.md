@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 5.1-5.10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 爱己, 次第说法, 大海八喻, 波罗提木叉, 提婆达多]
 ---
 

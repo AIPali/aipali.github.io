@@ -5,7 +5,8 @@ description: "本品包含十条比丘单堕学处，涉及饮酒、戏水、沐
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.6, 326-381"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 戒律, 波逸提, 僧团生活, 饮酒, 威仪, 娑伽陀, 净施, 坏色]
 ---
 

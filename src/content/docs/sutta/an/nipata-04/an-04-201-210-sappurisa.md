@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.201-210"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [十善业, 十不善业, 善士, 不善士, 戒律, 业, 八正道, 十圣道]
 ---
 

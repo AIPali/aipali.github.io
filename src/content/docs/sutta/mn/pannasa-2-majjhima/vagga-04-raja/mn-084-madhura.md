@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 84, 317-323"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四种姓, 平等, 业报, 大迦旃延, 社会观, 婆罗门教, 种姓制度]
 ---
 

@@ -5,7 +5,8 @@ description: "关于比丘制作和使用含蚕丝、纯黑羊毛的卧具，以
 collection: "Bhikkhuvibhaṅga"
 vagga: "Nissaggiyakaṇḍa"
 reference: "BV 4.2, 542-597"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [戒律, 舍堕, 比丘戒, 卧具, 蚕丝, 羊毛, 金钱, 交易, 僧团规范]
 ---
 

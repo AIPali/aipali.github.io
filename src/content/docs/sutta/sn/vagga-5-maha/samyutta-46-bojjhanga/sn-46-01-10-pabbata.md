@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.1-10, 182-191"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [觉支, 七觉支, 五盖, 涅槃, 修行次第, 食, 根律仪]
 ---
 

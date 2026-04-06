@@ -5,7 +5,8 @@ description: "本学处讲述了因嫉妒而恶意以无根的弃罪诽谤尊者
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.8, 380-390"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 诽谤, 戒律, 沓婆摩罗子, 慈地比丘, 僧团和谐, 波罗夷]
 ---
 

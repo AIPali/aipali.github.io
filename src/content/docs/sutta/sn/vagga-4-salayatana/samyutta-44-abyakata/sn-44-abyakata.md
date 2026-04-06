@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 44, 410-420"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [无记, 十四无记, 戏论, 缘起, 五蕴, 涅槃, 如来]
 ---
 

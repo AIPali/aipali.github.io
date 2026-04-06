@@ -5,7 +5,8 @@ description: "本篇详细阐述了比丘在触犯僧残罪后，所必须经历
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 2, 75-96"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧伽, 僧团纪律, 别住, 摩那埵, 本日治, 出罪, 僧伽羯磨, 僧团生活, 比丘戒律, 僧残罪]
 ---
 

@@ -5,7 +5,8 @@ description: "本篇详细阐述了僧团内部处理纪律问题时，进行责
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 13, 360-364"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [责问, 僧伽, 羯磨, 戒律, 质询, 布萨, 僧团纪律, 如法]
 ---
 

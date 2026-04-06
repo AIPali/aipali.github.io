@@ -5,7 +5,8 @@ description: "《经集》第三品，包含十二部经典，涵盖了出家缘
 collection: "Khuddaka Nikāya"
 vagga: "Suttanipāta"
 reference: "Snp 27-38, 407-771"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [经集, 大品, 出家, 缘起, 种姓, 二随观, 护卫经]
 ---
 

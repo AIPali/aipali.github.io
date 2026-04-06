@@ -5,7 +5,8 @@ description: "本品系统阐述了四念住作为根本修行法门，如何对
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.63-72"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四念住, 五盖, 五取蕴, 五下分结, 五上分结, 心荒芜, 心缚, 毗婆舍那, 修行障碍]
 ---
 

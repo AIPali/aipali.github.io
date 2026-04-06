@@ -5,7 +5,8 @@ description: "由智慧第一的法授比丘尼，通过与优婆塞毗舍佉的
 collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 44, 460-467"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [法授比丘尼, 毗舍佉, 五取蕴, 四圣谛, 身见, 八正道, 想受灭定, 受, 随眠, 涅槃]
 ---
 

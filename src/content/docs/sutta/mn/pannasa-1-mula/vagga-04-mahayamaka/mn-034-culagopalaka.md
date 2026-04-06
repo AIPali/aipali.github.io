@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 34, 350-352"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [譬喻, 正见, 邪见, 圣者, 四圣果, 解脱, 涅槃, 魔罗, 善知识]
 ---
 

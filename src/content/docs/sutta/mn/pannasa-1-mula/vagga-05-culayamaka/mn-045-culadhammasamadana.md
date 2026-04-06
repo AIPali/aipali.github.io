@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 45, 468-472"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["四种受法", "因果", "业报", "享乐主义", "苦行", "禅那", "正见", "譬喻", "修行方法"]
 ---
 

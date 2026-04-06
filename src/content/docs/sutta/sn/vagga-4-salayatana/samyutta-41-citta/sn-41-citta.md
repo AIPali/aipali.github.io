@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 41, 343-352"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [质多居士, 结缚, 身见, 神通, 想受灭定, 心解脱, 四圣果]
 ---
 

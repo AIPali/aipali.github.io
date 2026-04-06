@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 125, 213-222"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["调御", "譬喻", "出离", "心一境性", "奢耶阇那", "五欲", "四念住", "禅定", "解脱次第"]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 6, 172-186"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [梵天, 劝请说法, 缘起, 诸天, 涅槃, 提婆达多, 神通]
 ---
 

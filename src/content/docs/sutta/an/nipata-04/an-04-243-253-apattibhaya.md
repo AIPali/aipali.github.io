@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.243-253"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [破僧, 戒律, 威仪, 梵行, 卧姿, 见闻觉知]
 ---
 

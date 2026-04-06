@@ -5,7 +5,8 @@ description: "佛陀以寻找树心木材的譬喻，阐释修行的次第与真
 collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 29, 307-311"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [心材譬喻, 修行次第, 解脱, 提婆达多, 戒定慧, 利养, 我慢, 不动心解脱]
 ---
 

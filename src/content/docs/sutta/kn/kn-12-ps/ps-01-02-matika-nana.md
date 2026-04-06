@@ -5,7 +5,8 @@ description: "无碍解道之首，列举并详细解析了七十三种智，涵
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 1-2, 1-121"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [无碍解道, 七十三智, 智慧, 闻思修, 缘起, 佛智, 一切智智]
 ---
 

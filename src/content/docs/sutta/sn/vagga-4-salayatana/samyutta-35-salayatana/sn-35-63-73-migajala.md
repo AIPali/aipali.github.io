@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.63-73, 63-73"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 鹿网, 单独住者, 魔罗, 现见之法, 我见, 缘起, 厌离, 无常, 解脱]
 ---
 

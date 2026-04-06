@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 37, 280-313"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [女人, 业果, 五力, 戒德, 婚姻, 善趣, 恶趣, 增长]
 ---
 

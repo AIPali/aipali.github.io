@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 112, 98-104"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [阿罗汉, 验证, 六净, 五蕴, 六界, 六处, 我慢, 解脱, 四圣谛, 漏]
 ---
 

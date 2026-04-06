@@ -5,7 +5,8 @@ description: "《经集》第一品，包含十二部早期佛教核心经文，
 collection: "Khuddaka Nikāya"
 vagga: "Suttanipāta"
 reference: "Snp 1-12, 1-223"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [经集, 蛇品, 独居修行, 慈心, 戒行, 婆罗门, 缘起]
 ---
 

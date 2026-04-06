@@ -5,7 +5,8 @@ description: "本品详细阐述了十不善业与十善业的果报，以及如
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.211-220"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [十不善业, 十善业, 业果报, 故思业, 慈心解脱, 四无量心, 不还果]
 ---
 

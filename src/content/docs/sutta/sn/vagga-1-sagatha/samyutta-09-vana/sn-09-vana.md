@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 9, 221-234"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天神, 森林, 警觉, 禅修, 远离, 独处, 不放逸, 戒德]
 ---
 

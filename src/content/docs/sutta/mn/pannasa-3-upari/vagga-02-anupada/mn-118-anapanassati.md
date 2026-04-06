@@ -5,7 +5,8 @@ description: "佛陀关于入出息念（安那般那）的根本教导，详细
 collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 118, 144-152"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [入出息念, 安那般那, 四念住, 七觉支, 十六胜行, 法随法行, 觉支, 念住]
 ---
 

@@ -5,7 +5,8 @@ description: "波斯匿王与佛陀的深度对话，探讨了关于“一切知
 collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 90, 375-382"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四姓平等, 五精勤支, 解脱, 波斯匿王, 一切知, 天人, 梵天, 阿难, 譬喻]
 ---
 

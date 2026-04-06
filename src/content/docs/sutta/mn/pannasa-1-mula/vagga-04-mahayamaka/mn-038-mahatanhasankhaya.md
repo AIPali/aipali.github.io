@@ -5,7 +5,8 @@ description: "佛陀纠正茶帝比丘关于“识”是恒常轮回主体的邪
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 38, 396-414"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [缘起, 识, 常见, 渴爱, 四食, 十二因缘, 五盖, 四禅, 解脱,]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 55, 51-55"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["三净肉", "耆婆迦", "慈心", "业报", "比丘戒律", "饮食", "诽谤", "四无量心"]
 ---
 

@@ -5,7 +5,8 @@ description: "因比丘修不净观厌世自杀，佛陀制定了禁止故意或
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.3, 162-192"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [弃罪, 波罗夷, 杀生, 不净观, 安般念, 戒律, 自杀, 教唆杀人, 堕胎, 安乐死]
 ---
 

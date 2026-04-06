@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 13, 518-559"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [三明婆罗门, 梵天, 四无量心, 慈悲喜舍, 正道, 邪见, 譬喻, 婆悉吒, 跋罗陀皤阇]
 ---
 

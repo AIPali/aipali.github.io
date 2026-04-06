@@ -5,7 +5,8 @@ description: "本集以偈颂问答的形式，详细阐述了僧团中进行呵
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 12, 359"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [呵责, 僧团纪律, 质询, 毗奈耶, 律藏, 有耻, 无耻, 如法]
 ---
 

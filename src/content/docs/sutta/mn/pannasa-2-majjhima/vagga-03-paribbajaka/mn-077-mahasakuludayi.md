@@ -5,7 +5,8 @@ description: "佛陀阐释了弟子们真正尊敬他的原因，并非因为简
 collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 77, 237-259"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [游方者, 六师外道, 增上戒, 胜知见, 增上慧, 四圣谛, 三十七道品, 八解脱, 十遍处, 四禅, 六神通, 漏尽通]
 ---
 

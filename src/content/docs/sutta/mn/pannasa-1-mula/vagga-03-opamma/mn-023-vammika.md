@@ -5,7 +5,8 @@ description: "本经通过一个天人提出的“挖掘蚁垤”的譬喻，巧
 collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 23, 249-251"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [譬喻, 五蕴, 五盖, 无明, 修行次第, 智慧, 精进]
 ---
 

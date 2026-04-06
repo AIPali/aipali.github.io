@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 30, 312-324"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [心材, 譬喻, 修行次第, 利养, 戒定慧, 心解脱, 六师外道, 梵行]
 ---
 

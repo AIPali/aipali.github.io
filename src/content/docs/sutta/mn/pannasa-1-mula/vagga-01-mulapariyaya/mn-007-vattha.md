@@ -5,7 +5,8 @@ description: "本经以染布为譬喻，深刻阐明了净化内心、远离十
 collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 7, 70-80"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [布喻, 随烦恼, 杂染, 净信, 三宝, 四无量心, 内在净化, 阿罗汉]
 ---
 

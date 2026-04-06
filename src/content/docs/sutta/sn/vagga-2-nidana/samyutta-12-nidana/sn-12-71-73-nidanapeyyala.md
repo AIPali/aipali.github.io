@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
 reference: "SN 12.71-73, 71-73"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [缘起, 四圣谛, 沙门, 婆罗门, 勤加修习, 修行次第]
 ---
 

@@ -5,7 +5,8 @@ description: "本篇详细记述了佛陀为比丘僧团制定雨安居（瓦萨
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 3, 184-208"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [雨安居, 瓦萨, 戒律, 七日事缘, 破僧, 僧团纪律]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 88, 358-363"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["身口意", "善行", "恶行", "波斯匿王", "阿难", "布施", "三衣", "智者", "业报", "善法"]
 ---
 

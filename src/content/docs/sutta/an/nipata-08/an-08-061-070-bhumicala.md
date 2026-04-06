@@ -5,7 +5,8 @@ description: "本品涵盖八种欲求、比丘的能力、略说法要、天眼
 collection: "Aṅguttara Nikāya"
 vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.61-70"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [八集, 欲求, 四神足, 慈悲喜舍, 四念住, 八胜处, 八解脱, 地震]
 ---
 

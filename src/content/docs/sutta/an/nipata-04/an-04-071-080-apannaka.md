@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.71-80"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [无戏论, 漏尽, 善士, 四不可思议, 清净施, 业果, 惭愧]
 ---
 

@@ -5,7 +5,8 @@ description: "本品讲述了比丘为人授戒、做依止师的条件，并详
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.251-271"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [具足戒, 依止师, 无学, 五蕴, 五悭, 禅那, 四圣果, 报恩]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.77-185, 258-366"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [七觉支, 涅槃, 广说, 五上分结, 不放逸, 暴流]
 ---
 

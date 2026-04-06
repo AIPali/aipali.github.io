@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
 reference: "SN 12.11-20, 11-20"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四食, 缘起, 缘生法, 中道, 破群那, 迦旃延, 苦乐]
 ---
 

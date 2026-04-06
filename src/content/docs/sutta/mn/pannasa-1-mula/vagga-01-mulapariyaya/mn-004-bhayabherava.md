@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 4, 34-56"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [怖骇, 阿兰若, 修行, 净化, 三明, 禅定, 菩萨, 精进, 战胜恐惧]
 ---
 

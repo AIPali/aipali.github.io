@@ -5,7 +5,8 @@ description: "增支部七集跋耆品，详细阐述了导致国家、僧团及
 collection: "Aṅguttara Nikāya"
 vagga: "Sattakanipātapāḷi"
 reference: "AN 7.21-31"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [七不衰法, 僧团管理, 优婆塞, 跋耆, 阿阇世王, 七觉支]
 ---
 

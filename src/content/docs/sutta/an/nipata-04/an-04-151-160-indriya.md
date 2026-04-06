@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.151-160"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四根, 四力, 劫, 漏尽者, 身心疾病, 依欲断欲, 梵行, 正法久住]
 ---
 

@@ -5,7 +5,8 @@ description: "本经深刻阐明了什么才是真正的“沙门”（修行者
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 40, 435-438"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [沙门, 修行, 内心清净, 烦恼, 苦行, 四无量心, 形式主义, 解脱, 漏尽]
 ---
 

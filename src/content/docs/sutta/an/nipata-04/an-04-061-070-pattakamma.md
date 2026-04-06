@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.61-70"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [财富, 在家修行, 孝道, 慈心, 业果, 社会道德, 四正勤, 护卫诵]
 ---
 

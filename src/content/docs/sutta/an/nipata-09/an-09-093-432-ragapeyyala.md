@@ -5,7 +5,8 @@ description: "本品为增支部九集的总结性略品，列举了为彻底证
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.93-432"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [九种想, 九次第定, 修习, 烦恼对治, 增支部九集]
 ---
 

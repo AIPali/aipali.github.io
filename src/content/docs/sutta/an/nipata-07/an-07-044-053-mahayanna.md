@@ -5,7 +5,8 @@ description: "本品收录《增支部》七集中的十部经典，探讨了七
 collection: "Aṅguttara Nikāya"
 vagga: "Sattakanipātapāḷi"
 reference: "AN 7.44-53"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [七识住, 定资粮, 供火, 祭祀, 七想, 梵行, 婬欲偶合, 布施, 难陀母, 稀有未曾有法]
 ---
 

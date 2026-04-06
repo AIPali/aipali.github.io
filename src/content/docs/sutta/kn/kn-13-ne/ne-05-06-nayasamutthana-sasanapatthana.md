@@ -5,7 +5,8 @@ description: "本经文为《导论》的最后两品，详细解说了五种引
 collection: "Khuddaka Nikāya"
 vagga: "Nettipāḷi"
 reference: "Ne 5-6, 79-125"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [引导方法, 教学方法, 导论, 引理, 根本句, 佛法分类，十六理趣, 五引理, 十八根本句, 摩诃迦旃延]
 ---
 

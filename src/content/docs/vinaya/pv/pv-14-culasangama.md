@@ -5,7 +5,8 @@ description: "本篇详细阐述了在僧团中负责调查和裁断诤论的比
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 14, 365-367"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [诤论, 僧团, 律藏, 检问, 裁断, 僧务决议, 和合, 毗奈耶, Parivāra]
 ---
 

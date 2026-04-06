@@ -5,7 +5,8 @@ description: "《三藏知津》第六至第八地，详细阐释经义集、理
 collection: "Khuddaka Nikāya"
 vagga: "Peṭakopadesapāḷi"
 reference: "Pe 6-8, 60-120"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [三藏知津, 经义地, 适用地, 经分地, 五蕴, 缘起, 止观双运, 禅那]
 ---
 

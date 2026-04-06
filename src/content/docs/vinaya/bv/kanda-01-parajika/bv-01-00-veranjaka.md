@@ -5,7 +5,8 @@ description: "佛陀在韦兰若与婆罗门论法并阐明三明证悟，解答
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.0, 1-23"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [韦兰若, 婆罗门, 制定戒律, 波罗提木叉, 饥荒, 过去七佛, 三明]
 ---
 

@@ -5,7 +5,8 @@ description: "本学处规定了对比丘因行为不端、败坏在家信众信
 collection: "Vinaya Piṭaka"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.13, 431-442"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 污家, 羯磨, 驱出决议, 僧团纪律, 律藏, 比丘戒]
 ---
 

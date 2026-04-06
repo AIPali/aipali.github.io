@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.157-163"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [三种道, 中道, 苦行, 四念住, 四正勤, 三十七道品]
 ---
 

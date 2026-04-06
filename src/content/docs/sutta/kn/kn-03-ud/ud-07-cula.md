@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 7.1-7.10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 拉昆达卡·跋提, 爱欲, 解脱, 大迦旃延, 优填王]
 ---
 

@@ -5,7 +5,8 @@ description: "本品包含比丘尼单堕学处的第一至第十条，涉及饮
 collection: "Bhikkhunivibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "NV 4.1, 793-837"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [比丘尼戒, 单堕, 律藏, 食蒜, 身体清净, 废物处理, 娱乐]
 ---
 

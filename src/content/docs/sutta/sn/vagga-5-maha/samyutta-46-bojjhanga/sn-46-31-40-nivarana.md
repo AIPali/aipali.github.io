@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.31-40, 212-221"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [七觉支, 五盖, 如理作意, 不放逸, 随烦恼, 涅槃]
 ---
 

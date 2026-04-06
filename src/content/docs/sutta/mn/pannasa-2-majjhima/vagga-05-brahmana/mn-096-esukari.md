@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 96, 436-444"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四种姓, 婆罗门, 社会阶级, 业力, 行为, 平等, 出离, 法与律, 智慧]
 ---
 

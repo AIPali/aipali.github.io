@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.41-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [修定, 赤马天子, 四颠倒想, 名闻利养, 正法, 缘起]
 ---
 

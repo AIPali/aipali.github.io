@@ -6,6 +6,7 @@ collection: "Tipiṭaka"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [巴利三藏, 尼柯耶, 佛法架构, 新手指南, 现代人实修, 经藏, 律藏]
 ---
 

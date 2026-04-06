@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [小部, 尼柯耶, 法句经, 经集, 弥兰王问经, 早期佛教文学, 诠释学]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.23-29, 107-113"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [界, 业道, 五戒, 十善业, 八正道, 缘起]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 32, 332-345"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [修行, 阿罗汉, 舍利弗, 目犍连, 大迦叶, 阿难, 解脱, 法义辨析, 僧团]
 ---
 

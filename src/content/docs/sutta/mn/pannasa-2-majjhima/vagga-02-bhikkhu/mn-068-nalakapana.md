@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 68, 166-172"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["出家", "梵行", "信心", "授记", "四圣果", "阿那律陀", "安稳住", "修行动机"]
 ---
 

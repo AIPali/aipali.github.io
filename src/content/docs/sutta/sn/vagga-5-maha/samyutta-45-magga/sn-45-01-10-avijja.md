@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
 reference: "SN 45.1-10, 1-10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [八正道, 善友, 梵行, 无明, 涅槃, 四圣谛, 缘起]
 ---
 

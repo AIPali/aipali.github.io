@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.73-82, 73-82"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 执取, 无我, 缘起, 满月经, 乞食, 身份见]
 ---
 

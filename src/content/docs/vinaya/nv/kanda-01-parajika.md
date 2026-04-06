@@ -5,7 +5,8 @@ description: "比丘尼律的驱摈篇，包含四条最严重的戒律（弃罪
 collection: "Bhikkhunivibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "NV 1, 656-677"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [比丘尼律, 波罗夷, 驱摈, 戒律, 僧团, 孙多利难陀, 偷兰难陀]
 ---
 

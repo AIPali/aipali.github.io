@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.11-20, 823-832"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四神足, 禅定, 神通, 三摩地, 漏尽, 四正勤, 四圣果, 缘起]
 ---
 

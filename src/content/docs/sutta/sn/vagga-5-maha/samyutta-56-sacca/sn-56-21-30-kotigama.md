@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.21-30, 1091-1100"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四圣谛, 轮回, 漏尽, 现观, 阿罗汉, 正等正觉者]
 ---
 

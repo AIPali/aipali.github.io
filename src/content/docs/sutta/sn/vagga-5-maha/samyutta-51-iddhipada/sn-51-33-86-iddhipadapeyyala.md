@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Iddhipādasaṃyutta"
 reference: "SN 51.33-86, 845-898"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四神足, 三摩地, 涅槃, 广说, 结使, 上分结]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 138, 313-322"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [识, 禅那, 五蕴, 执取, 大迦旃延, 法义辨析, 散乱, 安住, 恐惧]
 ---
 

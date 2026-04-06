@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 89, 364-374"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["波斯匿王", "信心", "三宝", "僧团", "法随法行", "皈依", "在家弟子", "正法", "观察"]
 ---
 

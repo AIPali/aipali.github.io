@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Ekakanipātapāḷi"
 reference: "AN 1.1-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 一集, 五盖, 调心, 如理作意, 光洁之心]
 ---
 

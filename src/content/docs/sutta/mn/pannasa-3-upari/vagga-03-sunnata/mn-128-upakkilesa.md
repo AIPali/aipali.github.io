@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 128, 236-245"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [随烦恼, upakkilesa, 禅修障碍, 定力, 三摩地, 光明相, 阿那律, 僧团和合, 精进平衡, 心解脱]
 ---
 

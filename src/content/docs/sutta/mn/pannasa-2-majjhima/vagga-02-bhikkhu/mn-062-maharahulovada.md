@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 62, 113-121"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [罗睺罗, 五蕴, 四界分别观, 地水火风空, 安那般那念, 十六胜行, 四无量心, 禅修, 无我]
 ---
 

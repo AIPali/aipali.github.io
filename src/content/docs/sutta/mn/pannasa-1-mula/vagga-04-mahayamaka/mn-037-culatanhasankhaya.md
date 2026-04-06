@@ -5,7 +5,8 @@ description: "本经通过天帝释向佛陀的提问，揭示了通往解脱的
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 37, 390-395"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [爱尽, 解脱, 不执取, 天帝释, 大目犍连, 无常, 放逸, 神通, 三十三天]
 ---
 

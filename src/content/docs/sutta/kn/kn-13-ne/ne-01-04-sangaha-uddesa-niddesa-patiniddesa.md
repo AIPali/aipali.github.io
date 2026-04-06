@@ -5,7 +5,8 @@ description: "本经文为《导论》的前四品，详细列举并解说了用
 collection: "Khuddaka Nikāya"
 vagga: "Nettipāḷi"
 reference: "Ne 1-4, 0-78"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [导论, 十六理趣, 五引理, 十八根本句, 法义解析, 摩诃迦旃延]
 ---
 

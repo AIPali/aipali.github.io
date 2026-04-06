@@ -6,6 +6,7 @@ collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.9, 494-551"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [单堕, 波逸提, 比丘戒, 宝物, 王宫, 卧具, 衣物, 尺寸规定, 僧团威仪, 非时, 持戒]
 ---
 

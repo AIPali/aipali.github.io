@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 7, 187-208"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [婆罗门, 供养, 嗔恚, 阿罗汉, 优婆塞, 皈依]
 ---
 

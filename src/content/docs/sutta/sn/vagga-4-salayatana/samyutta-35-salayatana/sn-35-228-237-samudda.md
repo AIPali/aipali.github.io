@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.228-237, 228-237"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 欲贪, 譬喻, 苦灭, 解脱, 系缚, 缘起]
 ---
 

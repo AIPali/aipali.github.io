@@ -5,7 +5,8 @@ description: "本篇详细阐述了僧团为维护纪律而制定的七种正式
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 1, 1-74"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧团纪律, 羯磨, 呵责, 驱出, 依止, 悔过, 恶见]
 ---
 

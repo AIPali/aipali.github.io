@@ -5,7 +5,8 @@ description: "《长老偈》中篇幅较长的偈颂集，收录了憍陈如、
 collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 11-16, 597-948"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [长老偈, 证悟, 阿罗汉, 央掘摩罗, 阿那律, 憍陈如, 无常, 业力, 解脱]
 ---
 

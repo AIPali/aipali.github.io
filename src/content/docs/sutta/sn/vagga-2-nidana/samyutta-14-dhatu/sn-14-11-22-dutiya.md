@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.11-22, 95-106"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [界, 缘起, 习气, 共业, 意志, 寻思, 禅定]
 ---
 

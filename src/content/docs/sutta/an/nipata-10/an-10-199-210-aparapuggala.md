@@ -5,7 +5,8 @@ description: "本品围绕十不善业与十善业展开，教导在生活中应
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.199-210"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [增支部, 十集, 十善业, 十不善业, 善友, 业果, 修行次第]
 ---
 

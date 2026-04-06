@@ -5,7 +5,8 @@ description: "以问答形式，纲要性地总结了律藏各篇中涉及罪行
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 6, 320"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 罪行, 受具足戒, 布萨, 雨安居, 自恣, 问答]
 ---
 

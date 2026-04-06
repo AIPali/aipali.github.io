@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.71-180, 541-650"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 涅槃, 依止远离, 四念住, 结缚, 随眠]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.161-170"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [行道, 五根, 止观, 双运, 舍利弗, 大目犍连, 堪忍, 有行般涅槃]
 ---
 

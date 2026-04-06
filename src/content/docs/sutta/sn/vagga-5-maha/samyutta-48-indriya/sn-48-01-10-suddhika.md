@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.1-10, 471-480"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 三十七道品, 入流果, 阿罗汉, 四圣谛, 缘起]
 ---
 

@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 1.1-10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 菩提, 缘起, 婆罗门, 婆醯, 顿悟]
 ---
 

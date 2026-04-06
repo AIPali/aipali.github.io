@@ -5,7 +5,8 @@ description: "本品详述了十不善业与十善业，并按层次递进展开
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.221-236"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [十善业, 十不善业, 业果, 轮回, 天界, 地狱, 智与愚]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.21-30, 387-396"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 戒律, 正法久住, 有学, 无学, 不还果, 禅修]
 ---
 

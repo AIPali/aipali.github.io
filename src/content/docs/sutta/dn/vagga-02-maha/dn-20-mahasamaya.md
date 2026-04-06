@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 20, 331-343"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天神, 夜叉, 龙, 阿修罗, 魔罗, 僧团, 集会, 四大天王, 宇宙观, 迦毗罗卫城]
 ---
 

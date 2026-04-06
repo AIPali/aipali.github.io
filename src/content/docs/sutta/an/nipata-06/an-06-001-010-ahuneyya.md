@@ -5,7 +5,8 @@ description: "本品收录了关于比丘的六种特质、六神通、六根、
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.1-10"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [六随念, 摩诃那摩, 六神通, 六无上, 应请, 福田, 五根, 五力]
 ---
 

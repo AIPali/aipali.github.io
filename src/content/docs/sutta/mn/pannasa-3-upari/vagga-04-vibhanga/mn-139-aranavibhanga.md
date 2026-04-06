@@ -5,7 +5,8 @@ description: "佛陀教导如何通过远离欲乐和苦行两端、行于中道
 collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 139, 323-341"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [无诤, 中道, 八正道, 善巧方便, 语言, 须菩提, 两极, 苦行, 欲乐, 不固执]
 ---
 

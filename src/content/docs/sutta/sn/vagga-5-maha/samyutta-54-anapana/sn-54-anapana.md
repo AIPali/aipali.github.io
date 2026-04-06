@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 54, 977-996"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [入出息念, 安般念, 四念住, 七觉支, 禅定, 三摩地, 止观, 觉悟]
 ---
 

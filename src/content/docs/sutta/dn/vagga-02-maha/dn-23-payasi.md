@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 23, 406-441"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["邪见", "断灭论", "业报", "来世", "轮回", "布施", "譬喻", "鸠摩罗迦叶", "弊宿", "辩论"]
 ---
 

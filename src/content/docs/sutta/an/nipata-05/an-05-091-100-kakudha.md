@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.91-100"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五圆足, 无碍解, 入出息念, 阿罗汉, 狮子吼, 提婆达多, 清净]
 ---
 

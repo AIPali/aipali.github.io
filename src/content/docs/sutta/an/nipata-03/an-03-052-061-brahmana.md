@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.52-61"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [现法涅槃, 三明, 神变, 布施, 神通, 宿住随念智, 缘起]
 ---
 

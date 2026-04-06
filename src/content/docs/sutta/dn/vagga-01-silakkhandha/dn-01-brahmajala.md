@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 1. 1-149"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六十二见, 戒律, 缘起, 邪见, 解脱, 梵网, 常见]
 ---
 

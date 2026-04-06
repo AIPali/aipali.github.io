@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 86, 347-352"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["央掘摩罗", "转化", "业报", "慈悲", "神通", "阿罗汉", "波斯匿王", "真实语"]
 ---
 

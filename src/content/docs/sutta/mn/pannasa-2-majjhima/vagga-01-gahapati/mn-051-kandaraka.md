@@ -5,7 +5,8 @@ description: "本经通过佛陀与驯象师之子倍沙和游方僧乾达罗迦
 collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 51, 1-16"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四种人, 苦行, 中道, 渐次修行, 八正道, 四念住, 解脱, 持戒]
 ---
 

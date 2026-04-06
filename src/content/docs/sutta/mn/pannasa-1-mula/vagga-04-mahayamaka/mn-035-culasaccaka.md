@@ -5,7 +5,8 @@ description: "辩论家萨遮迦与佛陀之间关于“我”与“五蕴”的
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 35, 353-363"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五蕴, 无我, 辩论, 萨遮迦, 我见, 毗舍离, 阿说示, 常见, 离车人]
 ---
 

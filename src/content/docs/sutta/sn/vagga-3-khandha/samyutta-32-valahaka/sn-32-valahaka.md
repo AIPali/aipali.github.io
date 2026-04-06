@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 32, 550-606"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [云相应, 天人, 业力, 布施, 愿力, 宇宙观, 缘起]
 ---
 

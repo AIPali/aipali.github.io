@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.146-155, 146-155"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 业, 新旧业, 涅槃, 梵行, 无常, 苦, 无我]
 ---
 

@@ -5,7 +5,8 @@ description: "本品涵盖了关于‘无记’问题的见解、不还果的七
 collection: "Aṅguttara Nikāya"
 vagga: "Sattakanipātapāḷi"
 reference: "AN 7.54-64"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [无记, 不还果, 睡眠, 布施, 慈心, 嗔恚, 正见]
 ---
 

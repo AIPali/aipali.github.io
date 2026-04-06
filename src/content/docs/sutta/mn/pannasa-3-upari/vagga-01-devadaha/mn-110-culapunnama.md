@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 110, 91-92"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [正士, 非正士, 善恶, 业报, 正见, 布施, 十善业, 智慧, 辨识力]
 ---
 

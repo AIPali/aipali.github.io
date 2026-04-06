@@ -5,7 +5,8 @@ description: "尊者大目犍连呵斥并驱逐侵入其腹中的魔罗，通过
 collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 50, 506-513"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [魔罗, 目犍连, 神通, 业报, 拘留孙佛, 四梵住, 慈心, 不净观, 地狱, 想受灭定]
 ---
 

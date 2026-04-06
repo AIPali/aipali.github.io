@@ -5,7 +5,8 @@ description: "本篇详述了憍赏弥比丘僧团因对戒律见解不同而引
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 10, 451-477"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧团分裂, 争论, 憍赏弥, 长生王子, 忍辱, 和合, 律藏, 羯磨, 慈悲]
 ---
 

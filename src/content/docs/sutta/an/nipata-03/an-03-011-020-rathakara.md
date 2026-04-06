@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.11-20"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 三集, 车匠品, 转轮王, 三摩地, 戒定慧, 譬喻, 四圣谛]
 ---
 

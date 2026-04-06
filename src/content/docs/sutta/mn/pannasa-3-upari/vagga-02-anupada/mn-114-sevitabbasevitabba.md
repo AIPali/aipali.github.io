@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 114, 109-123"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["善法", "不善法", "身语意", "抉择", "修行准则", "舍利弗", "正见", "业"]
 ---
 

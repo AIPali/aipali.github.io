@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.93-102, 93-102"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 无常, 譬喻, 执取, 漏尽, 三摩地]
 ---
 

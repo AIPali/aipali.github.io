@@ -5,7 +5,8 @@ description: "本品包含十条单堕学处，内容涵盖故意杀生、使用
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.7, 382-432"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 戒律, 波逸提, 杀生, 水生物, 羯磨, 覆藏, 具足戒, 邪见, 僧团纪律]
 ---
 

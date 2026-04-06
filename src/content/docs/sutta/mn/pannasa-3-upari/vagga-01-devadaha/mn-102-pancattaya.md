@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 102, 21-33"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [邪见, 我见, 常见, 断见, 五蕴, 六触处, 涅槃, 出离, 形而上学, 哲学]
 ---
 

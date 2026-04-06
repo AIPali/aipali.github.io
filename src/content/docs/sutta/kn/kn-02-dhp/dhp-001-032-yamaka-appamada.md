@@ -5,7 +5,8 @@ description: "法句经第一双品阐述心为万法之源，强调意业和因
 collection: "Khuddaka Nikāya"
 vagga: "Dhammapadapāḷi"
 reference: "Dhp 1-2, 1-32"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [法句经, 双品, 不放逸品, 心, 业, 因果, 精进, 放逸, 正念, 涅槃]
 ---
 

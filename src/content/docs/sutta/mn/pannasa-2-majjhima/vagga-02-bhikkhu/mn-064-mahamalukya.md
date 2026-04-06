@@ -5,7 +5,8 @@ description: "佛陀纠正了摩罗迦子对五下分结的错误理解，并以
 collection: "Majjhima Nikāya"
 vagga: "比丘品 (Bhikkhuvagga)"
 reference: "MN 64, 129-133"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五下分结, 随眠, 身见, 禅那, 不还果, 阿罗汉, 心解脱, 慧解脱, 道迹]
 ---
 

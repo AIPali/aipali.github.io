@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.71-80"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [心解脱, 慧解脱, 法住者, 战士喻, 未来怖畏, 缘起, 戒律, 禅那]
 ---
 

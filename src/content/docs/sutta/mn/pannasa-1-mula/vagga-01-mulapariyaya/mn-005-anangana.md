@@ -5,7 +5,8 @@ description: "尊者舍利弗阐述了四种人：有烦恼而不知、有烦恼
 collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 5, 57-63"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [烦恼, 舍利弗, 目犍连, 四种人, 譬喻, 杂染, 观察心, 觉察]
 ---
 

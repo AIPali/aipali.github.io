@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.31-40, 1027-1036"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [入流支, 证净, 福德, 天道, 摩诃男, 精进, 三摩地]
 ---
 

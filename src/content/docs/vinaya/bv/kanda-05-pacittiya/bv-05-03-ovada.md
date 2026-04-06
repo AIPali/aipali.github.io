@@ -5,7 +5,8 @@ description: "本品包含十条关于比丘与比丘尼互动的戒律，旨在
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.3, 144-202"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 波逸提, 戒律, 比丘, 比丘尼, 教诫, 六群比丘, 僧团关系, 八敬法]
 ---
 

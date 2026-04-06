@@ -5,7 +5,8 @@ description: "探讨比丘在游行、居住、饮食以及与在家众交往等
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.221-230"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [长游行, 戒律, 在家众交往, 财富过患, 悭吝]
 ---
 

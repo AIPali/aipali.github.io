@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 73, 193-200"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [善与不善, 四众弟子, 阿罗汉, 神通, 奢摩他, 毗婆舍那, 婆蹉, 止观]
 ---
 

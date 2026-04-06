@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 40, 332-342"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [九次第定, 禅那, 三摩地, 目犍连, 神通, 帝释天]
 ---
 

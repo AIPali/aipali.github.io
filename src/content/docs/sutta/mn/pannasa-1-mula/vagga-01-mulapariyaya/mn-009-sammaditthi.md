@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 9, 89-104"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [正见, 舍利弗, 十二缘起, 四圣谛, 善与不善, 八正道, 烦恼, 漏, 智慧]
 ---
 

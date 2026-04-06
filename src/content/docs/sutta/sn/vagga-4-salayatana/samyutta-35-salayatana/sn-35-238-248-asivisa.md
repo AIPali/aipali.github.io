@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.238-248, 238-248"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 五蕴, 譬喻, 止观, 涅槃, 守护根门]
 ---
 

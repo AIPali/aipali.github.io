@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 13, 74-84"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [现观, 入流果, 苦尽, 譬喻, 见道, 法眼]
 ---
 

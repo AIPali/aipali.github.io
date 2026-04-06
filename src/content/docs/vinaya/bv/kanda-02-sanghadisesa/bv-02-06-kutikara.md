@@ -5,7 +5,8 @@ description: "关于比丘为自己乞求建造房舍时，在尺寸、选址和
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.6, 342-364"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: ["戒律", "僧残", "造房舍", "乞求", "僧团", "阿罗毘", "大迦叶", "尺寸规定", "选址"]
 ---
 

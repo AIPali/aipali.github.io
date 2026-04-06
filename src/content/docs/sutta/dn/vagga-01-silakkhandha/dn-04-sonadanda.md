@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 4, 300-322"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [种姓制度, 婆罗门, 戒行, 智慧, 缘起]
 ---
 

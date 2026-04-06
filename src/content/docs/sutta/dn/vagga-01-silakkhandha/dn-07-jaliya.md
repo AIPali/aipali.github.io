@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 7, 378-380"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [命与身, 十四无记, 禅那, 四沙门果, 缘起, 超越戏论]
 ---
 

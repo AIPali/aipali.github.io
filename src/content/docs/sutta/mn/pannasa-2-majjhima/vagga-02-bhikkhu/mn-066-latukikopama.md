@@ -5,7 +5,8 @@ description: "佛陀通过鹌鹑被绳索束缚的比喻，教导不同根性的
 collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 66, 148-156"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [鹌鹑喻, 执着, 舍离, 五欲, 禅那, 根性, 四禅, 四无色定, 想受灭定, 优陀夷]
 ---
 

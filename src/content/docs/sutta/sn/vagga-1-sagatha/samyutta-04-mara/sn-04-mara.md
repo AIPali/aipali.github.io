@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 4, 137-161"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [魔王波旬, 禅修, 诱惑, 恐惧, 智慧, 无执]
 ---
 

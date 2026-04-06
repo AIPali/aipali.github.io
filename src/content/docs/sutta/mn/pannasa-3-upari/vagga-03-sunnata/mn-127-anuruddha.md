@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 127, 229-235"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [阿那律, 心解脱, 无量心解脱, 大心解脱, 四无量心, 光天, 禅修, 天界, 业报]
 ---
 

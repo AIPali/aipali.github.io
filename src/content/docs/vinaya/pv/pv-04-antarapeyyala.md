@@ -5,7 +5,8 @@ description: "本品系统性地复习和纲要性地总结了《律藏》中的
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 4, 271-291"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 戒律, 罪, 等起, 僧团, 论诤, 波罗夷, 僧残]
 ---
 

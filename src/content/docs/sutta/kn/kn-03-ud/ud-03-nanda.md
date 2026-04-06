@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 3.1-10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 难陀, 业果, 圣默然, 缘起, 涅槃]
 ---
 

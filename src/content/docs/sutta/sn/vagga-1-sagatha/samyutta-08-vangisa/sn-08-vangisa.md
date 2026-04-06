@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 8, 209-220"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [婆耆沙, 偈颂, 赞叹, 对治贪欲, 舍利弗, 目犍连, 阿难]
 ---
 

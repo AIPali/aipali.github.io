@@ -5,7 +5,8 @@ description: "本品包含十部经，涵盖了对财富追求者的分类、在
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.91-100"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [财富, 十无记, 缘起, 入流果, 禅那, 优波离]
 ---
 

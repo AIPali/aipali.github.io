@@ -5,7 +5,8 @@ description: "包含了沙门法品末尾的优婆夷名录，以及庞大的《
 collection: "Aṅguttara Nikāya"
 vagga: "Rāgapeyyāla"
 reference: "AN 8.91-626"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [八正道, 八胜处, 八解脱, 烦恼, 四正勤, 止观, 贪广说品]
 ---
 

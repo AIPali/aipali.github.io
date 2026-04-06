@@ -5,7 +5,8 @@ description: "本品通过极度简略的重复模式，列举了为了知、遍
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.237-746"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [贪爱, 十想, 不净想, 十正道, 中略, 断尽烦恼]
 ---
 

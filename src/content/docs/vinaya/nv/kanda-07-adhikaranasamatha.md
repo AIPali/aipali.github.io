@@ -6,6 +6,7 @@ collection: "Bhikkhunivibhaṅga"
 vagga: "Adhikaraṇasamathā"
 reference: "NV 7, 1242"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["灭诤法", "僧团", "纷争", "和合", "波罗提木叉", "戒律", "比丘尼"]
 ---
 

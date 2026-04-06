@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.71-81, 71-81"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天人, 偈颂, 烦恼, 智慧, 信仰, 布施, 渴爱, 梵行]
 ---
 

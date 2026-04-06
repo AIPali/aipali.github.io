@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 69, 173"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["林住比丘", "僧团生活", "行为准则", "舍利弗", "正念", "智慧", "谦逊", "社区和谐"]
 ---
 

@@ -5,7 +5,8 @@ description: "本学处规定，随顺、支持企图分裂僧团的比丘，经
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.11, 417-423"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 破僧, 提婆达多, 僧伽和合, 谏告, 羯磨, 拘迦利迦, 僧团纪律]
 ---
 

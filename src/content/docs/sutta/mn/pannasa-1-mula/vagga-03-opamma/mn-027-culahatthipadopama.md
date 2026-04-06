@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 27, 288-299"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [象迹喻, 次第修行, 戒定慧, 三宝, 解脱, 四禅, 三明, 譬喻, 信心]
 ---
 

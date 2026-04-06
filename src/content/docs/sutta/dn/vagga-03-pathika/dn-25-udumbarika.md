@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 25, 49-79"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [苦行, 外道, 尼俱陀, 修行次第, 五盖, 狮子吼, 清净, 染污, 邪见]
 ---
 

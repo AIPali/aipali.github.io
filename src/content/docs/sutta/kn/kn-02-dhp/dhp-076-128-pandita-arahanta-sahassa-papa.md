@@ -5,7 +5,8 @@ description: "《法句经》第六至九品，深入探讨了智者、阿罗汉
 collection: "Khuddaka Nikāya"
 vagga: "Dhammapadapāḷi"
 reference: "Dhp 6-9, 76-128"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [法句经, 智慧, 阿罗汉, 业报, 戒律, 涅槃, 贤品, 千品, 恶品, 善恶, 漏尽]
 ---
 

@@ -5,7 +5,8 @@ description: "不定篇包含两条学处，处理比丘与女性在可疑情况
 collection: "Bhikkhuvibhaṅga"
 vagga: "Aniyatakaṇḍa"
 reference: "BV 3, 443-458"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [不定, 比丘戒, 优陀夷, 毗舍佉, 独处, 戒律, 僧团法治]
 ---
 

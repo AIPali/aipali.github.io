@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 3, 254-299"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [种姓制度, 智慧与德行, 释迦族, 傲慢, 三十二大人相, 四圣果]
 ---
 

@@ -5,7 +5,8 @@ description: "《小部》的第一部经典，包含新出家者与在家信徒
 collection: "Khuddaka Nikāya"
 vagga: "Khuddakapāṭhapāḷi"
 reference: "Khp 1-9"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [三皈依, 十学处, 慈心, 护卫经, 缘起, 功德回向]
 ---
 

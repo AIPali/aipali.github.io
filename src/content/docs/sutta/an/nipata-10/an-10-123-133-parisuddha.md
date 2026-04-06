@@ -5,7 +5,8 @@ description: "本品包含一系列简短的经文，强调十种清净之法（
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.123-133"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: ["十正性", "十邪性", "八正道", "正智", "正解脱", "清净", "善逝之律", "增支部"]
 ---
 

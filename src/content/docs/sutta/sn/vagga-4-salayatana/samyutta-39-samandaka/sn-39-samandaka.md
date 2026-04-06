@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 39, 330-331"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [涅槃, 八正道, 舍利弗, 阿罗汉果, 有身, 漏烦恼, 出家]
 ---
 

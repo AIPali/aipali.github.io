@@ -5,7 +5,8 @@ description: "本集以问答形式的偈颂，精炼地总结了《律藏》中
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 19, 474-478"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 僧务决议, 弃罪, 僧残, 舍堕, 单堕, 偈颂]
 ---
 

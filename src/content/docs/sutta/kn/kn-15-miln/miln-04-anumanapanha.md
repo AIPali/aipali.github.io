@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Milindapañhapāḷi"
 reference: "Miln 4"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [弥兰王, 龙军, 比量, 佛陀, 头陀行, 菩萨, 业果, 涅槃]
 ---
 

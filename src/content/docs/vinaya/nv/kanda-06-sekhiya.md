@@ -5,7 +5,8 @@ description: "本篇包含比丘尼僧团应遵守的“众学法”，涉及日
 collection: "Bhikkhunivibhaṅga"
 vagga: "Sekhiyakaṇḍa"
 reference: "NV 6, 1240-1241"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: ["戒律", "比丘尼戒", "众学法", "威仪", "学处", "六群比丘尼", "清净"]
 ---
 

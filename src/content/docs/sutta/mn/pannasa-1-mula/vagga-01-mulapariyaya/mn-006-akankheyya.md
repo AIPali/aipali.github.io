@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 6, 64-69"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [持戒, 愿望, 修行基础, 四圣果, 六神通, 奢摩他, 毗婆舍那, 定慧等持]
 ---
 

@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 19, 293-330"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [梵天, 帝释, 八正道, 四梵住, 轮回, 大典尊, 五髻, 本生故事]
 ---
 

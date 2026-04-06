@@ -5,7 +5,8 @@ description: "《法句经》的五个核心品，从业力与非暴力，到老
 collection: "Khuddaka Nikāya"
 vagga: "Dhammapadapāḷi"
 reference: "Dhp 10-14, 129-196"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [业力, 无常, 死亡, 自净其意, 佛陀, 解脱, 智慧, 法句经, 慈悲, 皈依]
 ---
 

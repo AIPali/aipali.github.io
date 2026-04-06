@@ -5,7 +5,8 @@ description: "本品探讨了听闻正法的态度、正法久住与忘失的因
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.151-160"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [正法, 听法, 忘失正法, 正法久住, 说法, 增支部]
 ---
 

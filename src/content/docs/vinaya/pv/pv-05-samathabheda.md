@@ -5,7 +5,8 @@ description: "本篇是巴利律藏《附随》的核心内容之一，系统性
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 5, 292-319"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [灭诤, 四种诤事, 七灭法, 僧团纪律, 论诤, 非难, 犯戒, 僧务, 毗尼, 附随]
 ---
 

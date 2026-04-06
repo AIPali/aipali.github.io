@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.31-40, 501-510"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 感受, 缘起, 四圣谛, 四禅, 想受灭定, 圣者]
 ---
 

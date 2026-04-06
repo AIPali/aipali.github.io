@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 9, 406-443"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["想", "感知", "禅定", "禅那", "灭尽定", "无记", "戏论", "自我", "我执", "四圣谛"]
 ---
 

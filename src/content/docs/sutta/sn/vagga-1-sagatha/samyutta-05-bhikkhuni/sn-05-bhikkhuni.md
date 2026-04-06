@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 5, 162-171"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [比丘尼, 魔王波旬, 智慧, 禅修, 缘起, 无我, 五蕴]
 ---
 

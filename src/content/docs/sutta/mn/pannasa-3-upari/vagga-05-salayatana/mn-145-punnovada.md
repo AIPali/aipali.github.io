@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 145, 395-397"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [富楼那, 六处, 忍辱, 教诫, 传法, 苦的生起, 苦的熄灭, 喜, 涅槃]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 130, 261-271"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业, 因果, 轮回, 地狱, 阎魔王, 五天使, 放逸, 死亡, 老病死]
 ---
 

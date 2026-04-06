@@ -5,7 +5,8 @@ description: "本品通过十对相对的概念，如圣道与非圣道、白道
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.145-154"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: ["圣道", "十支圣道", "十邪道", "正见", "正解脱", "邪见", "法义对比", "增支部"]
 ---
 

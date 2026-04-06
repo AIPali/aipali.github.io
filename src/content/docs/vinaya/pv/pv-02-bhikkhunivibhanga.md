@@ -5,7 +5,8 @@ description: "《附随》第二部分，以问答形式详细剖析比丘尼戒
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 2, 201-256"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 比丘尼戒, 波罗提木叉, 弃罪, 僧残, 舍堕, 单堕, 悔过, 学处]
 ---
 

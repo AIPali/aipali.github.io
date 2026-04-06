@@ -5,7 +5,8 @@ description: "本篇详细记述了佛陀如何逐步制定关于比丘住所、
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 6, 294-329"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [卧坐具, 精舍, 僧团财产, 给孤独, 祇树给孤独园, 戒律, 僧团生活, 营事, 羯磨, 长幼次序]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 87, 353-357"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [爱, 执着, 痛苦, 忧悲苦恼, 缘起, 波斯匿王, 末利王后, 生死, 离别]
 ---
 

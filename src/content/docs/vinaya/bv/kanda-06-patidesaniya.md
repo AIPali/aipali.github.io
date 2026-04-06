@@ -5,7 +5,8 @@ description: "本篇包含四条比丘戒律，属于“悔过罪”（波罗提
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pāṭidesanīyakaṇḍa"
 reference: "BV 6, 552-575"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [悔过, 波罗提提舍尼, 比丘戒律, 比丘尼, 食物供养, 在家护持, 林野住处]
 ---
 

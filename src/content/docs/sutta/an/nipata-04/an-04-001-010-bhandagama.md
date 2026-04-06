@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.1-10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [戒定慧, 解脱, 四轭, 四无畏, 轮回, 漏尽, 四爱]
 ---
 

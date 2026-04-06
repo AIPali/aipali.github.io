@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 20, 223-234"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [譬喻, 慈心, 不放逸, 正法守护, 律仪, 相应部]
 ---
 

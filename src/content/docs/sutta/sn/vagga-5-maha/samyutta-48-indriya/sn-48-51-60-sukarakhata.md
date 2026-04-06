@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.51-60, 521-530"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 慧根, 有学, 无学, 道品, 涅槃]
 ---
 

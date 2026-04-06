@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.11-20, 481-490"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 圣者位阶, 四向四果, 漏尽, 阿罗汉, 不还者, 菩提分法]
 ---
 

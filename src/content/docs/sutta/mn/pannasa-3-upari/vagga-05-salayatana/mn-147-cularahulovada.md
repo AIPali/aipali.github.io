@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 147, 416-419"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [罗睺罗, 六处, 六根, 无常, 苦, 无我, 厌离, 离欲, 解脱, 阿罗汉]
 ---
 

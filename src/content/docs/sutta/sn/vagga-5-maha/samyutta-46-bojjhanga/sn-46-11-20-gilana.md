@@ -6,6 +6,7 @@ collection: "Saṃyuttanikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.11-20, 192-201"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [七觉支, 善友, 如理作意, 治病, 涅槃, 到彼岸]
 ---
 

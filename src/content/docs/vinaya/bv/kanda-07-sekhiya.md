@@ -5,7 +5,8 @@ description: "《众学篇》是比丘戒律中关于日常行为威仪的七十
 collection: "Bhikkhuvibhaṅga"
 vagga: "Sekhiyakaṇḍa"
 reference: "BV 7, 576-654"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 毗奈耶, 众学, 比丘, 威仪, 正念, 僧团生活, 行住坐卧, 饮食, 说法]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.134-146"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [战士品, 三法印, 五蕴, 四圣谛, 神通神变, 业力, 缘起]
 ---
 

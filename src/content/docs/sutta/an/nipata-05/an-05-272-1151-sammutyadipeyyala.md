@@ -5,7 +5,8 @@ description: "增支部五集最后部分，涵盖了对僧团执事比丘的资
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.272-1151"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [执事, 僧团管理, 五戒, 禅修, 烦恼, 广说]
 ---
 

@@ -5,7 +5,8 @@ description: "本篇主要规定了僧团羯磨（僧务决议）的合法性标
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 9, 380-450"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 大品, 羯磨, 如法, 和合僧, 治罚, 僧团制度]
 ---
 

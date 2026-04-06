@@ -5,7 +5,8 @@ description: "本经详述了七种值得世间供养的圣者，并系统列举
 collection: "Aṅguttara Nikāya"
 vagga: "Sattakanipātapāḷi"
 reference: "AN 7.95-1132"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [七等人, 不还果, 观照, 贪欲, 烦恼, 禅修, 五蕴]
 ---
 

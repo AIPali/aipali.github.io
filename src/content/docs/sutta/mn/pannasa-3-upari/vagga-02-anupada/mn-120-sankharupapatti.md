@@ -5,7 +5,8 @@ description: "本经阐述了心的意向如何决定来世的去处。佛陀详
 collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 120, 160-175"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [业, 意向, 轮回, 天界, 梵天, 解脱, 五根, 漏尽]
 ---
 

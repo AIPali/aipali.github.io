@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.21-30, 21-30"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [诸天, 修行迫切性, 业果, 烦恼结缚, 世俗谛, 胜义谛, 阿罗汉]
 ---
 

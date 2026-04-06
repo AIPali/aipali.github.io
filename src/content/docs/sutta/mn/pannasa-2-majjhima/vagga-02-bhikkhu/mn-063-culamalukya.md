@@ -5,7 +5,8 @@ description: "佛陀以著名的“毒箭之喻”回应摩罗迦子关于十四
 collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 63, 122-128"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [无记, 十四无记, 毒箭喻, 形而上学, 四圣谛, 实修, 离苦, 摩罗迦子]
 ---
 

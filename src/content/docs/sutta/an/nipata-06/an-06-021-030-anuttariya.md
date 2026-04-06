@@ -5,7 +5,8 @@ description: "增支部六集无上品，包含关于比丘退失法、断除五
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.21-30"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [六随念, 随念住, 禅修时机, 五盖, 六无上, 不退失]
 ---
 

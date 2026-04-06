@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.31-40, 397-406"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 现法, 不死, 开悟, 八正道, 离贪, 正念, 正知]
 ---
 

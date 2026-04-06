@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 10, 235-246"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [夜叉, 缘起, 烦恼, 给孤独长者, 四圣谛, 八正道, 涅槃, 信心]
 ---
 

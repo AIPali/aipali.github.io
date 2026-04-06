@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 126, 223-228"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["八正道", "邪道", "修行方法", "因果", "譬喻", "浮弥", "正见", "如理作意"]
 ---
 

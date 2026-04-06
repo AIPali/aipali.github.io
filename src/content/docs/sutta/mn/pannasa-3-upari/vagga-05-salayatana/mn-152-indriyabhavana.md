@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 152, 453-463"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [根修习, 六根, 六处, 舍心, Upekkhā, 正见, 外道, 学人, 圣者]
 ---
 

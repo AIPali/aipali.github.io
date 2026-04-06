@@ -5,7 +5,8 @@ description: "本品收录十一篇短经，主要阐述世间难得的六种出
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.96-106"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [入流果, 三法印, 无常, 苦, 无我, 涅槃, 三有, 三爱]
 ---
 

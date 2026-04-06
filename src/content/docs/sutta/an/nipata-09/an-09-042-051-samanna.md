@@ -5,7 +5,8 @@ description: "本品通过尊者阿难与尊者优陀夷的对话，深入探讨
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.42-51"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [禅那, 无色界定, 九次第定, 拥挤, 空间, 涅槃, 身证, 慧解脱, 俱解脱, 阿难]
 ---
 

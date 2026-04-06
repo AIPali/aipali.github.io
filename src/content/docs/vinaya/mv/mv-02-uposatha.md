@@ -5,7 +5,8 @@ description: "佛陀制定比丘僧团每半月集会诵戒（布萨）的缘起
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 2, 132-183"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [布萨, 共住, 诵戒, 波罗提木叉, 羯磨, 结界, 清净]
 ---
 

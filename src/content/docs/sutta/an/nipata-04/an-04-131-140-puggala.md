@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.131-140"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [结缚, 辩才, 根器, 戒定慧, 身心出离, 说法师]
 ---
 

@@ -5,7 +5,8 @@ description: "《增支部六集》的结尾篇章。佛陀总结了为了了知
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.140-649"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [贪, 杂染, 随念, 无常想, 六集结尾]
 ---
 

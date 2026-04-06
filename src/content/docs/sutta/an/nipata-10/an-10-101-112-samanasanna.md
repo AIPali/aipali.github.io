@@ -5,7 +5,8 @@ description: "阐述出家者的三种核心认知、七觉支与三明的关联
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.101-112"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [沙门想, 七觉支, 三明, 十正道, 十无学法, 邪见, 正见, 阿罗汉]
 ---
 

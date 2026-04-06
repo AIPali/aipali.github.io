@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.101-110"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四圣谛, 九分教, 譬喻, 闻思修, 表里如一, 戒行, 智慧]
 ---
 

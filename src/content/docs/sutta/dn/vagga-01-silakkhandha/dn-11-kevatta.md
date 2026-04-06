@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 11, 481-500"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [神通, 神变, 教诫, 四界, 名色, 识, 涅槃, 那烂陀]
 ---
 

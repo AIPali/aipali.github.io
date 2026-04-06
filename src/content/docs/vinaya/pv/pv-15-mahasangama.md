@@ -5,7 +5,8 @@ description: "本篇详细阐述了在僧伽中处理和裁决各种争端（诤
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 15, 368-402"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 僧团, 诤事, 羯磨, 灭诤, 裁决, 偏私, 质询]
 ---
 

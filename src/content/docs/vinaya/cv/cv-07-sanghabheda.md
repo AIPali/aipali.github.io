@@ -5,7 +5,8 @@ description: "本篇详细记述了提婆达多因嫉妒而产生的一系列恶
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 7, 330-355"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [提婆达多, 破僧, 僧团和合, 阿阇世, 五事, 舍利弗, 目犍连, 无间业, 毗奈耶, 律藏]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.113-125, 113-125"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [无明, 五蕴, 说法者, 解脱, 我慢, 如理作意]
 ---
 

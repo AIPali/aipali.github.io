@@ -5,7 +5,8 @@ description: "《附随》第八部分，以问答形式系统阐释布萨、自
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 8, 332-333"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 僧务决议, 布萨, 自恣, 灭诤, 认可]
 ---
 

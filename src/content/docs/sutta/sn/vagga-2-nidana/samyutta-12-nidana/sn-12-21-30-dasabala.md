@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
 reference: "SN 12.21-30, 21-30"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [十二缘起, 十力, 漏烦恼, 异学者, 苦的成因, 甘露门]
 ---
 

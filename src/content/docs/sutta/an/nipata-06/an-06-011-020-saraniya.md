@@ -5,7 +5,8 @@ description: "本品收录了六可念法、六出离界，以及如何死而无
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.11-20"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [六可念法, 六出离界, 念死, 不放逸, 慈心解脱, 戏论]
 ---
 

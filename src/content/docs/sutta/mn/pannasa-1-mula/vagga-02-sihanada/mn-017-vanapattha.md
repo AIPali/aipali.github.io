@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 17, 190-198"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["修行环境", "抉择", "正念", "三摩地", "漏尽", "四资具", "善友", "智慧"]
 ---
 

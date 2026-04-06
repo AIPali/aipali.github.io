@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Milindapañhapāḷi"
 reference: "Miln 3"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [弥兰王, 龙军, 难问, 两难, 佛陀全知, 业力, 护身咒]
 ---
 

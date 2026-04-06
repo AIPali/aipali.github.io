@@ -5,7 +5,8 @@ description: "这是佛陀为比丘尼制定的三十条舍堕波逸提学处。
 collection: "Bhikkhunivibhaṅga"
 vagga: "Nissaggiyakaṇḍa"
 reference: "NV 3, 733-792"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [比丘尼戒, 舍堕, 波逸提, 衣物, 钵, 资具, 僧团财产, 供养, 戒律]
 ---
 

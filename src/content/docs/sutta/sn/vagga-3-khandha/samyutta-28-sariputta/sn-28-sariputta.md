@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 28, 332-341"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [舍利弗, 九次第定, 禅那, 灭尽定, 正命, 邪命, 无我, 慢随眠]
 ---
 

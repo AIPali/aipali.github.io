@@ -5,7 +5,8 @@ description: "《附随》第二十一品，系统总结了羯磨的有效性条
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 21, 482-501"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 羯磨, 学处, 十大利益, 弃罪, 僧残]
 ---
 

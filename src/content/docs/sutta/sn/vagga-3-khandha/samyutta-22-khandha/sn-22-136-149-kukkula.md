@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.136-149, 136-149"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 热灰, 无常, 苦, 无我, 厌患, 遍知, 解脱]
 ---
 

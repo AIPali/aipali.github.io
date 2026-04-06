@@ -5,7 +5,8 @@ description: "佛陀教导比丘们应成为法的继承人，而非物质的继
 collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 3, 29-33"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [法嗣, 少欲知足, 舍利弗, 远离, 八正道, 中道, 随烦恼]
 ---
 

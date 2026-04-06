@@ -5,7 +5,8 @@ description: "尊者阿难向外道删陀迦阐述了佛陀的教导，分析了
 collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 76, 223-236"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [外道, 邪见, 梵行, 删陀迦, 阿难, 四禅, 三明, 阿罗汉, 正见, 择法]
 ---
 

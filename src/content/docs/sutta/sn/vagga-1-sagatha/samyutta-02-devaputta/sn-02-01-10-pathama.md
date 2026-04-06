@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devaputtasaṃyutta"
 reference: "SN 2.1-10, 82-91"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天子, 禅定, 烦恼, 皈依, 精进, 漏尽]
 ---
 

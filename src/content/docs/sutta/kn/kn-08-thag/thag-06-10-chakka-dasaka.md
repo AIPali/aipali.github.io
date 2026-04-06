@@ -5,7 +5,8 @@ description: "《长老偈》的六偈集至十偈集，汇集了多位阿罗汉
 collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 6-10, 375-596"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [长老偈, 证悟, 阿罗汉, 禅修, 止观, 解脱, 涅槃, 心性调伏]
 ---
 

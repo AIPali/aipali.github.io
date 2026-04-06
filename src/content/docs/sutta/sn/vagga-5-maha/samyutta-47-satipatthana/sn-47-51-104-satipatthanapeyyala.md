@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.51-104, 417-470"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 涅槃, 广说, 五上分结, 菩提分法, 譬喻]
 ---
 

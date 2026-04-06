@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.1-10, 1071-1080"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四圣谛, 三摩地, 独处, 正语, 八正道, 缘起, 止观]
 ---
 

@@ -5,7 +5,8 @@ description: "本品收录了关于五种修道障碍、布施的正确心态、
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.141-150"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五集, 增支部, 底甘陀品, 布施, 解脱, 戒律, 禅定, 漏烦恼]
 ---
 

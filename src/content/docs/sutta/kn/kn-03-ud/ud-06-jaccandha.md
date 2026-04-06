@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 6.1-6.10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 盲人摸象, 舍寿, 邪见, 阿罗汉, 般涅槃]
 ---
 

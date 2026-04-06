@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 42, 353-365"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [聚落主, 业果, 四无量心, 邪见, 八正道, 戒律]
 ---
 

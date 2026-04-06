@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 25, 302-311"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [无常, 随信行, 随法行, 入流果, 须陀洹, 蕴, 处, 界, 缘起]
 ---
 

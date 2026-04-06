@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 65, 134-147"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [持戒, 学处, 僧团纪律, 忏悔, 驯马喻, 十无学法, 四禅, 三明, 跋陀利]
 ---
 

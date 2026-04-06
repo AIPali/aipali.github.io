@@ -5,7 +5,8 @@ description: "本品包含比丘尼单堕戒第十一至二十条，主要规范
 collection: "Bhikkhunivibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "NV 4.2, 838-882"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [比丘尼戒, 单堕, 暗夜品, 律藏, 独处, 学处, 僧团威仪, 情绪管理]
 ---
 

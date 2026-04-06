@@ -6,6 +6,7 @@ collection: "Vinaya Piṭaka"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [律藏, 戒律, 僧团制度, 波罗提木叉, 缘起法, 佛法寿命, 止息烦恼]
 ---
 

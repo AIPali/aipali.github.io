@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 124, 209-212"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["薄拘罗", "阿罗汉", "梵行", "稀有法", "持戒", "清净", "涅槃", "出家"]
 ---
 

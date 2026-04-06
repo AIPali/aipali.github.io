@@ -5,7 +5,8 @@ description: "本篇讲述了佛陀因僧团不纯净而中止诵戒的事件，
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 9, 383-401"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [波罗提木叉, 布萨, 僧团纪律, 僧团纯净, 如法羯磨, 海洋八喻, 遮说戒, 律藏, 小品]
 ---
 

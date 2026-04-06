@@ -5,7 +5,8 @@ description: "本学处是比丘戒律中十三条僧残罪的第一条，规定
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.1, 234-268"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 故意泄精, 梵行, 戒律, 律藏, 施越, 优陀夷, 梦遗]
 ---
 

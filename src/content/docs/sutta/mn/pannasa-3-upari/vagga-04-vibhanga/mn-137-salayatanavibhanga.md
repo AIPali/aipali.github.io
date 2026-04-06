@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 137, 304-312"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 六根, 六尘, 十八意行, 三十六有情句, 舍, 念住, 调御丈夫, 解脱, 感受]
 ---
 

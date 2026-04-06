@@ -5,7 +5,8 @@ description: "在满月之夜，佛陀通过与一位比丘的问答，深入剖
 collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 109, 85-90"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五取蕴, 无我, 身见, 执取, 贪欲, 缘起, 解脱, 满月, 智慧]
 ---
 

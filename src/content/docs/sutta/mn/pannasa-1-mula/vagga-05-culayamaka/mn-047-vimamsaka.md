@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 47, 487-490"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [思察, 信心, 如来, 正等正觉, 法义, 善知识, 观察, 智慧, 考察, 信仰]
 ---
 

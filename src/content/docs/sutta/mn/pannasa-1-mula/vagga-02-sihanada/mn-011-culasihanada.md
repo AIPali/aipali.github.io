@@ -5,7 +5,8 @@ description: "佛陀教导比丘们如何以四个无可辩驳的理由，自信
 collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 11, 139-145"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四沙门果, 狮子吼, 四取, 执取, 缘起, 常见, 断见, 渴爱, 解脱]
 ---
 

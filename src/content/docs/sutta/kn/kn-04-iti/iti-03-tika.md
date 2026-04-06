@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Itivuttakapāḷi"
 reference: "Iti 3.1-50, 50-99"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [如是语, 三不善根, 三受, 两种涅槃, 五前相, 尸林炬火之喻, 抓衣角之喻, 三明]
 ---
 

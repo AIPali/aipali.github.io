@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.164-184"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业道, 十善业, 十不善业, 三摩地, 空, 无相, 无愿, 烦恼]
 ---
 

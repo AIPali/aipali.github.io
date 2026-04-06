@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 19, 202-222"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [勒叉那, 目犍连, 业报, 恶业, 饿鬼, 轮回, 因果, 戒律]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 134, 286-288"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [贤善一夜, 五蕴, 过去, 未来, 现在, 禅修, 不执着, 罗摩沙康纪亚, 栴檀天子]
 ---
 

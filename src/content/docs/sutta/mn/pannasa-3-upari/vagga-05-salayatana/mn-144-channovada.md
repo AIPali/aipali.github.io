@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 144, 389-394"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["阐陀", "自杀", "无我", "六处", "阿罗汉", "舍利弗", "大周那", "病苦", "过咎"]
 ---
 

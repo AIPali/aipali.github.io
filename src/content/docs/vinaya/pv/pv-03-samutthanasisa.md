@@ -5,7 +5,8 @@ description: "本章是《附随》的核心分析之一，系统地将《律藏
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 3, 257-270"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 附随, 等起, 犯戒, 身语意, 学处, 弃罪, 僧残]
 ---
 

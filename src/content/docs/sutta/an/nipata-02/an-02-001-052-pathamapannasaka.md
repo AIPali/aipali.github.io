@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Dukanipātapāḷi"
 reference: "AN 2.1-52"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 二集, 业果, 禅定, 僧团和合, 愚与智, 净居天]
 ---
 

@@ -5,7 +5,8 @@ description: "这是比丘律中第四条僧残戒。该学处规定，比丘不
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.4, 290-295"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 优陀夷, 淫欲, 供养, 戒律, 比丘戒, 语言行为]
 ---
 

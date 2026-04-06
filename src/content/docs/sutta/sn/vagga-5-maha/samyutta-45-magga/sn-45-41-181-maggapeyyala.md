@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
 reference: "SN 45.41-181, 41-181"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [八正道, 广说, 涅槃, 譬喻, 漏, 随眠, 结缚, 四念住]
 ---
 

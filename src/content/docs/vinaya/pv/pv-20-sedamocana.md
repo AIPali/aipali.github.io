@@ -5,7 +5,8 @@ description: "一系列关于戒律的复杂问题和谜题，旨在考验比丘
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 20, 479-481"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 律藏, 附随, 谜题, 羯磨, 弃罪, 僧残, 舍堕, 单堕, 律学]
 ---
 

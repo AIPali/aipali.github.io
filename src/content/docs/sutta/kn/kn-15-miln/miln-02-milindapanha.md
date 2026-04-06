@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Milindapañhapāḷi"
 reference: "Miln 2"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [弥兰王, 龙军, 无我, 业力, 轮回, 涅槃, 菩提分]
 ---
 

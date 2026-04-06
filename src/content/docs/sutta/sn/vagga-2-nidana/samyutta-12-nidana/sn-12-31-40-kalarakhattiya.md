@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
 reference: "SN 12.31-40, 31-40"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [缘起, 智事, 四食, 无明, 思, 十二因缘, 涅槃]
 ---
 

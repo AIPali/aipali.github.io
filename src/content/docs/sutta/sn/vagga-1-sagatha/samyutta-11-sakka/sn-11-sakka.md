@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 11, 247-271"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天帝释, 阿修罗, 忍辱, 随念, 礼敬, 善语]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [中部, 尼柯耶, 核心教材, 禅修实操, 法义辩论, 缘起, 五蕴]
 ---
 

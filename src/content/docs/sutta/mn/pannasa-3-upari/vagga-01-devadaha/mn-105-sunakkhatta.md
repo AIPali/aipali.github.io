@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 105, 55-65"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增上慢, 五欲, 不动定, 无所有处, 非想非非想处, 涅槃, 渴爱, 毒箭譬喻, 善星]
 ---
 

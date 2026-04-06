@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 15, 124-143"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [轮回, 无始, 无明, 渴爱, 劫, 厌离, 解脱]
 ---
 

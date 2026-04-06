@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.274-783"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 四正勤, 四神足, 三十七道品, 烦恼, 贪欲, 瞋恚]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 1, 1-13"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [根本法门, 认知, 我慢, 凡夫, 有学, 阿罗汉, 如来, 四大, 涅槃, 思量]
 ---
 

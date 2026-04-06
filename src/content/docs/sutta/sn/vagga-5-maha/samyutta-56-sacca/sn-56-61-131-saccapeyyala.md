@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.61-131, 1131-1201"
 curator: "True-Dhamma.com"
+version: "1"
 tags:  [四圣谛, 盲龟浮木, 戒律, 五趣, 广说, 人身难得]
 ---
 

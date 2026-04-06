@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 29, 164-197"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [正法, 导师, 教团, 邪见, 四圣谛, 四念住, 尼乾子, 法义辨析, 修行次第]
 ---
 

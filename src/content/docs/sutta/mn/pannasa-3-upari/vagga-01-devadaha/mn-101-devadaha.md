@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 101, 1-20"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [尼乾, 耆那教, 宿命论, 业, 苦行, 精进, 中道, 四禅, 三明, 解脱]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.101-110"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [安稳住, 比丘, 戒律, 四静虑, 漏尽, 无畏, 恶比丘]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.1-10, 85-94"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [十八界, 缘起, 触, 受, 想, 认知过程]
 ---
 

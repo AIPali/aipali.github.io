@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 2.1-2.10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 目真邻陀, 快乐, 业报, 圣默然, 须婆婆沙]
 ---
 

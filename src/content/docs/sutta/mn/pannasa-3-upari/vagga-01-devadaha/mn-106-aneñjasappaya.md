@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 106, 66-73"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [不动禅, 无所有处, 非非想处, 圣解脱, 禅修, 涅槃, 舍心]
 ---
 

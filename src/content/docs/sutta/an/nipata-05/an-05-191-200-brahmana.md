@@ -5,7 +5,8 @@ description: "本品包含十部经文，探讨了真正的婆罗门品质、梵
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.191-200"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [婆罗门, 梵行, 五大梦, 佛陀出世, 出离, 五福, 戒律, 五盖]
 ---
 

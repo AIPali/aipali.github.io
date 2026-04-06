@@ -5,7 +5,8 @@ description: "佛陀教导儿子罗睺罗，强调了不说谎的重要性，并
 collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 61, 107-112"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [罗睺罗, 妄语, 省察, 净化行为, 身语意, 业, 譬喻, 惭愧]
 ---
 

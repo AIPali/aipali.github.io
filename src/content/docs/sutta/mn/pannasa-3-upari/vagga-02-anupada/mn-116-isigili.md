@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 116, 133-135"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [独觉, 辟支佛, 仙吞山, 王舍城, 佛陀名号, 圣地, 过去佛]
 ---
 

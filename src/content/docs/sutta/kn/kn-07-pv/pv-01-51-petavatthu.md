@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Petavatthupāḷi"
 reference: "Pv 1-51, 1-814"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [饿鬼事, 业果, 布施, 回向, 小部, 恶趣, 戒律]
 ---
 

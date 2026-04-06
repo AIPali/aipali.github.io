@@ -5,7 +5,8 @@ description: "本篇系统地分析了僧团中四种类型的法律事务（诤
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 11, 340-358"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [诤事, 僧团纪律, 七灭诤, 羯磨, 论诤, 举罪, 犯戒, 僧团事务, 附随]
 ---
 

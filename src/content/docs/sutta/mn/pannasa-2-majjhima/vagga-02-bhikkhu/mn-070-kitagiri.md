@@ -5,7 +5,8 @@ description: "本经讲述了佛陀教导比丘过午不食的利益，并借枳
 collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 70, 174-184"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [持戒, 过午不食, 善法, 不善法, 感受, 七圣者, 渐次道, 信, 勤加修习, 智慧]
 ---
 

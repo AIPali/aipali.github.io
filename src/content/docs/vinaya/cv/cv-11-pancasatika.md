@@ -5,7 +5,8 @@ description: "本篇详细记述了佛陀般涅槃后，由大迦叶尊者领导
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 11, 437-445"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [第一次结集, 五百罗汉, 法与律, 大迦叶, 阿难, 优波离, 小小戒, 阐陀, 梵罚]
 ---
 

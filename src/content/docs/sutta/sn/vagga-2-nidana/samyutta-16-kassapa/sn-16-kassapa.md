@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 16, 144-156"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [大迦叶, 头陀行, 少欲知足, 像法, 神通, 僧团管理, 缘起]
 ---
 

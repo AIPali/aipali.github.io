@@ -5,7 +5,8 @@ description: "佛陀与外道萨遮迦的辩论，详述了自己六年苦行的
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 36, 364-389"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [苦行, 中道, 菩萨, 禅那, 三明, 正等正觉, 身心修习, 漏尽智, 宿命明, 天眼明]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.181-190"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 四集, 婆罗门品, 战士喻, 四圣谛, 无常, 见闻觉知, 布萨]
 ---
 

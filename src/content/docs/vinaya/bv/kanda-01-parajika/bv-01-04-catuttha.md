@@ -5,7 +5,8 @@ description: "佛陀制定第四条弃罪的缘起与解释，即比丘不得谎
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.4, 193-233"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: ["弃罪", "波罗夷", "过人法", "大妄语", "戒律", "增上慢", "五种大贼"]
 ---
 

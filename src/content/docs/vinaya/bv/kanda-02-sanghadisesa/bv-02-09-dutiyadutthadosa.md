@@ -6,6 +6,7 @@ collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.9, 391-408"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [僧残, 恶意诽谤, 弃罪, 戒律, 慈地比丘, 僧团纪律]
 ---
 

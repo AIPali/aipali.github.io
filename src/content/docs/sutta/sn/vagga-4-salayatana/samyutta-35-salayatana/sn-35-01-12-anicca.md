@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.1-12, 1-12"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 无常, 苦, 无我, 厌离, 解脱]
 ---
 

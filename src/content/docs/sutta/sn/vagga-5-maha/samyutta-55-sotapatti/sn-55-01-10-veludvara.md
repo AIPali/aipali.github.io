@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.1-10, 997-1006"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [入流果, 须陀洹, 四入流支, 戒定慧, 法镜, 居士修行, 缘起]
 ---
 

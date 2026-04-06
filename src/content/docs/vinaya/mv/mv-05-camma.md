@@ -5,7 +5,8 @@ description: "本篇详细记述了佛陀制定有关比丘使用皮革制品，
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 5, 242-259"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 毗奈耶, 皮革, 鞋履, 二十亿耳, 摩诃迦旃延, 边地, 生活规范, 比丘, 律藏]
 ---
 

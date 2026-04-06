@@ -5,7 +5,8 @@ description: "尊者阿难应佛陀之请，为释迦族人详细开示了圣弟
 collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 53, 22-30"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [有学, 七正法, 四禅, 三明, 明行具足, 增上心学, 宿命通, 天眼通, 漏尽通]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi"
 reference: "SN 17, 157-187"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [名闻利养, 障碍, 譬喻, 提婆达多, 修行, 贪欲, 舍离]
 ---
 

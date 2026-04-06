@@ -5,7 +5,8 @@ description: "本篇详细阐述了关于功德衣（迦絺那衣）的制作、
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 16, 403-416"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [功德衣, 迦絺那衣, 律, 僧伽, 比丘, 衣物, 戒律, 羯磨]
 ---
 

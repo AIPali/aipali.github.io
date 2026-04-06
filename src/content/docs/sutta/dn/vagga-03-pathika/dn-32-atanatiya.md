@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 32, 275-295"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四大天王, 守护经, 夜叉, 非人, 毗沙门, 修行安全, 护法善神, 僧团]
 ---
 

@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 34, 350-360"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [十上经, 舍利弗, 法数, 修行次第, 涅槃, 止观, 解脱, 圣道]
 ---
 

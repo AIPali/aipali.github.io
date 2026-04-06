@@ -5,7 +5,8 @@ description: "阐述十善业道与十不善业道，重新定义真正的清净
 collection: "Aṅguttaranikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.167-177"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [十善业道, 十不善业道, 舍法, 彼岸, 布施亡者, 淳陀, 业的因缘]
 ---
 

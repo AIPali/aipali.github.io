@@ -5,7 +5,8 @@ description: "本部分收录了《法句经》的最后两品，分别定义了
 collection: "Khuddaka Nikāya"
 vagga: "Dhammapadapāḷi"
 reference: "Dhp 25-26, 360-423"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [比丘, 婆罗门, 调伏五根, 解脱, 涅槃, 贪瞋痴, 修行, 烦恼, 智慧]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Ekakanipātapāḷi"
 reference: "AN 1.98-381"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [放逸, 善友, 恶友, 第一弟子, 邪见, 正见, 无有是处]
 ---
 

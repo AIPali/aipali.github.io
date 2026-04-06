@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 14, 1-94"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["过去七佛", "毗婆尸佛", "菩萨", "缘起", "梵天劝请", "三十二相", "四预兆", "佛陀传记", "法界常规", "轮回"]
 ---
 

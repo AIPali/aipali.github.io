@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.84-93, 84-93"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 阐陀, 空世间, 缘起, 计度, 无常, 苦, 无我]
 ---
 

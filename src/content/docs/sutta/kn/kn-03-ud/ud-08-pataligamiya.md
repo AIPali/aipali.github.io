@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 8.1-8.10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 涅槃, 淳陀, 供养, 波吒离村, 陀骠摩罗子]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.41-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [财富, 布施, 五法, 圣财, 老病死, 悲伤, 毒箭]
 ---
 

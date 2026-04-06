@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 103, 34-40"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["僧团和谐", "止息争论", "法义辨析", "三十七道品", "善巧方便", "慈悲", "动机", "冲突解决"]
 ---
 

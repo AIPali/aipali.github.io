@@ -5,7 +5,8 @@ description: "本品开示了妨碍修习四念住的六种不良习惯，以及
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.117-139"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四念住, 观身, 观法, 居士, 证净, 涅槃]
 ---
 

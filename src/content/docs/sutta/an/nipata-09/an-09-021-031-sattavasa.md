@@ -5,7 +5,8 @@ description: "本品探讨了不同生命层次的殊胜之处、以骏马譬喻
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.21-31"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [九有情居, 渴爱, 禅定, 阿罗汉, 入流, 四圣谛, 解脱, 怨恨]
 ---
 

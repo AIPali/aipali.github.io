@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.22-32, 22-32"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五取蕴, 渴爱, 重担, 遍知, 四圣谛, 解脱, 涅槃]
 ---
 

@@ -4,7 +4,8 @@ title: "PV 18 罪之等起 (Atthāpattisamuṭṭhāna)"
 description: "本篇分析比丘戒律中各种过患的‘等起’，即它们是如何通过身、语、意的不同组合而产生的。这是律藏中关于行为与意图的精密法理分析。"
 collection: "Parivārapāḷi"
 reference: "PV 18, 470-473"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 律藏, 等起, 弃罪, 僧残, 身口意, 犯戒, 附随]
 ---
 

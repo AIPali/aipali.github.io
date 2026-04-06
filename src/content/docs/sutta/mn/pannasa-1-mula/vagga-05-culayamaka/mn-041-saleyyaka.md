@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 41, 439-443"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["业力", "十善业", "十不善业", "轮回", "善恶", "果报", "正见", "天界", "地狱"]
 ---
 

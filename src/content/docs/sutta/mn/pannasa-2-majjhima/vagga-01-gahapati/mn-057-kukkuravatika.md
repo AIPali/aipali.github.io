@@ -5,7 +5,8 @@ description: "佛陀与两位模仿动物行为的苦行者对话，揭示了这
 collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 57, 78-82"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [业, 苦行, 邪见, 四种业, 仙尼耶, 富楼那, 狗行, 牛行, 正见]
 ---
 

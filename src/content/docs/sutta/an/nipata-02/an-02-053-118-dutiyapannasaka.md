@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Dukanipātapāḷi"
 reference: "AN 2.53-118"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 二集, 智者与愚者, 快乐的分类, 业果, 烦恼, 缘起]
 ---
 

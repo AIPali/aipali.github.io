@@ -5,7 +5,8 @@ description: "尊者舍利弗以大象足迹为喻，阐明一切善法皆可被
 collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 28, 300-306"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [象迹喻, 四圣谛, 五取蕴, 四界, 缘起, 舍利弗, 无我, 无常, 苦, 触, 十二处]
 ---
 

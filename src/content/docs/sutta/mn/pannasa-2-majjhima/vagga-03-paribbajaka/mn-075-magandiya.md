@@ -5,7 +5,8 @@ description: "本经记录了佛陀与游方者摩犍提的深刻对话。通过
 collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 75, 207-222"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五欲, 譬喻, 颠倒想, 涅槃, 五取蕴, 缘起, 四圣谛, 八正道, 阿罗汉]
 ---
 

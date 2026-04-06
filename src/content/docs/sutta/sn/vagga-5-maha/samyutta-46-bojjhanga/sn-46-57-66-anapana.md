@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.57-66, 238-247"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [七觉支, 骨想, 慈悲喜舍, 入出息念, 不还果, 阿罗汉果]
 ---
 

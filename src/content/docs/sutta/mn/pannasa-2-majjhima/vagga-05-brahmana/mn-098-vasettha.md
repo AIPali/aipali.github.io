@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 98, 454-461"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["婆罗门", "种姓制度", "业力", "行为", "道德", "戒行", "婆私吒", "婆罗堕阇", "梵行", "阿罗汉"]
 ---
 

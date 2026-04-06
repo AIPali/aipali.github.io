@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 93, 401-411"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [种姓制度, 四姓平等, 婆罗门, 业力, 辩论, 阿摄恕, 佛陀的智慧, 社会公平]
 ---
 

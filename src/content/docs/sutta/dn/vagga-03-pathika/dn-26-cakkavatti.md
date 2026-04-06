@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 26, 80-110"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [转轮圣王, 社会伦理, 人寿增减, 弥勒佛, 四念住, 自洲自依, 十善业道, 十不善业道, 因果报应]
 ---
 

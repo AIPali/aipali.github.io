@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 8, 81-88"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [削减, 烦恼, 四十四法, 禅那, 正见, 八正道, 大纯陀, 修行, 涅槃, 譬喻]
 ---
 

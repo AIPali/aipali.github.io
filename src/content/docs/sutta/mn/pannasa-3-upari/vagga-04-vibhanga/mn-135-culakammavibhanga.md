@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 135, 289-297"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业, 果报, 善恶, 业力分别, 须跋, 长寿, 智慧, 布施, 持戒, 十四业报]
 ---
 

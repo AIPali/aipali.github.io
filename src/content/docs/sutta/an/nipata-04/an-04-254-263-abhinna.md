@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.254-263"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [通慧, 止观, 圣求, 四摄事, 渴爱, 缘起, 业力]
 ---
 

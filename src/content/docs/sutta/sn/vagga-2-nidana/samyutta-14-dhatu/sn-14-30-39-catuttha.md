@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Dhātusaṃyutta"
 reference: "SN 14.30-39, 114-123"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["四界", "地水火风", "贪爱", "过患", "出离", "四圣谛", "解脱", "沙门", "婆罗门"]
 ---
 

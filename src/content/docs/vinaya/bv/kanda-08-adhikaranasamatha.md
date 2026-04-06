@@ -5,7 +5,8 @@ description: "总结七种平息僧团纷争的方法（七灭诤法），并作
 collection: "Bhikkhuvibhaṅga"
 vagga: "Adhikaraṇasamatha"
 reference: "BV 8, 655"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [灭诤法, 僧团, 戒律, 波罗提木叉, 毗奈耶, 僧团和谐, 止息纷争]
 ---
 

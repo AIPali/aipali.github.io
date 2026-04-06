@@ -5,7 +5,8 @@ description: "本品详述止观双运、四圣谛的同一通达、七觉支的
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 12-21, 1-48"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [无碍解道, 止观双运, 七觉支, 慈心解脱, 空性, 出世间]
 ---
 

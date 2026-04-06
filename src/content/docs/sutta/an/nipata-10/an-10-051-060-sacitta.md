@@ -5,7 +5,8 @@ description: "增支部十集己心品，核心教导是“善知己心”。本
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.51-60"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [己心, 内省, 十想, 无常, 无我, 不净, 耆利摩难, 安那般那念, 奢摩他, 毗婆舍那]
 ---
 

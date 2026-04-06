@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 10, 105-138"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 正念, 毗婆舍那, 身随观, 受随观, 心随观, 法随观, 安那般那, 解脱, 四圣谛]
 ---
 

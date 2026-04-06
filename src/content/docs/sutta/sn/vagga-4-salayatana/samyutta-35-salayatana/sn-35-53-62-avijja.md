@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.53-62, 53-62"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [无明, 六处, 无常, 无我, 结缚, 漏烦恼, 随眠, 缘起]
 ---
 

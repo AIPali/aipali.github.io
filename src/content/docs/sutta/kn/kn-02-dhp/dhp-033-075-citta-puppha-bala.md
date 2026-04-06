@@ -5,7 +5,8 @@ description: "《法句经》第三、四、五品，分别探讨心的调伏、
 collection: "Khuddaka Nikāya"
 vagga: "Dhammapadapāḷi"
 reference: "Dhp 3-5, 33-75"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [法句经, 心品, 华品, 愚品, 业, 智慧, 愚痴, 譬喻, 因果]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Indriyasaṃyutta"
 reference: "SN 48.21-30, 491-500"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五根, 六根, 沙门果, 四向四果, 缘起, 诸漏已尽]
 ---
 

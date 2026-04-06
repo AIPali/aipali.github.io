@@ -5,7 +5,8 @@ description: "佛陀破斥长爪游方者的极端见地，并进一步开示身
 collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 74, 201-206"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [见地, 邪见, 受, 无常, 苦, 无我, 舍利弗, 解脱, 法眼净]
 ---
 

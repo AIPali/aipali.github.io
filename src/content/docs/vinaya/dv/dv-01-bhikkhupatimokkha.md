@@ -6,6 +6,7 @@ collection: "Vinaya Piṭaka"
 vagga: "Dvemātikāpāḷi"
 reference: "DV 1"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["戒律", "波罗提木叉", "比丘戒", "僧团", "布萨", "波罗夷", "僧残", "波逸提", "律藏", "学处"]
 ---
 > [!abstract] AI 导读

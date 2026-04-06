@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 6, 359-377"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [神通, 三摩地, 四圣果, 八正道, 命与身, 缘起]
 ---
 

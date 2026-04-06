@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 142, 376-382"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [布施, 供养, 僧团, 福德, 功德, 因果, 摩诃波阇波提, 阿难, 四种清净]
 ---
 

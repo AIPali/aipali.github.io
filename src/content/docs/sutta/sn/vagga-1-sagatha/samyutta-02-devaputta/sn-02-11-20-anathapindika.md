@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devaputtasaṃyutta"
 reference: "SN 2.11-20, 92-101"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天子相应, 禅定, 身见, 给孤独, 舍利弗, 业果]
 ---
 

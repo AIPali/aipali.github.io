@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.33-42, 33-42"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 生灭, 老病死, 厌离, 解脱, 无常]
 ---
 

@@ -5,7 +5,8 @@ description: "本篇章记录了佛陀的觉悟、初转法轮、僧团的建立
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 1, 1-131"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 大篇, 僧团, 出家, 授戒, 缘起, 四圣谛, 无我相]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 81, 282-292"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["前世故事", "迦叶佛", "伽提喀罗", "觉提波罗", "在家弟子", "不还果", "净信", "典范"]
 ---
 

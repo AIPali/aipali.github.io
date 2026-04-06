@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.134-145, 134-145"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 不放逸, 无常, 苦, 无我, 执取, 缘起]
 ---
 

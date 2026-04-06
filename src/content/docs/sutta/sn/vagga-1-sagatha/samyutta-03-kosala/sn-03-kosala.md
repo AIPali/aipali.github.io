@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi"
 reference: "SN 3, 112-136"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [波斯匿王, 拘萨罗国, 业果, 善友, 无常, 政治, 财富]
 ---
 

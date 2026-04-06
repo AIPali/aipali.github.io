@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.93-103"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增上学, 和合僧, 业与异熟, 盐喻, 炼金喻, 禅修次第, 缘起, 戒定慧]
 ---
 

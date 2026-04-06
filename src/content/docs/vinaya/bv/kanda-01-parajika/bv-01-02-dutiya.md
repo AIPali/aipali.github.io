@@ -5,7 +5,8 @@ description: "记述制定第二弃罪（不与取）的缘起。通过陀然阇
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.2, 84-161"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [弃罪, 波罗夷, 不与取, 偷盗, 戒律, 陀然阇, 律藏, 根本戒]
 ---
 

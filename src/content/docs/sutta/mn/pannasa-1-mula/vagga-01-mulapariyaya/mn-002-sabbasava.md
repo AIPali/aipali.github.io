@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Mūlapariyāyavagga"
 reference: "MN 2, 14-28"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [漏, 烦恼, 四圣谛, 如理作意, 七觉支, 六根, 四依, 忍耐, 修行方法, 解脱]
 ---
 

@@ -5,7 +5,8 @@ description: "关于比丘衣服的来源、三衣的制定、受持与分配规
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 8, 326-379"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 大品, 衣篇, 三衣, 耆婆, 毗舍佉, 看护病者]
 ---
 

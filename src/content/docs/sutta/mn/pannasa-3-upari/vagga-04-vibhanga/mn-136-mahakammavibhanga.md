@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 136, 298-303"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业, 业报, 大业分别, 因果, 正见, 邪见, 三弥提, 阿难, 波他离子]
 ---
 

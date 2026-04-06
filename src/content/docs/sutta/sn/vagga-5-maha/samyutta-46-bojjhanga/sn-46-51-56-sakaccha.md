@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.51-56, 232-237"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五盖, 七觉支, 食与不食, 如理作意, 四无量心, 禅修]
 ---
 

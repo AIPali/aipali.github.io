@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 107, 74-78"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [次第修学, 逐步训练, 戒律, 根律仪, 譬喻, 导师, 涅槃, 八正道, 修行次第]
 ---
 

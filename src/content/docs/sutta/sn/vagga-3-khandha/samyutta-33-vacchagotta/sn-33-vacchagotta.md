@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 33, 607-661"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [婆磋, 五蕴, 邪见, 无明, 缘起, 十无记]
 ---
 

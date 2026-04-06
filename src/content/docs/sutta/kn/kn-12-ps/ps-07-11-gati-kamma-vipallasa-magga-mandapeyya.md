@@ -5,7 +5,8 @@ description: "解析生命受生的因缘、业与异熟的时态法则、四颠
 collection: "Khuddaka Nikāya"
 vagga: "Paṭisambhidāmaggapāḷi"
 reference: "Ps 7-11, 231-240"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [无碍解道, 趣论, 业果, 四颠倒, 八正道, 醍醐味]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 53, 923-976"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [禅那, 禅定, 四禅, 涅槃, 恒河广说, 三摩地, 上分结]
 ---
 

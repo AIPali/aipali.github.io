@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 24, 206-301"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [邪见, 五蕴, 入流果, 断见, 常见, 缘起]
 ---
 

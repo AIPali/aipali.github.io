@@ -5,7 +5,8 @@ description: "详细记述制定第一弃罪（不净行）的缘起。以须提
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pārājikakaṇḍa"
 reference: "BV 1.1, 24-83"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [弃罪, 波罗夷, 不净行, 须提那, 戒律制定, 僧团清净, 出家, 毗奈耶]
 ---
 

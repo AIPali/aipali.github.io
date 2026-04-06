@@ -5,7 +5,8 @@ description: "《长老尼偈》中一偈集至十六偈集的合集，收录了
 collection: "Khuddaka Nikāya"
 vagga: "Therīgāthā"
 reference: "Thig 1-12, 1-251"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [长老尼偈, 证悟, 解脱, 女性修行, 早期佛教, 阿罗汉, 智慧, 禅修, 心灵自由, 诗歌]
 ---
 

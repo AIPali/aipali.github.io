@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.21-30"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [三种人, 信解, 善友, 业与果报, 智慧]
 ---
 

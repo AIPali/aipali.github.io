@@ -5,7 +5,8 @@ description: "关于成就阿罗汉果的障碍与条件，以及导致现生苦
 collection: "Aṅguttara Nikāya"
 vagga: "Chakkanipātapāḷi"
 reference: "AN 6.75-84"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [阿罗汉, 寻思, 慢心, 过人法, 漏尽, 善趣, 恶趣, 戒律]
 ---
 

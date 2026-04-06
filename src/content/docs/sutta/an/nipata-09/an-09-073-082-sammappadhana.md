@@ -5,7 +5,8 @@ description: "本品集中阐述了四正勤作为核心修行法门，如何用
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.73-82"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四正勤, 五戒, 心缚, 精进, 断恶修善, 修行障碍, 善法欲]
 ---
 

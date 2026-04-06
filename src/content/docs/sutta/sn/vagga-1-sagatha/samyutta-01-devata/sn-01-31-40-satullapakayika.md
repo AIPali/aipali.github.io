@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.31-40, 31-40"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天神相应, 善友, 布施, 悭贪, 爱欲, 忍辱, 三摩地, 烦恼]
 ---
 

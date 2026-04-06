@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 43, 366-409"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [无为, 涅槃, 止观, 三摩地, 念住, 菩提分, 八正道, 缘起]
 ---
 

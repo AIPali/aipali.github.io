@@ -5,7 +5,8 @@ description: "佛陀深入剖析了感官欲乐、色身与感受的三个层面
 collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 13, 163-174"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [苦蕴, 欲乐, 色身, 感受, 味患离, 五欲, 不净观, 四禅, 外道, 正见]
 ---
 

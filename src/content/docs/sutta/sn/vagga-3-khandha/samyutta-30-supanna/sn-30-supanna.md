@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 30, 392-437"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [金翅鸟, 业力, 轮回, 四生, 布施, 相应部]
 ---
 

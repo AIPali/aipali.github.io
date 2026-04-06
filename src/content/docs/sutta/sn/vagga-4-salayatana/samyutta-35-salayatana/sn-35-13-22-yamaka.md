@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.13-22, 13-22"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 乐味, 过患, 出离, 苦的生灭]
 ---
 

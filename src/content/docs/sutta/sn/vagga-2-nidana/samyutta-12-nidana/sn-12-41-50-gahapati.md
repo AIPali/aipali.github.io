@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
 reference: "SN 12.41-50, 41-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [入流果, 须陀洹, 缘起, 五戒, 中道, 世间]
 ---
 

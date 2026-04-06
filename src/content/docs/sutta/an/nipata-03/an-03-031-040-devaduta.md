@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.31-40"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天使, 业报, 父母恩重, 骄慢, 缘起, 禅修, 四天王, 阎罗王]
 ---
 

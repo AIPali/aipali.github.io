@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.104-113, 104-113"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 缘起, 执取, 苦, 无常, 离欲, 解脱]
 ---
 

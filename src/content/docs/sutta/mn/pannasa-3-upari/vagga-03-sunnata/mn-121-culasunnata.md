@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 121, 176-184"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["空性", "禅修", "四无色定", "无相心三昧", "阿难", "解脱", "漏尽", "次第修行", "奢摩他", "毗婆舍那"]
 ---
 

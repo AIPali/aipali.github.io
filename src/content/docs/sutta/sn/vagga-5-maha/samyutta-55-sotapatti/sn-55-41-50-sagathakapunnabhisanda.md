@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.41-50, 1037-1046"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [入流果, 不坏之净信, 三宝, 戒行, 四入流支, 如理作意]
 ---
 

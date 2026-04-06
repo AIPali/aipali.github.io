@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 17, 241-272"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [转轮圣王, 无常, 业与果报, 四无量心, 大善见王, 拘尸那罗, 般涅槃, 福报]
 ---
 

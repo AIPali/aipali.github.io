@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 54, 31-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [断绝俗务, 舍离, 感官欲望, 譬喻, 哺多利, 八法, 圣者律, 解脱]
 ---
 

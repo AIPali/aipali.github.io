@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
 reference: "SN 45.21-30, 21-30"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [八正道, 八邪道, 善人, 正定, 三受, 五欲]
 ---
 

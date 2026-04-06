@@ -5,7 +5,8 @@ description: "本经讲述了佛陀如何巧妙地回应无畏王子提出的两
 collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 58, 83-87"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [言语, 真实语, 慈悲, 智慧, 善巧, 提婆达多, 尼乾子, 譬喻, 耆那教]
 ---
 

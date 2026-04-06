@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.21-30, 202-211"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [七觉支, 五盖, 渴爱, 如理作意, 五取蕴, 四圣谛, 阿罗汉]
 ---
 

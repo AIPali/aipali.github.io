@@ -5,7 +5,8 @@ description: "本经描绘了三位尊者阿那律、难提、金毗罗在牛角
 collection: "Majjhima Nikāya"
 vagga: "Mahāyamakavagga"
 reference: "MN 31, 325-331"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [僧团和合, 六和敬, 禅那, 无色界定, 解脱, 慈心, 精进]
 ---
 

@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 10, 444-480"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["戒定慧", "三学", "戒蕴", "定蕴", "慧蕴", "阿难", "须婆", "神通", "漏尽智", "道次第"]
 ---
 

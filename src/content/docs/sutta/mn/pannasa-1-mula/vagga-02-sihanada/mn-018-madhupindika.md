@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 18, 199-205"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [缘起, 戏论, 触, 受, 想, 大迦旃延, 烦恼, 止息争论, 六处, 蜜丸喻]
 ---
 

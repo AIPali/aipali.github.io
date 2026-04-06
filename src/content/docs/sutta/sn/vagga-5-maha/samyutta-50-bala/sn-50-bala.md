@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 50, 705-812"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五力, 三十七道品, 依远离, 调伏贪瞋痴, 涅槃, 上分结]
 ---
 

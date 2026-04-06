@@ -6,6 +6,7 @@ collection: "Bhikkhunīvibhaṅga"
 vagga: "Pāṭidesanīyakaṇḍa"
 reference: "3 NV 5, 1228-1239"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [戒律, 律藏, 比丘尼戒, 悔过, 乞食, 在家供养, 僧团规范, 六群比丘尼]
 ---
 

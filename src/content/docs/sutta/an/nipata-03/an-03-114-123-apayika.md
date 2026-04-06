@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.114-123"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [恶趣, 凡夫, 无色界定, 漏尽, 戒行, 正见, 五盖]
 ---
 

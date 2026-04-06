@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.21-30"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [正等正觉, 梵行, 如来, 四圣种, 四法迹, 上座, 漏尽]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.171-180"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业与果, 四无碍解, 戏论, 四界无我, 四大教法, 涅槃, 缘起]
 ---
 

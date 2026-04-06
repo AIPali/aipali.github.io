@@ -5,7 +5,8 @@ description: "《长老偈》的最后部分，汇集了佛陀座下最著名弟
 collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 17-21, 949-1288"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [长老偈, 舍利弗, 大迦叶, 目犍连, 阿难, 婆耆沙, 证悟, 神通, 头陀行, 法义衰微, 涅槃]
 ---
 

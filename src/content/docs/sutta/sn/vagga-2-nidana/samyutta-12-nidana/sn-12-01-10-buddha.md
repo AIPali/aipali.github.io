@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Nidānavaggasaṃyuttapāḷi, Nidānasaṃyutta"
 reference: "SN 12.1-10, 1-10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [缘起, 十二因缘, 无明, 过去七佛, 菩萨, 觉悟, 法说, 分别]
 ---
 

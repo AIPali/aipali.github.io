@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.83-92, 83-92"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 无常, 无我, 缘起, 中道, 阿罗汉, 禅修]
 ---
 

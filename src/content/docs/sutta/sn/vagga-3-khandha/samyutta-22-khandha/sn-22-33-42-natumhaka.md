@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.33-42, 33-42"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 无我, 缘起, 随法, 厌离]
 ---
 

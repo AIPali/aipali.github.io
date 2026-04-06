@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.114-123, 114-123"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [六处, 结缚, 执取, 守护诸根, 罗睺罗, 阿难, 缘起]
 ---
 

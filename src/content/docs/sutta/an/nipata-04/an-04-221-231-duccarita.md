@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.221-231"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [妙行, 恶行, 八正道, 业果, 语恶行, 知恩报恩, 诗人]
 ---
 

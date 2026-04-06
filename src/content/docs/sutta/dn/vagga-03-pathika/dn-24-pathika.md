@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 24, 1-48"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [善宿, 神通, 世界起源, 邪见, 外道, 狮子吼, 梵天, 波梨子, 佛陀的教导]
 ---
 

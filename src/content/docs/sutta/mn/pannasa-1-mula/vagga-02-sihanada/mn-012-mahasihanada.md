@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 12, 146-162"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["狮子吼", "如来十力", "四无所畏", "善星", "苦行", "佛陀", "神通", "诽谤", "正法", "修行"]
 ---
 

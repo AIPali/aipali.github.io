@@ -5,7 +5,8 @@ description: "本品聚焦于在家居士（优婆塞）的修行，涵盖了五
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.171-180"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五戒, 在家居士, 正命, 入流果, 四不坏信, 禅悦, 精进]
 ---
 

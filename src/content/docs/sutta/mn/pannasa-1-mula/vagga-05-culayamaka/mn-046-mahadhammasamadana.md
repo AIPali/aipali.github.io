@@ -5,7 +5,8 @@ description: "佛陀阐述了四种行为实践（受法）：从现在与未来
 collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 46, 473-486"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [业, 果报, 智慧, 无明, 凡夫, 圣弟子, 修行抉择, 苦乐]
 ---
 

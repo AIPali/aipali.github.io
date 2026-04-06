@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.63-72, 63-72"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 阿罗汉, 执取, 魔王波旬, 无常, 苦, 无我, 我慢]
 ---
 

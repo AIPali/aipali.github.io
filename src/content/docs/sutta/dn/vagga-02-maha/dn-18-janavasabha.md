@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 18, 273-292"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [阇尼沙, 频毗娑罗王, 常童子梵天, 三十三天, 天神集会, 四神足, 四念住, 八正道, 授记, 净信]
 ---
 

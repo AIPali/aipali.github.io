@@ -5,7 +5,8 @@ description: "本品包含十部经文，围绕“法与非法”、“有益与
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.113-122"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: ["法", "非法", "八正道", "十正道", "正见", "邪见", "此岸", "彼岸", "舍法", "漏尽"]
 ---
 

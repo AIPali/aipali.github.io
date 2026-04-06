@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 149, 428-433"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["六处", "五取蕴", "渴爱", "执取", "八正道", "三十七道品", "止观双运", "解脱", "缘起"]
 ---
 

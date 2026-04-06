@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 42, 444-448"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["业", "善恶", "十善业", "十不善业", "轮回", "解脱", "天界", "法行"]
 ---
 

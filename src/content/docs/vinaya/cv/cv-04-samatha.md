@@ -5,7 +5,8 @@ description: "本篇详细阐述了佛陀为僧团制定的七种平息争论的
 ccollection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 4, 185-242"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [灭诤, 羯磨, 现前毗尼, 忆念毗尼, 不痴毗尼, 自言毗尼, 多语毗尼, 觅罪毗尼, 如草覆地毗尼]
 ---
 

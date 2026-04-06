@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.61-70, 61-70"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [世间, 缘起, 心, 渴爱, 涅槃, 六处]
 ---
 

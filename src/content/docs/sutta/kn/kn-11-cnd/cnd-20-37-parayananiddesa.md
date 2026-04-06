@@ -5,7 +5,8 @@ description: "《小义释》对《彼岸道品》的详尽注解，深度解析
 collection: "Khuddaka Nikāya"
 vagga: "Cūḷaniddesapāḷi"
 reference: "Cnd 20-37, 1-120"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [彼岸道, 义释, 十六学童, 涅槃, 缘起, 识之息灭, 四圣谛]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devaputtasaṃyutta"
 reference: "SN 2.21-30, 102-111"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [善友, 布施, 梵行, 世界尽头, 舍利弗, 外道, 缘起]
 ---
 

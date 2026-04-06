@@ -5,7 +5,8 @@ description: "本篇以偈颂形式，系统地总结了比丘与比丘尼戒律
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 10, 335-339"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 学处, 毗舍离, 王舍城, 舍卫城, 罪业分类, 比丘戒, 比丘尼戒]
 ---
 

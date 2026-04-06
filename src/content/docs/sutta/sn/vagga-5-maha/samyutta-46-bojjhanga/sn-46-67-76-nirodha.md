@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Bojjhaṅgasaṃyutta"
 reference: "SN 46.67-76, 248-257"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [觉支相应, 十想, 不净想, 灭想, 七觉支, 大果报, 二果]
 ---
 

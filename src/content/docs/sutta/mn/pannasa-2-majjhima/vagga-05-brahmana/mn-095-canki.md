@@ -5,7 +5,8 @@ description: "佛陀与婆罗门旃奇和青年婆罗门迦巴提迦的对话，
 collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 95, 422-435"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [真理, 信仰, 婆罗门, 觉悟次第, 四正勤, 善知识]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Saḷāyatanavaggasaṃyuttapāḷi"
 reference: "SN 36, 249-279"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [受, 三受, 苦受, 乐受, 禅那, 触, 随眠, 四念住]
 ---
 

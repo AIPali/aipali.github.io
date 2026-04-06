@@ -5,7 +5,8 @@ description: "比丘尼单堕篇第三品，包含十条学处（二十一至三
 collection: "Bhikkhunivibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "NV 4.3, 883-931"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [比丘尼戒, 单堕, 裸露, 沐浴衣, 僧伽梨, 衣物, 布施, 迦絺那衣]
 ---
 

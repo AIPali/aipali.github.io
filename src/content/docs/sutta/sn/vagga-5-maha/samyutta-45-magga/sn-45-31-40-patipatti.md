@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Maggasaṃyutta"
 reference: "SN 45.31-40, 31-40"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [八正道, 四圣果, 涅槃, 沙门, 婆罗门, 梵行]
 ---
 

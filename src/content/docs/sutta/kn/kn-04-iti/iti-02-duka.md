@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Itivuttakapāḷi"
 reference: "Iti 2.1-22, 28-49"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [如是语, 守护根门, 惭愧, 有余依涅槃, 无余依涅槃, 常见断见, 无为法]
 ---
 

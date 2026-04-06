@@ -5,7 +5,8 @@ description: "游方者婆蹉向佛陀求证关于“佛是一切知者”的传
 collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 71, 185-186"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [三明, 一切知, 宿命通, 天眼通, 漏尽通, 邪命外道, 在家人, 升天, 婆蹉]
 ---
 

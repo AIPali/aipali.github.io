@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 94, 412-421"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四种人, 苦行, 中道, 道次第, 戒定慧, 优陀那, 瞿哆牟伽, 出家]
 ---
 

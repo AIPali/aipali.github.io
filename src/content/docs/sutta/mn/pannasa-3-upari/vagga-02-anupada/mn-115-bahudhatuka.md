@@ -5,7 +5,8 @@ description: "佛陀阐述贤者与愚者的根本区别在于智慧。贤者因
 collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 115, 124-132"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [界, 处, 缘起, 处非处善巧, 智慧, 贤者, 因果, 业报, 法镜]
 ---
 

@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.41-50"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [布萨, 八关斋戒, 功德, 天界, 在家修行, 优婆夷, 夫妻道, 戒德]
 ---
 

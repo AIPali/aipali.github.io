@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 23, 160-205"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 罗陀, 魔罗, 众生, 遍知, 贪欲, 阿罗汉]
 ---
 

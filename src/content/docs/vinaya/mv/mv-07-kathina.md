@@ -5,7 +5,8 @@ description: "详细记载功德衣（迦絺那衣）的缘起、受持资格、
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 7, 306-325"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 大品, 功德衣, 迦絺那衣, 僧团制度, 安居, 特权]
 ---
 

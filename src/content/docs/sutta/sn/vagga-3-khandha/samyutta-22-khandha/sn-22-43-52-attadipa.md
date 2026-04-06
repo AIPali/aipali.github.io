@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.43-52, 43-52"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 无常, 无我, 如理作意, 解脱, 自洲, 法洲, 有身]
 ---
 

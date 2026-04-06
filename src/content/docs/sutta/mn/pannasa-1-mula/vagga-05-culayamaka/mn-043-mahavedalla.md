@@ -5,7 +5,8 @@ description: "智慧第一的舍利弗尊者与善于分析法义的大拘稀罗
 collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 43, 449-459"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [智慧, 识, 受, 想, 五蕴, 心解脱, 四禅, 舍利弗, 大拘絺罗, 四圣谛, 灭尽定]
 ---
 

@@ -5,7 +5,8 @@ description: "《长老偈》第一集，收录了120位阿罗汉长老证悟时
 collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 1, 1-120"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [长老偈, 证悟, 阿罗汉, 禅修, 独处, 解脱, 心性, 涅槃, 早期佛教]
 ---
 

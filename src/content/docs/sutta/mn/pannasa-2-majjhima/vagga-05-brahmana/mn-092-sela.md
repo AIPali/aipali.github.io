@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 92, 396-400"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["三十二相", "施罗", "婆罗门", "出家", "阿罗汉", "神通", "转轮圣王", "法王", "信仰"]
 ---
 

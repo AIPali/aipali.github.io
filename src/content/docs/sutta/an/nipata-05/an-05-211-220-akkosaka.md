@@ -5,7 +5,8 @@ description: "本品包含十部经，详细论述了辱骂圣者、好争论、
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.211-220"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [过失, 功德, 戒律, 威仪, 忍辱, 语业, 僧团和合]
 ---
 

@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 100, 473-486"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [菩萨道, 苦行, 中道, 觉悟, 三明, 禅那, 阿罗罗·迦摩罗, 郁陀迦·罗摩子, 婆罗门]
 ---
 

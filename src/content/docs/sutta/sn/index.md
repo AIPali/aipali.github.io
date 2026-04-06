@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [相应部, 尼柯耶, 缘起, 五蕴, 六处, 四圣谛, 菩提分法]
 ---
 

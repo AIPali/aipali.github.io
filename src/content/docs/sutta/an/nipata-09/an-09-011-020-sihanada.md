@@ -5,7 +5,8 @@ description: "本品以尊者舍利弗面对诬告时，以九种譬喻阐明其
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.11-20"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [狮子吼, 舍利弗, 九想, 四双八辈, 布施, 功德, 业报, 四圣谛, 身念住]
 ---
 

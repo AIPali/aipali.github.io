@@ -5,7 +5,8 @@ description: "本品详述了常住比丘（寺院的旧住者）应具备的优
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.231-240"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [常住比丘, 僧团生活, 戒定慧, 悭吝, 悲愍信众]
 ---
 

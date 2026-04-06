@@ -5,7 +5,8 @@ description: "本品包含十二部经，佛陀教导了判断应依止、亲近
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.155-166"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [十正道, 十邪道, 依止, 亲近, 善友]
 ---
 

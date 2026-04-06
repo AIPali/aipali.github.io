@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 129, 246-260"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [业, 因果, 轮回, 地狱, 天界, 智慧, 愚痴, 善行, 恶行, 十善业]
 ---
 

@@ -5,7 +5,8 @@ description: "本篇包含《比丘尼分别》中的十条僧残戒。这些是
 collection: "Bhikkhunivibhaṅga"
 vagga: "Saṅghādisesakaṇḍa"
 reference: "NV 2, 678-732"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [僧残, 比丘尼戒, 诉讼, 贼女, 独行, 僧团和合, 戒律, 律藏]
 ---
 

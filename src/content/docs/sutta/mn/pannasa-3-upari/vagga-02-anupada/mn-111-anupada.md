@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 111, 93-97"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [舍利弗, 不断观, 禅那, 九次第定, 灭尽定, 智慧第一, 法嗣, 毗婆舍那, 心所]
 ---
 

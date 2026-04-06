@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.124-133"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 拘尸那罗品, 饮食, 和睦, 导师, 愤怒, 阿那律, 舍利弗]
 ---
 

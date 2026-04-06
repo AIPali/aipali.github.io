@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.11-20, 377-386"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 舍利弗, 涅槃, 自护护他, 狮子吼, 身至念]
 ---
 

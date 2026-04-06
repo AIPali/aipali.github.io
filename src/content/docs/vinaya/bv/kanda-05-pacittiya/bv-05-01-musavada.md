@@ -5,7 +5,8 @@ description: "巴利律藏比丘单堕法的前十条学处，涵盖妄语、恶
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.1, 1-88"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 波逸提, 妄语, 恶口, 两舌, 戒律, 学处, 比丘戒, 言语戒, 共住戒, 僧团规范]
 ---
 

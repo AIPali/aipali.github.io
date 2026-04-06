@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 150, 434-437"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["六根", "六境", "贪嗔痴", "恭敬", "供养", "沙门", "婆罗门", "修行者", "判断标准", "感官约束"]
 ---
 

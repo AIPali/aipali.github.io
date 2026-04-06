@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.147-156"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [身语意, 善业, 恶业, 吉祥, 梵行, 业果]
 ---
 

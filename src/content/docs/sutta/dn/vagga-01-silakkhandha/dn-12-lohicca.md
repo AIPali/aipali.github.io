@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 12, 501-517"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [邪见, 导师, 法布施, 贪婪, 四圣果, 罗希伽, 责任]
 ---
 

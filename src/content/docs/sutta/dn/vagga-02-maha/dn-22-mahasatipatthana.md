@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 22, 372-405"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 身念住, 受念住, 心念住, 法念住, 观呼吸, 毗婆舍那, 正念, 四圣谛, 七觉支]
 ---
 

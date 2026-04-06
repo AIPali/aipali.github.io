@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 141, 371-375"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四圣谛, 八正道, 苦, 集, 灭, 道, 舍利弗, 佛陀, 智慧, 法轮]
 ---
 

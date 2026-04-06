@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmahmaṇavagga"
 reference: "MN 99, 462-472"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["在家", "出家", "婆罗门", "梵天", "四无量心", "五法", "五盖", "盲人队列", "须婆"]
 ---
 

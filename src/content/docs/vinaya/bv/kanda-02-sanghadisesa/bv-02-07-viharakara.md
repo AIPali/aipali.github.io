@@ -5,7 +5,8 @@ description: "本学处规定，比丘为自己建造有施主的大型精舍时
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.7, 365-379"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 建造精舍, 僧团羯磨, 选址, 护生, 建筑规定, 阐陀]
 ---
 

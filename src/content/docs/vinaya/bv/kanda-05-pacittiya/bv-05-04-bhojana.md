@@ -5,7 +5,8 @@ description: "本品包含十条关于比丘饮食行为的学处，旨在规范
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.4, 203-268"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 饮食, 波逸提, 比丘戒律, 受食, 一起受邀, 非时食, 蓄藏, 美食, 净施, 残食法]
 ---
 

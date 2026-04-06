@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Dukanipātapāḷi"
 reference: "AN 2.181-246"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [烦恼对治, 戒律目的, 止观双运, 奢摩他, 毗婆舍那, 漏烦恼]
 ---
 

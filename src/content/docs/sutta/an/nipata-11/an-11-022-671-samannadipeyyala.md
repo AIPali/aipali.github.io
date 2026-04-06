@@ -5,7 +5,8 @@ description: "本集通过牧牛喻详述了修行者应具备的十一法，以
 collection: "Aṅguttara Nikāya"
 vagga: "Ekādasaka"
 reference: "AN 11.22-671"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [十一法, 牧牛喻, 观无常, 四禅, 四无量心, 无色定, 断除烦恼, 广说品]
 ---
 

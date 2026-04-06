@@ -5,7 +5,8 @@ description: "本学处规定，当一位比丘因恶语而固执己见，拒绝
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.12, 424-430"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 恶语, 阐陀, 僧团和合, 谏言, 羯磨, 不可共语]
 ---
 

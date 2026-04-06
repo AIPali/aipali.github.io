@@ -5,7 +5,8 @@ description: "阿阇世王向佛陀请教出家修行的现世果报，佛陀详
 collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
 reference: "DN 2, 150-253"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [沙门果, 现世果报, 六师外道, 波罗提木叉, 戒定慧, 四禅, 漏尽智, 宿命论, 唯物论, 业果]
 ---
 

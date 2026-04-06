@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi, Khandhasaṃyutta"
 reference: "SN 22.53-62, 53-62"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五蕴, 黏着, 缘起, 执取, 无我, 涅槃, 四圣谛]
 ---
 

@@ -6,6 +6,7 @@ collection: "Bhikkhunivibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "NV 4.5, 977-1020"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [比丘尼戒, 单堕, 律藏, 画室品, 世俗娱乐, 外道邪术]
 ---
 

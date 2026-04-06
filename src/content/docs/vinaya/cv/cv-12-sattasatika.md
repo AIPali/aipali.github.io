@@ -5,7 +5,8 @@ description: "记录了佛教历史上第二次结集的详细过程。为解决
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 12, 446-458"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [第二次结集, 七百结集, 毗舍离, 十事非法, 耶舍, 离婆多, 萨婆迦眉, 律藏, 僧团争议, 戒律]
 ---
 

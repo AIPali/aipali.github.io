@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 97, 445-453"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["责任", "业力", "临终关怀", "善行", "四无量心", "梵天", "舍利弗", "放逸", "世俗责任"]
 ---
 

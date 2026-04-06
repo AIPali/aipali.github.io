@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 59, 88-91"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [感受, 禅那, 快乐, 苦受, 乐受, 不苦不乐受, 五欲, 想受灭, 善巧方便]
 ---
 

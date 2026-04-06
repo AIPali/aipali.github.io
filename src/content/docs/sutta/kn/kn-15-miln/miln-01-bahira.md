@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Milindapañhapāḷi"
 reference: "Miln 1"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [弥兰王, 龙军, 宿世因缘, 辩论, 佛法传承, 阿毗达摩]
 ---
 

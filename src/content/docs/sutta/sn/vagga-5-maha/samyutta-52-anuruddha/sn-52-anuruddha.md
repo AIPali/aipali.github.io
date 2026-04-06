@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi"
 reference: "SN 52, 899-922"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [阿那律, 四念住, 神通, 天眼, 有学, 无学, 十力]
 ---
 

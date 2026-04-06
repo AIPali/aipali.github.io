@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Vibhaṅgavagga"
 reference: "MN 132, 276-278"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["贤善一夜", "五蕴", "活在当下", "时间", "阿难", "禅修", "正念", "不执着"]
 ---
 

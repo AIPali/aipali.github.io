@@ -5,7 +5,8 @@ description: "比丘尼戒律单堕篇第四品，包含十条学处，主要涉
 collection: "Bhikkhunivibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "NV 4.4, 932-976"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [比丘尼戒, 单堕, 律藏, 共卧, 僧团生活, 游行, 偷兰难陀, 跋陀·迦毗罗尼]
 ---
 

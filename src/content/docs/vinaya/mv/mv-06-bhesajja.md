@@ -5,7 +5,8 @@ description: "本篇详细记述了佛陀为比丘僧团制定的关于医药、
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 6, 260-305"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [戒律, 比丘, 医药, 食物, 七日药, 尽形寿药, 三净肉, 净人]
 ---
 

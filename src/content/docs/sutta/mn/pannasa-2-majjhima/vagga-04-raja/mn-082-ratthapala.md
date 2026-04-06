@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 82, 293-307"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [赖吒波罗, 出家, 财富, 无常, 贪爱, 四法总说, 阿罗汉, 拘牢婆王, 舍离]
 ---
 

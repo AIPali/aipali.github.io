@@ -5,7 +5,8 @@ description: "佛陀向萨罗村的婆罗门居士们开示一种“无戏论”
 collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 60, 92-106"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [无戏论, 正见, 邪见, 因果, 业报, 断灭论, 无因论, 四种人, 四禅, 三明]
 ---
 

@@ -5,7 +5,8 @@ description: "本品包含《比丘律》中舍堕篇的前十条学处，详细
 collection: "Bhikkhuvibhaṅga"
 vagga: "Nissaggiyakaṇḍa"
 reference: "BV 4.1, 459-541"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [比丘戒律, 舍堕, 衣物规定, 三衣, 迦絺那衣, 僧团生活, 学处, 供养]
 ---
 

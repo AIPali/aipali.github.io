@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 146, 398-415"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["六处", "无常", "苦", "无我", "七觉支", "比丘尼", "难陀迦", "譬喻", "入流果", "感官"]
 ---
 

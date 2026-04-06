@@ -5,7 +5,8 @@ description: "佛陀般涅槃后，大臣禹舍和婆罗门瞿默目犍连向尊
 collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 108, 79-84"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [法为依归, 僧团和合, 十可喜法, 禅那, 五盖, 阿难, 瞿默目犍连, 禹舍]
 ---
 

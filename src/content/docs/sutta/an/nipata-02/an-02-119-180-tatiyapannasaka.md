@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Dukanipātapāḷi"
 reference: "AN 2.119-180"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 二集, 法施, 止观, 正念正知, 缘起, 善巧]
 ---
 

@@ -5,7 +5,8 @@ description: "本品包含十一支缘起（从持戒到解脱的自然法则）
 collection: "Aṅguttara Nikāya"
 vagga: "Ekādasaka"
 reference: "AN 11.1-10"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [依止品, 戒定慧, 缘起, 禅修, 涅槃, 神变]
 ---
 

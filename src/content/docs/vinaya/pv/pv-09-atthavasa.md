@@ -5,7 +5,8 @@ description: "佛陀阐述了为僧团制定学处的十大利益，以及这些
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 9, 334"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [制戒, 学处, 僧团, 学处, 十大利益, 正法久住, 律藏]
 ---
 

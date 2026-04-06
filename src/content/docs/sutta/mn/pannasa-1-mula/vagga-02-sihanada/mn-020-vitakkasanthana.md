@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 20, 216-221"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [寻思, 禅修, 对治法, 五种方法, 心理调适, 断除烦恼, 增上心学, 正精进]
 ---
 

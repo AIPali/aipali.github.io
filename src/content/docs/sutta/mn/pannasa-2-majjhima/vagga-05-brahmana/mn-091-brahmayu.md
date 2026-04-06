@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Brāhmaṇavagga"
 reference: "MN 91, 383-395"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["三十二相", "婆罗门", "梵摩", "优多罗", "神通", "法眼", "不还果", "渐次说法", "威仪"]
 ---
 

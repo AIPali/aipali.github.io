@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Sagāthāvaggasaṃyuttapāḷi, Devatāsaṃyutta"
 reference: "SN 1.11-20, 11-20"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [欢喜园, 五蕴, 执取, 法随念, 三弥提, 阿罗汉]
 ---
 

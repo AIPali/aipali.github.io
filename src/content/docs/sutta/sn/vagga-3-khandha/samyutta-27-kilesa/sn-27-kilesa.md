@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 27, 322-331"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [烦恼相应, 随烦恼, 欲贪, 出离, 六处, 五蕴, 胜智]
 ---
 

@@ -5,7 +5,8 @@ description: "这是比丘律中关于禁止僧人担任媒人、撮合男女关
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.5, 296-341"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 戒律, 比丘戒, 媒人, 婚姻, 优陀夷, 邪命, 僧团和谐]
 ---
 

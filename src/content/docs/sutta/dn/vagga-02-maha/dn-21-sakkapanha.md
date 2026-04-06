@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 21, 344-371"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [帝释, 缘起, 嫉妒, 吝啬, 戏论, 感受, 根律仪, 乾闼婆, 入流果, 天人]
 ---
 

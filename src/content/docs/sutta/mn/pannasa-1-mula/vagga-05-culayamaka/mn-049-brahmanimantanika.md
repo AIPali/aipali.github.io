@@ -5,7 +5,8 @@ description: "佛陀亲临梵天界，破除跋迦梵天认为其世界永恒的
 collection: "Majjhima Nikāya"
 vagga: "Cūḷayamakavagga"
 reference: "MN 49, 501-505"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [梵天, 跋迦梵天, 魔王波旬, 常见, 神通, 涅槃]
 ---
 

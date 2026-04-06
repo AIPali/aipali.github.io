@@ -5,7 +5,8 @@ description: "本学处规定，比丘不可出于淫欲之心，对女性使用
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.3, 283-289"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 粗恶语, 言语戒, 比丘戒律, 优陀夷, 淫欲, 戒律, 正语]
 ---
 

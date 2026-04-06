@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.1-10, 367-376"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 庵婆波利园, 譬喻, 正念正知, 善聚, 以自为洲]
 ---
 

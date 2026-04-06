@@ -5,7 +5,8 @@ description: "本学处是佛陀制定的第二条僧残戒，旨在防止比丘
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.2, 269-282"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 身体接触, 优陀夷, 戒律, 比丘戒, 不净行, 僧团清净, 梵行]
 ---
 

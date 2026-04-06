@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [长部, 尼柯耶, 梵网, 大般涅槃, 大念住, 戒蕴, 缘起]
 ---
 

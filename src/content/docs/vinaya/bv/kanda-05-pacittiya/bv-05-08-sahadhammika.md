@@ -5,7 +5,8 @@ description: "本品包含十二条单堕学处，主要规范比丘在面对僧
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.8, 433-492"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 波逸提, 戒律, 僧团羯磨, 如法, 僧团和谐, 六群比丘, 阐陀, 僧团财物, 诤论]
 ---
 

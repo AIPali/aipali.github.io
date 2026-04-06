@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 104, 41-54"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [僧团和合, 争论, 灭诤, 六和敬, 尼乾子, 阿难, 戒律, 毗奈耶, 团结]
 ---
 

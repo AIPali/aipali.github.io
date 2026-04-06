@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: ""
 reference: ""
 curator: "True-Dhamma.com"
+version: "1"
 tags: [增支部, 尼柯耶, 佛法架构, 修行指南, 数字法门]
 ---
 

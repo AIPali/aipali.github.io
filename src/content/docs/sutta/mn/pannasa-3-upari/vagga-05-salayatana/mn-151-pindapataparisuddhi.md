@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 151, 438-452"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [托钵, 乞食, 清净, 自我省察, 六根, 五盖, 五取蕴, 三十七道品, 空住, 舍利弗]
 ---
 

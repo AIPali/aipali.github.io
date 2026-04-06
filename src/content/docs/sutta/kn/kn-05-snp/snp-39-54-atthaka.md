@@ -5,7 +5,8 @@ description: "《经集》第四品，包含了佛教极早期关于解脱见解
 collection: "Khuddaka Nikāya"
 vagga: "Suttanipāta"
 reference: "Snp 39-54, 772-981"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [经集, 八颂经品, 不执著, 止诤, 见解, 游行, 涅槃]
 ---
 

@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.31-40, 1101-1110"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四圣谛, 譬喻, 勤加修习, 缘起, 止观, 涅槃]
 ---
 

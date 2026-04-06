@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 22, 234-248"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [蛇喻, 筏喻, 无我, 邪见, 五蕴, 执取, 解脱, 阿罗汉, 欲望, 四取]
 ---
 

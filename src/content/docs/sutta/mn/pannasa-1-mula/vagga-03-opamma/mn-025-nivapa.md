@@ -5,7 +5,8 @@ description: "佛陀以猎人撒下诱饵引诱四种鹿群为譬喻，巧妙地
 collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 25, 261-271"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [五欲, 魔罗, 四禅八定, 止观, 邪见, 中道, 解脱]
 ---
 

@@ -5,7 +5,8 @@ description: "本篇详细制定了比丘在各种生活情境下的行为规范
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 8, 356-382"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 小品, 仪法, 僧团生活, 比丘, 行为规范, 戒师, 弟子, 威仪]
 ---
 

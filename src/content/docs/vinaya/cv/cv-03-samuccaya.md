@@ -5,7 +5,8 @@ description: "详细阐述比丘在犯下僧残罪后，如何通过别住、摩
 collection: "Vinaya Piṭaka"
 vagga: "Cūḷavaggapāḷi"
 reference: "CV 3, 97-184"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [僧残, 别住, 摩那埵, 僧事, 羯磨, 出罪, 律藏, 优陀夷, 恢复清净]
 ---
 

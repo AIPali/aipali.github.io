@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Rājavagga"
 reference: "MN 85, 324-346"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["菩提王子", "苦行", "中道", "觉悟", "阿罗逻伽罗摩", "郁陀迦罗摩子", "五比丘", "五精勤支", "梵天劝请", "三皈依"]
 ---
 

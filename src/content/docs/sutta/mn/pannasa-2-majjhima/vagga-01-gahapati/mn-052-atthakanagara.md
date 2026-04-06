@@ -5,7 +5,8 @@ description: "尊者阿难开示了十一种通往解脱的“甘露门”，包
 collection: "Majjhima Nikāya"
 vagga: "Gahapativagga"
 reference: "MN 52, 17-21"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [甘露门, 禅那, 四无量心, 无色界定, 观禅, 五下分结, 漏尽, 不还果, 阿罗汉]
 ---
 

@@ -5,7 +5,8 @@ description: "本学处记述了提婆达多试图通过提出五项极端苦行
 collection: "Bhikkhuvibhaṅga"
 vagga: "Saṃghādisesakaṇḍa"
 reference: "BV 2.10, 409-416"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [僧残, 戒律, 提婆达多, 破僧, 僧团和合, 五事, 中道]
 ---
 

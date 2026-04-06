@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Udānapāḷi"
 reference: "Ud 4.1-4.10"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [自说经, 弥醯, 善友, 禅修, 孙陀利女, 舍利弗, 独处]
 ---
 

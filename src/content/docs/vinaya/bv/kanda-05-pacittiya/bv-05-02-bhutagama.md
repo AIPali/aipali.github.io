@@ -5,7 +5,8 @@ description: "本品包含单堕法第十一至二十条，内容涉及损坏植
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.2, 89-143"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: [单堕, 波逸提, 戒律, 植物, 僧团和谐, 卧具, 精舍, 僧物, 诚实, 羯磨]
 ---
 

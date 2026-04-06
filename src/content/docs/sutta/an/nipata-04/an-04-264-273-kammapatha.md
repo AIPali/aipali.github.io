@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.264-273"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [十善业, 十恶业, 业力, 随喜, 共业]
 ---
 

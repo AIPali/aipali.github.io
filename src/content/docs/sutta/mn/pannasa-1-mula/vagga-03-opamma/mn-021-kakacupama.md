@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 21, 222-233"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [忍辱, 慈心, 嗔恨, 语言, 譬喻, 锯喻, 修行, 牟利破群那]
 ---
 

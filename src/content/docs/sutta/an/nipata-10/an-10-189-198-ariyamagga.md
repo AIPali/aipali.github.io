@@ -5,7 +5,8 @@ description: "佛陀通过十部简明的经文，从圣道、正法、善士法
 collection: "Aṅguttara Nikāya"
 vagga: "Dasakanipātapāḷi"
 reference: "AN 10.189-198"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [十善业, 十不善业, 圣道, 正法, 善士法, 邪见, 正见]
 ---
 

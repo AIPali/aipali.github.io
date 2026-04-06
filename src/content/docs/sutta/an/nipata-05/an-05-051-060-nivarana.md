@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.51-60"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [五盖, 精勤, 梵行, 障碍, 戒律, 五处省思]
 ---
 

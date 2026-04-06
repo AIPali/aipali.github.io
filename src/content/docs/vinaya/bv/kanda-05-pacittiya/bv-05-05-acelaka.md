@@ -5,7 +5,8 @@ description: "本品包含十条比丘单堕学处，涉及与外道、女性的
 collection: "Bhikkhuvibhaṅga"
 vagga: "Pācittiyakaṇḍa"
 reference: "BV 5.5, 269-325"
-curator: "4 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "0.1"
 tags: ["单堕", "比丘戒律", "波逸提", "外道", "女性", "独处", "军队", "观战", "食物布施", "僧团威仪"]
 ---
 

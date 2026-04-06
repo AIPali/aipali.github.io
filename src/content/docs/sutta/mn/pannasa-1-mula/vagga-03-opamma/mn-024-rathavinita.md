@@ -5,7 +5,8 @@ description: "佛陀的两位大弟子——智慧第一的舍利弗与说法第
 collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 24, 252-260"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [七清净, 传车, 七车, 修行次第, 舍利弗, 富楼那, 梵行, 解脱]
 ---
 

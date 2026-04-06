@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Suññatavagga"
 reference: "MN 122, 185-196"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [空性, 独处, 禅定, 四禅, 五取蕴, 五欲, 师徒关系, 修行败坏]
 ---
 

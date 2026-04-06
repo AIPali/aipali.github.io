@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Bhikkhuvagga"
 reference: "MN 67, 157-165"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [僧团纪律, 四种怖畏, 譬喻, 舍利弗, 目犍连, 还俗, 修行障碍, 忿怒, 贪食, 五欲, 女色]
 ---
 

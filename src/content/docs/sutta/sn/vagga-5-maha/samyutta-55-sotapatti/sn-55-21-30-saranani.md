@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Sotāpattisaṃyutta"
 reference: "SN 55.21-30, 1017-1026"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [入流支, 入流果, 四不坏净, 摩诃男, 给孤独, 缘起]
 ---
 

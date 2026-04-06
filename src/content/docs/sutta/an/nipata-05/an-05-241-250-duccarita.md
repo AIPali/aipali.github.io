@@ -5,7 +5,8 @@ description: "本品讲述了身、语、意恶行与妙行的不同结果，并
 collection: "Aṅguttara Nikāya"
 vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.241-250"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [恶行, 妙行, 业果, 坟场喻, 依法不依人, 信仰]
 ---
 

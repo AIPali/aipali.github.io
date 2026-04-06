@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Tikanipātapāḷi"
 reference: "AN 3.104-113"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [等觉, 滋味, 过患, 出离, 沙门婆罗门, 戒律, 缘起, 业集]
 ---
 

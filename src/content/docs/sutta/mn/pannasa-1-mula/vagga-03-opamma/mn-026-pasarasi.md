@@ -5,7 +5,8 @@ description: "本经详述了佛陀成道前的修行历程，区分了“圣求
 collection: "Majjhima Nikāya"
 vagga: "Opammavagga"
 reference: "MN 26, 272-287"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [圣求, 缘起, 涅槃, 禅那, 梵天劝请, 初转法轮, 五欲, 魔罗]
 ---
 

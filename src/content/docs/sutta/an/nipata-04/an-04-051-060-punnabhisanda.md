@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Catukkanipātapāḷi"
 reference: "AN 4.51-60"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [福报, 供养, 不坏信, 夫妻同修, 戒行, 缘起]
 ---
 

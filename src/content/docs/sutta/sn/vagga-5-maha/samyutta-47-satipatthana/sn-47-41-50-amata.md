@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Satipaṭṭhānasaṃyutta"
 reference: "SN 47.41-50, 407-416"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [四念住, 不死, 一乘道, 缘起, 波罗提木叉, 漏烦恼]
 ---
 

@@ -6,6 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Vimānavatthupāḷi"
 reference: "Vv 1-50, 1-856"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [天宫, 业果, 布施, 福德, 女神, 戒律, 随喜]
 ---
 

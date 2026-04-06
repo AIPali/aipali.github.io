@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Paribbājakavagga"
 reference: "MN 80, 278-281"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["色光", "感官欲乐", "譬喻", "解脱", "无明", "外道", "鞞摩那修", "欲乐"]
 ---
 

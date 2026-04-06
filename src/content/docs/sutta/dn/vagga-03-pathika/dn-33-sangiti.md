@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 33, 296-349"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["合诵", "法数", "舍利弗", "尼乾子", "教团合和", "法义纲要", "结集", "一法", "二法", "十法"]
 ---
 

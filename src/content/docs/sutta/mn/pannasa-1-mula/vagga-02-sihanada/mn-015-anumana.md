@@ -5,7 +5,8 @@ description: "尊者大目犍连教导比丘们如何通过自我思量和反省
 collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 15, 181-184"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [大目犍连, 思量法, 僧团和谐, 自我反省, 烦恼, 镜譬喻]
 ---
 

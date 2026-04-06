@@ -5,7 +5,8 @@ description: "佛陀阐述了五种内心的荒芜和五种束缚，它们是修
 collection: "Majjhima Nikāya"
 vagga: "Sīhanādavagga"
 reference: "MN 16, 185-189"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [心荒芜, 心束缚, 疑, 信心, 欲贪, 四神足, 修行障碍, 精进, 解脱, 十五支]
 ---
 

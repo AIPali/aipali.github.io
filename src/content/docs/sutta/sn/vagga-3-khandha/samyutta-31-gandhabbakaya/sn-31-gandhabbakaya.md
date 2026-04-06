@@ -6,6 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Khandhavaggasaṃyuttapāḷi"
 reference: "SN 31, 438-549"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [乾达婆, 天界, 业果, 布施, 发愿, 善行, 十种布施]
 ---
 

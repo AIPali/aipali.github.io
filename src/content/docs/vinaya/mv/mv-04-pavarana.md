@@ -5,7 +5,8 @@ description: "关于雨安居结束后，比丘僧团举行自恣（相互邀过
 collection: "Vinaya Piṭaka"
 vagga: "Mahāvaggapāḷi"
 reference: "MV 4, 209-241"
-curator: "3 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "2"
 tags: [律藏, 大品, 自恣, 雨安居, 僧团羯磨, 相互邀过, 戒律]
 ---
 

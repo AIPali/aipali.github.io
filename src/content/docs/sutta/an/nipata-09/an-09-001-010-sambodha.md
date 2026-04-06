@@ -5,7 +5,8 @@ description: "本品阐述了趋向正等正觉的九个关键法门，包括五
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.1-10"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [九集, 等觉, 善友, 心解脱, 阿罗汉, 四圣果, 依止, 福田]
 ---
 

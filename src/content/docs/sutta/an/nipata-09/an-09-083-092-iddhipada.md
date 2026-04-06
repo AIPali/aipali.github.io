@@ -5,7 +5,8 @@ description: "本品阐述了如何修习四神足，以断除学戒的弱点、
 collection: "Aṅguttara Nikāya"
 vagga: "Navakanipātapāḷi"
 reference: "AN 9.83-92"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [四神足, 五戒, 五盖, 五心缚, 欲定, 勤定, 心定, 观定, 修行障碍]
 ---
 

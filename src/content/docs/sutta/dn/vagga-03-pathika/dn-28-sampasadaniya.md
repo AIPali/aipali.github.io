@@ -5,7 +5,8 @@ description: "尊者舍利弗以狮子吼的方式，通过系统地阐述佛陀
 collection: "Dīgha Nikāya"
 vagga: "Pāthikavaggapāḷi"
 reference: "DN 28, 141-163"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [舍利弗, 狮子吼, 净信, 法类智, 诸佛道同, 教法分类, 神通, 圣者, 无上]
 ---
 

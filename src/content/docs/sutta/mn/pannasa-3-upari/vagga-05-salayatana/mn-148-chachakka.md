@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Saḷāyatanavagga"
 reference: "MN 148, 420-427"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["六处", "缘起", "无我", "随眠", "解脱", "毗婆舍那", "厌离", "离欲", "根境识"]
 ---
 

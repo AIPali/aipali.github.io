@@ -5,7 +5,8 @@ description: "关于越过生老死之流、到达涅槃彼岸的深度教导，
 collection: "Khuddaka Nikāya"
 vagga: "Cūḷaniddesapāḷi"
 reference: "Cnd 1-19, 1-174"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [彼岸, 涅槃, 缘起, 越度暴流, 十六学童, 顶堕智, 识之灭尽]
 ---
 

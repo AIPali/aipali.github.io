@@ -5,7 +5,8 @@ description: "《附随》第一部分，以问答形式详细剖析比丘戒律
 collection: "Vinaya Piṭaka"
 vagga: "Parivārapāḷi"
 reference: "PV 1, 1-200"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [律藏, 附随, 比丘戒, 波罗提木叉, 弃罪, 僧残, 舍堕, 单堕, 学处]
 ---
 

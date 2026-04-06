@@ -5,7 +5,8 @@ description: "本品详述了郁伽、呵哆等杰出居士的希有功德，定
 collection: "Aṅguttaranikāya"
 vagga: "Aṭṭhakanipātapāḷi"
 reference: "AN 8.21-30"
-curator: "2 True-Dhamma.com"
+curator: "True-Dhamma.com"
+version: "3"
 tags: [居士修行, 希有法, 四摄事, 八大人觉, 优婆塞, 八力, 八无暇]
 ---
 

@@ -6,6 +6,7 @@ collection: "Dīgha Nikāya"
 vagga: "Mahāvaggapāḷi"
 reference: "DN 15, 95-130"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["缘起", "十二缘起", "名色", "识", "无我", "感受", "渴爱", "执取", "慧解脱", "俱解脱"]
 ---
 

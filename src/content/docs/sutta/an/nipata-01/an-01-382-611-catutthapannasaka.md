@@ -6,6 +6,7 @@ collection: "Aṅguttara Nikāya"
 vagga: "Ekakanipātapāḷi"
 reference: "AN 1.382-611"
 curator: "True-Dhamma.com"
+version: "1"
 tags: [静虑, 三十七道品, 身至念, 不死, 涅槃, 一集]
 ---
 

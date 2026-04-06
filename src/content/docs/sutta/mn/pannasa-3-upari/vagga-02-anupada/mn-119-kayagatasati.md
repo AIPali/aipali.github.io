@@ -6,6 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 119, 153-159"
 curator: "True-Dhamma.com"
+version: "1"
 tags: ["身至念", "安那般那", "四念住", "不净观", "四界分别", "禅那", "定力", "正念正知", "解脱", "譬喻"]
 ---
 
