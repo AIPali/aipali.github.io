@@ -6,7 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Therīgāthā"
 reference: "Thig 13-16, 252-524"
 curator: "True-Dhamma.com"
-version: "2"
+version: "3"
 tags: [长老尼偈, 庵婆波利, 苏巴, 伊悉达西, 善慧, 色身无常, 业力, 轮回, 出离心, 证悟]
 ---
 

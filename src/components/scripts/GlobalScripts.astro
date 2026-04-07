@@ -20,16 +20,25 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 <meta name="apple-mobile-web-app-title" content="AIPali" />
 
 <script define:vars={{ swUrl, baseUrl, offlineUrl }}>
-  // PWA Standalone 模式下的路由接管
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    
-    // 1. 如果因为某些原因回到了纯根目录，平滑替换到 offline
+  // 1. 定义环境常量
+  const hostname = window.location.hostname;
+  const isTargetDomain = hostname.includes('aipali.github.io') || 
+                         hostname === 'localhost' || 
+                         hostname === '127.0.0.1' || 
+                         hostname.startsWith('192.168.');
+                         
+  // 2. 检测是否为 PWA 独立应用模式 (桌面/主屏幕 App 打开)
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                       window.navigator.standalone === true; // 兼容 iOS 老版本
+
+  // 3. 路由守护：如果在独立 App 模式下处于首页，平滑跳转到控制台
+  if (isStandalone) {
     const path = window.location.pathname;
     if (path === baseUrl || path === baseUrl + 'index.html') {
       window.location.replace(offlineUrl);
     }
     
-    // 2. 拦截左上角 Starlight Logo 的点击事件，改写为指向 Offline 控制台，杜绝死循环
+    // 拦截左上角 Logo，防止跳出 offline 闭环
     document.addEventListener('DOMContentLoaded', () => {
       const siteTitleAnchor = document.querySelector('.site-title a');
       if (siteTitleAnchor) {
@@ -38,16 +47,31 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
     });
   }
 
-  // 注册 Service Worker
+  // 4. Service Worker 动态管理 (解决 PC/非应用模式被劫持缓存的问题)
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
-      if (navigator.storage && navigator.storage.persist) {
-        const isPersisted = await navigator.storage.persist();
-        console.log(`[AIPali PWA] 数据持久化状态: ${isPersisted ? '已锁定 (防清除)' : '未锁定'}`);
+      
+      // 【条件A】只有在"指定域名" 且 "独立应用模式" 下，才注册 PWA 引擎
+      if (isTargetDomain && isStandalone) {
+        if (navigator.storage && navigator.storage.persist) {
+          const isPersisted = await navigator.storage.persist();
+          console.log(`[AIPali PWA] 数据持久化: ${isPersisted ? '已锁定' : '未锁定'}`);
+        }
+        navigator.serviceWorker.register(swUrl).then((reg) => {
+          console.log('[AIPali PWA] 独立应用模式，离线引擎已启动，作用域:', reg.scope);
+        });
+      } 
+      // 【条件B】普通浏览器访问，或者在非目标域名下 -> 主动注销清理 SW
+      else {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (let reg of registrations) {
+            reg.unregister().then(boolean => {
+              if (boolean) console.log('[AIPali PWA] 普通浏览器模式，已注销 Service Worker，恢复正常实时网络');
+            });
+          }
+        });
       }
-      navigator.serviceWorker.register(swUrl).then((reg) => {
-        console.log('[AIPali PWA] 引擎启动，作用域:', reg.scope);
-      });
+      
     });
   }
 </script>
