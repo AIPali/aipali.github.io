@@ -163,12 +163,10 @@ function embedChatbot() {
   ChatBtn.id = chatBtnId;
   ChatBtn.className = 'fastgpt-chat-btn';
 
-  // 图标容器
   const ChatIconContainer = document.createElement('div');
   ChatIconContainer.className = 'fastgpt-icon-container';
   ChatIconContainer.innerHTML = defaultOpen ? svgClose : svgOpen;
 
-  // 按钮文字：改为“问经”
   const ChatText = document.createElement('span');
   ChatText.className = 'fastgpt-text';
   ChatText.innerText = '问经';
@@ -191,21 +189,30 @@ function embedChatbot() {
     document.body.appendChild(ChatBtn);
   }
 
-  // 3. 创建对话框 Iframe
+  // 3. 创建对话框 Iframe (【改动点】：暂不赋值 src)
   const iframe = document.createElement('iframe');
   iframe.allow = 'microphone *; *';
   iframe.referrerPolicy = 'no-referrer';
   iframe.id = chatWindowId;
-  iframe.src = botSrc;
+  // iframe.src = botSrc; // 移除了直接赋值
   iframe.style.cssText = 'border: none; position: fixed; flex-direction: column; justify-content: space-between; box-shadow: rgba(150, 150, 150, 0.2) 0px 10px 30px 0px, rgba(150, 150, 150, 0.2) 0px 0px 0px 1px; width: 375px; height: 667px; max-width: 90vw; border-radius: 0.75rem; display: flex; z-index: 2147483647; overflow: hidden; background-color: #F3F4F6; transition: visibility 0.2s, opacity 0.2s;';
   iframe.style.visibility = defaultOpen ? 'unset' : 'hidden';
   iframe.style.opacity = defaultOpen ? '1' : '0';
   document.body.appendChild(iframe);
 
-  // 4. 计算 Iframe 的弹出位置（核心定位优化）
+  // 初始化一个变量，记录是否已经加载过链接
+  let isIframeLoaded = false;
+  
+  // 兼顾配置中的默认开启选项
+  if (defaultOpen) {
+    iframe.src = botSrc;
+    isIframeLoaded = true;
+  }
+
+  // 4. 计算 Iframe 的弹出位置
   const updateChatWindowPosition = () => {
     const btnRect = ChatBtn.getBoundingClientRect();
-    const isWideScreen = window.innerWidth >= 768; // 判断是否为 PC 端/宽屏
+    const isWideScreen = window.innerWidth >= 768; 
 
     if (isPlacedInHeader) {
       iframe.style.top = (btnRect.bottom + 12) + 'px'; 
@@ -213,15 +220,11 @@ function embedChatbot() {
       iframe.style.maxHeight = `calc(100vh - ${btnRect.bottom + 24}px)`; 
       
       if (isWideScreen) {
-        // 【关键修改点】PC端宽屏时：抛弃原本跟随按钮坐标的设定
-        // 直接强制将其吸附在浏览器视窗的最右侧，最大程度让出左方正文阅读区
         iframe.style.right = '24px';
       } else {
-        // 移动端/小屏：保持原状，留出少许安全边距即可
         iframe.style.right = '16px';
       }
     } else {
-      // 降级方案（按钮悬浮在右下角时）
       iframe.style.right = isWideScreen ? '24px' : '16px';
       iframe.style.top = 'unset';
       iframe.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
@@ -231,6 +234,12 @@ function embedChatbot() {
 
   ChatBtn.onclick = () => {
     const isOpening = iframe.style.visibility === 'hidden'; 
+
+    // 【新增点】：第一次打开面板时，才真正发起对 Cloudflare 服务器的请求
+    if (isOpening && !isIframeLoaded) {
+      iframe.src = botSrc;
+      isIframeLoaded = true;
+    }
 
     iframe.style.visibility = isOpening ? 'unset' : 'hidden';
     iframe.style.opacity = isOpening ? '1' : '0';
