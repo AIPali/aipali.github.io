@@ -6,7 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 17-21, 949-1288"
 curator: "True-Dhamma.com"
-version: "2"
+version: "3"
 tags: [长老偈, 舍利弗, 大迦叶, 目犍连, 阿难, 婆耆沙, 证悟, 神通, 头陀行, 法义衰微, 涅槃]
 ---
 

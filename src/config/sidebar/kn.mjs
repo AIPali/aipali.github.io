@@ -117,7 +117,7 @@ export const sidebarKN =[
     ]
   },
   {
-    label: 'Pe 三藏知津 (Peṭakopadesapāḷi)',
+    label: 'Pe 藏论 (Peṭakopadesapāḷi)',
     collapsed: true,
     items:[
       { label: 'Pe 1-5 圣谛至分类 (Ariyasacca-Hāravibhaṅga)', link: '/sutta/kn/kn-14-pe/pe-01-05-ariyasacca-sasana-sutta-suttavicaya-haravibhanga/' },

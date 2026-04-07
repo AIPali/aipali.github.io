@@ -6,7 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 2-5, 121-374"
 curator: "True-Dhamma.com"
-version: "2"
+version: "3"
 tags: [长老偈, 证悟, 阿罗汉, 无常, 禅修, 止观, 解脱, 涅槃, 心性调伏]
 ---
 

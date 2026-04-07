@@ -6,7 +6,7 @@ collection: "Khuddaka Nikāya"
 vagga: "Theragāthāpāḷi"
 reference: "Thag 11-16, 597-948"
 curator: "True-Dhamma.com"
-version: "2"
+version: "3"
 tags: [长老偈, 证悟, 阿罗汉, 央掘摩罗, 阿那律, 憍陈如, 无常, 业力, 解脱]
 ---
 
