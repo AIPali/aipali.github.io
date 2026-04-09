@@ -226,7 +226,7 @@ tags: [三皈依, 十学处, 慈心, 护卫经, 缘起, 功德回向]
 > 无论是在天空或地上，来到此地聚集的诸位神祇。\
 > Yānīdha bhūtāni samāgatāni, bhummāni vā yāni va antalikkhe;
 > 
-> 愿一切神祇都能心生欢喜，并且恭敬地谛听这番教导。\
+> 愿一切神祇都能心生欢喜，并且恭敬地聆听这番教导。\
 > Sabbeva bhūtā sumanā bhavantu, athopi sakkacca suṇantu bhāsitaṃ.
 > 
 > 因此，诸位神祇啊，请用心聆听，对人类众生散发你们的慈爱；\
