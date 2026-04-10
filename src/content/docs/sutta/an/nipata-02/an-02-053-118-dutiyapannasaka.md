@@ -7,7 +7,7 @@ vagga: "Dukanipātapāḷi"
 reference: "AN 2.53-118"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [智者, 愚者, 安乐, 业果, 烦恼, 缘起, 戒律, 止观]
+tags: [智者, 愚人, 安乐, 业果, 烦恼, 缘起, 戒律, 止观]
 ---
 
 > [!abstract] AI 导读
