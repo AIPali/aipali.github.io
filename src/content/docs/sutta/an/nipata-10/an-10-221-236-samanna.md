@@ -7,7 +7,7 @@ vagga: "Dasakanipātapāḷi"
 reference: "AN 10.221-236"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [十善业, 十不善业, 业果, 轮回, 天界, 地狱, 智与愚]
+tags: [十善业道, 十不善业道, 业果, 轮回, 天界, 地狱, 智与愚]
 ---
 
 > [!abstract] AI 导读
