@@ -7,7 +7,7 @@ vagga: "Tikanipātapāḷi"
 reference: "AN 3.157-163"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [沉溺, 苦行, 中道, 苦行, 四念住, 四正勤, 四神足, 五根, 五力, 七觉支, 八正道, 三十七道品]
+tags: [沉溺, 苦行, 中道, 四正勤, 四神足, 五根, 五力, 七觉支, 八正道, 三十七道品]
 ---
 
 >[!abstract] AI 导读
