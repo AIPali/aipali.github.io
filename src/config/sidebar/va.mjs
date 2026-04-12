@@ -132,7 +132,7 @@ export const sidebarVA =[
     items:[
       { label: 'PV 1 比丘分别 (Bhikkhuvibhaṅga)', link: '/vinaya/pv/pv-01-bhikkhuvibhanga/' },
       { label: 'PV 2 比丘尼分别 (Bhikkhunivibhaṅga)', link: '/vinaya/pv/pv-02-bhikkhunivibhanga/' },
-      { label: 'PV 3 等起顶摄颂 (Samuṭṭhānasīsasaṅkhepa)', link: '/vinaya/pv/pv-03-samutthanasisa/' },
+      { label: 'PV 3 等起摄颂 (Samuṭṭhānasīsasaṅkhepa)', link: '/vinaya/pv/pv-03-samutthanasisa/' },
       { label: 'PV 4 复习 (Antarapeyyāla)', link: '/vinaya/pv/pv-04-antarapeyyala/' },
       { label: 'PV 5 灭诤分别 (Samathabheda)', link: '/vinaya/pv/pv-05-samathabheda/' },
       { label: 'PV 6 问篇章 (Khandhakapucchāvāra)', link: '/vinaya/pv/pv-06-khandhakapuccha/' },

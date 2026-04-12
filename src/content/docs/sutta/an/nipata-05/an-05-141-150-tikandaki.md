@@ -7,7 +7,7 @@ vagga: "Pañcakanipātapāḷi"
 reference: "AN 5.141-150"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [五集, 增支部, 底甘陀品, 布施, 解脱, 戒律, 禅定, 漏烦恼]
+tags: [底甘陀, 神变, 布施, 解脱, 戒律, 禅定, 漏烦恼]
 ---
 
 > [!abstract] AI 导读
