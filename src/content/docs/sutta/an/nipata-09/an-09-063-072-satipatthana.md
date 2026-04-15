@@ -7,7 +7,7 @@ vagga: "Navakanipātapāḷi"
 reference: "AN 9.63-72"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [四念住, 五盖, 五取蕴, 五下分结, 五上分结, 心荒芜, 心缚, 毗婆舍那, 修行障碍]
+tags: [四念住, 五盖, 五取蕴, 五下分结, 五上分结, 心荒芜, 心缚]
 ---
 
 > [!abstract] AI 导读
