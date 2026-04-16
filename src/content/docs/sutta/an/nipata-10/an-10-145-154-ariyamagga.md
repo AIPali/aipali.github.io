@@ -7,7 +7,7 @@ vagga: "Dasakanipātapāḷi"
 reference: "AN 10.145-154"
 curator: "True-Dhamma.com"
 version: "3"
-tags: ["圣道", "十支圣道", "十邪道", "正见", "正解脱", "邪见", "法义对比", "增支部"]
+tags: [圣道, 十支圣道, 十邪道, 正见, 正解脱, 邪见]
 ---
 
 > [!abstract] AI 导读
