@@ -7,7 +7,7 @@ vagga: "Cūḷavaggapāḷi"
 reference: "CV 11, 437-445"
 curator: "True-Dhamma.com"
 version: "0.1"
-tags: [第一次结集, 五百罗汉, 法与律, 大迦叶, 阿难, 优波离, 小小戒, 阐陀, 梵罚]
+tags: [结集, 五百阿罗汉, 法与律, 大迦叶, 阿难, 优波离, 小小戒, 阐陀, 梵罚]
 ---
 
 > [!abstract] AI 导读

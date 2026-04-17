@@ -7,7 +7,7 @@ vagga: "Mahāvaggapāḷi"
 reference: "DN 14, 1-94"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [过去七佛, 毗婆尸佛, 菩萨, 本生, 三十二相, 四预兆, 佛陀传记, 法界常规, 轮回, 十二因缘]
+tags: [过去七佛, 诸佛, 菩萨, 本生, 三十二相, 四预兆, 轮回, 十二因缘]
 ---
 
 > [!abstract] AI 导读
