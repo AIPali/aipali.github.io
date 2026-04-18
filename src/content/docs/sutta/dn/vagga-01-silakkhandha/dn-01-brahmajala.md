@@ -4,7 +4,7 @@ title: "DN 1 梵网经 (Brahmajālasutta)"
 description: "佛陀系统阐述比丘应持守的戒律，并全面解析当时印度的六十二种邪见，指出超越见解的解脱之道。"
 collection: "Dīgha Nikāya"
 vagga: "Sīlakkhandhavaggapāḷi"
-reference: "DN 1. 1-149"
+reference: "DN 1, 1-149"
 curator: "True-Dhamma.com"
 version: "3"
 tags: [六十二见, 戒律, 缘起, 邪见, 解脱, 梵网, 常见]
