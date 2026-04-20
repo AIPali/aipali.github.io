@@ -60,7 +60,7 @@ import '@docsearch/css';
             },
             resultsScreen: { askAiPlaceholder: '向 AI 提问：', noResultsAskAiPlaceholder: '没搜到？让 AI 帮您找：' },
             askAiScreen: {
-              disclaimerText: 'AI 的回答可能会出错，请以经文原文为准。', relatedSourcesText: '相关来源',
+              disclaimerText: 'AI 的回答可能出错，请以经文原文为准。', relatedSourcesText: '相关来源',
               thinkingText: '正在思考中 ...', copyButtonText: '复制', copyButtonCopiedText: '已复制！', copyButtonTitle: '复制',
               likeButtonTitle: '赞', dislikeButtonTitle: '踩', afterToolCallText: '为您搜索了'
             }
@@ -81,7 +81,8 @@ import '@docsearch/css';
         let val = node.nodeValue;
         let changed = false;
         
-        if (/found/i.test(val)) { val = val.replace(/searching/ig, '搜索'); changed = true; }
+        // 修复了之前代码中不小心混入错误长文本的正则笔误
+        if (/searching/i.test(val)) { val = val.replace(/searching/ig, '正在搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
         
@@ -114,7 +115,9 @@ import '@docsearch/css';
 </script>
 
 <style is:global>
-  /* === 1. 基础重置 === */
+  /* =========================================================
+     1. 全局与基础重置
+     ========================================================= */
   .DocSearch-Container {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -126,23 +129,41 @@ import '@docsearch/css';
   .DocSearch-Form { margin: 0 !important; }
   .DocSearch-Modal { max-height: 85vh !important; }
 
-  /* === 2. 暗夜模式 === */
+  /* =========================================================
+     2. 主题变量：亮色模式 (默认)
+     ========================================================= */
+  :root[data-theme='light'] {
+    --docsearch-container-background: rgba(101, 108, 133, 0.8); 
+    --docsearch-modal-background: #f5f6f7; 
+    --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    --docsearch-searchbox-background: #ffffff;
+    --docsearch-searchbox-focus-background: #ffffff;
+    --docsearch-hit-background: #ffffff;
+    --docsearch-hit-color: var(--sl-color-gray-2);
+    --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+    --docsearch-hit-hover-background: var(--sl-color-accent);
+    --docsearch-hit-hover-color: #ffffff;
+    --docsearch-highlight-color: var(--sl-color-accent);
+    --docsearch-primary-color: var(--sl-color-accent);
+    --docsearch-logo-color: var(--sl-color-accent);
+    --docsearch-text-color: #121212;
+  }
+
+  /* =========================================================
+     3. 主题变量：暗黑模式
+     ========================================================= */
   :root, :root[data-theme='dark'] {
     --docsearch-container-background: rgba(0, 0, 0, 0.6); 
     --docsearch-modal-background: var(--sl-color-gray-6); 
     --docsearch-modal-shadow: inset 1px 1px 0 0 var(--sl-color-gray-5), 0 3px 8px 0 rgba(0,0,0,0.5);
-
     --docsearch-searchbox-background: var(--sl-color-black); 
     --docsearch-searchbox-focus-background: var(--sl-color-black);
     --docsearch-searchbox-shadow: inset 0 0 0 1px var(--sl-color-gray-5); 
-    
     --docsearch-hit-background: var(--sl-color-black); 
     --docsearch-hit-color: var(--sl-color-gray-2);
     --docsearch-hit-shadow: none;
-
     --docsearch-hit-hover-background: var(--sl-color-accent-high);
     --docsearch-hit-hover-color: #121212;
-
     --docsearch-highlight-color: var(--sl-color-accent-high); 
     --docsearch-primary-color: var(--sl-color-accent-high);
     --docsearch-logo-color: var(--sl-color-accent-high);
@@ -159,61 +180,12 @@ import '@docsearch/css';
   :root[data-theme='dark'] .DocSearch-Logo svg path,
   :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
 
-  /* === 3. 亮色模式 === */
-  :root[data-theme='light'] {
-    --docsearch-container-background: rgba(101, 108, 133, 0.8); 
-    --docsearch-modal-background: #f5f6f7; 
-    --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-    
-    --docsearch-searchbox-background: #ffffff;
-    --docsearch-searchbox-focus-background: #ffffff;
-    --docsearch-hit-background: #ffffff;
-    --docsearch-hit-color: var(--sl-color-gray-2);
-    --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
-
-    --docsearch-hit-hover-background: var(--sl-color-accent);
-    --docsearch-hit-hover-color: #ffffff;
-
-    --docsearch-highlight-color: var(--sl-color-accent);
-    --docsearch-primary-color: var(--sl-color-accent);
-    --docsearch-logo-color: var(--sl-color-accent);
-    --docsearch-text-color: #121212;
-  }
-
-  /* === 4. 交互与高亮反色 === */
-  .DocSearch-Hit mark {
-    color: var(--docsearch-highlight-color) !important;
-    background-color: transparent !important;
-    font-weight: bold;
-  }
-  .DocSearch-Hit[aria-selected='true'] a {
-    background-color: var(--docsearch-hit-hover-background) !important;
-    box-shadow: none !important;
-  }
-  .DocSearch-Hit[aria-selected='true'] a *,
-  .DocSearch-Hit[aria-selected='true'] a mark {
-    color: var(--docsearch-hit-hover-color) !important;
-  }
-
-  /* === 5. AI 界面细调 === */
-  .DocSearch-Modal .prose a,
-  .DocSearch-Modal a[class*="askAi"],
-  .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
-  
-  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
-    font-size: 0.8rem !important;
-    color: var(--docsearch-muted-color) !important;
-  }
-
-  /* === 6. 外侧导航搜索按钮适配 (终极版布局) === */
+  /* =========================================================
+     4. 外部搜索按钮适配 (Starlight 顶栏终极版布局)
+     ========================================================= */
   .starlight-docsearch-container { 
-    display: flex;
-    align-items: center;
-    /* 重点 1：外框霸占所有的空隙，充当弹簧把 FastGPT 顶到最右侧 */
-    flex-grow: 1; 
-    /* 重点 2：内部的搜索按钮靠左停靠 */
-    justify-content: flex-start;
-    min-width: 0; 
+    display: flex; align-items: center;
+    flex-grow: 1; justify-content: flex-start; min-width: 0; 
   }
   
   .starlight-docsearch-container .DocSearch-Button {
@@ -221,25 +193,15 @@ import '@docsearch/css';
     margin: 0; border-radius: 0.5rem; background-color: transparent;
     border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2);
     height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s;
-    /* 重点 3：按钮不要拉满全宽，随文字内容撑开，但最大不超出外框 */
-    width: auto; 
-    max-width: 100%; 
-    gap: 0.5rem; 
+    width: auto; max-width: 100%; gap: 0.5rem; 
   }
 
-  /* 重点 4：文字被挤压时截断为 ... */
   .starlight-docsearch-container .DocSearch-Button-Placeholder {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0; 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; 
   }
 
-  /* 重点 5：死保图标和快捷键不被挤压变形 */
   .starlight-docsearch-container .DocSearch-Search-Icon,
-  .starlight-docsearch-container .DocSearch-Button-Keys {
-    flex-shrink: 0;
-  }
+  .starlight-docsearch-container .DocSearch-Button-Keys { flex-shrink: 0; }
 
   .starlight-docsearch-container .DocSearch-Button:hover,
   .starlight-docsearch-container .DocSearch-Button:focus {
@@ -247,46 +209,6 @@ import '@docsearch/css';
     box-shadow: none; outline: none;
   }
 
-  /* === 7. iOS 端 Modal 输入框与图标垂直居中修复 === */
-  
-  /* 修复 iOS Safari 默认的 search input 样式导致的文字偏上 */
-  .DocSearch-Modal .DocSearch-Input {
-    -webkit-appearance: none !important; /* 彻底移除 iOS 原生输入框外观和内置边距 */
-    appearance: none !important;
-    margin: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    line-height: normal !important; /* 放弃指定行高，交由外层 flex 居中 */
-    
-    /* 【极其关键】在 iOS 上，如果 input 的字体小于 16px，点击输入框时屏幕会自动放大（Zoom-in）。
-       这不仅烦人，还会导致排版进一步错位。强制设为 16px 可以完美避免。*/
-    font-size: 16px !important; 
-  }
-
-  /* 确保包含输入框和图标的表单容器是严格的 Flex 垂直居中 */
-  .DocSearch-Modal .DocSearch-Form {
-    display: flex !important;
-    align-items: center !important; 
-  }
-
-  /* 修复弹窗内左侧小放大镜（以及右侧清除按钮）偏上的问题 */
-  .DocSearch-Modal .DocSearch-MagnifierLabel,
-  .DocSearch-Modal .DocSearch-Reset {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-top: 0 !important; /* 清除可能存在的默认 margin */
-    margin-bottom: 0 !important;
-  }
-
-  /* 消除 SVG 本身潜在的基线(baseline)空隙，确保图标几何居中 */
-  .DocSearch-Modal .DocSearch-MagnifierLabel svg,
-  .DocSearch-Modal .DocSearch-Reset svg {
-    display: block !important;
-    vertical-align: middle !important;
-  }
-
-  /* 移动端纯图标模式 */
   @media (max-width: 50rem) {
     .starlight-docsearch-container .DocSearch-Button {
       border: none; padding: 0; width: 2.5rem; justify-content: center;
@@ -295,6 +217,86 @@ import '@docsearch/css';
     .starlight-docsearch-container .DocSearch-Button-Placeholder { display: none; }
     .starlight-docsearch-container .DocSearch-Button .DocSearch-Search-Icon {
       width: 1.2rem; height: 1.2rem;
+    }
+  }
+
+  /* =========================================================
+     5. 弹窗内：搜索框全局居中架构 (对所有设备生效)
+     ========================================================= */
+  .DocSearch-Modal .DocSearch-Form {
+    display: flex !important;
+    align-items: center !important; 
+  }
+
+  /* 剥离所有原生输入框的系统外观（全局） */
+  .DocSearch-Modal .DocSearch-Input {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: normal !important; 
+  }
+
+  /* 图标容器严格 flex 居中 */
+  .DocSearch-Modal .DocSearch-MagnifierLabel,
+  .DocSearch-Modal .DocSearch-Reset {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0 !important; 
+    margin-bottom: 0 !important;
+  }
+
+  /* 消除 SVG 本身潜在的基线(baseline)空隙 */
+  .DocSearch-Modal .DocSearch-MagnifierLabel svg,
+  .DocSearch-Modal .DocSearch-Reset svg {
+    display: block !important;
+    vertical-align: middle !important;
+  }
+
+  /* =========================================================
+     6. 弹窗内：交互、反色与 AI 界面细调
+     ========================================================= */
+  .DocSearch-Hit mark {
+    color: var(--docsearch-highlight-color) !important;
+    background-color: transparent !important; font-weight: bold;
+  }
+  .DocSearch-Hit[aria-selected='true'] a {
+    background-color: var(--docsearch-hit-hover-background) !important;
+    box-shadow: none !important;
+  }
+  .DocSearch-Hit[aria-selected='true'] a *,
+  .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
+
+  .DocSearch-Modal .prose a,
+  .DocSearch-Modal a[class*="askAi"],
+  .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
+  
+  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
+    font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important;
+  }
+
+  /* =========================================================
+     7. iOS 专属补丁 (仅在 iPhone/iPad 等 WebKit 环境生效)
+     ========================================================= */
+  /* @supports (-webkit-touch-callout: none) 是最可靠的 iOS 识别隔离层，不会污染 Mac、Win、Android */
+  @supports (-webkit-touch-callout: none) {
+    .DocSearch-Modal .DocSearch-Input {
+      /* [必须] 阻止 iOS 因为输入框字体小于 16px 从而在点击时自动放大屏幕 */
+      font-size: 16px !important; 
+      
+      /* [针对文字偏下的微调]
+         使用 translateY 强制向上提 1px。使用 transform 相比 padding 更安全，
+         因为它仅在视觉上移动，不会改变光标的整体高度和盒模型。
+         如果未来发现还不够，可以改为 -1.5px，如果太高就改为 -0.5px */
+      transform: translateY(-1px) !important;
+    }
+    
+    /* 确保输入框两侧的图标不会跟着文字的改变而跑偏，强制锚定原位 */
+    .DocSearch-Modal .DocSearch-MagnifierLabel,
+    .DocSearch-Modal .DocSearch-Reset {
+      transform: translateY(0) !important;
     }
   }
 </style>
