@@ -3,10 +3,10 @@ id: "SN-35-168-227"
 title: "SN 35.168-227 六十略广说集 (Saṭṭhipeyyālavagga)"
 description: "本品包含六十部短经，佛陀系统教导对内、外六处在三时（过去、未来、现在）的无常、苦、无我本质生起厌离，从而断除欲念与贪爱。"
 collection: "Saṃyutta Nikāya"
-vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
+vagga: "Saḷāyatanavaggasaṃyuttapāḷi, Saḷāyatanasaṃyutta"
 reference: "SN 35.168-227, 168-227"
 curator: "True-Dhamma.com"
-version: "1"
+version: "3"
 tags: [六处, 无常, 苦, 无我, 缘起, 离欲, 解脱]
 ---
 
