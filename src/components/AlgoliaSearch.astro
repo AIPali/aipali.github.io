@@ -24,13 +24,13 @@ import '@docsearch/css';
           agentStudio: true,
         },
         translations: {
-          button: { buttonText: '搜索经文或向 AI 提问...', buttonAriaLabel: '搜索经文' },
+          button: { buttonText: '搜索经文或向 AI 提问 ...', buttonAriaLabel: '搜索经文' },
           modal: {
             searchBox: {
               clearButtonTitle: '清除查询', clearButtonAriaLabel: '清除查询',
               cancelButtonText: '取消', cancelButtonAriaLabel: '取消',
               closeButtonText: '关闭', closeButtonAriaLabel: '关闭',
-              placeholderText: '搜索经文 ...', placeholderTextAskAi: '向 AI 提问 ...',
+              placeholderText: '搜索经文或向 AI 提问 ...', placeholderTextAskAi: '向 AI 提问 ...',
               placeholderTextAskAiStreaming: 'AIPali 思考中 ...', searchInputLabel: '搜索',
               backToKeywordSearchButtonText: '返回关键词搜索', backToKeywordSearchButtonAriaLabel: '返回关键词搜索',
               newConversationPlaceholder: '请输入您想问的问题 ...', conversationHistoryTitle: '我的历史对话',
@@ -81,6 +81,7 @@ import '@docsearch/css';
         let val = node.nodeValue;
         let changed = false;
         
+        if (/found/i.test(val)) { val = val.replace(/searching/ig, '搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
         
@@ -244,6 +245,45 @@ import '@docsearch/css';
   .starlight-docsearch-container .DocSearch-Button:focus {
     border-color: var(--sl-color-gray-4); color: var(--sl-color-text);
     box-shadow: none; outline: none;
+  }
+
+  /* === 7. iOS 端 Modal 输入框与图标垂直居中修复 === */
+  
+  /* 修复 iOS Safari 默认的 search input 样式导致的文字偏上 */
+  .DocSearch-Modal .DocSearch-Input {
+    -webkit-appearance: none !important; /* 彻底移除 iOS 原生输入框外观和内置边距 */
+    appearance: none !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: normal !important; /* 放弃指定行高，交由外层 flex 居中 */
+    
+    /* 【极其关键】在 iOS 上，如果 input 的字体小于 16px，点击输入框时屏幕会自动放大（Zoom-in）。
+       这不仅烦人，还会导致排版进一步错位。强制设为 16px 可以完美避免。*/
+    font-size: 16px !important; 
+  }
+
+  /* 确保包含输入框和图标的表单容器是严格的 Flex 垂直居中 */
+  .DocSearch-Modal .DocSearch-Form {
+    display: flex !important;
+    align-items: center !important; 
+  }
+
+  /* 修复弹窗内左侧小放大镜（以及右侧清除按钮）偏上的问题 */
+  .DocSearch-Modal .DocSearch-MagnifierLabel,
+  .DocSearch-Modal .DocSearch-Reset {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0 !important; /* 清除可能存在的默认 margin */
+    margin-bottom: 0 !important;
+  }
+
+  /* 消除 SVG 本身潜在的基线(baseline)空隙，确保图标几何居中 */
+  .DocSearch-Modal .DocSearch-MagnifierLabel svg,
+  .DocSearch-Modal .DocSearch-Reset svg {
+    display: block !important;
+    vertical-align: middle !important;
   }
 
   /* 移动端纯图标模式 */
