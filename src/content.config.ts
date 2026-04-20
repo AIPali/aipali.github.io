@@ -1,7 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { docsLoader, i18nLoader } from '@astrojs/starlight/loaders';
 import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
-import { docSearchI18nSchema } from '@astrojs/starlight-docsearch/schema';
 
 // ... 其他 import 保持不变
 
@@ -24,10 +23,7 @@ export const collections = {
 
     i18n: defineCollection({
       type: 'data',
-      schema: i18nSchema({
-      // 2. 必须加这一行！告诉 Astro 接受 docsearch 开头的翻译字段
-      extend: docSearchI18nSchema(),
-      })
+      schema: i18nSchema() 
     })
   }),
   

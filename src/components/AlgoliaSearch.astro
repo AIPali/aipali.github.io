@@ -1,0 +1,295 @@
+---
+// src/components/AlgoliaSearch.astro
+import '@docsearch/css';
+---
+
+<div class="starlight-docsearch-container algolia-search-box"></div>
+
+<script>
+  import docsearch from '@docsearch/js';
+
+  // 1. 初始化 Algolia 搜索框
+  function initDocSearch() {
+    const containers = document.querySelectorAll('.algolia-search-box');
+    
+    containers.forEach(container => {
+      // 避免 Astro 页面切换时重复初始化
+      if (container.hasAttribute('data-initialized')) return;
+      
+      docsearch({
+        container: container as HTMLElement,
+        appId: 'TCMTON4EX8',
+        apiKey: '46fc7739c943245ddd44dac342e40493',
+        indexName: 'AIPali',
+        askAi: {
+          assistantId: 'e6d00df1-00b5-4579-a17f-516973174f4f',
+          agentStudio: true,
+        },
+        translations: {
+          button: { buttonText: '搜索经文或向 AI 提问...', buttonAriaLabel: '搜索经文' },
+          modal: {
+            searchBox: {
+              clearButtonTitle: '清除查询', clearButtonAriaLabel: '清除查询',
+              cancelButtonText: '取消', cancelButtonAriaLabel: '取消',
+              closeButtonText: '关闭', closeButtonAriaLabel: '关闭',
+              placeholderText: '搜索经文 ...', placeholderTextAskAi: '向 AI 提问 ...',
+              placeholderTextAskAiStreaming: 'AIPali 思考中 ...', searchInputLabel: '搜索',
+              backToKeywordSearchButtonText: '返回关键词搜索', backToKeywordSearchButtonAriaLabel: '返回关键词搜索',
+              newConversationPlaceholder: '请输入您想问的问题 ...', conversationHistoryTitle: '我的历史对话',
+              startNewConversationText: '开启新对话', viewConversationHistoryText: '查看历史对话',
+              threadDepthErrorPlaceholder: '该对话深度已达上限，请开启新对话'
+            },
+            newConversation: {
+              newConversationTitle: '我是 AIPali 助手，我能如何帮到您？',
+              newConversationDescription: '您可以直接向我提问，我会基于巴利三藏为您解答，并提供出处与精准上下文。'
+            },
+            footer: {
+              selectText: '选择', submitQuestionText: '提交问题', selectKeyAriaLabel: '回车键',
+              navigateText: '切换', navigateUpKeyAriaLabel: '向上箭头', navigateDownKeyAriaLabel: '向下箭头',
+              closeText: '关闭', backToSearchText: '返回搜索', closeKeyAriaLabel: '退出键',
+              searchByText: '搜索由', poweredByText: 'Powered by'
+            },
+            startScreen: {
+              recentSearchesTitle: '最近搜索', noRecentSearchesText: '暂无最近搜索记录',
+              saveRecentSearchButtonTitle: '保存此搜索记录', removeRecentSearchButtonTitle: '删除此搜索记录',
+              favoriteSearchesTitle: '已收藏的搜索记录', removeFavoriteSearchButtonTitle: '取消收藏此搜索',
+              recentConversationsTitle: '最近对话', removeRecentConversationButtonTitle: '删除此对话'
+            },
+            errorScreen: { titleText: '无法获取结果', helpText: '请检查您的网络连接是否正常。' },
+            noResultsScreen: {
+              noResultsText: '无法找到相关结果：', suggestedQueryText: '您可以尝试搜索：',
+              reportMissingResultsText: '您认为这里应该有结果？', reportMissingResultsLinkText: '点击反馈'
+            },
+            resultsScreen: { askAiPlaceholder: '向 AI 提问：', noResultsAskAiPlaceholder: '没搜到？让 AI 帮您找：' },
+            askAiScreen: {
+              disclaimerText: 'AI 的回答可能会出错，请以经文原文为准。', relatedSourcesText: '相关来源',
+              thinkingText: '正在思考中 ...', copyButtonText: '复制', copyButtonCopiedText: '已复制！', copyButtonTitle: '复制',
+              likeButtonTitle: '赞', dislikeButtonTitle: '踩', afterToolCallText: '为您搜索了'
+            }
+          }
+        }
+      });
+      
+      container.setAttribute('data-initialized', 'true');
+    });
+  }
+
+  // 2. 文本拦截器：智能正则匹配，解决 Algolia AI 深层流式输出的英文残留
+  function setupAskAITranslator() {
+    if ((window as any).__aipali_translator_setup) return;
+    (window as any).__aipali_translator_setup = true;
+
+    const translateNode = (node: Node) => {
+      if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
+        let val = node.nodeValue;
+        let changed = false;
+        
+        // 忽略大小写(i)与全局匹配(g)，完美处理 "Found", "found", "results", "result"
+        if (/found/i.test(val)) { 
+          val = val.replace(/found/ig, '共找到'); 
+          changed = true; 
+        }
+        if (/results?/i.test(val)) { 
+          val = val.replace(/results?/ig, '项结果'); 
+          changed = true; 
+        }
+        
+        if (changed) node.nodeValue = val;
+      }
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'characterData') {
+          translateNode(mutation.target);
+        } else if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            translateNode(node);
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+              let textNode;
+              while ((textNode = walker.nextNode())) { translateNode(textNode); }
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  }
+
+  // 生命周期绑定
+  initDocSearch();
+  setupAskAITranslator();
+  document.addEventListener('astro:page-load', initDocSearch);
+</script>
+
+<style is:global>
+  /* ==========================================================
+     模块 1: 基础结构重置 (Base Resets)
+     作用: 移除 V4 默认耗性能的毛玻璃效果，并规范弹窗层级
+  ========================================================== */
+  .DocSearch-Container {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: var(--docsearch-container-background) !important;
+    z-index: 9999 !important; 
+    box-sizing: border-box !important;
+  }
+  .DocSearch-Container * { box-sizing: border-box !important; }
+  .DocSearch-Form { margin: 0 !important; }
+  .DocSearch-Modal { max-height: 85vh !important; }
+
+  /* ==========================================================
+     模块 2: 暗夜模式定制 (Dark Mode Specifics)
+     作用: 深度适配 Starlight 暗夜主题，提升输入框对比度与质感
+  ========================================================== */
+  :root,
+  :root[data-theme='dark'] {
+    /* 遮罩与弹窗面板 */
+    --docsearch-container-background: rgba(0, 0, 0, 0.6); 
+    --docsearch-modal-background: var(--sl-color-gray-6); 
+    --docsearch-modal-shadow: inset 1px 1px 0 0 var(--sl-color-gray-5), 0 3px 8px 0 rgba(0,0,0,0.5);
+
+    /* 搜索框：内阴影做边距区隔 */
+    --docsearch-searchbox-background: var(--sl-color-black); 
+    --docsearch-searchbox-focus-background: var(--sl-color-black);
+    --docsearch-searchbox-shadow: inset 0 0 0 1px var(--sl-color-gray-5); 
+    
+    /* 搜索结果条目 */
+    --docsearch-hit-background: var(--sl-color-black); 
+    --docsearch-hit-color: var(--sl-color-gray-2);
+    --docsearch-hit-shadow: none;
+
+    /* 悬停/选中状态：浅蓝背景 + 纯黑文字 */
+    --docsearch-hit-hover-background: var(--sl-color-accent-high);
+    --docsearch-hit-hover-color: #121212;
+
+    /* 全局高亮强调色 */
+    --docsearch-highlight-color: var(--sl-color-accent-high); 
+    --docsearch-primary-color: var(--sl-color-accent-high);
+    --docsearch-logo-color: var(--sl-color-accent-high);
+    --docsearch-text-color: #ffffff;
+    --docsearch-muted-color: var(--sl-color-gray-3);
+  }
+
+  /* 只有在明确处于黑夜模式时才修改这个颜色 */
+  [data-theme='dark'] .DocSearch-Hit--AskAI { 
+    background: #1b1b1f !important; 
+    border: 1px solid var(--sl-color-gray-5); 
+  }
+
+  /* 暗色模式特殊覆盖：强制输入框文字及占位符为纯白，提升辨识度 */
+  :root[data-theme='dark'] .DocSearch-Input,
+  :root[data-theme='dark'] .DocSearch-Input::placeholder {
+    color: #ffffff !important;
+  }
+
+  /* 暗色模式特殊覆盖：修复右下角 Algolia Logo 的 SVG 颜色穿透为高亮蓝 */
+  :root[data-theme='dark'] .DocSearch-Logo svg path,
+  :root[data-theme='dark'] .DocSearch-Logo svg rect {
+    fill: var(--docsearch-logo-color) !important;
+  }
+
+  /* ==========================================================
+     模块 3: 亮色模式定制 (Light Mode Specifics)
+     作用: 还原 V3 经典质感，使用浅蓝灰底色突出纯白色的条目
+  ========================================================== */
+  :root[data-theme='light'] {
+    /* 遮罩与弹窗面板 (使用经典 #f5f6f7 浅灰底产生空间感) */
+    --docsearch-container-background: rgba(101, 108, 133, 0.8); 
+    --docsearch-modal-background: #f5f6f7; 
+    --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    
+    /* 搜索框与条目 (绝对纯白) */
+    --docsearch-searchbox-background: #ffffff;
+    --docsearch-searchbox-focus-background: #ffffff;
+    --docsearch-hit-background: #ffffff;
+    --docsearch-hit-color: var(--sl-color-gray-2);
+    --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+
+    /* 悬停/选中状态：品牌主色 + 纯白文字 */
+    --docsearch-hit-hover-background: var(--sl-color-accent);
+    --docsearch-hit-hover-color: #ffffff;
+
+    /* 全局高亮强调色 */
+    --docsearch-highlight-color: var(--sl-color-accent);
+    --docsearch-primary-color: var(--sl-color-accent);
+    --docsearch-logo-color: var(--sl-color-accent);
+    --docsearch-text-color: #121212;
+  }
+
+  /* ==========================================================
+     模块 4: 结果条目与交互状态 (Interactive States)
+     作用: 控制关键词高亮逻辑，确保 Hover 时内部文字全部反色
+  ========================================================== */
+  .DocSearch-Hit mark {
+    color: var(--docsearch-highlight-color) !important;
+    background-color: transparent !important;
+    font-weight: bold;
+  }
+
+  .DocSearch-Hit[aria-selected='true'] a {
+    background-color: var(--docsearch-hit-hover-background) !important;
+    box-shadow: none !important;
+  }
+  
+  .DocSearch-Hit[aria-selected='true'] a *,
+  .DocSearch-Hit[aria-selected='true'] a mark {
+    color: var(--docsearch-hit-hover-color) !important;
+  }
+
+  /* ==========================================================
+     模块 5: Ask AI 界面精细调整 (Ask AI Overrides)
+     作用: 修复 AI 界面下的字号与链接颜色问题
+  ========================================================== */
+  /* 确保 AI 对话框内的链接与文献来源可见且匹配主题色 */
+  .DocSearch-Modal .prose a,
+  .DocSearch-Modal a[class*="askAi"],
+  .DocSearch-Modal[data-testid="ask-ai-source"] {
+    color: var(--docsearch-highlight-color) !important;
+  }
+
+  /* 修复 AI 工具调用提示 (如："为您搜索了...共找到 X 项结果") 字号偏大的问题 */
+  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
+    font-size: 0.8rem !important;
+    color: var(--docsearch-muted-color) !important;
+  }
+
+  /* ==========================================================
+     模块 6: 外部导航栏触发按钮布局适配 (Navbar Button)
+     作用: 让外侧的呼出按钮完美融入 Starlight 的 Header
+  ========================================================== */
+  .starlight-docsearch-container { 
+    display: flex;
+    align-items: center;
+    flex-grow: 1; 
+  }
+  
+  .starlight-docsearch-container .DocSearch-Button {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 0; border-radius: 0.5rem; background-color: transparent;
+    border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2);
+    height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s;
+  }
+
+  .starlight-docsearch-container .DocSearch-Button:hover,
+  .starlight-docsearch-container .DocSearch-Button:focus {
+    border-color: var(--sl-color-gray-4); color: var(--sl-color-text);
+    box-shadow: none; outline: none;
+  }
+
+  /* 移动端缩小为纯图标模式 */
+  @media (max-width: 50rem) {
+    .starlight-docsearch-container .DocSearch-Button {
+      border: none; padding: 0; width: 2.5rem; justify-content: center;
+    }
+    .starlight-docsearch-container .DocSearch-Button-Keys,
+    .starlight-docsearch-container .DocSearch-Button-Placeholder { 
+      display: none; 
+    }
+    .starlight-docsearch-container .DocSearch-Button .DocSearch-Search-Icon {
+      width: 1.2rem; height: 1.2rem;
+    }
+  }
+</style>

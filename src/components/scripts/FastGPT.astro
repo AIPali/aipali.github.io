@@ -177,7 +177,7 @@ function embedChatbot() {
   let isPlacedInHeader = false;
 
   // 2. 寻找 sl-doc-search 标签
-  const docSearchElement = document.querySelector('sl-doc-search');
+  const docSearchElement = document.querySelector('.algolia-search-box');
   if (docSearchElement) {
     docSearchElement.insertAdjacentElement('afterend', ChatBtn);
     isPlacedInHeader = true;

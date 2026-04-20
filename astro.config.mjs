@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import { getPwaConfig } from './src/config/pwa.mjs';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
-import starlightDocSearch from '@astrojs/starlight-docsearch';
 
 import { remarkObsidianCallouts, remarkParagraphRef } from './src/config/remark-tipitaka.mjs';
 import { formatSidebarWithPali } from './src/utils/sidebar.mjs';
@@ -46,13 +45,13 @@ export default defineConfig({
       components: {
         PageTitle: './src/components/PageTitle.astro',
         Head: './src/components/CustomHead.astro',
+        Search: './src/components/AlgoliaSearch.astro',
       },
       head: [
         { tag: 'script', attrs: { src: '/assets/gtranslate-auto.js', defer: true, }, },
         { tag: 'script', attrs: { src: '/assets/tts-reader.js', defer: true, }, },
       ],
       plugins:[
-        starlightDocSearch({ appId: 'TCMTON4EX8', apiKey: '46fc7739c943245ddd44dac342e40493', indexName: 'AIPali' }),
         starlightSidebarTopics([
           { label: 'DN 长部', id: 'dn', link: '/sutta/dn/', items: formatSidebarWithPali(sidebarDN) },
           { label: 'MN 中部', id: 'mn', link: '/sutta/mn/', items: formatSidebarWithPali(sidebarMN) },
