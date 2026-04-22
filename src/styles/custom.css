@@ -267,9 +267,12 @@ ul.starlight-sidebar-topics + * {
 
 /* --- 段落编号 (.p-ref) 定位与排版修复 --- */
 /* 内容区基础留白与相对定位 */
-.sl-markdown-content {
+:not([data-template="splash"]) .sl-markdown-content {
   position: relative;
-  padding-left: 3rem !important;
+  padding-left: 3rem;
+}
+[data-template="splash"] .sl-markdown-content {
+  padding-left: 0rem !important;
 }
 
 /* 确保内部容器元素均具有相对定位基准 */
@@ -332,7 +335,7 @@ ul.starlight-sidebar-topics + * {
 
 /* 移动端屏幕下隐藏段落编号并缩减正文边距 */
 @media (max-width: 50rem) {
-  .sl-markdown-content { padding-left: 0.5rem !important; }
+  .sl-markdown-content { padding-left: 0rem !important; }
   .p-ref { display: none !important; }
 }
 
