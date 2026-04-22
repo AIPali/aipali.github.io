@@ -260,6 +260,13 @@
         setLoading(false);
       });
     });
+
+    // 手机版左右滑动
+    let tx, ty;
+    root.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive: true});
+    root.addEventListener('touchend', e => { let dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; 
+    if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy)) loadAndRender(); }, {passive: true});
+
   }
 
   function setLoading(loading) {
