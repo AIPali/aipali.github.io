@@ -1,0 +1,250 @@
+---
+// src/components/TodayRightView.astro
+---
+
+<div id="aipali-nav" class="quick-nav-wrapper" style="scroll-margin-top: 0rem;">
+  <div class="aipali-quick-nav">
+    <div class="nav-group">
+      <span class="group-label">四部尼柯耶</span>
+      <div class="nav-links">
+        <a href="/sutta/dn/" target="_blank">DN</a>
+        <a href="/sutta/mn/" target="_blank">MN</a>
+        <a href="/sutta/sn/" target="_blank">SN</a>
+        <a href="/sutta/an/" target="_blank">AN</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-group">
+      <span class="group-label">律藏</span>
+      <div class="nav-links">
+        <a href="/vinaya/bv/kanda-01-parajika/bv-01-00-veranjaka/" target="_blank">BV</a>
+        <a href="/vinaya/nv/kanda-01-parajika/" target="_blank">NV</a>
+        <a href="/vinaya/mv/mv-01-mahakhandhaka/" target="_blank">MV</a>
+        <a href="/vinaya/cv/cv-01-kamma/" target="_blank">CV</a>
+        <a href="/vinaya/pv/pv-01-bhikkhuvibhanga/" target="_blank">PV</a>
+        <a href="/vinaya/dv/dv-01-bhikkhupatimokkha/" target="_blank">DV</a>
+      </div>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-group">
+      <span class="group-label">小部与其它</span>
+      <div class="nav-links">
+        <a href="/sutta/kn/kn-01-khp/khp-01-09-khuddakapatha/" target="_blank">Khp</a>
+        <a href="/sutta/kn/kn-02-dhp/dhp-001-032-yamaka-appamada/" target="_blank">Dhp</a>
+        <a href="/sutta/kn/kn-03-ud/ud-01-bodhi/" target="_blank">Ud</a>
+        <a href="/sutta/kn/kn-04-iti/iti-01-ekaka/" target="_blank">Iti</a>
+        <a href="/sutta/kn/kn-05-snp/snp-01-12-uraga/" target="_blank">Snp</a>
+        <a href="/sutta/kn/kn-06-vv/vv-01-50-itthi/" target="_blank">Vv</a>
+        <a href="/sutta/kn/kn-07-pv/pv-01-51-petavatthu/" target="_blank">Pv</a>
+        <a href="/sutta/kn/kn-08-thag/thag-01-ekaka/" target="_blank">Thag</a>
+        <a href="/sutta/kn/kn-09-thig/thig-01-12-ekaka-solasaka/" target="_blank">Thig</a>
+        <a href="/sutta/kn/kn-10-mnd/mnd-01-05-kama-guhatthaka-dutthatthaka-suddhatthaka-paramatthaka/" target="_blank">Mnd</a>
+        <a href="/sutta/kn/kn-11-cnd/cnd-01-19-parayanagatha/" target="_blank">Cnd</a>
+        <a href="/sutta/kn/kn-12-ps/ps-01-02-matika-nana/" target="_blank">Ps</a>
+        <a href="/sutta/kn/kn-13-ne/ne-01-04-sangaha-uddesa-niddesa-patiniddesa/" target="_blank">Ne</a>
+        <a href="/sutta/kn/kn-14-pe/pe-01-05-ariyasacca-sasana-sutta-suttavicaya-haravibhanga/" target="_blank">Pe</a>
+        <a href="/sutta/kn/kn-15-miln/miln-01-bahira/" target="_blank">Miln</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 今日正见 (Today Right View) 容器 ====== -->
+  <div id="aipali-trv" class="trv-wrapper" style="scroll-margin-top: 0rem; margin-top: 2rem;"></div>
+
+</div>
+
+<!-- 加载今日正见的 JS 文件 -->
+<script src="/assets/today-right-view.js" defer></script>
+
+<!-- is:global 确保 JS 动态插入的 HTML 能够匹配到样式 -->
+<style is:global>
+  /* =========================================
+     6. 快捷导航专用样式
+     ========================================= */
+  .quick-nav-wrapper { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 1rem; box-sizing: border-box; }
+  .aipali-quick-nav {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    row-gap: 1.35rem; column-gap: 1.35rem; padding: 2rem;
+    background-color: var(--sl-color-bg) !important;
+    border: 1px solid var(--sl-color-hairline) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); border-radius: 0;
+  }
+  html[data-theme='dark'] .aipali-quick-nav { background-color: rgba(255, 255, 255, 0.02) !important; border-color: rgba(255, 255, 255, 0.1) !important; }
+  
+  .nav-group { display: flex; align-items: center; gap: 1.2rem; margin: 0 !important; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; margin: 0 !important; }
+  .group-label { font-size: 0.75rem; text-transform: uppercase; color: var(--sl-color-gray-4); font-weight: 700; white-space: nowrap; line-height: 1; margin: 0; }
+  
+  .aipali-quick-nav a {
+    text-decoration: none; font-weight: 700; font-family: var(--__sl-font-mono); 
+    color: var(--sl-color-text-accent); font-size: var(--sl-text-base); 
+    line-height: 1; transition: color 0.2s;
+  }
+  .aipali-quick-nav a:hover { color: var(--sl-color-white); }
+
+  .nav-divider { width: 1px; height: 1.1rem; background-color: var(--sl-color-hairline); margin: 0 !important; transform: translateY(-1px); flex-shrink: 0; }
+
+  @media (max-width: 50rem) {
+    .aipali-quick-nav { padding: 1.5rem; gap: 1.5rem; justify-content: flex-start; }
+    .nav-divider { display: none; }
+    .nav-group { width: 100%; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+  }
+
+
+  /* =========================================
+     7. 今日正见 (TRV) 专属样式
+     ========================================= */
+
+  /* 彻底清除污染 */
+  .trv-wrapper {
+    width: 100%; background-color: var(--sl-color-bg); border: 1px solid var(--sl-color-hairline);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05); position: relative; overflow: hidden; transition: opacity 0.3s ease;
+  }
+  html[data-theme='dark'] .trv-wrapper { background-color: rgba(255, 255, 255, 0.02); border-color: rgba(255, 255, 255, 0.1); }
+  .trv-widget * { margin: 0 !important; padding: 0; box-sizing: border-box; line-height: 1.5; }
+  .trv-loading { opacity: 0.5; pointer-events: none; }
+
+  /* 头部及下拉框 */
+  .trv-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem; font-size: 0.85rem; color: var(--sl-color-gray-3); flex-wrap: wrap; gap: 1rem;
+  }
+  .trv-header-left { display: flex; align-items: baseline; gap: 0.5rem; }
+  .trv-title-zh { font-weight: 700; font-size: 1.1rem; color: var(--sl-color-text); letter-spacing: 2px; }
+  .trv-title-pi { font-family: var(--__sl-font-mono); opacity: 0.7; }
+  
+  .trv-header-right { display: flex; align-items: center; gap: 0.8rem; font-family: var(--__sl-font-mono); }
+  
+  .trv-source-select {
+    background: var(--sl-color-bg); border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text);
+    border-radius: 4px; padding: 0.25rem 0.5rem; font-size: 0.85rem; cursor: pointer; outline: none; transition: border-color 0.2s, color 0.2s;
+  }
+  .trv-source-select:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+  html[data-theme='dark'] .trv-source-select { background: rgba(0,0,0,0.2); }
+  html[data-theme='dark'] .trv-source-select:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
+
+  .trv-header-line { height: 1px; width: 100%; margin: 0 auto !important; background: var(--sl-color-hairline); }
+
+  /* 主体网格 3:4:3 与定高 */
+  .trv-body {
+    --trv-gap: 2rem; display: grid; grid-template-columns: 3fr 4fr 3fr; height: 25rem; padding: 2rem 1.5rem; gap: var(--trv-gap);
+  }
+
+  /* 解决长文字撑爆 Grid：为所有弹性子列加 min-width: 0 */
+  .trv-col { display: flex; flex-direction: column; justify-content: center; height: 100%; min-width: 0; }
+  
+  /* 左侧：杂志风格导读 */
+  .trv-col-left { cursor: pointer; padding: 1rem; margin-left: -1rem !important; }
+  .trv-description {
+    font-size: clamp(1.26rem, 1.8vw, 1.62rem); font-weight: 700; color: var(--sl-color-text); line-height: 1.4; 
+    margin-top: -1.5rem !important; margin-bottom: 2rem !important;
+  }
+  .trv-source-info { border-top: 1px solid var(--sl-color-accent); padding-top: 0.8rem; margin-bottom: 1.5rem !important; }
+  html[data-theme='dark'] .trv-source-info { border-top-color: var(--sl-color-text-accent); }
+
+  .trv-sutta-code { font-family: var(--__sl-font-mono); color: var(--sl-color-gray-3); font-size: 0.85rem; margin-bottom: 0.2rem !important;}
+  .trv-sutta-zh { font-weight: 600; font-size: 1rem; color: var(--sl-color-text); }
+  .trv-sutta-pli { font-size: 0.8rem; color: var(--sl-color-gray-4); margin-top: 0.2rem !important; }
+  
+  .trv-left-tags { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .trv-tag-left {
+    font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; text-align: center; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; color: var(--sl-color-accent); background: var(--sl-color-accent-low);
+  }
+  html[data-theme='dark'] .trv-tag-left { background: var(--sl-color-accent-high); color: var(--sl-color-black); font-weight: normal; }
+
+  /* 中间：核心经句。绝对定位分割线 + 文字严格截断 */
+  .trv-col-mid { cursor: pointer; padding: 0 1.5rem; position: relative; }
+  .trv-col-mid::before {
+    content: ''; position: absolute; left: calc(var(--trv-gap) / -2); top: 10%; bottom: 10%; width: 1px; background: var(--sl-color-hairline);
+  }
+  
+  .trv-highlights { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; list-style: none !important; height: 100%; width: 100%; }
+  .trv-highlights li { display: flex; align-items: center; width: 100%; font-size: 1rem; color: var(--sl-color-text); }
+  .trv-bullet { color: var(--sl-color-accent); font-size: 0.8rem; margin-right: 0.8rem !important; flex-shrink: 0; }
+  html[data-theme='dark'] .trv-bullet { color: var(--sl-color-text-accent); }
+  
+  /* 彻底解决撑爆列宽 */
+  .trv-hl-text { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* 右侧：标签区完美垂直居中，底部按钮固定 */
+  .trv-col-right {
+    padding-left: 0rem; position: relative; padding-bottom: 3.5rem; justify-content: center; 
+  }
+  .trv-cloud-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
+  .trv-cloud-label { font-size: 0.8rem; font-weight: 600; color: var(--sl-color-gray-3); text-transform: uppercase; letter-spacing: 1px; }
+  .trv-cloud { display: flex; flex-wrap: wrap; align-content: flex-start; justify-content: flex-start; gap: 0.8rem; overflow: hidden; }
+  
+  /* 统一 Tag Hover 效果 */
+  .trv-cloud-tag, .trv-mobile-tag {
+    font-size: 0.85rem; line-height: 1; font-family: inherit; background: none; border: 1px solid var(--sl-color-hairline);
+    color: var(--sl-color-gray-2); border-radius: 99px; padding: 0.4rem 0.8rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  html[data-theme='dark'] .trv-cloud-tag, html[data-theme='dark'] .trv-mobile-tag { background-color: var(--sl-color-black); }
+  
+  .trv-cloud-tag:hover, .trv-mobile-tag:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
+  html[data-theme='dark'] .trv-cloud-tag:hover, html[data-theme='dark'] .trv-mobile-tag:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
+
+  /* 通用刷新按钮样式 (移除背景变蓝的干扰) */
+  .trv-refresh-btn {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: transparent;
+    border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); border-radius: 6px;
+    cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: color 0.2s, border-color 0.2s;
+  }
+  
+  /* 鼠标悬浮：仅仅变文字和边框颜色 */
+  .trv-refresh-btn:hover { color: var(--sl-color-accent); border-color: var(--sl-color-accent); }
+  html[data-theme='dark'] .trv-refresh-btn:hover { color: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); }
+  .trv-refresh-btn:disabled { opacity: 0.5; cursor: wait; }
+
+  /* PC 端刷新按钮绝对定位在右下角 */
+  .trv-col-right .trv-refresh-btn { position: absolute; bottom: 0; left: 1rem; right: 0; height: 2.6rem; }
+
+  /* 移动端专属横向 tags 与 独立刷新按钮（PC 默认隐藏） */
+  .trv-mobile-tags { display: none; }
+  .trv-mobile-btn { display: none; }
+
+  /* =========================================
+     响应式布局 Tablet & Mobile
+     ========================================= */
+  @media (max-width: 900px) {
+    .trv-body { --trv-gap: 1.5rem; grid-template-columns: 1fr 1fr; height: auto; padding: 1.5rem; gap: var(--trv-gap); }
+    .trv-col-right { grid-column: 1 / -1; padding-left: 0; border-top: 1px solid var(--sl-color-hairline); padding-top: 1.5rem; padding-bottom: 4rem; }
+    .trv-cloud { justify-content: flex-start; height: auto; padding-bottom: 0; }
+    .trv-col-right .trv-refresh-btn { left: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .trv-header { padding: 1rem; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 1rem; }
+    .trv-header-right { width: auto; justify-content: flex-end; }
+    .trv-date, .trv-weekday { display: none; }
+    .trv-wrapper { touch-action: pan-y; }
+    .trv-body { grid-template-columns: 1fr; padding: 0rem 1rem; gap: 0; }
+    .trv-col-left { margin-left: 0 !important; padding: 1.2rem 0; border-bottom: 1px dashed var(--sl-color-hairline); }
+    .trv-description { font-size: 1.4rem; margin-top: 0 !important; margin-bottom: 1rem !important; }
+    
+    .trv-col-mid { padding: 1rem 0; border-bottom: 1px dashed var(--sl-color-hairline); }
+    .trv-col-mid::before { display: none; }
+    
+    .trv-highlights { gap: 1rem; }
+    .trv-highlights li { font-size: 0.95rem; white-space: normal; text-overflow: clip; align-items: flex-start; }
+    .trv-hl-text { white-space: normal; overflow: visible; }
+    .trv-bullet { margin-top: 0.2rem !important; }
+    
+    .trv-col-right { display: none; }
+
+    .trv-mobile-tags {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; padding: 1.2rem 1rem; justify-content: center;
+      overflow: hidden; max-height: none; border-bottom: none; 
+    }
+    .trv-mobile-tag { height: fit-content; flex-shrink: 0; }
+    .trv-mobile-tag:nth-child(n+7) { display: none !important; }
+
+    .trv-mobile-btn {
+      display: flex; width: 100%; border-radius: 0;
+      border-top: 1px solid var(--sl-color-hairline);
+      border-left: none; border-right: none; border-bottom: none;
+      padding: 1rem; font-size: 1rem; z-index: 10;
+    }
+  }
+</style>
