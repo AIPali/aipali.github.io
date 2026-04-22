@@ -262,11 +262,19 @@
     });
 
     // 手机版左右滑动
-    let tx, ty, isX;
-    root.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; isX = null; }, {passive: true});
-    root.addEventListener('touchmove', e => { let dx = Math.abs(e.touches[0].clientX - tx), dy = Math.abs(e.touches[0].clientY - ty);
-      if (isX === null && (dx > 5 || dy > 5)) isX = dx > dy; if (isX) e.preventDefault(); }, {passive: false});
-    root.addEventListener('touchend', e => { if (isX && Math.abs(e.changedTouches[0].clientX - tx) > 60) loadAndRender(); });
+    if (!root.dataset.swipeBound) {
+      root.dataset.swipeBound = '1';
+      let tx, ty, isX;
+      root.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; isX = null; }, {passive: true});
+      root.addEventListener('touchmove', e => { let dx = Math.abs(e.touches[0].clientX - tx), dy = Math.abs(e.touches[0].clientY - ty);
+        if (isX === null && (dx > 5 || dy > 5)) isX = dx > dy; if (isX) e.preventDefault(); }, {passive: false});
+      root.addEventListener('touchend', e => { 
+        // 增加防连滑机制，并在切换成功后柔性居中
+        if (isX && Math.abs(e.changedTouches[0].clientX - tx) > 60 && !root.classList.contains('trv-loading')) {
+          loadAndRender().then(() => setTimeout(() => root.scrollIntoView({behavior: 'smooth', block: 'center'}), 100));
+        }
+      });
+    }
 
   }
 

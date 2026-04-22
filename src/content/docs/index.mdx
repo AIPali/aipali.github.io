@@ -394,11 +394,10 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     }
 
     @media (max-width: 600px) {
-      html, body { scroll-snap-type: y proximity; }
       .trv-header { padding: 1rem; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 1rem; }
       .trv-header-right { width: auto; justify-content: flex-end; }
       .trv-date, .trv-weekday { display: none; }
-      .trv-wrapper { scroll-snap-align: center; touch-action: pan-y; }
+      .trv-wrapper { touch-action: pan-y; }
       .trv-body { grid-template-columns: 1fr; padding: 0rem 1rem; gap: 0; }
       .trv-col-left { margin-left: 0 !important; padding: 1.2rem 0; border-bottom: 1px dashed var(--sl-color-hairline); }
       .trv-description { font-size: 1.4rem; margin-top: 0 !important; margin-bottom: 1rem !important; }
