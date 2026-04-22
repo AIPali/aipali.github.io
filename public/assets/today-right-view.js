@@ -262,16 +262,11 @@
     });
 
     // 手机版左右滑动
-    let tx, ty, isH = false;
-    root.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; isH = false; }, {passive: true});
-    root.addEventListener('touchmove', e => { 
-      let dx = Math.abs(e.touches[0].clientX - tx), dy = Math.abs(e.touches[0].clientY - ty);
-      if (dx > 10 && dx > dy) { isH = true; e.preventDefault(); } // 如果是横滑，锁定纵向滚动
-    }, {passive: false}); 
-    root.addEventListener('touchend', e => {
-      let dx = e.changedTouches[0].clientX - tx;
-      if (isH && Math.abs(dx) > 70) loadAndRender().then(() => root.scrollIntoView({behavior:'smooth', block:'center'}));
-    }, {passive: true});
+    let tx, ty, isX;
+    root.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; isX = null; }, {passive: true});
+    root.addEventListener('touchmove', e => { let dx = Math.abs(e.touches[0].clientX - tx), dy = Math.abs(e.touches[0].clientY - ty);
+      if (isX === null && (dx > 5 || dy > 5)) isX = dx > dy; if (isX) e.preventDefault(); }, {passive: false});
+    root.addEventListener('touchend', e => { if (isX && Math.abs(e.changedTouches[0].clientX - tx) > 60) loadAndRender(); });
 
   }
 
