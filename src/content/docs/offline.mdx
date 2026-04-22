@@ -342,6 +342,15 @@ import TodayRightView from '../../components/TodayRightView.astro';
           return !url.includes('/tags/');
         });
 
+      // 【核心修复】：强制将 TRV 组件依赖的静态文件推入下载队列
+      const trvAssets = [
+        '/assets/today-right-view.js',
+        '/assets/pali-index-all.json',
+        '/assets/pali-index-dhp.json',
+        '/assets/pali-index-thag-thig.json'
+      ];
+      urls.push(...trvAssets);
+
       if (urls.length === 0) throw new Error('未获取到有效的数据节点。');
       UI.log('校验通过，共有 ' + urls.length + ' 个有效的同步节点。');
 
@@ -428,7 +437,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 `}</script>
 
 {/* ====================================================== */}
-{/* 5. 样式表 (已同步 index.mdx 最新样式) */}
+{/* 5. 样式表 */}
 {/* ====================================================== */}
 <style>{`
   /* 基础清理 */

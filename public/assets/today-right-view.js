@@ -55,7 +55,7 @@
           console.warn('[TRV] Cache read error:', cacheErr);
         }
       }
-      throw new Error(`无法加载数据文件 (离线环境未命中): ${url}`);
+      throw new Error(`无法加载数据文件-离线环境未命中: ${url}`);
     }
   }
 
