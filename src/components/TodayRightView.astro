@@ -65,8 +65,8 @@
   .aipali-quick-nav {
     display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
     row-gap: 1.35rem; column-gap: 1.35rem; padding: 2rem;
-    background-color: var(--sl-color-bg) !important;
-    border: 1px solid var(--sl-color-hairline) !important;
+    background-color: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-hairline);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); border-radius: 0;
   }
   html[data-theme='dark'] .aipali-quick-nav { background-color: rgba(255, 255, 255, 0.02) !important; border-color: rgba(255, 255, 255, 0.1) !important; }
@@ -97,7 +97,7 @@
 
   /* 彻底清除污染 */
   .trv-wrapper {
-    width: 100%; background-color: var(--sl-color-bg); border: 1px solid var(--sl-color-hairline);
+    width: 100%; background-color: var(--sl-color-bg); border: 1px solid var(--sl-color-gray-5);
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05); position: relative; overflow: hidden; transition: opacity 0.3s ease;
   }
   html[data-theme='dark'] .trv-wrapper { background-color: rgba(255, 255, 255, 0.02); border-color: rgba(255, 255, 255, 0.1); }
@@ -106,8 +106,8 @@
 
   /* 头部及下拉框 */
   .trv-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 1.5rem; font-size: 0.85rem; color: var(--sl-color-gray-3); flex-wrap: wrap; gap: 1rem;
+    display: flex; justify-content: space-between; align-items: center; background-color: var(--sl-color-gray-6);
+    padding: 1rem 1.5rem; font-size: 0.85rem; color: var(--sl-color-gray-2); flex-wrap: wrap; gap: 1rem;
   }
   .trv-header-left { display: flex; align-items: baseline; gap: 0.5rem; }
   .trv-title-zh { font-weight: 700; font-size: 1.1rem; color: var(--sl-color-text); letter-spacing: 2px; }
@@ -134,7 +134,7 @@
   .trv-col { display: flex; flex-direction: column; justify-content: center; height: 100%; min-width: 0; }
   
   /* 左侧：杂志风格导读 */
-  .trv-col-left { cursor: pointer; padding: 1rem; margin-left: -1rem !important; }
+  .trv-col-left { cursor: pointer; padding: 1rem; margin-left: -0.5rem !important; background-color: var(--sl-color-gray-7);}
   .trv-description {
     font-size: clamp(1.26rem, 1.8vw, 1.62rem); font-weight: 700; color: var(--sl-color-text); line-height: 1.4; 
     margin-top: -1.5rem !important; margin-bottom: 2rem !important;
