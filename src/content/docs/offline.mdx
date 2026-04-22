@@ -210,20 +210,34 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
   };
 
-async function refreshStatus() {
+  async function refreshStatus() {
     try {
-      // 1. 异步获取自定义缓存清单，构建一个用于快速查找的 Set
+      // 1. 采用“在线优先，离线回退”策略获取自定义缓存清单
       let allowedAssets = new Set();
       try {
+        // 优先从网络获取最新清单
         const manifestRes = await fetch('/assets/offline-manifest-custom.json', { cache: 'no-store' });
         if (manifestRes.ok) {
           const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
             allowedAssets = new Set(manifest.nodes);
           }
+        } else {
+          throw new Error('Network request failed');
         }
-      } catch (err) {
-        console.warn('无法加载自定义缓存清单，/assets/ 目录下的节点将不被计入总数。');
+      } catch (networkError) {
+        // 如果网络请求失败（比如离线），则尝试从缓存中读取
+        try {
+          const manifestRes = await fetch('/assets/offline-manifest-custom.json');
+          if (manifestRes.ok) {
+            const manifest = await manifestRes.json();
+            if (manifest && Array.isArray(manifest.nodes)) {
+              allowedAssets = new Set(manifest.nodes);
+            }
+          }
+        } catch (cacheError) {
+          console.warn('无法从网络或缓存加载自定义清单，/assets/ 目录下的节点将不被计入总数。');
+        }
       }
 
       // 2. 遍历缓存并应用新的“白名单”计数逻辑
@@ -268,7 +282,7 @@ async function refreshStatus() {
       UI.log('状态读取异常: ' + e.message);
     }
   }
-  
+
   function refreshStatusWithRetry() {
     refreshStatus();
     setTimeout(refreshStatus, 1000);
@@ -369,7 +383,9 @@ async function refreshStatus() {
           const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
             urls.push(...manifest.nodes);
-            UI.log('成功读取额外静态资源节点: ' + manifest.nodes.length + ' 个');
+            // 确保清单文件本身也被缓存
+            urls.push('/assets/offline-manifest-custom.json'); 
+            UI.log('成功读取并注入额外静态资源节点: ' + (manifest.nodes.length + 1) + ' 个');
           }
         } else {
           UI.log('提示: 未找到自定义缓存清单 (HTTP ' + manifestRes.status + ')，仅同步主要节点。');
@@ -502,10 +518,10 @@ async function refreshStatus() {
   html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: var(--sl-color-gray-6) !important; }
-  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-text) !important; }
+  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
   .btn-secondary:hover { background: var(--sl-color-accent-low); }
   .btn-minimal { color: var(--sl-color-gray-2) !important; }
-  .btn-minimal:hover { color: var(--sl-color-text) !important; text-decoration: underline; }
+  .btn-minimal:hover { color: var(--sl-color-white) !important; text-decoration: underline; }
 
   .hero-image { display: flex; justify-content: center; align-items: center; }
   .hero-image img {
