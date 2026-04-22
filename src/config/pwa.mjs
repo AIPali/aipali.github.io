@@ -1,3 +1,4 @@
+// src/config/pwa.mjs
 import AstroPWA from '@vite-pwa/astro';
 
 export function getPwaConfig(deployEnv, baseUrl) {
@@ -18,7 +19,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
         display: 'standalone',
         theme_color: '#17181c',
         background_color: '#17181c',
-        icons: [{ src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png' }]
+        icons: [{ src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png' }]
       }
     });
   }
@@ -36,14 +37,26 @@ export function getPwaConfig(deployEnv, baseUrl) {
       navigateFallback: null,
       runtimeCaching: [
         {
-          // 🚨 终极锁定：无论是 HTML、CSS、JS 还是字体图片，统统实行 CacheFirst！
-          urlPattern: ({ request, url }) => 
-            request.destination === 'document' || 
-            request.destination === 'style' ||
-            request.destination === 'script' ||
-            request.destination === 'image' ||
-            request.destination === 'font' ||
-            url.pathname.endsWith('/'),
+          // 🚀 1. 外部动态服务白名单（必须放在最前面！）
+          // 匹配 FastGPT 域名和 Algolia 搜索，强制走网络，绝不缓存
+          urlPattern: /^https:\/\/(ai\.true-dhamma\.com|[a-zA-Z0-9-]+\.algolia\.net)\/.*/i,
+          handler: 'NetworkOnly',
+        },
+        {
+          // 🚨 2. 终极锁定：本站静态资源 CacheFirst
+          urlPattern: ({ request, url }) => {
+            // 【关键修复】只缓存当前站点的同源请求，放过所有第三方外部请求
+            if (url.origin !== self.location.origin) {
+              return false;
+            }
+            
+            return request.destination === 'document' || 
+                   request.destination === 'style' ||
+                   request.destination === 'script' ||
+                   request.destination === 'image' ||
+                   request.destination === 'font' ||
+                   url.pathname.endsWith('/');
+          },
           handler: 'CacheFirst', 
           options: {
             cacheName: 'aipali-offline-cache',
@@ -54,26 +67,21 @@ export function getPwaConfig(deployEnv, baseUrl) {
             cacheableResponse: { statuses: [0, 200] },
             matchOptions: { ignoreVary: true, ignoreSearch: true },
           },
-        },
-        {
-          // Algolia 搜索强制走网络
-          urlPattern: /^https:\/\/[a-zA-Z0-9-]+\.algolia\.net\/.*/i,
-          handler: 'NetworkOnly',
         }
       ]
     },
     manifest: {
-      name: 'AIPali 智能化巴利三藏 - 离线版',
-      short_name: 'AIPali',
+      name: '巴利三藏 - AIPali离线版',
+      short_name: '巴利三藏',
       description: '巴利三藏智能化工程，支持全站离线阅读',
       theme_color: '#17181c',
       background_color: '#17181c',
       display: 'standalone',
       start_url: `${baseUrl}offline/`, // 桌面打开默认进入 offline 控制台
       icons: [
-        { src: `${baseUrl}assets/logo_dark_192x192.png`, sizes: '192x192', type: 'image/png' },
-        { src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png' },
-        { src: `${baseUrl}assets/logo_dark_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+        { src: `${baseUrl}assets/logo_192x192.png`, sizes: '192x192', type: 'image/png' },
+        { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png' },
+        { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
       ]
     }
   });
