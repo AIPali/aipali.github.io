@@ -1,6 +1,6 @@
 ---
 title: AIPali 智能化巴利三藏
-description: 本地数据控制中心，管理离线法宝数据。
+description: 本地数据控制中心，管理离线经文数据。
 template: splash
 ---
 
@@ -64,7 +64,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   <section className="offline-dashboard">
     <div className="dashboard-header">
-      <h2>本地法宝数据中心</h2>
+      <h2>本地经文数据中心</h2>
       <p>
         您需要花费一两分钟时间，提前在有网环境下将 AIPali 数据同步至本地存储。<br />此后，即可在飞机、轮船、户外或任何无网环境下，顺畅地阅读所有巴利三藏。
       </p>
@@ -72,7 +72,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
     <div className="dashboard-grid">
       <div className="dash-card">
-        <h3>已缓存页面</h3>
+        <h3>已缓存节点</h3>
         <div className="dash-value" id="cache-count">--</div>
       </div>
       <div className="dash-card">
@@ -126,7 +126,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       <h2 className="aipali-section-title">AIPali 离线版使用说明</h2>
       <Card title="背景介绍" icon="information">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
+          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页面说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
           <li><b>离线版地址：</b>出于服务一致性的考量，在多个镜像站点中，目前只有 aipali.github.io 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)）访问和使用离线功能。</li>
           <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将 Offline 页面添加到桌面</b>，以此安装成为一个网页 App 并获得必要的高级缓存权限——这一步是离线浏览稳定性的关键保障。</li>
         </ul>
@@ -210,8 +210,23 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
   };
 
-  async function refreshStatus() {
+async function refreshStatus() {
     try {
+      // 1. 异步获取自定义缓存清单，构建一个用于快速查找的 Set
+      let allowedAssets = new Set();
+      try {
+        const manifestRes = await fetch('/assets/offline-manifest-custom.json', { cache: 'no-store' });
+        if (manifestRes.ok) {
+          const manifest = await manifestRes.json();
+          if (manifest && Array.isArray(manifest.nodes)) {
+            allowedAssets = new Set(manifest.nodes);
+          }
+        }
+      } catch (err) {
+        console.warn('无法加载自定义缓存清单，/assets/ 目录下的节点将不被计入总数。');
+      }
+
+      // 2. 遍历缓存并应用新的“白名单”计数逻辑
       if ('caches' in window) {
         const cacheNames = await caches.keys();
         const pathSet = new Set(); 
@@ -224,9 +239,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
             try {
               const url = new URL(req.url);
               const path = url.pathname;
-              if ((path.endsWith('/') || path.endsWith('.html')) && 
-                  !path.includes('/_astro/') && 
-                  !path.includes('/assets/')) {
+              
+              const isPageNode = path.endsWith('/') || path.endsWith('.html');
+              const isAllowedAssetNode = path.startsWith('/assets/') && allowedAssets.has(path);
+              const isInternalJunk = path.includes('/_astro/') || path.includes('/@vite/') || path.includes('/@fs/');
+
+              if ((isPageNode || isAllowedAssetNode) && !isInternalJunk) {
                 pathSet.add(path);
               }
             } catch(e) {}
@@ -238,6 +256,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         UI.log('系统警告: 当前运行环境不支持 Cache API，无法使用离线版巴利三藏。');
       }
 
+      // 3. 存储估算部分保持不变
       if (navigator.storage && navigator.storage.estimate) {
         const estimate = await navigator.storage.estimate();
         const usedMB = (estimate.usage / (1024 * 1024)).toFixed(2);
@@ -249,7 +268,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       UI.log('状态读取异常: ' + e.message);
     }
   }
-
+  
   function refreshStatusWithRetry() {
     refreshStatus();
     setTimeout(refreshStatus, 1000);
@@ -285,7 +304,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         }
       }
 
-      UI.log('本地所有法宝数据及关联缓存已彻底清除！');
+      UI.log('本地所有经文节点及关联缓存已彻底清除！');
       UI.log('⚠️ 请注意：由于浏览器底层存储状态的限制，部分系统缓存需彻底关闭后才能释放。您需要 [彻底划掉/退出当前应用] 并重新进入，才能查看归零后的准确容量。');
       
     } catch (e) {
@@ -305,8 +324,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
 
     const msg = isRebuild
-      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有法宝节点。此过程耗将时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
-      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的法宝节点。\\n\\n确认执行增量同步？";
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程耗将时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
+      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
     await performSync(isRebuild);
@@ -325,7 +344,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         throw new Error('终端网络意外断开，命令执行终止。');
       }
 
-      UI.log('读取云端拓扑结构...');
+      UI.log('读取云端拓扑结构 (sitemap)...');
       const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
       if (!sitemapRes.ok) throw new Error('云端通信受阻 (HTTP ' + sitemapRes.status + ')');
       
@@ -342,14 +361,22 @@ import TodayRightView from '../../components/TodayRightView.astro';
           return !url.includes('/tags/');
         });
 
-      // 【核心修复】：强制将 TRV 组件依赖的静态文件推入下载队列
-      const trvAssets = [
-        '/assets/today-right-view.js',
-        '/assets/pali-index-all.json',
-        '/assets/pali-index-dhp.json',
-        '/assets/pali-index-thag-thig.json'
-      ];
-      urls.push(...trvAssets);
+      // 动态拉取并注入自定义缓存清单
+      try {
+        UI.log('读取额外静态资源清单 (offline-manifest-custom)...');
+        const manifestRes = await fetch('/assets/offline-manifest-custom.json', { cache: 'no-store' });
+        if (manifestRes.ok) {
+          const manifest = await manifestRes.json();
+          if (manifest && Array.isArray(manifest.nodes)) {
+            urls.push(...manifest.nodes);
+            UI.log('成功读取额外静态资源节点: ' + manifest.nodes.length + ' 个');
+          }
+        } else {
+          UI.log('提示: 未找到自定义缓存清单 (HTTP ' + manifestRes.status + ')，仅同步主要节点。');
+        }
+      } catch (err) {
+        UI.log('提示: 无法解析自定义缓存清单，仅同步主要节点。');
+      }
 
       if (urls.length === 0) throw new Error('未获取到有效的数据节点。');
       UI.log('校验通过，共有 ' + urls.length + ' 个有效的同步节点。');
@@ -475,10 +502,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
   html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: var(--sl-color-gray-6) !important; }
-  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
+  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-text) !important; }
   .btn-secondary:hover { background: var(--sl-color-accent-low); }
   .btn-minimal { color: var(--sl-color-gray-2) !important; }
-  .btn-minimal:hover { color: var(--sl-color-white) !important; text-decoration: underline; }
+  .btn-minimal:hover { color: var(--sl-color-text) !important; text-decoration: underline; }
 
   .hero-image { display: flex; justify-content: center; align-items: center; }
   .hero-image img {

@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "comment": "本清单包含 Sitemap 之外需要强制离线缓存的静态资源节点",
+  "nodes": [
+    "/assets/today-right-view.js",
+    "/assets/pali-index-all.json",
+    "/assets/pali-index-dhp.json",
+    "/assets/pali-index-thag-thig.json"
+  ]
+}
