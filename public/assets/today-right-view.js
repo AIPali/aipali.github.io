@@ -119,7 +119,7 @@
     state.currentEntry = entry;
     state.tagEntries = tagCloud;
 
-    const root = document.getElementById('trv-root');
+    const root = document.getElementById('aipali-trv');
     if (!root) return;
 
     const date = formatDate();
@@ -279,7 +279,7 @@
   }
 
   function setLoading(loading) {
-    const root = document.getElementById('trv-root');
+    const root = document.getElementById('aipali-trv');
     if (!root) return;
     if (loading) root.classList.add('trv-loading');
     else root.classList.remove('trv-loading');
@@ -294,7 +294,7 @@
       const tagCloud = await pickTagCloud(state.fileBlob, entry.slug, CONFIG.tagCloudCount);
       render(entry, tagCloud);
     } catch (err) {
-      const root = document.getElementById('trv-root');
+      const root = document.getElementById('aipali-trv');
       if (root) root.innerHTML = `<div class="trv-error">今日正见暂时无法加载（${err.message}）</div>`;
       console.error('[TRV]', err);
     }

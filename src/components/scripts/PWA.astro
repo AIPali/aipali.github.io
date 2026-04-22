@@ -25,28 +25,47 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
                          
   // 2. 检测是否为 PWA 独立应用模式 (桌面/主屏幕 App 打开)
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
-                       window.navigator.standalone === true; // 兼容 iOS 老版本
+                       window.navigator.standalone === true;
 
-  // 3. 路由守护：如果在独立 App 模式下处于首页，平滑跳转到控制台
+  // 3. 路由守护：独立 App 模式下如果直接访问根目录，平滑跳转到 offline 控制台
   if (isStandalone) {
     const path = window.location.pathname;
+    // 注意：如果是独立 App 刚打开，我们保留不加锚点的原始跳转，让用户看到 Hero 头部
     if (path === baseUrl || path === baseUrl + 'index.html') {
       window.location.replace(offlineUrl);
     }
-    
-    // 拦截左上角 Logo，防止跳出 offline 闭环
-    document.addEventListener('DOMContentLoaded', () => {
-      const siteTitleAnchor = document.querySelector('.site-title a');
-      if (siteTitleAnchor) {
-        siteTitleAnchor.setAttribute('href', offlineUrl);
-      }
-    });
   }
 
-  // 4. Service Worker 动态管理 (解决 PC/非应用模式被劫持缓存的问题)
+  // 4. 智能拦截左上角 Logo (全局生效)
+  document.addEventListener('DOMContentLoaded', () => {
+    // 修正 Starlight 的准确 DOM 选择器
+    const siteTitleAnchor = document.querySelector('a.site-title') || document.querySelector('.site-title a');
+    
+    if (siteTitleAnchor) {
+      siteTitleAnchor.addEventListener('click', (e) => {
+        e.preventDefault(); // 阻断默认跳转行为
+        
+        // 判断屏幕宽度分配锚点
+        const isMobile = window.innerWidth <= 600;
+        const targetAnchor = isMobile ? '#aipali-trv' : '#aipali-nav';
+        
+        // 判断环境分配底层链接
+        const targetBase = isStandalone ? offlineUrl : baseUrl;
+        
+        // 如果当前页面已经是目标页面，直接修改 Hash 实现平滑滚动
+        if (window.location.pathname === targetBase || window.location.pathname === targetBase.replace(/\/$/, '')) {
+          window.location.hash = targetAnchor;
+        } else {
+          // 否则跨页面跳转并带上锚点
+          window.location.href = targetBase + targetAnchor;
+        }
+      });
+    }
+  });
+
+  // 5. Service Worker 动态管理
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
-      
       // 【条件A】只有在"指定域名" 且 "独立应用模式" 下，才注册 PWA 引擎
       if (isTargetDomain && isStandalone) {
         if (navigator.storage && navigator.storage.persist) {
@@ -67,7 +86,6 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
           }
         });
       }
-      
     });
   }
 </script>
