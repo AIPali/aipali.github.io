@@ -35,11 +35,28 @@
     return await slice.text();
   }
 
+  // 【核心修复】：增强 Fetch 逻辑，加入 PWA 离线穿透能力
   async function fetchFileBlob(sourceKey) {
     const url = CONFIG.dataDir + CONFIG.sources[sourceKey];
-    const resp = await fetch(url);
-    if (!resp.ok) throw new Error(`无法加载数据文件: ${url}`);
-    return await resp.blob();
+    try {
+      // 1. 正常尝试 fetch (如果联网，或者 Service Worker 成功拦截)
+      const resp = await fetch(url);
+      if (resp.ok) return await resp.blob();
+      throw new Error('Network fetch failed');
+    } catch (err) {
+      // 2. 如果断网且 SW 没有代理，直接穿透读取本地离线数据库
+      if ('caches' in window) {
+        try {
+          const cacheResp = await caches.match(url);
+          if (cacheResp) {
+            return await cacheResp.blob();
+          }
+        } catch (cacheErr) {
+          console.warn('[TRV] Cache read error:', cacheErr);
+        }
+      }
+      throw new Error(`无法加载数据文件 (离线环境未命中): ${url}`);
+    }
   }
 
   async function randomEntry(blob) {
@@ -124,7 +141,6 @@
 
     const date = formatDate();
     const tags = (entry.tag || []).slice(0, 4);
-    // const highlights = entry.highlight || [];
     const highlights = (entry.highlight || []).slice(0, 5);
 
     // SVG 刷新图标
@@ -204,7 +220,7 @@
     `).join('')}
   </div>
 
-  <!-- 移动端专属刷新按钮（彻底分离 DOM 解决手机端布局失效问题） -->
+  <!-- 移动端专属刷新按钮 -->
   <button class="trv-refresh-btn trv-mobile-btn trv-refresh-action">
     ${refreshIcon}换一个
   </button>
@@ -237,10 +253,9 @@
       });
     }
 
-    // 换一个 (绑定所有 class 为 trv-refresh-action 的按钮，覆盖 PC 和 手机)
+    // 换一个
     root.querySelectorAll('.trv-refresh-action').forEach(btn => {
       btn.addEventListener('click', async () => {
-        // 禁用所有刷新按钮防止连点
         root.querySelectorAll('.trv-refresh-action').forEach(b => b.disabled = true);
         await loadAndRender();
       });
@@ -269,7 +284,6 @@
       root.addEventListener('touchmove', e => { let dx = Math.abs(e.touches[0].clientX - tx), dy = Math.abs(e.touches[0].clientY - ty);
         if (isX === null && (dx > 5 || dy > 5)) isX = dx > dy; if (isX) e.preventDefault(); }, {passive: false});
       root.addEventListener('touchend', e => { 
-        // 增加防连滑机制，并在切换成功后柔性居中
         if (isX && Math.abs(e.changedTouches[0].clientX - tx) > 60 && !root.classList.contains('trv-loading')) {
           loadAndRender().then(() => setTimeout(() => root.scrollIntoView({behavior: 'smooth', block: 'center'}), 100));
         }
