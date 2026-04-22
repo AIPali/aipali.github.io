@@ -35,7 +35,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
 {/* --- 批量经文快速直达区与今日正见 --- */}
 <div className="divider-glow" style={{ marginTop: '5rem' }}></div>
-<div id="aipali-nav" className="quick-nav-wrapper" style={{ scrollMarginTop: '1rem' }}>
+<div id="aipali-nav" className="quick-nav-wrapper" style={{ scrollMarginTop: '0rem' }}>
   <div className="aipali-quick-nav">
     <div className="nav-group">
       <span className="group-label">四部尼柯耶</span>
@@ -82,7 +82,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
   </div>
 
   {/* ====== 今日正见 (Today Right View) 容器 ====== */}
-  <div id="aipali-trv" className="trv-wrapper" style={{ scrollMarginTop: '1rem', marginTop: '2rem' }}></div>
+  <div id="aipali-trv" className="trv-wrapper" style={{ scrollMarginTop: '0rem', marginTop: '2rem' }}></div>
 
 </div>
 
@@ -302,7 +302,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
     html[data-theme='dark'] .trv-source-select { background: rgba(0,0,0,0.2); }
     html[data-theme='dark'] .trv-source-select:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
 
-    .trv-header-line { height: 1px; width: calc(100% - 3rem); margin: 0 auto !important; background: var(--sl-color-hairline); }
+    .trv-header-line { height: 1px; width: 100%; margin: 0 auto !important; background: var(--sl-color-hairline); }
 
     /* 主体网格 3:4:3 与定高 */
     .trv-body {
@@ -348,7 +348,7 @@ import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
     /* 右侧：标签区完美垂直居中，底部按钮固定 */
     .trv-col-right {
-      padding-left: 1rem; position: relative; padding-bottom: 3.5rem; justify-content: center; 
+      padding-left: 0rem; position: relative; padding-bottom: 3.5rem; justify-content: center; 
     }
     .trv-cloud-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
     .trv-cloud-label { font-size: 0.8rem; font-weight: 600; color: var(--sl-color-gray-3); text-transform: uppercase; letter-spacing: 1px; }
