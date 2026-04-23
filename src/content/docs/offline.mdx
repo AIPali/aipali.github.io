@@ -126,18 +126,18 @@ import TodayRightView from '../../components/TodayRightView.astro';
       <h2 className="aipali-section-title">AIPali 离线版使用说明</h2>
       <Card title="背景介绍" icon="information">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本控制台说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
-          <li><b>离线版地址：</b>出于服务一致性的考量，在多个镜像站点中，目前只有 aipali.github.io 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 控制台</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)）访问和使用离线功能。</li>
-          <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将 Offline 控制台添加到桌面</b>，以此安装成为一个网页 App 并获得必要的高级缓存权限——这一步是离线浏览稳定性的关键保障。</li>
+          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页面说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
+          <li><b>离线版地址：</b>出于服务一致性的考量，在多个镜像站点中，目前只有 aipali.github.io 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)）访问和使用离线功能。</li>
+          <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将 Offline 页面添加到桌面</b>，以此安装成为一个网页 App 并获得必要的高级缓存权限——这一步是离线浏览稳定性的关键保障。</li>
         </ul>
       </Card>
       
       <Card title="iOS 用户" icon="apple">
-        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 控制台</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
 
       <Card title="Android 用户" icon="phone">
-        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 控制台</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
       
       <Card title="局限性" icon="warning">
@@ -612,7 +612,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   @media (max-width: 50rem) {
     .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
-    .hero-image img { max-width: 260px; margin: 0 auto; }
+    .hero-image img { max-width: 300px; margin: 0 auto; }
     .hero-title { white-space: normal !important; font-size: clamp(2rem, 8vw, 2.5rem); }
     .hero-tagline { margin-inline: auto; font-size: 1.1rem; }
     .hero-actions { justify-content: center !important; margin-top: 1rem; }
