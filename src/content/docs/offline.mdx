@@ -1,6 +1,6 @@
 ---
 title: AIPali 智能化巴利三藏
-description: 本地数据控制中心，管理离线经文数据。
+description: 本地数据控制中心，管理离线法宝数据。
 template: splash
 ---
 
@@ -126,18 +126,18 @@ import TodayRightView from '../../components/TodayRightView.astro';
       <h2 className="aipali-section-title">AIPali 离线版使用说明</h2>
       <Card title="背景介绍" icon="information">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页面说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
-          <li><b>离线版地址：</b>出于服务一致性的考量，在多个镜像站点中，目前只有 aipali.github.io 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)）访问和使用离线功能。</li>
-          <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将 Offline 页面添加到桌面</b>，以此安装成为一个网页 App 并获得必要的高级缓存权限——这一步是离线浏览稳定性的关键保障。</li>
+          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本控制台说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
+          <li><b>离线版地址：</b>出于服务一致性的考量，在多个镜像站点中，目前只有 aipali.github.io 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 控制台</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)）访问和使用离线功能。</li>
+          <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将 Offline 控制台添加到桌面</b>，以此安装成为一个网页 App 并获得必要的高级缓存权限——这一步是离线浏览稳定性的关键保障。</li>
         </ul>
       </Card>
       
       <Card title="iOS 用户" icon="apple">
-        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 控制台</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
 
       <Card title="Android 用户" icon="phone">
-        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 控制台</b>（[https://aipali.github.io/offline/](https://aipali.github.io/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
       
       <Card title="局限性" icon="warning">
@@ -168,6 +168,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 {/* ====================================================== */}
 <script is:inline>{`
   const CACHE_NAME = 'aipali-offline-cache';
+  const MANIFEST_URL = '/assets/offline-manifest-custom.json';
   let isSyncing = false;
 
   const UI = {
@@ -212,39 +213,27 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   async function refreshStatus() {
     try {
-      // 1. 采用“在线优先，离线回退”策略获取自定义缓存清单
-      let allowedAssets = new Set();
-      try {
-        // 优先从网络获取最新清单
-        const manifestRes = await fetch('/assets/offline-manifest-custom.json', { cache: 'no-store' });
-        if (manifestRes.ok) {
-          const manifest = await manifestRes.json();
-          if (manifest && Array.isArray(manifest.nodes)) {
-            allowedAssets = new Set(manifest.nodes);
-          }
-        } else {
-          throw new Error('Network request failed');
-        }
-      } catch (networkError) {
-        // 如果网络请求失败（比如离线），则尝试从缓存中读取
+      if ('caches' in window) {
+        let allowedAssets = new Set();
+        
+        // 核心改造 1：显示状态时，【绝对不碰网络】。只从本地缓存的数据库中尝试提取清单文件。
         try {
-          const manifestRes = await fetch('/assets/offline-manifest-custom.json');
-          if (manifestRes.ok) {
+          const cache = await caches.open(CACHE_NAME);
+          const manifestRes = await cache.match(MANIFEST_URL);
+          if (manifestRes) {
             const manifest = await manifestRes.json();
             if (manifest && Array.isArray(manifest.nodes)) {
               allowedAssets = new Set(manifest.nodes);
             }
           }
-        } catch (cacheError) {
-          console.warn('无法从网络或缓存加载自定义清单，/assets/ 目录下的节点将不被计入总数。');
+        } catch (err) {
+          console.warn('本地尚未缓存静态资源清单，暂不计入额外节点。');
         }
-      }
 
-      // 2. 遍历缓存并应用新的“白名单”计数逻辑
-      if ('caches' in window) {
         const cacheNames = await caches.keys();
         const pathSet = new Set(); 
         
+        // 核心改造 2：遍历缓存，按严格白名单计数
         for (let name of cacheNames) {
           const cache = await caches.open(name);
           const keys = await cache.keys();
@@ -255,10 +244,11 @@ import TodayRightView from '../../components/TodayRightView.astro';
               const path = url.pathname;
               
               const isPageNode = path.endsWith('/') || path.endsWith('.html');
-              const isAllowedAssetNode = path.startsWith('/assets/') && allowedAssets.has(path);
+              const isManifestNode = path === MANIFEST_URL; // 清单文件本身算 1 个节点
+              const isAllowedAssetNode = path.startsWith('/assets/') && allowedAssets.has(path); // 只有清单里的算有效节点
               const isInternalJunk = path.includes('/_astro/') || path.includes('/@vite/') || path.includes('/@fs/');
 
-              if ((isPageNode || isAllowedAssetNode) && !isInternalJunk) {
+              if ((isPageNode || isManifestNode || isAllowedAssetNode) && !isInternalJunk) {
                 pathSet.add(path);
               }
             } catch(e) {}
@@ -270,7 +260,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
         UI.log('系统警告: 当前运行环境不支持 Cache API，无法使用离线版巴利三藏。');
       }
 
-      // 3. 存储估算部分保持不变
       if (navigator.storage && navigator.storage.estimate) {
         const estimate = await navigator.storage.estimate();
         const usedMB = (estimate.usage / (1024 * 1024)).toFixed(2);
@@ -375,17 +364,16 @@ import TodayRightView from '../../components/TodayRightView.astro';
           return !url.includes('/tags/');
         });
 
-      // 动态拉取并注入自定义缓存清单
+      // 核心改造 3：拉取额外清单。必须使用 no-store 强制刷新，并将清单自身和 Nodes 都塞入下载队列进行持久化。
       try {
         UI.log('读取额外静态资源清单 (offline-manifest-custom)...');
-        const manifestRes = await fetch('/assets/offline-manifest-custom.json', { cache: 'no-store' });
+        const manifestRes = await fetch(MANIFEST_URL, { cache: 'no-store' });
         if (manifestRes.ok) {
           const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
             urls.push(...manifest.nodes);
-            // 确保清单文件本身也被缓存
-            urls.push('/assets/offline-manifest-custom.json'); 
-            UI.log('成功读取并注入额外静态资源节点: ' + (manifest.nodes.length + 1) + ' 个');
+            urls.push(MANIFEST_URL); // 将 JSON 本身也注入下载队列，供后续断网时 refreshStatus 离线查阅
+            UI.log('成功读取额外静态资源节点: ' + manifest.nodes.length + ' 个，已注入同步引擎。');
           }
         } else {
           UI.log('提示: 未找到自定义缓存清单 (HTTP ' + manifestRes.status + ')，仅同步主要节点。');
@@ -433,6 +421,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
           } else {
             try {
               UI.setProgress(currentIndex, urls.length, '拉取节点: ' + displayUrl);
+              // 对于节点下载本身，不需要强制 nocache，因为 SW 可能已经处理。但加上 nocache 能确保文件最新。
               const res = await fetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
@@ -518,10 +507,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
   html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: var(--sl-color-gray-6) !important; }
-  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-white) !important; }
+  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-text) !important; }
   .btn-secondary:hover { background: var(--sl-color-accent-low); }
   .btn-minimal { color: var(--sl-color-gray-2) !important; }
-  .btn-minimal:hover { color: var(--sl-color-white) !important; text-decoration: underline; }
+  .btn-minimal:hover { color: var(--sl-color-text) !important; text-decoration: underline; }
 
   .hero-image { display: flex; justify-content: center; align-items: center; }
   .hero-image img {
@@ -623,7 +612,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   @media (max-width: 50rem) {
     .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
-    .hero-image img { max-width: 300px; margin: 0 auto; }
+    .hero-image img { max-width: 260px; margin: 0 auto; }
     .hero-title { white-space: normal !important; font-size: clamp(2rem, 8vw, 2.5rem); }
     .hero-tagline { margin-inline: auto; font-size: 1.1rem; }
     .hero-actions { justify-content: center !important; margin-top: 1rem; }
