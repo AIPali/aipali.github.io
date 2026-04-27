@@ -156,12 +156,10 @@ async function fetchAndCacheAudio(index, signal) {
   if (!item) return false;
   if (item.blobUrl) return true;
 
-  // 【修复】如果已经在请求中了，直接等待现有的 Promise，防止并发产生空结果导致播放 /null
   if (item.fetchPromise) {
     return await item.fetchPromise;
   }
 
-  // 将请求过程封装为 Promise 并保存
   item.fetchPromise = (async () => {
     let success = false;
     for (let i = 0; i < TTS_CONFIG.MAX_RETRIES; i++) {
@@ -189,25 +187,22 @@ async function fetchAndCacheAudio(index, signal) {
   })();
 
   const result = await item.fetchPromise;
-  // 如果所有重试都失败了，清空 Promise 允许以后重新尝试
   if (!result) item.fetchPromise = null;
   return result;
 }
 
-// BUG 修复：将此函数改为 async，并使用 for...of 循环来确保预取请求是串行（一个接一个）发送的
 async function managePrefetchWindow() {
   const start = currentIndex + 1;
   const end = Math.min(currentIndex + TTS_CONFIG.PREFETCH_WINDOW_SIZE + 1, textQueue.length);
   for (let i = start; i < end; i++) {
-    // 如果在预取过程中用户停止了阅读，则立即中断
     if (!isReading) break;
-    // 使用 await 等待当前 fetch 完成，再开始下一个
     await fetchAndCacheAudio(i, fetchController.signal);
   }
 }
 
 async function playCurrentAndPrefetchNext() {
   if (currentIndex >= textQueue.length || !isReading) { if (isReading) stopReading(true); return; }
+  
   const previousItem = textQueue[currentIndex - 1];
   if (previousItem && previousItem.blobUrl) { URL.revokeObjectURL(previousItem.blobUrl); previousItem.blobUrl = null; }
   
@@ -215,13 +210,27 @@ async function playCurrentAndPrefetchNext() {
   highlightElement(currentItem.element);
   
   const success = await fetchAndCacheAudio(currentIndex, fetchController.signal);
-  if (!isReading || !success) { if (isReading) stopReading(true); return; }
+  
+  if (!isReading) return;
+  
+  // 【修改点 1】：获取音频失败时，不再中断停止，而是跳过当前段落继续下一段
+  if (!success) { 
+    console.warn(`[TTS] 跳过无法获取音频的段落: ${currentItem.text}`);
+    currentIndex++;
+    return playCurrentAndPrefetchNext();
+  }
   
   audioPlayer.src = currentItem.blobUrl;
-  audioPlayer.play().catch(err => { console.error("Play failed:", err); if (isReading) stopReading(true); });
   
-  // 预取函数现在是异步的，但我们不需要在这里 await 它
-  // 让它在后台安静地、串行地填充缓存即可
+  // 【修改点 2】：捕获播放异常（如空文件/损坏的音频），跳过并播放下一段
+  audioPlayer.play().catch(err => { 
+    console.warn(`[TTS] 播放失败跳过 (${err.message}): ${currentItem.text}`);
+    if (isReading) { 
+      currentIndex++; 
+      playCurrentAndPrefetchNext(); 
+    } 
+  });
+  
   managePrefetchWindow();
 }
 
@@ -242,14 +251,22 @@ function stopReading(shouldUpdateUI = false) {
   textQueue.forEach(item => { 
     if (item.blobUrl) URL.revokeObjectURL(item.blobUrl); 
     item.blobUrl = null; 
-    item.fetchPromise = null; // 替换了原来的 item.isFetching = false
+    item.fetchPromise = null; 
   });
   clearHighlight();
   if (shouldUpdateUI) updateUI();
 }
 
 audioPlayer.onended = () => { if (isReading) { currentIndex++; playCurrentAndPrefetchNext(); } };
-audioPlayer.onerror = () => { if (isReading) stopReading(true); };
+
+// 【修改点 3】：音频解码发生错误时跳过，而不是停止
+audioPlayer.onerror = () => { 
+  if (isReading) { 
+    console.warn(`[TTS] 音频格式错误或加载失败，跳过...`);
+    currentIndex++; 
+    playCurrentAndPrefetchNext(); 
+  } 
+};
 
 // ==========================================
 // 初始化与生命周期绑定
@@ -283,19 +300,22 @@ function initTTS() {
 
   topLevelElements.forEach(el => {
     let text;
-    // 使用配置项进行过滤
     if (TTS_CONFIG.EXCLUDE_SELECTORS) {
       const clone = el.cloneNode(true);
       const ignoreElements = clone.querySelectorAll(TTS_CONFIG.EXCLUDE_SELECTORS);
       ignoreElements.forEach(node => node.remove());
       text = (clone.textContent || '').replace(/\s+/g, ' ').trim();
     } else {
-      // 如果配置为空，则不过滤，直接提取文本
       text = el.innerText.trim();
     }
  
     if (text) { 
-      textQueue.push({ text: text, element: el, blobUrl: null, fetchPromise: null }); 
+      // 【修改点 4】：使用正则过滤，如果文本中去除了所有标点符号和空格后，没有任何实质内容(汉字/字母/数字)，则压根不加入队列
+      // \p{P} 匹配所有标点符号(包含中英)，\p{S} 匹配符号(如$+~等)，\s 匹配空格
+      const strippedText = text.replace(/[\p{P}\p{S}\s]/gu, '');
+      if (strippedText.length > 0) {
+        textQueue.push({ text: text, element: el, blobUrl: null, fetchPromise: null }); 
+      }
     }
   });
 
