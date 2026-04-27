@@ -7,7 +7,7 @@ vagga: "Suttanipāta"
 reference: "Snp 1-12, 1-223"
 curator: "True-Dhamma.com"
 version: "3"
-tags: [经集, 蛇品, 独居修行, 慈心, 戒行, 婆罗门, 缘起, 身随观, 不净观, 四种沙门, 牟尼]
+tags: [经集, 蛇品, 独居修行, 慈心, 戒行, 婆罗门, 身随观, 不净观, 四种沙门, 牟尼]
 ---
 
 > [!abstract] AI 导读
