@@ -7,7 +7,7 @@ vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.31-40, 1101-1110"
 curator: "True-Dhamma.com"
 version: "3"
-tags:[四圣谛, 譬喻, 勤加修习, 正见, 涅槃]
+tags: [四圣谛, 譬喻, 勤加修习, 正见, 涅槃]
 ---
 
 > [!abstract] AI 导读
