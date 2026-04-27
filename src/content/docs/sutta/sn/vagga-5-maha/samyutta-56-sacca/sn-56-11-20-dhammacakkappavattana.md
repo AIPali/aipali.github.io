@@ -6,7 +6,7 @@ collection: "Saṃyutta Nikāya"
 vagga: "Mahāvaggasaṃyuttapāḷi, Saccasaṃyutta"
 reference: "SN 56.11-20, 1081-1090"
 curator: "True-Dhamma.com"
-version: "1"
+version: "3"
 tags: [四圣谛, 转法轮, 中道, 八正道, 缘起, 智慧, 三转十二行相]
 ---
 
