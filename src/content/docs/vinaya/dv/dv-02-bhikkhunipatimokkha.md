@@ -6,8 +6,8 @@ collection: "Vinaya Piṭaka"
 vagga: "Dvemātikāpāḷi"
 reference: "DV 2"
 curator: "True-Dhamma.com"
-version: "1"
-tags: ["戒律", "波罗提木叉", "比丘尼戒", "尼僧团", "布萨", "弃罪", "僧残", "单堕", "律藏", "学处"]
+version: "2"
+tags: [戒律, 波罗提木叉, 比丘尼戒, 尼僧团, 布萨, 弃罪, 僧残, 单堕, 律藏, 学处]
 ---
 > [!abstract] AI 导读
 > 本篇《比丘尼波罗提木叉》是巴利律藏中为比丘尼僧团制定的核心行为准则，共计311条学处（Sikkhāpada）。它与《比丘波罗提木叉》共同构成了出家二众的根本戒律，是僧团清净与和合的基石。

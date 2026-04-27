@@ -6,7 +6,7 @@ collection: "Bhikkhuvibhaṅga"
 vagga: "Nissaggiyakaṇḍa"
 reference: "BV 4.3, 598-662"
 curator: "True-Dhamma.com"
-version: "0.1"
+version: "3"
 tags: [钵, 舍堕, 戒律, 比丘戒, 药品, 雨季衣, 衣物, 僧伽, 蓄存]
 ---
 

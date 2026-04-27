@@ -6,8 +6,8 @@ collection: "Vinaya Piṭaka"
 vagga: "Dvemātikāpāḷi"
 reference: "DV 1"
 curator: "True-Dhamma.com"
-version: "1"
-tags: ["戒律", "波罗提木叉", "比丘戒", "僧团", "布萨", "波罗夷", "僧残", "波逸提", "律藏", "学处"]
+version: "2"
+tags: [戒律, 波罗提木叉, 比丘戒, 僧团, 布萨, 波罗夷, 僧残, 波逸提, 律藏, 学处]
 ---
 > [!abstract] AI 导读
 > 本篇《比丘波罗提木叉》是巴利律藏的核心部分，是佛陀为比丘僧团制定的基本行为准则，共计227条学处（Sikkhāpada）。“波罗提木叉”意为“别别解脱”，指能逐条守护，逐条获得解脱的学处（戒律）。
