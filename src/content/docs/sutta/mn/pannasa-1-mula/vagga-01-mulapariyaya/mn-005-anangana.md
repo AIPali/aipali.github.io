@@ -7,7 +7,7 @@ vagga: "Mūlapariyāyavagga"
 reference: "MN 5, 57-63"
 curator: "True-Dhamma.com"
 version: "3"
-tags:[舍利弗, 大目犍连, 烦恼, 杂染, 秽, 如实了知, 铜盘喻, 车轮匠喻]
+tags: [舍利弗, 大目犍连, 烦恼, 杂染, 秽, 如实了知, 铜盘喻, 车轮匠喻]
 ---
 
 > [!abstract] AI 导读

@@ -7,7 +7,7 @@ vagga: "Cūḷayamakavagga"
 reference: "MN 48, 491-500"
 curator: "True-Dhamma.com"
 version: "3"
-tags:[六和敬, 僧团和合, 争论, 慈心, 正见, 入流果, 圣弟子, 憍赏弥]
+tags: [六和敬, 僧团和合, 争论, 慈心, 正见, 入流果, 圣弟子, 憍赏弥]
 ---
 
 > [!abstract] AI 导读
