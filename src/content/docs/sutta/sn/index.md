@@ -27,7 +27,7 @@ tags: [相应部, 尼柯耶, 缘起, 五蕴, 六处, 四圣谛, 菩提分法]
 
 在佛陀时代，每当夜深人静，常有光芒万丈的天神降临祇树给孤独园请法。这些对话被集中收录在 [SN 1 诸天相应 (Devatāsaṃyutta)](/sutta/sn/vagga-1-sagatha/samyutta-01-devata/sn-01-01-10-nala/) 与 [SN 2 天子相应 (Devaputtasaṃyutta)](/sutta/sn/vagga-1-sagatha/samyutta-02-devaputta/sn-02-01-10-pathama/) 中。例如在开篇的 [SN 1.1-10 苇品 (Naḷavagga)](/sutta/sn/vagga-1-sagatha/samyutta-01-devata/sn-01-01-10-nala/) 中，天神问佛陀如何渡过生死暴流，佛陀给出了“贤友，我既不停留，也不挣扎，由此渡过暴流”的中道回答，言简意赅，直指修行核心。
 
-而在 [SN 6 梵天相应 (Brahmasaṃyutta)](/sutta/sn/vagga-1-sagatha/samyutta-06-brahma/sn-06-brahma/) 中，则记载了佛教史上至关重要的时刻：佛陀刚成道时，本欲入灭，娑婆世界主大梵天王亲自下降，以“世间将有眼之众生，因未闻法而衰败”为由，恳请佛陀为众生转动法轮。
+而在 [SN 6 梵天相应 (Brahmasaṃyutta)](/sutta/sn/vagga-1-sagatha/samyutta-06-brahma/sn-06-brahma/) 中，则记载了佛教史上至关重要的时刻：佛陀刚成道时，本欲入灭，娑婆主大梵天王亲自下降，以“世间将有眼之众生，因未闻法而衰败”为由，恳请佛陀为众生转动法轮。
 
 ### 1.2 战胜魔罗与女修行者的雄狮之吼
 
