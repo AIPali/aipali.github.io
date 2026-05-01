@@ -6,7 +6,7 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 113, 105-108"
 curator: "True-Dhamma.com"
-version: "1"
+version: "3"
 tags: [善士, 非善士, 我慢, 法随法行, 禅那, 无色界定, 烦恼, 灭尽定, 想受灭定]
 ---
 

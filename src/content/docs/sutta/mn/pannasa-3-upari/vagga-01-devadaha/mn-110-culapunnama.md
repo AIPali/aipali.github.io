@@ -6,8 +6,8 @@ collection: "Majjhima Nikāya"
 vagga: "Devadahavagga"
 reference: "MN 110, 91-92"
 curator: "True-Dhamma.com"
-version: "1"
-tags:[正士, 非正士, 十不善业, 十善业, 业报, 正见, 布施, 满月]
+version: "3"
+tags: [正士, 非正士, 十不善业, 十善业, 业报, 正见, 布施, 满月]
 ---
 
 > [!abstract] AI 导读

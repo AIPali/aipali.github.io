@@ -6,8 +6,8 @@ collection: "Majjhima Nikāya"
 vagga: "Anupadavagga"
 reference: "MN 111, 93-97"
 curator: "True-Dhamma.com"
-version: "1"
-tags:[舍利弗, 不断法观, 禅那, 九次第定, 想受灭定, 智慧第一, 法嗣, 毗婆舍那, 心所法]
+version: "3"
+tags: [舍利弗, 不断法观, 禅那, 九次第定, 想受灭定, 智慧第一, 法嗣, 毗婆舍那, 心所法]
 ---
 
 > [!abstract] AI 导读

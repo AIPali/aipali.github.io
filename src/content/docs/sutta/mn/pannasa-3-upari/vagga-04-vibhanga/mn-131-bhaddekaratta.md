@@ -7,7 +7,7 @@ vagga: "Vibhaṅgavagga"
 reference: "MN 131, 272-275"
 curator: "True-Dhamma.com"
 version: "1"
-tags: [贤善一夜, 五蕴, 正念, 毗婆舍那, 无我]
+tags: [贤善一夜, 五蕴, 活在当下, 时间, 正念, 毗婆舍那, 无我]
 ---
 
 > [!abstract] AI 导读
