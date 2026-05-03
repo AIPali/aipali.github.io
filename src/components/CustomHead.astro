@@ -8,5 +8,11 @@ import GlobalScripts from './scripts/GlobalScripts.astro';
 <!-- 继承 Starlight 默认头部 -->
 <DefaultHead {...Astro.props} />
 
+<!-- 性能优化：预连接关键第三方域名 -->
+<link rel="dns-prefetch" href="https://ai.true-dhamma.com" />
+<link rel="preconnect" href="https://ai.true-dhamma.com" />
+<link rel="dns-prefetch" href="https://TCMTON4EX8-dsn.algolia.net" />
+<link rel="preconnect" href="https://TCMTON4EX8-dsn.algolia.net" />
+
 <!-- 注入所有自定义全局脚本（包含 PWA） -->
 <GlobalScripts />

@@ -341,15 +341,112 @@ ul.starlight-sidebar-topics + * {
 
 
 /* ==========================================================
-   6. 其它插件/工具调整 (示例：Algolia DocSearch)
+   6. 性能与可访问性增强
 ========================================================== */
-/* 隐藏 Algolia DocSearch 搜索结果中的分类标题 (lvl0) */
-/*
-.DocSearch-Hit-source {
-  display: none !important;
+
+/* 平滑滚动（用户无偏好前提下） */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
-.DocSearch-Hit-Container {
- padding-top: 4px !important;
- padding-bottom: 4px !important;
+
+/* 减少动画（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-*/
+
+/* 焦点可见性增强 */
+:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 选中文字高亮 */
+::selection {
+  background-color: var(--sl-color-accent-low);
+  color: var(--sl-color-text);
+}
+
+/* ==========================================================
+   7. 顶栏与页脚微调
+========================================================== */
+
+/* 顶栏搜索区与首页按钮在一行 */
+.header .sl-flex {
+  gap: 0.5rem;
+}
+
+/* 首页（Logo）链接，增强点击区域 */
+.site-title a {
+  padding: 0.25rem 0;
+}
+
+/* ==========================================================
+   8. 文章内容增强
+========================================================== */
+
+/* 代码块微调 */
+.expressive-code {
+  margin: 1.5rem 0;
+}
+
+/* 表格修饰 */
+.sl-markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.95rem;
+}
+.sl-markdown-content th,
+.sl-markdown-content td {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--sl-color-gray-5);
+}
+.sl-markdown-content th {
+  background-color: var(--sl-color-gray-6);
+  font-weight: 600;
+}
+
+/* 水平分割线风格 */
+.sl-markdown-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--sl-color-gray-4),
+    transparent
+  );
+  margin: 2.5rem 0;
+}
+
+/* 列表样式微调 */
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  padding-left: 1.5rem;
+}
+.sl-markdown-content li {
+  margin-bottom: 0.3rem;
+}
+
+/* ==========================================================
+   9. 移动端适配优化
+========================================================== */
+@media (max-width: 50rem) {
+  .sl-markdown-content {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* 移动端内边距优化 */
+  .main-frame {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
