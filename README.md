@@ -4,7 +4,7 @@
 >
 > 佛陀的智慧超越了时空的局限。本工程旨在通过现代化手段，将古老的巴利三藏进行梳理、重构与数字化转化，使其以更具亲和力的方式走进现代人的生活。
 >
-> [https://aipali.github.io](https://aipali.github.io)
+> [https://aipali.github.io](https://aipali.github.io)\
 > [https://aipali.true-dhamma.com](https://aipali.true-dhamma.com)
 
 ---
