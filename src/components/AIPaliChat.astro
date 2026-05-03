@@ -1,0 +1,578 @@
+---
+// src/components/AIPaliChat.astro
+// 替换 FastGPT 的原生 AIPali 专属 AI 助手
+---
+
+<style is:global>
+  /* ===== 浮动聊天按钮 (替换 FastGPT 按钮) ===== */
+  .aipali-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 0.75rem;
+    flex-shrink: 0;
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .aipali-chat-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aipali-chat-text {
+    display: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--sl-color-text, inherit);
+  }
+
+  @media (min-width: 50rem) {
+    .aipali-chat-btn {
+      gap: 0.5rem;
+      padding: 0.125rem 0.75rem 0.125rem 0.25rem;
+      border: 1px solid var(--sl-color-gray-5, #c2c6cd);
+      border-radius: 999px;
+    }
+    .aipali-chat-btn:hover {
+      background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05));
+    }
+    .aipali-chat-text { display: inline-block; }
+    html[data-theme='dark'] .aipali-chat-btn { border-color: var(--sl-color-gray-5, #343841); }
+    html[data-theme='dark'] .aipali-chat-btn:hover { background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05)); }
+  }
+
+  /* ===== 聊天面板 ===== */
+  .aipali-chat-panel {
+    position: fixed;
+    bottom: 0;
+    right: 1rem;
+    width: 380px;
+    max-width: calc(100vw - 2rem);
+    height: 560px;
+    max-height: 80vh;
+    background: var(--sl-color-bg);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem 0.75rem 0 0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 2147483646;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: bottom right;
+    overflow: hidden;
+  }
+  .aipali-chat-panel.hidden {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ===== 面板头部 ===== */
+  .aipali-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #b8860b, #d4a017);
+    color: #fff;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .aipali-chat-header-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .aipali-chat-header-close {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: 0.25rem;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+  .aipali-chat-header-close:hover { opacity: 1; }
+
+  /* ===== 消息区域 ===== */
+  .aipali-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    scroll-behavior: smooth;
+  }
+  .aipali-msg {
+    max-width: 85%;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .aipali-msg.user {
+    align-self: flex-end;
+    background: var(--sl-color-accent);
+    color: #fff;
+    border-bottom-right-radius: 0.15rem;
+  }
+  html[data-theme='dark'] .aipali-msg.user {
+    background: #b8860b;
+    color: #000;
+  }
+  .aipali-msg.assistant {
+    align-self: flex-start;
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-text);
+    border-bottom-left-radius: 0.15rem;
+  }
+  .aipali-msg.system {
+    align-self: center;
+    background: transparent;
+    color: var(--sl-color-gray-3);
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+  .aipali-msg .msg-label {
+    font-weight: 700;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 0.2rem;
+    opacity: 0.7;
+  }
+  .aipali-msg.thinking {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .aipali-thinking-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sl-color-gray-3);
+    animation: aipali-bounce 1.2s infinite ease-in-out;
+  }
+  .aipali-thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+  .aipali-thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes aipali-bounce {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* ===== 输入区域 ===== */
+  .aipali-chat-input-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    flex-shrink: 0;
+    background: var(--sl-color-bg);
+  }
+  .aipali-chat-input {
+    flex: 1;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    resize: none;
+    outline: none;
+    min-height: 2.2rem;
+    max-height: 6rem;
+    font-family: inherit;
+    transition: border-color 0.15s;
+  }
+  .aipali-chat-input:focus {
+    border-color: #b8860b;
+  }
+  .aipali-chat-send {
+    background: #b8860b;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+    align-self: flex-end;
+    line-height: 1;
+  }
+  .aipali-chat-send:hover { background: #d4a017; }
+  .aipali-chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ===== 欢迎信息（空状态） ===== */
+  .aipali-welcome {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--sl-color-gray-3);
+  }
+  .aipali-welcome-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.5;
+  }
+  .aipali-welcome h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--sl-color-text);
+  }
+  .aipali-welcome p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .aipali-welcome-suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .aipali-welcome-suggestion {
+    background: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    color: var(--sl-color-gray-2);
+    width: 100%;
+    max-width: 320px;
+    text-align: left;
+  }
+  .aipali-welcome-suggestion:hover {
+    border-color: #b8860b;
+    color: #b8860b;
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 50rem) {
+    .aipali-chat-panel {
+      right: 0;
+      left: 0;
+      width: 100%;
+      max-width: 100%;
+      height: 70vh;
+      max-height: 70vh;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+    .aipali-chat-btn .aipali-chat-text { display: none; }
+  }
+</style>
+
+<script is:inline>
+(function() {
+  'use strict';
+
+  var CHAT_PANEL_ID = 'aipali-chat-panel';
+  var CHAT_BTN_ID = 'aipali-chat-btn';
+
+  // SVG 图标（法轮形状 — 替换 FastGPT 的聊天气泡）
+  var svgOpen = [
+    '<svg viewBox="0 0 80 80" style="width:100%;height:100%;overflow:visible;" xmlns="http://www.w3.org/2000/svg">',
+    '  <g transform="translate(40,40)">',
+    '    <circle r="22" fill="none" stroke="#b8860b" stroke-width="3.5" opacity="0.9"/>',
+    '    <circle r="10" fill="none" stroke="#b8860b" stroke-width="3" opacity="0.7"/>',
+    '    <circle r="3" fill="#b8860b" opacity="0.9"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(0)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(45)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(90)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(135)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(180)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(225)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(270)" opacity="0.8"/>',
+    '    <line x1="0" y1="3" x2="0" y2="22" stroke="#b8860b" stroke-width="2.5" transform="rotate(315)" opacity="0.8"/>',
+    '  </g>',
+    '</svg>'
+  ].join('\n');
+
+  var svgClose = [
+    '<svg viewBox="0 0 80 80" style="width:100%;height:100%;overflow:visible;" xmlns="http://www.w3.org/2000/svg">',
+    '  <g transform="translate(40,40)">',
+    '    <circle r="22" fill="none" stroke="#b8860b" stroke-width="3.5" opacity="0.9"/>',
+    '    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#b8860b" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>',
+    '    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#b8860b" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>',
+    '  </g>',
+    '</svg>'
+  ].join('\n');
+
+  // 建议问题
+  var SUGGESTIONS = [
+    '什么是五蕴？请引用经文解释',
+    '如何修习正念？',
+    '什么是缘起法？',
+    '如何面对生活中的痛苦？',
+  ];
+
+  // 创建聊天按钮
+  function createChatButton() {
+    if (document.getElementById(CHAT_BTN_ID)) return;
+
+    var btn = document.createElement('div');
+    btn.id = CHAT_BTN_ID;
+    btn.className = 'aipali-chat-btn';
+
+    var icon = document.createElement('div');
+    icon.className = 'aipali-chat-icon';
+    icon.innerHTML = svgOpen;
+
+    var text = document.createElement('span');
+    text.className = 'aipali-chat-text';
+    text.textContent = '问经';
+
+    btn.appendChild(icon);
+    btn.appendChild(text);
+
+    // 放在搜索框旁边
+    var searchBox = document.querySelector('.algolia-search-box');
+    if (searchBox) {
+      searchBox.insertAdjacentElement('afterend', btn);
+    } else {
+      btn.style.position = 'fixed';
+      btn.style.bottom = '30px';
+      btn.style.right = '30px';
+      btn.style.zIndex = '2147483647';
+      btn.style.background = 'var(--sl-color-bg)';
+      btn.style.border = '1px solid var(--sl-color-gray-5)';
+      btn.style.borderRadius = '999px';
+      btn.style.padding = '0.5rem';
+      document.body.appendChild(btn);
+    }
+
+    btn.addEventListener('click', togglePanel);
+  }
+
+  // 引用变量供内部函数使用
+  var panelRef = null;
+  var msgsElRef = null;
+  var inputRef = null;
+
+  // 创建聊天面板（但保持隐藏）
+  function createChatPanel() {
+    if (document.getElementById(CHAT_PANEL_ID)) return;
+
+    var panel = document.createElement('div');
+    panel.id = CHAT_PANEL_ID;
+    panel.className = 'aipali-chat-panel hidden';
+
+    panel.innerHTML = [
+      '<div class="aipali-chat-header">',
+      '  <div class="aipali-chat-header-title">☸ 问经 · 巴利三藏助手</div>',
+      '  <button class="aipali-chat-header-close" aria-label="关闭">&times;</button>',
+      '</div>',
+      '<div class="aipali-chat-messages" id="aipali-chat-msgs">',
+      '  <div class="aipali-welcome">',
+      '    <div class="aipali-welcome-icon">☸</div>',
+      '    <h3>南无佛法僧</h3>',
+      '    <p>我是 AIPali 助手，精通巴利三藏。<br>有什么关于佛法的问题吗？</p>',
+      '    <div class="aipali-welcome-suggestions" id="aipali-suggestions">',
+      SUGGESTIONS.map(function(s) {
+        return '      <button class="aipali-welcome-suggestion" data-query="' + s.replace(/"/g,'&quot;') + '">' + s + '</button>';
+      }).join('\n'),
+      '    </div>',
+      '  </div>',
+      '</div>',
+      '<div class="aipali-chat-input-area">',
+      '  <textarea class="aipali-chat-input" id="aipali-chat-input" rows="1" placeholder="请问关于巴利三藏的问题…"></textarea>',
+      '  <button class="aipali-chat-send" id="aipali-chat-send">发送</button>',
+      '</div>'
+    ].join('\n');
+
+    document.body.appendChild(panel);
+    panelRef = panel;
+    msgsElRef = document.getElementById('aipali-chat-msgs');
+    inputRef = document.getElementById('aipali-chat-input');
+
+    bindPanelEvents(panel);
+  }
+
+  function bindPanelEvents(panel) {
+    var header = panel.querySelector('.aipali-chat-header');
+    var closeBtn = panel.querySelector('.aipali-chat-header-close');
+    var input = panel.querySelector('#aipali-chat-input');
+    var sendBtn = panel.querySelector('#aipali-chat-send');
+    var msgsEl = panel.querySelector('#aipali-chat-msgs');
+    var suggestions = panel.querySelector('#aipali-suggestions');
+
+    // 关闭
+    closeBtn.addEventListener('click', function(e) { e.stopPropagation(); hidePanel(); });
+    // 头部点击也关闭
+    header.addEventListener('click', hidePanel);
+
+    // 发送消息
+    function sendMessage() {
+      var text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      input.style.height = 'auto';
+      doSend(text, msgsEl);
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+    // 自适应高度
+    input.addEventListener('input', function() {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 96) + 'px';
+    });
+
+    // 建议问题点击
+    if (suggestions) {
+      suggestions.addEventListener('click', function(e) {
+        var target = e.target.closest('.aipali-welcome-suggestion');
+        if (!target) return;
+        var q = target.getAttribute('data-query');
+        if (q) doSend(q, msgsEl);
+      });
+    }
+  }
+
+  // 实际发消息（独立函数，无 TypeScript 类型标注）
+  async function doSend(text, msgsEl) {
+    // 移除欢迎页
+    var welcome = msgsEl.querySelector('.aipali-welcome');
+    if (welcome) welcome.remove();
+
+    // 用户消息
+    addMessage(text, 'user', msgsEl);
+
+    // 加载状态
+    var thinkingId = 'aipali-thinking-' + Date.now();
+    var thinkingEl = document.createElement('div');
+    thinkingEl.className = 'aipali-msg assistant thinking';
+    thinkingEl.id = thinkingId;
+    thinkingEl.innerHTML = '<div class="aipali-thinking-dot"></div><div class="aipali-thinking-dot"></div><div class="aipali-thinking-dot"></div>';
+    msgsEl.appendChild(thinkingEl);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+
+    try {
+      var resp = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text }),
+      });
+
+      if (!resp.ok) {
+        var errText = await resp.text();
+        throw new Error(errText || ('HTTP ' + resp.status));
+      }
+
+      // 移除 thinking
+      var think = document.getElementById(thinkingId);
+      if (think) think.remove();
+
+      // 创建 AI 回复容器
+      var msgEl = document.createElement('div');
+      msgEl.className = 'aipali-msg assistant';
+      msgsEl.appendChild(msgEl);
+
+      // 解析 SSE 流（DeepSeek 返回的是 data: {...} 格式的 SSE）
+      var reader = resp.body.getReader();
+      var decoder = new TextDecoder();
+      var sseBuffer = '';
+      var fullText = '';
+
+      while (true) {
+        var result = await reader.read();
+        if (result.done) break;
+        sseBuffer += decoder.decode(result.value, { stream: true });
+        var lines = sseBuffer.split('\n');
+        sseBuffer = lines.pop() || '';
+
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].trim();
+          if (!line || line.indexOf('data: ') !== 0) continue;
+          var data = line.slice(6);
+          if (data === '[DONE]') break;
+          try {
+            var parsed = JSON.parse(data);
+            var content = parsed.choices && parsed.choices[0] && parsed.choices[0].delta && parsed.choices[0].delta.content || '';
+            if (content) {
+              fullText += content;
+              msgEl.textContent = fullText;
+              msgsEl.scrollTop = msgsEl.scrollHeight;
+            }
+          } catch(e) { /* skip incomplete JSON */ }
+        }
+      }
+    } catch (err) {
+      var thinkEl = document.getElementById(thinkingId);
+      if (thinkEl) thinkEl.remove();
+      addMessage('\u26a0\ufe0f ' + err.message, 'system', msgsEl);
+    }
+  }
+
+  function addMessage(text, role, msgsEl) {
+    var msg = document.createElement('div');
+    msg.className = 'aipali-msg ' + role;
+    msg.textContent = text;
+    msgsEl.appendChild(msg);
+    msgsEl.scrollTop = msgsEl.scrollHeight;
+  }
+
+  function togglePanel() {
+    var panel = document.getElementById(CHAT_PANEL_ID);
+    if (!panel) return;
+    var isHidden = panel.classList.contains('hidden');
+
+    if (isHidden) {
+      panel.classList.remove('hidden');
+      updateBtnIcons(true);
+      var inp = document.getElementById('aipali-chat-input');
+      if (inp) setTimeout(function() { inp.focus(); }, 300);
+    } else {
+      hidePanel();
+    }
+  }
+
+  function hidePanel() {
+    var panel = document.getElementById(CHAT_PANEL_ID);
+    if (panel) panel.classList.add('hidden');
+    updateBtnIcons(false);
+  }
+
+  function updateBtnIcons(isOpen) {
+    var icon = document.querySelector('#aipali-chat-btn .aipali-chat-icon');
+    if (icon) icon.innerHTML = isOpen ? svgClose : svgOpen;
+  }
+
+  // 初始化
+  function init() {
+    createChatPanel();
+    createChatButton();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  document.addEventListener('astro:page-load', init);
+})();
+</script>

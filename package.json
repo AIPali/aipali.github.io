@@ -17,6 +17,7 @@
     "@vite-pwa/astro": "^1.2.0",
     "algoliasearch": "^5.50.0",
     "astro": "6.0.8",
+    "playwright": "^1.59.1",
     "sharp": "0.34.2",
     "starlight-sidebar-topics": "^0.7.1",
     "unist-util-visit": "5.1.0",

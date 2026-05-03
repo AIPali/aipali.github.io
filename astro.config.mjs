@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import sitemap from '@astrojs/sitemap';
 
+
 import { remarkObsidianCallouts, remarkParagraphRef } from './src/config/remark-tipitaka.mjs';
 import { formatSidebarWithPali } from './src/utils/sidebar.mjs';
 import { sidebarDN } from './src/config/sidebar/dn.mjs';
@@ -48,7 +49,7 @@ export default defineConfig({
     starlight({
       title: 'AIPali 智能化巴利三藏',
       description: '巴利三藏智能化工程 — 基于现代AI技术，重塑《巴利三藏》的阅读、检索与互动体验。涵盖完整经藏与律藏。',
-      customCss:['./src/styles/custom.css'], 
+      customCss:['./src/styles/custom.css'],
       defaultLocale: 'zh-CN', 
       locales: { root: { label: '简体中文', lang: 'zh-CN' } },
       components: {
@@ -82,6 +83,6 @@ export default defineConfig({
       ]
     }),
     // 注入动态 PWA 配置
-    getPwaConfig(deployEnv, currentConfig.base)
-  ],
+    getPwaConfig(deployEnv, currentConfig.base),
+  ]
 });

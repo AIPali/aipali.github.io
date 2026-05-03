@@ -1,4 +1,28 @@
 /* ==========================================================
+   0. 暖金主题色系统 — 庄重佛法质感
+========================================================== */
+/* 暗色模式：金色系 accent */
+:root {
+  --sl-color-accent-low: hsl(43, 50%, 15%);
+  --sl-color-accent: hsl(43, 89%, 38%);
+  --sl-color-accent-high: hsl(43, 89%, 75%);
+  --sl-color-text-accent: var(--sl-color-accent-high);
+  --sl-color-bg-accent: var(--sl-color-accent-high);
+  --sl-color-text-invert: var(--sl-color-accent-low);
+}
+
+/* 亮色模式：金色系 accent */
+:root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+  --sl-color-accent-high: hsl(43, 80%, 25%);
+  --sl-color-accent: hsl(43, 89%, 38%);
+  --sl-color-accent-low: hsl(43, 88%, 90%);
+  --sl-color-text-accent: var(--sl-color-accent);
+  --sl-color-bg-accent: var(--sl-color-accent);
+  --sl-color-text-invert: var(--sl-color-black);
+}
+
+/* ==========================================================
    1. 全局排版与基础变量
 ========================================================== */
 :root {
