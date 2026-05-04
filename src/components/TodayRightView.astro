@@ -1,4 +1,4 @@
----
+﻿---
 // src/components/TodayRightView.astro
 ---
 
@@ -77,7 +77,7 @@
   
   .aipali-quick-nav a {
     text-decoration: none; font-weight: 700; font-family: var(--__sl-font-mono); 
-    color: var(--sl-color-text-accent); font-size: var(--sl-text-base); 
+    color: #b8860b; font-size: var(--sl-text-base); 
     line-height: 1; transition: color 0.2s;
   }
   .aipali-quick-nav a:hover { color: var(--sl-color-white); }
@@ -121,7 +121,7 @@
   }
   .trv-source-select:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
   html[data-theme='dark'] .trv-source-select { background: rgba(0,0,0,0.2); }
-  html[data-theme='dark'] .trv-source-select:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
+  html[data-theme='dark'] .trv-source-select:hover { border-color: #b8860b; color: #b8860b; }
 
   .trv-header-line { height: 1px; width: 100%; margin: 0 auto !important; background: var(--sl-color-hairline); }
 
@@ -140,7 +140,7 @@
     margin-top: -1rem !important; margin-bottom: 1rem !important; text-wrap: balance;
   }
   .trv-source-info { border-top: 1px solid var(--sl-color-accent); padding-top: 0.8rem; margin-bottom: 1.5rem !important; }
-  html[data-theme='dark'] .trv-source-info { border-top-color: var(--sl-color-text-accent); }
+  html[data-theme='dark'] .trv-source-info { border-top-color: #b8860b; }
 
   .trv-sutta-code { font-family: var(--__sl-font-mono); color: var(--sl-color-gray-3); font-size: 0.85rem; margin-bottom: 0.2rem !important;}
   .trv-sutta-zh { font-weight: 600; font-size: 1rem; color: var(--sl-color-text); }
@@ -162,7 +162,7 @@
   .trv-highlights { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; list-style: none !important; height: 100%; width: 100%; }
   .trv-highlights li { display: flex; align-items: center; width: 100%; font-size: 1rem; color: var(--sl-color-text); }
   .trv-bullet { color: var(--sl-color-accent); font-size: 0.8rem; margin-right: 0.8rem !important; flex-shrink: 0; }
-  html[data-theme='dark'] .trv-bullet { color: var(--sl-color-text-accent); }
+  html[data-theme='dark'] .trv-bullet { color: #b8860b; }
   
   /* 彻底解决撑爆列宽 */
   .trv-hl-text { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -183,7 +183,7 @@
   html[data-theme='dark'] .trv-cloud-tag, html[data-theme='dark'] .trv-mobile-tag { background-color: var(--sl-color-black); }
   
   .trv-cloud-tag:hover, .trv-mobile-tag:hover { border-color: var(--sl-color-accent); color: var(--sl-color-accent); }
-  html[data-theme='dark'] .trv-cloud-tag:hover, html[data-theme='dark'] .trv-mobile-tag:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
+  html[data-theme='dark'] .trv-cloud-tag:hover, html[data-theme='dark'] .trv-mobile-tag:hover { border-color: #b8860b; color: #b8860b; }
 
   /* 通用刷新按钮样式 (移除背景变蓝的干扰) */
   .trv-refresh-btn {
@@ -194,7 +194,7 @@
   
   /* 鼠标悬浮：仅仅变文字和边框颜色 */
   .trv-refresh-btn:hover { color: var(--sl-color-accent); border-color: var(--sl-color-accent); }
-  html[data-theme='dark'] .trv-refresh-btn:hover { color: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); }
+  html[data-theme='dark'] .trv-refresh-btn:hover { color: #b8860b; border-color: #b8860b; }
   .trv-refresh-btn:disabled { opacity: 0.5; cursor: wait; }
 
   /* PC 端刷新按钮绝对定位在右下角 */

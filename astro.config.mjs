@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import { getPwaConfig } from './src/config/pwa.mjs';
 import starlight from '@astrojs/starlight';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
+import sitemap from '@astrojs/sitemap';
+
 
 import { remarkObsidianCallouts, remarkParagraphRef } from './src/config/remark-tipitaka.mjs';
 import { formatSidebarWithPali } from './src/utils/sidebar.mjs';
@@ -22,6 +24,7 @@ const currentConfig = deployConfig[deployEnv];
 export default defineConfig({
   site: currentConfig.site,
   base: currentConfig.base,
+  trailingSlash: 'always',
   vite: {
     server: {
       hmr: false,
@@ -37,9 +40,16 @@ export default defineConfig({
   },
   markdown: { remarkPlugins:[remarkObsidianCallouts, remarkParagraphRef] },
   integrations:[
+    sitemap({
+      filter: (page) => !page.includes('/tags/'),
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
     starlight({
       title: 'AIPali 智能化巴利三藏',
-      customCss:['./src/styles/custom.css'], 
+      description: '巴利三藏智能化工程 — 基于现代AI技术，重塑《巴利三藏》的阅读、检索与互动体验。涵盖完整经藏与律藏。',
+      customCss:['./src/styles/custom.css'],
       defaultLocale: 'zh-CN', 
       locales: { root: { label: '简体中文', lang: 'zh-CN' } },
       components: {
@@ -48,6 +58,16 @@ export default defineConfig({
         Search: './src/components/AlgoliaSearch.astro',
       },
       head: [
+        { tag: 'meta', attrs: { name: 'keywords', content: '巴利三藏, Pali Tipitaka, DN, MN, SN, AN, KN, 律藏, Vinaya, 佛法, 佛教经典, 上座部' } },
+        { tag: 'meta', attrs: { name: 'author', content: '智宁居士 — 如实法 True-Dhamma.com' } },
+        { tag: 'meta', attrs: { property: 'og:title', content: 'AIPali 智能化巴利三藏' } },
+        { tag: 'meta', attrs: { property: 'og:description', content: '基于现代人工智能技术，重塑巴利三藏的阅读、检索与互动体验。' } },
+        { tag: 'meta', attrs: { property: 'og:type', content: 'website' } },
+        { tag: 'meta', attrs: { property: 'og:image', content: `${currentConfig.site}assets/logo_512x512.png` } },
+        { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+        { tag: 'meta', attrs: { name: 'twitter:title', content: 'AIPali 智能化巴利三藏' } },
+        { tag: 'meta', attrs: { name: 'twitter:description', content: '基于现代人工智能技术，重塑巴利三藏的阅读、检索与互动体验。' } },
+        { tag: 'link', attrs: { rel: 'canonical', href: currentConfig.site } },
         { tag: 'script', attrs: { src: '/assets/gtranslate-auto.js', defer: true, }, },
         { tag: 'script', attrs: { src: '/assets/tts-reader.js', defer: true, }, },
       ],
@@ -63,6 +83,6 @@ export default defineConfig({
       ]
     }),
     // 注入动态 PWA 配置
-    getPwaConfig(deployEnv, currentConfig.base)
-  ],
+    getPwaConfig(deployEnv, currentConfig.base),
+  ]
 });

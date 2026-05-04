@@ -1,4 +1,4 @@
----
+﻿---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageTitle.astro';
 import { getTagsData } from '../utils/getTags'; // 引入你的工具函数
@@ -208,7 +208,7 @@ const hasMetadata = fmCollection || fmVagga || fmReference || fmVersion;
 
   /* Tag 样式保持不变 */
   .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; margin-bottom: -0.8rem; }
-  .tag-item { display: inline-flex; align-items: center; font-size: 0.7rem; text-decoration: none; background-color: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); border-radius: 4px; color: var(--sl-color-text-accent); transition: all 0.2s ease; overflow: hidden; }
+  .tag-item { display: inline-flex; align-items: center; font-size: 0.7rem; text-decoration: none; background-color: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-gray-5); border-radius: 4px; color: #b8860b; transition: all 0.2s ease; overflow: hidden; }
   .tag-item:hover { border-color: var(--sl-color-accent); background-color: var(--sl-color-accent-low); transform: translateY(-1px); }
   .tag-name { padding: 0.1rem 0.4rem; }
   .tag-count { padding: 0.1rem 0.3rem; background-color: var(--sl-color-gray-6); color: var(--sl-color-gray-3); border-left: 1px solid var(--sl-color-gray-5); font-variant-numeric: tabular-nums; }

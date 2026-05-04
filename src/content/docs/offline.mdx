@@ -1,4 +1,4 @@
----
+﻿---
 title: AIPali 智能化巴利三藏
 description: 本地数据控制中心，管理离线法宝数据。
 template: splash
@@ -493,9 +493,9 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .hero-title {
     font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800;
     line-height: 1.1; margin: 0; white-space: nowrap; 
-    background: linear-gradient(120deg, var(--sl-color-white) 30%, var(--sl-color-text-accent) 100%);
+    background: linear-gradient(120deg, var(--sl-color-white) 30%, #b8860b 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 40px var(--sl-color-accent-low);
+    text-shadow: 0 0 40px rgba(184,134,11,0.3);
   }
   .hero-tagline {
     margin-top: 1.5rem; font-size: 1.25rem;
@@ -511,8 +511,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
   html[data-theme='light'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary { background-color: var(--sl-color-accent); color: #ffffff !important; }
   html[data-theme='dark'] .btn-primary:hover { background-color: var(--sl-color-accent-high); color: var(--sl-color-gray-6) !important; }
-  .btn-secondary { border: 1px solid var(--sl-color-accent); color: var(--sl-color-text) !important; }
-  .btn-secondary:hover { background: var(--sl-color-accent-low); }
+  .btn-secondary { border: 1px solid #b8860b; color: var(--sl-color-text) !important; }
+  .btn-secondary:hover { background: rgba(184,134,11,0.1); }
   .btn-minimal { color: var(--sl-color-gray-2) !important; }
   .btn-minimal:hover { color: var(--sl-color-text) !important; text-decoration: underline; }
 
@@ -532,7 +532,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .dashboard-header { text-align: center; margin-bottom: 2rem; }
   .dashboard-header h2 { margin: 0 0 1rem 0; font-size: 2rem; color: var(--sl-color-text); }
   .dashboard-header p { color: var(--sl-color-gray-3); line-height: 1.6; margin: 0; font-size: 1.05rem; }
-  .dashboard-header strong { color: var(--sl-color-text-accent); }
+  .dashboard-header strong { color: #b8860b; }
 
   .dashboard-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem; 
@@ -543,7 +543,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     border-radius: 8px; padding: 1.25rem; text-align: center; margin-top: 0 !important;
   }
   .dash-card h3 { margin: 0; font-size: 1rem; color: var(--sl-color-gray-3); font-weight: 500; }
-  .dash-value { font-size: 2rem; font-weight: 700; color: var(--sl-color-text-accent); margin-top: 0.5rem; line-height: 1; }
+  .dash-value { font-size: 2rem; font-weight: 700; color: #b8860b; margin-top: 0.5rem; line-height: 1; }
 
   /* 操作按钮组 */
   .control-panel { display: flex; gap: 1rem; width: 100%; margin-bottom: 2rem; }
@@ -579,10 +579,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .progress-bar-bg { 
     flex: 1; height: 6px; background: var(--sl-color-gray-5); border-radius: 3px; overflow: hidden; 
   }
-  .progress-bar-fill { height: 100%; width: 0%; background: var(--sl-color-accent); transition: width 0.3s ease; }
+  .progress-bar-fill { height: 100%; width: 0%; background: #b8860b; transition: width 0.3s ease; }
   
   .progress-percent-text {
-    font-weight: bold; color: var(--sl-color-text-accent); 
+    font-weight: bold; color: #b8860b; 
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.95rem; min-width: 3.2rem; text-align: right;
     line-height: 1; transform: translateY(-1px); margin: 0;
@@ -638,12 +638,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .page-container { position: relative; overflow-x: clip; }
   .page-container::before {
     content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
-    width: 1200px; height: 500px; background-image: radial-gradient(circle, var(--sl-color-accent-low) 0%, transparent 70%);
+    width: 1200px; height: 500px; background-image: radial-gradient(circle, rgba(184,134,11,0.1) 0%, transparent 70%);
     opacity: 0.25; filter: blur(120px); z-index: -1; pointer-events: none;
   }
   .divider-glow {
     height: 1px; width: 80%; max-width: 600px; margin: 0 auto 3rem auto;
-    background: linear-gradient(90deg, transparent, var(--sl-color-accent), transparent); opacity: 0.3;
+    background: linear-gradient(90deg, transparent, #d4a017, transparent); opacity: 0.3;
   }
   .features-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
   .sl-card {
@@ -651,7 +651,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     border: 1px solid var(--sl-color-hairline) !important; backdrop-filter: blur(10px);
   }
   .highlight-text {
-    color: var(--sl-color-text-accent); background-color: var(--sl-color-accent-low);
+    color: #b8860b; background-color: rgba(184,134,11,0.1);
     padding: 0.1em 0.4em; border-radius: 4px; font-weight: 600;
   }
   .aipali-section-title {
@@ -664,6 +664,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
   }
   .footer-content { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
   .footer-content p { margin: 0 !important; line-height: 1.5; }
-  .brand { color: var(--sl-color-text-accent); font-weight: 600; }
-  .footer-copyright a { color: var(--sl-color-text-accent); text-decoration: none; }
+  .brand { color: #b8860b; font-weight: 600; }
+  .footer-copyright a { color: #b8860b; text-decoration: none; }
 `}</style>
