@@ -1,6 +1,6 @@
 ---
 id: "DN-Guide"
-title: "DN 长部导读"
+title: "长部 (Dīgha Nikāya) 导读"
 description: "《长部》是南传上座部巴利三藏中的第一部，收录了篇幅最长、体系最庞大的三十四部经文，是全面了解佛陀生平、宏大宇宙观与深刻法义的壮丽史诗。"
 collection: "Dīgha Nikāya"
 vagga: ""

@@ -1,6 +1,6 @@
 ---
 id: "MN-Guide"
-title: "MN 中部导读"
+title: "中部 (Majjhima Nikāya) 导读"
 description: "《中部》是南传上座部巴利三藏中的核心经典汇编。它收录了中等长度的经文，被誉为佛法修学的“核心教材”，涵盖了极其深邃的哲学思辨、禅修指导与精彩的辩经记实。"
 collection: "Majjhima Nikāya"
 vagga: ""

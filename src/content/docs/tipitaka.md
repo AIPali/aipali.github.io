@@ -1,6 +1,6 @@
 ---
 id: "Tipitaka-Guide"
-title: "巴利三藏导读"
+title: "巴利三藏 (Tipiṭaka) 导读"
 description: "这是一份面向现代人的《巴利三藏》全景实修地图。我们将打破枯燥的学术分类，带您以高空俯瞰的视角，找到最适合自己的阅读起点，汲取解决现代生活焦虑、通向真实生命自由的终极智慧。"
 collection: "Tipiṭaka"
 vagga: ""

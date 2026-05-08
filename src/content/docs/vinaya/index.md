@@ -1,6 +1,6 @@
 ---
 id: "VA-Guide"
-title: "VA 律藏导读"
+title: "律藏 (Vinaya Piṭaka) 导读"
 description: "“律藏，是佛教的寿命。”从防微杜渐的个人持戒，到庞大僧团的法治运作，《律藏》不仅是出家人的行为准则，更是佛法在世俗社会中得以延续两千五百年的终极防线与制度保障。"
 collection: "Vinaya Piṭaka"
 vagga: ""
