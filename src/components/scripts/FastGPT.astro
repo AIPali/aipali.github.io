@@ -25,29 +25,34 @@
   }
 
   .fastgpt-text {
-    display: none;
+    display: none; /* 手机端隐藏文字 */
     font-size: 0.875rem;
     font-weight: 600;
     white-space: nowrap;
+    /* 采用 Starlight 的字体颜色变量 */
     color: var(--sl-color-text, inherit);
   }
 
+  /* ====== PC 端效果：带外框、带文字、深浅色适配 ====== */
   @media (min-width: 50rem) {
     .fastgpt-chat-btn {
       gap: 0.5rem;
       padding: 0.125rem 0.75rem 0.125rem 0.25rem;
+      /* 采用 Starlight 的边框颜色变量 */
       border: 1px solid var(--sl-color-gray-5, #c2c6cd);
-      border-radius: 999px;
+      border-radius: 999px; /* 圆角药丸形 */
     }
     
     .fastgpt-chat-btn:hover {
+      /* 悬浮时的背景色 */
       background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05));
     }
 
     .fastgpt-text {
-      display: inline-block;
+      display: inline-block; /* PC端显示文字 */
     }
 
+    /* 强制深色模式兜底 */
     html[data-theme='dark'] .fastgpt-chat-btn, 
     html.dark .fastgpt-chat-btn {
       border-color: var(--sl-color-gray-5, #343841);
@@ -57,15 +62,6 @@
     html.dark .fastgpt-chat-btn:hover {
       background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05));
     }
-  }
-
-  /* ====== 离线态按钮样式（新增）====== */
-  .fastgpt-chat-btn[data-offline='true'] {
-    opacity: 0.45;
-    cursor: not-allowed;
-  }
-  .fastgpt-chat-btn[data-offline='true']:hover {
-    background-color: transparent !important;
   }
 </style>
 
@@ -88,18 +84,9 @@ function embedChatbot() {
 
   if (!botSrc || document.getElementById(chatBtnId)) return;
 
+  // 手机端不响应 default-open 以免造成自动跳转
   const isInitWideScreen = window.innerWidth >= 768;
   const defaultOpen = rawDefaultOpen && isInitWideScreen;
-
-  // ──────────────────────────────────────────────────────────────
-  // 离线检测（同步快速版）
-  // FastGPT 不需要像 Algolia 那样做网络探测，因为：
-  //   1. 它的 iframe 内容是完全实时的，有网就用，没网就不显示
-  //   2. navigator.onLine 已足够决策——离线时直接禁用按钮，
-  //      在线时正常运行（iframe 本身延迟加载，不阻塞页面）
-  //   3. 如果在使用中途断网，SW 的 fetchDidFail 兜底返回占位 HTML
-  // ──────────────────────────────────────────────────────────────
-  const isOffline = !navigator.onLine;
 
   // ==========================================
   // 定义动态 SVG 图标
@@ -170,20 +157,13 @@ function embedChatbot() {
   ChatBtn.id = chatBtnId;
   ChatBtn.className = 'fastgpt-chat-btn';
 
-  // 离线时标记按钮，CSS 会渲染为禁用态
-  if (isOffline) {
-    ChatBtn.setAttribute('data-offline', 'true');
-    ChatBtn.title = 'AI 助手需要网络连接';
-  }
-
   const ChatIconContainer = document.createElement('div');
   ChatIconContainer.className = 'fastgpt-icon-container';
   ChatIconContainer.innerHTML = defaultOpen ? svgClose : svgOpen;
 
   const ChatText = document.createElement('span');
   ChatText.className = 'fastgpt-text';
-  // 离线时改变按钮文字，让用户清楚原因
-  ChatText.innerText = isOffline ? '离线中' : '问经';
+  ChatText.innerText = '问经';
 
   ChatBtn.appendChild(ChatIconContainer);
   ChatBtn.appendChild(ChatText);
@@ -203,26 +183,7 @@ function embedChatbot() {
     document.body.appendChild(ChatBtn);
   }
 
-  // ──────────────────────────────────────────────────────────────
-  // 3. 创建对话框 Iframe
-  //
-  // 【改动】：离线时完全不创建 iframe，节省 DOM 开销。
-  //           在线时与原逻辑一致（懒加载 src）。
-  // ──────────────────────────────────────────────────────────────
-  if (isOffline) {
-    // 离线：按钮已标记禁用，直接结束，不挂载 iframe、不绑定点击事件
-    // 监听网络恢复：重新初始化
-    window.addEventListener('online', () => {
-      // 移除旧按钮，重新走一遍完整初始化流程
-      document.getElementById(chatBtnId)?.remove();
-      document.getElementById(chatWindowId)?.remove();
-      embedChatbot();
-    }, { once: true });
-    return;
-  }
-
-  // ── 以下仅在线时执行 ──────────────────────────────────────────
-
+  // 3. 创建对话框 Iframe (【改动点】：默认不设 src，只用于PC弹窗)
   const iframe = document.createElement('iframe');
   iframe.allow = 'microphone *; *';
   iframe.referrerPolicy = 'no-referrer';
@@ -238,23 +199,6 @@ function embedChatbot() {
     iframe.src = botSrc;
     isIframeLoaded = true;
   }
-
-  // 监听网络断开：隐藏 iframe，更新按钮状态
-  window.addEventListener('offline', () => {
-    iframe.style.visibility = 'hidden';
-    iframe.style.opacity = '0';
-    ChatIconContainer.innerHTML = svgOpen;
-    ChatBtn.setAttribute('data-offline', 'true');
-    ChatBtn.title = 'AI 助手需要网络连接';
-    ChatText.innerText = '离线中';
-
-    // 网络恢复后还原
-    window.addEventListener('online', () => {
-      ChatBtn.removeAttribute('data-offline');
-      ChatBtn.title = '';
-      ChatText.innerText = '问经';
-    }, { once: true });
-  }, { once: true });
 
   // 4. 计算 Iframe 的弹出位置 (仅PC端使用)
   const updateChatWindowPosition = () => {
@@ -279,18 +223,17 @@ function embedChatbot() {
     }
   };
 
-  // 5. 点击事件
+  // 5. 点击事件：分离手机端与PC端的处理逻辑
   ChatBtn.onclick = () => {
-    // 离线时点击无效
-    if (ChatBtn.getAttribute('data-offline') === 'true') return;
-
     const isWideScreen = window.innerWidth >= 768;
 
+    // 【新增逻辑】手机端：直接新窗口打开，并终止后续弹窗逻辑
     if (!isWideScreen) {
       window.open(botSrc, '_blank');
       return; 
     }
 
+    // 【PC 端逻辑】正常在当前页面弹窗
     const isOpening = iframe.style.visibility === 'hidden'; 
 
     if (isOpening && !isIframeLoaded) {
@@ -313,6 +256,7 @@ function embedChatbot() {
 
     if (iframe.style.visibility !== 'hidden') {
       if (!isWideScreen) {
+        // 如果用户在 PC 端打开了弹窗，然后手动缩小浏览器到手机尺寸，则强制关闭弹窗
         iframe.style.visibility = 'hidden';
         iframe.style.opacity = '0';
         ChatIconContainer.innerHTML = svgOpen;

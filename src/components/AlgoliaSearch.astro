@@ -8,149 +8,70 @@ import '@docsearch/css';
 <script>
   import docsearch from '@docsearch/js';
 
-  // ──────────────────────────────────────────────────────────────
-  // 离线检测工具函数
-  // 返回 Promise<boolean>：true = 可以正常访问 Algolia，false = 离线或超时
-  //
-  // 设计原理：
-  //   1. 优先检查 navigator.onLine，离线时直接短路返回 false，
-  //      无需发起任何网络请求，0ms 决策。
-  //   2. navigator.onLine 为 true 只代表"有网卡连接"，不代表
-  //      Algolia 实际可达（比如局域网、VPN 问题）。
-  //      用一个轻量 HEAD 请求 + 3 秒超时做二次验证。
-  //   3. 若 HEAD 请求在 3 秒内无响应或失败，视为"不可用"，
-  //      直接放弃初始化，避免页面等待。
-  // ──────────────────────────────────────────────────────────────
-  async function isAlgoliaReachable(): Promise<boolean> {
-    if (!navigator.onLine) return false;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000); // 3 秒超时
-
-    try {
-      // 用 mode:'no-cors' + HEAD 做最轻量的连通性探测
-      // no-cors 下 status 永远是 0，但只要不 throw 就说明网络通了
-      await fetch('https://TCMTON4EX8-dsn.algolia.net/', {
-        method: 'HEAD',
-        mode: 'no-cors',
-        signal: controller.signal,
-      });
-      return true;
-    } catch {
-      // AbortError（超时）或 NetworkError（离线）都在这里捕获
-      return false;
-    } finally {
-      clearTimeout(timeoutId);
-    }
-  }
-
-  // ──────────────────────────────────────────────────────────────
-  // 主初始化函数
-  // 非阻塞设计：整个函数对外是 void（不 await），不阻塞调用方
-  // ──────────────────────────────────────────────────────────────
   function initDocSearch() {
-    const containers = document.querySelectorAll<HTMLElement>('.algolia-search-box');
-    if (!containers.length) return;
-
+    const containers = document.querySelectorAll('.algolia-search-box');
+    
     containers.forEach(container => {
       if (container.hasAttribute('data-initialized')) return;
-      // 立即标记，防止并发重复初始化
-      container.setAttribute('data-initialized', 'true');
-    });
-
-    // 异步检测 + 初始化，不阻塞页面渲染
-    // 用 void 明确表示"我知道这是个 Promise，我故意不 await 它"
-    void (async () => {
-      const reachable = await isAlgoliaReachable();
-
-      if (!reachable) {
-        // 离线或超时：将按钮渲染为禁用态，给用户视觉反馈
-        // 不调用 docsearch()，彻底跳过初始化
-        containers.forEach(container => {
-          container.setAttribute('data-offline', 'true');
-          // 渲染一个静态的禁用搜索按钮占位，让布局不塌陷
-          container.innerHTML = `
-            <button class="DocSearch DocSearch-Button" aria-label="搜索（离线不可用）" disabled
-              style="opacity:0.45; cursor:not-allowed; pointer-events:none;">
-              <span class="DocSearch-Button-Container">
-                <svg class="DocSearch-Search-Icon" width="20" height="20" viewBox="0 0 20 20"
-                  aria-hidden="true"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418
-                  2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115
-                  0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418
-                  2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span class="DocSearch-Button-Placeholder">离线模式 · 搜索不可用</span>
-              </span>
-            </button>`;
-          return;
-        });
-        return;
-      }
-
-      // 在线：正常初始化 docsearch
-      containers.forEach(container => {
-        // 移除占位（如果有），重新挂载
-        container.innerHTML = '';
-        docsearch({
-          container,
-          appId: 'TCMTON4EX8',
-          apiKey: '46fc7739c943245ddd44dac342e40493',
-          indexName: 'AIPali',
-          askAi: {
-            assistantId: 'e6d00df1-00b5-4579-a17f-516973174f4f',
-            agentStudio: true,
-          },
-          translations: {
-            button: { buttonText: '搜索经文或向 AI 提问 ...', buttonAriaLabel: '搜索经文' },
-            modal: {
-              searchBox: {
-                clearButtonTitle: '清除查询', clearButtonAriaLabel: '清除查询',
-                cancelButtonText: '取消', cancelButtonAriaLabel: '取消',
-                closeButtonText: '关闭', closeButtonAriaLabel: '关闭',
-                placeholderText: '搜索经文或向 AI 提问 ...', placeholderTextAskAi: '向 AI 提问 ...',
-                placeholderTextAskAiStreaming: 'AIPali 思考中 ...', searchInputLabel: '搜索',
-                backToKeywordSearchButtonText: '返回关键词搜索', backToKeywordSearchButtonAriaLabel: '返回关键词搜索',
-                newConversationPlaceholder: '请输入您想问的问题 ...', conversationHistoryTitle: '我的历史对话',
-                startNewConversationText: '开启新对话', viewConversationHistoryText: '查看历史对话',
-                threadDepthErrorPlaceholder: '该对话深度已达上限，请开启新对话'
-              },
-              newConversation: {
-                newConversationTitle: '我是 AIPali 助手，我能如何帮到您？',
-                newConversationDescription: '您可以直接向我提问，我会基于巴利三藏为您解答，并提供出处与精准上下文。'
-              },
-              footer: {
-                selectText: '选择', submitQuestionText: '提交问题', selectKeyAriaLabel: '回车键',
-                navigateText: '切换', navigateUpKeyAriaLabel: '向上箭头', navigateDownKeyAriaLabel: '向下箭头',
-                closeText: '关闭', backToSearchText: '返回搜索', closeKeyAriaLabel: '退出键',
-                searchByText: '搜索由', poweredByText: 'Powered by'
-              },
-              startScreen: {
-                recentSearchesTitle: '最近搜索', noRecentSearchesText: '暂无最近搜索记录',
-                saveRecentSearchButtonTitle: '保存此搜索记录', removeRecentSearchButtonTitle: '删除此搜索记录',
-                favoriteSearchesTitle: '已收藏的搜索记录', removeFavoriteSearchButtonTitle: '取消收藏此搜索',
-                recentConversationsTitle: '最近对话', removeRecentConversationButtonTitle: '删除此对话'
-              },
-              errorScreen: { titleText: '无法获取结果', helpText: '请检查您的网络连接是否正常。' },
-              noResultsScreen: {
-                noResultsText: '无法找到相关结果：', suggestedQueryText: '您可以尝试搜索：',
-                reportMissingResultsText: '您认为这里应该有结果？', reportMissingResultsLinkText: '点击反馈'
-              },
-              resultsScreen: { askAiPlaceholder: '向 AI 提问：', noResultsAskAiPlaceholder: '没搜到？让 AI 帮您找：' },
-              askAiScreen: {
-                disclaimerText: 'AI 的回答可能出错，请以经文原文为准。', relatedSourcesText: '相关来源',
-                thinkingText: '正在思考中 ...', copyButtonText: '复制', copyButtonCopiedText: '已复制！', copyButtonTitle: '复制',
-                likeButtonTitle: '赞', dislikeButtonTitle: '踩', afterToolCallText: '为您搜索了'
-              }
+      
+      docsearch({
+        container: container as HTMLElement,
+        appId: 'TCMTON4EX8',
+        apiKey: '46fc7739c943245ddd44dac342e40493',
+        indexName: 'AIPali',
+        askAi: {
+          assistantId: 'e6d00df1-00b5-4579-a17f-516973174f4f',
+          agentStudio: true,
+        },
+        translations: {
+          button: { buttonText: '搜索经文或向 AI 提问 ...', buttonAriaLabel: '搜索经文' },
+          modal: {
+            searchBox: {
+              clearButtonTitle: '清除查询', clearButtonAriaLabel: '清除查询',
+              cancelButtonText: '取消', cancelButtonAriaLabel: '取消',
+              closeButtonText: '关闭', closeButtonAriaLabel: '关闭',
+              placeholderText: '搜索经文或向 AI 提问 ...', placeholderTextAskAi: '向 AI 提问 ...',
+              placeholderTextAskAiStreaming: 'AIPali 思考中 ...', searchInputLabel: '搜索',
+              backToKeywordSearchButtonText: '返回关键词搜索', backToKeywordSearchButtonAriaLabel: '返回关键词搜索',
+              newConversationPlaceholder: '请输入您想问的问题 ...', conversationHistoryTitle: '我的历史对话',
+              startNewConversationText: '开启新对话', viewConversationHistoryText: '查看历史对话',
+              threadDepthErrorPlaceholder: '该对话深度已达上限，请开启新对话'
+            },
+            newConversation: {
+              newConversationTitle: '我是 AIPali 助手，我能如何帮到您？',
+              newConversationDescription: '您可以直接向我提问，我会基于巴利三藏为您解答，并提供出处与精准上下文。'
+            },
+            footer: {
+              selectText: '选择', submitQuestionText: '提交问题', selectKeyAriaLabel: '回车键',
+              navigateText: '切换', navigateUpKeyAriaLabel: '向上箭头', navigateDownKeyAriaLabel: '向下箭头',
+              closeText: '关闭', backToSearchText: '返回搜索', closeKeyAriaLabel: '退出键',
+              searchByText: '搜索由', poweredByText: 'Powered by'
+            },
+            startScreen: {
+              recentSearchesTitle: '最近搜索', noRecentSearchesText: '暂无最近搜索记录',
+              saveRecentSearchButtonTitle: '保存此搜索记录', removeRecentSearchButtonTitle: '删除此搜索记录',
+              favoriteSearchesTitle: '已收藏的搜索记录', removeFavoriteSearchButtonTitle: '取消收藏此搜索',
+              recentConversationsTitle: '最近对话', removeRecentConversationButtonTitle: '删除此对话'
+            },
+            errorScreen: { titleText: '无法获取结果', helpText: '请检查您的网络连接是否正常。' },
+            noResultsScreen: {
+              noResultsText: '无法找到相关结果：', suggestedQueryText: '您可以尝试搜索：',
+              reportMissingResultsText: '您认为这里应该有结果？', reportMissingResultsLinkText: '点击反馈'
+            },
+            resultsScreen: { askAiPlaceholder: '向 AI 提问：', noResultsAskAiPlaceholder: '没搜到？让 AI 帮您找：' },
+            askAiScreen: {
+              disclaimerText: 'AI 的回答可能出错，请以经文原文为准。', relatedSourcesText: '相关来源',
+              thinkingText: '正在思考中 ...', copyButtonText: '复制', copyButtonCopiedText: '已复制！', copyButtonTitle: '复制',
+              likeButtonTitle: '赞', dislikeButtonTitle: '踩', afterToolCallText: '为您搜索了'
             }
           }
-        });
+        }
       });
-    })();
+      container.setAttribute('data-initialized', 'true');
+    });
   }
 
-  // ──────────────────────────────────────────────────────────────
-  // AI 文本碎片拦截翻译（不变）
-  // ──────────────────────────────────────────────────────────────
+  // AI 文本碎片拦截翻译
   function setupAskAITranslator() {
     if ((window as any).__aipali_translator_setup) return;
     (window as any).__aipali_translator_setup = true;
@@ -159,9 +80,12 @@ import '@docsearch/css';
       if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
         let val = node.nodeValue;
         let changed = false;
+        
+        // 修复了之前代码中不小心混入错误长文本的正则笔误
         if (/searching/i.test(val)) { val = val.replace(/searching/ig, '正在搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
+        
         if (changed) node.nodeValue = val;
       }
     };
@@ -187,14 +111,7 @@ import '@docsearch/css';
 
   initDocSearch();
   setupAskAITranslator();
-  document.addEventListener('astro:page-load', () => {
-    // 页面跳转后重置 data-initialized，允许重新检测网络状态
-    document.querySelectorAll('.algolia-search-box').forEach(el => {
-      el.removeAttribute('data-initialized');
-      el.removeAttribute('data-offline');
-    });
-    initDocSearch();
-  });
+  document.addEventListener('astro:page-load', initDocSearch);
 </script>
 
 <style is:global>
@@ -304,13 +221,14 @@ import '@docsearch/css';
   }
 
   /* =========================================================
-     5. 弹窗内：搜索框全局居中架构
+     5. 弹窗内：搜索框全局居中架构 (对所有设备生效)
      ========================================================= */
   .DocSearch-Modal .DocSearch-Form {
     display: flex !important;
     align-items: center !important; 
   }
 
+  /* 剥离所有原生输入框的系统外观（全局） */
   .DocSearch-Modal .DocSearch-Input {
     -webkit-appearance: none !important;
     appearance: none !important;
@@ -320,6 +238,7 @@ import '@docsearch/css';
     line-height: normal !important; 
   }
 
+  /* 图标容器严格 flex 居中 */
   .DocSearch-Modal .DocSearch-MagnifierLabel,
   .DocSearch-Modal .DocSearch-Reset {
     display: flex !important;
@@ -329,6 +248,7 @@ import '@docsearch/css';
     margin-bottom: 0 !important;
   }
 
+  /* 消除 SVG 本身潜在的基线(baseline)空隙 */
   .DocSearch-Modal .DocSearch-MagnifierLabel svg,
   .DocSearch-Modal .DocSearch-Reset svg {
     display: block !important;
@@ -340,4 +260,43 @@ import '@docsearch/css';
      ========================================================= */
   .DocSearch-Hit mark {
     color: var(--docsearch-highlight-color) !important;
-    background-color: transparent !importan
+    background-color: transparent !important; font-weight: bold;
+  }
+  .DocSearch-Hit[aria-selected='true'] a {
+    background-color: var(--docsearch-hit-hover-background) !important;
+    box-shadow: none !important;
+  }
+  .DocSearch-Hit[aria-selected='true'] a *,
+  .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
+
+  .DocSearch-Modal .prose a,
+  .DocSearch-Modal a[class*="askAi"],
+  .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
+  
+  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
+    font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important;
+  }
+
+  /* =========================================================
+     7. iOS 专属补丁 (仅在 iPhone/iPad 等 WebKit 环境生效)
+     ========================================================= */
+  /* @supports (-webkit-touch-callout: none) 是最可靠的 iOS 识别隔离层，不会污染 Mac、Win、Android */
+  @supports (-webkit-touch-callout: none) {
+    .DocSearch-Modal .DocSearch-Input {
+      /* [必须] 阻止 iOS 因为输入框字体小于 16px 从而在点击时自动放大屏幕 */
+      font-size: 16px !important; 
+      
+      /* [针对文字偏下的微调]
+         使用 translateY 强制向上提 1px。使用 transform 相比 padding 更安全，
+         因为它仅在视觉上移动，不会改变光标的整体高度和盒模型。
+         如果未来发现还不够，可以改为 -1.5px，如果太高就改为 -0.5px */
+      transform: translateY(-1px) !important;
+    }
+    
+    /* 确保输入框两侧的图标不会跟着文字的改变而跑偏，强制锚定原位 */
+    .DocSearch-Modal .DocSearch-MagnifierLabel,
+    .DocSearch-Modal .DocSearch-Reset {
+      transform: translateY(0) !important;
+    }
+  }
+</style>
