@@ -2,25 +2,69 @@
 // src/components/scripts/FastGPT.astro
 ---
 <style is:global>
+  /* ====== 按钮基础样式 (默认手机端效果：仅图标) ====== */
   .fastgpt-chat-btn {
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; margin-left: 0.75rem; flex-shrink: 0;
-    align-self: center; margin-top: auto; margin-bottom: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 0.75rem;
+    flex-shrink: 0;
+    align-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
     transition: background-color 0.2s, border-color 0.2s, opacity 0.2s;
   }
-  .fastgpt-icon-container { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
-  .fastgpt-text { display: none; font-size: 0.875rem; font-weight: 600; white-space: nowrap; color: var(--sl-color-text, inherit); }
-  
-  /* 离线状态置灰 */
-  .fastgpt-chat-btn.is-offline { opacity: 0.5; cursor: not-allowed; }
-  .fastgpt-chat-btn.is-offline:hover { background-color: transparent !important; }
 
+  /* 离线状态下按钮视觉降级 */
+  .fastgpt-chat-btn.is-offline {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .fastgpt-icon-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fastgpt-text {
+    display: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--sl-color-text, inherit);
+  }
+
+  /* ====== PC 端效果：带外框、带文字、深浅色适配 ====== */
   @media (min-width: 50rem) {
-    .fastgpt-chat-btn { gap: 0.5rem; padding: 0.125rem 0.75rem 0.125rem 0.25rem; border: 1px solid var(--sl-color-gray-5, #c2c6cd); border-radius: 999px; }
-    .fastgpt-chat-btn:not(.is-offline):hover { background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05)); }
-    .fastgpt-text { display: inline-block; }
-    html[data-theme='dark'] .fastgpt-chat-btn, html.dark .fastgpt-chat-btn { border-color: var(--sl-color-gray-5, #343841); }
-    html[data-theme='dark'] .fastgpt-chat-btn:not(.is-offline):hover, html.dark .fastgpt-chat-btn:not(.is-offline):hover { background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05)); }
+    .fastgpt-chat-btn {
+      gap: 0.5rem;
+      padding: 0.125rem 0.75rem 0.125rem 0.25rem;
+      border: 1px solid var(--sl-color-gray-5, #c2c6cd);
+      border-radius: 999px;
+    }
+    
+    .fastgpt-chat-btn:not(.is-offline):hover {
+      background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05));
+    }
+
+    .fastgpt-text {
+      display: inline-block;
+    }
+
+    html[data-theme='dark'] .fastgpt-chat-btn, 
+    html.dark .fastgpt-chat-btn {
+      border-color: var(--sl-color-gray-5, #343841);
+    }
+    
+    html[data-theme='dark'] .fastgpt-chat-btn:not(.is-offline):hover, 
+    html.dark .fastgpt-chat-btn:not(.is-offline):hover {
+      background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05));
+    }
   }
 </style>
 
@@ -39,18 +83,85 @@ function embedChatbot() {
   const botSrc = script?.getAttribute('data-bot-src');
   const rawDefaultOpen = script?.getAttribute('data-default-open') === 'true';
 
+  document.body.style.overflow = '';
+
   if (!botSrc || document.getElementById(chatBtnId)) return;
 
   const isInitWideScreen = window.innerWidth >= 768;
-  const isOnline = navigator.onLine; // 判断是否在线
-  const defaultOpen = isOnline && rawDefaultOpen && isInitWideScreen;
+  // 离线状态下不响应 default-open，避免尝试加载 iframe
+  const isOnline = navigator.onLine;
+  const defaultOpen = rawDefaultOpen && isInitWideScreen && isOnline;
 
-  const svgOpen = `<svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g-blue" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/></linearGradient></defs><style>.fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } .fastgpt-icon:hover { transform: scale(1.05); } .fastgpt-bg { fill: #ffffff; stroke: url(#g-blue); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; } .fastgpt-fg { stroke: #111111; fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; } @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } } @media (prefers-color-scheme: dark) { .fastgpt-bg { fill: #2b2b3b; } .fastgpt-fg { stroke: #ffffff; } } html.dark .fastgpt-bg, html[data-theme='dark'] .fastgpt-bg { fill: #2b2b3b !important; } html.dark .fastgpt-fg, html[data-theme='dark'] .fastgpt-fg { stroke: #ffffff !important; } html.light .fastgpt-bg, html[data-theme='light'] .fastgpt-bg { fill: #ffffff !important; } html.light .fastgpt-fg, html[data-theme='light'] .fastgpt-fg { stroke: #111111 !important; }</style><g class="fastgpt-icon"><path class="fastgpt-bg" d="M40 16C26.7 16 16 26.7 16 40c0 13.3 10.7 24 24 24 4.2 0 8.1-1 11.5-2.8L62 64l-2.8-10.5C62.2 49.6 64 45 64 40c0-13.3-10.7-24-24-24z"/><g class="fastgpt-fg"><path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" /><path d="M49 30 L49 50" /></g></g></svg>`;
-  const svgClose = `<svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g-blue-close" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/></linearGradient></defs><style>.fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } .fastgpt-icon:hover { transform: scale(1.05); } .fastgpt-bg-close { fill: #ffffff; stroke: url(#g-blue-close); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; } .fastgpt-fg-close { stroke: #111111; fill: none; stroke-width: 4.5; stroke-linecap: round; } @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } } @media (prefers-color-scheme: dark) { .fastgpt-bg-close { fill: #2b2b3b; } .fastgpt-fg-close { stroke: #ffffff; } } html.dark .fastgpt-bg-close, html[data-theme='dark'] .fastgpt-bg-close { fill: #2b2b3b !important; } html.dark .fastgpt-fg-close, html[data-theme='dark'] .fastgpt-fg-close { stroke: #ffffff !important; } html.light .fastgpt-bg-close, html[data-theme='light'] .fastgpt-bg-close { fill: #ffffff !important; } html.light .fastgpt-fg-close, html[data-theme='light'] .fastgpt-fg-close { stroke: #111111 !important; }</style><g class="fastgpt-icon"><circle class="fastgpt-bg-close" cx="40" cy="40" r="24" /><path class="fastgpt-fg-close" d="M30 30L50 50M50 30L30 50" /></g></svg>`;
+  // ==========================================
+  // 定义动态 SVG 图标
+  // ==========================================
+  const svgOpen = `
+    <svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/>
+        </linearGradient>
+      </defs>
+      <style>
+        .fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .fastgpt-icon:hover { transform: scale(1.05); }
+        .fastgpt-bg { fill: #ffffff; stroke: url(#g-blue); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
+        .fastgpt-fg { stroke: #111111; fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+        @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
+        @media (prefers-color-scheme: dark) {
+          .fastgpt-bg { fill: #2b2b3b; }
+          .fastgpt-fg { stroke: #ffffff; }
+        }
+        html.dark .fastgpt-bg, html[data-theme='dark'] .fastgpt-bg { fill: #2b2b3b !important; }
+        html.dark .fastgpt-fg, html[data-theme='dark'] .fastgpt-fg { stroke: #ffffff !important; }
+        html.light .fastgpt-bg, html[data-theme='light'] .fastgpt-bg { fill: #ffffff !important; }
+        html.light .fastgpt-fg, html[data-theme='light'] .fastgpt-fg { stroke: #111111 !important; }
+      </style>
+      <g class="fastgpt-icon">
+        <path class="fastgpt-bg" d="M40 16C26.7 16 16 26.7 16 40c0 13.3 10.7 24 24 24 4.2 0 8.1-1 11.5-2.8L62 64l-2.8-10.5C62.2 49.6 64 45 64 40c0-13.3-10.7-24-24-24z"/>
+        <g class="fastgpt-fg">
+          <path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" />
+          <path d="M49 30 L49 50" />
+        </g>
+      </g>
+    </svg>
+  `;
 
+  const svgClose = `
+    <svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g-blue-close" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/>
+        </linearGradient>
+      </defs>
+      <style>
+        .fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .fastgpt-icon:hover { transform: scale(1.05); }
+        .fastgpt-bg-close { fill: #ffffff; stroke: url(#g-blue-close); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
+        .fastgpt-fg-close { stroke: #111111; fill: none; stroke-width: 4.5; stroke-linecap: round; }
+        @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
+        @media (prefers-color-scheme: dark) {
+          .fastgpt-bg-close { fill: #2b2b3b; }
+          .fastgpt-fg-close { stroke: #ffffff; }
+        }
+        html.dark .fastgpt-bg-close, html[data-theme='dark'] .fastgpt-bg-close { fill: #2b2b3b !important; }
+        html.dark .fastgpt-fg-close, html[data-theme='dark'] .fastgpt-fg-close { stroke: #ffffff !important; }
+        html.light .fastgpt-bg-close, html[data-theme='light'] .fastgpt-bg-close { fill: #ffffff !important; }
+        html.light .fastgpt-fg-close, html[data-theme='light'] .fastgpt-fg-close { stroke: #111111 !important; }
+      </style>
+      <g class="fastgpt-icon">
+        <circle class="fastgpt-bg-close" cx="40" cy="40" r="24" />
+        <path class="fastgpt-fg-close" d="M30 30L50 50M50 30L30 50" />
+      </g>
+    </svg>
+  `;
+
+  // 1. 创建触发按钮
   const ChatBtn = document.createElement('div');
   ChatBtn.id = chatBtnId;
-  ChatBtn.className = `fastgpt-chat-btn ${isOnline ? '' : 'is-offline'}`;
+  ChatBtn.className = 'fastgpt-chat-btn';
+  // 离线时初始就添加禁用样式
+  if (!isOnline) ChatBtn.classList.add('is-offline');
 
   const ChatIconContainer = document.createElement('div');
   ChatIconContainer.className = 'fastgpt-icon-container';
@@ -58,97 +169,153 @@ function embedChatbot() {
 
   const ChatText = document.createElement('span');
   ChatText.className = 'fastgpt-text';
-  ChatText.innerText = isOnline ? '问经' : 'AI 离线';
+  // 离线时提示文字变化
+  ChatText.innerText = isOnline ? '问经' : '离线';
 
   ChatBtn.appendChild(ChatIconContainer);
   ChatBtn.appendChild(ChatText);
 
   let isPlacedInHeader = false;
+
+  // 2. 寻找 algolia-search-box 标签
   const docSearchElement = document.querySelector('.algolia-search-box');
   if (docSearchElement) {
     docSearchElement.insertAdjacentElement('afterend', ChatBtn);
     isPlacedInHeader = true;
   } else {
-    ChatBtn.style.position = 'fixed'; ChatBtn.style.bottom = '30px'; ChatBtn.style.right = '30px'; ChatBtn.style.zIndex = '2147483647';
+    ChatBtn.style.position = 'fixed';
+    ChatBtn.style.bottom = '30px';
+    ChatBtn.style.right = '30px'; 
+    ChatBtn.style.zIndex = '2147483647';
     document.body.appendChild(ChatBtn);
   }
 
-  // ==== 离线阻断逻辑 ====
-  if (!isOnline) {
-    ChatBtn.onclick = () => alert('您当前处于离线模式，AI 助手需要网络连接。');
-    return; // 离线状态下，直接终止执行，不注入任何 iframe
-  }
-
+  // 3. 创建对话框 Iframe（默认不设 src，懒加载）
   const iframe = document.createElement('iframe');
-  iframe.allow = 'microphone *; *'; iframe.referrerPolicy = 'no-referrer'; iframe.id = chatWindowId;
+  iframe.allow = 'microphone *; *';
+  iframe.referrerPolicy = 'no-referrer';
+  iframe.id = chatWindowId;
   iframe.style.cssText = 'border: none; position: fixed; flex-direction: column; justify-content: space-between; box-shadow: rgba(150, 150, 150, 0.2) 0px 10px 30px 0px, rgba(150, 150, 150, 0.2) 0px 0px 0px 1px; width: 375px; height: 667px; max-width: 90vw; border-radius: 0.75rem; display: flex; z-index: 2147483647; overflow: hidden; background-color: #F3F4F6; transition: visibility 0.2s, opacity 0.2s;';
-  iframe.style.visibility = defaultOpen ? 'unset' : 'hidden'; iframe.style.opacity = defaultOpen ? '1' : '0';
+  iframe.style.visibility = defaultOpen ? 'unset' : 'hidden';
+  iframe.style.opacity = defaultOpen ? '1' : '0';
   document.body.appendChild(iframe);
 
   let isIframeLoaded = false;
-  if (defaultOpen) { iframe.src = botSrc; isIframeLoaded = true; }
+  
+  if (defaultOpen) {
+    iframe.src = botSrc;
+    isIframeLoaded = true;
+  }
 
+  // 4. 计算 Iframe 的弹出位置 (仅PC端使用)
   const updateChatWindowPosition = () => {
     const btnRect = ChatBtn.getBoundingClientRect();
     const isWideScreen = window.innerWidth >= 768; 
+
     if (isPlacedInHeader) {
-      iframe.style.top = (btnRect.bottom + 12) + 'px'; iframe.style.bottom = 'unset'; 
+      iframe.style.top = (btnRect.bottom + 12) + 'px'; 
+      iframe.style.bottom = 'unset'; 
       iframe.style.maxHeight = `calc(100vh - ${btnRect.bottom + 24}px)`; 
-      iframe.style.right = isWideScreen ? '24px' : '16px';
+      
+      if (isWideScreen) {
+        iframe.style.right = '24px';
+      } else {
+        iframe.style.right = '16px';
+      }
     } else {
-      iframe.style.right = isWideScreen ? '24px' : '16px'; iframe.style.top = 'unset';
+      iframe.style.right = isWideScreen ? '24px' : '16px';
+      iframe.style.top = 'unset';
       iframe.style.bottom = (window.innerHeight - btnRect.top + 12) + 'px';
       iframe.style.maxHeight = `calc(100vh - ${window.innerHeight - btnRect.top + 24}px)`;
     }
   };
 
+  // 5. 点击事件
   ChatBtn.onclick = () => {
+    // 离线时：点击有提示但不操作（理论上 pointer-events:none 已阻止，这里作为保险）
+    if (!navigator.onLine) return;
+
     const isWideScreen = window.innerWidth >= 768;
-    if (!isWideScreen) { window.open(botSrc, '_blank'); return; }
+
+    if (!isWideScreen) {
+      window.open(botSrc, '_blank');
+      return; 
+    }
 
     const isOpening = iframe.style.visibility === 'hidden'; 
-    if (isOpening && !isIframeLoaded) { iframe.src = botSrc; isIframeLoaded = true; }
 
-    iframe.style.visibility = isOpening ? 'unset' : 'hidden'; iframe.style.opacity = isOpening ? '1' : '0';
+    if (isOpening && !isIframeLoaded) {
+      iframe.src = botSrc;
+      isIframeLoaded = true;
+    }
+
+    iframe.style.visibility = isOpening ? 'unset' : 'hidden';
+    iframe.style.opacity = isOpening ? '1' : '0';
     ChatIconContainer.innerHTML = isOpening ? svgClose : svgOpen; 
-    if (isOpening) updateChatWindowPosition(); 
+
+    if (isOpening) {
+      updateChatWindowPosition(); 
+    }
   };
 
+  // 6. 窗口缩放事件处理
   window.addEventListener('resize', () => {
     const isWideScreen = window.innerWidth >= 768;
+
     if (iframe.style.visibility !== 'hidden') {
       if (!isWideScreen) {
-        iframe.style.visibility = 'hidden'; iframe.style.opacity = '0'; ChatIconContainer.innerHTML = svgOpen;
-      } else { updateChatWindowPosition(); }
+        iframe.style.visibility = 'hidden';
+        iframe.style.opacity = '0';
+        ChatIconContainer.innerHTML = svgOpen;
+      } else {
+        updateChatWindowPosition();
+      }
     }
   });
-  
-  if (isInitWideScreen) updateChatWindowPosition();
-}
 
-// 封装非阻塞执行器：推迟到渲染周期后
-function triggerEmbedChatbot() {
-  if (window.requestIdleCallback) {
-    requestIdleCallback(embedChatbot);
-  } else {
-    setTimeout(embedChatbot, 150);
+  // 7. 网络状态变化响应
+  window.addEventListener('aipali:online', () => {
+    ChatBtn.classList.remove('is-offline');
+    ChatText.innerText = '问经';
+  });
+
+  window.addEventListener('aipali:offline', () => {
+    // 如果弹窗开着，关闭它
+    if (iframe.style.visibility !== 'hidden') {
+      iframe.style.visibility = 'hidden';
+      iframe.style.opacity = '0';
+      ChatIconContainer.innerHTML = svgOpen;
+    }
+    ChatBtn.classList.add('is-offline');
+    ChatText.innerText = '离线';
+  });
+  
+  if (isInitWideScreen) {
+    updateChatWindowPosition();
   }
 }
 
-// 页面加载触发
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', triggerEmbedChatbot);
-} else {
-  triggerEmbedChatbot();
+// 非阻塞调度：等主线程空闲再执行按钮注入
+function scheduleEmbedChatbot() {
+  if (typeof requestIdleCallback !== 'undefined') {
+    requestIdleCallback(embedChatbot, { timeout: 2000 });
+  } else {
+    setTimeout(embedChatbot, 0);
+  }
 }
 
-// Astro 路由切换触发
-document.addEventListener('astro:page-load', triggerEmbedChatbot);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', scheduleEmbedChatbot);
+} else {
+  scheduleEmbedChatbot();
+}
 
-// 监听网络恢复，自动重新注入
-window.addEventListener('online', () => {
-  const btn = document.getElementById('fastgpt-chatbot-button');
-  if (btn) btn.remove(); // 移除离线占位按钮
-  triggerEmbedChatbot(); // 重新按在线模式加载
+document.addEventListener('astro:page-load', () => {
+  // 页面跳转后重新注入按钮前先清理旧实例
+  const oldBtn = document.getElementById('fastgpt-chatbot-button');
+  const oldIframe = document.getElementById('fastgpt-chatbot-window');
+  if (oldBtn) oldBtn.remove();
+  if (oldIframe) oldIframe.remove();
+  scheduleEmbedChatbot();
 });
 </script>
