@@ -14,6 +14,7 @@ import '@docsearch/css';
     containers.forEach(container => {
       if (container.hasAttribute('data-initialized')) return;
       
+      // 执行 DocSearch 挂载
       docsearch({
         container: container as HTMLElement,
         appId: 'TCMTON4EX8',
@@ -71,7 +72,7 @@ import '@docsearch/css';
     });
   }
 
-  // AI 文本碎片拦截翻译
+  // AI 文本碎片拦截翻译 (保持不变)
   function setupAskAITranslator() {
     if ((window as any).__aipali_translator_setup) return;
     (window as any).__aipali_translator_setup = true;
@@ -109,9 +110,24 @@ import '@docsearch/css';
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
-  initDocSearch();
-  setupAskAITranslator();
-  document.addEventListener('astro:page-load', initDocSearch);
+  // 【核心改动】异步非阻塞初始化
+  // DocSearch 初始化时会加载一些分析或执行预请求，直接执行会导致首屏卡顿
+  // 我们将其丢到浏览器空闲时间 (Idle) 执行，让页面本体和离线内容优先秒开
+  function lazyInitAlgolia() {
+    const execute = () => {
+      initDocSearch();
+      setupAskAITranslator();
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(execute, { timeout: 2000 }); // 最迟 2 秒后执行
+    } else {
+      setTimeout(execute, 300);
+    }
+  }
+
+  lazyInitAlgolia();
+  document.addEventListener('astro:page-load', lazyInitAlgolia);
 </script>
 
 <style is:global>
