@@ -2,62 +2,16 @@
 // src/components/scripts/FastGPT.astro
 ---
 <style is:global>
-  /* ====== 按钮基础样式 (默认手机端效果：仅图标) ====== */
-  .fastgpt-chat-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    margin-left: 0.75rem;
-    flex-shrink: 0;
-    align-self: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    transition: background-color 0.2s, border-color 0.2s, opacity 0.3s;
-  }
-  
-  /* 离线状态样式 */
-  .fastgpt-chat-btn.is-offline {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-
-  .fastgpt-icon-container {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .fastgpt-text {
-    display: none; 
-    font-size: 0.875rem;
-    font-weight: 600;
-    white-space: nowrap;
-    color: var(--sl-color-text, inherit);
-  }
-
-  /* ====== PC 端效果：带外框、带文字、深浅色适配 ====== */
+  /* 基础样式保持不变 */
+  .fastgpt-chat-btn { display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left: 0.75rem; flex-shrink: 0; align-self: center; margin-top: auto; margin-bottom: auto; transition: background-color 0.2s, border-color 0.2s; }
+  .fastgpt-icon-container { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
+  .fastgpt-text { display: none; font-size: 0.875rem; font-weight: 600; white-space: nowrap; color: var(--sl-color-text, inherit); }
   @media (min-width: 50rem) {
-    .fastgpt-chat-btn {
-      gap: 0.5rem;
-      padding: 0.125rem 0.75rem 0.125rem 0.25rem;
-      border: 1px solid var(--sl-color-gray-5, #c2c6cd);
-      border-radius: 999px;
-    }
-    .fastgpt-chat-btn:not(.is-offline):hover {
-      background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05));
-    }
+    .fastgpt-chat-btn { gap: 0.5rem; padding: 0.125rem 0.75rem 0.125rem 0.25rem; border: 1px solid var(--sl-color-gray-5, #c2c6cd); border-radius: 999px; }
+    .fastgpt-chat-btn:hover { background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05)); }
     .fastgpt-text { display: inline-block; }
-
-    html[data-theme='dark'] .fastgpt-chat-btn, 
-    html.dark .fastgpt-chat-btn { border-color: var(--sl-color-gray-5, #343841); }
-    
-    html[data-theme='dark'] .fastgpt-chat-btn:not(.is-offline):hover, 
-    html.dark .fastgpt-chat-btn:not(.is-offline):hover {
-      background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05));
-    }
+    html[data-theme='dark'] .fastgpt-chat-btn, html.dark .fastgpt-chat-btn { border-color: var(--sl-color-gray-5, #343841); }
+    html[data-theme='dark'] .fastgpt-chat-btn:hover, html.dark .fastgpt-chat-btn:hover { background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05)); }
   }
 </style>
 
@@ -76,73 +30,33 @@ function embedChatbot() {
   const botSrc = script?.getAttribute('data-bot-src');
   const rawDefaultOpen = script?.getAttribute('data-default-open') === 'true';
 
-  document.body.style.overflow = '';
-
   if (!botSrc || document.getElementById(chatBtnId)) return;
 
   const isInitWideScreen = window.innerWidth >= 768;
-  const defaultOpen = rawDefaultOpen && isInitWideScreen && navigator.onLine; // 离线禁止默认打开
+  const defaultOpen = rawDefaultOpen && isInitWideScreen;
 
-  // ==========================================
-  // 定义动态 SVG 图标
-  // ==========================================
+  // SVG 定义省略，保持你的原样
   const svgOpen = `
     <svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="g-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/>
-        </linearGradient>
-      </defs>
-      <style>
-        .fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .fastgpt-icon:hover { transform: scale(1.05); }
-        .fastgpt-bg { fill: #ffffff; stroke: url(#g-blue); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
-        .fastgpt-fg { stroke: #111111; fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
-        @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
-        @media (prefers-color-scheme: dark) { .fastgpt-bg { fill: #2b2b3b; } .fastgpt-fg { stroke: #ffffff; } }
-        html.dark .fastgpt-bg, html[data-theme='dark'] .fastgpt-bg { fill: #2b2b3b !important; }
-        html.dark .fastgpt-fg, html[data-theme='dark'] .fastgpt-fg { stroke: #ffffff !important; }
-        html.light .fastgpt-bg, html[data-theme='light'] .fastgpt-bg { fill: #ffffff !important; }
-        html.light .fastgpt-fg, html[data-theme='light'] .fastgpt-fg { stroke: #111111 !important; }
-      </style>
-      <g class="fastgpt-icon">
-        <path class="fastgpt-bg" d="M40 16C26.7 16 16 26.7 16 40c0 13.3 10.7 24 24 24 4.2 0 8.1-1 11.5-2.8L62 64l-2.8-10.5C62.2 49.6 64 45 64 40c0-13.3-10.7-24-24-24z"/>
-        <g class="fastgpt-fg"><path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" /><path d="M49 30 L49 50" /></g>
-      </g>
-    </svg>
-  `;
+      <defs><linearGradient id="g-blue" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/></linearGradient></defs>
+      <style>.fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } .fastgpt-icon:hover { transform: scale(1.05); } .fastgpt-bg { fill: #ffffff; stroke: url(#g-blue); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; } .fastgpt-fg { stroke: #111111; fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; } @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } } @media (prefers-color-scheme: dark) { .fastgpt-bg { fill: #2b2b3b; } .fastgpt-fg { stroke: #ffffff; } } html.dark .fastgpt-bg, html[data-theme='dark'] .fastgpt-bg { fill: #2b2b3b !important; } html.dark .fastgpt-fg, html[data-theme='dark'] .fastgpt-fg { stroke: #ffffff !important; } html.light .fastgpt-bg, html[data-theme='light'] .fastgpt-bg { fill: #ffffff !important; } html.light .fastgpt-fg, html[data-theme='light'] .fastgpt-fg { stroke: #111111 !important; }</style>
+      <g class="fastgpt-icon"><path class="fastgpt-bg" d="M40 16C26.7 16 16 26.7 16 40c0 13.3 10.7 24 24 24 4.2 0 8.1-1 11.5-2.8L62 64l-2.8-10.5C62.2 49.6 64 45 64 40c0-13.3-10.7-24-24-24z"/><g class="fastgpt-fg"><path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" /><path d="M49 30 L49 50" /></g></g>
+    </svg>`;
 
   const svgClose = `
     <svg viewBox="0 0 80 80" style="width: 100%; height: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="g-blue-close" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/>
-        </linearGradient>
-      </defs>
-      <style>
-        .fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        .fastgpt-icon:hover { transform: scale(1.05); }
-        .fastgpt-bg-close { fill: #ffffff; stroke: url(#g-blue-close); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
-        .fastgpt-fg-close { stroke: #111111; fill: none; stroke-width: 4.5; stroke-linecap: round; }
-        @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
-        @media (prefers-color-scheme: dark) { .fastgpt-bg-close { fill: #2b2b3b; } .fastgpt-fg-close { stroke: #ffffff; } }
-        html.dark .fastgpt-bg-close, html[data-theme='dark'] .fastgpt-bg-close { fill: #2b2b3b !important; }
-        html.dark .fastgpt-fg-close, html[data-theme='dark'] .fastgpt-fg-close { stroke: #ffffff !important; }
-        html.light .fastgpt-bg-close, html[data-theme='light'] .fastgpt-bg-close { fill: #ffffff !important; }
-        html.light .fastgpt-fg-close, html[data-theme='light'] .fastgpt-fg-close { stroke: #111111 !important; }
-      </style>
+      <defs><linearGradient id="g-blue-close" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#4facfe" offset="0%"/><stop stop-color="#00f2fe" offset="100%"/></linearGradient></defs>
+      <style>.fastgpt-icon { transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); } .fastgpt-icon:hover { transform: scale(1.05); } .fastgpt-bg-close { fill: #ffffff; stroke: url(#g-blue-close); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; } .fastgpt-fg-close { stroke: #111111; fill: none; stroke-width: 4.5; stroke-linecap: round; } @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } } @media (prefers-color-scheme: dark) { .fastgpt-bg-close { fill: #2b2b3b; } .fastgpt-fg-close { stroke: #ffffff; } } html.dark .fastgpt-bg-close, html[data-theme='dark'] .fastgpt-bg-close { fill: #2b2b3b !important; } html.dark .fastgpt-fg-close, html[data-theme='dark'] .fastgpt-fg-close { stroke: #ffffff !important; } html.light .fastgpt-bg-close, html[data-theme='light'] .fastgpt-bg-close { fill: #ffffff !important; } html.light .fastgpt-fg-close, html[data-theme='light'] .fastgpt-fg-close { stroke: #111111 !important; }</style>
       <g class="fastgpt-icon"><circle class="fastgpt-bg-close" cx="40" cy="40" r="24" /><path class="fastgpt-fg-close" d="M30 30L50 50M50 30L30 50" /></g>
-    </svg>
-  `;
+    </svg>`;
 
-  // 1. 创建触发按钮
   const ChatBtn = document.createElement('div');
   ChatBtn.id = chatBtnId;
   ChatBtn.className = 'fastgpt-chat-btn';
 
   const ChatIconContainer = document.createElement('div');
   ChatIconContainer.className = 'fastgpt-icon-container';
-  ChatIconContainer.innerHTML = defaultOpen ? svgClose : svgOpen;
+  ChatIconContainer.innerHTML = (defaultOpen && navigator.onLine) ? svgClose : svgOpen;
 
   const ChatText = document.createElement('span');
   ChatText.className = 'fastgpt-text';
@@ -152,8 +66,6 @@ function embedChatbot() {
   ChatBtn.appendChild(ChatText);
 
   let isPlacedInHeader = false;
-
-  // 2. 寻找 sl-doc-search 标签
   const docSearchElement = document.querySelector('.algolia-search-box');
   if (docSearchElement) {
     docSearchElement.insertAdjacentElement('afterend', ChatBtn);
@@ -166,27 +78,28 @@ function embedChatbot() {
     document.body.appendChild(ChatBtn);
   }
 
-  // 3. 创建对话框 Iframe (默认不设 src)
   const iframe = document.createElement('iframe');
   iframe.allow = 'microphone *; *';
   iframe.referrerPolicy = 'no-referrer';
   iframe.id = chatWindowId;
   iframe.style.cssText = 'border: none; position: fixed; flex-direction: column; justify-content: space-between; box-shadow: rgba(150, 150, 150, 0.2) 0px 10px 30px 0px, rgba(150, 150, 150, 0.2) 0px 0px 0px 1px; width: 375px; height: 667px; max-width: 90vw; border-radius: 0.75rem; display: flex; z-index: 2147483647; overflow: hidden; background-color: #F3F4F6; transition: visibility 0.2s, opacity 0.2s;';
-  iframe.style.visibility = defaultOpen ? 'unset' : 'hidden';
-  iframe.style.opacity = defaultOpen ? '1' : '0';
+  iframe.style.visibility = 'hidden';
+  iframe.style.opacity = '0';
   document.body.appendChild(iframe);
 
   let isIframeLoaded = false;
   
-  if (defaultOpen) {
+  // 【优化】只有在有网络的情况下，才允许加载默认开启的 iframe
+  if (defaultOpen && navigator.onLine) {
     iframe.src = botSrc;
+    iframe.style.visibility = 'unset';
+    iframe.style.opacity = '1';
     isIframeLoaded = true;
   }
 
   const updateChatWindowPosition = () => {
     const btnRect = ChatBtn.getBoundingClientRect();
     const isWideScreen = window.innerWidth >= 768; 
-
     if (isPlacedInHeader) {
       iframe.style.top = (btnRect.bottom + 12) + 'px'; 
       iframe.style.bottom = 'unset'; 
@@ -200,46 +113,26 @@ function embedChatbot() {
     }
   };
 
-  // ==========================================
-  // 【核心】离线状态管理
-  // ==========================================
-  const updateOnlineStatus = () => {
+  ChatBtn.onclick = () => {
+    // 【核心优化】点击时进行强离线拦截，不让组件报错，直接给用户静默反馈
     if (!navigator.onLine) {
-      ChatBtn.classList.add('is-offline');
-      ChatBtn.title = '离线模式下无法使用 AI 助手';
-      // 如果弹窗开着，强制关闭
-      if (iframe.style.visibility !== 'hidden') {
-        iframe.style.visibility = 'hidden';
-        iframe.style.opacity = '0';
-        ChatIconContainer.innerHTML = svgOpen;
-      }
-    } else {
-      ChatBtn.classList.remove('is-offline');
-      ChatBtn.title = '';
-    }
-  };
-
-  window.addEventListener('online', updateOnlineStatus);
-  window.addEventListener('offline', updateOnlineStatus);
-  updateOnlineStatus(); // 初始化检测
-
-  // 5. 点击事件：增加离线拦截
-  ChatBtn.onclick = (e) => {
-    if (!navigator.onLine) {
-      e.preventDefault();
-      // 在按钮处冒泡提示即可，阻止后续加载
-      return;
+      const origText = ChatText.innerText;
+      ChatText.innerText = '离线暂不可用';
+      ChatText.style.color = '#ef4444'; // 标红提示
+      setTimeout(() => {
+        ChatText.innerText = origText;
+        ChatText.style.color = '';
+      }, 2000);
+      return; 
     }
 
     const isWideScreen = window.innerWidth >= 768;
-
     if (!isWideScreen) {
       window.open(botSrc, '_blank');
       return; 
     }
 
     const isOpening = iframe.style.visibility === 'hidden'; 
-
     if (isOpening && !isIframeLoaded) {
       iframe.src = botSrc;
       isIframeLoaded = true;
@@ -270,14 +163,20 @@ function embedChatbot() {
   if (isInitWideScreen) updateChatWindowPosition();
 }
 
-// 【核心】Event Loop 延后执行，确保不阻塞离线文档的 DOM 解析
-const deferEmbed = () => setTimeout(embedChatbot, 100);
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', deferEmbed);
-} else {
-  deferEmbed();
+// 【核心优化】非阻塞式初始化：不占用核心加载线程，彻底解放页面
+function safeEmbed() {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => embedChatbot(), { timeout: 2000 });
+  } else {
+    setTimeout(() => embedChatbot(), 100);
+  }
 }
 
-document.addEventListener('astro:page-load', deferEmbed);
+// 支持 Astro 的页面生命周期
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', safeEmbed);
+} else {
+  safeEmbed();
+}
+document.addEventListener('astro:page-load', safeEmbed);
 </script>

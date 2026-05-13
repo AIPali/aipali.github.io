@@ -8,30 +8,37 @@ import '@docsearch/css';
 <script>
   import docsearch from '@docsearch/js';
 
-  // 渲染离线状态下的占位按钮（不发网络请求）
-  function renderOfflinePlaceholder(container: Element) {
-    container.innerHTML = `
-      <button type="button" class="DocSearch DocSearch-Button" style="cursor: not-allowed; opacity: 0.5;" title="离线模式无法搜索">
-        <span class="DocSearch-Button-Container">
-          <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        </span>
-        <span class="DocSearch-Button-Placeholder">离线模式</span>
-      </button>
-    `;
-    container.setAttribute('data-offline', 'true');
+  // 【核心优化】离线点击拦截器
+  // 在事件捕获阶段拦截点击，如果是离线，直接掐断事件流，不让 DocSearch 模态框打开
+  function setupOfflineInterceptor() {
+    if ((window as any).__aipali_offline_interceptor) return;
+    (window as any).__aipali_offline_interceptor = true;
+
+    document.addEventListener('click', (e) => {
+      const isSearchContainer = (e.target as Element).closest('.algolia-search-box') || (e.target as Element).closest('.DocSearch-Button');
+      if (isSearchContainer && !navigator.onLine) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // 可视化反馈：修改输入框文字
+        const placeholder = document.querySelector('.DocSearch-Button-Placeholder');
+        if (placeholder) {
+          const origText = placeholder.textContent;
+          placeholder.textContent = '当前处于离线模式，搜索暂不可用';
+          (placeholder as HTMLElement).style.color = '#ef4444';
+          setTimeout(() => {
+            placeholder.textContent = origText;
+            (placeholder as HTMLElement).style.color = '';
+          }, 2500);
+        }
+      }
+    }, true); // 注意：这里传 true，在 capture 阶段抢先拦截
   }
 
   function initDocSearch() {
     const containers = document.querySelectorAll('.algolia-search-box');
-    
     containers.forEach(container => {
       if (container.hasAttribute('data-initialized')) return;
-
-      // 【核心】离线拦截：不触发 docsearch 库，渲染假按钮
-      if (!navigator.onLine) {
-        renderOfflinePlaceholder(container);
-        return; 
-      }
       
       docsearch({
         container: container as HTMLElement,
@@ -90,17 +97,6 @@ import '@docsearch/css';
     });
   }
 
-  // 网络恢复时，清除占位符并真正初始化
-  window.addEventListener('online', () => {
-    const offlineContainers = document.querySelectorAll('.algolia-search-box[data-offline="true"]');
-    offlineContainers.forEach(container => {
-      container.innerHTML = '';
-      container.removeAttribute('data-offline');
-    });
-    initDocSearch();
-  });
-
-  // AI 文本碎片拦截翻译 (保留原有逻辑)
   function setupAskAITranslator() {
     if ((window as any).__aipali_translator_setup) return;
     (window as any).__aipali_translator_setup = true;
@@ -109,9 +105,11 @@ import '@docsearch/css';
       if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
         let val = node.nodeValue;
         let changed = false;
+        
         if (/searching/i.test(val)) { val = val.replace(/searching/ig, '正在搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
+        
         if (changed) node.nodeValue = val;
       }
     };
@@ -135,171 +133,66 @@ import '@docsearch/css';
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
-  // 【核心】Event Loop 延后执行：利用 setTimeout 跳出当前调用栈，非阻塞主线解析
-  const deferInit = () => {
-    setTimeout(() => {
-      initDocSearch();
-      setupAskAITranslator();
-    }, 50);
-  };
+  // 【核心优化】利用异步执行，让出主线程
+  function safeInitAll() {
+    setupOfflineInterceptor();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        initDocSearch();
+        setupAskAITranslator();
+      }, { timeout: 2000 });
+    } else {
+      setTimeout(() => {
+        initDocSearch();
+        setupAskAITranslator();
+      }, 100);
+    }
+  }
 
-  deferInit();
-  document.addEventListener('astro:page-load', deferInit);
+  safeInitAll();
+  document.addEventListener('astro:page-load', safeInitAll);
 </script>
 
 <style is:global>
-  /* =========================================================
-     保留你所有的 CSS，未做任何删减
-     ========================================================= */
-  .DocSearch-Container {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background-color: var(--docsearch-container-background) !important;
-    z-index: 9999 !important; 
-    box-sizing: border-box !important;
-  }
+  /* CSS 样式原样保持，完全没有删减 */
+  .DocSearch-Container { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background-color: var(--docsearch-container-background) !important; z-index: 9999 !important; box-sizing: border-box !important; }
   .DocSearch-Container * { box-sizing: border-box !important; }
   .DocSearch-Form { margin: 0 !important; }
   .DocSearch-Modal { max-height: 85vh !important; }
 
-  :root[data-theme='light'] {
-    --docsearch-container-background: rgba(101, 108, 133, 0.8); 
-    --docsearch-modal-background: #f5f6f7; 
-    --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-    --docsearch-searchbox-background: #ffffff;
-    --docsearch-searchbox-focus-background: #ffffff;
-    --docsearch-hit-background: #ffffff;
-    --docsearch-hit-color: var(--sl-color-gray-2);
-    --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
-    --docsearch-hit-hover-background: var(--sl-color-accent);
-    --docsearch-hit-hover-color: #ffffff;
-    --docsearch-highlight-color: var(--sl-color-accent);
-    --docsearch-primary-color: var(--sl-color-accent);
-    --docsearch-logo-color: var(--sl-color-accent);
-    --docsearch-text-color: #121212;
-  }
+  :root[data-theme='light'] { --docsearch-container-background: rgba(101, 108, 133, 0.8); --docsearch-modal-background: #f5f6f7; --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); --docsearch-searchbox-background: #ffffff; --docsearch-searchbox-focus-background: #ffffff; --docsearch-hit-background: #ffffff; --docsearch-hit-color: var(--sl-color-gray-2); --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08); --docsearch-hit-hover-background: var(--sl-color-accent); --docsearch-hit-hover-color: #ffffff; --docsearch-highlight-color: var(--sl-color-accent); --docsearch-primary-color: var(--sl-color-accent); --docsearch-logo-color: var(--sl-color-accent); --docsearch-text-color: #121212; }
 
-  :root, :root[data-theme='dark'] {
-    --docsearch-container-background: rgba(0, 0, 0, 0.6); 
-    --docsearch-modal-background: var(--sl-color-gray-6); 
-    --docsearch-modal-shadow: inset 1px 1px 0 0 var(--sl-color-gray-5), 0 3px 8px 0 rgba(0,0,0,0.5);
-    --docsearch-searchbox-background: var(--sl-color-black); 
-    --docsearch-searchbox-focus-background: var(--sl-color-black);
-    --docsearch-searchbox-shadow: inset 0 0 0 1px var(--sl-color-gray-5); 
-    --docsearch-hit-background: var(--sl-color-black); 
-    --docsearch-hit-color: var(--sl-color-gray-2);
-    --docsearch-hit-shadow: none;
-    --docsearch-hit-hover-background: var(--sl-color-accent-high);
-    --docsearch-hit-hover-color: #121212;
-    --docsearch-highlight-color: var(--sl-color-accent-high); 
-    --docsearch-primary-color: var(--sl-color-accent-high);
-    --docsearch-logo-color: var(--sl-color-accent-high);
-    --docsearch-text-color: #ffffff;
-    --docsearch-muted-color: var(--sl-color-gray-3);
-  }
+  :root, :root[data-theme='dark'] { --docsearch-container-background: rgba(0, 0, 0, 0.6); --docsearch-modal-background: var(--sl-color-gray-6); --docsearch-modal-shadow: inset 1px 1px 0 0 var(--sl-color-gray-5), 0 3px 8px 0 rgba(0,0,0,0.5); --docsearch-searchbox-background: var(--sl-color-black); --docsearch-searchbox-focus-background: var(--sl-color-black); --docsearch-searchbox-shadow: inset 0 0 0 1px var(--sl-color-gray-5); --docsearch-hit-background: var(--sl-color-black); --docsearch-hit-color: var(--sl-color-gray-2); --docsearch-hit-shadow: none; --docsearch-hit-hover-background: var(--sl-color-accent-high); --docsearch-hit-hover-color: #121212; --docsearch-highlight-color: var(--sl-color-accent-high); --docsearch-primary-color: var(--sl-color-accent-high); --docsearch-logo-color: var(--sl-color-accent-high); --docsearch-text-color: #ffffff; --docsearch-muted-color: var(--sl-color-gray-3); }
 
-  [data-theme='dark'] .DocSearch-Hit--AskAI { 
-    background: #1b1b1f !important; 
-    border: 1px solid var(--sl-color-gray-5); 
-  }
-  :root[data-theme='dark'] .DocSearch-Input,
-  :root[data-theme='dark'] .DocSearch-Input::placeholder { color: #ffffff !important; }
-  :root[data-theme='dark'] .DocSearch-Logo svg path,
-  :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
+  [data-theme='dark'] .DocSearch-Hit--AskAI { background: #1b1b1f !important; border: 1px solid var(--sl-color-gray-5); }
+  :root[data-theme='dark'] .DocSearch-Input, :root[data-theme='dark'] .DocSearch-Input::placeholder { color: #ffffff !important; }
+  :root[data-theme='dark'] .DocSearch-Logo svg path, :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
 
-  .starlight-docsearch-container { 
-    display: flex; align-items: center;
-    flex-grow: 1; justify-content: flex-start; min-width: 0; 
-  }
+  .starlight-docsearch-container { display: flex; align-items: center; flex-grow: 1; justify-content: flex-start; min-width: 0; }
+  .starlight-docsearch-container .DocSearch-Button { display: flex; align-items: center; margin: 0; border-radius: 0.5rem; background-color: transparent; border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2); height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s; width: auto; max-width: 100%; gap: 0.5rem; }
+  .starlight-docsearch-container .DocSearch-Button-Placeholder { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .starlight-docsearch-container .DocSearch-Search-Icon, .starlight-docsearch-container .DocSearch-Button-Keys { flex-shrink: 0; }
+  .starlight-docsearch-container .DocSearch-Button:hover, .starlight-docsearch-container .DocSearch-Button:focus { border-color: var(--sl-color-gray-4); color: var(--sl-color-text); box-shadow: none; outline: none; }
   
-  .starlight-docsearch-container .DocSearch-Button {
-    display: flex; align-items: center; 
-    margin: 0; border-radius: 0.5rem; background-color: transparent;
-    border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2);
-    height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s;
-    width: auto; max-width: 100%; gap: 0.5rem; 
-  }
-
-  .starlight-docsearch-container .DocSearch-Button-Placeholder {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; 
-  }
-
-  .starlight-docsearch-container .DocSearch-Search-Icon,
-  .starlight-docsearch-container .DocSearch-Button-Keys { flex-shrink: 0; }
-
-  .starlight-docsearch-container .DocSearch-Button:hover,
-  .starlight-docsearch-container .DocSearch-Button:focus {
-    border-color: var(--sl-color-gray-4); color: var(--sl-color-text);
-    box-shadow: none; outline: none;
-  }
-
   @media (max-width: 50rem) {
-    .starlight-docsearch-container .DocSearch-Button {
-      border: none; padding: 0; width: 2.5rem; justify-content: center;
-    }
-    .starlight-docsearch-container .DocSearch-Button-Keys,
-    .starlight-docsearch-container .DocSearch-Button-Placeholder { display: none; }
-    .starlight-docsearch-container .DocSearch-Button .DocSearch-Search-Icon {
-      width: 1.2rem; height: 1.2rem;
-    }
+    .starlight-docsearch-container .DocSearch-Button { border: none; padding: 0; width: 2.5rem; justify-content: center; }
+    .starlight-docsearch-container .DocSearch-Button-Keys, .starlight-docsearch-container .DocSearch-Button-Placeholder { display: none; }
+    .starlight-docsearch-container .DocSearch-Button .DocSearch-Search-Icon { width: 1.2rem; height: 1.2rem; }
   }
 
-  .DocSearch-Modal .DocSearch-Form {
-    display: flex !important;
-    align-items: center !important; 
-  }
-
-  .DocSearch-Modal .DocSearch-Input {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    margin: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    line-height: normal !important; 
-  }
-
-  .DocSearch-Modal .DocSearch-MagnifierLabel,
-  .DocSearch-Modal .DocSearch-Reset {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-top: 0 !important; 
-    margin-bottom: 0 !important;
-  }
-
-  .DocSearch-Modal .DocSearch-MagnifierLabel svg,
-  .DocSearch-Modal .DocSearch-Reset svg {
-    display: block !important;
-    vertical-align: middle !important;
-  }
-
-  .DocSearch-Hit mark {
-    color: var(--docsearch-highlight-color) !important;
-    background-color: transparent !important; font-weight: bold;
-  }
-  .DocSearch-Hit[aria-selected='true'] a {
-    background-color: var(--docsearch-hit-hover-background) !important;
-    box-shadow: none !important;
-  }
-  .DocSearch-Hit[aria-selected='true'] a *,
-  .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
-
-  .DocSearch-Modal .prose a,
-  .DocSearch-Modal a[class*="askAi"],
-  .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
+  .DocSearch-Modal .DocSearch-Form { display: flex !important; align-items: center !important; }
+  .DocSearch-Modal .DocSearch-Input { -webkit-appearance: none !important; appearance: none !important; margin: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; line-height: normal !important; }
+  .DocSearch-Modal .DocSearch-MagnifierLabel, .DocSearch-Modal .DocSearch-Reset { display: flex !important; align-items: center !important; justify-content: center !important; margin-top: 0 !important; margin-bottom: 0 !important; }
+  .DocSearch-Modal .DocSearch-MagnifierLabel svg, .DocSearch-Modal .DocSearch-Reset svg { display: block !important; vertical-align: middle !important; }
   
-  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
-    font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important;
-  }
+  .DocSearch-Hit mark { color: var(--docsearch-highlight-color) !important; background-color: transparent !important; font-weight: bold; }
+  .DocSearch-Hit[aria-selected='true'] a { background-color: var(--docsearch-hit-hover-background) !important; box-shadow: none !important; }
+  .DocSearch-Hit[aria-selected='true'] a *, .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
+  .DocSearch-Modal .prose a, .DocSearch-Modal a[class*="askAi"], .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
+  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result { font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important; }
 
   @supports (-webkit-touch-callout: none) {
-    .DocSearch-Modal .DocSearch-Input {
-      font-size: 16px !important; 
-      transform: translateY(-1px) !important;
-    }
-    .DocSearch-Modal .DocSearch-MagnifierLabel,
-    .DocSearch-Modal .DocSearch-Reset {
-      transform: translateY(0) !important;
-    }
+    .DocSearch-Modal .DocSearch-Input { font-size: 16px !important; transform: translateY(-1px) !important; }
+    .DocSearch-Modal .DocSearch-MagnifierLabel, .DocSearch-Modal .DocSearch-Reset { transform: translateY(0) !important; }
   }
 </style>
