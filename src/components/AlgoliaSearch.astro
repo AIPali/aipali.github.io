@@ -109,34 +109,9 @@ import '@docsearch/css';
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
-  // 【核心优化点：将两个原有的初始化函数包裹在 requestIdleCallback 中】
-  function lazyInitAlgolia() {
-    const execute = () => {
-      initDocSearch();
-      setupAskAITranslator();
-    };
-
-    if ('requestIdleCallback' in window) {
-      // 利用浏览器空闲时间执行，timeout 防止一直不执行
-      requestIdleCallback(execute, { timeout: 2000 });
-    } else {
-      // 降级方案，稍微延迟执行
-      setTimeout(execute, 300);
-    }
-  }
-
-  // 替换原本直接执行的 initDocSearch(); setupAskAITranslator();
-  lazyInitAlgolia();
-
-  // 替换原本的 document.addEventListener('astro:page-load', initDocSearch);
-  document.addEventListener('astro:page-load', () => {
-    // Astro View Transitions 切换页面时，同样走空闲时间初始化 DocSearch
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initDocSearch, { timeout: 2000 });
-    } else {
-      setTimeout(initDocSearch, 300);
-    }
-  });
+  initDocSearch();
+  setupAskAITranslator();
+  document.addEventListener('astro:page-load', initDocSearch);
 </script>
 
 <style is:global>
