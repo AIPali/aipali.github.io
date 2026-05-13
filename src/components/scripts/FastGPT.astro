@@ -13,7 +13,13 @@
     align-self: center;
     margin-top: auto;
     margin-bottom: auto;
-    transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, opacity 0.3s;
+  }
+  
+  /* 离线状态样式 */
+  .fastgpt-chat-btn.is-offline {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 
   .fastgpt-icon-container {
@@ -25,11 +31,10 @@
   }
 
   .fastgpt-text {
-    display: none; /* 手机端隐藏文字 */
+    display: none; 
     font-size: 0.875rem;
     font-weight: 600;
     white-space: nowrap;
-    /* 采用 Starlight 的字体颜色变量 */
     color: var(--sl-color-text, inherit);
   }
 
@@ -38,28 +43,19 @@
     .fastgpt-chat-btn {
       gap: 0.5rem;
       padding: 0.125rem 0.75rem 0.125rem 0.25rem;
-      /* 采用 Starlight 的边框颜色变量 */
       border: 1px solid var(--sl-color-gray-5, #c2c6cd);
-      border-radius: 999px; /* 圆角药丸形 */
+      border-radius: 999px;
     }
-    
-    .fastgpt-chat-btn:hover {
-      /* 悬浮时的背景色 */
+    .fastgpt-chat-btn:not(.is-offline):hover {
       background-color: var(--sl-color-gray-6, rgba(0,0,0,0.05));
     }
+    .fastgpt-text { display: inline-block; }
 
-    .fastgpt-text {
-      display: inline-block; /* PC端显示文字 */
-    }
-
-    /* 强制深色模式兜底 */
     html[data-theme='dark'] .fastgpt-chat-btn, 
-    html.dark .fastgpt-chat-btn {
-      border-color: var(--sl-color-gray-5, #343841);
-    }
+    html.dark .fastgpt-chat-btn { border-color: var(--sl-color-gray-5, #343841); }
     
-    html[data-theme='dark'] .fastgpt-chat-btn:hover, 
-    html.dark .fastgpt-chat-btn:hover {
+    html[data-theme='dark'] .fastgpt-chat-btn:not(.is-offline):hover, 
+    html.dark .fastgpt-chat-btn:not(.is-offline):hover {
       background-color: var(--sl-color-gray-6, rgba(255,255,255,0.05));
     }
   }
@@ -84,9 +80,8 @@ function embedChatbot() {
 
   if (!botSrc || document.getElementById(chatBtnId)) return;
 
-  // 手机端不响应 default-open 以免造成自动跳转
   const isInitWideScreen = window.innerWidth >= 768;
-  const defaultOpen = rawDefaultOpen && isInitWideScreen;
+  const defaultOpen = rawDefaultOpen && isInitWideScreen && navigator.onLine; // 离线禁止默认打开
 
   // ==========================================
   // 定义动态 SVG 图标
@@ -104,10 +99,7 @@ function embedChatbot() {
         .fastgpt-bg { fill: #ffffff; stroke: url(#g-blue); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
         .fastgpt-fg { stroke: #111111; fill: none; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
         @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
-        @media (prefers-color-scheme: dark) {
-          .fastgpt-bg { fill: #2b2b3b; }
-          .fastgpt-fg { stroke: #ffffff; }
-        }
+        @media (prefers-color-scheme: dark) { .fastgpt-bg { fill: #2b2b3b; } .fastgpt-fg { stroke: #ffffff; } }
         html.dark .fastgpt-bg, html[data-theme='dark'] .fastgpt-bg { fill: #2b2b3b !important; }
         html.dark .fastgpt-fg, html[data-theme='dark'] .fastgpt-fg { stroke: #ffffff !important; }
         html.light .fastgpt-bg, html[data-theme='light'] .fastgpt-bg { fill: #ffffff !important; }
@@ -115,10 +107,7 @@ function embedChatbot() {
       </style>
       <g class="fastgpt-icon">
         <path class="fastgpt-bg" d="M40 16C26.7 16 16 26.7 16 40c0 13.3 10.7 24 24 24 4.2 0 8.1-1 11.5-2.8L62 64l-2.8-10.5C62.2 49.6 64 45 64 40c0-13.3-10.7-24-24-24z"/>
-        <g class="fastgpt-fg">
-          <path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" />
-          <path d="M49 30 L49 50" />
-        </g>
+        <g class="fastgpt-fg"><path d="M29 50 L35 30 L41 50 M31.5 43 L38.5 43" /><path d="M49 30 L49 50" /></g>
       </g>
     </svg>
   `;
@@ -136,19 +125,13 @@ function embedChatbot() {
         .fastgpt-bg-close { fill: #ffffff; stroke: url(#g-blue-close); stroke-width: 3; stroke-dasharray: 60 30; animation: fastgpt-dash 3s linear infinite; }
         .fastgpt-fg-close { stroke: #111111; fill: none; stroke-width: 4.5; stroke-linecap: round; }
         @keyframes fastgpt-dash { to { stroke-dashoffset: 180; } }
-        @media (prefers-color-scheme: dark) {
-          .fastgpt-bg-close { fill: #2b2b3b; }
-          .fastgpt-fg-close { stroke: #ffffff; }
-        }
+        @media (prefers-color-scheme: dark) { .fastgpt-bg-close { fill: #2b2b3b; } .fastgpt-fg-close { stroke: #ffffff; } }
         html.dark .fastgpt-bg-close, html[data-theme='dark'] .fastgpt-bg-close { fill: #2b2b3b !important; }
         html.dark .fastgpt-fg-close, html[data-theme='dark'] .fastgpt-fg-close { stroke: #ffffff !important; }
         html.light .fastgpt-bg-close, html[data-theme='light'] .fastgpt-bg-close { fill: #ffffff !important; }
         html.light .fastgpt-fg-close, html[data-theme='light'] .fastgpt-fg-close { stroke: #111111 !important; }
       </style>
-      <g class="fastgpt-icon">
-        <circle class="fastgpt-bg-close" cx="40" cy="40" r="24" />
-        <path class="fastgpt-fg-close" d="M30 30L50 50M50 30L30 50" />
-      </g>
+      <g class="fastgpt-icon"><circle class="fastgpt-bg-close" cx="40" cy="40" r="24" /><path class="fastgpt-fg-close" d="M30 30L50 50M50 30L30 50" /></g>
     </svg>
   `;
 
@@ -183,7 +166,7 @@ function embedChatbot() {
     document.body.appendChild(ChatBtn);
   }
 
-  // 3. 创建对话框 Iframe (【改动点】：默认不设 src，只用于PC弹窗)
+  // 3. 创建对话框 Iframe (默认不设 src)
   const iframe = document.createElement('iframe');
   iframe.allow = 'microphone *; *';
   iframe.referrerPolicy = 'no-referrer';
@@ -200,7 +183,6 @@ function embedChatbot() {
     isIframeLoaded = true;
   }
 
-  // 4. 计算 Iframe 的弹出位置 (仅PC端使用)
   const updateChatWindowPosition = () => {
     const btnRect = ChatBtn.getBoundingClientRect();
     const isWideScreen = window.innerWidth >= 768; 
@@ -209,12 +191,7 @@ function embedChatbot() {
       iframe.style.top = (btnRect.bottom + 12) + 'px'; 
       iframe.style.bottom = 'unset'; 
       iframe.style.maxHeight = `calc(100vh - ${btnRect.bottom + 24}px)`; 
-      
-      if (isWideScreen) {
-        iframe.style.right = '24px';
-      } else {
-        iframe.style.right = '16px';
-      }
+      iframe.style.right = isWideScreen ? '24px' : '16px';
     } else {
       iframe.style.right = isWideScreen ? '24px' : '16px';
       iframe.style.top = 'unset';
@@ -223,17 +200,44 @@ function embedChatbot() {
     }
   };
 
-  // 5. 点击事件：分离手机端与PC端的处理逻辑
-  ChatBtn.onclick = () => {
+  // ==========================================
+  // 【核心】离线状态管理
+  // ==========================================
+  const updateOnlineStatus = () => {
+    if (!navigator.onLine) {
+      ChatBtn.classList.add('is-offline');
+      ChatBtn.title = '离线模式下无法使用 AI 助手';
+      // 如果弹窗开着，强制关闭
+      if (iframe.style.visibility !== 'hidden') {
+        iframe.style.visibility = 'hidden';
+        iframe.style.opacity = '0';
+        ChatIconContainer.innerHTML = svgOpen;
+      }
+    } else {
+      ChatBtn.classList.remove('is-offline');
+      ChatBtn.title = '';
+    }
+  };
+
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+  updateOnlineStatus(); // 初始化检测
+
+  // 5. 点击事件：增加离线拦截
+  ChatBtn.onclick = (e) => {
+    if (!navigator.onLine) {
+      e.preventDefault();
+      // 在按钮处冒泡提示即可，阻止后续加载
+      return;
+    }
+
     const isWideScreen = window.innerWidth >= 768;
 
-    // 【新增逻辑】手机端：直接新窗口打开，并终止后续弹窗逻辑
     if (!isWideScreen) {
       window.open(botSrc, '_blank');
       return; 
     }
 
-    // 【PC 端逻辑】正常在当前页面弹窗
     const isOpening = iframe.style.visibility === 'hidden'; 
 
     if (isOpening && !isIframeLoaded) {
@@ -250,13 +254,10 @@ function embedChatbot() {
     }
   };
 
-  // 6. 窗口缩放事件处理
   window.addEventListener('resize', () => {
     const isWideScreen = window.innerWidth >= 768;
-
     if (iframe.style.visibility !== 'hidden') {
       if (!isWideScreen) {
-        // 如果用户在 PC 端打开了弹窗，然后手动缩小浏览器到手机尺寸，则强制关闭弹窗
         iframe.style.visibility = 'hidden';
         iframe.style.opacity = '0';
         ChatIconContainer.innerHTML = svgOpen;
@@ -266,16 +267,17 @@ function embedChatbot() {
     }
   });
   
-  if (isInitWideScreen) {
-    updateChatWindowPosition();
-  }
+  if (isInitWideScreen) updateChatWindowPosition();
 }
+
+// 【核心】Event Loop 延后执行，确保不阻塞离线文档的 DOM 解析
+const deferEmbed = () => setTimeout(embedChatbot, 100);
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', embedChatbot);
+  document.addEventListener('DOMContentLoaded', deferEmbed);
 } else {
-  embedChatbot();
+  deferEmbed();
 }
 
-document.addEventListener('astro:page-load', embedChatbot);
+document.addEventListener('astro:page-load', deferEmbed);
 </script>

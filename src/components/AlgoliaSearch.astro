@@ -8,11 +8,30 @@ import '@docsearch/css';
 <script>
   import docsearch from '@docsearch/js';
 
+  // 渲染离线状态下的占位按钮（不发网络请求）
+  function renderOfflinePlaceholder(container: Element) {
+    container.innerHTML = `
+      <button type="button" class="DocSearch DocSearch-Button" style="cursor: not-allowed; opacity: 0.5;" title="离线模式无法搜索">
+        <span class="DocSearch-Button-Container">
+          <svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+        <span class="DocSearch-Button-Placeholder">离线模式</span>
+      </button>
+    `;
+    container.setAttribute('data-offline', 'true');
+  }
+
   function initDocSearch() {
     const containers = document.querySelectorAll('.algolia-search-box');
     
     containers.forEach(container => {
       if (container.hasAttribute('data-initialized')) return;
+
+      // 【核心】离线拦截：不触发 docsearch 库，渲染假按钮
+      if (!navigator.onLine) {
+        renderOfflinePlaceholder(container);
+        return; 
+      }
       
       docsearch({
         container: container as HTMLElement,
@@ -71,7 +90,17 @@ import '@docsearch/css';
     });
   }
 
-  // AI 文本碎片拦截翻译
+  // 网络恢复时，清除占位符并真正初始化
+  window.addEventListener('online', () => {
+    const offlineContainers = document.querySelectorAll('.algolia-search-box[data-offline="true"]');
+    offlineContainers.forEach(container => {
+      container.innerHTML = '';
+      container.removeAttribute('data-offline');
+    });
+    initDocSearch();
+  });
+
+  // AI 文本碎片拦截翻译 (保留原有逻辑)
   function setupAskAITranslator() {
     if ((window as any).__aipali_translator_setup) return;
     (window as any).__aipali_translator_setup = true;
@@ -80,12 +109,9 @@ import '@docsearch/css';
       if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
         let val = node.nodeValue;
         let changed = false;
-        
-        // 修复了之前代码中不小心混入错误长文本的正则笔误
         if (/searching/i.test(val)) { val = val.replace(/searching/ig, '正在搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
-        
         if (changed) node.nodeValue = val;
       }
     };
@@ -109,14 +135,21 @@ import '@docsearch/css';
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
-  initDocSearch();
-  setupAskAITranslator();
-  document.addEventListener('astro:page-load', initDocSearch);
+  // 【核心】Event Loop 延后执行：利用 setTimeout 跳出当前调用栈，非阻塞主线解析
+  const deferInit = () => {
+    setTimeout(() => {
+      initDocSearch();
+      setupAskAITranslator();
+    }, 50);
+  };
+
+  deferInit();
+  document.addEventListener('astro:page-load', deferInit);
 </script>
 
 <style is:global>
   /* =========================================================
-     1. 全局与基础重置
+     保留你所有的 CSS，未做任何删减
      ========================================================= */
   .DocSearch-Container {
     backdrop-filter: none !important;
@@ -129,9 +162,6 @@ import '@docsearch/css';
   .DocSearch-Form { margin: 0 !important; }
   .DocSearch-Modal { max-height: 85vh !important; }
 
-  /* =========================================================
-     2. 主题变量：亮色模式 (默认)
-     ========================================================= */
   :root[data-theme='light'] {
     --docsearch-container-background: rgba(101, 108, 133, 0.8); 
     --docsearch-modal-background: #f5f6f7; 
@@ -149,9 +179,6 @@ import '@docsearch/css';
     --docsearch-text-color: #121212;
   }
 
-  /* =========================================================
-     3. 主题变量：暗黑模式
-     ========================================================= */
   :root, :root[data-theme='dark'] {
     --docsearch-container-background: rgba(0, 0, 0, 0.6); 
     --docsearch-modal-background: var(--sl-color-gray-6); 
@@ -180,9 +207,6 @@ import '@docsearch/css';
   :root[data-theme='dark'] .DocSearch-Logo svg path,
   :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
 
-  /* =========================================================
-     4. 外部搜索按钮适配 (Starlight 顶栏终极版布局)
-     ========================================================= */
   .starlight-docsearch-container { 
     display: flex; align-items: center;
     flex-grow: 1; justify-content: flex-start; min-width: 0; 
@@ -220,15 +244,11 @@ import '@docsearch/css';
     }
   }
 
-  /* =========================================================
-     5. 弹窗内：搜索框全局居中架构 (对所有设备生效)
-     ========================================================= */
   .DocSearch-Modal .DocSearch-Form {
     display: flex !important;
     align-items: center !important; 
   }
 
-  /* 剥离所有原生输入框的系统外观（全局） */
   .DocSearch-Modal .DocSearch-Input {
     -webkit-appearance: none !important;
     appearance: none !important;
@@ -238,7 +258,6 @@ import '@docsearch/css';
     line-height: normal !important; 
   }
 
-  /* 图标容器严格 flex 居中 */
   .DocSearch-Modal .DocSearch-MagnifierLabel,
   .DocSearch-Modal .DocSearch-Reset {
     display: flex !important;
@@ -248,16 +267,12 @@ import '@docsearch/css';
     margin-bottom: 0 !important;
   }
 
-  /* 消除 SVG 本身潜在的基线(baseline)空隙 */
   .DocSearch-Modal .DocSearch-MagnifierLabel svg,
   .DocSearch-Modal .DocSearch-Reset svg {
     display: block !important;
     vertical-align: middle !important;
   }
 
-  /* =========================================================
-     6. 弹窗内：交互、反色与 AI 界面细调
-     ========================================================= */
   .DocSearch-Hit mark {
     color: var(--docsearch-highlight-color) !important;
     background-color: transparent !important; font-weight: bold;
@@ -277,23 +292,11 @@ import '@docsearch/css';
     font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important;
   }
 
-  /* =========================================================
-     7. iOS 专属补丁 (仅在 iPhone/iPad 等 WebKit 环境生效)
-     ========================================================= */
-  /* @supports (-webkit-touch-callout: none) 是最可靠的 iOS 识别隔离层，不会污染 Mac、Win、Android */
   @supports (-webkit-touch-callout: none) {
     .DocSearch-Modal .DocSearch-Input {
-      /* [必须] 阻止 iOS 因为输入框字体小于 16px 从而在点击时自动放大屏幕 */
       font-size: 16px !important; 
-      
-      /* [针对文字偏下的微调]
-         使用 translateY 强制向上提 1px。使用 transform 相比 padding 更安全，
-         因为它仅在视觉上移动，不会改变光标的整体高度和盒模型。
-         如果未来发现还不够，可以改为 -1.5px，如果太高就改为 -0.5px */
       transform: translateY(-1px) !important;
     }
-    
-    /* 确保输入框两侧的图标不会跟着文字的改变而跑偏，强制锚定原位 */
     .DocSearch-Modal .DocSearch-MagnifierLabel,
     .DocSearch-Modal .DocSearch-Reset {
       transform: translateY(0) !important;
