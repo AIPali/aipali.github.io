@@ -97,7 +97,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
           },
         },
         {
-          // 3. 站内静态资源缓存
+          // 3. 站内静态资源的缓存
           urlPattern: ({ request, url }) => {
             if (url.origin !== self.location.origin) return false;
             return (
