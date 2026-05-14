@@ -43,13 +43,13 @@ export function getPwaConfig(deployEnv, baseUrl) {
         {
           // 1. Algolia 搜索引擎拦截
           urlPattern: /^https:\/\/[a-zA-Z0-9-]+\.(algolia\.net|algolianet\.com)\/.*(queries|indexes|search).*/i,
-          handler: 'NetworkOnly',
+          // 修复：networkTimeoutSeconds 必须配合 NetworkFirst 使用
+          handler: 'NetworkFirst',
           options: {
             networkTimeoutSeconds: 2, // 强制2秒超时，防止VPN假在线挂起阻塞
             plugins: [
               {
-                // 注意：在Workbox中，fetchDidFail无法返回兜底响应给页面
-                // 必须使用 handlerDidError 才能正确地向前端返回 Mock 数据
+                // 超时并无缓存时触发兜底响应
                 handlerDidError: async () => {
                   return new Response(
                     JSON.stringify({ results: [{ hits: [], nbHits: 0, page: 0, nbPages: 0, hitsPerPage: 20 }] }),
@@ -72,11 +72,13 @@ export function getPwaConfig(deployEnv, baseUrl) {
         {
           // 2. FastGPT AI助手请求拦截
           urlPattern: /^https:\/\/ai\.true-dhamma\.com\/.*/i,
-          handler: 'NetworkOnly',
+          // 修复：networkTimeoutSeconds 必须配合 NetworkFirst 使用
+          handler: 'NetworkFirst',
           options: {
             networkTimeoutSeconds: 2, // 强制2秒超时
             plugins:[
               {
+                // 超时并无缓存时触发兜底响应
                 handlerDidError: async ({ request }) => {
                   if (request.destination === 'document' || request.destination === 'iframe') {
                     return new Response(
