@@ -41,16 +41,12 @@ export function getPwaConfig(deployEnv, baseUrl) {
 
       runtimeCaching: [
         {
-          // 1. Algolia 搜索引擎拦截
           urlPattern: /^https:\/\/[a-zA-Z0-9-]+\.(algolia\.net|algolianet\.com)\/.*(queries|indexes|search).*/i,
-          // 修复：networkTimeoutSeconds 必须配合 NetworkFirst 使用
-          handler: 'NetworkFirst',
+          handler: 'NetworkOnly',
           options: {
-            networkTimeoutSeconds: 2, // 强制2秒超时，防止VPN假在线挂起阻塞
             plugins: [
               {
-                // 超时并无缓存时触发兜底响应
-                handlerDidError: async () => {
+                fetchDidFail: async () => {
                   return new Response(
                     JSON.stringify({ results: [{ hits: [], nbHits: 0, page: 0, nbPages: 0, hitsPerPage: 20 }] }),
                     { status: 200, headers: { 'Content-Type': 'application/json' } }
@@ -70,16 +66,12 @@ export function getPwaConfig(deployEnv, baseUrl) {
           },
         },
         {
-          // 2. FastGPT AI助手请求拦截
           urlPattern: /^https:\/\/ai\.true-dhamma\.com\/.*/i,
-          // 修复：networkTimeoutSeconds 必须配合 NetworkFirst 使用
-          handler: 'NetworkFirst',
+          handler: 'NetworkOnly',
           options: {
-            networkTimeoutSeconds: 2, // 强制2秒超时
             plugins:[
               {
-                // 超时并无缓存时触发兜底响应
-                handlerDidError: async ({ request }) => {
+                fetchDidFail: async ({ request }) => {
                   if (request.destination === 'document' || request.destination === 'iframe') {
                     return new Response(
                       `<!DOCTYPE html><html><head><meta charset="utf-8">
@@ -99,7 +91,6 @@ export function getPwaConfig(deployEnv, baseUrl) {
           },
         },
         {
-          // 3. 站内静态资源缓存
           urlPattern: ({ request, url }) => {
             if (url.origin !== self.location.origin) return false;
             return (
