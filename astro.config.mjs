@@ -45,6 +45,7 @@ export default defineConfig({
       components: {
         PageTitle: './src/components/PageTitle.astro',
         Head: './src/components/CustomHead.astro',
+        Footer: './src/components/CustomFooter.astro',
         Search: './src/components/AlgoliaSearch.astro',
       },
       head: [

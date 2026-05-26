@@ -1,0 +1,30 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+
+<Default {...Astro.props} />
+
+<div class="custom-copyright">
+  <p>
+    AIPali 由 <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法（True-Dhamma.com）</a> 建立并维护
+  </p>
+</div>
+
+<style>
+  .custom-copyright {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    text-align: center;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+  }
+  .custom-copyright a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+  .custom-copyright a:hover {
+    text-decoration: underline;
+  }
+</style>
