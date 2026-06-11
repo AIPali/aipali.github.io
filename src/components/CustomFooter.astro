@@ -1,15 +1,20 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Footer.astro';
+
+const isDocPage = Astro.props.hasSidebar === true;
 ---
 
 <Default {...Astro.props} />
 
-<div class="custom-copyright">
-  <p>
-    AIPali 由 <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 (True-Dhamma.com)</a> 建立并维护
-  </p>
-</div>
+{/* 只有在包含侧边栏的文档页，才渲染自定义版权信息 */}
+{isDocPage && (
+  <div class="custom-copyright">
+    <p>
+      AIPali 由 <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 (True-Dhamma.com)</a> 建立并维护
+    </p>
+  </div>
+)}
 
 <style>
   .custom-copyright {

@@ -141,158 +141,7 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // 划词唤醒 AI 核心功能 (客户端侧边栏精准检测 + 反转变量处理)
-  // ============================================================
-  function setupTextSelectionAskAI() {
-    if ((window as any).__aipali_selection_setup) return;
-    (window as any).__aipali_selection_setup = true;
-
-    // 1. 创建全局悬浮按钮 (单例)
-    let popup = document.getElementById('aipali-selection-popup');
-    if (!popup) {
-      popup = document.createElement('button');
-      popup.id = 'aipali-selection-popup';
-      popup.className = 'aipali-ask-ai-popup';
-      popup.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        <span>AI 解读</span>
-      `;
-      document.body.appendChild(popup);
-
-      // mousedown 拦截：防止点击按钮瞬间导致选区被浏览器清空
-      popup.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        const selection = window.getSelection();
-        if (selection && selection.toString().trim().length > 1) {
-          const text = selection.toString().trim();
-          triggerAlgoliaAskAI(text);
-        }
-        hidePopup();
-      });
-    }
-
-    function hidePopup() {
-      if (popup) popup.classList.remove('show');
-    }
-
-    // 2. 监听选区变化并计算位置
-    const handleSelection = () => {
-      setTimeout(() => {
-        // 【核心精准过滤】检测当前 DOM 中是否存在 Starlight 侧边栏
-        // 从而完美避开 Splash 首页等没有侧边栏的自定义渲染页面，不执行任何划词逻辑
-        const hasSidebar = !!document.querySelector('.sidebar-content') || 
-                            !!document.getElementById('starlight__sidebar') || 
-                            !!document.querySelector('aside#sidebar');
-        if (!hasSidebar) {
-          hidePopup();
-          return;
-        }
-
-        const selection = window.getSelection();
-        if (!selection || selection.isCollapsed) {
-          hidePopup();
-          return;
-        }
-
-        const text = selection.toString().trim();
-        // 防误点：必须大于 1 个字符
-        if (text.length <= 1) {
-          hidePopup();
-          return;
-        }
-
-        // 防误点：检查选中内容的锚点是否在文档正文内容区域 (.sl-markdown-content) 内
-        let node = selection.anchorNode as HTMLElement | null;
-        let isInsideContent = false;
-        while (node) {
-          if (node.nodeType === 1 && node.classList && node.classList.contains('sl-markdown-content')) {
-            isInsideContent = true;
-            break;
-          }
-          node = node.parentElement;
-        }
-
-        if (!isInsideContent) {
-          hidePopup();
-          return;
-        }
-
-        const range = selection.getRangeAt(0);
-        const rect = range.getBoundingClientRect();
-        
-        if (rect.width === 0 || rect.height === 0) return;
-
-        const scrollX = window.scrollX || document.documentElement.scrollLeft;
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
-        
-        // 显示在选区的正下方，避开手机系统的顶部高亮菜单
-        if (popup) {
-            popup.style.left = `${rect.left + scrollX + (rect.width / 2)}px`;
-            popup.style.top = `${rect.bottom + scrollY + 12}px`; 
-            popup.classList.add('show');
-        }
-      }, 50);
-    };
-
-    document.addEventListener('mouseup', handleSelection);
-    document.addEventListener('touchend', handleSelection);
-    document.addEventListener('keyup', handleSelection);
-
-    document.addEventListener('mousedown', (e) => {
-      if (popup && e.target !== popup && !popup.contains(e.target as Node)) {
-        hidePopup();
-      }
-    });
-    document.addEventListener('scroll', () => {
-       if (popup && popup.classList.contains('show')) hidePopup();
-    }, { passive: true });
-  }
-
-  // ============================================================
-  // 全自动唤起并触发 Algolia Ask AI
-  // ============================================================
-  function triggerAlgoliaAskAI(query: string) {
-    const docSearchBtn = document.querySelector('.DocSearch-Button') as HTMLElement;
-    if (!docSearchBtn) return;
-    docSearchBtn.click();
-
-    let checkInputCount = 0;
-    
-    const checkInputInterval = setInterval(() => {
-      const input = document.querySelector('.DocSearch-Input') as HTMLInputElement;
-      if (input) {
-        clearInterval(checkInputInterval);
-        
-        const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
-        if (nativeInputValueSetter) {
-          nativeInputValueSetter.call(input, query);
-        } else {
-          input.value = query;
-        }
-        
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-
-        let checkAskAICount = 0;
-
-        const checkAskAIInterval = setInterval(() => {
-          const askAiContainer = document.querySelector('.DocSearch-Hit--AskAI');
-          if (askAiContainer) {
-            const clickable = (askAiContainer.querySelector('a') || askAiContainer.querySelector('button') || askAiContainer) as HTMLElement;
-            if (clickable) {
-              clickable.click(); 
-              clearInterval(checkAskAIInterval);
-            }
-          }
-          if (checkAskAICount++ > 30) clearInterval(checkAskAIInterval);
-        }, 100);
-      }
-      if (checkInputCount++ > 30) clearInterval(checkInputInterval);
-    }, 50);
-  }
-
-  // ============================================================
-  // 非阻塞调度与生命周期
+  // 非阻塞调度函数：在主线程空闲时执行，不阻塞页面渲染
   // ============================================================
   function scheduleIdle(fn: () => void) {
     if (typeof requestIdleCallback !== 'undefined') {
@@ -302,38 +151,56 @@ import '@docsearch/css';
     }
   }
 
+  // ============================================================
+  // 核心入口：根据网络状态决定初始化路径
+  // ============================================================
   function mountSearchComponent() {
     scheduleIdle(() => {
       if (navigator.onLine) {
+        // 在线：正常初始化 docsearch
         initDocSearch();
         setupAskAITranslator();
       } else {
+        // 离线：渲染静态占位符，完全不发请求
         document.querySelectorAll('.algolia-search-box').forEach(container => {
           renderOfflinePlaceholder(container as HTMLElement);
         });
       }
-      setupTextSelectionAskAI();
     });
   }
 
+  // ============================================================
+  // 网络状态变化监听（全局只注册一次）
+  // ============================================================
   function setupNetworkListeners() {
     if ((window as any).__aipali_network_listener_setup) return;
     (window as any).__aipali_network_listener_setup = true;
 
+    // 网络恢复：将离线占位符替换为真正的搜索框
     window.addEventListener('online', () => {
       scheduleIdle(() => {
         initDocSearch();
         setupAskAITranslator();
+        // 通知 FastGPT 组件网络已恢复
         window.dispatchEvent(new CustomEvent('aipali:online'));
       });
     });
+
+    // 网络断开：将搜索框替换为占位符
+    // 注意：此处不强制替换已初始化的 docsearch（卸载成本高），
+    // 而是让 PWA 的 SW fetchDidFail 兜底处理后续请求
     window.addEventListener('offline', () => {
       window.dispatchEvent(new CustomEvent('aipali:offline'));
     });
   }
 
+  // ============================================================
+  // 页面生命周期挂钩（兼容 Astro View Transitions）
+  // ============================================================
   mountSearchComponent();
   setupNetworkListeners();
+
+  // astro:page-load 在每次页面导航后触发
   document.addEventListener('astro:page-load', mountSearchComponent);
 </script>
 
@@ -352,12 +219,19 @@ import '@docsearch/css';
   .DocSearch-Form { margin: 0 !important; }
   .DocSearch-Modal { max-height: 85vh !important; }
 
+  /* =========================================================
+     离线占位按钮样式
+     复用 DocSearch-Button 的外观，但显示为禁用态
+     ========================================================= */
   .DocSearch-Button--offline {
     opacity: 0.5;
     cursor: not-allowed !important;
     pointer-events: none;
   }
 
+  /* =========================================================
+     2. 主题变量：亮色模式 (默认)
+     ========================================================= */
   :root[data-theme='light'] {
     --docsearch-container-background: rgba(101, 108, 133, 0.8); 
     --docsearch-modal-background: #f5f6f7; 
@@ -375,6 +249,9 @@ import '@docsearch/css';
     --docsearch-text-color: #121212;
   }
 
+  /* =========================================================
+     3. 主题变量：暗黑模式
+     ========================================================= */
   :root, :root[data-theme='dark'] {
     --docsearch-container-background: rgba(0, 0, 0, 0.6); 
     --docsearch-modal-background: var(--sl-color-gray-6); 
@@ -403,6 +280,9 @@ import '@docsearch/css';
   :root[data-theme='dark'] .DocSearch-Logo svg path,
   :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
 
+  /* =========================================================
+     4. 外部搜索按钮适配 (Starlight 顶栏终极版布局)
+     ========================================================= */
   .starlight-docsearch-container { 
     display: flex; align-items: center;
     flex-grow: 1; justify-content: flex-start; min-width: 0; 
@@ -440,73 +320,72 @@ import '@docsearch/css';
     }
   }
 
-  .DocSearch-Modal .DocSearch-Form { display: flex !important; align-items: center !important; }
-  .DocSearch-Modal .DocSearch-Input { -webkit-appearance: none !important; appearance: none !important; margin: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; line-height: normal !important; }
-  .DocSearch-Modal .DocSearch-MagnifierLabel, .DocSearch-Modal .DocSearch-Reset { display: flex !important; align-items: center !important; justify-content: center !important; margin-top: 0 !important; margin-bottom: 0 !important; }
-  .DocSearch-Modal .DocSearch-MagnifierLabel svg, .DocSearch-Modal .DocSearch-Reset svg { display: block !important; vertical-align: middle !important; }
+  /* =========================================================
+     5. 弹窗内：搜索框全局居中架构 (对所有设备生效)
+     ========================================================= */
+  .DocSearch-Modal .DocSearch-Form {
+    display: flex !important;
+    align-items: center !important; 
+  }
 
-  .DocSearch-Hit mark { color: var(--docsearch-highlight-color) !important; background-color: transparent !important; font-weight: bold; }
-  .DocSearch-Hit[aria-selected='true'] a { background-color: var(--docsearch-hit-hover-background) !important; box-shadow: none !important; }
-  .DocSearch-Hit[aria-selected='true'] a *, .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
-  .DocSearch-Modal .prose a, .DocSearch-Modal a[class*="askAi"], .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
-  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result { font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important; }
+  .DocSearch-Modal .DocSearch-Input {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: normal !important; 
+  }
 
-  @supports (-webkit-touch-callout: none) {
-    .DocSearch-Modal .DocSearch-Input { font-size: 16px !important; transform: translateY(-1px) !important; }
-    .DocSearch-Modal .DocSearch-MagnifierLabel, .DocSearch-Modal .DocSearch-Reset { transform: translateY(0) !important; }
+  .DocSearch-Modal .DocSearch-MagnifierLabel,
+  .DocSearch-Modal .DocSearch-Reset {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0 !important; 
+    margin-bottom: 0 !important;
+  }
+
+  .DocSearch-Modal .DocSearch-MagnifierLabel svg,
+  .DocSearch-Modal .DocSearch-Reset svg {
+    display: block !important;
+    vertical-align: middle !important;
   }
 
   /* =========================================================
-     [新增] 划词触发 AI 解读悬浮按钮样式
+     6. 弹窗内：交互、反色与 AI 界面细调
      ========================================================= */
-  .aipali-ask-ai-popup {
-    position: absolute;
-    transform: translate(-50%, 0) scale(0.95);
-    
-    /* 亮色模式 (Light Mode) 默认样式 */
-    background: var(--sl-color-accent); 
-    color: #ffffff !important; /* 【核心修复】强制使用硬编码纯白色，防止 Starlight 变量反向解析导致文字变成灰黑色 */
-    
-    border: none;
-    padding: 6px 12px;
-    border-radius: 0.25rem; /* 圆角修改为 0.25rem (4px)，与 Starlight 菜单栏保持视觉高度一致 */
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s;
-    z-index: 9998; 
-    pointer-events: none;
+  .DocSearch-Hit mark {
+    color: var(--docsearch-highlight-color) !important;
+    background-color: transparent !important; font-weight: bold;
   }
-  .aipali-ask-ai-popup.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0) scale(1);
-    pointer-events: auto;
+  .DocSearch-Hit[aria-selected='true'] a {
+    background-color: var(--docsearch-hit-hover-background) !important;
+    box-shadow: none !important;
   }
-  .aipali-ask-ai-popup:hover {
-    background: var(--sl-color-accent-high);
-    color: #ffffff !important;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  }
-  .aipali-ask-ai-popup svg {
-    stroke: currentColor;
+  .DocSearch-Hit[aria-selected='true'] a *,
+  .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
+
+  .DocSearch-Modal .prose a,
+  .DocSearch-Modal a[class*="askAi"],
+  .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
+  
+  .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result {
+    font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important;
   }
 
-  /* 深色模式 (Dark Mode) 样式覆盖 */
-  :root[data-theme='dark'] .aipali-ask-ai-popup {
-    /* 深色模式下：背景选用高亮的亮蓝色，文字选用 Starlight 的底板深黑色来维持最佳阅读对比度 */
-    background: var(--sl-color-text-accent);
-    color: var(--sl-color-black) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--sl-color-gray-5);
-  }
-  :root[data-theme='dark'] .aipali-ask-ai-popup:hover {
-    background: var(--sl-color-accent-high);
-    color: var(--sl-color-black) !important;
+  /* =========================================================
+     7. iOS 专属补丁
+     ========================================================= */
+  @supports (-webkit-touch-callout: none) {
+    .DocSearch-Modal .DocSearch-Input {
+      font-size: 16px !important; 
+      transform: translateY(-1px) !important;
+    }
+    
+    .DocSearch-Modal .DocSearch-MagnifierLabel,
+    .DocSearch-Modal .DocSearch-Reset {
+      transform: translateY(0) !important;
+    }
   }
 </style>
