@@ -2,12 +2,13 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Footer.astro';
 
-const isDocPage = Astro.props.hasSidebar === true;
+const starlightRoute = Astro.locals.starlightRoute || Astro.props;
+const isDocPage = starlightRoute.hasSidebar === true;
 ---
 
 <Default {...Astro.props} />
 
-{/* 只有在包含侧边栏的文档页，才渲染自定义版权信息 */}
+{/* 只有在包含侧边栏的标准文档页，才渲染自定义版权信息 */}
 {isDocPage && (
   <div class="custom-copyright">
     <p>
