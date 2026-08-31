@@ -148,8 +148,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
       </Card>
       
       <Card title="故障排除" icon="phone">
-        如果您发现有些经文或功能无法离线使用，可以在网络连接良好的情况下，点击<b className="highlight-text">清除本地数据</b>，然后<b className="highlight-text">划掉/退出</b>当前应用并重新打开。当看到“本地存储占用”低于 3M 后，点击 <b className="highlight-text">全量重新构建</b>，从线上同步所有节点。同步完成后，<b className="highlight-text">随机打开几篇经文</b>，然后切换到<b className="highlight-text">飞行模式</b>——如果经文在离线状态下正常打开，则说明离线版功能已恢复正常。<br>
-        如果您已完成上述操作且在离线状态下已能打开部分页面，但却无法点开菜单或切换经文，这通常是由于设备处在弱网环境（如连接 5G 或 WiFi 但无实际网络连接）所导致的。出现这种状况时，您可以将移动设备调整至飞行模式并关闭 WiFi 来排除此故障。
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
+          <li>如果您发现有些经文或功能无法离线使用，可以在网络连接良好的情况下，点击<b className="highlight-text">清除本地数据</b>，然后<b className="highlight-text">划掉/退出</b>当前应用并重新打开。当看到“本地存储占用”低于 3M 后，点击 <b className="highlight-text">全量重新构建</b>，从线上同步所有节点。同步完成后，<b className="highlight-text">随机打开几篇经文</b>，然后切换到<b className="highlight-text">飞行模式</b>——如果经文在离线状态下正常打开，则说明离线版功能已恢复正常。</li>
+          <li>如果您已完成上述操作且在离线状态下已能打开部分页面，但却无法点开菜单或切换经文，这通常是由于设备处于<b className="highlight-text">弱网环境</b>（如连接 5G 或 WiFi 但无实际网络连接）所导致的。在这种情况下，您可以将移动设备<b className="highlight-text">调整至飞行模式并关闭 WiFi</b>来排除此故障。</li>
+        </ul>
       </Card>
 
     </div>
