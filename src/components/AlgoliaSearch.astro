@@ -37,10 +37,8 @@ import '@docsearch/css';
       const el = container as HTMLElement;
       const status = el.getAttribute('data-initialized');
 
-      // 已完整初始化过，跳过
       if (status === 'true') return;
 
-      // 若之前渲染了离线占位符，先清除
       if (status === 'offline-placeholder') {
         el.innerHTML = '';
         el.removeAttribute('data-initialized');
@@ -141,13 +139,13 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // [新增核心] AI 思考过程 (<think>) 渲染与折叠交互处理器
+  // [修复核心] VDOM-Safe 的 AI 思考过程 (<think>) 渲染器
   // ============================================================
   function setupAskAIThinkingHandler() {
     if ((window as any).__aipali_thinking_setup) return;
     (window as any).__aipali_thinking_setup = true;
 
-    // 1. 全局事件委托：捕获并记录用户手动折叠偏好，彻底防止流式更新时被强行弹开
+    // 1. 全局事件委托：捕获用户折叠操作，写入持久态
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
@@ -160,7 +158,6 @@ import '@docsearch/css';
       const parentMsg = details.closest('.DocSearch-AskAiScreen-Message') || details.parentElement;
       if (!parentMsg) return;
 
-      // 等待原生 details.open 状态在微任务/宏任务中翻转完成后再记录
       setTimeout(() => {
         if (details.open) {
           parentMsg.removeAttribute('data-user-collapsed');
@@ -170,10 +167,9 @@ import '@docsearch/css';
       }, 0);
     });
 
-    // 2. 核心扫描与转换引擎
     let isMutating = false;
 
-    // 严格判断是否属于 Tool Call（工具调用）容器
+    // 严密识别 Tool Call (工具调用阶段)
     const isToolContainer = (el: HTMLElement): boolean => {
       return (
         el.classList.contains('DocSearch-AskAiScreen-MessageContent-Tool') ||
@@ -184,91 +180,69 @@ import '@docsearch/css';
     };
 
     const processContainer = (container: HTMLElement) => {
-      // 场景 A：Tool Call 阶段 —— 坚决不显示 think，进行彻底清理抹除
+      // 安全锁：遇到自己生成的镜像替身，直接跳过，防止死循环
+      if (container.classList.contains('aipali-mirror')) return;
+
+      // 【场景 A：Tool Call 阶段】 - 绝对不要改动 DOM 结构，防止破坏工具交互事件
       if (isToolContainer(container)) {
-        const thinkNodes = container.querySelectorAll('think, .starlight-think-block');
-        if (thinkNodes.length > 0) {
-          thinkNodes.forEach(n => n.remove());
+        // 使用底层的 TreeWalker 仅擦除文本，不触发 Preact 崩溃
+        const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+          if (node.nodeValue && /(&lt;|<)think/i.test(node.nodeValue)) {
+            node.nodeValue = node.nodeValue
+              .replace(/&lt;think&gt;[\s\S]*?(&lt;\/think&gt;|$)/gi, '')
+              .replace(/<think>[\s\S]*?(<\/think>|$)/gi, '');
+          }
         }
-        if (container.innerHTML.includes('think')) {
-          container.innerHTML = container.innerHTML
-            .replace(/&lt;think&gt;[\s\S]*?(&lt;\/think&gt;|$)/gi, '')
-            .replace(/<think[\s\S]*?(<\/think>|$)/gi, '');
-        }
-        return;
+        return; 
       }
 
-      // 场景 B：最终回答问题阶段 —— 识别并结构化渲染 <think>
-      const html = container.innerHTML;
+      // 【场景 B：最终回答阶段】 - 启用“安全镜像 (Mirror Pattern)”技术
+      const rawHtml = container.innerHTML;
       const hasThinkTag = container.querySelector('think') !== null;
-      const hasThinkText = /(&lt;|<)think(&gt;|>)/i.test(html);
+      const hasThinkText = /(&lt;|<)think(&gt;|>)/i.test(rawHtml);
 
-      // 如果未发现思考内容痕迹，跳过
+      // 没有思考标签，不需要干预
       if (!hasThinkTag && !hasThinkText) return;
 
-      // 状态恢复：检查用户是否曾手动收起过，优先保留用户的交互决策
-      const parentMsg = container.closest('.DocSearch-AskAiScreen-Message') || container;
+      const parentMsg = container.closest('.DocSearch-AskAiScreen-Message') || container.parentElement;
+      if (!parentMsg) return;
+
+      // 寻找或创建一个独立的替身容器 (Mirror)
+      let mirror = parentMsg.querySelector('.aipali-mirror') as HTMLElement;
+      if (!mirror) {
+        mirror = document.createElement('div');
+        mirror.className = container.className + ' aipali-mirror';
+        // 让原生容器对用户隐身，但在后台继续接收大模型数据，彻底阻断 Preact 崩溃！
+        container.style.display = 'none'; 
+        parentMsg.insertBefore(mirror, container.nextSibling);
+      }
+
+      // 获取用户折叠记忆
       const isUserCollapsed = parentMsg.getAttribute('data-user-collapsed') === 'true';
       const openAttr = isUserCollapsed ? '' : 'open';
 
-      // 形式 1: DOM 中被直接解析为自定义 <think> 元素
-      const existingThinkEl = container.querySelector('think');
-      if (existingThinkEl) {
-        const thinkContent = existingThinkEl.innerHTML;
-        const details = document.createElement('details');
-        details.className = 'starlight-think-block';
-        if (!isUserCollapsed) details.setAttribute('open', '');
-        details.innerHTML = `
-          <summary class="starlight-think-summary">
-            <svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-            <span class="starlight-think-title">思考过程</span>
-          </summary>
-          <div class="starlight-think-content">${thinkContent}</div>
-        `;
-        existingThinkEl.replaceWith(details);
-        return;
+      const SVG_ICON = `<svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+
+      // 对内容进行正则表达式替换，并写入安全的替身容器
+      let processedHtml = rawHtml;
+
+      // 1. 替换已闭合的思考块
+      processedHtml = processedHtml.replace(
+        /(?:<think>|&lt;think&gt;)([\s\S]*?)(?:<\/think>|&lt;\/think&gt;)/gi,
+        (match, p1) => `<details class="starlight-think-block" ${openAttr}><summary class="starlight-think-summary">${SVG_ICON}<span class="starlight-think-title">思考过程</span></summary><div class="starlight-think-content">${p1}</div></details>`
+      );
+
+      // 2. 替换流式传输中尚未闭合的思考块
+      if (processedHtml.match(/(?:<think>|&lt;think&gt;)([\s\S]*)$/i)) {
+        processedHtml = processedHtml.replace(
+          /(?:<think>|&lt;think&gt;)([\s\S]*)$/i,
+          (match, p1) => `<details class="starlight-think-block" ${openAttr}><summary class="starlight-think-summary">${SVG_ICON}<span class="starlight-think-title">AIPali 思考中 ...</span></summary><div class="starlight-think-content">${p1}</div></details>`
+        );
       }
 
-      // 形式 2: 文本或转义形式（已闭合的思考过程）
-      const closedMatch = html.match(/(?:<think>|&lt;think&gt;)([\s\S]*?)(?:<\/think>|&lt;\/think&gt;)/i);
-      if (closedMatch) {
-        const thinkContent = closedMatch[1];
-        const answerContent = html.replace(/(?:<think>|&lt;think&gt;)[\s\S]*?(?:<\/think>|&lt;\/think&gt;)/i, '');
-
-        container.innerHTML = `
-          <details class="starlight-think-block" ${openAttr}>
-            <summary class="starlight-think-summary">
-              <svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-              <span class="starlight-think-title">思考过程</span>
-            </summary>
-            <div class="starlight-think-content">${thinkContent}</div>
-          </details>
-          <div class="starlight-answer-content">${answerContent}</div>
-        `;
-        return;
-      }
-
-      // 形式 3: 文本形式（思考过程流式进行中，尚未接收到闭合标签）
-      const openMatch = html.match(/(?:<think>|&lt;think&gt;)([\s\S]*)$/i);
-      if (openMatch) {
-        const thinkContent = openMatch[1];
-        container.innerHTML = `
-          <details class="starlight-think-block" ${openAttr}>
-            <summary class="starlight-think-summary">
-              <svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-              <span class="starlight-think-title">AIPali 思考中 ...</span>
-            </summary>
-            <div class="starlight-think-content">${thinkContent}</div>
-          </details>
-        `;
-        return;
-      }
+      mirror.innerHTML = processedHtml;
     };
 
     const scanAndProcess = () => {
@@ -278,31 +252,27 @@ import '@docsearch/css';
         const askAiModal = document.querySelector('.DocSearch-Modal');
         if (!askAiModal) return;
 
-        // 精准匹配消息容器
-        const contents = askAiModal.querySelectorAll('.DocSearch-AskAiScreen-MessageContent, [class*="MessageContent"]');
+        // 【关键】只去抓取真实的容器，避开已经被克隆出来的 mirror 替身
+        const contents = askAiModal.querySelectorAll('.DocSearch-AskAiScreen-MessageContent:not(.aipali-mirror), [class*="MessageContent"]:not(.aipali-mirror)');
         contents.forEach(el => processContainer(el as HTMLElement));
       } finally {
         setTimeout(() => {
           isMutating = false;
-        }, 20);
+        }, 30);
       }
     };
 
-    const observer = new MutationObserver(() => {
-      scanAndProcess();
-    });
-
+    const observer = new MutationObserver(() => { scanAndProcess(); });
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
   // ============================================================
-  // 划词唤醒 AI 核心功能 (客户端侧边栏精准检测 + 反转变量处理)
+  // 划词唤醒 AI 核心功能
   // ============================================================
   function setupTextSelectionAskAI() {
     if ((window as any).__aipali_selection_setup) return;
     (window as any).__aipali_selection_setup = true;
 
-    // 1. 创建全局悬浮按钮 (单例)
     let popup = document.getElementById('aipali-selection-popup');
     if (!popup) {
       popup = document.createElement('button');
@@ -314,7 +284,6 @@ import '@docsearch/css';
       `;
       document.body.appendChild(popup);
 
-      // mousedown 拦截：防止点击按钮瞬间导致选区被浏览器清空
       popup.addEventListener('mousedown', (e) => {
         e.preventDefault();
         const selection = window.getSelection();
@@ -330,7 +299,6 @@ import '@docsearch/css';
       if (popup) popup.classList.remove('show');
     }
 
-    // 2. 监听选区变化并计算位置
     const handleSelection = () => {
       setTimeout(() => {
         const hasSidebar = !!document.querySelector('.sidebar-content') || 
@@ -398,16 +366,12 @@ import '@docsearch/css';
     }, { passive: true });
   }
 
-  // ============================================================
-  // 全自动唤起并触发 Algolia Ask AI
-  // ============================================================
   function triggerAlgoliaAskAI(query: string) {
     const docSearchBtn = document.querySelector('.DocSearch-Button') as HTMLElement;
     if (!docSearchBtn) return;
     docSearchBtn.click();
 
     let checkInputCount = 0;
-    
     const checkInputInterval = setInterval(() => {
       const input = document.querySelector('.DocSearch-Input') as HTMLInputElement;
       if (input) {
@@ -424,7 +388,6 @@ import '@docsearch/css';
         input.dispatchEvent(new Event('change', { bubbles: true }));
 
         let checkAskAICount = 0;
-
         const checkAskAIInterval = setInterval(() => {
           const askAiContainer = document.querySelector('.DocSearch-Hit--AskAI');
           if (askAiContainer) {
@@ -441,9 +404,6 @@ import '@docsearch/css';
     }, 50);
   }
 
-  // ============================================================
-  // 非阻塞调度与生命周期
-  // ============================================================
   function scheduleIdle(fn: () => void) {
     if (typeof requestIdleCallback !== 'undefined') {
       requestIdleCallback(fn, { timeout: 3000 });
@@ -457,7 +417,7 @@ import '@docsearch/css';
       if (navigator.onLine) {
         initDocSearch();
         setupAskAITranslator();
-        setupAskAIThinkingHandler(); // 注册思考过程流式拦截处理器
+        setupAskAIThinkingHandler(); 
       } else {
         document.querySelectorAll('.algolia-search-box').forEach(container => {
           renderOfflinePlaceholder(container as HTMLElement);
@@ -490,9 +450,6 @@ import '@docsearch/css';
 </script>
 
 <style is:global>
-  /* =========================================================
-     1. 全局与基础重置
-     ========================================================= */
   .DocSearch-Container {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -526,7 +483,6 @@ import '@docsearch/css';
     --docsearch-logo-color: var(--sl-color-accent);
     --docsearch-text-color: #121212;
 
-    /* Starlight 变量延续：浅色思考模块参数 */
     --aipali-think-bg: rgba(0, 0, 0, 0.025);
     --aipali-think-border: var(--sl-color-gray-5);
     --aipali-think-accent: var(--sl-color-accent);
@@ -551,7 +507,6 @@ import '@docsearch/css';
     --docsearch-text-color: #ffffff;
     --docsearch-muted-color: var(--sl-color-gray-3);
 
-    /* Starlight 变量延续：深色思考模块参数 */
     --aipali-think-bg: rgba(255, 255, 255, 0.03);
     --aipali-think-border: var(--sl-color-gray-5);
     --aipali-think-accent: var(--sl-color-accent-high);
@@ -567,41 +522,16 @@ import '@docsearch/css';
   :root[data-theme='dark'] .DocSearch-Logo svg path,
   :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
 
-  .starlight-docsearch-container { 
-    display: flex; align-items: center;
-    flex-grow: 1; justify-content: flex-start; min-width: 0; 
-  }
-  
-  .starlight-docsearch-container .DocSearch-Button {
-    display: flex; align-items: center; 
-    margin: 0; border-radius: 0.5rem; background-color: transparent;
-    border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2);
-    height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s;
-    width: auto; max-width: 100%; gap: 0.5rem; 
-  }
-
-  .starlight-docsearch-container .DocSearch-Button-Placeholder {
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; 
-  }
-
-  .starlight-docsearch-container .DocSearch-Search-Icon,
-  .starlight-docsearch-container .DocSearch-Button-Keys { flex-shrink: 0; }
-
-  .starlight-docsearch-container .DocSearch-Button:hover,
-  .starlight-docsearch-container .DocSearch-Button:focus {
-    border-color: var(--sl-color-gray-4); color: var(--sl-color-text);
-    box-shadow: none; outline: none;
-  }
+  .starlight-docsearch-container { display: flex; align-items: center; flex-grow: 1; justify-content: flex-start; min-width: 0; }
+  .starlight-docsearch-container .DocSearch-Button { display: flex; align-items: center; margin: 0; border-radius: 0.5rem; background-color: transparent; border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2); height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s; width: auto; max-width: 100%; gap: 0.5rem; }
+  .starlight-docsearch-container .DocSearch-Button-Placeholder { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .starlight-docsearch-container .DocSearch-Search-Icon, .starlight-docsearch-container .DocSearch-Button-Keys { flex-shrink: 0; }
+  .starlight-docsearch-container .DocSearch-Button:hover, .starlight-docsearch-container .DocSearch-Button:focus { border-color: var(--sl-color-gray-4); color: var(--sl-color-text); box-shadow: none; outline: none; }
 
   @media (max-width: 50rem) {
-    .starlight-docsearch-container .DocSearch-Button {
-      border: none; padding: 0; width: 2.5rem; justify-content: center;
-    }
-    .starlight-docsearch-container .DocSearch-Button-Keys,
-    .starlight-docsearch-container .DocSearch-Button-Placeholder { display: none; }
-    .starlight-docsearch-container .DocSearch-Button .DocSearch-Search-Icon {
-      width: 1.2rem; height: 1.2rem;
-    }
+    .starlight-docsearch-container .DocSearch-Button { border: none; padding: 0; width: 2.5rem; justify-content: center; }
+    .starlight-docsearch-container .DocSearch-Button-Keys, .starlight-docsearch-container .DocSearch-Button-Placeholder { display: none; }
+    .starlight-docsearch-container .DocSearch-Button .DocSearch-Search-Icon { width: 1.2rem; height: 1.2rem; }
   }
 
   .DocSearch-Modal .DocSearch-Form { display: flex !important; align-items: center !important; }
@@ -615,16 +545,13 @@ import '@docsearch/css';
   .DocSearch-Modal .prose a, .DocSearch-Modal a[class*="askAi"], .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
   .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result { font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important; }
 
-  /* =========================================================
-     [新增] AI 思考过程折叠卡片组件 (Starlight 兼容规范)
-     ========================================================= */
-  /* 严格物理级隔离：Tool Call 阶段无论发生什么，绝不显示思考标签 */
+  /* 严防 Tool 阶段外泄 */
   .DocSearch-AskAiScreen-MessageContent-Tool think,
   .DocSearch-AskAiScreen-MessageContent-Tool .starlight-think-block {
     display: none !important;
   }
 
-  /* 思考过程折叠卡片外框 */
+  /* 思考过程组件样式 */
   .starlight-think-block {
     margin: 0.75rem 0 1rem 0 !important;
     border: 1px solid var(--aipali-think-border) !important;
@@ -635,7 +562,6 @@ import '@docsearch/css';
     transition: border-color 0.2s ease, background-color 0.2s ease !important;
   }
 
-  /* 思考过程标题栏 (Summary) */
   .starlight-think-summary {
     display: flex !important;
     align-items: center !important;
@@ -652,108 +578,46 @@ import '@docsearch/css';
     transition: color 0.2s ease !important;
   }
 
-  .starlight-think-summary::-webkit-details-marker {
-    display: none !important;
-  }
+  .starlight-think-summary::-webkit-details-marker { display: none !important; }
+  .starlight-think-summary:hover { color: var(--aipali-think-accent) !important; }
 
-  .starlight-think-summary:hover {
-    color: var(--aipali-think-accent) !important;
-  }
-
-  /* Starlight 规范几何箭头图标与旋转动画 */
   .starlight-think-icon {
-    flex-shrink: 0 !important;
-    width: 14px !important;
-    height: 14px !important;
-    stroke: currentColor !important;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    flex-shrink: 0 !important; width: 14px !important; height: 14px !important;
+    stroke: currentColor !important; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
     transform: rotate(0deg);
   }
 
-  /* 默认展开 (open 状态) 箭头旋转 90 度向下，收起时指右 */
-  .starlight-think-block[open] > .starlight-think-summary .starlight-think-icon {
-    transform: rotate(90deg) !important;
-  }
+  .starlight-think-block[open] > .starlight-think-summary .starlight-think-icon { transform: rotate(90deg) !important; }
+  .starlight-think-title { display: flex !important; align-items: center !important; gap: 0.25rem !important; letter-spacing: 0.02em !important; }
 
-  .starlight-think-title {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.25rem !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  /* 思考内容流式输出区域 */
   .starlight-think-content {
     padding: 0.5rem 0.85rem 0.75rem 0.85rem !important;
     border-top: 1px dashed var(--aipali-think-border) !important;
-    font-size: 0.82rem !important;
-    line-height: 1.65 !important;
-    color: var(--aipali-think-text) !important;
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
-    max-height: 350px !important;
-    overflow-y: auto !important;
+    font-size: 0.82rem !important; line-height: 1.65 !important;
+    color: var(--aipali-think-text) !important; white-space: pre-wrap !important;
+    word-break: break-word !important; max-height: 350px !important; overflow-y: auto !important;
   }
 
-  .starlight-think-content::-webkit-scrollbar {
-    width: 4px;
-  }
-  .starlight-think-content::-webkit-scrollbar-thumb {
-    background: var(--aipali-think-border);
-    border-radius: 2px;
-  }
+  .starlight-think-content::-webkit-scrollbar { width: 4px; }
+  .starlight-think-content::-webkit-scrollbar-thumb { background: var(--aipali-think-border); border-radius: 2px; }
 
   @supports (-webkit-touch-callout: none) {
     .DocSearch-Modal .DocSearch-Input { font-size: 16px !important; transform: translateY(-1px) !important; }
     .DocSearch-Modal .DocSearch-MagnifierLabel, .DocSearch-Modal .DocSearch-Reset { transform: translateY(0) !important; }
   }
 
-  /* =========================================================
-     划词触发 AI 解读悬浮按钮样式
-     ========================================================= */
   .aipali-ask-ai-popup {
-    position: absolute;
-    transform: translate(-50%, 0) scale(0.95);
-    background: var(--sl-color-accent); 
-    color: #ffffff !important;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 0.25rem;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    position: absolute; transform: translate(-50%, 0) scale(0.95);
+    background: var(--sl-color-accent); color: #ffffff !important;
+    border: none; padding: 6px 12px; border-radius: 0.25rem; font-size: 13px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center; gap: 6px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s;
-    z-index: 9998; 
-    pointer-events: none;
+    opacity: 0; visibility: hidden; transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s; z-index: 9998; pointer-events: none;
   }
-  .aipali-ask-ai-popup.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, 0) scale(1);
-    pointer-events: auto;
-  }
-  .aipali-ask-ai-popup:hover {
-    background: var(--sl-color-accent-high);
-    color: #ffffff !important;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  }
-  .aipali-ask-ai-popup svg {
-    stroke: currentColor;
-  }
+  .aipali-ask-ai-popup.show { opacity: 1; visibility: visible; transform: translate(-50%, 0) scale(1); pointer-events: auto; }
+  .aipali-ask-ai-popup:hover { background: var(--sl-color-accent-high); color: #ffffff !important; box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+  .aipali-ask-ai-popup svg { stroke: currentColor; }
 
-  :root[data-theme='dark'] .aipali-ask-ai-popup {
-    background: var(--sl-color-text-accent);
-    color: var(--sl-color-black) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--sl-color-gray-5);
-  }
-  :root[data-theme='dark'] .aipali-ask-ai-popup:hover {
-    background: var(--sl-color-accent-high);
-    color: var(--sl-color-black) !important;
-  }
+  :root[data-theme='dark'] .aipali-ask-ai-popup { background: var(--sl-color-text-accent); color: var(--sl-color-black) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--sl-color-gray-5); }
+  :root[data-theme='dark'] .aipali-ask-ai-popup:hover { background: var(--sl-color-accent-high); color: var(--sl-color-black) !important; }
 </style>
