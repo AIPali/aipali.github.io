@@ -126,13 +126,13 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // [终极修复] VDOM-Safe 镜像渲染引擎 (告别假死与吞字)
+  // [终极重构] DOM-Safe 的原生解析镜像引擎
   // ============================================================
   function setupAskAIThinkingHandler() {
     if ((window as any).__aipali_thinking_setup) return;
     (window as any).__aipali_thinking_setup = true;
 
-    // 1. 全局事件委托：捕获用户折叠操作
+    // 全局委托：记录用户折叠状态
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
@@ -151,16 +151,13 @@ import '@docsearch/css';
     let isMutating = false;
 
     const processContainer = (container: HTMLElement) => {
-      // 安全锁：遇到自己生成的镜像替身，直接跳过
       if (container.classList.contains('aipali-mirror')) return;
 
       let rawHtml = container.innerHTML;
+      const hasThinkTrace = /(&lt;|<)think/i.test(rawHtml);
 
-      // 【核心修正】：检测当前文本中是否存在任何形式的 think 标签 (大写、小写、转义)
-      const hasThinkTrace = /(&lt;|<)think(&gt;|>)/i.test(rawHtml);
-
+      // 如果当前内容没有思考的痕迹，恢复原生显示
       if (!hasThinkTrace) {
-        // 兜底恢复机制：如果大模型尚未输出 think，或已输出完毕被冲刷，恢复原始容器显示
         const parentMsg = container.closest('.DocSearch-AskAiScreen-Message') || container.parentElement;
         if (parentMsg) {
           const existingMirror = parentMsg.querySelector('.aipali-mirror') as HTMLElement;
@@ -170,14 +167,18 @@ import '@docsearch/css';
         return;
       }
 
-      // 【终极归一化】：无论 DOM 怎么转义，全部强制归一化为标准的 <think> 标签，百分百匹配后续正则
-      rawHtml = rawHtml.replace(/(&lt;|<)think(&gt;|>)/gi, '<think>')
-                       .replace(/(&lt;|<)\/think(&gt;|>)/gi, '</think>');
+      // 【精髓 1】：修复 Markdown 肢解 HTML 的恶性 BUG。
+      // 剥离包裹在 think 标签外部的 <p> 标签，将其完全标准化为原生 <think> 元素。
+      let safeHtml = rawHtml;
+      safeHtml = safeHtml.replace(/<p[^>]*>\s*(&lt;|<)think[^>]*?(&gt;|>)/gi, '<think>')
+                         .replace(/(&lt;|<)\/think(&gt;|>)\s*<\/p>/gi, '</think>')
+                         .replace(/(&lt;|<)think[^>]*?(&gt;|>)/gi, '<think>')
+                         .replace(/(&lt;|<)\/think(&gt;|>)/gi, '</think>');
 
       const parentMsg = container.closest('.DocSearch-AskAiScreen-Message') || container.parentElement;
       if (!parentMsg) return;
 
-      // 寻找或创建一个独立的替身容器 (Mirror)
+      // 创建镜像，彻底与 Preact 的渲染隔离
       let mirror = parentMsg.querySelector('.aipali-mirror') as HTMLElement;
       if (!mirror) {
         mirror = document.createElement('div');
@@ -185,32 +186,50 @@ import '@docsearch/css';
         parentMsg.insertBefore(mirror, container.nextSibling);
       }
 
-      // 让原生容器隐身，激活替身
       container.style.display = 'none'; 
       mirror.style.display = '';
 
-      // 获取用户折叠记忆
+      // 【精髓 2】：将安全文本塞入镜像，让浏览器原生 DOM 引擎帮我们闭合和重组 HTML！
+      mirror.innerHTML = safeHtml;
+
       const isUserCollapsed = parentMsg.getAttribute('data-user-collapsed') === 'true';
-      const openAttr = isUserCollapsed ? '' : 'open';
-      const SVG_ICON = `<svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+      const hasClosedTag = /<\/think>/i.test(safeHtml);
 
-      let processedHtml = rawHtml;
+      // 提取浏览器重组后的正规 <think> 节点
+      const thinkNodes = mirror.querySelectorAll('think');
+      
+      thinkNodes.forEach((thinkNode, index) => {
+        // 【精髓 3】：JS 精准定点判断。如果它真的属于工具调用容器，就隐藏；否则放行展现最终回答！
+        const inTool = thinkNode.closest('.DocSearch-AskAiScreen-MessageContent-Tool, .Tool--Result');
+        if (inTool) {
+            thinkNode.style.display = 'none';
+            return;
+        }
 
-      // 1. 替换已闭合的思考块 (优先匹配)
-      processedHtml = processedHtml.replace(
-        /<think>([\s\S]*?)<\/think>/gi,
-        (match, p1) => `<details class="starlight-think-block" ${openAttr}><summary class="starlight-think-summary">${SVG_ICON}<span class="starlight-think-title">思考过程</span></summary><div class="starlight-think-content">${p1}</div></details>`
-      );
+        const details = document.createElement('details');
+        details.className = 'starlight-think-block';
+        if (!isUserCollapsed) details.setAttribute('open', '');
 
-      // 2. 替换流式传输中尚未闭合的思考块 (补漏匹配)
-      if (processedHtml.includes('<think>')) {
-        processedHtml = processedHtml.replace(
-          /<think>([\s\S]*)$/gi,
-          (match, p1) => `<details class="starlight-think-block" ${openAttr}><summary class="starlight-think-summary">${SVG_ICON}<span class="starlight-think-title">AIPali 思考中 ...</span></summary><div class="starlight-think-content">${p1}</div></details>`
-        );
-      }
+        // 判断是否正在流式传输
+        const isStreaming = (index === thinkNodes.length - 1) && !hasClosedTag;
+        const titleText = isStreaming ? 'AIPali 思考中 ...' : '思考过程';
 
-      mirror.innerHTML = processedHtml;
+        details.innerHTML = `
+            <summary class="starlight-think-summary">
+                <svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span class="starlight-think-title">${titleText}</span>
+            </summary>
+            <div class="starlight-think-content"></div>
+        `;
+
+        // 将浏览器已经拼装好的完整思考文本，安全移入 details 中
+        const contentDiv = details.querySelector('.starlight-think-content')!;
+        while (thinkNode.firstChild) {
+            contentDiv.appendChild(thinkNode.firstChild);
+        }
+
+        thinkNode.replaceWith(details);
+      });
     };
 
     const scanAndProcess = () => {
@@ -219,7 +238,6 @@ import '@docsearch/css';
       try {
         const askAiModal = document.querySelector('.DocSearch-Modal');
         if (!askAiModal) return;
-        // 抓取所有回答内容的容器，避开替身
         const contents = askAiModal.querySelectorAll('.DocSearch-AskAiScreen-MessageContent:not(.aipali-mirror), [class*="MessageContent"]:not(.aipali-mirror)');
         contents.forEach(el => processContainer(el as HTMLElement));
       } finally {
@@ -441,14 +459,6 @@ import '@docsearch/css';
   .DocSearch-Modal .prose a, .DocSearch-Modal a[class*="askAi"], .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
   .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result { font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important; }
 
-  /* =========================================================
-     [核心修正]：利用纯 CSS 强制隐藏 Tool Call 中的 think
-     因为 mirror 完美继承了原生容器的 class，一旦处于 Tool 里，即刻隐身！
-     ========================================================= */
-  .DocSearch-AskAiScreen-MessageContent-Tool .starlight-think-block,
-  .Tool--Result .starlight-think-block {
-    display: none !important;
-  }
 
   /* 思考过程组件样式 */
   .starlight-think-block {
@@ -487,6 +497,10 @@ import '@docsearch/css';
     white-space: pre-wrap !important; word-break: break-word !important;
     max-height: 350px !important; overflow-y: auto !important;
   }
+  
+  /* 清除由于 Markdown 解析自带的多余段落间距 */
+  .starlight-think-content p:first-child { margin-top: 0 !important; }
+  .starlight-think-content p:last-child { margin-bottom: 0 !important; }
 
   .starlight-think-content::-webkit-scrollbar { width: 4px; }
   .starlight-think-content::-webkit-scrollbar-thumb { background: var(--aipali-think-border); border-radius: 2px; }
