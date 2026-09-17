@@ -9,11 +9,10 @@ import '@docsearch/css';
   import docsearch from '@docsearch/js';
 
   // ============================================================
-  // 离线占位按钮：在无网络时渲染一个不发请求的静态按钮
+  // 离线占位按钮
   // ============================================================
   function renderOfflinePlaceholder(container: HTMLElement) {
     if (container.hasAttribute('data-initialized') || container.querySelector('.DocSearch-Button')) return;
-
     container.innerHTML = `
       <button class="DocSearch-Button DocSearch-Button--offline" aria-label="搜索（离线模式不可用）" disabled>
         <span class="DocSearch-Button-Container">
@@ -28,31 +27,22 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // 真正的 docsearch 初始化（仅在线时执行）
+  // DocSearch 初始化
   // ============================================================
   function initDocSearch() {
     const containers = document.querySelectorAll('.algolia-search-box');
-
     containers.forEach(container => {
       const el = container as HTMLElement;
       const status = el.getAttribute('data-initialized');
-
       if (status === 'true') return;
-
-      if (status === 'offline-placeholder') {
-        el.innerHTML = '';
-        el.removeAttribute('data-initialized');
-      }
+      if (status === 'offline-placeholder') { el.innerHTML = ''; el.removeAttribute('data-initialized'); }
 
       docsearch({
         container: el,
         appId: 'TCMTON4EX8',
         apiKey: '46fc7739c943245ddd44dac342e40493',
         indexName: 'AIPali',
-        askAi: {
-          assistantId: 'e6d00df1-00b5-4579-a17f-516973174f4f',
-          agentStudio: true,
-        },
+        askAi: { assistantId: 'e6d00df1-00b5-4579-a17f-516973174f4f', agentStudio: true },
         translations: {
           button: { buttonText: '搜索经文或向 AI 提问 ...', buttonAriaLabel: '搜索经文' },
           modal: {
@@ -107,7 +97,6 @@ import '@docsearch/css';
   function setupAskAITranslator() {
     if ((window as any).__aipali_translator_setup) return;
     (window as any).__aipali_translator_setup = true;
-
     const translateNode = (node: Node) => {
       if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
         let val = node.nodeValue;
@@ -118,7 +107,6 @@ import '@docsearch/css';
         if (changed) node.nodeValue = val;
       }
     };
-
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'characterData') translateNode(mutation.target);
@@ -134,77 +122,57 @@ import '@docsearch/css';
         }
       });
     });
-
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
   // ============================================================
-  // [修复核心] VDOM-Safe 的 AI 思考过程 (<think>) 渲染器
+  // [终极修复] VDOM-Safe 镜像渲染引擎 (告别假死与吞字)
   // ============================================================
   function setupAskAIThinkingHandler() {
     if ((window as any).__aipali_thinking_setup) return;
     (window as any).__aipali_thinking_setup = true;
 
-    // 1. 全局事件委托：捕获用户折叠操作，写入持久态
+    // 1. 全局事件委托：捕获用户折叠操作
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
       const summary = target.closest('.starlight-think-summary');
       if (!summary) return;
-
       const details = summary.closest('details.starlight-think-block') as HTMLDetailsElement | null;
       if (!details) return;
-
       const parentMsg = details.closest('.DocSearch-AskAiScreen-Message') || details.parentElement;
       if (!parentMsg) return;
-
       setTimeout(() => {
-        if (details.open) {
-          parentMsg.removeAttribute('data-user-collapsed');
-        } else {
-          parentMsg.setAttribute('data-user-collapsed', 'true');
-        }
+        if (details.open) parentMsg.removeAttribute('data-user-collapsed');
+        else parentMsg.setAttribute('data-user-collapsed', 'true');
       }, 0);
     });
 
     let isMutating = false;
 
-    // 严密识别 Tool Call (工具调用阶段)
-    const isToolContainer = (el: HTMLElement): boolean => {
-      return (
-        el.classList.contains('DocSearch-AskAiScreen-MessageContent-Tool') ||
-        !!el.closest('.DocSearch-AskAiScreen-MessageContent-Tool') ||
-        el.classList.contains('Tool--Result') ||
-        !!el.closest('.Tool--Result')
-      );
-    };
-
     const processContainer = (container: HTMLElement) => {
-      // 安全锁：遇到自己生成的镜像替身，直接跳过，防止死循环
+      // 安全锁：遇到自己生成的镜像替身，直接跳过
       if (container.classList.contains('aipali-mirror')) return;
 
-      // 【场景 A：Tool Call 阶段】 - 绝对不要改动 DOM 结构，防止破坏工具交互事件
-      if (isToolContainer(container)) {
-        // 使用底层的 TreeWalker 仅擦除文本，不触发 Preact 崩溃
-        const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
-        let node;
-        while ((node = walker.nextNode())) {
-          if (node.nodeValue && /(&lt;|<)think/i.test(node.nodeValue)) {
-            node.nodeValue = node.nodeValue
-              .replace(/&lt;think&gt;[\s\S]*?(&lt;\/think&gt;|$)/gi, '')
-              .replace(/<think>[\s\S]*?(<\/think>|$)/gi, '');
-          }
+      let rawHtml = container.innerHTML;
+
+      // 【核心修正】：检测当前文本中是否存在任何形式的 think 标签 (大写、小写、转义)
+      const hasThinkTrace = /(&lt;|<)think(&gt;|>)/i.test(rawHtml);
+
+      if (!hasThinkTrace) {
+        // 兜底恢复机制：如果大模型尚未输出 think，或已输出完毕被冲刷，恢复原始容器显示
+        const parentMsg = container.closest('.DocSearch-AskAiScreen-Message') || container.parentElement;
+        if (parentMsg) {
+          const existingMirror = parentMsg.querySelector('.aipali-mirror') as HTMLElement;
+          if (existingMirror) existingMirror.style.display = 'none';
+          container.style.display = '';
         }
-        return; 
+        return;
       }
 
-      // 【场景 B：最终回答阶段】 - 启用“安全镜像 (Mirror Pattern)”技术
-      const rawHtml = container.innerHTML;
-      const hasThinkTag = container.querySelector('think') !== null;
-      const hasThinkText = /(&lt;|<)think(&gt;|>)/i.test(rawHtml);
-
-      // 没有思考标签，不需要干预
-      if (!hasThinkTag && !hasThinkText) return;
+      // 【终极归一化】：无论 DOM 怎么转义，全部强制归一化为标准的 <think> 标签，百分百匹配后续正则
+      rawHtml = rawHtml.replace(/(&lt;|<)think(&gt;|>)/gi, '<think>')
+                       .replace(/(&lt;|<)\/think(&gt;|>)/gi, '</think>');
 
       const parentMsg = container.closest('.DocSearch-AskAiScreen-Message') || container.parentElement;
       if (!parentMsg) return;
@@ -214,30 +182,30 @@ import '@docsearch/css';
       if (!mirror) {
         mirror = document.createElement('div');
         mirror.className = container.className + ' aipali-mirror';
-        // 让原生容器对用户隐身，但在后台继续接收大模型数据，彻底阻断 Preact 崩溃！
-        container.style.display = 'none'; 
         parentMsg.insertBefore(mirror, container.nextSibling);
       }
+
+      // 让原生容器隐身，激活替身
+      container.style.display = 'none'; 
+      mirror.style.display = '';
 
       // 获取用户折叠记忆
       const isUserCollapsed = parentMsg.getAttribute('data-user-collapsed') === 'true';
       const openAttr = isUserCollapsed ? '' : 'open';
-
       const SVG_ICON = `<svg class="starlight-think-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
 
-      // 对内容进行正则表达式替换，并写入安全的替身容器
       let processedHtml = rawHtml;
 
-      // 1. 替换已闭合的思考块
+      // 1. 替换已闭合的思考块 (优先匹配)
       processedHtml = processedHtml.replace(
-        /(?:<think>|&lt;think&gt;)([\s\S]*?)(?:<\/think>|&lt;\/think&gt;)/gi,
+        /<think>([\s\S]*?)<\/think>/gi,
         (match, p1) => `<details class="starlight-think-block" ${openAttr}><summary class="starlight-think-summary">${SVG_ICON}<span class="starlight-think-title">思考过程</span></summary><div class="starlight-think-content">${p1}</div></details>`
       );
 
-      // 2. 替换流式传输中尚未闭合的思考块
-      if (processedHtml.match(/(?:<think>|&lt;think&gt;)([\s\S]*)$/i)) {
+      // 2. 替换流式传输中尚未闭合的思考块 (补漏匹配)
+      if (processedHtml.includes('<think>')) {
         processedHtml = processedHtml.replace(
-          /(?:<think>|&lt;think&gt;)([\s\S]*)$/i,
+          /<think>([\s\S]*)$/gi,
           (match, p1) => `<details class="starlight-think-block" ${openAttr}><summary class="starlight-think-summary">${SVG_ICON}<span class="starlight-think-title">AIPali 思考中 ...</span></summary><div class="starlight-think-content">${p1}</div></details>`
         );
       }
@@ -251,18 +219,15 @@ import '@docsearch/css';
       try {
         const askAiModal = document.querySelector('.DocSearch-Modal');
         if (!askAiModal) return;
-
-        // 【关键】只去抓取真实的容器，避开已经被克隆出来的 mirror 替身
+        // 抓取所有回答内容的容器，避开替身
         const contents = askAiModal.querySelectorAll('.DocSearch-AskAiScreen-MessageContent:not(.aipali-mirror), [class*="MessageContent"]:not(.aipali-mirror)');
         contents.forEach(el => processContainer(el as HTMLElement));
       } finally {
-        setTimeout(() => {
-          isMutating = false;
-        }, 30);
+        setTimeout(() => { isMutating = false; }, 30);
       }
     };
 
-    const observer = new MutationObserver(() => { scanAndProcess(); });
+    const observer = new MutationObserver(() => scanAndProcess());
     observer.observe(document.body, { childList: true, subtree: true, characterData: true });
   }
 
@@ -288,65 +253,45 @@ import '@docsearch/css';
         e.preventDefault();
         const selection = window.getSelection();
         if (selection && selection.toString().trim().length > 1) {
-          const text = selection.toString().trim();
-          triggerAlgoliaAskAI(text);
+          triggerAlgoliaAskAI(selection.toString().trim());
         }
         hidePopup();
       });
     }
 
-    function hidePopup() {
-      if (popup) popup.classList.remove('show');
-    }
+    function hidePopup() { if (popup) popup.classList.remove('show'); }
 
     const handleSelection = () => {
       setTimeout(() => {
         const hasSidebar = !!document.querySelector('.sidebar-content') || 
                             !!document.getElementById('starlight__sidebar') || 
                             !!document.querySelector('aside#sidebar');
-        if (!hasSidebar) {
-          hidePopup();
-          return;
-        }
+        if (!hasSidebar) { hidePopup(); return; }
 
         const selection = window.getSelection();
-        if (!selection || selection.isCollapsed) {
-          hidePopup();
-          return;
-        }
+        if (!selection || selection.isCollapsed) { hidePopup(); return; }
 
         const text = selection.toString().trim();
-        if (text.length <= 1) {
-          hidePopup();
-          return;
-        }
+        if (text.length <= 1) { hidePopup(); return; }
 
         let node = selection.anchorNode as HTMLElement | null;
         let isInsideContent = false;
         while (node) {
           if (node.nodeType === 1 && node.classList && node.classList.contains('sl-markdown-content')) {
-            isInsideContent = true;
-            break;
+            isInsideContent = true; break;
           }
           node = node.parentElement;
         }
 
-        if (!isInsideContent) {
-          hidePopup();
-          return;
-        }
+        if (!isInsideContent) { hidePopup(); return; }
 
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
-        
         if (rect.width === 0 || rect.height === 0) return;
 
-        const scrollX = window.scrollX || document.documentElement.scrollLeft;
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
-        
         if (popup) {
-            popup.style.left = `${rect.left + scrollX + (rect.width / 2)}px`;
-            popup.style.top = `${rect.bottom + scrollY + 12}px`; 
+            popup.style.left = `${rect.left + (window.scrollX || document.documentElement.scrollLeft) + (rect.width / 2)}px`;
+            popup.style.top = `${rect.bottom + (window.scrollY || document.documentElement.scrollTop) + 12}px`; 
             popup.classList.add('show');
         }
       }, 50);
@@ -355,11 +300,8 @@ import '@docsearch/css';
     document.addEventListener('mouseup', handleSelection);
     document.addEventListener('touchend', handleSelection);
     document.addEventListener('keyup', handleSelection);
-
     document.addEventListener('mousedown', (e) => {
-      if (popup && e.target !== popup && !popup.contains(e.target as Node)) {
-        hidePopup();
-      }
+      if (popup && e.target !== popup && !popup.contains(e.target as Node)) hidePopup();
     });
     document.addEventListener('scroll', () => {
        if (popup && popup.classList.contains('show')) hidePopup();
@@ -376,13 +318,9 @@ import '@docsearch/css';
       const input = document.querySelector('.DocSearch-Input') as HTMLInputElement;
       if (input) {
         clearInterval(checkInputInterval);
-        
         const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
-        if (nativeInputValueSetter) {
-          nativeInputValueSetter.call(input, query);
-        } else {
-          input.value = query;
-        }
+        if (nativeInputValueSetter) nativeInputValueSetter.call(input, query);
+        else input.value = query;
         
         input.dispatchEvent(new Event('input', { bubbles: true }));
         input.dispatchEvent(new Event('change', { bubbles: true }));
@@ -392,10 +330,7 @@ import '@docsearch/css';
           const askAiContainer = document.querySelector('.DocSearch-Hit--AskAI');
           if (askAiContainer) {
             const clickable = (askAiContainer.querySelector('a') || askAiContainer.querySelector('button') || askAiContainer) as HTMLElement;
-            if (clickable) {
-              clickable.click(); 
-              clearInterval(checkAskAIInterval);
-            }
+            if (clickable) { clickable.click(); clearInterval(checkAskAIInterval); }
           }
           if (checkAskAICount++ > 30) clearInterval(checkAskAIInterval);
         }, 100);
@@ -405,11 +340,8 @@ import '@docsearch/css';
   }
 
   function scheduleIdle(fn: () => void) {
-    if (typeof requestIdleCallback !== 'undefined') {
-      requestIdleCallback(fn, { timeout: 3000 });
-    } else {
-      setTimeout(fn, 0);
-    }
+    if (typeof requestIdleCallback !== 'undefined') requestIdleCallback(fn, { timeout: 3000 });
+    else setTimeout(fn, 0);
   }
 
   function mountSearchComponent() {
@@ -433,15 +365,11 @@ import '@docsearch/css';
 
     window.addEventListener('online', () => {
       scheduleIdle(() => {
-        initDocSearch();
-        setupAskAITranslator();
-        setupAskAIThinkingHandler();
+        initDocSearch(); setupAskAITranslator(); setupAskAIThinkingHandler();
         window.dispatchEvent(new CustomEvent('aipali:online'));
       });
     });
-    window.addEventListener('offline', () => {
-      window.dispatchEvent(new CustomEvent('aipali:offline'));
-    });
+    window.addEventListener('offline', () => window.dispatchEvent(new CustomEvent('aipali:offline')) );
   }
 
   mountSearchComponent();
@@ -451,76 +379,45 @@ import '@docsearch/css';
 
 <style is:global>
   .DocSearch-Container {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
     background-color: var(--docsearch-container-background) !important;
-    z-index: 9999 !important; 
-    box-sizing: border-box !important;
+    z-index: 9999 !important; box-sizing: border-box !important;
   }
   .DocSearch-Container * { box-sizing: border-box !important; }
   .DocSearch-Form { margin: 0 !important; }
   .DocSearch-Modal { max-height: 85vh !important; }
 
-  .DocSearch-Button--offline {
-    opacity: 0.5;
-    cursor: not-allowed !important;
-    pointer-events: none;
-  }
+  .DocSearch-Button--offline { opacity: 0.5; cursor: not-allowed !important; pointer-events: none; }
 
   :root[data-theme='light'] {
-    --docsearch-container-background: rgba(101, 108, 133, 0.8); 
-    --docsearch-modal-background: #f5f6f7; 
-    --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-    --docsearch-searchbox-background: #ffffff;
-    --docsearch-searchbox-focus-background: #ffffff;
-    --docsearch-hit-background: #ffffff;
-    --docsearch-hit-color: var(--sl-color-gray-2);
-    --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
-    --docsearch-hit-hover-background: var(--sl-color-accent);
-    --docsearch-hit-hover-color: #ffffff;
-    --docsearch-highlight-color: var(--sl-color-accent);
-    --docsearch-primary-color: var(--sl-color-accent);
-    --docsearch-logo-color: var(--sl-color-accent);
-    --docsearch-text-color: #121212;
-
-    --aipali-think-bg: rgba(0, 0, 0, 0.025);
-    --aipali-think-border: var(--sl-color-gray-5);
-    --aipali-think-accent: var(--sl-color-accent);
-    --aipali-think-text: var(--sl-color-gray-2);
+    --docsearch-container-background: rgba(101, 108, 133, 0.8); --docsearch-modal-background: #f5f6f7; 
+    --docsearch-modal-shadow: 0 4px 24px rgba(0, 0, 0, 0.1); --docsearch-searchbox-background: #ffffff;
+    --docsearch-searchbox-focus-background: #ffffff; --docsearch-hit-background: #ffffff;
+    --docsearch-hit-color: var(--sl-color-gray-2); --docsearch-hit-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
+    --docsearch-hit-hover-background: var(--sl-color-accent); --docsearch-hit-hover-color: #ffffff;
+    --docsearch-highlight-color: var(--sl-color-accent); --docsearch-primary-color: var(--sl-color-accent);
+    --docsearch-logo-color: var(--sl-color-accent); --docsearch-text-color: #121212;
+    --aipali-think-bg: rgba(0, 0, 0, 0.025); --aipali-think-border: var(--sl-color-gray-5);
+    --aipali-think-accent: var(--sl-color-accent); --aipali-think-text: var(--sl-color-gray-2);
   }
 
   :root, :root[data-theme='dark'] {
-    --docsearch-container-background: rgba(0, 0, 0, 0.6); 
-    --docsearch-modal-background: var(--sl-color-gray-6); 
+    --docsearch-container-background: rgba(0, 0, 0, 0.6); --docsearch-modal-background: var(--sl-color-gray-6); 
     --docsearch-modal-shadow: inset 1px 1px 0 0 var(--sl-color-gray-5), 0 3px 8px 0 rgba(0,0,0,0.5);
-    --docsearch-searchbox-background: var(--sl-color-black); 
-    --docsearch-searchbox-focus-background: var(--sl-color-black);
-    --docsearch-searchbox-shadow: inset 0 0 0 1px var(--sl-color-gray-5); 
-    --docsearch-hit-background: var(--sl-color-black); 
-    --docsearch-hit-color: var(--sl-color-gray-2);
-    --docsearch-hit-shadow: none;
-    --docsearch-hit-hover-background: var(--sl-color-accent-high);
-    --docsearch-hit-hover-color: #121212;
-    --docsearch-highlight-color: var(--sl-color-accent-high); 
-    --docsearch-primary-color: var(--sl-color-accent-high);
-    --docsearch-logo-color: var(--sl-color-accent-high);
-    --docsearch-text-color: #ffffff;
+    --docsearch-searchbox-background: var(--sl-color-black); --docsearch-searchbox-focus-background: var(--sl-color-black);
+    --docsearch-searchbox-shadow: inset 0 0 0 1px var(--sl-color-gray-5); --docsearch-hit-background: var(--sl-color-black); 
+    --docsearch-hit-color: var(--sl-color-gray-2); --docsearch-hit-shadow: none;
+    --docsearch-hit-hover-background: var(--sl-color-accent-high); --docsearch-hit-hover-color: #121212;
+    --docsearch-highlight-color: var(--sl-color-accent-high); --docsearch-primary-color: var(--sl-color-accent-high);
+    --docsearch-logo-color: var(--sl-color-accent-high); --docsearch-text-color: #ffffff;
     --docsearch-muted-color: var(--sl-color-gray-3);
-
-    --aipali-think-bg: rgba(255, 255, 255, 0.03);
-    --aipali-think-border: var(--sl-color-gray-5);
-    --aipali-think-accent: var(--sl-color-accent-high);
-    --aipali-think-text: var(--sl-color-gray-3);
+    --aipali-think-bg: rgba(255, 255, 255, 0.03); --aipali-think-border: var(--sl-color-gray-5);
+    --aipali-think-accent: var(--sl-color-accent-high); --aipali-think-text: var(--sl-color-gray-3);
   }
 
-  [data-theme='dark'] .DocSearch-Hit--AskAI { 
-    background: #1b1b1f !important; 
-    border: 1px solid var(--sl-color-gray-5); 
-  }
-  :root[data-theme='dark'] .DocSearch-Input,
-  :root[data-theme='dark'] .DocSearch-Input::placeholder { color: #ffffff !important; }
-  :root[data-theme='dark'] .DocSearch-Logo svg path,
-  :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
+  [data-theme='dark'] .DocSearch-Hit--AskAI { background: #1b1b1f !important; border: 1px solid var(--sl-color-gray-5); }
+  :root[data-theme='dark'] .DocSearch-Input, :root[data-theme='dark'] .DocSearch-Input::placeholder { color: #ffffff !important; }
+  :root[data-theme='dark'] .DocSearch-Logo svg path, :root[data-theme='dark'] .DocSearch-Logo svg rect { fill: var(--docsearch-logo-color) !important; }
 
   .starlight-docsearch-container { display: flex; align-items: center; flex-grow: 1; justify-content: flex-start; min-width: 0; }
   .starlight-docsearch-container .DocSearch-Button { display: flex; align-items: center; margin: 0; border-radius: 0.5rem; background-color: transparent; border: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2); height: 2.5rem; padding: 0 0.75rem; transition: color 0.2s, border-color 0.2s; width: auto; max-width: 100%; gap: 0.5rem; }
@@ -538,16 +435,18 @@ import '@docsearch/css';
   .DocSearch-Modal .DocSearch-Input { -webkit-appearance: none !important; appearance: none !important; margin: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; line-height: normal !important; }
   .DocSearch-Modal .DocSearch-MagnifierLabel, .DocSearch-Modal .DocSearch-Reset { display: flex !important; align-items: center !important; justify-content: center !important; margin-top: 0 !important; margin-bottom: 0 !important; }
   .DocSearch-Modal .DocSearch-MagnifierLabel svg, .DocSearch-Modal .DocSearch-Reset svg { display: block !important; vertical-align: middle !important; }
-
   .DocSearch-Hit mark { color: var(--docsearch-highlight-color) !important; background-color: transparent !important; font-weight: bold; }
   .DocSearch-Hit[aria-selected='true'] a { background-color: var(--docsearch-hit-hover-background) !important; box-shadow: none !important; }
   .DocSearch-Hit[aria-selected='true'] a *, .DocSearch-Hit[aria-selected='true'] a mark { color: var(--docsearch-hit-hover-color) !important; }
   .DocSearch-Modal .prose a, .DocSearch-Modal a[class*="askAi"], .DocSearch-Modal[data-testid="ask-ai-source"] { color: var(--docsearch-highlight-color) !important; }
   .DocSearch-AskAiScreen-MessageContent-Tool.Tool--Result { font-size: 0.8rem !important; color: var(--docsearch-muted-color) !important; }
 
-  /* 严防 Tool 阶段外泄 */
-  .DocSearch-AskAiScreen-MessageContent-Tool think,
-  .DocSearch-AskAiScreen-MessageContent-Tool .starlight-think-block {
+  /* =========================================================
+     [核心修正]：利用纯 CSS 强制隐藏 Tool Call 中的 think
+     因为 mirror 完美继承了原生容器的 class，一旦处于 Tool 里，即刻隐身！
+     ========================================================= */
+  .DocSearch-AskAiScreen-MessageContent-Tool .starlight-think-block,
+  .Tool--Result .starlight-think-block {
     display: none !important;
   }
 
@@ -563,19 +462,11 @@ import '@docsearch/css';
   }
 
   .starlight-think-summary {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    padding: 0.5rem 0.75rem !important;
-    font-size: 0.82rem !important;
-    font-weight: 500 !important;
-    color: var(--aipali-think-text) !important;
-    cursor: pointer !important;
-    user-select: none !important;
-    list-style: none !important;
-    background: transparent !important;
-    outline: none !important;
-    transition: color 0.2s ease !important;
+    display: flex !important; align-items: center !important; gap: 0.5rem !important;
+    padding: 0.5rem 0.75rem !important; font-size: 0.82rem !important;
+    font-weight: 500 !important; color: var(--aipali-think-text) !important;
+    cursor: pointer !important; user-select: none !important; list-style: none !important;
+    background: transparent !important; outline: none !important; transition: color 0.2s ease !important;
   }
 
   .starlight-think-summary::-webkit-details-marker { display: none !important; }
@@ -591,11 +482,10 @@ import '@docsearch/css';
   .starlight-think-title { display: flex !important; align-items: center !important; gap: 0.25rem !important; letter-spacing: 0.02em !important; }
 
   .starlight-think-content {
-    padding: 0.5rem 0.85rem 0.75rem 0.85rem !important;
-    border-top: 1px dashed var(--aipali-think-border) !important;
-    font-size: 0.82rem !important; line-height: 1.65 !important;
-    color: var(--aipali-think-text) !important; white-space: pre-wrap !important;
-    word-break: break-word !important; max-height: 350px !important; overflow-y: auto !important;
+    padding: 0.5rem 0.85rem 0.75rem 0.85rem !important; border-top: 1px dashed var(--aipali-think-border) !important;
+    font-size: 0.82rem !important; line-height: 1.65 !important; color: var(--aipali-think-text) !important;
+    white-space: pre-wrap !important; word-break: break-word !important;
+    max-height: 350px !important; overflow-y: auto !important;
   }
 
   .starlight-think-content::-webkit-scrollbar { width: 4px; }
@@ -607,17 +497,13 @@ import '@docsearch/css';
   }
 
   .aipali-ask-ai-popup {
-    position: absolute; transform: translate(-50%, 0) scale(0.95);
-    background: var(--sl-color-accent); color: #ffffff !important;
-    border: none; padding: 6px 12px; border-radius: 0.25rem; font-size: 13px; font-weight: 500;
-    cursor: pointer; display: flex; align-items: center; gap: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);
-    opacity: 0; visibility: hidden; transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s; z-index: 9998; pointer-events: none;
+    position: absolute; transform: translate(-50%, 0) scale(0.95); background: var(--sl-color-accent); color: #ffffff !important;
+    border: none; padding: 6px 12px; border-radius: 0.25rem; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1); opacity: 0; visibility: hidden; transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s; z-index: 9998; pointer-events: none;
   }
   .aipali-ask-ai-popup.show { opacity: 1; visibility: visible; transform: translate(-50%, 0) scale(1); pointer-events: auto; }
   .aipali-ask-ai-popup:hover { background: var(--sl-color-accent-high); color: #ffffff !important; box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
   .aipali-ask-ai-popup svg { stroke: currentColor; }
-
   :root[data-theme='dark'] .aipali-ask-ai-popup { background: var(--sl-color-text-accent); color: var(--sl-color-black) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--sl-color-gray-5); }
   :root[data-theme='dark'] .aipali-ask-ai-popup:hover { background: var(--sl-color-accent-high); color: var(--sl-color-black) !important; }
 </style>
