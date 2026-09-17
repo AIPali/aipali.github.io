@@ -54,12 +54,6 @@ import '@docsearch/css';
         askAi: {
           assistantId: 'e6d00df1-00b5-4579-a17f-516973174f4f',
           agentStudio: true,
-          // 【官方配置】开启 CoT reasoning UI 支持 (如果 Algolia 该版本下发了原生支持的话)
-          showReasoning: true, 
-          // 【可选】若需前端强制干预 LLM 调用参数，可按此官方结构传递 (受限于 AgentStudio 设置)
-          // agentParameters: {
-          //   reasoning_effort: 'medium' 
-          // },
         },
         translations: {
           button: { buttonText: '搜索经文或向 AI 提问 ...', buttonAriaLabel: '搜索经文' },
@@ -123,8 +117,6 @@ import '@docsearch/css';
         if (/searching/i.test(val)) { val = val.replace(/searching/ig, '正在搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
-        // 【新增】拦截官方英文推理状态词
-        if (/reasoning/i.test(val)) { val = val.replace(/reasoning/ig, '思考过程'); changed = true; }
         if (changed) node.nodeValue = val;
       }
     };
@@ -149,32 +141,13 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // <think> 标签全局事件委托折叠逻辑（安全操作，不修改 DOM）
-  // ============================================================
-  function setupThinkTagToggle() {
-    if ((window as any).__aipali_think_toggle_setup) return;
-    (window as any).__aipali_think_toggle_setup = true;
-
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-      // 捕捉对 <think> 标签的点击
-      if (target && target.tagName && target.tagName.toLowerCase() === 'think') {
-        const rect = target.getBoundingClientRect();
-        // 判断点击位置是否在顶部标题区域（伪元素区域，约 40px 高度）
-        if (e.clientY - rect.top <= 45) {
-          target.classList.toggle('collapsed');
-        }
-      }
-    });
-  }
-
-  // ============================================================
   // 划词唤醒 AI 核心功能 (客户端侧边栏精准检测 + 反转变量处理)
   // ============================================================
   function setupTextSelectionAskAI() {
     if ((window as any).__aipali_selection_setup) return;
     (window as any).__aipali_selection_setup = true;
 
+    // 1. 创建全局悬浮按钮 (单例)
     let popup = document.getElementById('aipali-selection-popup');
     if (!popup) {
       popup = document.createElement('button');
@@ -186,6 +159,7 @@ import '@docsearch/css';
       `;
       document.body.appendChild(popup);
 
+      // mousedown 拦截：防止点击按钮瞬间导致选区被浏览器清空
       popup.addEventListener('mousedown', (e) => {
         e.preventDefault();
         const selection = window.getSelection();
@@ -201,8 +175,11 @@ import '@docsearch/css';
       if (popup) popup.classList.remove('show');
     }
 
+    // 2. 监听选区变化并计算位置
     const handleSelection = () => {
       setTimeout(() => {
+        // 【核心精准过滤】检测当前 DOM 中是否存在 Starlight 侧边栏
+        // 从而完美避开 Splash 首页等没有侧边栏的自定义渲染页面，不执行任何划词逻辑
         const hasSidebar = !!document.querySelector('.sidebar-content') || 
                             !!document.getElementById('starlight__sidebar') || 
                             !!document.querySelector('aside#sidebar');
@@ -218,11 +195,13 @@ import '@docsearch/css';
         }
 
         const text = selection.toString().trim();
+        // 防误点：必须大于 1 个字符
         if (text.length <= 1) {
           hidePopup();
           return;
         }
 
+        // 防误点：检查选中内容的锚点是否在文档正文内容区域 (.sl-markdown-content) 内
         let node = selection.anchorNode as HTMLElement | null;
         let isInsideContent = false;
         while (node) {
@@ -246,6 +225,7 @@ import '@docsearch/css';
         const scrollX = window.scrollX || document.documentElement.scrollLeft;
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         
+        // 显示在选区的正下方，避开手机系统的顶部高亮菜单
         if (popup) {
             popup.style.left = `${rect.left + scrollX + (rect.width / 2)}px`;
             popup.style.top = `${rect.bottom + scrollY + 12}px`; 
@@ -327,7 +307,6 @@ import '@docsearch/css';
       if (navigator.onLine) {
         initDocSearch();
         setupAskAITranslator();
-        setupThinkTagToggle(); // 绑定折叠面板逻辑
       } else {
         document.querySelectorAll('.algolia-search-box').forEach(container => {
           renderOfflinePlaceholder(container as HTMLElement);
@@ -359,71 +338,6 @@ import '@docsearch/css';
 </script>
 
 <style is:global>
-  /* =========================================================
-     [新增] AI 思考过程 <think> 标签解析与 Starlight 兼容样式
-     使用纯 CSS 进行伪装，防止 Preact 虚拟 DOM 更新崩溃
-     ========================================================= */
-  
-  think {
-    display: block;
-    margin: 1rem 0;
-    padding: 1rem;
-    padding-top: 0; /* 给 title 让出空间 */
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 0.5rem;
-    background-color: var(--sl-color-gray-6); 
-    color: var(--sl-color-gray-3);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    position: relative;
-    overflow: hidden; /* 用于配合折叠功能 */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-  }
-
-  think::before {
-    content: "▾ \00A0 AI 思考过程 (点击折叠)";
-    display: block;
-    margin: 0 -1rem 0.75rem -1rem; /* 伸展至父级边界 */
-    padding: 0.6rem 1rem;
-    font-weight: 600;
-    color: var(--sl-color-text);
-    background-color: var(--sl-color-gray-6);
-    border-bottom: 1px solid var(--sl-color-gray-5);
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.2s;
-  }
-
-  think:hover::before {
-    background-color: var(--sl-color-gray-5);
-  }
-
-  /* 折叠状态 */
-  think.collapsed {
-    height: 2.7rem; /* 只保留 header 区域高度，根据情况可微调 */
-    padding-bottom: 0;
-  }
-
-  think.collapsed::before {
-    content: "▸ \00A0 AI 思考过程 (点击展开)";
-    border-bottom-color: transparent;
-    margin-bottom: 0;
-  }
-
-  /* [核心过滤逻辑] 在 Tool Call 环节彻底隐藏 think 内容 */
-  .DocSearch-AskAiScreen-MessageContent-Tool think,
-  .Tool--Result think,
-  [class*="Tool"] think,
-  [class*="tool"] think {
-    display: none !important;
-  }
-
-  /* 使得内部如果是 P 标签之类的不要撑出无用留白 */
-  think > p:first-of-type { margin-top: 0; }
-  think > p:last-of-type { margin-bottom: 0; }
-
-
   /* =========================================================
      1. 全局与基础重置
      ========================================================= */
@@ -543,16 +457,19 @@ import '@docsearch/css';
   }
 
   /* =========================================================
-     [保留] 划词触发 AI 解读悬浮按钮样式
+     [新增] 划词触发 AI 解读悬浮按钮样式
      ========================================================= */
   .aipali-ask-ai-popup {
     position: absolute;
     transform: translate(-50%, 0) scale(0.95);
+    
+    /* 亮色模式 (Light Mode) 默认样式 */
     background: var(--sl-color-accent); 
-    color: #ffffff !important; 
+    color: #ffffff !important; /* 【核心修复】强制使用硬编码纯白色，防止 Starlight 变量反向解析导致文字变成灰黑色 */
+    
     border: none;
     padding: 6px 12px;
-    border-radius: 0.25rem; 
+    border-radius: 0.25rem; /* 圆角修改为 0.25rem (4px)，与 Starlight 菜单栏保持视觉高度一致 */
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -581,7 +498,9 @@ import '@docsearch/css';
     stroke: currentColor;
   }
 
+  /* 深色模式 (Dark Mode) 样式覆盖 */
   :root[data-theme='dark'] .aipali-ask-ai-popup {
+    /* 深色模式下：背景选用高亮的亮蓝色，文字选用 Starlight 的底板深黑色来维持最佳阅读对比度 */
     background: var(--sl-color-text-accent);
     color: var(--sl-color-black) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--sl-color-gray-5);
