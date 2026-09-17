@@ -9,6 +9,54 @@ import '@docsearch/css';
   import docsearch from '@docsearch/js';
 
   // ============================================================
+  // Algolia 字节截断工具：保留前 60% 和后 40%，中间用 "..." 拼接
+  // 限制在最大字节内 (默认 480 字节，预留安全余量给 Algolia 的 512 限制)
+  // ============================================================
+  function truncateToAlgoliaLimit(text: string, maxBytes: number = 480): string {
+    const encoder = new TextEncoder();
+    
+    // 如果整体没有超标，直接返回
+    if (encoder.encode(text).length <= maxBytes) {
+      return text;
+    }
+
+    // 使用 Array.from 拆分字符，能完美处理 Emoji 和生僻字等多字节字符，防止乱码
+    const chars = Array.from(text);
+    const dots = '...';
+    const dotsBytes = encoder.encode(dots).length; // 3 bytes
+    const availableBytes = maxBytes - dotsBytes;
+    
+    // 按照 60% 和 40% 分配可用字节
+    const frontLimit = Math.floor(availableBytes * 0.6);
+    const backLimit = availableBytes - frontLimit;
+
+    let frontText = '';
+    let frontBytes = 0;
+    // 从前向后截取 60%
+    for (let i = 0; i < chars.length; i++) {
+      const char = chars[i];
+      const charBytes = encoder.encode(char).length;
+      if (frontBytes + charBytes > frontLimit) break;
+      frontText += char;
+      frontBytes += charBytes;
+    }
+
+    let backText = '';
+    let backBytes = 0;
+    // 从后向前截取 40%
+    for (let i = chars.length - 1; i >= 0; i--) {
+      const char = chars[i];
+      const charBytes = encoder.encode(char).length;
+      if (backBytes + charBytes > backLimit) break;
+      // 注意：从后向前遍历，所以新字符要拼在前面
+      backText = char + backText;
+      backBytes += charBytes;
+    }
+
+    return frontText + dots + backText;
+  }
+
+  // ============================================================
   // 离线占位按钮：在无网络时渲染一个不发请求的静态按钮
   // ============================================================
   function renderOfflinePlaceholder(container: HTMLElement) {
@@ -164,8 +212,10 @@ import '@docsearch/css';
         e.preventDefault();
         const selection = window.getSelection();
         if (selection && selection.toString().trim().length > 1) {
-          const text = selection.toString().trim();
-          triggerAlgoliaAskAI(text);
+          const rawText = selection.toString().trim();
+          // 【核心修复】智能截断至安全字节，前 60% + ... + 后 40%
+          const safeText = truncateToAlgoliaLimit(rawText, 480);
+          triggerAlgoliaAskAI(safeText);
         }
         hidePopup();
       });
@@ -465,11 +515,11 @@ import '@docsearch/css';
     
     /* 亮色模式 (Light Mode) 默认样式 */
     background: var(--sl-color-accent); 
-    color: #ffffff !important; /* 【核心修复】强制使用硬编码纯白色，防止 Starlight 变量反向解析导致文字变成灰黑色 */
+    color: #ffffff !important; 
     
     border: none;
     padding: 6px 12px;
-    border-radius: 0.25rem; /* 圆角修改为 0.25rem (4px)，与 Starlight 菜单栏保持视觉高度一致 */
+    border-radius: 0.25rem; 
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -500,7 +550,6 @@ import '@docsearch/css';
 
   /* 深色模式 (Dark Mode) 样式覆盖 */
   :root[data-theme='dark'] .aipali-ask-ai-popup {
-    /* 深色模式下：背景选用高亮的亮蓝色，文字选用 Starlight 的底板深黑色来维持最佳阅读对比度 */
     background: var(--sl-color-text-accent);
     color: var(--sl-color-black) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px var(--sl-color-gray-5);
