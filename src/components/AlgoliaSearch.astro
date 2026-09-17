@@ -104,19 +104,33 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // AI 文本碎片拦截翻译
+  // AI 文本碎片拦截翻译 & 纯文本形式思考链拦截
   // ============================================================
   function setupAskAITranslator() {
     if ((window as any).__aipali_translator_setup) return;
     (window as any).__aipali_translator_setup = true;
 
     const translateNode = (node: Node) => {
+      // 仅修改文本节点，绝对不破坏 DOM 结构，防止触发 React NotFoundError
       if (node.nodeType === Node.TEXT_NODE && node.nodeValue) {
         let val = node.nodeValue;
         let changed = false;
+        
+        // 界面英文翻译替换
         if (/searching/i.test(val)) { val = val.replace(/searching/ig, '正在搜索'); changed = true; }
         if (/found/i.test(val)) { val = val.replace(/found/ig, '共找到'); changed = true; }
         if (/results?/i.test(val)) { val = val.replace(/results?/ig, '项结果'); changed = true; }
+        
+        // 【新增】如果 Algolia 将 <think> 当作纯文本输出，将其替换为美观的文本提示
+        if (/<think>/i.test(val)) { 
+          val = val.replace(/<think>/ig, '\n\n【🧠 AI 深度思考过程】\n'); 
+          changed = true; 
+        }
+        if (/<\/think>/i.test(val)) { 
+          val = val.replace(/<\/think>/ig, '\n【💡 思考结束，开始解答】\n\n'); 
+          changed = true; 
+        }
+
         if (changed) node.nodeValue = val;
       }
     };
@@ -141,34 +155,12 @@ import '@docsearch/css';
   }
 
   // ============================================================
-  // [新增] 监听并折叠 <think> 标签的点击交互
-  // ============================================================
-  function setupThinkTagInteraction() {
-    if ((window as any).__aipali_think_setup) return;
-    (window as any).__aipali_think_setup = true;
-
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-      // 捕获针对 <think> 标签的直接点击事件
-      if (target && target.tagName && target.tagName.toLowerCase() === 'think') {
-        const rect = target.getBoundingClientRect();
-        const clickY = e.clientY - rect.top;
-        // 如果点击的是前 40px 高度的区域 (相当于 2.5rem 的伪元素 Header 区域)，则切换展开/收起状态
-        if (clickY <= 40) {
-          target.classList.toggle('collapsed');
-        }
-      }
-    });
-  }
-
-  // ============================================================
   // 划词唤醒 AI 核心功能 (客户端侧边栏精准检测 + 反转变量处理)
   // ============================================================
   function setupTextSelectionAskAI() {
     if ((window as any).__aipali_selection_setup) return;
     (window as any).__aipali_selection_setup = true;
 
-    // 1. 创建全局悬浮按钮 (单例)
     let popup = document.getElementById('aipali-selection-popup');
     if (!popup) {
       popup = document.createElement('button');
@@ -180,7 +172,6 @@ import '@docsearch/css';
       `;
       document.body.appendChild(popup);
 
-      // mousedown 拦截：防止点击按钮瞬间导致选区被浏览器清空
       popup.addEventListener('mousedown', (e) => {
         e.preventDefault();
         const selection = window.getSelection();
@@ -196,11 +187,8 @@ import '@docsearch/css';
       if (popup) popup.classList.remove('show');
     }
 
-    // 2. 监听选区变化并计算位置
     const handleSelection = () => {
       setTimeout(() => {
-        // 【核心精准过滤】检测当前 DOM 中是否存在 Starlight 侧边栏
-        // 从而完美避开 Splash 首页等没有侧边栏的自定义渲染页面，不执行任何划词逻辑
         const hasSidebar = !!document.querySelector('.sidebar-content') || 
                             !!document.getElementById('starlight__sidebar') || 
                             !!document.querySelector('aside#sidebar');
@@ -216,13 +204,11 @@ import '@docsearch/css';
         }
 
         const text = selection.toString().trim();
-        // 防误点：必须大于 1 个字符
         if (text.length <= 1) {
           hidePopup();
           return;
         }
 
-        // 防误点：检查选中内容的锚点是否在文档正文内容区域 (.sl-markdown-content) 内
         let node = selection.anchorNode as HTMLElement | null;
         let isInsideContent = false;
         while (node) {
@@ -246,7 +232,6 @@ import '@docsearch/css';
         const scrollX = window.scrollX || document.documentElement.scrollLeft;
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         
-        // 显示在选区的正下方，避开手机系统的顶部高亮菜单
         if (popup) {
             popup.style.left = `${rect.left + scrollX + (rect.width / 2)}px`;
             popup.style.top = `${rect.bottom + scrollY + 12}px`; 
@@ -334,7 +319,6 @@ import '@docsearch/css';
         });
       }
       setupTextSelectionAskAI();
-      setupThinkTagInteraction(); // 注入 think 标签拦截交互
     });
   }
 
@@ -479,71 +463,45 @@ import '@docsearch/css';
   }
 
   /* =========================================================
-     [新增] AI 思考过程 <think> 标签相关样式支持
+     [新增/修复] 支持思考链 <think> 标签的原生渲染 
+     （全链路使用 Starlight CSS 变量，完美兼容明暗模式，修复穿模问题）
      ========================================================= */
-
-  /* 1. 过滤隔离：若处于 Tool Call 工具调用环节，隐藏其内部自带的任何 think 标签 */
-  [class*="MessageContent-Tool"] think {
-    display: none !important;
-  }
-
-  /* 2. 主区展示：对最终解答的 think 进行流式展开与样式包装 */
   think {
     display: block;
-    margin: 1rem 0;
-    border: 1px solid var(--sl-color-gray-5);
-    border-radius: 0.5rem;
-    background-color: var(--sl-color-gray-6); /* 直接借用 Starlight 的主题灰度系统 */
-    color: var(--docsearch-muted-color, var(--sl-color-gray-2));
-    font-size: 0.9em;
     position: relative;
-    /* top-padding 留出 2.5rem 专门安放伪元素 Header */
-    padding: 2.5rem 1rem 1rem 1rem;
-    line-height: 1.6;
-    box-sizing: border-box !important;
-    overflow: hidden;
-  }
-
-  /* 使用 ::before 伪元素制造自带交互效果的 Header, 防止注入 DOM 引发 React VDOM 崩溃 */
-  think::before {
-    content: '▼ 思考过程';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
+    margin: 1rem 0 1.5rem 0;
+    padding: 1rem; /* 设定正常的内容内边距 */
+    /* 背景色在深色模式表现为深灰，亮色模式自动转为浅白/浅灰，无需写死颜色 */
     background-color: var(--sl-color-gray-6);
-    border-bottom: 1px solid var(--sl-color-gray-5);
-    color: var(--docsearch-text-color, var(--sl-color-text));
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.2s, color 0.2s;
-    box-sizing: border-box !important;
+    border: 1px solid var(--sl-color-gray-5);
+    border-left: 4px solid var(--sl-color-accent); /* 左侧高亮边框 */
+    border-radius: 0.5rem;
+    color: var(--sl-color-gray-2); /* 思考过程使用略微柔和的文字色 */
+    font-size: 0.85em;
+    font-family: var(--sl-font-mono), monospace;
+    white-space: pre-wrap;
+    max-height: 280px;
+    overflow-y: auto; /* 允许内部滚动 */
+    box-shadow: var(--docsearch-hit-shadow);
   }
 
-  think:hover::before {
+  think::before {
+    content: '🧠 AI 深度思考中... (下拉可查看完整过程)';
+    position: sticky;
+    top: -1rem; /* 负 Margin 吸顶魔法：配合父元素的 padding-top 紧贴顶部 */
+    margin: -1rem -1rem 1rem -1rem; /* 将标题栏拉伸铺满整个父元素的顶部区域 */
+    display: block;
+    padding: 0.5rem 1rem;
     background-color: var(--sl-color-gray-5);
-  }
-
-  /* 3. 闭合状态：由 JS 提供事件拦截添加 .collapsed */
-  think.collapsed {
-    /* 强制整体元素高度缩小到仅剩 Header 的高度，配合 overflow 裁切内容 */
-    height: 2.5rem !important; 
-    padding-bottom: 0;
-  }
-
-  think.collapsed::before {
-    content: '▶ 思考过程';
-    border-bottom: none;
+    color: var(--sl-color-text);
+    font-weight: 600;
+    font-family: var(--sl-font-sans), sans-serif;
+    border-bottom: 1px solid var(--sl-color-gray-4);
+    z-index: 2; /* 保证标题栏永远盖在滚动的思考文本上方 */
   }
 
   /* =========================================================
-     [原有] 划词触发 AI 解读悬浮按钮样式
+     划词触发 AI 解读悬浮按钮样式
      ========================================================= */
   .aipali-ask-ai-popup {
     position: absolute;
