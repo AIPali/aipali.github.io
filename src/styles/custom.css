@@ -84,7 +84,6 @@ img {
 /* ==========================================================
    3. 侧边栏：双语菜单排版 (中巴对照)
 ========================================================== */
-/* 列表项 Grid 布局 */
 .sidebar-pane a,
 .sidebar-pane summary {
   display: grid !important;
@@ -101,7 +100,6 @@ img {
   font-weight: 500;
 }
 
-/* 巴利语副标题 (Badge) 样式 */
 .sidebar-pane .sl-badge {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -116,7 +114,6 @@ img {
   transition: all 0.2s ease;
 }
 
-/* 激活或悬浮时副标题样式跟随 */
 .sidebar-pane a[aria-current="page"] .sl-badge,
 .sidebar-pane a:hover .sl-badge,
 .sidebar-pane summary:hover .sl-badge {
@@ -124,7 +121,6 @@ img {
   opacity: 0.75;
 }
 
-/* 折叠箭头靠右对齐 */
 .sidebar-pane summary svg,
 .sidebar-pane a svg {
   grid-column: 2 / 3;
@@ -134,17 +130,9 @@ img {
 /* ==========================================================
    4. 侧边栏：顶部频道切换栏 (Topics)
 ========================================================== */
-/* 阻止全局侧边栏的弹性回弹，提供内部高度上下文 */
-.sidebar-pane {
-  overscroll-behavior: none !important;
-}
+.sidebar-pane { overscroll-behavior: none !important; }
+.sidebar-content { padding-top: 0 !important; display: block !important; }
 
-.sidebar-content {
-  padding-top: 0 !important;
-  display: block !important;
-}
-
-/* 频道栏吸顶固定 */
 ul.starlight-sidebar-topics {
   position: sticky !important;
   top: 0 !important;
@@ -171,7 +159,6 @@ ul.starlight-sidebar-topics > li {
   display: none !important;
 }
 
-/* 频道按钮基础样式 */
 .starlight-sidebar-topics a {
   display: block !important;
   width: 100% !important;
@@ -194,7 +181,6 @@ ul.starlight-sidebar-topics > li {
   line-height: 1.3 !important;
 }
 
-/* 频道按钮交互态 */
 .starlight-sidebar-topics a:hover {
   background-color: var(--sl-color-gray-6) !important;
 }
@@ -208,18 +194,14 @@ ul.starlight-sidebar-topics > li {
   color: var(--sl-color-accent-high) !important;
 }
 
-/* 下方菜单区域 */
 ul.starlight-sidebar-topics + * {
   margin-top: 0.5rem !important;
   overscroll-behavior-y: auto !important;
   padding-bottom: 5rem !important;
 }
 
-.sidebar-content > ul.starlight-sidebar-topics {
-  width: 100% !important;
-}
+.sidebar-content > ul.starlight-sidebar-topics { width: 100% !important; }
 
-/* 移动端频道栏单行适配 */
 @media (max-width: 50rem) {
   .sidebar-content > ul.starlight-sidebar-topics {
     flex-wrap: nowrap !important;
@@ -230,12 +212,10 @@ ul.starlight-sidebar-topics + * {
     margin-right: calc(var(--sl-sidebar-pad-x, 0.5rem) * -1) !important;
     width: auto !important;
   }
-  
   .sidebar-content > ul.starlight-sidebar-topics > li {
     flex: 1 1 0 !important;
     margin: 0 !important;
   }
-
   .sidebar-content > ul.starlight-sidebar-topics a {
     padding-left: calc((100% - 2.2rem) / 2) !important;
     padding-right: calc((100% - 2.2rem) / 2) !important;
@@ -245,95 +225,57 @@ ul.starlight-sidebar-topics + * {
 /* ==========================================================
    5. 正文内容区样式 (Blockquote & .p-ref)
 ========================================================== */
-/* --- Blockquote 现代工业风样式 (方案一) --- */
 .sl-markdown-content blockquote {
-    /* 移除 Starlight 默认左边框 */
     border-inline-start: none;
-    /* 增加上下边框：上粗下细，增加现代设计感 */
     border-top: 3px solid var(--sl-color-gray-2);
     border-bottom: 1px solid var(--sl-color-gray-5);
-    /* 极简背景，与 Starlight 默认背景拉开微弱差距 */
     background-color: var(--sl-color-gray-6);
     padding: 2rem 1.5rem;
     margin: 2.5rem 0;
-    /* 提升高级感 */
     line-height: 1.8;
     letter-spacing: 0.02em;
 }
+.sl-markdown-content blockquote p { color: var(--sl-color-white); }
 
-.sl-markdown-content blockquote p {
-    color: var(--sl-color-white);
-}
-
-/* --- 段落编号 (.p-ref) 定位与排版修复 --- */
-/* 内容区基础留白与相对定位 */
-:not([data-template="splash"]) .sl-markdown-content {
+/* 普通经文/文档页（有侧边栏）：内容区左侧留白 3rem 容纳段落编号 */
+html[data-has-sidebar] .sl-markdown-content {
   position: relative;
   padding-left: 3rem;
 }
-[data-template="splash"] .sl-markdown-content {
+
+/* Splash 落地页（无侧边栏）：取消左侧 3rem 留白 */
+html:not([data-has-sidebar]) .sl-markdown-content {
   padding-left: 0rem !important;
 }
 
-/* 确保内部容器元素均具有相对定位基准 */
+/* 消除 Splash 落地页顶部的灰色分割线 */
+html:not([data-has-sidebar]) .content-panel {
+  border-top: none !important;
+}
+
 .sl-markdown-content p,
 .sl-markdown-content li,
 .sl-markdown-content blockquote,
-.sl-markdown-content .markdown-alert {
-  position: relative !important;
-}
+.sl-markdown-content .markdown-alert { position: relative !important; }
 
-/* 编号基础样式 */
 .p-ref {
-  position: absolute;
-  top: 0.4rem;
-  left: -3rem;
-  text-align: left;
-  width: 3rem;
-  white-space: normal;
-  line-height: 1.1;
-  font-family: var(--__sl-font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  opacity: 0.4;
-  user-select: none;
-  pointer-events: none;
+  position: absolute; top: 0.4rem; left: -3rem; text-align: left;
+  width: 3rem; white-space: normal; line-height: 1.1;
+  font-family: var(--__sl-font-mono); font-size: 0.78rem;
+  font-weight: 600; opacity: 0.4; user-select: none; pointer-events: none;
 }
 
-/* 多级列表缩进找补 */
-.sl-markdown-content li > .p-ref,
-.sl-markdown-content li > p .p-ref { left: calc(-3rem - 40px); }
+.sl-markdown-content li > .p-ref, .sl-markdown-content li > p .p-ref { left: calc(-3rem - 40px); }
+.sl-markdown-content li li > .p-ref, .sl-markdown-content li li > p .p-ref { left: calc(-3rem - 80px); }
+.sl-markdown-content li li li > .p-ref, .sl-markdown-content li li li > p .p-ref { left: calc(-3rem - 120px); }
 
-.sl-markdown-content li li > .p-ref,
-.sl-markdown-content li li > p .p-ref { left: calc(-3rem - 80px); }
+.sl-markdown-content blockquote > .p-ref, .sl-markdown-content blockquote > p .p-ref { left: calc(-3rem - 1.5rem); }
+.sl-markdown-content blockquote blockquote > .p-ref, .sl-markdown-content blockquote blockquote > p .p-ref { left: calc(-3rem - 1.5rem - 1.5rem); }
+.sl-markdown-content .markdown-alert > .p-ref, .sl-markdown-content .markdown-alert > p .p-ref { left: calc(-3rem - 1rem); }
 
-.sl-markdown-content li li li > .p-ref,
-.sl-markdown-content li li li > p .p-ref { left: calc(-3rem - 120px); }
+.sl-markdown-content li blockquote > .p-ref, .sl-markdown-content li blockquote > p .p-ref { left: calc(-3rem - 40px - 1.5rem); }
+.sl-markdown-content blockquote li > .p-ref, .sl-markdown-content blockquote li > p .p-ref { left: calc(-3rem - 1.5rem - 40px); }
 
-/* ... 可继续添加更多列表层级 */
-
-/* 引用块与提示框缩进找补 */
-/* 【已修正】Blockquote 左内边距为 1.5rem，因此补偿值修正为 -1.5rem */
-.sl-markdown-content blockquote > .p-ref,
-.sl-markdown-content blockquote > p .p-ref { left: calc(-3rem - 1.5rem); }
-
-/* 【已修正】嵌套 Blockquote 的情况 */
-.sl-markdown-content blockquote blockquote > .p-ref,
-.sl-markdown-content blockquote blockquote > p .p-ref { left: calc(-3rem - 1.5rem - 1.5rem); }
-
-.sl-markdown-content .markdown-alert > .p-ref,
-.sl-markdown-content .markdown-alert > p .p-ref { left: calc(-3rem - 1rem); }
-
-/* 交叉嵌套场景缩进找补 */
-/* 【已修正】列表内嵌套引用块 */
-.sl-markdown-content li blockquote > .p-ref,
-.sl-markdown-content li blockquote > p .p-ref { left: calc(-3rem - 40px - 1.5rem); }
-
-/* 【已修正】引用块内嵌套列表 */
-.sl-markdown-content blockquote li > .p-ref,
-.sl-markdown-content blockquote li > p .p-ref { left: calc(-3rem - 1.5rem - 40px); }
-
-/* 移动端屏幕下隐藏段落编号并缩减正文边距 */
 @media (max-width: 50rem) {
   .sl-markdown-content { padding-left: 0rem !important; }
   .p-ref { display: none !important; }
@@ -341,15 +283,72 @@ ul.starlight-sidebar-topics + * {
 
 
 /* ==========================================================
-   6. 其它插件/工具调整 (示例：Algolia DocSearch)
+   6. 墨水屏 E-Ink 模式专用样式 (由 .eink-mode 触发)
 ========================================================== */
-/* 隐藏 Algolia DocSearch 搜索结果中的分类标题 (lvl0) */
-/*
-.DocSearch-Hit-source {
+
+html.eink-mode {
+  font-size: 118% !important; 
+}
+
+/* 残影杀手：彻底剥夺所有动画、过渡与平滑滚动 */
+html.eink-mode, 
+html.eink-mode *, 
+html.eink-mode *::before, 
+html.eink-mode *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+  box-shadow: none !important; 
+}
+
+/* 强制浅色与高对比度色彩覆写 */
+html.eink-mode {
+  --sl-color-bg: #ffffff !important;
+  --sl-color-bg-nav: #ffffff !important;
+  --sl-color-bg-sidebar: #f5f5f5 !important;
+  
+  --sl-color-text: #000000 !important;
+  --sl-color-white: #000000 !important;
+  --sl-color-gray-1: #000000 !important;
+  --sl-color-gray-2: #111111 !important;
+  --sl-color-gray-3: #222222 !important;
+  
+  --sl-color-hairline: #bbbbbb !important;
+  --sl-color-hairline-light: #dddddd !important;
+
+  --sl-color-accent: #000000 !important; 
+  --sl-color-text-accent: #000000 !important; 
+  --sl-color-accent-high: #000000 !important; 
+  --sl-color-accent-low: #eeeeee !important; 
+}
+
+html.eink-mode .sl-markdown-content blockquote {
+  background-color: #f0f0f0 !important; 
+  border-top: 3px solid #555555 !important;
+  border-bottom: 1px solid #aaaaaa !important;
+}
+
+html.eink-mode .sl-markdown-content blockquote p { 
+  color: #000000 !important; 
+}
+
+/* 按钮与特殊组件描边加重 */
+html.eink-mode .btn-primary { 
+  background-color: #111111 !important; 
+  color: #ffffff !important; 
+}
+html.eink-mode .btn-secondary { 
+  border: 2px solid #111111 !important; 
+  color: #111111 !important; 
+  background: #ffffff !important; 
+}
+html.eink-mode .btn-minimal { 
+  color: #111111 !important;
+  border: none !important; 
+}
+html.eink-mode starlight-theme-select {
   display: none !important;
 }
-.DocSearch-Hit-Container {
- padding-top: 4px !important;
- padding-bottom: 4px !important;
+html.eink-mode .social-icons::after {
+  display: none !important;
 }
-*/

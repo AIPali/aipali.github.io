@@ -18,8 +18,10 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
       </p>
       <div className="hero-actions">
         <a href="https://aipali.true-dhamma.com/askai/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">聊聊巴利三藏 →</a>
-        <a href="/tipitaka/" className="btn btn-secondary">阅读经文</a>
-        <a href="https://aipali.github.io/offline/" className="btn btn-minimal">AIPali 离线版</a>
+        <a href="https://aipali.github.io/offline/" className="btn btn-secondary">离线版</a>
+        <button id="btn-eink-toggle" className="btn btn-minimal" style={{ cursor: 'pointer', outline: 'none', background: 'transparent', border: 'none', padding: '0.8rem 1.6rem' }}>
+          墨水屏模式
+        </button>
       </div>
     </div>
 
@@ -157,6 +159,87 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
     </div>
   </footer>
 </div>
+
+{/* =========================================
+   新增：墨水屏模式 Toggle 开关逻辑与深度清理
+========================================= */}
+<script is:inline>{`
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnEink = document.getElementById('btn-eink-toggle');
+    if (!btnEink) return;
+
+    // 初始化按钮状态
+    const isEInkEnabled = localStorage.getItem('AIPali_EInk_Mode') === 'true';
+    if (isEInkEnabled) {
+      btnEink.innerText = '退出墨水屏模式';
+      btnEink.style.color = '#ff5f56';
+    } else {
+      btnEink.innerText = '墨水屏模式';
+    }
+
+    btnEink.addEventListener('click', async () => {
+      const currentStatus = localStorage.getItem('AIPali_EInk_Mode') === 'true';
+
+      if (!currentStatus) {
+        // --- 开启模式流程 ---
+        const msg = "开启墨水屏模式\\n\\n此模式专为墨水屏（E-Ink）电子书阅读器设计。开启后将：\\n1. 放大字号并提升对比度；\\n2. 停用动画效果；\\n3. 默认进入离线版。\\n\\n⚠️ 注意：此功能专为优化墨水屏设备的使用体验、满足离线阅读的需求而设计。如果您在普通手机、平板或 PC 上开启此模式，不仅页面版式将变得异常，而且需要手动管理本地经文数据才能使用。\\n\\n如果您当前使用的不是墨水屏设备，请击“取消”按钮退出。\\n\\n确定要开启墨水屏模式吗？";
+        
+        if (confirm(msg)) {
+          localStorage.setItem('AIPali_EInk_Mode', 'true');
+          // 交互优化：原地刷新直接让墨水屏样式生效，更符合直觉
+          window.location.replace(window.location.pathname);
+        }
+      } else {
+        // --- 退出模式与深度清理流程 ---
+        const msg = "退出墨水屏模式\\n\\n退出后将：\\n1. 恢复常规的版式与动画效果；\\n2. 清空所有离线版经文数据；\\n3. 恢复为需要网络才能访问的常规模式。\\n\\n确定要关闭墨水屏模式并清空离线数据吗？";
+        
+        if (confirm(msg)) {
+          btnEink.innerText = '正在清空离线数据...';
+          btnEink.disabled = true;
+          btnEink.style.opacity = '0.5';
+          
+          localStorage.removeItem('AIPali_EInk_Mode');
+          
+          try {
+            // 扫荡 Cache Storage
+            if ('caches' in window) {
+              const cacheNames = await caches.keys();
+              for (const name of cacheNames) {
+                await caches.delete(name);
+              }
+            }
+            // 扫荡 IndexedDB 
+            // 通过 Promise 封装 Request 对象，确保在数据库文件彻底释放锁之后才执行后续
+            if (window.indexedDB && indexedDB.databases) {
+              const dbs = await indexedDB.databases();
+              for (const db of dbs) {
+                await new Promise((resolve) => {
+                  const req = indexedDB.deleteDatabase(db.name);
+                  req.onsuccess = resolve;
+                  req.onerror = resolve; 
+                  req.onblocked = resolve;
+                });
+              }
+            }
+            // 注销 Service Worker 
+            if ('serviceWorker' in navigator) {
+              const registrations = await navigator.serviceWorker.getRegistrations();
+              for (const reg of registrations) {
+                await reg.unregister();
+              }
+            }
+          } catch(e) {
+            console.warn('深度清理期间部分缓存受阻:', e);
+          }
+          
+          // 增加 300 毫秒的安全缓冲期，确保底层的磁盘文件句柄彻底释放后再刷新
+          await new Promise(r => setTimeout(r, 300));
+          window.location.replace(window.location.pathname);
+        }
+      }
+    });
+  });
+`}</script>
 
 <style>
   {`
