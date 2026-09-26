@@ -35,27 +35,35 @@ template: splash
       padding-inline: 0 !important;
     }
 
-    /* 3. 外层容器：占满屏幕并隐藏超出边界的内容 */
+    /* 3. 外层容器：设置与下方一致的边距，并保持自适应 */
     .chat-fullscreen-wrapper {
+      /* 【参数调节区】白边尺寸，默认 12px，可按需微调为 10px / 14px / 16px */
+      --chat-gap: 12px;
+
       width: 100%;
       height: calc(100dvh - var(--sl-nav-height, 3.5rem));
-      overflow: hidden; /* 关键：用于将上方的圆角裁切掉 */
-      position: relative;
+      display: flex;
+      box-sizing: border-box;
+
+      /* 在顶部和底部加入一致的边距（若左右也需要边距，可改为：var(--chat-gap)） */
+      padding: var(--chat-gap) 0;
+
+      /* 背景底色：跟随 Starlight 的主题底色，浅色模式为白/灰底，深色模式为深底 */
       background: var(--sl-color-bg);
+      overflow: hidden;
+      position: relative;
     }
 
-    /* 4. iframe 向上拉伸微调：削平顶部两个圆角 */
+    /* 4. iframe 完整展示：恢复原始高度，文字居中不受影响 */
     .fastgpt-iframe {
       width: 100%;
-      /* 向上提 12px，把顶部的两个圆弧裁切在屏幕外（若还看得到圆角，可调大为 -14px 或 -16px） */
-      margin-top: -12px;
-      /* 补偿增加的高度，确保底部不会被提上去 */
-      height: calc(100% + 12px) !important;
+      height: 100% !important;
+      margin: 0 !important;
       border: none;
       display: block;
     }
 
-    /* 5. 锁定外层滚动 */
+    /* 5. 锁定外层页面滚动，交由聊天框内部自行滚动 */
     body {
       overflow-y: hidden;
     }
