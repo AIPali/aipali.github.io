@@ -27,6 +27,13 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
       localStorage.setItem('starlight-theme', 'light');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
       if (themeMeta) themeMeta.setAttribute('content', '#ffffff');
+      // 点击链接不打开新标签页
+      window.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.target === '_blank') {
+          link.removeAttribute('target');
+        }
+      }, true);
     }
   })();
 </script>
