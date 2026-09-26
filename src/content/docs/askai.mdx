@@ -3,14 +3,14 @@ title: AIPali 智能化巴利三藏 | AI 问经
 head:
   - tag: title
     content: "AIPali 智能化巴利三藏 | AI 问经"
-description: 基于现代人工智能技术，将古老的《巴利三藏》翻译成现代人读得懂的语言，重塑巴利三藏的阅读、检索与互动体验。
+description: 基于现代人工智能技术，重塑巴利三藏的阅读、检索与互动体验。
 template: splash
 ---
 
 <div className="chat-fullscreen-wrapper">
   <iframe
+    className="fastgpt-iframe"
     src="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy"
-    style={{ width: '100%', height: '100%', border: 'none' }}
     allow="microphone *; *"
   />
 </div>
@@ -22,7 +22,7 @@ template: splash
       display: none !important;
     }
 
-    /* 2. 移除 Starlight 内容区域的默认外边距与内边距，实现无缝铺满 */
+    /* 2. 移除 Starlight 内容区域的默认外边距与内边距 */
     .sl-markdown-content {
       padding: 0 !important;
     }
@@ -35,16 +35,27 @@ template: splash
       padding-inline: 0 !important;
     }
 
-    /* 3. 聊天容器高度自适应：占满视口高度减去顶部 Header 高度 */
+    /* 3. 外层容器：占满屏幕并隐藏超出边界的内容 */
     .chat-fullscreen-wrapper {
       width: 100%;
       height: calc(100dvh - var(--sl-nav-height, 3.5rem));
-      display: flex;
-      overflow: hidden;
+      overflow: hidden; /* 关键：用于将上方的圆角裁切掉 */
+      position: relative;
       background: var(--sl-color-bg);
     }
 
-    /* 4. 禁止外层页面滚动，由 iframe 内部的聊天窗口自行滚动 */
+    /* 4. iframe 向上拉伸微调：削平顶部两个圆角 */
+    .fastgpt-iframe {
+      width: 100%;
+      /* 向上提 12px，把顶部的两个圆弧裁切在屏幕外（若还看得到圆角，可调大为 -14px 或 -16px） */
+      margin-top: -12px;
+      /* 补偿增加的高度，确保底部不会被提上去 */
+      height: calc(100% + 12px) !important;
+      border: none;
+      display: block;
+    }
+
+    /* 5. 锁定外层滚动 */
     body {
       overflow-y: hidden;
     }
