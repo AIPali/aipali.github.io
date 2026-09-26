@@ -16,69 +16,48 @@ template: splash
   </div>
 </div>
 
-<style is:global>
+<style>
   {`
-    /* ============================================================
-       1. 关键修复：穿透消除 Starlight 顶部及主面板的所有分界线与阴影
-       ============================================================ */
-    header, 
-    .header, 
-    .main-frame, 
-    .main-pane,
-    main {
-      border-bottom: none !important;
-      border-top: none !important;
-      box-shadow: none !important;
-      outline: none !important;
+    /* 1. 隐藏默认页面标题与锚点 */
+    .sl-markdown-content > h1:first-child, #_top {
+      display: none !important;
     }
 
-    /* 将 Starlight 专门用于画线的变量设为透明（双重保险） */
-    :root {
-      --sl-color-hairline-shade: transparent !important;
+    /* 2. 彻底抹除 Starlight content-panel 自带的顶部 1px 灰线与内边距 */
+    .content-panel {
+      padding: 0 !important;
+      border-top: none !important; /* 关键：干掉你排查出的这条灰色分割线 */
+      border: none !important;
+    }
+    .sl-markdown-content {
+      padding: 0 !important;
+    }
+    .sl-container {
+      max-width: 100% !important;
+      margin-inline: 0 !important;
+      padding-inline: 0 !important;
+    }
+    body {
+      overflow-y: hidden;
     }
 
-    /* ============================================================
-       2. 重置 Starlight 正文内边距与默认标题
-       ============================================================ */
-    .sl-markdown-content > h1:first-child, #_top { 
-      display: none !important; 
-    }
-    .sl-markdown-content, .content-panel { 
-      padding: 0 !important; 
-    }
-    .sl-container { 
-      max-width: 100% !important; 
-      margin-inline: 0 !important; 
-      padding-inline: 0 !important; 
-    }
-    body { 
-      overflow-y: hidden; 
-    }
-
-    /* ============================================================
-       3. 外层视口：顶部间距精准留白 3px
-       ============================================================ */
+    /* 3. 外层视口：顶部间距精准缩减至 4px，左右和底部保留 12px 卡片感 */
     .chat-viewport {
       width: 100%;
       height: calc(100dvh - var(--sl-nav-height, 3.5rem));
-      /* 顶部 3px，右/下/左 12px */
-      padding: 3px 12px 12px 12px;
+      padding: 4px 12px 12px 12px;
       box-sizing: border-box;
       background-color: var(--sl-color-bg);
       display: flex;
     }
 
-    /* ============================================================
-       4. 卡片容器：去掉顶部 border-top，避免在 3px 处显出线条
-       ============================================================ */
+    /* 4. 卡片容器：圆角、细边框与柔和投影 */
     .chat-card {
       width: 100%;
       height: 100%;
       border-radius: 12px;
       overflow: hidden;
-      /* 左右和底部保留细边框，顶部边框强制清空 */
       border: 1px solid var(--sl-color-hairline);
-      border-top: none !important; 
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       background: var(--sl-color-bg);
     }
