@@ -7,55 +7,49 @@ description: 基于现代人工智能技术，重塑巴利三藏的阅读、检�
 template: splash
 ---
 
-<div className="chat-fullscreen-wrapper">
-  <iframe
-    className="fastgpt-iframe"
-    src="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy"
-    allow="microphone *; *"
-  />
+<div className="chat-viewport">
+  <div className="chat-card">
+    <iframe
+      src="https://ai.true-dhamma.com/chat/share?shareId=pKlTh130EtoSDdDoPOBjMxzy"
+      allow="microphone *; *"
+    />
+  </div>
 </div>
 
 <style>
   {`
-    /* 1. 隐藏默认渲染的页面标题及锚点 */
-    .sl-markdown-content > h1:first-child, #_top {
-      display: none !important;
-    }
+    /* 1. 隐藏默认页面标题与重置边距 */
+    .sl-markdown-content > h1:first-child, #_top { display: none !important; }
+    .sl-markdown-content, .content-panel { padding: 0 !important; }
+    .sl-container { max-width: 100% !important; margin-inline: 0 !important; padding-inline: 0 !important; }
+    body { overflow-y: hidden; }
 
-    /* 2. 移除 Starlight 内容区域的默认外边距与内边距 */
-    .sl-markdown-content {
-      padding: 0 !important;
-    }
-    .content-panel {
-      padding: 0 !important;
-    }
-    .sl-container {
-      max-width: 100% !important;
-      margin-inline: 0 !important;
-      padding-inline: 0 !important;
-    }
-
-    /* 3. 外层容器：占满屏幕并隐藏超出边界的内容 */
-    .chat-fullscreen-wrapper {
+    /* 2. 外层视口：扣除导航头高度，并给四周留出舒适的间距 */
+    .chat-viewport {
       width: 100%;
       height: calc(100dvh - var(--sl-nav-height, 3.5rem));
-      overflow: hidden; /* 关键：用于将上方的圆角裁切掉 */
-      position: relative;
+      padding: 12px;
+      box-sizing: border-box;
+      background-color: var(--sl-color-bg);
+      display: flex;
+    }
+
+    /* 3. 卡片式窗口容器：赋予统一的圆角、细边框与柔和微阴影 */
+    .chat-card {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--sl-color-hairline);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
       background: var(--sl-color-bg);
     }
 
-    /* 4. iframe 向上拉伸微调：削平顶部两个圆角 */
-    .fastgpt-iframe {
+    .chat-card iframe {
       width: 100%;
-      margin-top: -4px;
-      height: calc(100% + 4px) !important;
+      height: 100%;
       border: none;
       display: block;
-    }
-
-    /* 5. 锁定外层滚动 */
-    body {
-      overflow-y: hidden;
     }
   `}
 </style>
