@@ -375,6 +375,9 @@ import TodayRightView from '../../components/TodayRightView.astro';
         });
 
       // 核心改造 3：拉取额外清单。必须使用 no-store 强制刷新，并将清单自身和 Nodes 都塞入下载队列进行持久化。
+      // ==========================================================
+      // 1. 读取额外静态数据清单 (保持原有业务逻辑)
+      // ==========================================================
       try {
         UI.log('读取额外静态资源清单 (offline-manifest-custom)...');
         const manifestRes = await fetch(MANIFEST_URL, { cache: 'no-store' });
@@ -390,6 +393,46 @@ import TodayRightView from '../../components/TodayRightView.astro';
         }
       } catch (err) {
         UI.log('提示: 无法解析自定义缓存清单，仅同步主要节点。');
+      }
+
+      // ==========================================================
+      // 2. 【核心修复】自动从 DOM 抓取所有样式表、脚本与关键图片
+      // ==========================================================
+      try {
+        UI.log('扫描核心样式表、脚本及关键图片...');
+        const assetElements = document.querySelectorAll(
+          'link[rel="stylesheet"], link[rel="preload"][as="style"], link[rel="preload"][as="font"], link[rel="apple-touch-icon"], link[rel="icon"], script[src], img[src]'
+        );
+        
+        const autoAssets = [];
+        for (const el of assetElements) {
+          const rawUrl = el.src || el.href;
+          // 排除空值与 base64 内联图片
+          if (!rawUrl || rawUrl.startsWith('data:')) continue;
+          
+          try {
+            const parsed = new URL(rawUrl, window.location.origin);
+            // 严格同源检查，仅下载本站构建产物，排除外部 CDN
+            if (parsed.origin === window.location.origin) {
+              if (parsed.pathname.includes('/_astro/') || parsed.pathname.includes('/assets/')) {
+                autoAssets.push(parsed.pathname);
+              }
+            }
+          } catch (e) {}
+        }
+
+        // 去重并防止与现有 urls 发生重复碰撞
+        const uniqueAssets = Array.from(new Set(autoAssets));
+        let addedCount = 0;
+        for (const assetUrl of uniqueAssets) {
+          if (!urls.includes(assetUrl)) {
+            urls.push(assetUrl);
+            addedCount++;
+          }
+        }
+        UI.log('成功捕获并注入核心静态资源: ' + addedCount + ' 个。');
+      } catch (err) {
+        UI.log('静态资源自动捕获异常: ' + err.message);
       }
 
       if (urls.length === 0) throw new Error('未获取到有效的数据节点。');
