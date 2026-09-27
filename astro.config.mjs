@@ -15,9 +15,12 @@ import { sidebarVA } from './src/config/sidebar/va.mjs';
 const deployEnv = process.env.DEPLOY_ENV || 'domain';
 const deployConfig = {
   github: { site: 'https://aipali.github.io', base: '/' },
-  domain: { site: 'https://aipali.true-dhamma.com', base: '/' }
+  domain: { site: 'https://aipali.true-dhamma.com', base: '/' },
+  offline: { site: 'https://offline.aipali.true-dhamma.com', base: '/' }
 };
-const currentConfig = deployConfig[deployEnv];
+
+// 加上安全兜底，哪怕环境变量拼写错误也不会导致构建报错崩溃
+const currentConfig = deployConfig[deployEnv] || deployConfig.domain;
 
 export default defineConfig({
   site: currentConfig.site,
