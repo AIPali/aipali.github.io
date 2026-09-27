@@ -3,6 +3,7 @@ import AstroPWA from '@vite-pwa/astro';
 
 export function getPwaConfig(deployEnv, baseUrl) {
   // ============================================================
+  // Cloudflare 模式 (保持原样)
   // ============================================================
   if (deployEnv !== 'github') {
     return AstroPWA({
