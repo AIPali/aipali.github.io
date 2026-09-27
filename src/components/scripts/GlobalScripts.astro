@@ -1,5 +1,6 @@
 ---
 // src/components/scripts/GlobalScripts.astro
+import EInkMode from './EInkMode.astro';
 import PWA from './PWA.astro';
 import CustomScripts from './CustomScripts.astro';
 import FastGPT from './FastGPT.astro';
@@ -7,7 +8,13 @@ import PaliLookup from './PaliLookup.astro';
 import Analytics from './Analytics.astro';
 ---
 
+<!-- 1. 视觉层拦截（最先执行，防止墨水屏首屏闪烁） -->
+<EInkMode />
+
+<!-- 2. PWA 与离线引擎 -->
 <PWA />
+
+<!-- 3. 其他业务扩展 -->
 <CustomScripts />
 <FastGPT />
 <PaliLookup />

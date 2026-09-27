@@ -1,0 +1,25 @@
+---
+// src/components/scripts/EInkMode.astro
+---
+<script is:inline>
+  (function() {
+    // 首屏阻塞检测：直接读取 localStorage，在渲染前完成 DOM 属性标记，杜绝 FOUC 闪烁
+    const isEInkMode = localStorage.getItem('AIPali_EInk_Mode') === 'true';
+    if (isEInkMode) {
+      document.documentElement.classList.add('eink-mode');
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('starlight-theme', 'light');
+      
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) themeMeta.setAttribute('content', '#ffffff');
+
+      // 墨水屏设备专属防残影优化：点击链接强制在当前页打开，禁用 target="_blank"
+      window.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.target === '_blank') {
+          link.removeAttribute('target');
+        }
+      }, true);
+    }
+  })();
+</script>
