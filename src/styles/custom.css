@@ -172,6 +172,7 @@ ul.starlight-sidebar-topics > li {
   color: var(--sl-color-gray-3) !important;
   word-break: keep-all !important;
   white-space: normal !important;
+  word-spacing: 50px !important;
 }
 
 .starlight-sidebar-topics a::first-line {
