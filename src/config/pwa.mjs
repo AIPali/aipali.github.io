@@ -3,7 +3,6 @@ import AstroPWA from '@vite-pwa/astro';
 
 export function getPwaConfig(deployEnv, baseUrl) {
   // ============================================================
-  // Cloudflare 模式 (轻量，不做激进离线缓存)
   // ============================================================
   if (deployEnv !== 'github') {
     return AstroPWA({
@@ -27,16 +26,14 @@ export function getPwaConfig(deployEnv, baseUrl) {
   }
 
   // ============================================================
-  // GitHub 模式：极致离线版（核心优化区）
+  // GitHub 模式：极致离线版（核心重构修复区）
   // ============================================================
   return AstroPWA({
     registerType: 'autoUpdate',
     injectRegister: false,
     workbox: {
-      globDirectory: 'dist',
-      globPatterns: ['**/*.{js,css,ico,png,svg,webp,woff,woff2}'],
-      globIgnores: ['**/node_modules/**/*', '**/tags/**/*', 'sw.js', 'workbox-*.js'],
-      maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
+      // 1. 【核心修复 1】彻底禁用 Workbox 的内部预缓存劫持，防止生成孤儿 A库
+      globPatterns: [], 
       navigateFallback: null,
 
       runtimeCaching: [
@@ -69,7 +66,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
           urlPattern: /^https:\/\/ai\.true-dhamma\.com\/.*/i,
           handler: 'NetworkOnly',
           options: {
-            plugins:[
+            plugins: [
               {
                 fetchDidFail: async ({ request }) => {
                   if (request.destination === 'document' || request.destination === 'iframe') {
@@ -90,6 +87,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
             ],
           },
         },
+        // 2. 【核心修复 2】全站本域资源统一走 aipali-offline-cache，放宽匹配规则
         {
           urlPattern: ({ request, url }) => {
             if (url.origin !== self.location.origin) return false;
@@ -99,13 +97,15 @@ export function getPwaConfig(deployEnv, baseUrl) {
               request.destination === 'script' ||
               request.destination === 'image' ||
               request.destination === 'font' ||
-              url.pathname.endsWith('/')
+              url.pathname.endsWith('/') ||
+              url.pathname.includes('/_astro/') ||  // 确保哪怕 destination 为空也能精确匹配构建资源
+              url.pathname.includes('/assets/')
             );
           },
-          handler: 'CacheFirst',
+          handler: 'CacheFirst', // 优先读本地，本地没有再读网并自动存入
           options: {
-            cacheName: 'aipali-offline-cache',
-            expiration: { maxEntries: 3000, maxAgeSeconds: 365 * 24 * 60 * 60 },
+            cacheName: 'aipali-offline-cache', // 与 offline.mdx 完全同一数据库！
+            expiration: { maxEntries: 4000, maxAgeSeconds: 365 * 24 * 60 * 60 },
             cacheableResponse: { statuses: [0, 200] },
             matchOptions: { ignoreVary: true, ignoreSearch: true },
           },
@@ -120,7 +120,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
       background_color: '#17181c',
       display: 'standalone',
       start_url: `${baseUrl}offline/`,
-      icons:[
+      icons: [
         { src: `${baseUrl}assets/logo_192x192.png`, sizes: '192x192', type: 'image/png' },
         { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png' },
         { src: `${baseUrl}assets/logo_512x512.png`, sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
