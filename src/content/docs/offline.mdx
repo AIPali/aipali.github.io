@@ -224,26 +224,9 @@ import TodayRightView from '../../components/TodayRightView.astro';
   async function refreshStatus() {
     try {
       if ('caches' in window) {
-        let allowedAssets = new Set();
-        
-        // 核心改造 1：显示状态时，【绝对不碰网络】。只从本地缓存的数据库中尝试提取清单文件。
-        try {
-          const cache = await caches.open(CACHE_NAME);
-          const manifestRes = await cache.match(MANIFEST_URL);
-          if (manifestRes) {
-            const manifest = await manifestRes.json();
-            if (manifest && Array.isArray(manifest.nodes)) {
-              allowedAssets = new Set(manifest.nodes);
-            }
-          }
-        } catch (err) {
-          console.warn('本地尚未缓存静态资源清单，暂不计入额外节点。');
-        }
-
         const cacheNames = await caches.keys();
         const pathSet = new Set(); 
         
-        // 核心改造 2：遍历缓存，按严格白名单计数
         for (let name of cacheNames) {
           const cache = await caches.open(name);
           const keys = await cache.keys();
@@ -253,12 +236,17 @@ import TodayRightView from '../../components/TodayRightView.astro';
               const url = new URL(req.url);
               const path = url.pathname;
               
+              // 1. 核心经文 HTML 页面与清单本身
               const isPageNode = path.endsWith('/') || path.endsWith('.html');
-              const isManifestNode = path === MANIFEST_URL; // 清单文件本身算 1 个节点
-              const isAllowedAssetNode = path.startsWith('/assets/') && allowedAssets.has(path); // 只有清单里的算有效节点
-              const isInternalJunk = path.includes('/_astro/') || path.includes('/@vite/') || path.includes('/@fs/');
+              const isManifestNode = path === MANIFEST_URL;
+              
+              // 2. Astro 构建的 CSS/JS/图片，以及 assets 目录下的文件，统统算作有效节点
+              const isAssetNode = path.startsWith('/assets/') || path.startsWith('/_astro/'); 
+              
+              // 3. 开发模式临时文件剔除
+              const isInternalJunk = path.includes('/@vite/') || path.includes('/@fs/');
 
-              if ((isPageNode || isManifestNode || isAllowedAssetNode) && !isInternalJunk) {
+              if ((isPageNode || isManifestNode || isAssetNode) && !isInternalJunk) {
                 pathSet.add(path);
               }
             } catch(e) {}
