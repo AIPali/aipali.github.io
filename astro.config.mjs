@@ -18,9 +18,7 @@ const deployConfig = {
   domain: { site: 'https://aipali.true-dhamma.com', base: '/' },
   offline: { site: 'https://offline.aipali.true-dhamma.com', base: '/' }
 };
-
-// 加上安全兜底，哪怕环境变量拼写错误也不会导致构建报错崩溃
-const currentConfig = deployConfig[deployEnv] || deployConfig.domain;
+const currentConfig = deployConfig[deployEnv];
 
 export default defineConfig({
   site: currentConfig.site,

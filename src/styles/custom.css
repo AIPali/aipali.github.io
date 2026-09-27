@@ -287,10 +287,10 @@ html:not([data-has-sidebar]) .content-panel {
 ========================================================== */
 
 html.eink-mode {
-  font-size: 118% !important; 
+  font-size: 120% !important; 
 }
 
-/* 残影杀手：彻底剥夺所有动画、过渡与平滑滚动 */
+/* 【架构更新】纯粹的视觉滤镜：残影杀手：彻底剥夺所有动画、过渡与平滑滚动 */
 html.eink-mode, 
 html.eink-mode *, 
 html.eink-mode *::before, 
@@ -351,4 +351,11 @@ html.eink-mode starlight-theme-select {
 }
 html.eink-mode .social-icons::after {
   display: none !important;
+}
+html.eink-mode .page-container::before {
+  display: none !important;
+}
+html.eink-mode .divider-glow {
+  background: #bbbbbb !important;
+  opacity: 1 !important;
 }

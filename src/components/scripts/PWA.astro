@@ -19,8 +19,6 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 <script is:inline>
   (function() {
     const isEInkMode = localStorage.getItem('AIPali_EInk_Mode') === 'true';
-
-    // 状态注入 (必须在渲染前执行，只认 localStorage)
     if (isEInkMode) {
       document.documentElement.classList.add('eink-mode');
       document.documentElement.setAttribute('data-theme', 'light');
@@ -41,26 +39,22 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 {/* 核心脚本 2：动态环境挂载 (Service Worker & 路由重定向) */}
 <script define:vars={{ swUrl, baseUrl, offlineUrl }}>
   const hostname = window.location.hostname;
-  const isTargetDomain = hostname.includes('aipali.github.io') || 
-                         hostname === 'localhost' || 
-                         hostname === '127.0.0.1' || 
-                         hostname.startsWith('192.168.');
-                         
-  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
-                       window.navigator.standalone === true;
-                       
-  const isEInkMode = localStorage.getItem('AIPali_EInk_Mode') === 'true';
-  const isOfflineApp = isStandalone || isEInkMode;
+  
+  // 1. 严格校验：当前是否运行在专属的 offline 物理隔绝域名下
+  // 兼容本地调试：offline调试使用localhost，非offline调试首页使用127.0.0.1
+  const isOfflineDomain = hostname.includes('offline.aipali') || 
+                          hostname === 'localhost' || 
+                          hostname.startsWith('192.168.');
 
-  // 3. 路由守护：离线应用模式下如果直接访问根目录，平滑跳转到 offline 控制台
-  if (isOfflineApp) {
+  // 2. 路由守护：如果在专属离线版域名下访问根目录，平滑跳转到 offline 控制台
+  if (isOfflineDomain) {
     const path = window.location.pathname;
     if (path === baseUrl || path === baseUrl + 'index.html') {
       window.location.replace(offlineUrl);
     }
   }
 
-  // 4. 智能拦截左上角 Logo
+  // 3. 智能拦截左上角 Logo
   document.addEventListener('DOMContentLoaded', () => {
     const siteTitleAnchor = document.querySelector('a.site-title') || document.querySelector('.site-title a');
     
@@ -69,7 +63,9 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
         e.preventDefault(); 
         const isMobile = window.innerWidth <= 600;
         const targetAnchor = isMobile ? '#aipali-trv' : '#aipali-nav';
-        const targetBase = isOfflineApp ? offlineUrl : baseUrl; 
+        
+        // 【逻辑修正】离线站点击 Logo 永远回离线控制台；在线主站返回根目录
+        const targetBase = isOfflineDomain ? offlineUrl : baseUrl; 
         
         if (window.location.pathname === targetBase || window.location.pathname === targetBase.replace(/\/$/, '')) {
           window.location.hash = targetAnchor;
@@ -80,21 +76,18 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
     }
   });
 
-  // 5. Service Worker 动态管理
+  // 4. Service Worker 动态管理：严格同源物理隔离
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
-      if (isTargetDomain && isOfflineApp) {
-        if (navigator.storage && navigator.storage.persist) await navigator.storage.persist();
+      // 只有在离线子域名才挂载 SW。
+      if (isOfflineDomain) {
+        if (navigator.storage && navigator.storage.persist) {
+          await navigator.storage.persist().catch(() => {});
+        }
         navigator.serviceWorker.register(swUrl).then((reg) => {
-          console.log(`[AIPali PWA] 离线引擎已启动 (状态: ${isEInkMode ? '墨水屏模式' : '桌面应用模式'})`);
-        });
-      } else {
-        navigator.serviceWorker.getRegistrations().then((registrations) => {
-          for (let reg of registrations) {
-            reg.unregister().then(boolean => {
-              if (boolean) console.log('[AIPali PWA] 离线引擎已注销，恢复正常实时网络');
-            });
-          }
+          console.log('[AIPali PWA] 离线引擎已启动');
+        }).catch(err => {
+          console.error('[AIPali PWA] 离线引擎启动失败:', err);
         });
       }
     });

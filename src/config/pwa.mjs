@@ -3,9 +3,10 @@ import AstroPWA from '@vite-pwa/astro';
 
 export function getPwaConfig(deployEnv, baseUrl) {
   // ============================================================
-  // Cloudflare 模式 (保持原样)
+  // 站点 A / B：在线模式 (主站 domain & 镜像站 github)
+  // 策略：不使用激进离线缓存，提供基本的 Manifest 供浏览器识别
   // ============================================================
-  if (deployEnv !== 'github') {
+  if (deployEnv !== 'offline') {
     return AstroPWA({
       registerType: 'autoUpdate',
       injectRegister: false,
@@ -16,7 +17,7 @@ export function getPwaConfig(deployEnv, baseUrl) {
         navigateFallback: null,
       },
       manifest: {
-        name: 'AIPali (Online)',
+        name: 'AIPali',
         short_name: 'AIPali',
         display: 'standalone',
         theme_color: '#17181c',
@@ -27,13 +28,14 @@ export function getPwaConfig(deployEnv, baseUrl) {
   }
 
   // ============================================================
-  // GitHub 模式：极致离线版（核心重构修复区）
+  // 站点 C：离线模式 (offline 专区)
+  // 策略：极致离线版，绝对 CacheFirst，单一数据库
   // ============================================================
   return AstroPWA({
     registerType: 'autoUpdate',
     injectRegister: false,
     workbox: {
-      // 1. 【核心修复 1】彻底禁用 Workbox 的内部预缓存劫持，防止生成孤儿 A库
+      // 1. 【核心修复 1】彻底禁用 Workbox 的内部预缓存劫持，防止生成孤儿库
       globPatterns: [], 
       navigateFallback: null,
 
