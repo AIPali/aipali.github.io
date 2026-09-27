@@ -19,7 +19,7 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
   const hostname = window.location.hostname;
   
   // 1. 严格环境判定：仅在离线专区或本地特定环境生效
-  const isOfflineDomain = hostname.includes('offline.aipali') || 
+  const isOfflineDomain = hostname.includes('pwa.aipali') || 
                           hostname === 'localhost' || 
                           hostname.startsWith('192.168.');
 

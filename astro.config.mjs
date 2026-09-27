@@ -17,7 +17,7 @@ const deployEnv = process.env.DEPLOY_ENV || 'domain';
 const deployConfig = {
   github: { site: 'https://aipali.github.io', base: '/' },
   domain: { site: 'https://aipali.true-dhamma.com', base: '/' },
-  offline: { site: 'https://offline.aipali.true-dhamma.com', base: '/' }
+  offline: { site: 'https://pwa.aipali.true-dhamma.com', base: '/' }
 };
 const currentConfig = deployConfig[deployEnv];
 

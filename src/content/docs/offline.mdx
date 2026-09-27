@@ -19,13 +19,13 @@ import TodayRightView from '../../components/TodayRightView.astro';
   (function() {
     const hostname = window.location.hostname;
     // 【架构重构】必须在专属 offline 域名下才能使用此控制台
-    const isAllowed = hostname.includes('offline.aipali') || 
+    const isAllowed = hostname.includes('pwa.aipali') || 
                       hostname === 'localhost' || 
                       hostname === '127.0.0.1' || 
                       hostname.startsWith('192.168.');
     
     if (!isAllowed) {
-      window.location.replace('https://offline.aipali.true-dhamma.com/offline/');
+      window.location.replace('https://pwa.aipali.true-dhamma.com/offline/');
     }
   })();
 `}</script>
@@ -131,17 +131,17 @@ import TodayRightView from '../../components/TodayRightView.astro';
       <Card title="背景介绍" icon="information">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
           <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页面说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
-          <li><b>离线专区：</b>出于服务稳定性的考量，在多个镜像站点中，目前只有 offline.aipali.true-dhamma.com 这一站点支持离线访问。因此，您只能通过<b className="highlight-text">Offline 页面</b>（[https://offline.aipali.true-dhamma.com/offline/](https://offline.aipali.true-dhamma.com/offline/)）访问和使用离线功能。</li>
+          <li><b>离线专区：</b>在全部镜像站点中，只有子域名为“pwa”的镜像站点支持离线访问。因此，您必须通过该镜像站点中的<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)）访问和使用离线功能。</li>
           <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将本页面添加到桌面</b>，以此安装成为一个独立 App 并获得必要的持久化缓存权限——这一步是提升离线浏览稳定性的重要因素。</li>
         </ul>
       </Card>
       
       <Card title="iOS 用户" icon="apple">
-        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://offline.aipali.true-dhamma.com/offline/](https://offline.aipali.true-dhamma.com/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
 
       <Card title="Android 用户" icon="phone">
-        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://offline.aipali.true-dhamma.com/offline/](https://offline.aipali.true-dhamma.com/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
       </Card>
       
       <Card title="局限性" icon="warning">

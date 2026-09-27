@@ -6,7 +6,7 @@ const deployEnv = process.env.DEPLOY_ENV || 'domain';
 const siteUrls = {
   github: 'https://aipali.github.io',
   domain: 'https://aipali.true-dhamma.com',
-  offline: 'https://offline.aipali.true-dhamma.com'
+  offline: 'https://pwa.aipali.true-dhamma.com'
 };
 
 export const GET: APIRoute = () => {
