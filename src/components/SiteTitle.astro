@@ -1,0 +1,24 @@
+---
+// src/components/SiteTitle.astro
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+
+const deployEnv = process.env.DEPLOY_ENV || 'domain';
+const isOffline = deployEnv === 'offline';
+
+// 如果当前是离线环境构建，直接将 Starlight 内置链接 siteTitleHref 修改为 /offline/
+if (isOffline && Astro.locals?.starlightRoute) {
+  Astro.locals.starlightRoute.siteTitleHref = '/offline/';
+}
+---
+
+<!-- 复用 Starlight 默认的 Logo/标题渲染管线，无任何冗余 HTML -->
+<Default><slot /></Default>
+
+{/* 离线专区专属样式覆写：将 custom.css 里的顶部小字域名切换为离线域名 */}
+{isOffline && (
+  <style is:global>
+    .site-title::before {
+      content: "offline.aipali.true-dhamma.com" !important;
+    }
+  </style>
+)}
