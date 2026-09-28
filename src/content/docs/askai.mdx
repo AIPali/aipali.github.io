@@ -5,6 +5,9 @@ head:
     content: "AIPali 智能化巴利三藏 | AI 问经"
 description: 基于现代人工智能技术，重塑巴利三藏的阅读、检索与互动体验。
 template: splash
+prev: false
+next: false
+editUrl: false
 ---
 
 <div className="chat-viewport">
@@ -18,33 +21,49 @@ template: splash
 
 <style is:global>
   {`
-    /* ============================================================
-       重置 Starlight 正文内边距与默认标题
-       ============================================================ */
-    .sl-markdown-content > h1:first-child, #_top { 
-      display: none !important; 
-    }
-    .sl-markdown-content, .content-panel { 
-      padding: 0 !important; 
-    }
-    .sl-container { 
-      max-width: 100% !important; 
-      margin-inline: 0 !important; 
-      padding-inline: 0 !important; 
-    }
-    body { 
-      overflow-y: hidden; 
+    /* 1. 彻底锁定移动端与桌面端的视口滚动，杜绝弹性滚动穿透 */
+    html, body {
+      overflow: hidden !important;
+      height: 100% !important;
+      overscroll-behavior: none !important;
+      touch-action: none;
     }
 
+    /* 2. 彻底隐藏 Starlight 自带的整个标题面板、占位容器以及页脚 */
+    main > .content-panel:first-of-type,
+    .content-panel:has(.title-wrapper),
+    footer,
+    .pagination-links {
+      display: none !important;
+    }
+
+    /* 3. 清除所有父级容器的干扰间距 */
+    .main-pane,
+    main,
+    .content-panel,
+    .sl-container,
+    .sl-markdown-content {
+      padding: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+      border: none !important;
+    }
+
+    /* 4. 使用固定定位锁定视口：上承导航栏，下贴屏幕底边 */
     .chat-viewport {
-      width: 100%;
-      height: calc(100dvh - var(--sl-nav-height, 3.5rem));
-      padding: 12px 12px 12px 12px !important;
+      position: fixed;
+      top: var(--sl-nav-height, 3.5rem);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 12px !important;
       box-sizing: border-box;
       background-color: var(--sl-color-bg);
       display: flex;
+      z-index: 10;
     }
 
+    /* 5. 聊天卡片填满 viewport，形成四周纯正均匀的 12px 间距 */
     .chat-card {
       width: 100%;
       height: 100%;
@@ -53,6 +72,7 @@ template: splash
       border: 1px solid var(--sl-color-hairline);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       background: var(--sl-color-bg);
+      touch-action: auto; /* 允许卡片内（iframe）自由触摸交互 */
     }
 
     .chat-card iframe {
