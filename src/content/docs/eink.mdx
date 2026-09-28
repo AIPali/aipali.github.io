@@ -5,22 +5,22 @@ template: splash
 ---
 
 import { Card, Aside, Steps, Icon } from '@astrojs/starlight/components';
-import heroLight from '../../../assets/aipali-hero-visual-light.webp';
-import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
+import heroLight from '../../assets/aipali-hero-visual-light.webp';
+import heroDark from '../../assets/aipali-hero-visual-dark.webp';
 
 {/* --- 自定义 Hero 模块开始 --- */}
 <section className="custom-hero-section">
   <div className="hero-container">
     <div className="hero-text">
-      <h1 className="hero-title">如何使用 AIPali</h1>
+      <h1 className="hero-title">墨水屏中的巴利三藏</h1>
       <p className="hero-tagline">
-        跨越多端的沉浸式阅读、毫秒级的精准检索，以及附带原文出处的 AI 深度问答，助您在法海中自在游弋。
+        把整部《巴利三藏》装入墨水屏阅读器，让吃灰已久的设备，化作静心修学的随身法宝。
       </p>
       <div className="hero-actions">
-        <a href="https://aipali.true-dhamma.com/askai/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">聊聊巴利三藏 →</a>
+        <a href="/info/how-to-use/" className="btn btn-primary">如何使用 →</a>
         <a href="https://pwa.aipali.true-dhamma.com/offline/" className="btn btn-secondary">离线版</a>
         <button id="btn-eink-toggle" className="btn btn-minimal" style={{ cursor: 'pointer', outline: 'none', background: 'transparent', border: 'none', padding: '0.8rem 1.6rem' }}>
-          墨水屏模式
+          开启墨水屏模式
         </button>
       </div>
     </div>
@@ -45,104 +45,116 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
       </div>
       <div className="aipali-info-text">
         <p>
-          在您正式开始使用 AIPali 提供的现代化经文阅读与互动服务之前，请抽出几分钟时间仔细阅读本页面。在南传上座部佛教的修学中，<b>“择法觉支”</b>（对法的探究、辨析与抉择）是极为重要的一环。清醒、合理、如法地选择并使用现代 AI 工具，同样是您修行路上“择法觉支”的生动实践。
+          AIPali 支持大部分生产于 2020 年后、基于 Android 8+ 开放系统构建的墨水屏设备；早期设备因硬件性能不足，无法正常渲染现代网页；非 Android 开放系统因其无法安装外部 APK 应用，兼容性完全取决于自带浏览器版本，通常只有部分新款设备才能支持；非 Android 系统（如封闭式 Kindle 原厂系统）受限于非标准渲染组件，无法提供完整体验；因各品牌机型系统与尺寸差异巨大，建议您先按照下列步骤进行实操测试。
         </p>
       </div>
     </div>
 
-    {/* --- 主要功能板块 --- */}
-    <h2 className="aipali-section-title">主要功能</h2>
+    <h2 className="aipali-section-title">使用说明</h2>
+    
     {/* --- 页面级复用组件：单列卡片列表 (Card List) --- */}
     <div className="aipali-card-list">
-      <Card title="阅读" icon="laptop">
+      
+      {/* 卡片 1：离线使用墨水屏设备 */}
+      <Card title="离线使用墨水屏设备" icon="open-book">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-          <li><b>多端自适应：</b> 在 <b className="highlight-text">PC</b>、<b className="highlight-text">手机</b>、<b className="highlight-text">平板</b>及<b className="highlight-text">墨水屏阅读器</b>上皆可顺畅阅读；</li>
-          <li><b>巴利语对照：</b> 点击内容左侧的 <b className="highlight-text">[段落编号]</b>，可在左侧抽屉界面中即时查看<b className="highlight-text">本段</b>或<b className="highlight-text">本章节</b>巴利语原文；</li>
-          <li><b>沉浸式诵经：</b> 点击经文页面右下角的“播放”按钮，可对当前页面经文内容进行朗诵，实现<b className="highlight-text">专业诵经效果</b>，即便设备息屏仍可使用（服务由 Azure 提供）。</li>
-          <li><b>离线浏览：</b>支持 <b className="highlight-text">iOS</b>、<b className="highlight-text">Android</b>、<b className="highlight-text">Android 墨水屏阅读器</b> 用户将 AIPali 安装成为桌面 APP，并在飞机、郊外等无网环境下浏览全部法宝内容。请访问<b className="highlight-text">离线版巴利三藏</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)）以获取全部离线功能及使用说明。</li>
+          <li>请使用墨水屏设备，访问 PWA 镜像站点的<b className="highlight-text">EInk 页面</b>（[https://pwa.aipali.true-dhamma.com/eink/](https://pwa.aipali.true-dhamma.com/eink/)）。</li>
+          <li>在墨水屏设备中，点击页面顶部的<b className="highlight-text">开启墨水屏模式</b>，即可等比放大字体、关闭渐变动画与平滑滚动。</li>
+          <li>在墨水屏设备中，点击页面顶部的<b className="highlight-text">离线版</b>，可以将经文数据完整地缓存在本地，实现媲美离线电子书的极速翻阅体验。</li>
         </ul>
       </Card>
       
-      <Card title="搜索" icon="magnifier">
-        PC 用户点击页面上方的搜索框，手机用户点击屏幕右上角的放大镜按钮，均可激活搜索框。<br/>
-        在搜索框中输入<b className="highlight-text">经文编号</b>（如 DN 1）、<b className="highlight-text">标题</b>或<b className="highlight-text">经文片段</b>，均可毫秒级快速找到并直达相应的经文内容（底层检索引擎由 Algolia 提供）。
+      {/* 卡片 2：访问与部署途径（内嵌各设备安装指南） */}
+      <Card title="访问与部署途径" icon="download">
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
+          <li><b>途径 1：使用自带浏览器直接访问</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.4rem 0 0.8rem 0', lineHeight: 1.8 }}>
+            <li>如您的设备较新（出厂搭载 Android 11+），通常可以用自带浏览器无缝打开并运行离线功能。</li>
+            <li>使用自带浏览器，按照上述<b className="highlight-text">离线使用墨水屏设备</b>的说明操作，点击“全量重新构建”缓存数据后添加为书签即可。</li>
+          </ul>
+          <li><b>途径 2：安装独立客户端（推荐）</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.4rem 0 0 0', lineHeight: 1.8 }}>
+            <li>如您对自带浏览器的界面布局、阅读体验不满意，或者设备版本较低无法正常渲染页面，建议访问 <a href="https://download.true-dhamma.com/%E5%B7%B4%E5%88%A9%E5%9C%A3%E5%85%B8%20Tipitaka/AIPali/%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BD%AF%E4%BB%B6/" target="_blank" rel="noopener noreferrer">[True-Dhamma网盘]</a> 下载独立客户端 APK。推荐使用以下两款客户端：</li>
+            <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.5rem 0', lineHeight: 1.8 }}>
+              <li><b>AIPali Reader：</b>为本工程封装的独立阅读客户端，支持全屏显示与离线模式。</li>
+              <li><b>Peel：</b>轻量级网页应用容器，对各类设备兼容性佳。安装后点击右下角加号，URL 填入<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)）地址即可。</li>
+       
+            <li>上述两款客户端自带 GeckoView 现代浏览器内核，能让老旧设备突破自带 WebView 的版本限制；在较新设备上，其全屏显示效果亦大幅优于自带浏览器。</li>
+            <li>初次打开时，依然需要按照上述<b className="highlight-text">离线使用墨水屏设备</b>的说明操作。</li>
+     </ul>
+            {/* 嵌入安装指南细则 */}
+            <li style={{ marginTop: '0.6rem' }}><b>各类墨水屏设备安装 APK 步骤指引：</b></li>
+            <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0 0', lineHeight: 1.8 }}>
+              <li><b>文石 Boox / 大我 Bigme / 海信 Hisense 等：</b>通过自带浏览器下载 APK 或用电脑 USB 传输至机器存储，在系统自带“文件管理器”中点击即可安装；若弹出提示，勾选“允许来自此来源的应用”。</li>
+              <li><b>墨案 Moaan / 小米多看系列等：</b>进入系统<b className="highlight-text">设置</b>→<b className="highlight-text">关于本机</b>，连续点击<b className="highlight-text">版本号</b>7~10 次开启“开发者模式”；随后即可在自带文件管理器中点击安装 APK，或通过 USB 传输到本机安装。</li>
+              <li><b>掌阅 iReader / 汉王 Hanvon 系列等：</b>进入<b className="highlight-text">设置</b>→<b className="highlight-text">安全</b>或<b className="highlight-text">应用管理</b>，勾选开启<b className="highlight-text">未知来源应用安装</b>；如系统隐藏了安装管理器，可使用数据线连接电脑，使用助手工具或通过 ADB 命令推送安装 APK。</li>
+            </ul>
+          </ul>
+        </ul>
       </Card>
 
-      <Card title="AI 问答" icon="rocket">
-        点击 PC 或手机右上方<b className="highlight-text">亮蓝色“AI 问经”图标</b>，可以进入 AI 聊天窗口。所有聊天回答均引用自本站翻译后的巴利三藏。您可以通过以下三种方式查看<b className="highlight-text">原始经文出处</b>：
-        <ol style={{ paddingLeft: '1.5rem', margin: '0.5rem 0 0 0', lineHeight: 1.8 }}>
-          <li>聊天内容中的<b className="highlight-text">文献角标</b>（通常出现在行尾），鼠标悬停后可显示原文摘要；</li>
-          <li>聊天对话的末尾的<b className="highlight-text">引用列表</b>，点击可查看完整引用；</li>
-          <li>在引用查看窗口上方的标题栏中，点击标题右侧小图标即可<b className="highlight-text">跳转到原始经文网页</b>。</li>
-        </ol>
-        还可使用其他多种方式获取 AI 辅助：
-        <ol style={{ paddingLeft: '1.5rem', margin: '0.5rem 0 0 0', lineHeight: 1.8 }}>
-          <li>使用页面顶部的<b className="highlight-text">搜索框</b>，输入问题或关键词后，点击<b className="highlight-text">“向 AI 提问”</b></li>
-          <li>在经文页面中，<b className="highlight-text">选中部分经文内容</b>，点击下方弹出的<b className="highlight-text">“AI 解读”</b>按钮</li>
-        </ol>
+      {/* 卡片 3：显示与交互调优指南 */}
+      <Card title="显示与交互调优指南" icon="setting">
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>          
+          <li style={{ marginBottom: '0.8rem', paddingBottom: '0.8rem', borderBottom: '1px dashed var(--sl-color-hairline)' }}>
+            在墨水屏设备上安装的独立客户端 APK，通常需要<b className="highlight-text">针对性地进行调优</b>，才能使显示与交互达到理想状态。通常有两种方式呼出该应用的专属调优面板：
+            <ol style={{ paddingLeft: '1.5rem', margin: '0.4rem 0 0 0', lineHeight: 1.8 }}>
+              <li><b>在桌面上长按图标：</b>在墨水屏主屏幕长按“AIPali Reader”或“Peel”图标，在弹出的菜单中点击<b className="highlight-text">优化配置</b>或<b className="highlight-text">水墨设置</b>；</li>
+              <li><b>在应用内呼出悬浮球：</b>打开应用后，点击屏幕边缘厂商自带的<b className="highlight-text">系统悬浮球</b>或从边缘滑出<b className="highlight-text">E-Ink中心</b>，直接对当前应用进行针对性微调。</li>
+            </ol>
+          </li>
+          <li><b>刷新模式选择</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li>如果设置为<b className="highlight-text">清晰模式 / Regal 模式 / 普通模式</b>，此模式字符笔锋锐利，墨水消隐彻底，几乎无底色残影，但刷新速度可能变慢。</li>
+            <li>如果设置为“极速模式 / 视频模式 / A2 模式”，此类模式会牺牲灰阶来提升帧率，滚动时会导致大量黑色杂点并让文字发虚。</li>
+          </ul>
+
+          <li><b>对比度与黑度增强</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li><b>字体加黑（深色增强）：</b>在当前应用的优化面板中，将<b className="highlight-text">文字粗细 / 字体加黑</b>调高 20%~30%，使文字更加清晰饱满。</li>
+            <li><b>背景漂白：</b>勾选开启<b className="highlight-text">背景漂白</b>，将页面微弱的灰色基底直接拉升至纯白（#FFFFFF），消除底噪。</li>
+          </ul>
+
+          <li><b>应用独立 DPI 与显示缩放</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li><b>小屏设备（5-6 寸）：</b>在独立 DPI 设置中适当调大（如 300-320），使按钮和菜单更容易点触。</li>
+            <li><b>大屏设备（10.3 寸以上）：</b>将 DPI 适当调小（如 240-260），同一屏内可展示更多行数及巴利语对照内容。</li>
+          </ul>
+
+          <li><b>实体按键映射</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li>设备带有<b className="highlight-text">侧边翻页键</b>或<b className="highlight-text">音量键</b>时，可在开启<b className="highlight-text">使用音量键上下滚动页面</b>，达成无需手势触控的单手翻阅体验。</li>
+          </ul>
+        </ul>
+      </Card>
+
+      {/* 卡片 4：常见问题与故障排查 */}
+      <Card title="常见问题与故障排查 (FAQ)" icon="information">
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
+          <li><b>Q1：显示与交互调到什么状态才算好？</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0 0', lineHeight: 1.8 }}>
+            <li><b>底色：</b>背景呈<b className="highlight-text">均匀哑光纯白</b>，如实体宣纸般洁净，无前一页留下的灰暗色块。</li>
+            <li><b>字迹：</b>字画<b className="highlight-text">边缘清晰利落</b>，粗细适中，放大后无锯齿状毛刺，字孔未被浓墨堵死。</li>
+            <li><b>交互：</b>划动或翻屏时屏幕<b className="highlight-text">干净利落变换</b>，无全屏黑白剧烈反色震颤，无挥之不去的重影。</li>
+          </ul>
+          <li><b>Q2：文字看起来边缘发虚、字迹偏淡或底色泛灰？</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li>首先检查设备的屏幕刷新模式是否选择了“极速模式”或“A2 模式”，可切回<b className="highlight-text">清晰 / Regal 模式</b>再试；其次，在设备悬浮球的“应用优化”设置中，将“文字加黑”参数适当调高 20% 即可恢复如墨汁落纸般的深邃度。</li>
+          </ul>
+          <li><b>Q3：设备的物理侧键或音量键无法翻页，按下去是调节音量？</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li>墨水屏系统通常默认将侧键视作多媒体音量键。您需要按照上述<b className="highlight-text">显示与交互调优指南</b>，将音量键功能从“音量”改为<b className="highlight-text">“翻页 / 滚动网页”</b>；若使用 Peel，可在其内置设置中开启“Volume Page Turn”。</li>
+          </ul>
+          <li><b>Q4：明明已经完成了数据同步，为什么断网后打开某些经文依然报错？</b></li>
+          <ul style={{ paddingLeft: '1.5rem', margin: '0.3rem 0 0.6rem 0', lineHeight: 1.8 }}>
+            <li>部分墨水屏系统的省电机制非常激进，锁屏或休眠时会自动清理浏览器缓存。如遇此种情况，可改用自带独立数据沙盒的 AIPali Reader 或 Peel。</li>
+          </ul>
+        </ul>
       </Card>
     </div>
-
-    {/* --- 设计初衷与能力局限 --- */}
-    <h2 className="aipali-section-title">设计初衷与能力局限</h2>
-    
-    <Aside type="caution" title="特别说明：非学术级译文">
-      **AIPali 提供的并非学术级标准的译文，我们无法保证本站内容经得起严格的文献学考验。** 我们的核心目标是将古老的经文以<b className="highlight-text">“结构化、现代化、互动化”</b>的方式呈现，大幅<b className="highlight-text">降低阅读门槛</b>，从而以传统经文<b className="highlight-text">引导和校勘实修境界</b>。我们优先保障的是“易读易懂、助力实修”，而非学术考据上的“100% 严谨”。受限于开发者的修学水平与当前 AI 技术的局限，**请勿将本站内容作为唯一的学术引证依据**。
-    </Aside>
-
-    {/* --- 页面级复用组件：玻璃态磨砂质感卡片网格 (Glass Grid) --- */}
-    <div className="aipali-glass-grid">
-      <div className="aipali-glass-card">
-        <h3>区分：哪些不是原文？</h3>
-        <p className="aipali-glass-desc">为了降低阅读门槛，我们在经文中增加了大量辅助内容。请读者务必明辨，以下元素 <b>并非</b> 经文原文：</p>
-         <Steps>
-          1.  **尼柯耶导读**：对整部尼柯耶进行概述和导览；
-          2.  **多层级标题**：为梳理经文层次而人为添加；
-          3.  **结构化重组**：将原文拆分为自然段或项目列表；
-          4.  **导读与标签**：带有“AI 导读”、“法义解析”、“譬喻解析”、“小贴士”、“标签”等字样的提示框。
-         </Steps>
-      </div>
-
-      <div className="aipali-glass-card">
-        <h3>警惕：AI 会犯错！</h3>
-         <p className="aipali-glass-desc">AI 大模型本身就是一种概率运算，这一基础决定了它不可能是一位永不犯错的导师，请谨记：</p>
-         <Steps>
-          1.  **警惕幻觉**：受限于大模型缺陷，AI 会以**不确定的概率**产生幻觉（即“一本正经说胡话”）；
-          2.  **关注出处**：请将 AI 视为“智能索引”，更多重视回答内容的**引用出处**而非回答本身；
-          3.  **阅读原经**：请顺着引用角标阅读经文原本，秉持质疑精神，如实分辨法义。
-         </Steps>
-      </div>
-    </div>
-
-    {/* --- 核心建议 --- */}
-    <h2 className="aipali-section-title">进阶溯源</h2>
-
-    <Aside type="caution" title="特别提醒：AIPali 不是巴利语原文的替代品">
-      对于泛读或建立框架，AIPali 非常高效；但一旦您进入了<b className="highlight-text">真正的实修实证阶段</b>，对于诸如《转法轮经》、《大念住经》、《觉支相应》、《无我相经》、《大缘经》等涉及三法印、四念住、四圣谛、七觉支、八正道、十二因缘等<b className="highlight-text">核心法义</b>的经文，建议多多使用<b className="highlight-text">“查找巴利语经文原文”</b>功能（说明见下），以<b className="highlight-text">逐字逐句</b>地对照原文以确认经文原意。当然，您也可以使用 AI 辅助解读巴利语词句，但请<b className="highlight-text">切勿盲从单一 AI</b>，务必使用多个不同的大模型，使用<b className="highlight-text">反向引导</b>的方式，激发 AI 之间相互<b className="highlight-text">质疑</b>、<b className="highlight-text">挑战</b>及<b className="highlight-text">交叉验证</b>，才有可能如实还原原意。
-    </Aside>
-
-    {/* --- 页面级复用组件：带图标的无边框紧凑段落 (Icon Section) --- */}
-    <div className="aipali-icon-section">
-      <div className="aipali-icon-box">
-        <Icon name="magnifier" size="3.5rem" />
-      </div>
-      <div className="aipali-icon-content">
-        <h3 className="aipali-icon-title">如何查找巴利语经文原文？</h3>
-        <p>
-          即便在经过高度现代化重写之后，AIPali 依然完整保留了学术溯源的可能性。我们在下述三个层面，保持了与<a href="https://tipitaka.org/romn/" target="_blank" rel="noopener noreferrer"><b className="highlight-text">缅甸第六次结集（VRI/CSCD）</b></a>巴利语原文的一一对应：
-         <Steps>
-          1.  **经文编号**：与 VRI 匹配度 99%
-          2.  **巴利语品名/经名**：与 VRI 匹配度 99%
-          3.  **经文段落编号**：与 VRI 匹配度 95%
-        </Steps>
-          您可以点击内容区左侧的<b className="highlight-text">[经文段落编号]</b>（用方括号包裹的小字，例如`[123]`），打开巴利语原文对照阅读窗口。此功能需要您使用 PC 或宽屏平板设备浏览时才可用，手机因屏幕宽度有限，暂不支持此功能。
-        </p>
-      </div>
-    </div>
-
   </div>
 
-  {/* --- 相同的页脚 --- */}
+  {/* --- 页脚 --- */}
   <footer className="aipali-custom-footer">
     <div className="footer-content">
       <p className="footer-slogan">
@@ -161,36 +173,36 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
 </div>
 
 {/* =========================================
-   新增架构逻辑：纯视觉偏好的“墨水屏模式”开关
+   纯视觉偏好的“墨水屏模式”开关交互逻辑
 ========================================= */}
 <script is:inline>{`
   document.addEventListener('DOMContentLoaded', () => {
     const btnEink = document.getElementById('btn-eink-toggle');
     if (!btnEink) return;
 
-    // 初始化按钮状态
+    // 初始化按钮文字
     const isEInkEnabled = localStorage.getItem('AIPali_EInk_Mode') === 'true';
     if (isEInkEnabled) {
       btnEink.innerText = '退出墨水屏模式';
       btnEink.style.color = '#ff5f56';
     } else {
-      btnEink.innerText = '墨水屏模式';
+      btnEink.innerText = '开启墨水屏模式';
     }
 
     btnEink.addEventListener('click', () => {
       const currentStatus = localStorage.getItem('AIPali_EInk_Mode') === 'true';
 
       if (!currentStatus) {
-        // --- 开启模式流程（纯排版滤镜） ---
-        const msg = "开启墨水屏模式\\n\\n此模式将：\\n1. 放大字号并提升对比度；\\n2. 强制锁定浅色主题；\\n3. 停用动画效果与平滑滚动。\\n\\n⚠️ 注意：此功能专为墨水屏（E-Ink）设备优化视觉体验。如果您在普通屏幕开启，排版可能会显得突兀。\\n\\n确定要开启墨水屏模式吗？";
+        // --- 开启模式 ---
+        const msg = "开启墨水屏模式\\n\\n此模式将：\\n1. 等比放大字号并提升文字对比度；\\n2. 强制锁定白底高反差主题；\\n3. 彻底停用动画过渡与平滑滚动以消除残影。\\n\\n⚠️ 注意：此功能专为墨水屏（E-Ink）设备优化视觉体验。\\n\\n确定要开启墨水屏模式吗？";
         
         if (confirm(msg)) {
           localStorage.setItem('AIPali_EInk_Mode', 'true');
           window.location.reload();
         }
       } else {
-        // --- 退出模式流程（无损退出） ---
-        const msg = "退出墨水屏模式\\n\\n退出后将恢复常规的版式与动画效果。\\n\\n确定要退出墨水屏模式吗？";
+        // --- 退出模式 ---
+        const msg = "退出墨水屏模式\\n\\n退出后将恢复常规彩色版式与动画效果。\\n\\n确定要退出墨水屏模式吗？";
         
         if (confirm(msg)) {
           localStorage.removeItem('AIPali_EInk_Mode');

@@ -2,8 +2,8 @@
 title: AIPali 离线版巴利三藏
 head:
   - tag: title
-    content: "AIPali 离线版巴利三藏 | 本地经文数据中心"
-description: 管理本地经文缓存数据，以支持巴利三藏的离线阅读体验。
+    content: "AIPali 离线版巴利三藏 | 离线经文数据中心"
+description: 管理离线经文缓存数据，以支持巴利三藏的离线阅读体验。
 template: splash
 ---
 
@@ -38,7 +38,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     <div className="hero-text">
       <h1 className="hero-title">离线版巴利三藏</h1>
       <p className="hero-tagline">
-        无需网络连接，即可在手机、平板和 PC 上离线浏览全部经文
+        无需网络连接，即可在手机、平板、墨水屏阅读器和 PC 上离线浏览全部经文。
       </p>
       <div className="hero-actions">
         <a href="/tipitaka/" className="btn btn-primary">阅读经文 →</a>
@@ -66,9 +66,9 @@ import TodayRightView from '../../components/TodayRightView.astro';
 <div className="page-container">
   <div className="divider-glow"></div>
 
-  <section className="offline-dashboard">
+  <section id="offline-dashboard" className="offline-dashboard">
     <div className="dashboard-header">
-      <h2>本地经文数据中心</h2>
+      <h2>离线经文数据中心</h2>
       <p>
         您需要花费一两分钟时间，提前在有网环境下将 AIPali 数据同步至本地存储。<br />此后，即可在飞机、轮船、户外或任何无网环境下，顺畅地阅读所有巴利三藏。
       </p>
@@ -130,18 +130,26 @@ import TodayRightView from '../../components/TodayRightView.astro';
       <h2 className="aipali-section-title">AIPali 离线版使用说明</h2>
       <Card title="背景介绍" icon="information">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存会被操作系统清理，因此您需要<b className="highlight-text">按照本页面说明的步骤操作</b>，以便获取可视化、可预期、可信赖的离线访问体验。</li>
-          <li><b>离线专区：</b>在全部镜像站点中，只有子域名为“pwa”的镜像站点支持离线访问。因此，您必须通过该镜像站点中的<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)）访问和使用离线功能。</li>
-          <li><b>使用前准备：</b>您需要在手机、平板的浏览器中，<b className="highlight-text">将本页面添加到桌面</b>，以此安装成为一个独立 App 并获得必要的持久化缓存权限——这一步是提升离线浏览稳定性的重要因素。</li>
+          <li><b>功能实现：</b>AIPali 基于 PWA（Progressive Web App）技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存可能会被操作系统清理，因此请<b className="highlight-text">按照本页的说明一步步操作</b>，以便获取可预期、可信赖的离线访问体验。</li>
+          <li><b>离线站点：</b>在全部 AIPali 的镜像站点中，只有子域名为 PWA 的站点支持离线访问。因此，您必须通过该站点所提供的<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)）使用离线功能，其他镜像站点无此功能。</li>
+          <li><b>离线数据管理：</b>您需要于在线环境下，使用本页上方的“[离线经文数据中心](#offline-dashboard)”将全部经文数据下载到本地，后续方能使用离线功能。首次使用时，您需要点击“全量重新构建”，以缓存全部经文数据；如果经文数据下载不完整，可使用“增量同步数据”继续下载；如遇页面或功能故障，可使用“清除本地数据”来恢复初始状态。</li>      
         </ul>
       </Card>
       
       <Card title="iOS 用户" icon="apple">
-        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">全量重新构建</b>，完成后即可实现离线访问。
       </Card>
 
       <Card title="Android 用户" icon="phone">
-        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">增量同步数据</b>，完成后即可实现离线访问。
+        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装应用”</b>或<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 App，点击<b className="highlight-text">全量重新构建</b>，完成后即可实现离线访问。AAAAA 在Pixel上试试看
+      </Card>
+
+      <Card title="墨水屏阅读器用户" icon="phone">
+        如果您的墨水屏设备是基于 Android 的开放系统，请访问 [墨水屏阅读器页面](/eink/) 以获得关于在线和离线阅读的详尽支持。
+      </Card>
+
+      <Card title="PC 用户" icon="phone">
+        请使用 Chrome、Edge、Firefox 等现代浏览器访问本 PWA 镜像站点（[https://pwa.aipali.true-dhamma.com](https://pwa.aipali.true-dhamma.com/offline/)），以使用离线功能。
       </Card>
       
       <Card title="局限性" icon="warning">
@@ -150,8 +158,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
       
       <Card title="故障排除" icon="phone">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-           <li>如果您发现有些经文或功能无法离线使用，可以在网络连接良好的情况下，点击<b className="highlight-text">清除本地数据</b>，然后<b className="highlight-text">划掉/退出</b>当前应用并重新打开。当看到“本地存储占用”低于 3M 后，点击 <b className="highlight-text">全量重新构建</b>，从线上同步所有节点。同步完成后，<b className="highlight-text">随机打开几篇经文</b>，然后切换到<b className="highlight-text">飞行模式</b>——如果经文在离线状态下正常打开，则说明离线版功能已恢复正常。</li>
-          <li>如果您已完成上述操作且在离线状态下已能打开部分页面，但却无法点开菜单或切换经文，这通常是由于设备处于<b className="highlight-text">弱网环境</b>（如连接 5G 或 WiFi 但无实际网络连接）所导致的。在这种情况下，您可以将移动设备<b className="highlight-text">调整至飞行模式并关闭 WiFi</b>来排除此故障。</li>
+           <li>如果部分页面或功能无法离线使用，您可以在网络连接良好的情况下，点击<b className="highlight-text">清除本地数据</b>，然后<b className="highlight-text">划掉/退出</b>当前应用并重新打开。当看到“本地存储占用”低于 3M 后，点击 <b className="highlight-text">全量重新构建</b>以完全重建缓存。此后可切换到<b className="highlight-text">飞行模式</b>验证离线版功能已恢复正常。</li>
+          <li>如果您已完成上述操作且在离线状态下已能打开部分页面，但却无法点开菜单或切换经文，这通常是由于<b className="highlight-text">弱网环境</b>（如连接 5G 或 WiFi 但无实际网络连接）所导致的。在这种情况下，您可以将设备<b className="highlight-text">调整至飞行模式并关闭 WiFi</b>来排除此故障。</li>
         </ul>
       </Card>
 
