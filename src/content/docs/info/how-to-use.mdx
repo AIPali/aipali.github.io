@@ -19,9 +19,7 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
       <div className="hero-actions">
         <a href="https://aipali.true-dhamma.com/askai/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">聊聊巴利三藏 →</a>
         <a href="https://pwa.aipali.true-dhamma.com/offline/" className="btn btn-secondary">离线版</a>
-        <button id="btn-eink-toggle" className="btn btn-minimal" style={{ cursor: 'pointer', outline: 'none', background: 'transparent', border: 'none', padding: '0.8rem 1.6rem' }}>
-          墨水屏模式
-        </button>
+        <a href="/eink/" className="btn btn-minimal">墨水屏阅读器</a>
       </div>
     </div>
 
@@ -159,47 +157,6 @@ import heroDark from '../../../assets/aipali-hero-visual-dark.webp';
     </div>
   </footer>
 </div>
-
-{/* =========================================
-   新增架构逻辑：纯视觉偏好的“墨水屏模式”开关
-========================================= */}
-<script is:inline>{`
-  document.addEventListener('DOMContentLoaded', () => {
-    const btnEink = document.getElementById('btn-eink-toggle');
-    if (!btnEink) return;
-
-    // 初始化按钮状态
-    const isEInkEnabled = localStorage.getItem('AIPali_EInk_Mode') === 'true';
-    if (isEInkEnabled) {
-      btnEink.innerText = '退出墨水屏模式';
-      btnEink.style.color = '#ff5f56';
-    } else {
-      btnEink.innerText = '墨水屏模式';
-    }
-
-    btnEink.addEventListener('click', () => {
-      const currentStatus = localStorage.getItem('AIPali_EInk_Mode') === 'true';
-
-      if (!currentStatus) {
-        // --- 开启模式流程（纯排版滤镜） ---
-        const msg = "开启墨水屏模式\\n\\n此模式将：\\n1. 放大字号并提升对比度；\\n2. 强制锁定浅色主题；\\n3. 停用动画效果与平滑滚动。\\n\\n⚠️ 注意：此功能专为墨水屏（E-Ink）设备优化视觉体验。如果您在普通屏幕开启，排版可能会显得突兀。\\n\\n确定要开启墨水屏模式吗？";
-        
-        if (confirm(msg)) {
-          localStorage.setItem('AIPali_EInk_Mode', 'true');
-          window.location.reload();
-        }
-      } else {
-        // --- 退出模式流程（无损退出） ---
-        const msg = "退出墨水屏模式\\n\\n退出后将恢复常规的版式与动画效果。\\n\\n确定要退出墨水屏模式吗？";
-        
-        if (confirm(msg)) {
-          localStorage.removeItem('AIPali_EInk_Mode');
-          window.location.reload();
-        }
-      }
-    });
-  });
-`}</script>
 
 <style>
   {`
