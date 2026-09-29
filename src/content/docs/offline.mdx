@@ -18,7 +18,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 <script is:inline>{`
   (function() {
     const hostname = window.location.hostname;
-    // 【架构重构】必须在专属 offline 域名下才能使用此控制台
+    // 必须在专属 offline 域名下才能使用此控制台
     const isAllowed = hostname.includes('pwa.aipali') || 
                       hostname === 'localhost' || 
                       hostname === '127.0.0.1' || 
@@ -53,12 +53,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
     </div>
   </div>
 </section>
-
-{/* ====================================================== */}
-{/* 1.5 引入共用组件：导航与今日正见 */}
-{/* ====================================================== */}
-<div className="divider-glow" style={{ marginTop: '5rem' }}></div>
-<TodayRightView />
 
 {/* ====================================================== */}
 {/* 2. 离线控制中心 */}
@@ -122,8 +116,13 @@ import TodayRightView from '../../components/TodayRightView.astro';
     </div>
   </section>
 
-  <div className="divider-glow" style={{ marginTop: '3rem' }}></div>
+{/* ====================================================== */}
+{/* 1.5 引入共用组件：导航与今日正见 */}
+{/* ====================================================== */}
+<div className="divider-glow" style={{ marginTop: '5rem' }}></div>
+<TodayRightView />
 
+  <div className="divider-glow" style={{ marginTop: '3rem' }}></div>
 
     {/* --- 内容源头板块：单列卡片列表 (Card List) --- */}
     <div className="features-wrapper">

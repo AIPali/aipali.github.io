@@ -5,9 +5,11 @@ import Default from '@astrojs/starlight/components/SiteTitle.astro';
 const deployEnv = process.env.DEPLOY_ENV || 'domain';
 const isOffline = deployEnv === 'offline';
 
-// 如果当前是离线环境构建，直接将 Starlight 内置链接 siteTitleHref 修改为 /offline/
-if (isOffline && Astro.locals?.starlightRoute) {
-  Astro.locals.starlightRoute.siteTitleHref = '/offline/#aipali-trv';
+// 根据构建环境动态分流左上角的跳转锚点
+if (Astro.locals?.starlightRoute) {
+  Astro.locals.starlightRoute.siteTitleHref = isOffline
+    ? '/offline/#aipali-trv'
+    : '/#aipali-trv';
 }
 ---
 
