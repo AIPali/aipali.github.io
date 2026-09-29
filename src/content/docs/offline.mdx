@@ -193,70 +193,57 @@ import TodayRightView from '../../components/TodayRightView.astro';
   function formatError(e) {
     if (!e) return '未知错误';
     if (typeof e === 'string') return e;
-    
     const name = e.name && e.name !== 'Error' ? '[' + e.name + '] ' : '';
-    const msg = e.message || String(e);
-    
-    // 补充常见平台存储限制的友好说明
-    let hint = '';
-    if (msg.includes('QuotaExceeded') || (e.name && e.name === 'QuotaExceededError')) {
-      hint = ' (设备存储空间不足)';
-    } else if (msg.includes('insecure') || (e.name && e.name === 'SecurityError')) {
-      hint = ' (存储访问受限或文件被占用)';
-    }
-    
-    return name + msg + hint;
+    return name + (e.message || String(e));
   }
 
-  // 纯净网络请求器：绕过被 GeckoView 打包壳篡改的 window.fetch
-  // 使用原生 XMLHttpRequest，避免 cross-compartment 导致的 Permission denied to access property "then"
-  function safeFetch(url, options) {
-    options = options || {};
+  // 终极纯净网络请求器：绕过被壳篡改的 fetch，并坚决不带任何自定义 Header
+  function safeFetch(url) {
     return new Promise(function(resolve, reject) {
       try {
         var xhr = new XMLHttpRequest();
-        xhr.open(options.method || 'GET', url, true);
-        xhr.responseType = 'blob';
-
-        if (options.cache === 'no-store' || options.cache === 'no-cache') {
-          xhr.setRequestHeader('Cache-Control', 'no-cache');
-          xhr.setRequestHeader('Pragma', 'no-cache');
-        }
+        // 核心一：用 query 传参绕过缓存，绝不使用 setRequestHeader，避免触发壳的跨域 OPTIONS 拦截 BUG
+        var reqUrl = url + (url.indexOf('?') > -1 ? '&' : '?') + '_t=' + Date.now();
+        
+        xhr.open('GET', reqUrl, true);
+        // 核心二：使用 arraybuffer，防止在某些低版本 GeckoView 里 Blob 过 JNI 桥时崩溃
+        xhr.responseType = 'arraybuffer'; 
 
         xhr.onload = function() {
-          if (xhr.status === 0) {
-            reject(new TypeError('网络请求异常 (状态码 0)：' + url));
+          if (xhr.status === 0 || xhr.status >= 400) {
+            reject(new Error('请求失败 (HTTP ' + xhr.status + ')：' + url));
             return;
           }
-          var headers = new Headers();
-          var rawHeaders = xhr.getAllResponseHeaders() || '';
-          rawHeaders.trim().split(/[\\r\\n]+/).forEach(function(line) {
-            var parts = line.split(': ');
-            var key = parts.shift();
-            var val = parts.join(': ');
-            if (key) {
-              try { headers.append(key, val); } catch(e) {}
-            }
-          });
+          
+          var contentType = 'application/octet-stream';
+          try { 
+            // 只温和地尝试读取 Content-Type，不调用 getAllResponseHeaders
+            var ct = xhr.getResponseHeader('Content-Type');
+            if (ct) contentType = ct;
+          } catch(e) {}
 
-          var status = (xhr.status >= 200 && xhr.status <= 599) ? xhr.status : 200;
-          var response = new Response(xhr.response, {
-            status: status,
-            statusText: xhr.statusText || 'OK',
-            headers: headers
-          });
-          resolve(response);
+          try {
+            // 重新组装为标准的 Response 对象供 Cache API 直接消费
+            var response = new Response(xhr.response, {
+              status: 200, // 强制给 Cache 200
+              statusText: 'OK',
+              headers: { 'Content-Type': contentType }
+            });
+            resolve(response);
+          } catch(resErr) {
+            reject(new Error('组装 Response 失败: ' + resErr.message));
+          }
         };
 
         xhr.onerror = function() {
-          reject(new TypeError('网络连接失败 (XHR Error)：' + url));
+          reject(new Error('网络连接断开 (XHR Error) - 拦截器拒绝或断网'));
         };
 
         xhr.ontimeout = function() {
-          reject(new TypeError('网络请求超时：' + url));
+          reject(new Error('请求超时'));
         };
 
-        xhr.send(options.body || null);
+        xhr.send(null);
       } catch (err) {
         reject(err);
       }
@@ -325,9 +312,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         let deleted = false;
         try {
           deleted = await caches.delete(name);
-        } catch (delErr) {
-          // 部分系统或内核文件占用时直接整体删除会抛错，转为项级清空
-        }
+        } catch (delErr) {}
 
         // 降级容错：若直接移除失败，则清空分区内部条目，确保数据完全释放
         if (!deleted) {
@@ -364,14 +349,9 @@ import TodayRightView from '../../components/TodayRightView.astro';
                 const url = new URL(req.url);
                 const path = url.pathname;
                 
-                // 1. 核心经文 HTML 页面与清单本身
                 const isPageNode = path.endsWith('/') || path.endsWith('.html');
                 const isManifestNode = path === MANIFEST_URL;
-                
-                // 2. 样式、脚本与图标资源
                 const isAssetNode = path.startsWith('/assets/') || path.startsWith('/_astro/'); 
-                
-                // 3. 开发模式临时文件剔除
                 const isInternalJunk = path.includes('/@vite/') || path.includes('/@fs/');
 
                 if ((isPageNode || isManifestNode || isAssetNode) && !isInternalJunk) {
@@ -414,7 +394,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
     UI.log('正在执行本地数据清理...');
     UI.disableButtons(true);
     try {
-      // 1. 优先注销 Service Worker，确保后台释放缓存占用
       if ('serviceWorker' in navigator) {
         try {
           const registrations = await navigator.serviceWorker.getRegistrations();
@@ -424,10 +403,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
         } catch(swTotalErr) {}
       }
 
-      // 2. 稳健清空缓存
       await safeClearAllCaches();
       
-      // 3. 稳健清理 IndexedDB（带有防挂起超时保护）
       if (window.indexedDB && indexedDB.databases) {
         try {
           const dbs = await indexedDB.databases();
@@ -448,7 +425,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       }
 
       UI.log('本地离线经文数据与相关缓存已全部清除。');
-      UI.log('提示：受不同系统底层存储回收策略影响，建议[彻底划掉/退出]当前应用并重新进入，以刷新准确的存储占用数值。');
+      UI.log('提示：建议[彻底划掉/退出]当前应用并重新进入，以刷新准确的存储占用数值。');
       
     } catch (e) {
       UI.log('清除数据失败 - ' + formatError(e));
@@ -463,13 +440,13 @@ import TodayRightView from '../../components/TodayRightView.astro';
   window.confirmAndStartSync = async function(isRebuild) {
     if (isSyncing) return;
     if (!navigator.onLine) {
-      alert("网络未连接\\n\\n设备当前处于离线状态，无法连接至云端服务器进行数据比对。请在网络连接恢复后再试。");
+      alert("网络未连接\\n\\n设备当前处于离线状态，无法连接至云端服务器。请在网络连接恢复后再试。");
       return;
     }
 
     const msg = isRebuild
-      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程将耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
-      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。\\n\\n确认执行全量重建？"
+      : "增量同步数据\\n\\n系统将比对本地与云端目录，自动下载新增或变动节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
     UI.showTerminal(true);
@@ -486,13 +463,9 @@ import TodayRightView from '../../components/TodayRightView.astro';
     UI.log(isRebuild ? '=== 开始全量重新构建 ===' : '=== 开始增量同步数据 ===');
 
     try {
-      if (!navigator.onLine) {
-        throw new Error('网络连接已断开，同步操作终止');
-      }
-
       UI.log('正在获取云端经文目录 (sitemap.xml)...');
-      // 使用 safeFetch 替换原生 fetch
-      const sitemapRes = await safeFetch('/sitemap-0.xml', { cache: 'no-store' });
+      // 使用降级后的 safeFetch 强制请求
+      const sitemapRes = await safeFetch('/sitemap-0.xml');
       if (!sitemapRes.ok) throw new Error('云端服务器通信异常 (HTTP ' + sitemapRes.status + ')');
       
       const sitemapText = await sitemapRes.text();
@@ -513,20 +486,19 @@ import TodayRightView from '../../components/TodayRightView.astro';
       // ==========================================================
       try {
         UI.log('正在读取离线资源清单 (manifest)...');
-        // 使用 safeFetch 替换原生 fetch
-        const manifestRes = await safeFetch(MANIFEST_URL, { cache: 'no-store' });
+        const manifestRes = await safeFetch(MANIFEST_URL);
         if (manifestRes.ok) {
-          const manifest = await manifestRes.json();
+          // 由于 Response 内部基于 ArrayBuffer，需要反序列化为 JSON
+          const manifestText = await manifestRes.text();
+          const manifest = JSON.parse(manifestText);
           if (manifest && Array.isArray(manifest.nodes)) {
             urls.push(...manifest.nodes);
             urls.push(MANIFEST_URL);
             UI.log('已加载清单扩展资源：共 ' + manifest.nodes.length + ' 个节点');
           }
-        } else {
-          UI.log('未检测到额外离线清单 (HTTP ' + manifestRes.status + ')，继续同步核心内容。');
         }
       } catch (err) {
-        UI.log('解析离线清单遇到问题 - ' + formatError(err));
+        UI.log('未能加载额外资源清单，跳过。');
       }
 
       // ==========================================================
@@ -562,16 +534,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
           }
         }
         UI.log('已载入页面核心资源：共 ' + addedCount + ' 个');
-      } catch (err) {
-        UI.log('解析页面资源时遇到问题 - ' + formatError(err));
-      }
+      } catch (err) {}
 
       if (urls.length === 0) throw new Error('未获取到有效的同步节点');
       UI.log('节点校验完成：待处理节点共计 ' + urls.length + ' 个');
 
       let existingKeys = [];
-      
-      // 全量重建时先格式化清空，避免在删除前打开句柄造成跨平台锁冲突
       if (isRebuild) {
         UI.log('正在重置本地旧版缓存...');
         await safeClearAllCaches();
@@ -584,7 +552,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
             UI.log('正在比对，跳过本地已存在的节点...');
           }
         } catch (err) {
-          UI.log('读取本地比对记录失败，将进行完整同步 - ' + formatError(err));
           existingKeys = [];
         }
       }
@@ -613,10 +580,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
           } else {
             try {
               UI.setProgress(currentIndex, urls.length, '正在下载：' + displayUrl);
-              // 使用 safeFetch 替换原生 fetch
-              const res = await safeFetch(url, { cache: 'no-cache' });
+              const res = await safeFetch(url);
               
               if (res.ok) {
+                // 注意：Cache 存入时的键名依然是原始的、没有时间戳的 url
                 await targetCache.put(url, res);
                 downloaded++;
               } else {
@@ -654,8 +621,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   document.addEventListener('DOMContentLoaded', function() {
     refreshStatus();
-    window.addEventListener('online', function() { UI.log('网络连接已恢复。'); });
-    window.addEventListener('offline', function() { UI.log('当前处于离线模式。'); });
   });
 `}</script>
 
