@@ -2,7 +2,7 @@
 title: AIPali 离线版巴利三藏
 head:
   - tag: title
-    content: "AIPali 离线版巴利三藏 | 离线经文数据中心"
+    content: "AIPali 离线版巴利三藏"
 description: 管理离线经文缓存数据，以支持巴利三藏的离线阅读体验。
 template: splash
 ---
@@ -352,11 +352,11 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   window.confirmAndClear = async function() {
     if (isSyncing) return;
-    const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能\\n\\n确认执行本地数据清除？";
+    const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能。\\n\\n确认执行本地数据清除？";
     if (!confirm(msg)) return;
     
     UI.showTerminal(true);
-    UI.log('正在执行本地离线数据清理...');
+    UI.log('正在执行本地数据清理...');
     UI.disableButtons(true);
     try {
       // 1. 优先注销 Service Worker，确保后台释放缓存占用
@@ -393,7 +393,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       }
 
       UI.log('本地离线经文数据与相关缓存已全部清除。');
-      UI.log('提示：受不同系统底层存储回收策略影响，建议退出并重新打开应用，以刷新准确的存储占用数值。');
+      UI.log('提示：受不同系统底层存储回收策略影响，建议[彻底划掉/退出]当前应用并重新进入，以刷新准确的存储占用数值。');
       
     } catch (e) {
       UI.log('清除数据失败 - ' + formatError(e));
@@ -413,7 +413,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
 
     const msg = isRebuild
-      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程将耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
       : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
@@ -524,7 +524,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
             const checkCache = await caches.open(CACHE_NAME);
             const reqs = await checkCache.keys();
             existingKeys = reqs.map(function(req) { return new URL(req.url).pathname; });
-            UI.log('正在比对本地已有节点，跳过未修改内容...');
+            UI.log('正在比对，跳过本地已存在的节点...');
           }
         } catch (err) {
           UI.log('读取本地比对记录失败，将进行完整同步 - ' + formatError(err));
