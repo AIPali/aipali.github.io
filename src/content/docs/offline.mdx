@@ -102,6 +102,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       </div>
     </div>
 
+    {/* 终端控制台：默认隐藏，触发操作时滑出 */}
     <div id="terminal-window" className="terminal-window hidden">
       <div className="terminal-header">
         <div className="mac-buttons">
@@ -199,6 +200,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     // 补充常见平台存储限制的友好说明
     let hint = '';
     if (msg.includes('QuotaExceeded') || (e.name && e.name === 'QuotaExceededError')) {
+      hint = ' (设备存储空间不足)';
     } else if (msg.includes('insecure') || (e.name && e.name === 'SecurityError')) {
       hint = ' (存储访问受限或文件被占用)';
     }
@@ -350,7 +352,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   window.confirmAndClear = async function() {
     if (isSyncing) return;
-    const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能。\\n\\n确认执行本地数据清除？";
+    const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能\\n\\n确认执行本地数据清除？";
     if (!confirm(msg)) return;
     
     UI.showTerminal(true);
