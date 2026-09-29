@@ -18,10 +18,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
 <script is:inline>{`
   (function() {
     const hostname = window.location.hostname;
+    // 必须在专属 offline 域名下才能使用此控制台
     const isAllowed = hostname.includes('pwa.aipali') || 
                       hostname === 'localhost' || 
                       hostname === '127.0.0.1' || 
                       hostname.startsWith('192.168.');
+    
     if (!isAllowed) {
       window.location.replace('https://pwa.aipali.true-dhamma.com/offline/');
     }
@@ -127,20 +129,39 @@ import TodayRightView from '../../components/TodayRightView.astro';
       <h2 className="aipali-section-title">AIPali 离线版使用说明</h2>
       <Card title="背景介绍" icon="information">
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
-          <li><b>功能实现：</b>AIPali 基于 PWA 技术，使用手动管理缓存的方式，实现稳定的离线访问。请<b className="highlight-text">按照本页说明一步步操作</b>，获取可信赖的离线体验。</li>
-          <li><b>离线数据管理：</b>首次使用时，您需要点击“全量重新构建”缓存数据；如果下载不完整，可使用“增量同步数据”继续；如遇故障，可使用“清除本地数据”恢复。</li>      
+          <li><b>功能实现：</b>AIPali 基于 PWA（Progressive Web App）技术，使用手动管理缓存的方式，实现稳定的离线访问功能。由于 PWA 的缓存可能会被操作系统清理，因此请<b className="highlight-text">按照本页的说明一步步操作</b>，以便获取可预期、可信赖的离线访问体验。</li>
+          <li><b>离线站点：</b>在全部 AIPali 的镜像站点中，只有子域名为 PWA 的站点支持离线访问。因此，您必须通过该站点所提供的<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)）使用离线功能，其他镜像站点无此功能。</li>
+          <li><b>离线数据管理：</b>您需要于在线环境下，使用本页上方的“[离线经文数据中心](#offline-dashboard)”将全部经文数据下载到本地，后续方能使用离线功能。首次使用时，您需要点击“全量重新构建”，以缓存全部经文数据；如果经文数据下载不完整，可使用“增量同步数据”继续下载；如遇页面或功能故障，可使用“清除本地数据”来恢复初始状态。</li>      
         </ul>
       </Card>
       
-      <Card title="iOS / Android / 墨水屏用户" icon="apple">
-        请通过浏览器的“添加到主屏幕”或下载专属 APP，然后在桌面打开应用，点击<b className="highlight-text">全量重新构建</b>，完成后即可实现离线访问。
+      <Card title="iOS 用户" icon="apple">
+        用 <b className="highlight-text">Safari</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右下角的“...”菜单，点击<b className="highlight-text">“共享”</b>图标（向上箭头的方框），下拉页面，找到并点击<b className="highlight-text">“添加到主屏幕”</b>。然后在桌面上打开刚刚添加的 APP，点击<b className="highlight-text">全量重新构建</b>，完成后即可实现离线访问。
+      </Card>
+
+      <Card title="Android 用户" icon="phone">
+        用 <b className="highlight-text">Chrome</b> 浏览器打开<b className="highlight-text">Offline 页面</b>（[https://pwa.aipali.true-dhamma.com/offline/](https://pwa.aipali.true-dhamma.com/offline/)），点击右上角的“...”菜单，点击<b className="highlight-text">“安装并创建快捷方式”</b>及<b className="highlight-text">“安装”</b>。或者也可访问 <a href="https://download.true-dhamma.com/%E5%B7%B4%E5%88%A9%E5%9C%A3%E5%85%B8%20Tipitaka/AIPali/%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%BD%AF%E4%BB%B6/" target="_blank" rel="noopener noreferrer">[True-Dhamma网盘]</a> 下载名为 AIPali Reader 的独立客户端自行安装。安装完成后在桌面打开刚刚添加的 APP，点击<b className="highlight-text">全量重新构建</b>，完成后即可实现离线访问。
+      </Card>
+
+      <Card title="墨水屏阅读器用户" icon="phone">
+        如果您的墨水屏设备是基于 Android 的开放系统，请访问 [墨水屏阅读器页面](/eink/) 以获得关于在线和离线阅读的详尽支持。
+      </Card>
+
+      <Card title="PC 用户" icon="phone">
+        请使用 Chrome、Edge、Firefox 等现代浏览器访问本 PWA 镜像站点（[https://pwa.aipali.true-dhamma.com](https://pwa.aipali.true-dhamma.com/offline/)），以使用离线功能。
       </Card>
       
-      <Card title="局限性与故障排除" icon="warning">
-        离线环境下，<b className="highlight-text">搜索</b>、<b className="highlight-text">AI 问经</b>等需要联网的功能不可用。<br/>
-        如遇页面打不开，请在有网环境下点击<b className="highlight-text">清除本地数据</b>，彻底退出重进后，再次点击<b className="highlight-text">全量重新构建</b>。<br/>
-        如果是弱网环境（显示有网但连不上），请开启<b className="highlight-text">飞行模式</b>解决。
+      <Card title="局限性" icon="warning">
+        请您了解，离线版巴利三藏并非全功能版本。在纯离线环境下，AIPali 的<b className="highlight-text">搜索</b>、<b className="highlight-text">AI 问经</b>、<b className="highlight-text">标签</b>、<b className="highlight-text">巴利语对照</b>、<b className="highlight-text">沉浸式听书</b>等功能不可用——这些功能均需要在联网环境下访问主站使用。
       </Card>
+      
+      <Card title="故障排除" icon="phone">
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 1.8 }}>
+           <li>如果部分页面或功能无法离线使用，您可以在网络连接良好的情况下，点击<b className="highlight-text">清除本地数据</b>，然后<b className="highlight-text">划掉/退出</b>当前应用并重新打开。当看到“本地存储占用”低于 3M 后，点击 <b className="highlight-text">全量重新构建</b>以完全重建缓存。此后可切换到<b className="highlight-text">飞行模式</b>验证离线版功能已恢复正常。</li>
+          <li>如果您已完成上述操作且在离线状态下已能打开部分页面，但却无法点开菜单或切换经文，这通常是由于<b className="highlight-text">弱网环境</b>（如连接 5G 或 WiFi 但无实际网络连接）所导致的。在这种情况下，您可以将设备<b className="highlight-text">调整至飞行模式并关闭 WiFi</b>来排除此故障。</li>
+        </ul>
+      </Card>
+
     </div>
 
   <footer className="aipali-custom-footer">
@@ -152,6 +173,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         <span className="keyword">现代化</span> <span className="dot"> · </span> 
         <span className="keyword">互动化</span>
       </p>
+      <p className="footer-sub">由现代人开发，服务于现代佛法修行者</p>
       <p className="footer-copyright">
         &copy; 2026, <a href="https://true-dhamma.com" target="_blank" rel="noopener noreferrer">如实法 True-Dhamma.com</a>
       </p>
@@ -167,96 +189,23 @@ import TodayRightView from '../../components/TodayRightView.astro';
   const MANIFEST_URL = '/assets/offline-manifest-custom.json';
   let isSyncing = false;
 
+  // 格式化错误输出：规范全平台输出结构，消灭多重冒号
   function formatError(e) {
     if (!e) return '未知错误';
     if (typeof e === 'string') return e;
+    
     const name = e.name && e.name !== 'Error' ? '[' + e.name + '] ' : '';
-    return name + (e.message || String(e));
-  }
-
-  // =========================================================================
-  // 核心：沙盒逃逸抓取器 (Sandbox Escape Fetcher)
-  // 通过不可见的 iframe 绕过所有 Web-to-apk 的恶意 JS 注入与变量篡改，
-  // 获取最底层、最纯净的系统原生请求能力。
-  // =========================================================================
-  const getSafeFetch = (function() {
-    let instance = null;
-    return function() {
-      if (instance) return instance;
-
-      let pureFetch = window.fetch;
-      let PureXHR = window.XMLHttpRequest;
-
-      try {
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-        
-        // 强行删除可能被劫持的方法，迫使 iframe 沿着原型链向上寻找到真正的原生 C++ 绑定方法
-        try { delete iframe.contentWindow.fetch; } catch(e) {}
-        if (iframe.contentWindow.fetch) pureFetch = iframe.contentWindow.fetch;
-        
-        try { delete iframe.contentWindow.XMLHttpRequest; } catch(e) {}
-        if (iframe.contentWindow.XMLHttpRequest) PureXHR = iframe.contentWindow.XMLHttpRequest;
-      } catch(e) {}
-
-      instance = function(url, options) {
-        return new Promise(function(resolve, reject) {
-          try {
-            // 尝试 1：用偷来的纯净 fetch 发起请求
-            var fetchPromise = pureFetch(url, options);
-            fetchPromise.then(function(res) {
-              resolve(res);
-            }).catch(function(err) {
-              fallbackXHR(url, resolve, reject);
-            });
-          } catch (e) {
-            // 这里会拦截并吞掉最经典的『Permission denied to access property "then"』崩溃！
-            fallbackXHR(url, resolve, reject);
-          }
-        });
-      };
-
-      // 尝试 2：如果底层网络墙阻断了 Fetch，退化为最原始的 Blob 级 XHR
-      // 坚决不带任何 Headers 和 Params，防止触发脆弱壳子的崩溃BUG
-      function fallbackXHR(url, resolve, reject) {
-        try {
-          var xhr = new PureXHR();
-          xhr.open('GET', url, true);
-          xhr.responseType = 'blob'; 
-          
-          xhr.onload = function() {
-            if (xhr.status === 0 || xhr.status >= 400) {
-              reject(new Error('网络请求异常 (HTTP ' + xhr.status + ')'));
-              return;
-            }
-            var ct = 'application/octet-stream';
-            try { ct = xhr.getResponseHeader('Content-Type') || ct; } catch(e) {}
-            
-            try {
-              resolve(new Response(xhr.response, {
-                status: 200, // 强制成功状态写入缓存
-                headers: { 'Content-Type': ct }
-              }));
-            } catch(e) {
-              reject(new Error('底层 Response 组装失败'));
-            }
-          };
-          xhr.onerror = function() {
-            reject(new Error('系统拦截器断网或抛出异常'));
-          };
-          xhr.send(null);
-        } catch(err) {
-          reject(err);
-        }
-      }
-
-      return instance;
-    };
-  })();
-
-  function safeFetch(url, options) {
-    return getSafeFetch()(url, options);
+    const msg = e.message || String(e);
+    
+    // 补充常见平台存储限制的友好说明
+    let hint = '';
+    if (msg.includes('QuotaExceeded') || (e.name && e.name === 'QuotaExceededError')) {
+      hint = ' (设备存储空间不足)';
+    } else if (msg.includes('insecure') || (e.name && e.name === 'SecurityError')) {
+      hint = ' (存储访问受限或文件被占用)';
+    }
+    
+    return name + msg + hint;
   }
 
   const UI = {
@@ -311,6 +260,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
   };
 
+  // 通用稳健清理：兼容全平台环境及文件占用场景
   async function safeClearAllCaches() {
     if (!('caches' in window)) return;
     try {
@@ -318,8 +268,13 @@ import TodayRightView from '../../components/TodayRightView.astro';
       for (const name of cacheNames) {
         UI.log('正在清理缓存分区 (' + name + ')...');
         let deleted = false;
-        try { deleted = await caches.delete(name); } catch (delErr) {}
+        try {
+          deleted = await caches.delete(name);
+        } catch (delErr) {
+          // 部分系统或内核文件占用时直接整体删除会抛错，转为项级清空
+        }
 
+        // 降级容错：若直接移除失败，则清空分区内部条目，确保数据完全释放
         if (!deleted) {
           try {
             const c = await caches.open(name);
@@ -354,9 +309,14 @@ import TodayRightView from '../../components/TodayRightView.astro';
                 const url = new URL(req.url);
                 const path = url.pathname;
                 
+                // 1. 核心经文 HTML 页面与清单本身
                 const isPageNode = path.endsWith('/') || path.endsWith('.html');
                 const isManifestNode = path === MANIFEST_URL;
+                
+                // 2. 样式、脚本与图标资源
                 const isAssetNode = path.startsWith('/assets/') || path.startsWith('/_astro/'); 
+                
+                // 3. 开发模式临时文件剔除
                 const isInternalJunk = path.includes('/@vite/') || path.includes('/@fs/');
 
                 if ((isPageNode || isManifestNode || isAssetNode) && !isInternalJunk) {
@@ -399,6 +359,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     UI.log('正在执行本地数据清理...');
     UI.disableButtons(true);
     try {
+      // 1. 优先注销 Service Worker，确保后台释放缓存占用
       if ('serviceWorker' in navigator) {
         try {
           const registrations = await navigator.serviceWorker.getRegistrations();
@@ -408,8 +369,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
         } catch(swTotalErr) {}
       }
 
+      // 2. 稳健清空缓存
       await safeClearAllCaches();
       
+      // 3. 稳健清理 IndexedDB（带有防挂起超时保护）
       if (window.indexedDB && indexedDB.databases) {
         try {
           const dbs = await indexedDB.databases();
@@ -430,7 +393,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       }
 
       UI.log('本地离线经文数据与相关缓存已全部清除。');
-      UI.log('提示：建议[彻底划掉/退出]当前应用并重新进入，以刷新准确的存储占用数值。');
+      UI.log('提示：受不同系统底层存储回收策略影响，建议[彻底划掉/退出]当前应用并重新进入，以刷新准确的存储占用数值。');
       
     } catch (e) {
       UI.log('清除数据失败 - ' + formatError(e));
@@ -445,13 +408,13 @@ import TodayRightView from '../../components/TodayRightView.astro';
   window.confirmAndStartSync = async function(isRebuild) {
     if (isSyncing) return;
     if (!navigator.onLine) {
-      alert("网络未连接\\n\\n设备当前处于离线状态，无法连接至云端服务器。请在网络连接恢复后再试。");
+      alert("网络未连接\\n\\n设备当前处于离线状态，无法连接至云端服务器进行数据比对。请在网络连接恢复后再试。");
       return;
     }
 
     const msg = isRebuild
-      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。\\n\\n确认执行全量重建？"
-      : "增量同步数据\\n\\n系统将比对本地与云端目录，自动下载新增或变动节点。\\n\\n确认执行增量同步？";
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程将耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
+      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
     UI.showTerminal(true);
@@ -468,9 +431,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
     UI.log(isRebuild ? '=== 开始全量重新构建 ===' : '=== 开始增量同步数据 ===');
 
     try {
+      if (!navigator.onLine) {
+        throw new Error('网络连接已断开，同步操作终止');
+      }
+
       UI.log('正在获取云端经文目录 (sitemap.xml)...');
-      // 启用 safeFetch，并且仅针对文本文件添加无缓存标识
-      const sitemapRes = await safeFetch('/sitemap-0.xml', { cache: 'no-store' });
+      const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
       if (!sitemapRes.ok) throw new Error('云端服务器通信异常 (HTTP ' + sitemapRes.status + ')');
       
       const sitemapText = await sitemapRes.text();
@@ -486,22 +452,29 @@ import TodayRightView from '../../components/TodayRightView.astro';
           return !url.includes('/tags/');
         });
 
+      // ==========================================================
+      // 1. 读取额外静态数据清单
+      // ==========================================================
       try {
         UI.log('正在读取离线资源清单 (manifest)...');
-        const manifestRes = await safeFetch(MANIFEST_URL, { cache: 'no-store' });
+        const manifestRes = await fetch(MANIFEST_URL, { cache: 'no-store' });
         if (manifestRes.ok) {
-          const manifestText = await manifestRes.text();
-          const manifest = JSON.parse(manifestText);
+          const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
             urls.push(...manifest.nodes);
             urls.push(MANIFEST_URL);
             UI.log('已加载清单扩展资源：共 ' + manifest.nodes.length + ' 个节点');
           }
+        } else {
+          UI.log('未检测到额外离线清单 (HTTP ' + manifestRes.status + ')，继续同步核心内容。');
         }
       } catch (err) {
-        UI.log('未能加载额外资源清单，跳过。');
+        UI.log('解析离线清单遇到问题 - ' + formatError(err));
       }
 
+      // ==========================================================
+      // 2. 自动从 DOM 抓取页面依赖资源
+      // ==========================================================
       try {
         UI.log('正在解析页面依赖资源 (样式、脚本与图标)...');
         const assetElements = document.querySelectorAll(
@@ -532,12 +505,16 @@ import TodayRightView from '../../components/TodayRightView.astro';
           }
         }
         UI.log('已载入页面核心资源：共 ' + addedCount + ' 个');
-      } catch (err) {}
+      } catch (err) {
+        UI.log('解析页面资源时遇到问题 - ' + formatError(err));
+      }
 
       if (urls.length === 0) throw new Error('未获取到有效的同步节点');
       UI.log('节点校验完成：待处理节点共计 ' + urls.length + ' 个');
 
       let existingKeys = [];
+      
+      // 全量重建时先格式化清空，避免在删除前打开句柄造成跨平台锁冲突
       if (isRebuild) {
         UI.log('正在重置本地旧版缓存...');
         await safeClearAllCaches();
@@ -550,10 +527,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
             UI.log('正在比对，跳过本地已存在的节点...');
           }
         } catch (err) {
+          UI.log('读取本地比对记录失败，将进行完整同步 - ' + formatError(err));
           existingKeys = [];
         }
       }
 
+      // 打开统一缓存空间
       const targetCache = await caches.open(CACHE_NAME);
 
       let downloaded = 0;
@@ -577,7 +556,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
           } else {
             try {
               UI.setProgress(currentIndex, urls.length, '正在下载：' + displayUrl);
-              const res = await safeFetch(url, { cache: 'no-cache' });
+              const res = await fetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
                 await targetCache.put(url, res);
@@ -617,6 +596,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   document.addEventListener('DOMContentLoaded', function() {
     refreshStatus();
+    window.addEventListener('online', function() { UI.log('网络连接已恢复。'); });
+    window.addEventListener('offline', function() { UI.log('当前处于离线模式。'); });
   });
 `}</script>
 
@@ -624,9 +605,11 @@ import TodayRightView from '../../components/TodayRightView.astro';
 {/* 5. 样式表 */}
 {/* ====================================================== */}
 <style>{`
+  /* 基础清理 */
   .sl-markdown-content > h1:first-child, #_top { display: none !important; }
   .sl-markdown-content { padding-top: 0 !important; }
 
+  /* Hero 布局 */
   .custom-hero-section {
     width: 100%; display: flex; justify-content: center;
     padding-top: 0; margin-top: -3.5rem; margin-bottom: 0rem;
@@ -671,6 +654,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   html[data-theme='light'] .img-dark { display: none; }
   html[data-theme='dark'] .img-light { display: none; }
 
+  /* 离线控制中心 */
   .offline-dashboard {
     max-width: 1200px; margin: 3rem auto 0 auto; padding: 0 1.5rem;
   }
@@ -690,6 +674,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .dash-card h3 { margin: 0; font-size: 1rem; color: var(--sl-color-gray-3); font-weight: 500; }
   .dash-value { font-size: 2rem; font-weight: 700; color: var(--sl-color-text-accent); margin-top: 0.5rem; line-height: 1; }
 
+  /* 操作按钮组 */
   .control-panel { display: flex; gap: 1rem; width: 100%; margin-bottom: 2rem; }
   .btn-action { 
     flex: 1 1 0; min-width: 0; margin-top: 0 !important;
@@ -706,6 +691,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .btn-danger-action { background: var(--sl-color-bg); color: #ff5f56; border: 1px solid rgba(255, 95, 86, 0.4); }
   .btn-danger-action:hover:not(:disabled) { background: rgba(255, 95, 86, 0.1); border-color: #ff5f56; }
 
+  /* ================= 进度条修饰 ================= */
   .progress-container { margin-bottom: 2rem; opacity: 0; transition: opacity 0.3s ease; }
   .progress-container.visible { opacity: 1; }
   .progress-container.hidden { display: none; }
@@ -731,6 +717,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     line-height: 1; transform: translateY(-1px); margin: 0;
   }
 
+  /* 带有 Mac 视窗修饰的终端日志 */
   .terminal-window {
     background: #0d0d0d; border-radius: 8px; overflow: hidden; border: 1px solid var(--sl-color-hairline);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -758,6 +745,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
   #log-window::-webkit-scrollbar-track { background: #0d0d0d; }
   #log-window::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 
+  /* 移动端紧凑适配 */
   @media (max-width: 50rem) {
     .custom-hero-section { margin-top: -1rem; margin-bottom: 2rem; }
     .hero-container { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
@@ -779,6 +767,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     #log-window { height: 160px; }
   }
 
+  /* 背景与底部装饰 */
   .page-container { position: relative; overflow-x: clip; }
   .page-container::before {
     content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
