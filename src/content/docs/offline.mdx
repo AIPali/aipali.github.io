@@ -208,6 +208,61 @@ import TodayRightView from '../../components/TodayRightView.astro';
     return name + msg + hint;
   }
 
+  // 纯净网络请求器：绕过被 GeckoView 打包壳篡改的 window.fetch
+  // 使用原生 XMLHttpRequest，避免 cross-compartment 导致的 Permission denied to access property "then"
+  function safeFetch(url, options) {
+    options = options || {};
+    return new Promise(function(resolve, reject) {
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open(options.method || 'GET', url, true);
+        xhr.responseType = 'blob';
+
+        if (options.cache === 'no-store' || options.cache === 'no-cache') {
+          xhr.setRequestHeader('Cache-Control', 'no-cache');
+          xhr.setRequestHeader('Pragma', 'no-cache');
+        }
+
+        xhr.onload = function() {
+          if (xhr.status === 0) {
+            reject(new TypeError('网络请求异常 (状态码 0)：' + url));
+            return;
+          }
+          var headers = new Headers();
+          var rawHeaders = xhr.getAllResponseHeaders() || '';
+          rawHeaders.trim().split(/[\\r\\n]+/).forEach(function(line) {
+            var parts = line.split(': ');
+            var key = parts.shift();
+            var val = parts.join(': ');
+            if (key) {
+              try { headers.append(key, val); } catch(e) {}
+            }
+          });
+
+          var status = (xhr.status >= 200 && xhr.status <= 599) ? xhr.status : 200;
+          var response = new Response(xhr.response, {
+            status: status,
+            statusText: xhr.statusText || 'OK',
+            headers: headers
+          });
+          resolve(response);
+        };
+
+        xhr.onerror = function() {
+          reject(new TypeError('网络连接失败 (XHR Error)：' + url));
+        };
+
+        xhr.ontimeout = function() {
+          reject(new TypeError('网络请求超时：' + url));
+        };
+
+        xhr.send(options.body || null);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
   const UI = {
     log: function(msg) {
       const el = document.getElementById('log-window');
@@ -436,7 +491,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
       }
 
       UI.log('正在获取云端经文目录 (sitemap.xml)...');
-      const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
+      // 使用 safeFetch 替换原生 fetch
+      const sitemapRes = await safeFetch('/sitemap-0.xml', { cache: 'no-store' });
       if (!sitemapRes.ok) throw new Error('云端服务器通信异常 (HTTP ' + sitemapRes.status + ')');
       
       const sitemapText = await sitemapRes.text();
@@ -457,7 +513,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
       // ==========================================================
       try {
         UI.log('正在读取离线资源清单 (manifest)...');
-        const manifestRes = await fetch(MANIFEST_URL, { cache: 'no-store' });
+        // 使用 safeFetch 替换原生 fetch
+        const manifestRes = await safeFetch(MANIFEST_URL, { cache: 'no-store' });
         if (manifestRes.ok) {
           const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
@@ -556,7 +613,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
           } else {
             try {
               UI.setProgress(currentIndex, urls.length, '正在下载：' + displayUrl);
-              const res = await fetch(url, { cache: 'no-cache' });
+              // 使用 safeFetch 替换原生 fetch
+              const res = await safeFetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
                 await targetCache.put(url, res);
