@@ -102,7 +102,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
       </div>
     </div>
 
-    {/* 加入 Mac 视窗装饰的终端：默认 hidden 隐藏 */}
     <div id="terminal-window" className="terminal-window hidden">
       <div className="terminal-header">
         <div className="mac-buttons">
@@ -189,20 +188,22 @@ import TodayRightView from '../../components/TodayRightView.astro';
   const MANIFEST_URL = '/assets/offline-manifest-custom.json';
   let isSyncing = false;
 
-  // 格式化错误信息（清晰提取类型、信息及行栈，告别模糊报错）
+  // 格式化错误输出：规范全平台输出结构，消灭多重冒号
   function formatError(e) {
-    if (!e) return '未知异常';
+    if (!e) return '未知错误';
     if (typeof e === 'string') return e;
-    const name = e.name ? e.name + ': ' : '';
+    
+    const name = e.name && e.name !== 'Error' ? '[' + e.name + '] ' : '';
     const msg = e.message || String(e);
-    let detail = name + msg;
-    if (e.stack) {
-      const lines = e.stack.split(/[\\r\\n]+/);
-      if (lines.length > 1) {
-        detail += ' [' + lines[1].trim() + ']';
-      }
+    
+    // 补充常见平台存储限制的友好说明
+    let hint = '';
+    if (msg.includes('QuotaExceeded') || (e.name && e.name === 'QuotaExceededError')) {
+    } else if (msg.includes('insecure') || (e.name && e.name === 'SecurityError')) {
+      hint = ' (存储访问受限或文件被占用)';
     }
-    return detail;
+    
+    return name + msg + hint;
   }
 
   const UI = {
@@ -257,21 +258,21 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
   };
 
-  // 稳健清理缓存工具函数：针对墨水屏/GeckoView SQLite锁提供逐项排空兼容
+  // 通用稳健清理：兼容全平台环境及文件占用场景
   async function safeClearAllCaches() {
     if (!('caches' in window)) return;
     try {
       const cacheNames = await caches.keys();
       for (const name of cacheNames) {
-        UI.log('正在清理缓存分区: ' + name);
+        UI.log('正在清理缓存分区 (' + name + ')...');
         let deleted = false;
         try {
           deleted = await caches.delete(name);
         } catch (delErr) {
-          UI.log('提示: 整体删除 [' + name + '] 受阻 (' + formatError(delErr) + ')，执行排空策略...');
+          // 部分系统或内核文件占用时直接整体删除会抛错，转为项级清空
         }
 
-        // 墨水屏关键容错：若返回 false 或发生文件锁抛错，进入项级清空（不触碰目录删除，防止权限错误）
+        // 降级容错：若直接移除失败，则清空分区内部条目，确保数据完全释放
         if (!deleted) {
           try {
             const c = await caches.open(name);
@@ -279,14 +280,14 @@ import TodayRightView from '../../components/TodayRightView.astro';
             for (const req of keys) {
               try { await c.delete(req); } catch(kErr) {}
             }
-            UI.log('缓存分区 [' + name + '] 已通过逐项排空完成清理。');
+            UI.log('已完成分区数据清空 (' + name + ')');
           } catch (fallbackErr) {
-            UI.log('排空 [' + name + '] 发生警告: ' + formatError(fallbackErr));
+            UI.log('清理缓存分区 (' + name + ') 遇到问题 - ' + formatError(fallbackErr));
           }
         }
       }
     } catch (e) {
-      UI.log('读取缓存清单异常: ' + formatError(e));
+      UI.log('读取缓存列表失败 - ' + formatError(e));
     }
   }
 
@@ -310,7 +311,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
                 const isPageNode = path.endsWith('/') || path.endsWith('.html');
                 const isManifestNode = path === MANIFEST_URL;
                 
-                // 2. Astro 构建的 CSS/JS/图片，以及 assets 目录下的文件
+                // 2. 样式、脚本与图标资源
                 const isAssetNode = path.startsWith('/assets/') || path.startsWith('/_astro/'); 
                 
                 // 3. 开发模式临时文件剔除
@@ -326,7 +327,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         UI.updateCount(pathSet.size);
       } else {
         UI.updateCount('N/A');
-        UI.log('系统警告: 当前运行环境不支持 Cache API，无法使用离线版巴利三藏。');
+        UI.log('系统提示：当前环境不支持 Cache API，离线功能不可用。');
       }
 
       if (navigator.storage && navigator.storage.estimate) {
@@ -337,7 +338,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         UI.updateStorage('--');
       }
     } catch (e) {
-      UI.log('状态读取异常: ' + formatError(e));
+      UI.log('读取存储状态失败 - ' + formatError(e));
     }
   }
 
@@ -352,12 +353,11 @@ import TodayRightView from '../../components/TodayRightView.astro';
     const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能。\\n\\n确认执行本地数据清除？";
     if (!confirm(msg)) return;
     
-    // 触发操作时自动弹出控制台终端
     UI.showTerminal(true);
-    UI.log('正在执行本地数据清除命令...');
+    UI.log('正在执行本地离线数据清理...');
     UI.disableButtons(true);
     try {
-      // 1. 优先注销 Service Worker，确保后台不再拦截并释放对缓存的持有锁定
+      // 1. 优先注销 Service Worker，确保后台释放缓存占用
       if ('serviceWorker' in navigator) {
         try {
           const registrations = await navigator.serviceWorker.getRegistrations();
@@ -367,10 +367,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
         } catch(swTotalErr) {}
       }
 
-      // 2. 稳健清空缓存分区
+      // 2. 稳健清空缓存
       await safeClearAllCaches();
       
-      // 3. 稳健清理 IndexedDB（带有防阻塞超时机制）
+      // 3. 稳健清理 IndexedDB（带有防挂起超时保护）
       if (window.indexedDB && indexedDB.databases) {
         try {
           const dbs = await indexedDB.databases();
@@ -390,11 +390,11 @@ import TodayRightView from '../../components/TodayRightView.astro';
         } catch(err) {}
       }
 
-      UI.log('本地所有经文节点及关联缓存已彻底清除！');
-      UI.log('⚠️ 请注意：由于浏览器底层存储状态的限制，部分系统缓存需彻底关闭后才能释放。您需要 [彻底划掉/退出当前应用] 并重新进入，才能查看归零后的准确容量。');
+      UI.log('本地离线经文数据与相关缓存已全部清除。');
+      UI.log('提示：受不同系统底层存储回收策略影响，建议退出并重新打开应用，以刷新准确的存储占用数值。');
       
     } catch (e) {
-      UI.log('清除操作执行受阻: ' + formatError(e));
+      UI.log('清除数据失败 - ' + formatError(e));
     } finally {
       UI.disableButtons(false);
       UI.updateCount('--');
@@ -411,11 +411,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
 
     const msg = isRebuild
-      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程将耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
       : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
-    // 触发操作时自动弹出控制台终端
     UI.showTerminal(true);
     await performSync(isRebuild);
   };
@@ -427,16 +426,16 @@ import TodayRightView from '../../components/TodayRightView.astro';
     UI.showTerminal(true);
     
     UI.log('');
-    UI.log(isRebuild ? '=== 启动全量重建 ===' : '=== 启动增量同步 ===');
+    UI.log(isRebuild ? '=== 开始全量重新构建 ===' : '=== 开始增量同步数据 ===');
 
     try {
       if (!navigator.onLine) {
-        throw new Error('终端网络意外断开，命令执行终止。');
+        throw new Error('网络连接已断开，同步操作终止');
       }
 
-      UI.log('读取云端拓扑结构 (sitemap)...');
+      UI.log('正在获取云端经文目录 (sitemap.xml)...');
       const sitemapRes = await fetch('/sitemap-0.xml', { cache: 'no-store' });
-      if (!sitemapRes.ok) throw new Error('云端通信受阻 (HTTP ' + sitemapRes.status + ')');
+      if (!sitemapRes.ok) throw new Error('云端服务器通信异常 (HTTP ' + sitemapRes.status + ')');
       
       const sitemapText = await sitemapRes.text();
       const parser = new DOMParser();
@@ -455,27 +454,27 @@ import TodayRightView from '../../components/TodayRightView.astro';
       // 1. 读取额外静态数据清单
       // ==========================================================
       try {
-        UI.log('读取额外静态资源清单 (offline-manifest-custom)...');
+        UI.log('正在读取离线资源清单 (manifest)...');
         const manifestRes = await fetch(MANIFEST_URL, { cache: 'no-store' });
         if (manifestRes.ok) {
           const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
             urls.push(...manifest.nodes);
             urls.push(MANIFEST_URL);
-            UI.log('成功读取额外静态资源节点: ' + manifest.nodes.length + ' 个，已注入同步引擎。');
+            UI.log('已加载清单扩展资源：共 ' + manifest.nodes.length + ' 个节点');
           }
         } else {
-          UI.log('提示: 未找到自定义缓存清单 (HTTP ' + manifestRes.status + ')，仅同步主要节点。');
+          UI.log('未检测到额外离线清单 (HTTP ' + manifestRes.status + ')，继续同步核心内容。');
         }
       } catch (err) {
-        UI.log('提示: 无法解析自定义缓存清单: ' + formatError(err));
+        UI.log('解析离线清单遇到问题 - ' + formatError(err));
       }
 
       // ==========================================================
-      // 2. 自动从 DOM 抓取所有样式表、脚本与关键图片
+      // 2. 自动从 DOM 抓取页面依赖资源
       // ==========================================================
       try {
-        UI.log('扫描样式表、脚本及图片...');
+        UI.log('正在解析页面依赖资源 (样式、脚本与图标)...');
         const assetElements = document.querySelectorAll(
           'link[rel="stylesheet"], link[rel="preload"][as="style"], link[rel="preload"][as="font"], link[rel="apple-touch-icon"], link[rel="icon"], script[src], img[src]'
         );
@@ -503,19 +502,19 @@ import TodayRightView from '../../components/TodayRightView.astro';
             addedCount++;
           }
         }
-        UI.log('成功捕获并注入核心静态资源: ' + addedCount + ' 个。');
+        UI.log('已载入页面核心资源：共 ' + addedCount + ' 个');
       } catch (err) {
-        UI.log('静态资源自动捕获异常: ' + formatError(err));
+        UI.log('解析页面资源时遇到问题 - ' + formatError(err));
       }
 
-      if (urls.length === 0) throw new Error('未获取到有效的数据节点。');
-      UI.log('校验通过，共有 ' + urls.length + ' 个有效的同步节点。');
+      if (urls.length === 0) throw new Error('未获取到有效的同步节点');
+      UI.log('节点校验完成：待处理节点共计 ' + urls.length + ' 个');
 
       let existingKeys = [];
       
-      // 避免在删除旧缓存前打开 CACHE_NAME 导致 SQLite 文件死锁
+      // 全量重建时先格式化清空，避免在删除前打开句柄造成跨平台锁冲突
       if (isRebuild) {
-        UI.log('执行底层格式化，清空旧有数据区块...');
+        UI.log('正在重置本地旧版缓存...');
         await safeClearAllCaches();
       } else {
         try {
@@ -523,15 +522,15 @@ import TodayRightView from '../../components/TodayRightView.astro';
             const checkCache = await caches.open(CACHE_NAME);
             const reqs = await checkCache.keys();
             existingKeys = reqs.map(function(req) { return new URL(req.url).pathname; });
-            UI.log('本地探明已缓存节点，开始差异比对...');
+            UI.log('正在比对本地已有节点，跳过未修改内容...');
           }
         } catch (err) {
-          UI.log('比对本地节点发生提示: ' + formatError(err) + '，将进行全量更新比对。');
+          UI.log('读取本地比对记录失败，将进行完整同步 - ' + formatError(err));
           existingKeys = [];
         }
       }
 
-      // 打开统一缓存空间（复用句柄，降低墨水屏并发打开 SQLite 导致的冲突）
+      // 打开统一缓存空间
       const targetCache = await caches.open(CACHE_NAME);
 
       let downloaded = 0;
@@ -554,18 +553,18 @@ import TodayRightView from '../../components/TodayRightView.astro';
             skipped++;
           } else {
             try {
-              UI.setProgress(currentIndex, urls.length, '拉取节点: ' + displayUrl);
+              UI.setProgress(currentIndex, urls.length, '正在下载：' + displayUrl);
               const res = await fetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
                 await targetCache.put(url, res);
                 downloaded++;
               } else {
-                UI.log('节点响应失效 [' + res.status + ']: ' + url);
+                UI.log('下载响应异常 (HTTP ' + res.status + ')：' + url);
                 errors++;
               }
             } catch (err) {
-              UI.log('节点写入异常 [' + formatError(err) + ']: ' + url);
+              UI.log('写入缓存失败 (' + url + ') - ' + formatError(err));
               errors++;
             }
           }
@@ -576,15 +575,15 @@ import TodayRightView from '../../components/TodayRightView.astro';
         }
       };
 
-      UI.log('开启多路复用传输 (线程数: 5)...');
+      UI.log('启动多线程并行传输 (并发数：5)...');
       const workers = Array(Math.min(MAX_CONCURRENT, urls.length)).fill(null).map(function() { return downloadWorker(); });
       await Promise.all(workers);
 
-      UI.setProgress(urls.length, urls.length, '数据同步通道已关闭');
-      UI.log('命令执行完毕 | 新增/更新: ' + downloaded + ' | 跳过: ' + skipped + ' | 异常: ' + errors);
+      UI.setProgress(urls.length, urls.length, '同步完成');
+      UI.log('同步任务完成：新增/更新 ' + downloaded + ' 个，已跳过 ' + skipped + ' 个，失败 ' + errors + ' 个');
 
     } catch (e) {
-      UI.log('错误: ' + formatError(e));
+      UI.log('同步中断 - ' + formatError(e));
     } finally {
       isSyncing = false;
       UI.disableButtons(false);
@@ -595,8 +594,8 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
   document.addEventListener('DOMContentLoaded', function() {
     refreshStatus();
-    window.addEventListener('online', function() { UI.log('系统侦测到网络连接，同步模块就绪。'); });
-    window.addEventListener('offline', function() { UI.log('系统侦测到网络中断，已平滑切入全离线单机模式。'); });
+    window.addEventListener('online', function() { UI.log('网络连接已恢复。'); });
+    window.addEventListener('offline', function() { UI.log('当前处于离线模式。'); });
   });
 `}</script>
 
