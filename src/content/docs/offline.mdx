@@ -102,11 +102,11 @@ import TodayRightView from '../../components/TodayRightView.astro';
       </div>
     </div>
 
-    {/* 加入 Mac 视窗装饰的终端 */}
-    <div className="terminal-window">
+    {/* 加入 Mac 视窗装饰的终端：默认 hidden 隐藏 */}
+    <div id="terminal-window" className="terminal-window hidden">
       <div className="terminal-header">
         <div className="mac-buttons">
-          <span className="mac-btn close"></span>
+          <span className="mac-btn close" title="关闭控制台" onclick="window.UI && window.UI.showTerminal(false)"></span>
           <span className="mac-btn minimize"></span>
           <span className="mac-btn maximize"></span>
         </div>
@@ -189,12 +189,28 @@ import TodayRightView from '../../components/TodayRightView.astro';
   const MANIFEST_URL = '/assets/offline-manifest-custom.json';
   let isSyncing = false;
 
+  // 格式化错误信息（清晰提取类型、信息及行栈，告别模糊报错）
+  function formatError(e) {
+    if (!e) return '未知异常';
+    if (typeof e === 'string') return e;
+    const name = e.name ? e.name + ': ' : '';
+    const msg = e.message || String(e);
+    let detail = name + msg;
+    if (e.stack) {
+      const lines = e.stack.split(/[\\r\\n]+/);
+      if (lines.length > 1) {
+        detail += ' [' + lines[1].trim() + ']';
+      }
+    }
+    return detail;
+  }
+
   const UI = {
     log: function(msg) {
       const el = document.getElementById('log-window');
       const time = new Date().toLocaleTimeString('en-GB');
       const lines = el.innerText.split(/[\\r\\n]+/);
-      if (lines.length > 60) lines.shift();
+      if (lines.length > 80) lines.shift();
       const newline = String.fromCharCode(10);
       el.innerText = lines.join(newline) + newline + '[' + time + '] ' + msg;
       el.scrollTop = el.scrollHeight;
@@ -207,6 +223,18 @@ import TodayRightView from '../../components/TodayRightView.astro';
     },
     showProgress: function(show) {
       const el = document.getElementById('progress-container');
+      if (show) {
+        el.classList.remove('hidden');
+        void el.offsetWidth;
+        el.classList.add('visible');
+      } else {
+        el.classList.remove('visible');
+        setTimeout(function() { el.classList.add('hidden'); }, 300);
+      }
+    },
+    showTerminal: function(show) {
+      const el = document.getElementById('terminal-window');
+      if (!el) return;
       if (show) {
         el.classList.remove('hidden');
         void el.offsetWidth;
@@ -229,6 +257,39 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
   };
 
+  // 稳健清理缓存工具函数：针对墨水屏/GeckoView SQLite锁提供逐项排空兼容
+  async function safeClearAllCaches() {
+    if (!('caches' in window)) return;
+    try {
+      const cacheNames = await caches.keys();
+      for (const name of cacheNames) {
+        UI.log('正在清理缓存分区: ' + name);
+        let deleted = false;
+        try {
+          deleted = await caches.delete(name);
+        } catch (delErr) {
+          UI.log('提示: 整体删除 [' + name + '] 受阻 (' + formatError(delErr) + ')，执行排空策略...');
+        }
+
+        // 墨水屏关键容错：若返回 false 或发生文件锁抛错，进入项级清空（不触碰目录删除，防止权限错误）
+        if (!deleted) {
+          try {
+            const c = await caches.open(name);
+            const keys = await c.keys();
+            for (const req of keys) {
+              try { await c.delete(req); } catch(kErr) {}
+            }
+            UI.log('缓存分区 [' + name + '] 已通过逐项排空完成清理。');
+          } catch (fallbackErr) {
+            UI.log('排空 [' + name + '] 发生警告: ' + formatError(fallbackErr));
+          }
+        }
+      }
+    } catch (e) {
+      UI.log('读取缓存清单异常: ' + formatError(e));
+    }
+  }
+
   async function refreshStatus() {
     try {
       if ('caches' in window) {
@@ -236,29 +297,31 @@ import TodayRightView from '../../components/TodayRightView.astro';
         const pathSet = new Set(); 
         
         for (let name of cacheNames) {
-          const cache = await caches.open(name);
-          const keys = await cache.keys();
-          
-          for (let req of keys) {
-            try {
-              const url = new URL(req.url);
-              const path = url.pathname;
-              
-              // 1. 核心经文 HTML 页面与清单本身
-              const isPageNode = path.endsWith('/') || path.endsWith('.html');
-              const isManifestNode = path === MANIFEST_URL;
-              
-              // 2. Astro 构建的 CSS/JS/图片，以及 assets 目录下的文件，统统算作有效节点
-              const isAssetNode = path.startsWith('/assets/') || path.startsWith('/_astro/'); 
-              
-              // 3. 开发模式临时文件剔除
-              const isInternalJunk = path.includes('/@vite/') || path.includes('/@fs/');
+          try {
+            const cache = await caches.open(name);
+            const keys = await cache.keys();
+            
+            for (let req of keys) {
+              try {
+                const url = new URL(req.url);
+                const path = url.pathname;
+                
+                // 1. 核心经文 HTML 页面与清单本身
+                const isPageNode = path.endsWith('/') || path.endsWith('.html');
+                const isManifestNode = path === MANIFEST_URL;
+                
+                // 2. Astro 构建的 CSS/JS/图片，以及 assets 目录下的文件
+                const isAssetNode = path.startsWith('/assets/') || path.startsWith('/_astro/'); 
+                
+                // 3. 开发模式临时文件剔除
+                const isInternalJunk = path.includes('/@vite/') || path.includes('/@fs/');
 
-              if ((isPageNode || isManifestNode || isAssetNode) && !isInternalJunk) {
-                pathSet.add(path);
-              }
-            } catch(e) {}
-          }
+                if ((isPageNode || isManifestNode || isAssetNode) && !isInternalJunk) {
+                  pathSet.add(path);
+                }
+              } catch(e) {}
+            }
+          } catch(cacheOpenErr) {}
         }
         UI.updateCount(pathSet.size);
       } else {
@@ -274,7 +337,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         UI.updateStorage('--');
       }
     } catch (e) {
-      UI.log('状态读取异常: ' + e.message);
+      UI.log('状态读取异常: ' + formatError(e));
     }
   }
 
@@ -289,40 +352,54 @@ import TodayRightView from '../../components/TodayRightView.astro';
     const msg = "清除本地数据：\\n\\n此操作将彻底清除所有本地缓存数据。清除后，应用将不再提供离线阅读功能，并恢复到初始化状态。后续您可以通过全量重新构建，来重新开启离线阅读功能。\\n\\n确认执行本地数据清除？";
     if (!confirm(msg)) return;
     
+    // 触发操作时自动弹出控制台终端
+    UI.showTerminal(true);
     UI.log('正在执行本地数据清除命令...');
     UI.disableButtons(true);
     try {
-      const cacheNames = await caches.keys();
-      for (const name of cacheNames) {
-        await caches.delete(name);
+      // 1. 优先注销 Service Worker，确保后台不再拦截并释放对缓存的持有锁定
+      if ('serviceWorker' in navigator) {
+        try {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          for (const reg of registrations) {
+            try { await reg.unregister(); } catch(swErr) {}
+          }
+        } catch(swTotalErr) {}
       }
+
+      // 2. 稳健清空缓存分区
+      await safeClearAllCaches();
       
+      // 3. 稳健清理 IndexedDB（带有防阻塞超时机制）
       if (window.indexedDB && indexedDB.databases) {
         try {
           const dbs = await indexedDB.databases();
           for (const db of dbs) {
-            indexedDB.deleteDatabase(db.name);
+            if (db && db.name) {
+              try {
+                const req = indexedDB.deleteDatabase(db.name);
+                await new Promise(function(resolve) {
+                  req.onsuccess = function() { resolve(); };
+                  req.onerror = function() { resolve(); };
+                  req.onblocked = function() { resolve(); };
+                  setTimeout(resolve, 1000);
+                });
+              } catch(dbErr) {}
+            }
           }
         } catch(err) {}
-      }
-      
-      // 注意：这里由于是在 offline 专属域名下，注销本域的 SW 是安全的。
-      if ('serviceWorker' in navigator) {
-        const registrations = await navigator.serviceWorker.getRegistrations();
-        for (const reg of registrations) {
-          await reg.unregister();
-        }
       }
 
       UI.log('本地所有经文节点及关联缓存已彻底清除！');
       UI.log('⚠️ 请注意：由于浏览器底层存储状态的限制，部分系统缓存需彻底关闭后才能释放。您需要 [彻底划掉/退出当前应用] 并重新进入，才能查看归零后的准确容量。');
       
     } catch (e) {
-      UI.log('清除操作执行受阻: ' + e.message);
+      UI.log('清除操作执行受阻: ' + formatError(e));
     } finally {
       UI.disableButtons(false);
       UI.updateCount('--');
       UI.updateStorage('--');
+      refreshStatusWithRetry();
     }
   };
 
@@ -334,10 +411,12 @@ import TodayRightView from '../../components/TodayRightView.astro';
     }
 
     const msg = isRebuild
-      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程耗将时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
+      ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程将耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
       : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
+    // 触发操作时自动弹出控制台终端
+    UI.showTerminal(true);
     await performSync(isRebuild);
   };
 
@@ -345,6 +424,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
     isSyncing = true;
     UI.disableButtons(true);
     UI.showProgress(true);
+    UI.showTerminal(true);
     
     UI.log('');
     UI.log(isRebuild ? '=== 启动全量重建 ===' : '=== 启动增量同步 ===');
@@ -372,7 +452,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
         });
 
       // ==========================================================
-      // 1. 读取额外静态数据清单 (保持原有业务逻辑)
+      // 1. 读取额外静态数据清单
       // ==========================================================
       try {
         UI.log('读取额外静态资源清单 (offline-manifest-custom)...');
@@ -381,14 +461,14 @@ import TodayRightView from '../../components/TodayRightView.astro';
           const manifest = await manifestRes.json();
           if (manifest && Array.isArray(manifest.nodes)) {
             urls.push(...manifest.nodes);
-            urls.push(MANIFEST_URL); // 将 JSON 本身也注入下载队列，供后续断网时 refreshStatus 离线查阅
+            urls.push(MANIFEST_URL);
             UI.log('成功读取额外静态资源节点: ' + manifest.nodes.length + ' 个，已注入同步引擎。');
           }
         } else {
           UI.log('提示: 未找到自定义缓存清单 (HTTP ' + manifestRes.status + ')，仅同步主要节点。');
         }
       } catch (err) {
-        UI.log('提示: 无法解析自定义缓存清单，仅同步主要节点。');
+        UI.log('提示: 无法解析自定义缓存清单: ' + formatError(err));
       }
 
       // ==========================================================
@@ -403,12 +483,10 @@ import TodayRightView from '../../components/TodayRightView.astro';
         const autoAssets = [];
         for (const el of assetElements) {
           const rawUrl = el.src || el.href;
-          // 排除空值与 base64 内联图片
           if (!rawUrl || rawUrl.startsWith('data:')) continue;
           
           try {
             const parsed = new URL(rawUrl, window.location.origin);
-            // 严格同源检查，仅下载本站构建产物，排除外部 CDN
             if (parsed.origin === window.location.origin) {
               if (parsed.pathname.includes('/_astro/') || parsed.pathname.includes('/assets/')) {
                 autoAssets.push(parsed.pathname);
@@ -417,7 +495,6 @@ import TodayRightView from '../../components/TodayRightView.astro';
           } catch (e) {}
         }
 
-        // 去重并防止与现有 urls 发生重复碰撞
         const uniqueAssets = Array.from(new Set(autoAssets));
         let addedCount = 0;
         for (const assetUrl of uniqueAssets) {
@@ -428,26 +505,34 @@ import TodayRightView from '../../components/TodayRightView.astro';
         }
         UI.log('成功捕获并注入核心静态资源: ' + addedCount + ' 个。');
       } catch (err) {
-        UI.log('静态资源自动捕获异常: ' + err.message);
+        UI.log('静态资源自动捕获异常: ' + formatError(err));
       }
 
       if (urls.length === 0) throw new Error('未获取到有效的数据节点。');
       UI.log('校验通过，共有 ' + urls.length + ' 个有效的同步节点。');
 
-      const cache = await caches.open(CACHE_NAME);
-      let existingKeys =[];
+      let existingKeys = [];
       
-      if (!isRebuild) {
-        const reqs = await cache.keys();
-        existingKeys = reqs.map(function(req) { return new URL(req.url).pathname; });
-        UI.log('本地探明已缓存节点，开始差异比对...');
-      } else {
+      // 避免在删除旧缓存前打开 CACHE_NAME 导致 SQLite 文件死锁
+      if (isRebuild) {
         UI.log('执行底层格式化，清空旧有数据区块...');
-        const cacheNames = await caches.keys();
-        for (const name of cacheNames) {
-          await caches.delete(name);
+        await safeClearAllCaches();
+      } else {
+        try {
+          if ('caches' in window) {
+            const checkCache = await caches.open(CACHE_NAME);
+            const reqs = await checkCache.keys();
+            existingKeys = reqs.map(function(req) { return new URL(req.url).pathname; });
+            UI.log('本地探明已缓存节点，开始差异比对...');
+          }
+        } catch (err) {
+          UI.log('比对本地节点发生提示: ' + formatError(err) + '，将进行全量更新比对。');
+          existingKeys = [];
         }
       }
+
+      // 打开统一缓存空间（复用句柄，降低墨水屏并发打开 SQLite 导致的冲突）
+      const targetCache = await caches.open(CACHE_NAME);
 
       let downloaded = 0;
       let skipped = 0;
@@ -470,19 +555,17 @@ import TodayRightView from '../../components/TodayRightView.astro';
           } else {
             try {
               UI.setProgress(currentIndex, urls.length, '拉取节点: ' + displayUrl);
-              // 对于节点下载本身，不需要强制 nocache，因为 SW 可能已经处理。但加上 nocache 能确保文件最新。
               const res = await fetch(url, { cache: 'no-cache' });
               
               if (res.ok) {
-                const currentCache = await caches.open(CACHE_NAME);
-                await currentCache.put(url, res);
+                await targetCache.put(url, res);
                 downloaded++;
               } else {
                 UI.log('节点响应失效 [' + res.status + ']: ' + url);
                 errors++;
               }
             } catch (err) {
-              UI.log('节点传输阻断: ' + url);
+              UI.log('节点写入异常 [' + formatError(err) + ']: ' + url);
               errors++;
             }
           }
@@ -501,7 +584,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
       UI.log('命令执行完毕 | 新增/更新: ' + downloaded + ' | 跳过: ' + skipped + ' | 异常: ' + errors);
 
     } catch (e) {
-      UI.log('错误: ' + e.message);
+      UI.log('错误: ' + formatError(e));
     } finally {
       isSyncing = false;
       UI.disableButtons(false);
@@ -637,14 +720,18 @@ import TodayRightView from '../../components/TodayRightView.astro';
   .terminal-window {
     background: #0d0d0d; border-radius: 8px; overflow: hidden; border: 1px solid var(--sl-color-hairline);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    transition: opacity 0.3s ease;
   }
+  .terminal-window.hidden { display: none; }
+  .terminal-window.visible { display: block; opacity: 1; }
+  
   .terminal-header {
     background: #1a1a1a; padding: 10px 14px; border-bottom: 1px solid #333; 
     display: flex; align-items: center;
   }
   .mac-buttons { display: flex; gap: 8px; margin-right: 16px; }
   .mac-btn { width: 12px; height: 12px; border-radius: 50%; }
-  .mac-btn.close { background-color: #ff5f56; }
+  .mac-btn.close { background-color: #ff5f56; cursor: pointer; }
   .mac-btn.minimize { background-color: #ffbd2e; }
   .mac-btn.maximize { background-color: #27c93f; }
   .terminal-title { color: #888; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
