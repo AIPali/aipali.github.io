@@ -414,7 +414,7 @@ import TodayRightView from '../../components/TodayRightView.astro';
 
     const msg = isRebuild
       ? "全量重新构建\\n\\n系统将清除现有数据，并从云端完整拉取所有经文节点。此过程将耗时数分钟，请确保设备电量充足且网络环境稳定。\\n\\n确认执行全量重建？"
-      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载新增或变动的经文节点。\\n\\n确认执行增量同步？";
+      : "增量同步数据\\n\\n系统将比对本地与云端目录拓扑，自动下载缺失的经文节点，使本地数据变得完整。\\n\\n确认执行增量同步？";
     
     if (!confirm(msg)) return;
     UI.showTerminal(true);
