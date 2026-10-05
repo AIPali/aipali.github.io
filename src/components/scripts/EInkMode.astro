@@ -4,110 +4,78 @@
 <script is:inline>
   (function() {
     const isEInkMode = localStorage.getItem('AIPali_EInk_Mode') === 'true';
-    if (isEInkMode) {
-      document.documentElement.classList.add('eink-mode');
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('starlight-theme', 'light');
-      
-      const themeMeta = document.querySelector('meta[name="theme-color"]');
-      if (themeMeta) themeMeta.setAttribute('content', '#ffffff');
+    if (!isEInkMode) return;
 
-      // 链接防残影
-      window.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (link && link.target === '_blank') link.removeAttribute('target');
-      }, true);
+    document.documentElement.classList.add('eink-mode');
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('starlight-theme', 'light');
 
-      // =========================================================
-      // 墨水屏物理按键优化：全内核全键位兼容 + 媒体播放智能避让
-      // =========================================================
-      window.addEventListener('keydown', (e) => {
-        const tag = e.target.tagName;
-        if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.setAttribute('content', '#ffffff');
 
-        // 1. 判断是否属于向下/向上键位（覆盖 PageDown、方向键、音量键）
-        const isDownKey = e.key === 'PageDown' || e.keyCode === 34 || e.key === 'ArrowDown' || e.keyCode === 40;
-        const isUpKey = e.key === 'PageUp' || e.keyCode === 33 || e.key === 'ArrowUp' || e.keyCode === 38;
-        
-        const isVolumeDown = e.key === 'AudioVolumeDown' || e.keyCode === 174 || e.keyCode === 25;
-        const isVolumeUp = e.key === 'AudioVolumeUp' || e.keyCode === 175 || e.keyCode === 24;
-
-        if (!isDownKey && !isUpKey && !isVolumeDown && !isVolumeUp) return;
-
-        // 2. 智能避让：如果是音量键，且页面正有音频/视频在播放，则完全放行给系统调音量
-        if (isVolumeDown || isVolumeUp) {
-          const isMediaPlaying = Array.from(document.querySelectorAll('audio, video'))
-            .some(media => !media.paused && !media.ended && media.currentTime > 0);
-          if (isMediaPlaying) {
-            return; // 放行音量调节，不做网页翻页
-          }
-        }
-
-        // 3. 拦截底层的平滑滚动逻辑
-        e.preventDefault();
-        e.stopPropagation();
-
-        // 4. 执行 90% 瞬切翻页
-        const isNext = isDownKey || isVolumeDown;
-        const step = Math.round(window.innerHeight * 0.9);
-        const scrollTarget = document.scrollingElement || document.documentElement;
-
-        scrollTarget.scrollBy({
-          top: isNext ? step : -step,
-          left: 0,
-          behavior: 'instant'
-        });
-      }, { passive: false, capture: true });
-    }
-  })();
-</script>
-
-<script is:inline>
-  (function() {
-    // 仅在墨水屏模式下开启诊断探针
-    if (localStorage.getItem('AIPali_EInk_Mode') !== 'true') return;
-
-    let timer = null;
-    let lastKeyOrWheelTime = 0;
-
-    function showDebug(type, msg) {
-      let box = document.getElementById('eink-sniffer-box');
-      if (!box) {
-        box = document.createElement('div');
-        box.id = 'eink-sniffer-box';
-        box.style.cssText = 'position:fixed;bottom:15px;left:15px;background:#000000;color:#ffffff;padding:8px 12px;font-size:13px;z-index:999999;border:2px solid #000;box-shadow:0 0 5px #fff;line-height:1.4;';
-        document.body.appendChild(box);
-      }
-      box.innerHTML = `<strong>【捕获到: ${type}】</strong><br/>${msg}`;
-      clearTimeout(timer);
-      timer = setTimeout(() => { if (box) box.style.display = 'none'; }, 4000);
-      box.style.display = 'block';
-    }
-
-    // 1. 监控键盘事件
-    window.addEventListener('keydown', (e) => {
-      lastKeyOrWheelTime = Date.now();
-      showDebug('键盘按键 (keydown)', `key: <code>${e.key}</code><br/>keyCode: <code>${e.keyCode}</code>`);
+    // 链接防残影
+    window.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link && link.target === '_blank') link.removeAttribute('target');
     }, true);
 
-    // 2. 监控滚轮事件 (wheel)
-    window.addEventListener('wheel', (e) => {
-      lastKeyOrWheelTime = Date.now();
-      showDebug('滚轮指令 (wheel)', `deltaY: <code>${Math.round(e.deltaY)}</code> (下发了滚轮)`);
-    }, { capture: true, passive: false });
+    // =========================================================
+    // 核心截胡逻辑：专治 Native 翻页键触发的平滑滚动
+    // =========================================================
+    let isUserTouching = false;
+    let isSnapping = false;
+    let snapCooldownTimer = null;
+    let lastStableScrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    // 3. 监控触摸模拟 (touch)
-    window.addEventListener('touchstart', (e) => {
-      // 如果屏幕上根本没有手指接触，但触发了 touch，说明是系统无障碍在模拟划屏
-      showDebug('手势模拟 (touch)', `触点数: ${e.touches.length} (系统在模拟手指划屏)`);
-    }, true);
+    // 1. 监测用户真实手指接触（防止误伤手动触屏滑行）
+    window.addEventListener('touchstart', () => { 
+      isUserTouching = true; 
+    }, { capture: true, passive: true });
 
-    // 4. 监控页面原生滚动 (scroll)
+    window.addEventListener('touchend', () => {
+      setTimeout(() => {
+        isUserTouching = false;
+        lastStableScrollTop = window.scrollY || document.documentElement.scrollTop;
+      }, 150);
+    }, { capture: true, passive: true });
+
+    // 2. 捕捉并粉碎 Native 原生滚动动画
     window.addEventListener('scroll', () => {
-      // 如果滚动发生了，但最近 500ms 内既没有 keydown 也没有 wheel 也没有 touch
-      if (Date.now() - lastKeyOrWheelTime > 500) {
-        showDebug('Native 原生滚动 (scroll)', '未捕获到前端事件，是安卓 Java 壳直接操控了 WebView 滚动！');
+      const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      // 如果是手指在划，或者是我们自己触发的瞬间闪现，放行
+      if (isUserTouching || isSnapping) {
+        if (!isSnapping) lastStableScrollTop = currentScrollTop;
+        return;
       }
-    }, true);
+
+      // 手指没碰屏幕，页面却开始动了 -> 100% 是按键触发的 Native 滚动
+      const diff = currentScrollTop - lastStableScrollTop;
+      if (Math.abs(diff) < 2) return; // 忽略微小像素抖动
+
+      // 锁定状态，防止反复触发死循环
+      isSnapping = true;
+
+      const isDown = diff > 0;
+      const step = Math.round(window.innerHeight * 0.9);
+      const targetY = Math.max(0, lastStableScrollTop + (isDown ? step : -step));
+      const scrollTarget = document.scrollingElement || document.documentElement;
+
+      // 💥 致命一击：直接下发 instant 瞬间定位，强行击毙系统的平滑插值动画！
+      scrollTarget.scrollTo({
+        top: targetY,
+        behavior: 'instant'
+      });
+
+      lastStableScrollTop = targetY;
+
+      // 300ms 冷却时间，覆盖掉掌阅原生动画的生命周期
+      clearTimeout(snapCooldownTimer);
+      snapCooldownTimer = setTimeout(() => {
+        isSnapping = false;
+        lastStableScrollTop = window.scrollY || document.documentElement.scrollTop;
+      }, 300);
+    }, { capture: true, passive: true });
+
   })();
 </script>
