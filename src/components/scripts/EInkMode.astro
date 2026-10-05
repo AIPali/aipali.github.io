@@ -61,3 +61,53 @@
     }
   })();
 </script>
+
+<script is:inline>
+  (function() {
+    // 仅在墨水屏模式下开启诊断探针
+    if (localStorage.getItem('AIPali_EInk_Mode') !== 'true') return;
+
+    let timer = null;
+    let lastKeyOrWheelTime = 0;
+
+    function showDebug(type, msg) {
+      let box = document.getElementById('eink-sniffer-box');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'eink-sniffer-box';
+        box.style.cssText = 'position:fixed;bottom:15px;left:15px;background:#000000;color:#ffffff;padding:8px 12px;font-size:13px;z-index:999999;border:2px solid #000;box-shadow:0 0 5px #fff;line-height:1.4;';
+        document.body.appendChild(box);
+      }
+      box.innerHTML = `<strong>【捕获到: ${type}】</strong><br/>${msg}`;
+      clearTimeout(timer);
+      timer = setTimeout(() => { if (box) box.style.display = 'none'; }, 4000);
+      box.style.display = 'block';
+    }
+
+    // 1. 监控键盘事件
+    window.addEventListener('keydown', (e) => {
+      lastKeyOrWheelTime = Date.now();
+      showDebug('键盘按键 (keydown)', `key: <code>${e.key}</code><br/>keyCode: <code>${e.keyCode}</code>`);
+    }, true);
+
+    // 2. 监控滚轮事件 (wheel)
+    window.addEventListener('wheel', (e) => {
+      lastKeyOrWheelTime = Date.now();
+      showDebug('滚轮指令 (wheel)', `deltaY: <code>${Math.round(e.deltaY)}</code> (下发了滚轮)`);
+    }, { capture: true, passive: false });
+
+    // 3. 监控触摸模拟 (touch)
+    window.addEventListener('touchstart', (e) => {
+      // 如果屏幕上根本没有手指接触，但触发了 touch，说明是系统无障碍在模拟划屏
+      showDebug('手势模拟 (touch)', `触点数: ${e.touches.length} (系统在模拟手指划屏)`);
+    }, true);
+
+    // 4. 监控页面原生滚动 (scroll)
+    window.addEventListener('scroll', () => {
+      // 如果滚动发生了，但最近 500ms 内既没有 keydown 也没有 wheel 也没有 touch
+      if (Date.now() - lastKeyOrWheelTime > 500) {
+        showDebug('Native 原生滚动 (scroll)', '未捕获到前端事件，是安卓 Java 壳直接操控了 WebView 滚动！');
+      }
+    }, true);
+  })();
+</script>
