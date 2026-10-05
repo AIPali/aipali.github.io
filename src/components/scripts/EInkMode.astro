@@ -20,6 +20,34 @@
           link.removeAttribute('target');
         }
       }, true);
+
+      // =========================================================
+      // 墨水屏物理按键优化：仅监听 PageUp / PageDown，90% 瞬间硬翻
+      // =========================================================
+      window.addEventListener('keydown', (e) => {
+        // 如果焦点在输入框或文本域中，放行默认按键行为
+        const tag = e.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+
+        const isNext = e.key === 'PageDown' || e.keyCode === 34;
+        const isPrev = e.key === 'PageUp' || e.keyCode === 33;
+
+        // 不是翻页键直接放行（完全不干扰音量加减、多媒体控制等）
+        if (!isNext && !isPrev) return;
+
+        // 拦截内核自带的 100% 连续平滑滚动
+        e.preventDefault();
+
+        // 翻页步长：视口高度的 90%，保留 10% 上下文防跳行
+        const step = Math.round(window.innerHeight * 0.9);
+        const scrollTarget = document.scrollingElement || document.documentElement;
+
+        scrollTarget.scrollBy({
+          top: isNext ? step : -step,
+          left: 0,
+          behavior: 'instant' // 兼容 GeckoView 与 Chromium WebView 瞬间到位
+        });
+      }, { passive: false });
     }
   })();
 </script>
