@@ -23,40 +23,107 @@
     }, true);
 
 
+    // =========================================================================
+    // 【全局通用硬件翻页模块】标准 PageUp / PageDown 瞬间硬翻
+    // -------------------------------------------------------------------------
+    // 适用场景：文石 BOOX、已配置按键映射（如 Button Mapper）或外接翻页器的设备。
+    // 特性：
+    // 1. 滚动距离由浏览器视口标准高度决定（整屏高度 window.innerHeight）。
+    // 2. 彻底掐断内核自带的平滑滑动，瞬间一步到位。
+    // 3. 严格放行上下方向键、鼠标滚轮及真实手势，常规交互保持原样。
+    // =========================================================================
+    window.addEventListener('keydown', (e) => {
+      // 文本输入态下完全放行
+      const tag = e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+
+      const isPageDown = e.key === 'PageDown' || e.keyCode === 34;
+      const isPageUp = e.key === 'PageUp' || e.keyCode === 33;
+
+      // 仅拦截 PageUp / PageDown；上下方向键、空格、回车等全部放行
+      if (!isPageDown && !isPageUp) return;
+
+      // 阻止浏览器内核自带的逐帧平滑翻页动画
+      e.preventDefault();
+
+      // 距离遵循浏览器原生 1 页的标准视口高度，强制 instant 瞬间硬刷到位
+      const browserPageStep = window.innerHeight;
+      const root = document.scrollingElement || document.documentElement;
+
+      root.scrollBy({
+        top: isPageDown ? browserPageStep : -browserPageStep,
+        left: 0,
+        behavior: 'instant'
+      });
+    }, { capture: true, passive: false });
+
+
     /* =========================================================================
-     * 【专治掌阅 iReader Ocean 5 物理按键滚动残影兼容模块】
+     * 【掌阅 iReader Ocean 5 专治兼容模块】（仅在 Starlight 文档页面生效）
      * -------------------------------------------------------------------------
      * 机制说明：
-     * 1. 向上按键：掌阅会向屏幕正中轴线 (X ≈ 316) 注入一段 600ms 的虚拟手指滑动；
-     *    -> 本模块在 touchstart 阶段直接 preventDefault 拦截，一帧动画都不给它播，
-     *       直接瞬间硬刷 80%。真实手指触控不经过正中轴线，完全不受影响。
-     * 2. 向下按键：掌阅会通过 Native 无障碍接口强行下发 1 秒 50 帧的平滑滚动；
-     *    -> 本模块在无手势滚动的第 1 毫秒，通过锁定 overflow 瞬间打断动画，硬切 80%。
+     * 1. 范围限定：仅在具有 data-has-sidebar 的文档/经文页生效；在 Splash 首页自动休眠。
+     * 2. 向上翻页：掌阅在中轴线 (X ≈ 316) 注入虚拟滑动手势 -> 在 touchstart 阶段直接拦截，
+     *    一帧都不让它滑，立即硬切 75%。
+     * 3. 向下翻页：掌阅通过底层下发 Native 滚屏指令 -> 自动排除鼠标滚轮、常规键盘和手指拖动，
+     *    仅在检测到“无任何外部输入源的幽灵滚屏”时瞬间打断动画，硬切 75%，锁定 400ms。
      * 
-     * 📌 维护说明：将来如果更换其他设备或官方修复了此问题，将本块代码整体删除即可。
+     * 📌 维护说明：将来若官方固件修复此机制，直接整体删除本块即可。
      * ========================================================================= */
-    (function initIReaderOcean5Fix() {
-      const STEP_RATIO = 0.8; // 翻页幅度：80% 屏高
+    (function initIReaderOcean5DocOnlyFix() {
+      const STEP_RATIO = 0.75; // 翻页幅度：75% 屏高
+      const COOLDOWN_MS = 400; // 动画锁定冷却：400ms
+
       let isRealUserTouch = false;
+      let isMouseDown = false;
+      let lastWheelTime = 0;
+      let lastKeyScrollTime = 0;
       let isHardSnapping = false;
       let snapCooldownTimer = null;
       let lastScrollY = window.scrollY || document.documentElement.scrollTop;
 
-      // 1. 拦截掌阅模拟的“向上翻页”中轴线手势（做到 0 帧位移动画，直接硬切）
+      // 检测当前是否处于文档页面（具有侧边栏的页面）
+      function isDocPage() {
+        return document.documentElement.hasAttribute('data-has-sidebar');
+      }
+
+      // 1. 追踪合法的人类外部输入：鼠标滚轮、鼠标拖拽、常规键盘（上下键等）
+      window.addEventListener('wheel', () => {
+        lastWheelTime = Date.now();
+      }, { capture: true, passive: true });
+
+      window.addEventListener('mousedown', () => {
+        isMouseDown = true;
+      }, { capture: true, passive: true });
+
+      window.addEventListener('mouseup', () => {
+        setTimeout(() => { isMouseDown = false; }, 100);
+      }, { capture: true, passive: true });
+
+      window.addEventListener('keydown', (e) => {
+        // 记录常规引起滚动的按键（上下箭头、空格等）
+        if (['ArrowDown', 'ArrowUp', 'Space', 'Home', 'End'].includes(e.key) || [38, 40, 32, 36, 35].includes(e.keyCode)) {
+          lastKeyScrollTime = Date.now();
+        }
+      }, { capture: true, passive: true });
+
+      // 2. 拦截掌阅向上按键在中轴线模拟的触控手势（人手正常触摸放行）
       window.addEventListener('touchstart', (e) => {
+        if (!isDocPage()) return;
+
         const touch = e.touches[0];
         const screenCenterX = window.innerWidth / 2;
 
-        // 掌阅特征：坐标死死卡在正中央 (X 误差 < 15px)
+        // 掌阅特征：X 坐标固定在屏幕绝对正中央 (误差 < 15px)
         const isIReaderSyntheticTouch = Math.abs(touch.clientX - screenCenterX) < 15;
 
         if (isIReaderSyntheticTouch) {
-          // 当场枪毙模拟滑屏，杜绝任何逐帧滑动
+          // 彻底阻断模拟手势，杜绝产生任何滚动初速度
           e.preventDefault();
           e.stopPropagation();
 
           const step = Math.round(window.innerHeight * STEP_RATIO);
-          // 掌阅向上翻页起点在屏幕上方 (Y < 屏幕一半)
+          // 掌阅向上翻页起点在屏幕上半段 (Y < 屏幕高度一半)
           const isUp = touch.clientY < window.innerHeight / 2;
 
           (document.scrollingElement || document.documentElement).scrollBy({
@@ -67,7 +134,7 @@
           return;
         }
 
-        // 真实人手操作，标记放行
+        // 人手正常触摸，标记放行
         isRealUserTouch = true;
       }, { capture: true, passive: false });
 
@@ -78,12 +145,19 @@
         }, 120);
       }, { capture: true, passive: true });
 
-      // 2. 截杀掌阅“向下翻页”的 Native 强制滚屏（第 1 毫秒秒杀动画，直接硬切）
+      // 3. 截杀掌阅向下按键下发的无手势 Native 滚屏（精确放行鼠标滚轮与方向键）
       window.addEventListener('scroll', () => {
+        if (!isDocPage()) return;
+
         const currentY = window.scrollY || document.documentElement.scrollTop;
 
-        // 真实手指滑动或本模块硬刷中，放行
-        if (isRealUserTouch || isHardSnapping) {
+        // 判定本次滚动是否来自合法的外部输入：
+        const isFromWheel = (Date.now() - lastWheelTime) < 250;      // 鼠标滚轮触发
+        const isFromKey = (Date.now() - lastKeyScrollTime) < 250;    // 上下方向键触发
+        const isLegitUserScroll = isRealUserTouch || isMouseDown || isFromWheel || isFromKey;
+
+        // 如果是人手触控、鼠标滚轮、按方向键、鼠标拖滚动条，或本模块自身瞬移，全部放行！
+        if (isLegitUserScroll || isHardSnapping) {
           if (!isHardSnapping) lastScrollY = currentY;
           return;
         }
@@ -91,26 +165,26 @@
         const diff = currentY - lastScrollY;
         if (Math.abs(diff) < 2) return;
 
-        // 捕获到底层下发的无手势平滑动画：立即踩死刹车！
+        // 走到这里：既无触控、又无滚轮、又无按键，100% 是掌阅物理侧键触发的幽灵 Native 滚屏！
         isHardSnapping = true;
         const isDown = diff > 0;
         const step = Math.round(window.innerHeight * STEP_RATIO);
         const targetY = Math.max(0, lastScrollY + (isDown ? step : -step));
         const root = document.scrollingElement || document.documentElement;
 
-        // 核心技巧：通过短暂置空 overflow 瞬间粉碎安卓内核正在播放的 Fling 补帧器
+        // 通过瞬时隐藏 overflow 销毁安卓底层的 Fling 动画器，完成 0 帧硬切
         root.style.overflow = 'hidden';
         root.scrollTo({ top: targetY, behavior: 'instant' });
         root.style.overflow = '';
 
         lastScrollY = targetY;
 
-        // 锁定 350ms，彻底吞噬掌阅后续所有残留的插值动画帧
+        // 锁定 400ms，吞噬掌阅后续所有残留的平滑插值帧
         clearTimeout(snapCooldownTimer);
         snapCooldownTimer = setTimeout(() => {
           isHardSnapping = false;
           lastScrollY = window.scrollY || document.documentElement.scrollTop;
-        }, 350);
+        }, COOLDOWN_MS);
       }, { capture: true, passive: false });
     })();
     /* ==================== 掌阅兼容模块结束 ==================== */
