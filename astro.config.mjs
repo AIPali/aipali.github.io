@@ -42,6 +42,7 @@ export default defineConfig({
     starlight({
       // 离线构建显示专属标题，主站/镜像站保持原样
       title: deployEnv === 'offline' ? 'AIPali 离线版巴利三藏' : 'AIPali 智能化巴利三藏',
+      favicon: '/favicon.png', 
       customCss:['./src/styles/custom.css'], 
       defaultLocale: 'zh-CN', 
       locales: { root: { label: '简体中文', lang: 'zh-CN' } },

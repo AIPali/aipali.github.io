@@ -41,6 +41,7 @@
     color: var(--sl-color-white);
     text-transform: lowercase;
     letter-spacing: 0.02em;
+    display: block;
   }
   .pali-drawer-close { background: none; border: none; color: var(--sl-color-gray-3); font-size: 1.4rem; cursor: pointer; line-height: 1; padding: 0.2rem; }
   .pali-drawer-tabs {
@@ -111,7 +112,7 @@
   // --- 模块级变量 ---
   let currentParaHtml = "";
   let currentChapHtml = "";
-  let pageTitle = ""; // 用于存储当前页面的 H1 标题
+  let pageTitle = "";
 
   function parsePageInfo() {
     const path = window.location.pathname;
@@ -133,14 +134,11 @@
   function initPaliLinks() {
     if (window.matchMedia(MOBILE_MEDIA_QUERY).matches) return;
     const pageInfo = parsePageInfo();
-    
-    // 核心修改 1: 将 H1 标题存储到模块级变量中
     pageTitle = pageInfo.title;
 
     if (!ENABLED_COLLECTIONS.includes(pageInfo.collection)) return;
     for (const keyword of EXCLUDED_KEYWORDS) {
       if (pageInfo.path.includes(keyword)) {
-        console.log(`[PaliLookup] Skipped: URL contains excluded keyword '${keyword}'.`);
         return;
       }
     }
@@ -161,13 +159,12 @@
     initDrawerDOM();
   }
 
-  // ... (initDrawerDOM, openDrawer, closeDrawer, switchTab 等函数保持不变) ...
   let drawerEl, contentEl, tabsEl, footerEl, tabParaBtn, tabChapBtn;
   function initDrawerDOM() {
     const drawerHTML = `
       <aside id="pali-drawer">
         <header class="pali-drawer-header">
-          <h2 class="pali-drawer-title">pāḷi mūla | vri</h2>
+          <div class="pali-drawer-title" role="heading" aria-level="2">pāḷi mūla | vri</div>
           <button id="pali-drawer-close" class="pali-drawer-close">&times;</button>
         </header>
         <div id="pali-drawer-tabs" class="pali-drawer-tabs" style="display: none;">
@@ -194,6 +191,7 @@
     document.getElementById('pali-btn-copy').addEventListener('click', () => handleButtonAction('pali-btn-copy', 'copy text'));
     document.getElementById('pali-btn-ai').addEventListener('click', () => handleButtonAction('pali-btn-ai', 'ai prompt'));
   }
+
   function openDrawer(loadingHtml) {
     tabsEl.style.display = 'none';
     footerEl.style.display = 'none';
@@ -202,6 +200,7 @@
       drawerEl.classList.add('is-open');
     }
   }
+
   function closeDrawer() {
     drawerEl.classList.remove('is-open');
     setTimeout(() => {
@@ -212,6 +211,7 @@
       }
     }, 300);
   }
+
   function switchTab(isPara) {
     if (isPara) {
       tabParaBtn.classList.add('active');
@@ -227,7 +227,6 @@
   async function fetchPaliData(fileName, paraNum) {
     openDrawer(`<div class="pali-message">loading pāḷi mūla...</div>`);
     try {
-      // 注意：API 不再需要 t 参数，因此这里移除了
       const targetUrl = `${API_URL}?f=${encodeURIComponent(fileName)}&p=${encodeURIComponent(paraNum)}`;
       const response = await fetch(targetUrl);
       const data = await response.json();
@@ -259,7 +258,6 @@
       if (plainText.length < 50) promptType = "逐词对照解释";
       else if (plainText.length < 200) promptType = "逐句解释";
 
-      // 核心修改 2: 使用新的 Prompt 模板，并嵌入 pageTitle
       textToCopy = `你的角色：精通南传上座部佛法（Theravada）和巴利三藏（Pali Tipitaka）的专家。\n内容出处：巴利语经文来自“${pageTitle}”\n你的任务：${promptType}\n输出格式：中文和巴利语对照\n\n\`\`\`pali\n${plainText}\n\`\`\``;
     }
 
