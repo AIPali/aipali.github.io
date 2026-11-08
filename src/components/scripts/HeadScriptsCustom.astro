@@ -1,12 +1,12 @@
 ---
 // src/components/scripts/HeadScriptsCustom.astro
 const siteUrl = Astro.site ? Astro.site : Astro.url.origin;
-const ogImageUrl = new URL('/assets/logo_512x512.png', siteUrl).href;
+const ogImageUrl = new URL('/assets/og_cover.jpg', siteUrl).href;
 ---
 
 <!-- 社交媒体分享卡片封面图 (Open Graph & Twitter) -->
 <meta property="og:image" content={ogImageUrl} />
-<meta property="og:image:width" content="512" />
-<meta property="og:image:height" content="512" />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="572" />
+<meta property="og:image:type" content="image/jpeg" />
 <meta name="twitter:image" content={ogImageUrl} />
