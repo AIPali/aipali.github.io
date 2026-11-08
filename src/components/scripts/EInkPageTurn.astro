@@ -1,0 +1,171 @@
+---
+// src/components/scripts/EInkPageTurn.astro
+---
+<script is:inline>
+  (function() {
+    // 仅在开启墨水屏模式时激活硬件监听，普通设备零开销
+    const isEInkMode = localStorage.getItem('AIPali_EInk_Mode') === 'true';
+    if (!isEInkMode) return;
+
+    // =========================================================================
+    // 1. 墨水屏设备专属防残影优化：点击链接强制在当前页打开，禁用 target="_blank"
+    // =========================================================================
+    window.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link && link.target === '_blank') {
+        link.removeAttribute('target');
+      }
+    }, true);
+
+    // =========================================================================
+    // 2. 【全局通用硬件翻页模块】标准 PageUp / PageDown 瞬间硬翻
+    // -------------------------------------------------------------------------
+    // 适用场景：文石 BOOX、已配置按键映射（如 Button Mapper）或外接翻页器的设备。
+    // =========================================================================
+    window.addEventListener('keydown', (e) => {
+      const tag = e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+
+      const isPageDown = e.key === 'PageDown' || e.keyCode === 34;
+      const isPageUp = e.key === 'PageUp' || e.keyCode === 33;
+
+      // 仅拦截 PageUp / PageDown；上下方向键、空格、回车等全部放行
+      if (!isPageDown && !isPageUp) return;
+
+      // 阻止浏览器内核自带的逐帧平滑翻页动画
+      e.preventDefault();
+
+      // 距离遵循浏览器原生 1 页的标准视口高度，强制 instant 瞬间硬刷到位
+      const browserPageStep = window.innerHeight;
+      const root = document.scrollingElement || document.documentElement;
+
+      root.scrollBy({
+        top: isPageDown ? browserPageStep : -browserPageStep,
+        left: 0,
+        behavior: 'instant'
+      });
+    }, { capture: true, passive: false });
+
+    // =========================================================================
+    // 3. 【掌阅 iReader Ocean 5 专治兼容模块】（仅在 Firefox/GeckoView 内核生效）
+    // -------------------------------------------------------------------------
+    // 📌 维护说明：将来若更换设备或不再需要兼容掌阅，直接删除本块即可。
+    // =========================================================================
+    (function initIReaderOcean5DocOnlyFix() {
+      // 核心检测：判断当前是否处于 Gecko / Firefox 内核环境
+      // 若处于 Android 原生 WebView（Chromium），直接退出，交由掌阅系统原生硬切
+      const isGeckoKernel = /Firefox|Gecko\//i.test(navigator.userAgent) || ('MozAppearance' in document.documentElement.style);
+      if (!isGeckoKernel) return;
+
+      const STEP_RATIO = 0.75; // 翻页幅度：75% 屏高
+      const COOLDOWN_MS = 400; // 动画锁定冷却：400ms
+
+      let isRealUserTouch = false;
+      let isMouseDown = false;
+      let lastWheelTime = 0;
+      let lastKeyScrollTime = 0;
+      let isHardSnapping = false;
+      let snapCooldownTimer = null;
+      let lastScrollY = window.scrollY || document.documentElement.scrollTop;
+
+      // 检测当前是否处于文档页面（具有侧边栏的页面）
+      function isDocPage() {
+        return document.documentElement.hasAttribute('data-has-sidebar');
+      }
+
+      // 追踪合法的人类外部输入：鼠标滚轮、鼠标拖拽、常规键盘
+      window.addEventListener('wheel', () => {
+        lastWheelTime = Date.now();
+      }, { capture: true, passive: true });
+
+      window.addEventListener('mousedown', () => {
+        isMouseDown = true;
+      }, { capture: true, passive: true });
+
+      window.addEventListener('mouseup', () => {
+        setTimeout(() => { isMouseDown = false; }, 100);
+      }, { capture: true, passive: true });
+
+      window.addEventListener('keydown', (e) => {
+        if (['ArrowDown', 'ArrowUp', 'Space', 'Home', 'End'].includes(e.key) || [38, 40, 32, 36, 35].includes(e.keyCode)) {
+          lastKeyScrollTime = Date.now();
+        }
+      }, { capture: true, passive: true });
+
+      // 拦截掌阅向上按键在中轴线模拟的触控手势
+      window.addEventListener('touchstart', (e) => {
+        if (!isDocPage()) return;
+
+        const touch = e.touches[0];
+        const screenCenterX = window.innerWidth / 2;
+
+        // 掌阅特征：X 坐标固定在屏幕绝对正中央 (误差 < 15px)
+        const isIReaderSyntheticTouch = Math.abs(touch.clientX - screenCenterX) < 15;
+
+        if (isIReaderSyntheticTouch) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const step = Math.round(window.innerHeight * STEP_RATIO);
+          const isUp = touch.clientY < window.innerHeight / 2;
+
+          (document.scrollingElement || document.documentElement).scrollBy({
+            top: isUp ? -step : step,
+            left: 0,
+            behavior: 'instant'
+          });
+          return;
+        }
+
+        isRealUserTouch = true;
+      }, { capture: true, passive: false });
+
+      window.addEventListener('touchend', () => {
+        setTimeout(() => {
+          isRealUserTouch = false;
+          lastScrollY = window.scrollY || document.documentElement.scrollTop;
+        }, 120);
+      }, { capture: true, passive: true });
+
+      // 截杀掌阅向下按键下发的无手势 Native 滚屏
+      window.addEventListener('scroll', () => {
+        if (!isDocPage()) return;
+
+        const currentY = window.scrollY || document.documentElement.scrollTop;
+
+        // 过滤合法输入（人手触控、鼠标滚轮、方向键、鼠标拖拽、自身瞬移）
+        const isFromWheel = (Date.now() - lastWheelTime) < 250;
+        const isFromKey = (Date.now() - lastKeyScrollTime) < 250;
+        const isLegitUserScroll = isRealUserTouch || isMouseDown || isFromWheel || isFromKey;
+
+        if (isLegitUserScroll || isHardSnapping) {
+          if (!isHardSnapping) lastScrollY = currentY;
+          return;
+        }
+
+        const diff = currentY - lastScrollY;
+        if (Math.abs(diff) < 2) return;
+
+        // 捕获到仅在 GeckoView 下才会出现的无手势平滑动画：直接硬刷
+        isHardSnapping = true;
+        const isDown = diff > 0;
+        const step = Math.round(window.innerHeight * STEP_RATIO);
+        const targetY = Math.max(0, lastScrollY + (isDown ? step : -step));
+        const root = document.scrollingElement || document.documentElement;
+
+        root.style.overflow = 'hidden';
+        root.scrollTo({ top: targetY, behavior: 'instant' });
+        root.style.overflow = '';
+
+        lastScrollY = targetY;
+
+        clearTimeout(snapCooldownTimer);
+        snapCooldownTimer = setTimeout(() => {
+          isHardSnapping = false;
+          lastScrollY = window.scrollY || document.documentElement.scrollTop;
+        }, COOLDOWN_MS);
+      }, { capture: true, passive: false });
+    })();
+
+  })();
+</script>

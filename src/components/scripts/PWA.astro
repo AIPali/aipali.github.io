@@ -15,7 +15,7 @@ const offlineUrl = `${baseUrl}offline/`.replace(/\/\/+/g, '/');
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="AIPali" />
 
-<script define:vars={{ swUrl, baseUrl, offlineUrl }}>
+<script is:inline define:vars={{ swUrl, baseUrl, offlineUrl }}>
   const hostname = window.location.hostname;
   
   // 1. 严格环境判定：仅在离线专区或本地特定环境生效

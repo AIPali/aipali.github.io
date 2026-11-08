@@ -229,34 +229,39 @@ ul.starlight-sidebar-topics + * {
 }
 
 /* ==========================================================
-   5. 正文内容区样式 (Blockquote & .p-ref)
+   5. 正文内容区样式 (Blockquote & 页面级适配)
 ========================================================== */
 .sl-markdown-content blockquote {
-    border-inline-start: none;
-    border-top: 3px solid var(--sl-color-gray-2);
-    border-bottom: 1px solid var(--sl-color-gray-5);
-    background-color: var(--sl-color-gray-6);
-    padding: 2rem 1.5rem;
-    margin: 2.5rem 0;
-    line-height: 1.8;
-    letter-spacing: 0.02em;
+  border-inline-start: none;
+  border-top: 3px solid var(--sl-color-gray-2);
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  background-color: var(--sl-color-gray-6);
+  padding: 2rem 1.5rem;
+  margin: 2.5rem 0;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
 }
 .sl-markdown-content blockquote p { color: var(--sl-color-white); }
 
-/* 普通经文/文档页（有侧边栏）：内容区左侧留白 3rem 容纳段落编号 */
+/* 有侧边栏页面（经文正文）：左侧预留 3rem 放置段落编号 */
 html[data-has-sidebar] .sl-markdown-content {
   position: relative;
   padding-left: 3rem;
 }
 
-/* Splash 落地页（无侧边栏）：取消左侧 3rem 留白 */
+/* 无侧边栏页面（落地页/独立页）：清除边距、分割线与原生底栏 */
 html:not([data-has-sidebar]) .sl-markdown-content {
-  padding-left: 0rem !important;
+  padding-left: 0 !important;
 }
-
-/* 消除 Splash 落地页顶部的灰色分割线 */
 html:not([data-has-sidebar]) .content-panel {
   border-top: none !important;
+}
+html:not([data-has-sidebar]) .content-panel:last-of-type {
+  padding-bottom: 0 !important;
+}
+html:not([data-has-sidebar]) footer.sl-flex,
+html:not([data-has-sidebar]) .pagination-links {
+  display: none !important;
 }
 
 .sl-markdown-content p,
